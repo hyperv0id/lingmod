@@ -5,8 +5,11 @@
 
     <artifactId>LingMod</artifactId>
     <version>0.0.1</version>
-    <name>Ling - Poet from Yan</name>
-    <description>明日方舟令姐模组</description>
+    <name>Ling(明日方舟-令)</name>
+    <description>
+        Description: 明日方舟令mod。\\
+        部分图片来自 pixiv.net: 101134396_p0、107523985、
+    </description>
     <!-- Change the above for mod information. -->
 
     <properties>
