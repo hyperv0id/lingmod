@@ -46,9 +46,9 @@ public class ModFile implements
 
     public static Color characterColor = new Color(MathUtils.random(), MathUtils.random(), MathUtils.random(), 1); // This should be changed eventually
 
-    public static final String SHOULDER1 = makeCharacterPath("mainChar/shoulder.png");
-    public static final String SHOULDER2 = makeCharacterPath("mainChar/shoulder2.png");
-    public static final String CORPSE = makeCharacterPath("mainChar/corpse.png");
+    public static final String SHOULDER1 = makeCharacterPath("main/shoulder.png");
+    public static final String SHOULDER2 = makeCharacterPath("main/shoulder2.png");
+    public static final String CORPSE = makeCharacterPath("main/corpse.png");
     private static final String ATTACK_S_ART = makeImagePath("512/attack.png");
     private static final String SKILL_S_ART = makeImagePath("512/skill.png");
     private static final String POWER_S_ART = makeImagePath("512/power.png");
@@ -58,8 +58,8 @@ public class ModFile implements
     private static final String SKILL_L_ART = makeImagePath("1024/skill.png");
     private static final String POWER_L_ART = makeImagePath("1024/power.png");
     private static final String CARD_ENERGY_L = makeImagePath("1024/energy.png");
-    private static final String CHARSELECT_BUTTON = makeImagePath("charSelect/button.png");
-    private static final String CHARSELECT_PORTRAIT = makeImagePath("charSelect/portrait.png");
+    private static final String CHARSELECT_BUTTON = makeImagePath("ui/char_select/button.png");
+    private static final String CHARSELECT_PORTRAIT = makeImagePath("ui/char_select/portrait.png");
 
     public static Settings.GameLanguage[] SupportedLanguages = {
             Settings.GameLanguage.ENG,
@@ -77,7 +77,7 @@ public class ModFile implements
     public ModFile() {
         BaseMod.subscribe(this);
 
-        BaseMod.addColor(CharacterFile.Enums.TODO_COLOR, characterColor, characterColor, characterColor,
+        BaseMod.addColor(CharacterFile.Enums.LING_COLOR, characterColor, characterColor, characterColor,
                 characterColor, characterColor, characterColor, characterColor,
                 ATTACK_S_ART, SKILL_S_ART, POWER_S_ART, CARD_ENERGY_S,
                 ATTACK_L_ART, SKILL_L_ART, POWER_L_ART,
@@ -115,8 +115,8 @@ public class ModFile implements
 
     @Override
     public void receiveEditCharacters() {
-        BaseMod.addCharacter(new CharacterFile(CharacterFile.characterStrings.NAMES[1], CharacterFile.Enums.THE_TODO),
-            CHARSELECT_BUTTON, CHARSELECT_PORTRAIT, CharacterFile.Enums.THE_TODO);
+        BaseMod.addCharacter(new CharacterFile(CharacterFile.characterStrings.NAMES[1], CharacterFile.Enums.PLAYER_LING),
+            CHARSELECT_BUTTON, CHARSELECT_PORTRAIT, CharacterFile.Enums.PLAYER_LING);
         
         new AutoAdd(modID)
             .packageFilter(AbstractEasyPotion.class)

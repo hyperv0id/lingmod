@@ -24,7 +24,7 @@ import lingmod.relics.TodoItem;
 
 import java.util.ArrayList;
 
-import static lingmod.CharacterFile.Enums.TODO_COLOR;
+import static lingmod.CharacterFile.Enums.LING_COLOR;
 import static lingmod.ModFile.*;
 
 public class CharacterFile extends CustomPlayer {
@@ -36,8 +36,8 @@ public class CharacterFile extends CustomPlayer {
 
 
     public CharacterFile(String name, PlayerClass setClass) {
-        super(name, setClass, new CustomEnergyOrb(orbTextures, makeCharacterPath("mainChar/orb/vfx.png"), null), new SpriterAnimation(
-                makeCharacterPath("mainChar/static.scml")));
+        super(name, setClass, new CustomEnergyOrb(orbTextures, makeCharacterPath("main/orb/vfx.png"), null), new SpriterAnimation(
+                makeCharacterPath("main/static.scml")));
         initializeClass(null,
                 SHOULDER1,
                 SHOULDER2,
@@ -82,17 +82,17 @@ public class CharacterFile extends CustomPlayer {
     }
 
     private static final String[] orbTextures = {
-            makeCharacterPath("mainChar/orb/layer1.png"),
-            makeCharacterPath("mainChar/orb/layer2.png"),
-            makeCharacterPath("mainChar/orb/layer3.png"),
-            makeCharacterPath("mainChar/orb/layer4.png"),
-            makeCharacterPath("mainChar/orb/layer4.png"),
-            makeCharacterPath("mainChar/orb/layer6.png"),
-            makeCharacterPath("mainChar/orb/layer1d.png"),
-            makeCharacterPath("mainChar/orb/layer2d.png"),
-            makeCharacterPath("mainChar/orb/layer3d.png"),
-            makeCharacterPath("mainChar/orb/layer4d.png"),
-            makeCharacterPath("mainChar/orb/layer5d.png"),
+            makeCharacterPath("main/orb/layer1.png"),
+            makeCharacterPath("main/orb/layer2.png"),
+            makeCharacterPath("main/orb/layer3.png"),
+            makeCharacterPath("main/orb/layer4.png"),
+            makeCharacterPath("main/orb/layer4.png"),
+            makeCharacterPath("main/orb/layer6.png"),
+            makeCharacterPath("main/orb/layer1d.png"),
+            makeCharacterPath("main/orb/layer2d.png"),
+            makeCharacterPath("main/orb/layer3d.png"),
+            makeCharacterPath("main/orb/layer4d.png"),
+            makeCharacterPath("main/orb/layer5d.png"),
     };
 
     @Override
@@ -107,7 +107,7 @@ public class CharacterFile extends CustomPlayer {
 
     @Override
     public AbstractCard.CardColor getCardColor() {
-        return TODO_COLOR;
+        return LING_COLOR;
     }
 
     @Override
@@ -172,10 +172,10 @@ public class CharacterFile extends CustomPlayer {
     public static class Enums {
         //TODO: Change these.
         @SpireEnum
-        public static AbstractPlayer.PlayerClass THE_TODO;
-        @SpireEnum(name = "TODO_COLOR")
-        public static AbstractCard.CardColor TODO_COLOR;
-        @SpireEnum(name = "TODO_COLOR")
+        public static AbstractPlayer.PlayerClass PLAYER_LING;
+        @SpireEnum(name = "LING_COLOR")
+        public static AbstractCard.CardColor LING_COLOR;
+        @SpireEnum(name = "LING_COLOR")
         @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
     }
