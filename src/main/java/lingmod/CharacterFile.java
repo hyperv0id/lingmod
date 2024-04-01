@@ -3,9 +3,12 @@ package lingmod;
 import basemod.abstracts.CustomEnergyOrb;
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpriterAnimation;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
+import com.esotericsoftware.spine.*;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -13,8 +16,10 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
@@ -23,6 +28,7 @@ import lingmod.cards.Strike;
 import lingmod.relics.TodoItem;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static lingmod.CharacterFile.Enums.LING_COLOR;
 import static lingmod.ModFile.*;
@@ -33,11 +39,27 @@ public class CharacterFile extends CustomPlayer {
     static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
     static final String[] NAMES = characterStrings.NAMES;
     static final String[] TEXT = characterStrings.TEXT;
+    private static final String[] orbTextures = {
+            makeCharacterPath("main/orb/layer1.png"),
+            makeCharacterPath("main/orb/layer2.png"),
+            makeCharacterPath("main/orb/layer3.png"),
+            makeCharacterPath("main/orb/layer4.png"),
+            makeCharacterPath("main/orb/layer4.png"),
+            makeCharacterPath("main/orb/layer6.png"),
+            makeCharacterPath("main/orb/layer1d.png"),
+            makeCharacterPath("main/orb/layer2d.png"),
+            makeCharacterPath("main/orb/layer3d.png"),
+            makeCharacterPath("main/orb/layer4d.png"),
+            makeCharacterPath("main/orb/layer5d.png"),
+    };
+
+    private static final float[] LAYER_SPEED = new float[]{-40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F, -5.0F, 0.0F};
 
 
     public CharacterFile(String name, PlayerClass setClass) {
-        super(name, setClass, new CustomEnergyOrb(orbTextures, makeCharacterPath("main/orb/vfx.png"), null), new SpriterAnimation(
-                makeCharacterPath("main/static.scml")));
+        super(name, CharacterFile.Enums.PLAYER_LING, orbTextures, makeCharacterPath("main/orb/vfx.png"), LAYER_SPEED, null, null);
+//        super(name, setClass, new CustomEnergyOrb(orbTextures, makeCharacterPath("main/orb/vfx.png"), null), new SpriterAnimation(
+//                makeCharacterPath("main/static.scml")));
         initializeClass(null,
                 SHOULDER1,
                 SHOULDER2,
@@ -47,7 +69,44 @@ public class CharacterFile extends CustomPlayer {
 
         dialogX = (drawX + 0.0F * Settings.scale);
         dialogY = (drawY + 240.0F * Settings.scale);
+//        String charID = "char_2015_dusk";
+        String charID = "char_2023_ling";
+        String atlasUrl = makeCharacterPath("main/" + charID + ".atlas");
+        String skeletonUrl = makeCharacterPath("main/" + charID + ".json");
+        super.loadAnimation(atlasUrl, skeletonUrl, 1f);
+//        logger.info("Created character " + name);
+        AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
+        e.setTime(e.getEndTime() * MathUtils.random());
+        e.setTimeScale(0.8F);
     }
+
+    @Override
+    protected void loadAnimation(String atlasUrl, String skeletonUrl, float scale) {
+        // load animation from .skel rather than .json
+        System.out.println("Loading animation");
+
+        this.atlas = new TextureAtlas(Gdx.files.internal(atlasUrl));
+//        SkeletonJson json = new SkeletonJson(this.atlas);
+        if (CardCrawlGame.dungeon != null && AbstractDungeon.player != null) {
+            if (AbstractDungeon.player.hasRelic("PreservedInsect") && !this.isPlayer && AbstractDungeon.getCurrRoom().eliteTrigger) {
+                scale += 0.3F;
+            }
+
+            if (ModHelper.isModEnabled("MonsterHunter") && !this.isPlayer) {
+                scale -= 0.3F;
+            }
+        }
+
+//        json.setScale(Settings.renderScale / scale);
+        SkeletonBinary skel = new SkeletonBinary(this.atlas);
+        skel.setScale(Settings.renderScale / scale);
+        SkeletonData skeletonData = skel.readSkeletonData(Gdx.files.internal(skeletonUrl));
+        this.skeleton = new Skeleton(skeletonData);
+        this.skeleton.setColor(Color.WHITE);
+        this.stateData = new AnimationStateData(skeletonData);
+        this.state = new AnimationState(this.stateData);
+    }
+
 
     @Override
     public CharSelectInfo getLoadout() {
@@ -81,19 +140,6 @@ public class CharacterFile extends CustomPlayer {
                 false);
     }
 
-    private static final String[] orbTextures = {
-            makeCharacterPath("main/orb/layer1.png"),
-            makeCharacterPath("main/orb/layer2.png"),
-            makeCharacterPath("main/orb/layer3.png"),
-            makeCharacterPath("main/orb/layer4.png"),
-            makeCharacterPath("main/orb/layer4.png"),
-            makeCharacterPath("main/orb/layer6.png"),
-            makeCharacterPath("main/orb/layer1d.png"),
-            makeCharacterPath("main/orb/layer2d.png"),
-            makeCharacterPath("main/orb/layer3d.png"),
-            makeCharacterPath("main/orb/layer4d.png"),
-            makeCharacterPath("main/orb/layer5d.png"),
-    };
 
     @Override
     public String getCustomModeCharacterButtonSoundKey() {

@@ -13,7 +13,8 @@
 本mod的实现离不开以下项目的支持：
 
 - vscode
-- assetstudio
+- idea community
+- AssetStudio
 - Spine skel转json工具：<https://github.com/FZFalzar/skel2json_v4.0>
 
 ## License

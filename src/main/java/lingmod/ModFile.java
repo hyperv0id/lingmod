@@ -54,9 +54,9 @@ public class ModFile implements
     private static final String POWER_S_ART = makeImagePath("512/power.png");
     private static final String CARD_ENERGY_S = makeImagePath("512/energy.png");
     private static final String TEXT_ENERGY = makeImagePath("512/text_energy.png");
-    private static final String ATTACK_L_ART = makeImagePath("1024/attack.png");
-    private static final String SKILL_L_ART = makeImagePath("1024/skill.png");
-    private static final String POWER_L_ART = makeImagePath("1024/power.png");
+    private static final String ATTACK_ART_L = makeImagePath("1024/attack.png");
+    private static final String SKILL_ART_L = makeImagePath("1024/skill.png");
+    private static final String POWER_ART_L = makeImagePath("1024/power.png");
     private static final String CARD_ENERGY_L = makeImagePath("1024/energy.png");
     private static final String CHARSELECT_BUTTON = makeImagePath("ui/char_select/button.png");
     private static final String CHARSELECT_PORTRAIT = makeImagePath("ui/char_select/portrait.png");
@@ -80,7 +80,7 @@ public class ModFile implements
         BaseMod.addColor(CharacterFile.Enums.LING_COLOR, characterColor, characterColor, characterColor,
                 characterColor, characterColor, characterColor, characterColor,
                 ATTACK_S_ART, SKILL_S_ART, POWER_S_ART, CARD_ENERGY_S,
-                ATTACK_L_ART, SKILL_L_ART, POWER_L_ART,
+                ATTACK_ART_L, SKILL_ART_L, POWER_ART_L,
                 CARD_ENERGY_L, TEXT_ENERGY);
     }
 
