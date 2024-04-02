@@ -28,7 +28,6 @@ import lingmod.cards.Strike;
 import lingmod.relics.TodoItem;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import static lingmod.CharacterFile.Enums.LING_COLOR;
 import static lingmod.ModFile.*;
