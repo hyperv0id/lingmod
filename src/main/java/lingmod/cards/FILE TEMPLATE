@@ -2,7 +2,7 @@ Settings -> Editor -> File and Code Templates and add the following!
 
 import lingmod.cards.AbstractEasyCard;
 
-import static lingmod.ModFile.makeID;
+import static lingmod.ModCore.makeID;
 import static lingmod.util.Wiz.*;
 
 public class ${NAME} extends AbstractEasyCard {

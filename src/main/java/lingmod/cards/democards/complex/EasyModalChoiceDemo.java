@@ -11,7 +11,7 @@ import lingmod.cards.EasyModalChoiceCard;
 
 import java.util.ArrayList;
 
-import static lingmod.ModFile.makeID;
+import static lingmod.ModCore.makeID;
 import static lingmod.util.Wiz.*;
 
 public class EasyModalChoiceDemo extends AbstractEasyCard {

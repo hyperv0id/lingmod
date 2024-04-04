@@ -3,7 +3,7 @@ package lingmod.cards.cardvars;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import lingmod.cards.AbstractEasyCard;
 
-import static lingmod.ModFile.makeID;
+import static lingmod.ModCore.makeID;
 
 public class SecondMagicNumber extends AbstractEasyDynamicVariable {
 

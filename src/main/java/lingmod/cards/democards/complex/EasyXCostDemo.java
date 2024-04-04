@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
-import static lingmod.ModFile.makeID;
+import static lingmod.ModCore.makeID;
 import static lingmod.util.Wiz.applyToSelfTop;
 import static lingmod.util.Wiz.atb;
 

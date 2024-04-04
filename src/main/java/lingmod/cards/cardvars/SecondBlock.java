@@ -3,7 +3,7 @@ package lingmod.cards.cardvars;
 import lingmod.cards.AbstractEasyCard;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 
-import static lingmod.ModFile.makeID;
+import static lingmod.ModCore.makeID;
 
 public class SecondBlock extends AbstractEasyDynamicVariable {
     @Override

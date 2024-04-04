@@ -3,7 +3,7 @@ package lingmod.cards;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import static lingmod.ModFile.makeID;
+import static lingmod.ModCore.makeID;
 
 public class Defend extends AbstractEasyCard {
     public final static String ID = makeID("Defend");

@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import static lingmod.ModFile.makeID;
+import static lingmod.ModCore.makeID;
 import static lingmod.util.Wiz.*;
 
 public class SelectCardsPlusCardMods extends AbstractEasyCard {

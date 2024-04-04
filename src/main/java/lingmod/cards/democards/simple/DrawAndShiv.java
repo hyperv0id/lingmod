@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
 
-import static lingmod.ModFile.makeID;
+import static lingmod.ModCore.makeID;
 import static lingmod.util.Wiz.*;
 
 public class DrawAndShiv extends AbstractEasyCard {

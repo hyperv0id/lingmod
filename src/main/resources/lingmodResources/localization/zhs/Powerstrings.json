@@ -6,5 +6,20 @@
       " #yStrength and #b",
       " #yDexterity."
     ]
+  },
+  "${ModID}:LightPower": {
+    "NAME": "弦惊",
+    "DESCRIPTIONS": [
+      "连续打出相同卡牌时，消耗本张并将上一张升级"
+    ]
+  },
+  "${ModID}:PoeticMoodPower": {
+    "NAME": "诗兴",
+    "DESCRIPTIONS": [
+      "叠满 #b",
+      " 层获得 #b",
+      " #y人工制品 与 #b",
+      " #y格挡"
+    ]
   }
 }

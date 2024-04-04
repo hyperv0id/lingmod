@@ -16,11 +16,11 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import java.util.function.Consumer;
-import lingmod.CharacterFile;
+import lingmod.LingCharacter;
 import lingmod.util.CardArtRoller;
 
-import static lingmod.ModFile.makeImagePath;
-import static lingmod.ModFile.modID;
+import static lingmod.ModCore.makeImagePath;
+import static lingmod.ModCore.modID;
 import static lingmod.util.Wiz.*;
 
 public abstract class AbstractEasyCard extends CustomCard {
@@ -50,7 +50,7 @@ public abstract class AbstractEasyCard extends CustomCard {
     private boolean needsArtRefresh = false;
 
     public AbstractEasyCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target) {
-        this(cardID, cost, type, rarity, target, CharacterFile.Enums.LING_COLOR);
+        this(cardID, cost, type, rarity, target, LingCharacter.Enums.LING_COLOR);
     }
 
     public AbstractEasyCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target, final CardColor color) {

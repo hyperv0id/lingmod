@@ -1,13 +1,13 @@
 package lingmod.relics;
 
-import lingmod.CharacterFile;
+import lingmod.LingCharacter;
 
-import static lingmod.ModFile.makeID;
+import static lingmod.ModCore.makeID;
 
 public class TodoItem extends AbstractEasyRelic {
     public static final String ID = makeID("TodoItem");
 
     public TodoItem() {
-        super(ID, RelicTier.STARTER, LandingSound.FLAT, CharacterFile.Enums.LING_COLOR);
+        super(ID, RelicTier.STARTER, LandingSound.FLAT, LingCharacter.Enums.LING_COLOR);
     }
 }

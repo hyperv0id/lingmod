@@ -1,7 +1,7 @@
 package lingmod.util;
 
 import basemod.patches.whatmod.WhatMod;
-import lingmod.ModFile;
+import lingmod.ModCore;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -31,9 +31,9 @@ import static com.badlogic.gdx.graphics.GL20.GL_DST_COLOR;
 import static com.badlogic.gdx.graphics.GL20.GL_ZERO;
 
 public class CardArtRoller {
-    private static final Texture attackMask = TexLoader.getTexture(ModFile.makeImagePath("masks/AttackMask.png"));
-    private static final Texture skillMask = TexLoader.getTexture(ModFile.makeImagePath("masks/SkillMask.png"));
-    private static final Texture powerMask = TexLoader.getTexture(ModFile.makeImagePath("masks/PowerMask.png"));
+    private static final Texture attackMask = TexLoader.getTexture(ModCore.makeImagePath("masks/AttackMask.png"));
+    private static final Texture skillMask = TexLoader.getTexture(ModCore.makeImagePath("masks/SkillMask.png"));
+    private static final Texture powerMask = TexLoader.getTexture(ModCore.makeImagePath("masks/PowerMask.png"));
 
     public static final String partialHueRodrigues =
             "vec3 applyHue(vec3 rgb, float hue)\n" +

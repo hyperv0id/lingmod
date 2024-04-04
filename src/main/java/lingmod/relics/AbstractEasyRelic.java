@@ -5,8 +5,8 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import lingmod.util.TexLoader;
 
-import static lingmod.ModFile.makeRelicPath;
-import static lingmod.ModFile.modID;
+import static lingmod.ModCore.makeRelicPath;
+import static lingmod.ModCore.modID;
 
 public abstract class AbstractEasyRelic extends CustomRelic {
     public AbstractCard.CardColor color;

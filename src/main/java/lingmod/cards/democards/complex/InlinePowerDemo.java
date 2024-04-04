@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.powers.LambdaPower;
 
-import static lingmod.ModFile.makeID;
+import static lingmod.ModCore.makeID;
 import static lingmod.util.Wiz.applyToSelf;
 import static lingmod.util.Wiz.atb;
 

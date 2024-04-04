@@ -5,5 +5,12 @@
     "DESCRIPTIONS": [
       "Has no effect."
     ]
+  },
+  "${ModID}:Light": {
+    "NAME": "一盏灯",
+    "FLAVOR": "灯挑夜，箭如雨，大漠飞火。",
+    "DESCRIPTIONS": [
+      "连续打出相同牌时使牌强化并消耗，连续打出不同类型牌时获得 1 诗兴"
+    ]
   }
 }

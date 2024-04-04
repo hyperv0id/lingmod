@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import lingmod.cards.AbstractEasyCard;
 
-import static lingmod.ModFile.makeID;
+import static lingmod.ModCore.makeID;
 
 public class TwoTypesOfDamage extends AbstractEasyCard {
     public final static String ID = makeID(TwoTypesOfDamage.class.getSimpleName());
