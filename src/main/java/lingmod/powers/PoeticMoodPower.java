@@ -37,7 +37,7 @@ public class PoeticMoodPower extends AbstractEasyPower{
          *       " #y人工制品 与 #b",
          *       " #y格挡"
          */
-        this.description = DESCRIPTIONS[0] + THRESHOLD + DESCRIPTIONS[1] + RGZP +DESCRIPTIONS[2]+ BLOCK + DESCRIPTIONS[3];
+        this.description = String.format(DESCRIPTIONS[0], THRESHOLD, BLOCK, RGZP);
     }
 
     protected void execute(){

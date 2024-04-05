@@ -19,5 +19,12 @@
     "DESCRIPTIONS": [
       "拾起时回复大量( #b50% )生命，但超出生命上限的部分会 #r倒扣"
     ]
+  },
+  "${ModID}:NianOldCoinRelic": {
+    "NAME": "古旧铸币",
+    "FLAVOR": "年的小玩意",
+    "DESCRIPTIONS": [
+      "每回合获得 #d4 盾，抵挡每层的3次攻击"
+    ]
   }
 }
