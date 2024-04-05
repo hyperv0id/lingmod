@@ -1,5 +1,6 @@
 package lingmod.powers;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -29,6 +30,7 @@ public class LightPower extends AbstractEasyPower{
     @Override
     public void updateDescription() {
         this.description = DESCRIPTIONS[0];
+        this.isPostActionPower = true;
     }
 
     @Override
@@ -37,7 +39,7 @@ public class LightPower extends AbstractEasyPower{
         if(cardsPlayed <= 1)return;
         AbstractCard lastCard = AbstractDungeon.actionManager.cardsPlayedThisTurn.get(cardsPlayed - 2);
         sameIdAction(lastCard, card, action);
-//        diffTypeAction(lastCard, card, action);
+        diffTypeAction(lastCard, card, action);
     }
 
     protected void sameIdAction(AbstractCard lastCard, AbstractCard now, UseCardAction action){
@@ -49,12 +51,6 @@ public class LightPower extends AbstractEasyPower{
     protected void diffTypeAction(AbstractCard lastCard, AbstractCard card, UseCardAction action) {
         if(lastCard.cardID.equals(card.cardID))return;
         AbstractPlayer player = AbstractDungeon.player;
-        PoeticMoodPower pmp = null;
-//        pmp = (PoeticMoodPower) player.getPower(PoeticMoodPower.ID);
-//        if(pmp == null) {
-            pmp = new PoeticMoodPower(player, 1);
-            player.addPower(pmp);
-//        }
-//        pmp.addAmount(1);
+        addToBot(new ApplyPowerAction(player, player, new PoeticMoodPower(player, 1)));
     }
 }

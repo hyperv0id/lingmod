@@ -42,6 +42,7 @@ public class ModCore implements
         AddAudioSubscriber {
 
     public static final String modID = "lingmod";
+    public static final String resourceRoot = modID + "Resources";
     public static final Logger logger = LogManager.getLogger(modID); //Used to output to the console.
 
     public static String makeID(String idText) {
