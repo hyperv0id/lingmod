@@ -20,6 +20,13 @@
       "拾起时回复大量( #b50% )生命，但超出生命上限的部分会 #r倒扣"
     ]
   },
+  "${ModID}:DuskDrawRelic": {
+    "NAME": "一幅画",
+    "FLAVOR": "潦草写就的涂鸦",
+    "DESCRIPTIONS": [
+      "变化一张牌"
+    ]
+  },
   "${ModID}:NianOldCoinRelic": {
     "NAME": "古旧铸币",
     "FLAVOR": "年的小玩意",
