@@ -16,6 +16,7 @@ import com.google.gson.Gson;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import lingmod.Events.BeansEvent;
 import lingmod.Events.Sui12Event;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.cardvars.AbstractEasyDynamicVariable;
@@ -194,6 +195,11 @@ public class ModCore implements
     public void receivePostInitialize() {
         BaseMod.addEvent(
                 new AddEventParams.Builder(Sui12Event.ID, Sui12Event.class)
+                        .eventType(EventUtils.EventType.NORMAL)
+                        .create()
+        );
+        BaseMod.addEvent(
+                new AddEventParams.Builder(BeansEvent.ID, BeansEvent.class)
                         .eventType(EventUtils.EventType.NORMAL)
                         .create()
         );

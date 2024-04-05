@@ -18,6 +18,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
+/**
+ * 事件：岁中十二人
+ * "你小心翼翼地走进了这间昏暗的房间。昏暗的光线从门口照进来，隐约勾勒出正前方那幅巨大的古画轮廓。NL 当你走近一看，画上竟然描绘着十二个人的面孔，每一张都栩栩如生，仿佛随时会从画中走出。NL 古画下方摆放着一张石桌，桌面上布满灰尘，但中央却空出了12块块区域，似乎是专门用来摆放贡品的地方。NL #r献上贡品 吧，一股莫名的力量驱使着你。"
+ */
 public class Sui12Event extends AbstractImageEvent {
 
     public static final String ID = ModCore.makeID("Sui12Event");
