@@ -10,16 +10,13 @@
   "${ModID}:LightPower": {
     "NAME": "弦惊",
     "DESCRIPTIONS": [
-      "连续打出相同卡牌时，消耗本张并将上一张升级"
+      "连续打出相同卡牌时，升级本张牌"
     ]
   },
   "${ModID}:PoeticMoodPower": {
     "NAME": "诗兴",
     "DESCRIPTIONS": [
-      "叠满 #b",
-      " 层获得 #b",
-      " #y人工制品 与 #b",
-      " #y格挡"
+      "叠满 #b%d 层获得 #b%d #y人工制品 与 #b%d #y格挡"
     ]
   }
 }

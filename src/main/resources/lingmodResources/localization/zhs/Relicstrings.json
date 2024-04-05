@@ -6,11 +6,18 @@
       "Has no effect."
     ]
   },
-  "${ModID}:Light": {
+  "${ModID}:LightRelic": {
     "NAME": "一盏灯",
     "FLAVOR": "灯挑夜，箭如雨，大漠飞火。",
     "DESCRIPTIONS": [
       "连续打出相同牌时使牌强化并消耗，连续打出不同类型牌时获得 1 诗兴"
+    ]
+  },
+  "${ModID}:ShuRiceRelic": {
+    "NAME": "一粒米",
+    "FLAVOR": "黍姐觉得你饿了",
+    "DESCRIPTIONS": [
+      "拾起时回复大量( #b50% )生命，但超出生命上限的部分会 #r倒扣"
     ]
   }
 }

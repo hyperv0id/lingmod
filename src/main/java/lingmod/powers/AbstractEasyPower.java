@@ -13,9 +13,11 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import lingmod.ModCore;
 import lingmod.util.TexLoader;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public abstract class AbstractEasyPower extends AbstractPower {
+
     public int amount2 = -1;
     public boolean isTwoAmount = false;
     public static Color redColor2 = Color.RED.cpy();

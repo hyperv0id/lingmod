@@ -46,6 +46,7 @@ public class LightPower extends AbstractEasyPower{
         if(!lastCard.cardID.equals(now.cardID))return;
         now.upgrade(); // 升级本张卡牌
         // TODO: 手牌中所有同号牌发光
+        // TODO: 升级的牌添加动画
     }
 
     protected void diffTypeAction(AbstractCard lastCard, AbstractCard card, UseCardAction action) {
