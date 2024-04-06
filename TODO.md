@@ -60,16 +60,16 @@
 
         面对这三个可爱的小家伙,你的内心泛起一丝怜爱。你想着是否应该给它们一些帮助,让它们开心起来。
 
-      - [x] [给予年泡泡辣椒] 你决定满足年泡泡的愿望。你从背包里拿出一个红彤彤的辣椒,递给年泡泡。它欢快地叫了一声,一口吞下辣椒,然后猛地喷出一小簇火苗!年泡泡兴奋地在房间里蹦跶,你收获了一个热情的新伙伴。
+      - [x] \[给予年泡泡辣椒\] 你决定满足年泡泡的愿望。你从背包里拿出一个红彤彤的辣椒,递给年泡泡。它欢快地叫了一声,一口吞下辣椒,然后猛地喷出一小簇火苗!年泡泡兴奋地在房间里蹦跶,你收获了一个热情的新伙伴。
 
-      - [x] [鼓励夕泡泡大胆创作] 你走到夕泡泡身边,轻轻拍了拍它的背,鼓励它不要放弃,要相信自己的创造力。你指着窗外的风景,告诉它大自然总能带来新的灵感。夕泡泡若有所思地点点头,重新拿起画笔。你的话语点亮了它的斗志。
+      - [x] \[鼓励夕泡泡大胆创作\] 你走到夕泡泡身边,轻轻拍了拍它的背,鼓励它不要放弃,要相信自己的创造力。你指着窗外的风景,告诉它大自然总能带来新的灵感。夕泡泡若有所思地点点头,重新拿起画笔。你的话语点亮了它的斗志。
 
-      - [x] [给酒坛子里倒酒] 
+      - [x] \[给酒坛子里倒酒\] 你从背包里拿出一壶佳酿,打开酒坛子的盖子,把酒倒了进去。令泡泡欢呼雀跃,迫不及待地跳进坛子里,痛饮起来。你交到了一个酒肉朋友。
 
     - [ ] 玉门天灾
 
       - [x] 一声惊雷像是突然在耳边炸响，压住你的心跳。NL 只一瞬间，黑云压城，层层叠叠的气团硬生生把天空压垮，来回穿梭的弧形闪电狰狞着爪牙
-    - [x] 解开葫芦满饮: 试着挡下这个小型天灾 百丈狂杀吹雨，咫尺惊雷连云。NL 他年挪盏飞残算，今宵环酒对高城。NL 天地入瓮瓶。
+    - [x] \[解开葫芦满饮\]: 试着挡下这个小型天灾 百丈狂杀吹雨，咫尺惊雷连云。NL 他年挪盏飞残算，今宵环酒对高城。NL 天地入瓮瓶。
 
 - [ ] 卡牌
     - [ ] 打击
@@ -88,6 +88,78 @@
       - 梦江南,秦观。这首词描绘了江南美景,令人向往)
 
 - [ ] 强化学习
+
+
+
+## RTFM
+
+### 自动生成JSON
+
+你好!很高兴能帮你解答关于在杀戮尖塔mod开发中使用注解自动生成JSON文件的问题。
+
+在Java中,我们可以利用一些库如Jackson或Gson,通过定义注解来自动将Java对象序列化为JSON,或者反过来从JSON反序列化为Java对象。这样就可以避免手动编写冗长的JSON,而是用更简洁的Java代码来表达。
+
+以下是使用Jackson库和注解来自动生成JSON的示例步骤:
+
+1. 在你的mod项目中添加Jackson库的依赖,比如在pom.xml中加入:
+
+```xml
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.12.3</version>
+</dependency>
+```
+
+2. 在你的Power类上添加@JsonAutoDetect注解,并将fieldVisibility设为ANY,这样Jackson就会自动检测所有的字段:
+
+```java
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+public class LightPower extends AbstractEasyPower {
+    public static final String NAME = "LightPower";
+    public static final String ID = makeID(NAME);
+    
+    @JsonProperty("NAME")
+    public String name;
+    
+    @JsonProperty("DESCRIPTIONS")
+    public List<String> descriptions;
+    
+    // 构造函数、其他方法...
+}
+```
+
+3. 在需要的字段上添加@JsonProperty注解,指定序列化后在JSON中的属性名。
+
+4. 在你的mod主类中,使用Jackson的ObjectMapper将Power对象写入JSON文件,例如:
+
+```java
+ObjectMapper mapper = new ObjectMapper();
+LightPower power = new LightPower();
+power.name = "弦惊";
+power.descriptions = Collections.singletonList(
+        "连续打出相同卡牌时，消耗本张并将上一张升级");
+
+Path resourcePath = Paths.get("src/main/resources/localization/zhs/powers.json");
+mapper.writeValue(resourcePath.toFile(), power);
+```
+
+这样,运行mod后就会在resources目录下自动生成一个powers.json文件,内容如下:
+
+```json
+{
+  "NAME": "弦惊",
+  "DESCRIPTIONS": [
+    "连续打出相同卡牌时，消耗本张并将上一张升级"
+  ]
+}
+```
+
+你可以将这个JSON文件放到mod的resource目录下适当的位置。这样通过注解,就可以用更简洁的Java代码来定义mod的各种属性,避免手写容易出错的JSON。Jackson或Gson等库提供了更多灵活的注解和配置,你可以根据需要进一步定制。
+
+希望这个方法对你的mod开发有所帮助,祝mod早日完成!
+
+### 。。。
 
 ## 注入Spine-Runtime
 

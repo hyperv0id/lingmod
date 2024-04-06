@@ -13,14 +13,17 @@ import org.apache.logging.log4j.Logger;
 public class BeansEvent extends AbstractImageEvent {
 
     public static final String ID = ModCore.makeID("BeansEvent");
-    public static final String IMG_PATH = ModCore.makeImagePath("events/BeansEvent.png");
+    public static final String MAIN_IMG = ModCore.makeImagePath("events/BeansEvent.png");
+    public static final String NIAN_IMG = ModCore.makeImagePath("events/BeansEvent_Nian.png");
+    public static final String DUSK_IMG = ModCore.makeImagePath("events/BeansEvent_Dusk.png");
+    public static final String LING_IMG = ModCore.makeImagePath("events/BeansEvent_Ling.png");
     private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(ID);
     public static final Logger logger = ModCore.logger;
     private static final String NAME = eventStrings.NAME;
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
     public BeansEvent() {
-        super(NAME, DESCRIPTIONS[0], IMG_PATH);
+        super(NAME, DESCRIPTIONS[0], MAIN_IMG);
         for (String op : OPTIONS) {
             this.imageEventText.setDialogOption(op);
         }
@@ -56,12 +59,15 @@ public class BeansEvent extends AbstractImageEvent {
         this.screenNum = 1;
         switch (i){
             case 0:
+                this.imageEventText.loadImage(NIAN_IMG);
                 logger.warn(getClass().getSimpleName() + "UnImplemented: 选择年泡泡");
                 break;
             case 1:
+                this.imageEventText.loadImage(DUSK_IMG);
                 logger.warn(getClass().getSimpleName() + "UnImplemented: 选择夕泡泡");
                 break;
             case 2:
+                this.imageEventText.loadImage(LING_IMG);
                 logger.warn(getClass().getSimpleName() + "UnImplemented: 选择令泡泡");
                 break;
             default:
