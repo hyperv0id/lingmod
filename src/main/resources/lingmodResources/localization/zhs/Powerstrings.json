@@ -16,7 +16,10 @@
   "${ModID}:PoeticMoodPower": {
     "NAME": "诗兴",
     "DESCRIPTIONS": [
-      "叠满 #b%d 层获得 #b%d #y人工制品 与 #b%d #y格挡"
+      "叠满 #b%d 层获得",
+      " #b%d #y格挡",
+      "与 #b%d #y人工制品",
+      "与 #b%d #y力量"
     ]
   }
 }

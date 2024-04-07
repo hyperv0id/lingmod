@@ -176,8 +176,8 @@ public class LingCharacter extends CustomPlayer {
     }
 
     @Override
-    public String getTitle(AbstractPlayer.PlayerClass playerClass) {
-        return NAMES[1];
+    public String getTitle(PlayerClass playerClass) {
+        return NAMES[MathUtils.random(1, NAMES.length - 1)];
     }
 
     @Override

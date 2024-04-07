@@ -52,6 +52,7 @@ public class LightPower extends AbstractEasyPower{
     protected void diffTypeAction(AbstractCard lastCard, AbstractCard card, UseCardAction action) {
         if(lastCard.cardID.equals(card.cardID))return;
         AbstractPlayer player = AbstractDungeon.player;
-        addToBot(new ApplyPowerAction(player, player, new PoeticMoodPower(player, 1)));
+        int level = AbstractDungeon.ascensionLevel;
+        addToBot(new ApplyPowerAction(player, player, new PoeticMoodPower(player, 1, level)));
     }
 }
