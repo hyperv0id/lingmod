@@ -23,6 +23,9 @@ import static lingmod.ModCore.makeImagePath;
 import static lingmod.ModCore.modID;
 import static lingmod.util.Wiz.*;
 
+/**
+ * 卡牌大小：500*380的高分辨率，250*190的低分辨率
+ */
 public abstract class AbstractEasyCard extends CustomCard {
 
     protected final CardStrings cardStrings;

@@ -2,15 +2,15 @@ package lingmod.powers;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.ArtifactPower;
-import com.megacrit.cardcrawl.powers.GainStrengthPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.powers.*;
 import lingmod.ModCore;
+import lingmod.cards.AbstractPoetCard;
 import org.apache.logging.log4j.Logger;
 
 import static lingmod.ModCore.makeID;
+import static lingmod.powers.AbstractEasyPower.I18N.getName;
 
 /**
  * 诗意
@@ -19,15 +19,17 @@ import static lingmod.ModCore.makeID;
  */
 public class PoeticMoodPower extends AbstractEasyPower{
 
-    public static final String NAME = PoeticMoodPower.class.getSimpleName();
-    public static final String ID = makeID(NAME);
+    public static final String CLASS_NAME = PoeticMoodPower.class.getSimpleName();
+    public static final String ID = makeID(CLASS_NAME);
 
-    public static int THRESHOLD, BLOCK, RGZP, STRENGTH;
+
+    public static int N_Threshold, N_Dexterity, N_Buffer, N_Artifact, N_Strength;
     static {
-        THRESHOLD = 10; // 叠层
-        BLOCK = 6; // 格挡
-        RGZP = 1; // 人工制品
-        STRENGTH = 1; // 力量
+        N_Threshold = 12; // 叠层
+        N_Dexterity = 1; // 敏捷
+        N_Buffer = 1; // 缓冲
+        N_Artifact = 1; // 人工制品
+        N_Strength = 1; // 力量
     };
 
     public static int level = 0; // 等级
@@ -35,11 +37,11 @@ public class PoeticMoodPower extends AbstractEasyPower{
     private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.BUFF;
     public static final Logger logger = ModCore.logger;
     public PoeticMoodPower(AbstractCreature owner, int amount) {
-        super(ID, NAME, TYPE, false, owner, amount);
+        super(ID, getName(ID), TYPE, false, owner, amount);
     }
 
     public PoeticMoodPower(AbstractCreature owner, int amount, int level) {
-        super(ID, NAME, TYPE, false, owner, amount);
+        super(ID, getName(ID), TYPE, false, owner, amount);
 //        this.isTwoAmount = true;
         PoeticMoodPower.level = level;
     }
@@ -54,31 +56,35 @@ public class PoeticMoodPower extends AbstractEasyPower{
          *       " #y格挡"
          */
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format(DESCRIPTIONS[0], THRESHOLD));
+        sb.append(String.format(DESCRIPTIONS[0], N_Threshold));
         if(level >= 0)
-            sb.append(String.format(DESCRIPTIONS[1], BLOCK));
+            sb.append(String.format(DESCRIPTIONS[1], N_Dexterity));
         if(level >= 1)
-            sb.append(String.format(DESCRIPTIONS[2], RGZP));
+            sb.append(String.format(DESCRIPTIONS[2], N_Buffer));
         if(level >= 2)
-            sb.append(String.format(DESCRIPTIONS[3], STRENGTH));
+            sb.append(String.format(DESCRIPTIONS[3], N_Artifact));
+        if(level >= 3)
+            sb.append(String.format(DESCRIPTIONS[4], N_Strength));
         this.description = sb.toString();
     }
 
     protected void execute(){
         // owner.addPower(new StrengthPower(owner, 1));
-        this.amount -= THRESHOLD;
+        this.amount -= N_Threshold;
         if(level >= 0)
-            addToBot(new GainBlockAction(owner, owner, BLOCK)); // 获得护甲
+            addToBot(new ApplyPowerAction(owner, owner, new DexterityPower(owner, N_Dexterity))); // 获得敏捷
         if(level >= 1)
-            addToBot(new ApplyPowerAction(owner, owner, new ArtifactPower(owner, RGZP))); // 获得人工制品
+            addToBot(new ApplyPowerAction(owner, owner, new BufferPower(owner, N_Buffer))); // 缓冲
         if(level >= 2)
-            addToBot(new ApplyPowerAction(owner, owner, new StrengthPower(owner, STRENGTH)));
+            addToBot(new ApplyPowerAction(owner, owner, new ArtifactPower(owner, N_Artifact))); // 获得人工制品
+        if(level >= 3)
+            addToBot(new ApplyPowerAction(owner, owner, new StrengthPower(owner, N_Strength))); // 力量
     }
 
     @Override
     public void stackPower(int stackAmount) {
         super.stackPower(stackAmount);
-        while (this.amount >= THRESHOLD){
+        while (this.amount >= N_Threshold){
             this.execute();
         }
     }

@@ -59,5 +59,9 @@
   "${ModID}:MultiCardPreviewAndDrawCallback": {
     "NAME": "Previews and Callbacks",
     "DESCRIPTION": "{@@}Shuffle *Smite{!Upgrades!|>0=+} and *Safety{!Upgrades!|>0=+} into your draw pile. NL Draw 1 card. NL If it's Colorless, deal !D! damage to ALL enemies."
+  },
+  "${ModID}:FeiHuaLingCard": {
+    "NAME": "飞花令",
+    "DESCRIPTION": ""
   }
 }

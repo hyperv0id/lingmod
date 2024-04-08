@@ -13,9 +13,6 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import lingmod.ModCore;
 import lingmod.util.TexLoader;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public abstract class AbstractEasyPower extends AbstractPower {
 
     public int amount2 = -1;
@@ -67,6 +64,17 @@ public abstract class AbstractEasyPower extends AbstractPower {
             redColor2.a = c.a;
             c = redColor2;
             FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, Integer.toString(amount2), x, y + 15.0F * Settings.scale, fontScale, c);
+        }
+    }
+
+    public static class I18N{
+        public static String getName(String ID){
+            PowerStrings strings = CardCrawlGame.languagePack.getPowerStrings(ID);
+            return strings.NAME;
+        }
+        public static String[] getDesc(String ID){
+            PowerStrings strings = CardCrawlGame.languagePack.getPowerStrings(ID);
+            return strings.DESCRIPTIONS;
         }
     }
 }
