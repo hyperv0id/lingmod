@@ -57,8 +57,8 @@ public class LingCharacter extends CustomPlayer {
 
     public LingCharacter(String name, PlayerClass setClass) {
         super(name, LingCharacter.Enums.PLAYER_LING, orbTextures, makeCharacterPath("main/orb/vfx.png"), LAYER_SPEED, null, null);
-//        super(name, setClass, new CustomEnergyOrb(orbTextures, makeCharacterPath("main/orb/vfx.png"), null), new SpriterAnimation(
-//                makeCharacterPath("main/static.scml")));
+        //        super(name, setClass, new CustomEnergyOrb(orbTextures, makeCharacterPath("main/orb/vfx.png"), null), new SpriterAnimation(
+        //                makeCharacterPath("main/static.scml")));
         initializeClass(null,
                 SHOULDER1,
                 SHOULDER2,
@@ -68,12 +68,12 @@ public class LingCharacter extends CustomPlayer {
 
         dialogX = (drawX + 0.0F * Settings.scale);
         dialogY = (drawY + 240.0F * Settings.scale);
-//        String charID = "char_2015_dusk";
+        //        String charID = "char_2015_dusk";
         String charID = "char_2023_ling";
         String atlasUrl = makeCharacterPath("main/" + charID + ".atlas");
         String skeletonUrl = makeCharacterPath("main/" + charID + ".json");
         super.loadAnimation(atlasUrl, skeletonUrl, 1f);
-//        logger.info("Created character " + name);
+        //        logger.info("Created character " + name);
         AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
         e.setTime(e.getEndTime() * MathUtils.random());
         e.setTimeScale(0.8F);
@@ -85,7 +85,7 @@ public class LingCharacter extends CustomPlayer {
         System.out.println("Loading animation");
 
         this.atlas = new TextureAtlas(Gdx.files.internal(atlasUrl));
-//        SkeletonJson json = new SkeletonJson(this.atlas);
+        //        SkeletonJson json = new SkeletonJson(this.atlas);
         if (CardCrawlGame.dungeon != null && AbstractDungeon.player != null) {
             if (AbstractDungeon.player.hasRelic("PreservedInsect") && !this.isPlayer && AbstractDungeon.getCurrRoom().eliteTrigger) {
                 scale += 0.3F;
@@ -96,7 +96,7 @@ public class LingCharacter extends CustomPlayer {
             }
         }
 
-//        json.setScale(Settings.renderScale / scale);
+        //        json.setScale(Settings.renderScale / scale);
         SkeletonBinary skel = new SkeletonBinary(this.atlas);
         skel.setScale(Settings.renderScale / scale);
         SkeletonData skeletonData = skel.readSkeletonData(Gdx.files.internal(skeletonUrl));

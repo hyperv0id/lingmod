@@ -8,11 +8,18 @@
     "DESCRIPTION": "TODO: Make your own epic keywords"
   },
   {
-    "PROPER_NAME": "Poet",
+    "PROPER_NAME": "诗",
     "NAMES": [
       "诗",
       "Poet"
     ],
     "DESCRIPTION": "打出时获得 #b1 点诗意"
+  },
+  {
+    "PROPER_NAME": "诗意",
+    "NAMES": [
+      "诗意"
+    ],
+    "DESCRIPTION": "叠层获得能力，诗类卡牌会额外获得诗意"
   }
 ]

@@ -83,22 +83,37 @@ public abstract class AbstractEasyCard extends CustomCard {
     }
 
     public static String getCardTextureString(final String cardName, final AbstractCard.CardType cardType) {
-        String textureString;
-
+        String textureString = "";
+        String prefix = "cards/";
+        boolean missing = false;
         switch (cardType) {
             case ATTACK:
+                prefix += "attack/";
+                break;
             case POWER:
+                prefix += "power/";
+                break;
             case SKILL:
-                textureString = makeImagePath("cards/" + cardName + ".png");
+                prefix += "skill/";
+                break;
+            case CURSE:
+                prefix += "curse/";
                 break;
             default:
+                missing = true;
                 textureString = makeImagePath("ui/missing.png");
                 break;
         }
-
+        if(!missing)
+            textureString = makeImagePath(prefix + cardName + ".png");
         FileHandle h = Gdx.files.internal(textureString);
         if (!h.exists()) {
-            textureString = makeImagePath("ui/missing.png");
+            // 尝试使用默认图片
+            textureString = makeImagePath(prefix + "default.png");
+            h = Gdx.files.internal(textureString);
+            if (!h.exists()) {
+                textureString = makeImagePath("ui/missing.png");
+            }
         }
         return textureString;
     }

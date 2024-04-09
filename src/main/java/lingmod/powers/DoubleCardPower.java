@@ -38,6 +38,12 @@ public class DoubleCardPower extends AbstractEasyPower {
     }
 
     @Override
+    public void atEndOfTurn(boolean isPlayer) {
+        super.atEndOfTurn(isPlayer);
+        addToTop(new RemoveSpecificPowerAction(owner, owner, ID));
+    }
+
+    @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (!card.purgeOnUse && this.amount > 0) {
             this.flash();

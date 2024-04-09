@@ -2,8 +2,6 @@ package lingmod.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.powers.DoubleCardPower;
 
@@ -15,11 +13,13 @@ import static lingmod.ModCore.makeID;
 public class ChongJinJiuCard extends AbstractPoetCard {
 
     public final static String ID = makeID(ChongJinJiuCard.class.getSimpleName());
-    public ChongJinJiuCard(){
-        super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
+
+    public ChongJinJiuCard() {
+        super(ID, 1, CardType.SKILL, CardRarity.BASIC, CardTarget.SELF);
         this.exhaust = true;
         this.baseMagicNumber = 1;
         this.initializeDescription();
+        // this.loadCardImage("lingmodResources/images/cards/ChongJinJiuCard.png");
     }
 
     @Override

@@ -23,6 +23,6 @@ public abstract class AbstractPoetCard extends AbstractEasyCard{
 
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
-        addToBot(new ApplyPowerAction(abstractPlayer, abstractPlayer, new PoeticMoodPower(abstractPlayer, 1)));
+        addToBot(new ApplyPowerAction(abstractPlayer, abstractPlayer, new PoeticMoodPower(abstractPlayer, cost)));
     }
 }
