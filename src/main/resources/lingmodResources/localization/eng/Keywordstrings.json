@@ -6,5 +6,12 @@
       "todos"
     ],
     "DESCRIPTION": "TODO: Make your own epic keywords"
+  },
+  {
+    "PROPER_NAME": "Poet",
+    "NAMES": [
+      "诗"
+    ],
+    "DESCRIPTION": "打出时获得 #b1 点诗意"
   }
 ]

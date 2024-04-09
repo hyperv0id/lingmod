@@ -21,6 +21,7 @@ import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
+import lingmod.cards.ChongJinJiuCard;
 import lingmod.cards.Defend;
 import lingmod.cards.Strike;
 import lingmod.relics.LightRelic;
@@ -122,6 +123,7 @@ public class LingCharacter extends CustomPlayer {
         for (int i = 0; i < 4; i++) {
             retVal.add(Defend.ID);
         }
+        retVal.add(ChongJinJiuCard.ID);
         return retVal;
     }
 

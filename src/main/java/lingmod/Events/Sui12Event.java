@@ -56,7 +56,7 @@ public class Sui12Event extends AbstractImageEvent {
     }
 
     private void introScreen(int btn) {
-//        screenNum = 0;
+        //        screenNum = 0;
         this.screenNum++;
         this.imageEventText.updateBodyText(DESCRIPTIONS[1]);
         this.imageEventText = new GenericEventDialog();
@@ -68,7 +68,7 @@ public class Sui12Event extends AbstractImageEvent {
     }
 
     private void selectScreen(int buttonNo) {
-//        screenNum = 1;
+        //        screenNum = 1;
         float width = (float) Settings.WIDTH / 2;
         float height = (float) Settings.HEIGHT / 2;
         AbstractRelic relic = null;
@@ -114,16 +114,17 @@ public class Sui12Event extends AbstractImageEvent {
     }
 
     private void secondScreen(int buttonNo) {
-//        screenNum = 2;
+        //        screenNum = 2;
         switch (buttonNo) {
             default:
                 exit();
                 break;
         }
         // TODO: 更多对话
-//        this.screenNum = 2;
-//        this.imageEventText.clearRemainingOptions();
-//        this.imageEventText.updateDialogOption(0, OPTIONS[OPTIONS.length - 1]);
+
+        // this.screenNum = 2;
+        // this.imageEventText.clearRemainingOptions();
+        // this.imageEventText.updateDialogOption(0, OPTIONS[OPTIONS.length - 1]);
     }
 
 

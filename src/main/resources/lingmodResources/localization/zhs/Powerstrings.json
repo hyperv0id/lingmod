@@ -13,6 +13,7 @@
       "连续打出相同卡牌时，升级本张牌"
     ]
   },
+
   "${ModID}:PoeticMoodPower": {
     "NAME": "诗兴",
     "DESCRIPTIONS": [
@@ -21,6 +22,12 @@
       "与 #b%d #y缓冲",
       "与 #b%d #y人工制品",
       "与 #b%d #y力量"
+    ]
+  },
+  "${ModID}:DoubleCardPower": {
+    "NAME": "重进酒",
+    "DESCRIPTIONS": [
+      "下 #b%d 张卡牌将打出 #b2 次"
     ]
   }
 }

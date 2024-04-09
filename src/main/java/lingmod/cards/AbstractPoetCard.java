@@ -10,16 +10,15 @@ import lingmod.powers.PoeticMoodPower;
 import static lingmod.ModCore.makeID;
 
 public abstract class AbstractPoetCard extends AbstractEasyCard{
-    public final static String ID = makeID("AbstractPoetCard");
+    public final static String ID = makeID(AbstractPoetCard.class.getSimpleName());
     // intellij stuff skill, self, basic, , ,  5, 3, ,
-    public String nameString, descriptionString;
     public CardStrings cardStrings;
 
-    public AbstractPoetCard(String id, int i, CardType cardType, CardRarity cardRarity, CardTarget cardTarget) {
-        super(id, i, cardType, cardRarity, cardTarget);
+    public AbstractPoetCard(String id, int cost, CardType cardType, CardRarity cardRarity, CardTarget cardTarget) {
+        super(id, cost, cardType, cardRarity, cardTarget);
         cardStrings = CardCrawlGame.languagePack.getCardStrings(id);
-        nameString = cardStrings.NAME;
-        descriptionString = cardStrings.DESCRIPTION;
+        // 诗类卡牌的 前缀
+        CardStrings cs = CardCrawlGame.languagePack.getCardStrings(AbstractPoetCard.ID);
     }
 
     @Override
