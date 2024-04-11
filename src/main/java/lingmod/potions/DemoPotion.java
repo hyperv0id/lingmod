@@ -1,7 +1,7 @@
 package lingmod.potions;
 
 import basemod.BaseMod;
-import lingmod.LingCharacter;
+import lingmod.character.Ling;
 import lingmod.ModCore;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -15,7 +15,7 @@ public class DemoPotion extends AbstractEasyPotion {
     public static String ID = makeID("DemoPotion");
 
     public DemoPotion() {
-        super(ID, PotionRarity.COMMON, PotionSize.ANVIL, new Color(0.2f, 0.4f, 0.9f, 1f), new Color(0.6f, 0.8f, 1.0f, 1f), null, LingCharacter.Enums.PLAYER_LING, ModCore.characterColor);
+        super(ID, PotionRarity.COMMON, PotionSize.ANVIL, new Color(0.2f, 0.4f, 0.9f, 1f), new Color(0.6f, 0.8f, 1.0f, 1f), null, Ling.Enums.PLAYER_LING, ModCore.characterColor);
     }
 
     public int getPotency(int ascensionlevel) {

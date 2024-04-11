@@ -2,7 +2,6 @@ package lingmod.relics;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import lingmod.LingCharacter;
 
 import static lingmod.ModCore.makeID;
 

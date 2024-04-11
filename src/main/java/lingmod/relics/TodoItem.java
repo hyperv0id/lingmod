@@ -1,6 +1,6 @@
 package lingmod.relics;
 
-import lingmod.LingCharacter;
+import lingmod.character.Ling;
 
 import static lingmod.ModCore.makeID;
 
@@ -8,6 +8,6 @@ public class TodoItem extends AbstractEasyRelic {
     public static final String ID = makeID("TodoItem");
 
     public TodoItem() {
-        super(ID, RelicTier.DEPRECATED, LandingSound.FLAT, LingCharacter.Enums.LING_COLOR);
+        super(ID, RelicTier.DEPRECATED, LandingSound.FLAT, Ling.Enums.LING_COLOR);
     }
 }

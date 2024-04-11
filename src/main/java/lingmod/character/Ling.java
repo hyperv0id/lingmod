@@ -1,4 +1,4 @@
-package lingmod;
+package lingmod.character;
 
 import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.Gdx;
@@ -25,17 +25,16 @@ import lingmod.cards.ChongJinJiuCard;
 import lingmod.cards.Defend;
 import lingmod.cards.Strike;
 import lingmod.relics.LightRelic;
-import lingmod.relics.TodoItem;
 
 import java.util.ArrayList;
 
-import static lingmod.LingCharacter.Enums.LING_COLOR;
+import static lingmod.character.Ling.Enums.LING_COLOR;
 import static lingmod.ModCore.*;
 
-public class LingCharacter extends CustomPlayer {
+public class Ling extends CustomPlayer {
 
     static final String ID = makeID("ModdedCharacter");
-    static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
+    public static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
     static final String[] NAMES = characterStrings.NAMES;
     static final String[] TEXT = characterStrings.TEXT;
     private static final String[] orbTextures = {
@@ -55,8 +54,8 @@ public class LingCharacter extends CustomPlayer {
     private static final float[] LAYER_SPEED = new float[]{-40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F, -5.0F, 0.0F};
 
 
-    public LingCharacter(String name, PlayerClass setClass) {
-        super(name, LingCharacter.Enums.PLAYER_LING, orbTextures, makeCharacterPath("main/orb/vfx.png"), LAYER_SPEED, null, null);
+    public Ling(String name, PlayerClass setClass) {
+        super(name, Ling.Enums.PLAYER_LING, orbTextures, makeCharacterPath("main/orb/vfx.png"), LAYER_SPEED, null, null);
         //        super(name, setClass, new CustomEnergyOrb(orbTextures, makeCharacterPath("main/orb/vfx.png"), null), new SpriterAnimation(
         //                makeCharacterPath("main/static.scml")));
         initializeClass(null,
@@ -184,7 +183,7 @@ public class LingCharacter extends CustomPlayer {
 
     @Override
     public AbstractPlayer newInstance() {
-        return new LingCharacter(name, chosenClass);
+        return new Ling(name, chosenClass);
     }
 
     @Override

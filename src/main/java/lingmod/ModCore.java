@@ -20,6 +20,7 @@ import lingmod.Events.BeansEvent;
 import lingmod.Events.Sui12Event;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.cardvars.AbstractEasyDynamicVariable;
+import lingmod.character.Ling;
 import lingmod.potions.AbstractEasyPotion;
 import lingmod.relics.AbstractEasyRelic;
 import lingmod.util.ProAudio;
@@ -80,7 +81,7 @@ public class ModCore implements
     public ModCore() {
         BaseMod.subscribe(this);
 
-        BaseMod.addColor(LingCharacter.Enums.LING_COLOR, characterColor, characterColor, characterColor,
+        BaseMod.addColor(Ling.Enums.LING_COLOR, characterColor, characterColor, characterColor,
                 characterColor, characterColor, characterColor, characterColor,
                 ATTACK_S_ART, SKILL_S_ART, POWER_S_ART, CARD_ENERGY_S,
                 ATTACK_ART_L, SKILL_ART_L, POWER_ART_L,
@@ -118,8 +119,8 @@ public class ModCore implements
 
     @Override
     public void receiveEditCharacters() {
-        BaseMod.addCharacter(new LingCharacter(LingCharacter.characterStrings.NAMES[1], LingCharacter.Enums.PLAYER_LING),
-            CHARSELECT_BUTTON, CHARSELECT_PORTRAIT, LingCharacter.Enums.PLAYER_LING);
+        BaseMod.addCharacter(new Ling(Ling.characterStrings.NAMES[1], Ling.Enums.PLAYER_LING),
+            CHARSELECT_BUTTON, CHARSELECT_PORTRAIT, Ling.Enums.PLAYER_LING);
         
         new AutoAdd(modID)
             .packageFilter(AbstractEasyPotion.class)
