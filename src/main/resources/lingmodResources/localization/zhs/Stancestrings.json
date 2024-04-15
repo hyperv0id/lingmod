@@ -1,3 +1,9 @@
 {
-    
+  "XiaoYaoForm": {
+    "STANCE_ID": "XiaoYaoForm",
+    "NAME": "逍遥形态",
+    "DESCRIPTION": [
+      "每回合额外获得 #b1 抽牌数，退出后重置"
+    ]
+  }
 }

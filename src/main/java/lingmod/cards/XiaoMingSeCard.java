@@ -19,7 +19,7 @@ public class XiaoMingSeCard extends AbstractPoetCard {
     public static final String ID = makeID(XiaoMingSeCard.class.getSimpleName());
 
     public XiaoMingSeCard() {
-        super(ID, 2, CardType.SKILL, CardRarity.BASIC, CardTarget.SELF);
+        super(ID, 2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         this.magicNumber = 0;
         this.baseMagicNumber = 0;
     }

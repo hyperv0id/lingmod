@@ -67,6 +67,12 @@ public abstract class AbstractEasyPower extends AbstractPower {
         }
     }
 
+    @Override
+    public void updateDescription() {
+        this.name = I18N.getName(this.ID);
+        this.description = I18N.getDesc(this.ID)[0];
+    }
+
     public static class I18N{
         public static String getName(String ID){
             PowerStrings strings = CardCrawlGame.languagePack.getPowerStrings(ID);

@@ -60,11 +60,6 @@
     "NAME": "Previews and Callbacks",
     "DESCRIPTION": "{@@}Shuffle *Smite{!Upgrades!|>0=+} and *Safety{!Upgrades!|>0=+} into your draw pile. NL Draw 1 card. NL If it's Colorless, deal !D! damage to ALL enemies."
   },
-  "${ModID}:FeiHuaLingCard": {
-    "NAME": "飞花令",
-    "DESCRIPTION": "是 ${ModID}:诗 . NL 丢弃手牌中所有 ${ModID}:诗 ，再抽等量牌",
-    "UPGRADE_DESCRIPTION": "是 ${ModID}:诗 . NL 丢弃手牌中所有 ${ModID}:诗 ，再抽 量+1 张牌"
-  },
   "${ModID}:AbstractPoetCard": {
     "NAME": "[ERROR]",
     "DESCRIPTION": "[ERROR]",
@@ -79,5 +74,22 @@
     "NAME": "笑鸣瑟",
     "DESCRIPTION": "是 ${ModID}:诗 . NL 每有一种 异常状态，获得2点 ${ModID}:诗意 NL 可获得 !M! ${ModID}:诗意",
     "UPGRADE_DESCRIPTION": "是 ${ModID}:诗 . NL 每有一种 异常/状态/诅咒，获得 2 点 ${ModID}:诗意 NL 可获得 !M! ${ModID}:诗意"
+  },
+  "${ModID}:FeiHuaLingCard": {
+    "NAME": "飞花令",
+    "DESCRIPTION": "是 ${ModID}:诗 . NL 丢弃手牌中所有 ${ModID}:诗 ，再抽等量牌",
+    "UPGRADE_DESCRIPTION": "是 ${ModID}:诗 . NL 丢弃手牌中所有 ${ModID}:诗 ，再抽 量+1 张牌"
+  },
+  "${ModID}:XiaoYaoYou": {
+    "NAME": "逍遥游",
+    "DESCRIPTION": "是 ${ModID}:诗 . 消耗 NL 进入 ${ModID}:逍遥形态"
+  },
+  "${ModID}:TiaoDengWenMengCard": {
+    "NAME": "挑灯问梦",
+    "DESCRIPTION": "下回合进入: ${ModID}:幻梦"
+  },
+  "${ModID}:NingZuoWuCard": {
+    "NAME": "宁作吾",
+    "DESCRIPTION": "#rTODO"
   }
 }

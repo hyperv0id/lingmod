@@ -9,7 +9,7 @@ import lingmod.powers.LightPower;
 import static lingmod.ModCore.makeID;
 
 public class LightRelic extends AbstractEasyRelic {
-    public static final String ID = makeID("LightRelic");
+    public static final String ID = makeID(LightRelic.class.getSimpleName());
     public LightRelic() {
         super(ID, RelicTier.STARTER, LandingSound.FLAT, Ling.Enums.LING_COLOR);
     }

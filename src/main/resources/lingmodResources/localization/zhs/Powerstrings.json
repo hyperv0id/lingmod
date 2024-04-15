@@ -29,5 +29,23 @@
     "DESCRIPTIONS": [
       "下 #b%d 张卡牌将打出 #b2 次"
     ]
+  },
+  "${ModID}:TiaoDengWenMengPower": {
+    "NAME": "挑灯问梦",
+    "DESCRIPTIONS": [
+      "下回合进入 ${ModID}:幻梦形态"
+    ]
+  },
+  "${ModID}:ApplyPowerNextTurn": {
+    "NAME": "下回合能力",
+    "DESCRIPTIONS": [
+      "下回合获得能力："
+    ]
+  },
+  "${ModID}:NellaFantasiaPower": {
+    "NAME": "幻梦",
+    "DESCRIPTIONS": [
+      "每回合初始手牌无消耗，但敌人在回合后恢复一半血量"
+    ]
   }
 }

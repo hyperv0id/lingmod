@@ -1,7 +1,9 @@
 package lingmod.powers;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.UpgradeSpecificCardAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -17,6 +19,9 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import lingmod.ModCore;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 import static lingmod.ModCore.makeID;
 
 public class LightPower extends AbstractEasyPower {
@@ -26,6 +31,8 @@ public class LightPower extends AbstractEasyPower {
     private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.BUFF;
     private static final boolean TURN_BASED = false; //  是否回合后消失
     public static final Logger logger = ModCore.logger;
+
+    public boolean upgradeBoth = false;
 
 
     public LightPower(AbstractCreature owner, int amount) {
@@ -49,10 +56,11 @@ public class LightPower extends AbstractEasyPower {
 
     protected void sameIdAction(AbstractCard lastCard, AbstractCard now, UseCardAction action) {
         if (!lastCard.cardID.equals(now.cardID)) return;
+        AbstractPlayer player = AbstractDungeon.player;
         this.flash();
-        if (now.canUpgrade()) {
+        if (lastCard.canUpgrade()) {
             // 升级特效
-            addToBot(new UpgradeSpecificCardAction(now));
+            addToBot(new UpgradeSpecificCardAction(lastCard));
             // TODO: 动画时间延长
             //            float x = now.current_x;
             //            float y = now.current_y;
@@ -62,7 +70,6 @@ public class LightPower extends AbstractEasyPower {
         }
         if (!lastCard.exhaust) {
             // 消耗特效
-
         }
         // TODO: 手牌中所有同号牌发光
     }
