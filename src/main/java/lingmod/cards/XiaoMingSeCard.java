@@ -14,6 +14,9 @@ import java.util.stream.Collectors;
 
 import static lingmod.ModCore.makeID;
 
+/**
+ * 笑鸣瑟：每有一种DEBUFF，获得2点"诗意"。升级后，手牌中每有一张状态牌或诅咒牌,也可以获得1点"诗意"
+ */
 public class XiaoMingSeCard extends AbstractPoetCard {
 
     public static final String ID = makeID(XiaoMingSeCard.class.getSimpleName());

@@ -2,6 +2,9 @@ package lingmod.cards;
 
 import static lingmod.ModCore.makeID;
 
+/**
+ * 宁作吾：TODO
+ */
 public class NingZuoWuCard extends AbstractPoetCard{
 
     public static final String ID = makeID(NingZuoWuCard.class.getSimpleName());

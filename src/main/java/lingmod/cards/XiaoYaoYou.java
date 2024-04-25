@@ -10,7 +10,7 @@ import lingmod.stances.XiaoYaoStance;
 import static lingmod.ModCore.makeID;
 
 /**
- * 进入逍遥形态：回合结束后抽牌数+1,也就是说随回合数增加，抽牌数不断增加
+ * 逍遥游：进入逍遥形态：回合结束后抽牌数+1,也就是说随回合数增加，抽牌数不断增加
  */
 public class XiaoYaoYou extends AbstractPoetCard {
 

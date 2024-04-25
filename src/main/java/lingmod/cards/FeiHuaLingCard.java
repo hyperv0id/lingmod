@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import static lingmod.ModCore.makeID;
 
 /**
- * 丢弃手牌中所有诗，再抽取相同数量的牌
+ * 飞花令：丢弃手牌中所有诗，再抽取相同数量的牌
  */
 public class FeiHuaLingCard extends AbstractPoetCard{
     public static final String ID = makeID(FeiHuaLingCard.class.getSimpleName());
