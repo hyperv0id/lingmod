@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.events.GenericEventDialog;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import lingmod.ModCore;
-import lingmod.relics.NianOldCoinRelic;
+import lingmod.relics.NianAncientCasting;
 import lingmod.relics.ShuRiceRelic;
 import org.apache.logging.log4j.Logger;
 
@@ -89,8 +89,8 @@ public class Sui12Event extends AbstractImageEvent {
                 screenID = ScreenID.CHOSE_SHU;
                 break;
             case 3: // 年
-                if (!player.hasRelic(NianOldCoinRelic.ID))
-                    relic = new NianOldCoinRelic();
+                if (!player.hasRelic(NianAncientCasting.ID))
+                    relic = new NianAncientCasting();
                 screenID = ScreenID.CHOSE_NIAN;
                 break;
             case 4: // 夕

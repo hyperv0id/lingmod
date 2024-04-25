@@ -27,11 +27,11 @@
       "变化一张牌"
     ]
   },
-  "${ModID}:NianOldCoinRelic": {
-    "NAME": "古旧铸币",
-    "FLAVOR": "年的小玩意",
+  "${ModID}:NianAncientCasting": {
+    "NAME": "古旧铸物",
+    "FLAVOR": "“天有洪炉，地生五金”......虽然可以用来成就各种事业，却没人知道具体原理。",
     "DESCRIPTIONS": [
-      "每回合获得 #d4 盾，抵挡每层的3次攻击"
+      "每回合获得 4 盾，抵挡每层的 3 次攻击"
     ]
   }
 }

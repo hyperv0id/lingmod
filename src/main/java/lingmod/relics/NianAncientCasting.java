@@ -6,10 +6,10 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 import static lingmod.ModCore.makeID;
 
-public class NianOldCoinRelic extends AbstractEasyRelic{
+public class NianAncientCasting extends AbstractEasyRelic{
 
-    public static final String ID = makeID("NianOldCoinRelic");
-    public NianOldCoinRelic(){
+    public static final String ID = makeID("NianAncientCasting");
+    public NianAncientCasting(){
         super(ID, RelicTier.SPECIAL, LandingSound.FLAT);
     }
 

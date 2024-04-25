@@ -105,6 +105,37 @@ public class Ling extends CustomPlayer {
         this.state = new AnimationState(this.stateData);
     }
 
+    @Override
+    public void onVictory() {
+        super.onVictory();
+        playVictoryAnimation();
+    }
+
+    private void playVictoryAnimation() {
+        // TODO: 使用基建的Special动画
+        //        logger.info("Created character " + name);
+
+//        String charID = "char_2023_ling";
+//        String atlasUrl = makeCharacterPath("main/" + charID + ".atlas");
+//        String skeletonUrl = makeCharacterPath("main/" + charID + ".json");
+//        super.loadAnimation(atlasUrl, skeletonUrl, 1f);
+        this.state.setAnimation(0, "Skill_02", false);
+        this.state.addAnimation(0, "Idle", true, 0.0F);
+    }
+
+    @Override
+    public void useFastAttackAnimation() {
+        super.useFastAttackAnimation();
+        this.state.setAnimation(0, "Skill_02", false);
+        this.state.addAnimation(0, "Idle", true, 0.0F);
+    }
+
+    @Override
+    public void useSlowAttackAnimation() {
+        super.useSlowAttackAnimation();
+        this.state.setAnimation(0, "Skill_03_Loop", false);
+        this.state.addAnimation(0, "Idle", true, 0.0F);
+    }
 
     @Override
     public CharSelectInfo getLoadout() {
