@@ -38,26 +38,26 @@ public class Ling extends CustomPlayer {
     static final String[] NAMES = characterStrings.NAMES;
     static final String[] TEXT = characterStrings.TEXT;
     private static final String[] orbTextures = {
-            makeCharacterPath("main/orb/layer1.png"),
-            makeCharacterPath("main/orb/layer2.png"),
-            makeCharacterPath("main/orb/layer3.png"),
-            makeCharacterPath("main/orb/layer4.png"),
-            makeCharacterPath("main/orb/layer4.png"),
-            makeCharacterPath("main/orb/layer6.png"),
-            makeCharacterPath("main/orb/layer1d.png"),
-            makeCharacterPath("main/orb/layer2d.png"),
-            makeCharacterPath("main/orb/layer3d.png"),
-            makeCharacterPath("main/orb/layer4d.png"),
-            makeCharacterPath("main/orb/layer5d.png"),
+            makeCharacterPath("ling/orb/layer1.png"),
+            makeCharacterPath("ling/orb/layer2.png"),
+            makeCharacterPath("ling/orb/layer3.png"),
+            makeCharacterPath("ling/orb/layer4.png"),
+            makeCharacterPath("ling/orb/layer4.png"),
+            makeCharacterPath("ling/orb/layer6.png"),
+            makeCharacterPath("ling/orb/layer1d.png"),
+            makeCharacterPath("ling/orb/layer2d.png"),
+            makeCharacterPath("ling/orb/layer3d.png"),
+            makeCharacterPath("ling/orb/layer4d.png"),
+            makeCharacterPath("ling/orb/layer5d.png"),
     };
 
     private static final float[] LAYER_SPEED = new float[]{-40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F, -5.0F, 0.0F};
 
 
     public Ling(String name, PlayerClass setClass) {
-        super(name, Ling.Enums.PLAYER_LING, orbTextures, makeCharacterPath("main/orb/vfx.png"), LAYER_SPEED, null, null);
-        //        super(name, setClass, new CustomEnergyOrb(orbTextures, makeCharacterPath("main/orb/vfx.png"), null), new SpriterAnimation(
-        //                makeCharacterPath("main/static.scml")));
+        super(name, Ling.Enums.PLAYER_LING, orbTextures, makeCharacterPath("ling/orb/vfx.png"), LAYER_SPEED, null, null);
+        //        super(name, setClass, new CustomEnergyOrb(orbTextures, makeCharacterPath("ling/orb/vfx.png"), null), new SpriterAnimation(
+        //                makeCharacterPath("ling/static.scml")));
         initializeClass(null,
                 SHOULDER1,
                 SHOULDER2,
@@ -69,8 +69,8 @@ public class Ling extends CustomPlayer {
         dialogY = (drawY + 240.0F * Settings.scale);
         //        String charID = "char_2015_dusk";
         String charID = "char_2023_ling";
-        String atlasUrl = makeCharacterPath("main/" + charID + ".atlas");
-        String skeletonUrl = makeCharacterPath("main/" + charID + ".json");
+        String atlasUrl = makeCharacterPath("ling/" + charID + ".atlas");
+        String skeletonUrl = makeCharacterPath("ling/" + charID + ".json");
         super.loadAnimation(atlasUrl, skeletonUrl, 1f);
         //        logger.info("Created character " + name);
         AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
@@ -116,8 +116,6 @@ public class Ling extends CustomPlayer {
         //        logger.info("Created character " + name);
 
 //        String charID = "char_2023_ling";
-//        String atlasUrl = makeCharacterPath("main/" + charID + ".atlas");
-//        String skeletonUrl = makeCharacterPath("main/" + charID + ".json");
 //        super.loadAnimation(atlasUrl, skeletonUrl, 1f);
         this.state.setAnimation(0, "Skill_02", false);
         this.state.addAnimation(0, "Idle", true, 0.0F);

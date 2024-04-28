@@ -13,7 +13,7 @@
       "诗",
       "Poet"
     ],
-    "DESCRIPTION": "打出时获得 #b1 点诗意"
+    "DESCRIPTION": "打出时获得 #b能量消耗 点诗意"
   },
   {
     "PROPER_NAME": "诗意",
@@ -25,16 +25,17 @@
   {
     "PROPER_NAME": "逍遥",
     "NAMES": [
-      "逍遥形态"
+      "逍遥能力",
+      "逍遥"
     ],
-    "DESCRIPTION": "每回合抽卡数增加1，退出后重置"
+    "DESCRIPTION": "回合结束后 抽卡数++"
   },
   {
-    "PROPER_NAME": "幻梦",
+    "PROPER_NAME": "梦",
     "NAMES": [
-      "幻梦",
-      "幻梦形态"
+      "梦",
+      "幻梦"
     ],
-    "DESCRIPTION": "所有手牌无消耗，但是回合结束后，怪物恢复所受伤害一半的血量"
+    "DESCRIPTION": "十分强力的卡牌，打出后永久移除此牌"
   }
 ]

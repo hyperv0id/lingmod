@@ -1,11 +1,9 @@
 package lingmod.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import lingmod.powers.PoeticMoodPower;
-import lingmod.stances.XiaoYaoStance;
+import lingmod.powers.XiaoYaoPower;
 
 import static lingmod.ModCore.makeID;
 
@@ -15,15 +13,16 @@ import static lingmod.ModCore.makeID;
 public class XiaoYaoYou extends AbstractPoetCard {
 
     public static final String ID = makeID(XiaoYaoYou.class.getSimpleName());
-    public XiaoYaoYou(){
-        super(ID, 3, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
+
+    public XiaoYaoYou() {
+        super(ID, 3, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
         this.exhaust = true;
     }
 
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
         super.use(abstractPlayer, abstractMonster);
-        this.addToBot(new ChangeStanceAction(new XiaoYaoStance()));
+        this.addToBot(new ApplyPowerAction(abstractPlayer, abstractPlayer, new XiaoYaoPower(abstractPlayer, 0)));
     }
 
     @Override
