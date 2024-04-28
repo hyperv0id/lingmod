@@ -96,5 +96,9 @@
   "${ModID}:XiaoYaoYou": {
     "NAME": "逍遥游",
     "DESCRIPTION": "是 ${ModID}:诗 . 消耗 NL 获得 ${ModID}:逍遥"
+  },
+  "${ModID}:MengWeiYuNiao": {
+    "NAME": "梦为鱼鸟",
+    "DESCRIPTION": "是 ${ModID}:梦 . 造成敌人总伤点伤害"
   }
 }
