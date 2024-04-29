@@ -5,12 +5,11 @@ import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.mod.DreamMod;
-import lingmod.util.MonsterHelper;
 
 import static lingmod.ModCore.makeID;
+import static lingmod.util.MonsterHelper.calcIntentDmg;
 
 /**
  * 梦为鱼鸟：造成怪物的伤害
@@ -37,24 +36,13 @@ public class MengWeiYuNiao extends AbstractEasyCard {
     }
 
     @Override
-    public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
-        int totalDamage = calc_dmg();
-        addToBot(new DamageAction(abstractMonster, new DamageInfo(abstractPlayer, totalDamage, DamageInfo.DamageType.NORMAL)));
+    public void calculateCardDamage(AbstractMonster mo) {
+        baseDamage = calcIntentDmg();
     }
-    protected int calc_dmg() {
-        int total = 0;
-        for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
-            if (!mo.isDeadOrEscaped()) {
-                mo.createIntent();
-                if (!MonsterHelper.isAttackIntent(mo)) continue;
-                int moDamage = ReflectionHacks.getPrivate(mo, AbstractMonster.class, "intentDmg");
-                if (moDamage <= 0) continue;
-                if (ReflectionHacks.getPrivate(mo, AbstractMonster.class, "isMultiDmg")) {
-                    moDamage *= (int) ReflectionHacks.getPrivate(mo, AbstractMonster.class, "intentMultiAmt");
-                }
-                total+= moDamage;
-            }
-        }
-        return total;
+
+    @Override
+    public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
+        int totalDamage = calcIntentDmg();
+        addToBot(new DamageAction(abstractMonster, new DamageInfo(abstractPlayer, totalDamage, DamageInfo.DamageType.NORMAL)));
     }
 }

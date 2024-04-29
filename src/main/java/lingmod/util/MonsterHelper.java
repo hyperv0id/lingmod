@@ -1,5 +1,7 @@
 package lingmod.util;
 
+import basemod.ReflectionHacks;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class MonsterHelper {
@@ -14,5 +16,40 @@ public class MonsterHelper {
             if (m.intent == intent) return true;
         }
         return false;
+    }
+
+
+    /**
+     * calculate damage for all monsters
+     * @return total damage
+     */
+    public static int calcIntentDmg() {
+        int total = 0;
+        for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
+            total += calcIntentDmg(mo);
+        }
+        return total;
+    }
+
+
+    /**
+     *
+     * calculate damage for specific monsters
+     * @param mo specific monster
+     * @return total damage
+     */
+    public static int calcIntentDmg(AbstractMonster mo) {
+        int total = 0;
+        if (!mo.isDeadOrEscaped()) {
+            mo.createIntent();
+            if (!MonsterHelper.isAttackIntent(mo)) return 0;
+            int moDamage = basemod.ReflectionHacks.getPrivate(mo, AbstractMonster.class, "intentDmg");
+            if (moDamage <= 0) return 0;
+            if (basemod.ReflectionHacks.getPrivate(mo, AbstractMonster.class, "isMultiDmg")) {
+                moDamage *= (int) ReflectionHacks.getPrivate(mo, AbstractMonster.class, "intentMultiAmt");
+            }
+            total += moDamage;
+        }
+        return total;
     }
 }

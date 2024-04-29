@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 import lingmod.ModCore;
+import lingmod.util.CardHelper;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
@@ -47,9 +48,8 @@ public class LightPower extends AbstractEasyPower {
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        int cardsPlayed = AbstractDungeon.actionManager.cardsPlayedThisTurn.size();
-        if (cardsPlayed <= 1) return;
-        AbstractCard lastCard = AbstractDungeon.actionManager.cardsPlayedThisTurn.get(cardsPlayed - 2);
+        AbstractCard lastCard = CardHelper.lastCard(true);
+        if(lastCard == null) return;
         sameIdAction(lastCard, card, action);
         diffTypeAction(lastCard, card, action);
     }
