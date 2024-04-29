@@ -53,9 +53,9 @@ public class ModCore implements
 
     public static Color characterColor = new Color(MathUtils.random(), MathUtils.random(), MathUtils.random(), 1); // This should be changed eventually
 
-    public static final String SHOULDER1 = makeCharacterPath("main/shoulder.png");
-    public static final String SHOULDER2 = makeCharacterPath("main/shoulder2.png");
-    public static final String CORPSE = makeCharacterPath("main/corpse.png");
+    public static final String SHOULDER1 = makeCharacterPath("ling/shoulder.png");
+    public static final String SHOULDER2 = makeCharacterPath("ling/shoulder2.png");
+    public static final String CORPSE = makeCharacterPath("ling/corpse.png");
     private static final String ATTACK_S_ART = makeImagePath("512/attack.png");
     private static final String SKILL_S_ART = makeImagePath("512/skill.png");
     private static final String POWER_S_ART = makeImagePath("512/power.png");
