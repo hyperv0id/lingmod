@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.cutscenes.CutscenePanel;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
@@ -27,6 +28,7 @@ import lingmod.cards.Strike;
 import lingmod.relics.LightRelic;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static lingmod.character.Ling.Enums.LING_COLOR;
 import static lingmod.ModCore.*;
@@ -241,6 +243,17 @@ public class Ling extends CustomPlayer {
     @Override
     public String getVampireText() {
         return TEXT[2];
+    }
+
+    @Override
+    public List<CutscenePanel> getCutscenePanels() {
+
+        ArrayList<CutscenePanel> panels = new ArrayList<>();
+
+        panels.add(new CutscenePanel(makeImagePath("ui/ending/end_1.png")));
+        panels.add(new CutscenePanel(makeImagePath("ui/ending/end_2.png")));
+        panels.add(new CutscenePanel(makeImagePath("ui/ending/end_3.png")));
+        return panels;
     }
 
     public static class Enums {
