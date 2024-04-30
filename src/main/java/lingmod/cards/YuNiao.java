@@ -1,6 +1,5 @@
 package lingmod.cards;
 
-import basemod.ReflectionHacks;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -15,13 +14,14 @@ import static lingmod.util.MonsterHelper.calcIntentDmg;
  * 梦为鱼鸟：造成怪物的伤害
  * 你梦中变成鸟便振翅直飞蓝天，你梦中变成鱼便摇尾潜入深渊
  */
-public class MengWeiYuNiao extends AbstractEasyCard {
+public class YuNiao extends AbstractEasyCard {
 
-    public static final String ID = makeID(MengWeiYuNiao.class.getSimpleName());
+    public static final String ID = makeID(YuNiao.class.getSimpleName());
 
-    public MengWeiYuNiao() {
+    public YuNiao() {
         super(ID, 1, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ENEMY);
         purgeOnUse = true;
+        baseDamage = 0;
         CardModifierManager.addModifier(this, new DreamMod(1));
     }
 

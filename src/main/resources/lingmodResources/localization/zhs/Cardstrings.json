@@ -97,8 +97,12 @@
     "NAME": "逍遥游",
     "DESCRIPTION": "是 ${ModID}:诗 . 消耗 NL 获得 ${ModID}:逍遥"
   },
-  "${ModID}:MengWeiYuNiao": {
-    "NAME": "梦为鱼鸟",
+  "${ModID}:YuNiao": {
+    "NAME": "鱼鸟梦",
     "DESCRIPTION": "是 ${ModID}:梦 . 造成敌人要对你造成的伤害等量的伤害。 NL 造成 !D! 点伤害"
+  },
+  "${ModID}:HuangLiang": {
+    "NAME": "黄粱梦",
+    "DESCRIPTION": "是 ${ModID}:梦 . 获得 !M! 金币"
   }
 }
