@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.*;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.audio.MainMusic;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -26,6 +27,7 @@ import lingmod.cards.ChongJinJiuCard;
 import lingmod.cards.Defend;
 import lingmod.cards.Strike;
 import lingmod.relics.LightRelic;
+import lingmod.util.TODO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -165,6 +167,8 @@ public class Ling extends CustomPlayer {
 
     @Override
     public void doCharSelectScreenSelectEffect() {
+        TODO.info("在这里将主页面音乐替换为醉飞尘/寻隐");
+        CardCrawlGame.music.playTempBgmInstantly("寻隐.mp3", true);
         CardCrawlGame.sound.playA("UNLOCK_PING", MathUtils.random(-0.2F, 0.2F));
         CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT,
                 false);

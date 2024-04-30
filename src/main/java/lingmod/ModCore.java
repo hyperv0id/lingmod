@@ -116,6 +116,15 @@ public class ModCore implements
     public static String makeCardPath(String resourcePath) {
         return modID + "Resources/images/cards/" + resourcePath;
     }
+    public static String makeVoicePath(String resourcePath) {
+        return modID + "Resources/audio/voice/" + resourcePath; // 语音路径
+    }
+    public static String makeMusicPath(String resourcePath) {
+        return modID + "Resources/audio/music/" + resourcePath; // 背景音乐路径
+    }
+    public static String makeSFXPath(String resourcePath) {
+        return modID + "Resources/audio/sfx/" + resourcePath; // 音效路径
+    }
 
 
     public static void initialize() {
@@ -185,8 +194,9 @@ public class ModCore implements
 
     @Override
     public void receiveAddAudio() {
+        // 添加音效
         for (ProAudio a : ProAudio.values())
-            BaseMod.addAudio(makeID(a.name()), makePath("audio/" + a.name().toLowerCase() + ".ogg"));
+            BaseMod.addAudio(makeID(a.name()), makeSFXPath(a.name().toLowerCase() + ".ogg"));
     }
 
     @Override
