@@ -109,10 +109,15 @@ public class Ling extends CustomPlayer {
         this.state = new AnimationState(this.stateData);
     }
 
+    /**
+     * 一般战斗胜利后的逻辑
+     */
     @Override
     public void onVictory() {
         super.onVictory();
         playVictoryAnimation();
+        logger.info("Playing victory");
+        CardCrawlGame.sound.play("cn_topolect/victory_1");
     }
 
     private void playVictoryAnimation() {
@@ -130,6 +135,13 @@ public class Ling extends CustomPlayer {
         super.useFastAttackAnimation();
         this.state.setAnimation(0, "Skill_02", false);
         this.state.addAnimation(0, "Idle", true, 0.0F);
+    }
+
+    @Override
+    public void playDeathAnimation() {
+        super.playDeathAnimation();
+        this.state.setAnimation(0, "Die", false);
+        CardCrawlGame.sound.play("cn_topolect/行动失败");
     }
 
     @Override
@@ -167,7 +179,6 @@ public class Ling extends CustomPlayer {
 
     @Override
     public void doCharSelectScreenSelectEffect() {
-        TODO.info("在这里将主页面音乐替换为醉飞尘/寻隐");
         CardCrawlGame.music.playTempBgmInstantly("寻隐.mp3", true);
         CardCrawlGame.sound.playA("UNLOCK_PING", MathUtils.random(-0.2F, 0.2F));
         CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT,
