@@ -34,6 +34,15 @@ public class ChongJinJiuCard extends AbstractPoetCard {
     }
 
     @Override
+    public void triggerOnGlowCheck() {
+        if (!AbstractDungeon.actionManager.cardsPlayedThisCombat.isEmpty()) {
+            this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
+        } else {
+            this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
+        }
+    }
+
+    @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         super.use(p, m);
         AbstractCard lastCard = CardHelper.lastCard(true);

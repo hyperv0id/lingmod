@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.powers.NellaFantasiaPower;
+import lingmod.util.TODO;
 
 import static lingmod.ModCore.makeID;
 
@@ -21,6 +22,7 @@ public class TiaoDengWenMengCard extends AbstractEasyCard {
 
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
+        TODO.info("卡牌效果需修改：随机获得一张梦");
         addToBot(new ApplyPowerAction(abstractPlayer, abstractPlayer,
                 new NellaFantasiaPower(abstractPlayer, 1)
                 )
