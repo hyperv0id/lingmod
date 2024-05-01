@@ -9,7 +9,6 @@ import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.*;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.audio.MainMusic;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -56,7 +55,6 @@ public class Ling extends CustomPlayer {
     };
 
     private static final float[] LAYER_SPEED = new float[]{-40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F, -5.0F, 0.0F};
-
 
     public Ling(String name, PlayerClass setClass) {
         super(name, Ling.Enums.PLAYER_LING, orbTextures, makeCharacterPath("ling/orb/vfx.png"), LAYER_SPEED, null, null);
@@ -116,14 +114,11 @@ public class Ling extends CustomPlayer {
     public void onVictory() {
         super.onVictory();
         playVictoryAnimation();
-        logger.info("Playing victory");
-        CardCrawlGame.sound.play("cn_topolect/victory_1");
+        VoiceMaster.getInstance().victory();
     }
 
     private void playVictoryAnimation() {
-        // TODO: 使用基建的Special动画
-        //        logger.info("Created character " + name);
-
+        TODO.info("使用基建的Special动画");
 //        String charID = "char_2023_ling";
 //        super.loadAnimation(atlasUrl, skeletonUrl, 1f);
         this.state.setAnimation(0, "Skill_02", false);
@@ -141,7 +136,7 @@ public class Ling extends CustomPlayer {
     public void playDeathAnimation() {
         super.playDeathAnimation();
         this.state.setAnimation(0, "Die", false);
-        CardCrawlGame.sound.play("cn_topolect/行动失败");
+        VoiceMaster.getInstance().death();
     }
 
     @Override
@@ -180,6 +175,7 @@ public class Ling extends CustomPlayer {
     @Override
     public void doCharSelectScreenSelectEffect() {
         CardCrawlGame.music.playTempBgmInstantly("寻隐.mp3", true);
+        VoiceMaster.getInstance().select();
         CardCrawlGame.sound.playA("UNLOCK_PING", MathUtils.random(-0.2F, 0.2F));
         CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT,
                 false);

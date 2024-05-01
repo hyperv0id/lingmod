@@ -36,7 +36,15 @@ public class SoundMasterplayPatch {
     }
 
     static {
-        map.put("cn_topolect/victory_1", load("cn_topolect/victory_1.ogg"));
+        map.put("cn_topolect/3星结束行动", load("cn_topolect/3星结束行动.ogg"));
         map.put("cn_topolect/行动失败", load("cn_topolect/行动失败.ogg"));
+        map.put("cn_topolect/行动开始", load("cn_topolect/行动开始.ogg"));
+        map.put("cn_topolect/作战中1", load("cn_topolect/作战中1.ogg"));
+        map.put("cn_topolect/作战中2", load("cn_topolect/作战中2.ogg"));
+        map.put("cn_topolect/作战中3", load("cn_topolect/作战中3.ogg"));
+        map.put("cn_topolect/作战中4", load("cn_topolect/作战中4.ogg"));
+        map.put("cn_topolect/选中干员1", load("cn_topolect/选中干员1.ogg"));
+        map.put("cn_topolect/选中干员2", load("cn_topolect/选中干员2.ogg"));
+        map.put("cn_topolect/行动出发", load("cn_topolect/行动出发.ogg"));
     }
 }

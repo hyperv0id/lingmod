@@ -48,9 +48,14 @@ public class LightPower extends AbstractEasyPower {
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
+
+        AbstractPlayer player = AbstractDungeon.player;
+        int level = AbstractDungeon.ascensionLevel;
+        this.flash();
+        addToBot(new ApplyPowerAction(player, player, new PoeticMoodPower(player, 1, level)));
         AbstractCard lastCard = CardHelper.lastCard(true);
         if(lastCard == null) return;
-        sameIdAction(lastCard, card, action);
+//        sameIdAction(lastCard, card, action);
         diffTypeAction(lastCard, card, action);
     }
 
@@ -76,9 +81,5 @@ public class LightPower extends AbstractEasyPower {
 
     protected void diffTypeAction(AbstractCard lastCard, AbstractCard card, UseCardAction action) {
         if (lastCard.cardID.equals(card.cardID)) return;
-        this.flash();
-        AbstractPlayer player = AbstractDungeon.player;
-        int level = AbstractDungeon.ascensionLevel;
-        addToBot(new ApplyPowerAction(player, player, new PoeticMoodPower(player, 1, level)));
     }
 }
