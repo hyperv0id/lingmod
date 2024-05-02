@@ -1,6 +1,7 @@
 ---
 Rarity: 普通
 DESCRIPTION: 不打出，下回合第一张免费
+isdone: 1
 ---
 
 

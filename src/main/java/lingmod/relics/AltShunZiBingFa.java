@@ -34,6 +34,7 @@ public class AltShunZiBingFa extends AbstractEasyRelic {
             AbstractPlayer player = AbstractDungeon.player;
             addToBot(new ApplyPowerAction(player, player, new FreeAttackPower(player, freeNum)));
         }
+        this.cardPlayed = 0;
         this.flag = true;
     }
 

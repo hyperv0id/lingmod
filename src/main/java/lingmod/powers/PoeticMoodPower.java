@@ -63,7 +63,7 @@ public class PoeticMoodPower extends AbstractEasyPower {
             sb.append(String.format(DESCRIPTIONS[2], N_Buffer));
         if (level >= 3)
             sb.append(String.format(DESCRIPTIONS[3], N_Artifact));
-        if(level >= 4)
+        if (level >= 4)
             sb.append(String.format(DESCRIPTIONS[4], N_Strength));
         this.description = sb.toString();
     }
@@ -72,7 +72,7 @@ public class PoeticMoodPower extends AbstractEasyPower {
         VoiceMaster.getInstance().onAttack();
         this.amount -= N_Threshold;
         if (level >= 1)
-           addToBot(new ApplyPowerAction(owner, owner, new DexterityPower(owner, N_Dexterity))); // 获得敏捷
+            addToBot(new ApplyPowerAction(owner, owner, new DexterityPower(owner, N_Dexterity))); // 获得敏捷
         if (level >= 2)
             addToBot(new ApplyPowerAction(owner, owner, new BufferPower(owner, N_Buffer))); // 缓冲
         if (level >= 3)
