@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.events.GenericEventDialog;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import lingmod.ModCore;
+import lingmod.relics.DuskDrawRelic;
 import lingmod.relics.NianAncientCasting;
 import lingmod.relics.ShuRiceRelic;
 import org.apache.logging.log4j.Logger;
@@ -94,7 +95,8 @@ public class Sui12Event extends AbstractImageEvent {
                 screenID = ScreenID.CHOSE_NIAN;
                 break;
             case 4: // 夕
-                logger.warn("UnImplemented: 夕的 画");
+                if (!player.hasRelic(DuskDrawRelic.ID))
+                    relic = new DuskDrawRelic();
                 screenID = ScreenID.CHOSE_DUSK;
                 break;
             default:
