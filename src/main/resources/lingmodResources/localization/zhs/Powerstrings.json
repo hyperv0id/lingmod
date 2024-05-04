@@ -47,5 +47,11 @@
     "DESCRIPTIONS": [
       "回合结束后 抽牌数++，下回合多抽 #b%d 张"
     ]
+  },
+  "${ModID}:AltDemonPower": {
+    "NAME": "恶魔形态",
+    "DESCRIPTIONS": [
+      "回合结束后 获得 1 仪式"
+    ]
   }
 }

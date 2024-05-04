@@ -104,5 +104,10 @@
   "${ModID}:HuangLiang": {
     "NAME": "黄粱梦",
     "DESCRIPTION": "是 ${ModID}:梦 . 获得 !M! 金币"
+  },
+  "${ModID}:AltDemonForm": {
+    "NAME": "恶魔形态",
+    "DESCRIPTION": "回合结束后获得 !M! 仪式",
+    "UPGRADE_DESCRIPTION": "立即获得 1 力量 NL 回合结束后获得 !M! 仪式"
   }
 }
