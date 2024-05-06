@@ -109,5 +109,13 @@
     "NAME": "恶魔形态",
     "DESCRIPTION": "回合结束后获得 !M! 仪式",
     "UPGRADE_DESCRIPTION": "立即获得 1 力量 NL 回合结束后获得 !M! 仪式"
+  },
+  "${ModID}:Tranquility": {
+    "NAME": "“清平”",
+    "DESCRIPTION": "造成 !D! 点伤害，下次打出伤害增加 !${ModID}:sd! 点"
+  },
+  "${ModID}:AltTieZhanBo": {
+    "NAME": "铁斩波",
+    "DESCRIPTION": "造成 !D! 点伤害，获得 !M! 层多层护甲"
   }
 }

@@ -49,7 +49,7 @@
       "战斗开始时，所有敌人失去 1 力量"
     ]
   },
-  "${ModID}:AltXiaoXuePing ": {
+  "${ModID}:AltXiaoXuePing": {
     "NAME": "小血瓶",
     "FLAVOR": "黄沙远来三千地，洗罢流年一屈指。",
     "DESCRIPTIONS": [

@@ -6,7 +6,7 @@ import static lingmod.ModCore.makeID;
 import static lingmod.util.Wiz.*;
 
 public class ${NAME} extends AbstractEasyCard {
-    public final static String ID = makeID("${NAME}");
+    public final static String ID = makeID(${NAME}.class.getSimpleName());
     // intellij stuff ${TYPE}, ${TARGET}, ${RARITY}, ${DAMAGE}, ${UPGRADE_DAMAGE}, ${BLOCK}, ${UPGRADE_BLOCK}, ${MAGIC}, ${UPGRADE_MAGIC}
 
     public ${NAME}() {
