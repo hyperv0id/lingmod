@@ -17,20 +17,16 @@ public class TiaoDengWenMengCard extends AbstractEasyCard {
 
     public static final String ID = makeID(TiaoDengWenMengCard.class.getSimpleName());
     public TiaoDengWenMengCard(){
-        super(ID, 2, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
+        super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
     }
 
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
         TODO.info("卡牌效果需修改：随机获得一张梦");
-        addToBot(new ApplyPowerAction(abstractPlayer, abstractPlayer,
-                new NellaFantasiaPower(abstractPlayer, 1)
-                )
-        );
     }
 
     @Override
     public void upp() {
-        updateCost(-1);
+        exhaust = false;
     }
 }

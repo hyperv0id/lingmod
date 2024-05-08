@@ -4,6 +4,11 @@
     "DESCRIPTION": "[ERROR]",
     "UPGRADE_DESCRIPTION": "[ERROR]"
   },
+  "${ModID}:AbstractWineCard": {
+    "NAME": "[ERROR]",
+    "DESCRIPTION": "[ERROR]",
+    "UPGRADE_DESCRIPTION": "[ERROR]"
+  },
   "${ModID}:ChongJinJiuCard": {
     "NAME": "重进酒",
     "DESCRIPTION": "是 ${ModID}:诗 . 消耗 NL 视为本回合上张卡牌的复制，若未打出过，下一张卡牌将被打出两次",
@@ -62,8 +67,8 @@
   },
   "${ModID}:NingZuoWuCard": {
     "NAME": "宁作吾",
-    "DESCRIPTION": "移除所有能力，每有一种能力，造成 !D! 点伤害",
-    "UPGRADE_DESCRIPTION": "移除所有能力，消耗手牌所有牌，每点造成 !D! 点伤害"
+    "DESCRIPTION": "消耗 NL 移除所有能力，每有一种能力，造成 !D! 点伤害",
+    "UPGRADE_DESCRIPTION": "消耗 NL 移除所有能力，消耗手牌所有牌，每点造成 !D! 点伤害"
   },
   "${ModID}:SelectCardsPlusCardMods": {
     "NAME": "Cool Card Stuff",
@@ -82,7 +87,7 @@
   },
   "${ModID}:TiaoDengWenMengCard": {
     "NAME": "挑灯问梦",
-    "DESCRIPTION": "下回合进入: ${ModID}:幻梦"
+    "DESCRIPTION": "随机获得一张 ${ModID}:梦"
   },
   "${ModID}:TwoTypesOfDamage": {
     "NAME": "Two Damage Values",
@@ -90,8 +95,8 @@
   },
   "${ModID}:XiaoMingSeCard": {
     "NAME": "笑鸣瑟",
-    "DESCRIPTION": "是 ${ModID}:诗 . NL 每有一种 异常状态，获得2点 ${ModID}:诗意 NL 可获得 !M! ${ModID}:诗意",
-    "UPGRADE_DESCRIPTION": "是 ${ModID}:诗 . NL 每有一种 异常/状态/诅咒，获得 2 点 ${ModID}:诗意 NL 可获得 !M! ${ModID}:诗意"
+    "DESCRIPTION": "是 ${ModID}:诗 . NL 每有一个 异常状态，每有一个敌人，获得2点 ${ModID}:诗意 NL 可获得 !M! 点",
+    "UPGRADE_DESCRIPTION": "是 ${ModID}:诗 . NL 每有一个 敌人/异常/状态牌/诅咒牌，获得 2 点 ${ModID}:诗意 NL 共 !M! 点"
   },
   "${ModID}:XiaoYaoYou": {
     "NAME": "逍遥游",

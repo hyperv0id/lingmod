@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 import static lingmod.ModCore.makeID;
 
 /**
- * 笑鸣瑟：每有一种DEBUFF，获得2点"诗意"。升级后，手牌中每有一张状态牌或诅咒牌,也可以获得1点"诗意"
+ * 笑鸣瑟：每有一种一个敌人或状态牌，获得2点"诗意"。
  */
 public class XiaoMingSeCard extends AbstractPoetCard {
 
@@ -49,12 +49,15 @@ public class XiaoMingSeCard extends AbstractPoetCard {
     protected int countPoet(AbstractPlayer player){
         long times = 0;
         // 统计异常状态
-        times += player.powers.stream().filter(p -> p.type == AbstractPower.PowerType.DEBUFF).count()  * 2;
+        times += player.powers.stream().filter(p -> p.type == AbstractPower.PowerType.DEBUFF).count();
+        // 统计怪物个数
+        times += AbstractDungeon.getMonsters().monsters.size();
+
         // 统计状态 or 诅咒牌
         if (upgraded) {
-            times += player.hand.group.stream().filter(c -> c.type == CardType.CURSE || c.type == CardType.STATUS).count() * 2;
+            times += player.hand.group.stream().filter(c -> c.type == CardType.CURSE || c.type == CardType.STATUS).count();
         }
-        return (int) times;
+        return (int) times * 2;
     }
 
     @Override

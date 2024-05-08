@@ -14,7 +14,7 @@ public class DingFengBoCard extends AbstractPoetCard{
 
     public DingFengBoCard() {
         super(CARD_ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
-        baseBlock = 10;
+        baseBlock = 8;
     }
 
     @Override
