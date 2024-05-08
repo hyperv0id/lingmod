@@ -62,5 +62,12 @@
     "DESCRIPTIONS": [
       "回合结束时，获得卡牌总耗能的格挡"
     ]
+  },
+  "${ModID}:AltShouYaoGu": {
+    "NAME": "手摇鼓",
+    "FLAVOR": "黄沙远来三千地，洗罢流年一屈指。",
+    "DESCRIPTIONS": [
+      "战斗开始时，获得 #r4 诗意"
+    ]
   }
 }
