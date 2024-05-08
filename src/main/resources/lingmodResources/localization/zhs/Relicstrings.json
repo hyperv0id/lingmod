@@ -55,5 +55,12 @@
     "DESCRIPTIONS": [
       "战斗胜利时的格挡可用于下一场战斗"
     ]
+  },
+  "${ModID}:AltDouPengKou": {
+    "NAME": "斗篷扣",
+    "FLAVOR": "黄沙远来三千地，洗罢流年一屈指。",
+    "DESCRIPTIONS": [
+      "回合结束时，获得卡牌总耗能的格挡"
+    ]
   }
 }
