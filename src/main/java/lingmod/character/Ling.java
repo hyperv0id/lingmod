@@ -1,5 +1,6 @@
 package lingmod.character;
 
+import basemod.BaseMod;
 import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -33,8 +34,9 @@ import java.util.List;
 
 import static lingmod.character.Ling.Enums.LING_COLOR;
 import static lingmod.ModCore.*;
-
-public class Ling extends CustomPlayer {
+import static lingmod.character.Ling.Enums.PLAYER_LING;
+public class Ling extends CustomPlayer
+{
 
     static final String ID = makeID("ModdedCharacter");
     public static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
@@ -248,6 +250,8 @@ public class Ling extends CustomPlayer {
 
     @Override
     public String getSpireHeartText() {
+        // 有全部钥匙：
+        // 没有全部钥匙：
         return TEXT[1];
     }
 
@@ -266,6 +270,7 @@ public class Ling extends CustomPlayer {
         panels.add(new CutscenePanel(makeImagePath("ui/ending/end_3.png")));
         return panels;
     }
+
 
     public static class Enums {
         //TODO: Change these.

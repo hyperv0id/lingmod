@@ -33,6 +33,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.nio.charset.StandardCharsets;
 
+import static lingmod.character.Ling.Enums.PLAYER_LING;
+
 @SuppressWarnings({"unused", "WeakerAccess"})
 @SpireInitializer
 public class ModCore implements
