@@ -1,8 +1,10 @@
-package lingmod.cards;
+package lingmod.cards.power;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import lingmod.cards.AbstractPoetCard;
 import lingmod.powers.XiaoYaoPower;
 
 import static lingmod.ModCore.makeID;

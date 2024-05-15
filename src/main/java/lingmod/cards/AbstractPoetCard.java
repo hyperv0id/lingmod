@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.powers.PoeticMoodPower;
-
+import lingmod.util.CustomTags;
 import static lingmod.ModCore.makeID;
 
 public abstract class AbstractPoetCard extends AbstractEasyCard{
@@ -17,6 +17,7 @@ public abstract class AbstractPoetCard extends AbstractEasyCard{
     public AbstractPoetCard(String id, int cost, CardType cardType, CardRarity cardRarity, CardTarget cardTarget) {
         super(id, cost, cardType, cardRarity, cardTarget);
         cardStrings = CardCrawlGame.languagePack.getCardStrings(id);
+        tags.add(CustomTags.POET);
         // 诗类卡牌的 前缀
         CardStrings cs = CardCrawlGame.languagePack.getCardStrings(AbstractPoetCard.ID);
     }

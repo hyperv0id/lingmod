@@ -52,11 +52,13 @@ public abstract class AbstractEasyCard extends CustomCard {
 
     private boolean needsArtRefresh = false;
 
-    public AbstractEasyCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target) {
+    public AbstractEasyCard(final String cardID, final int cost, final CardType type, final CardRarity rarity,
+            final CardTarget target) {
         this(cardID, cost, type, rarity, target, Ling.Enums.LING_COLOR);
     }
 
-    public AbstractEasyCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target, final CardColor color) {
+    public AbstractEasyCard(final String cardID, final int cost, final CardType type, final CardRarity rarity,
+            final CardTarget target, final CardColor color) {
         super(cardID, "", getCardTextureString(cardID.replace(modID + ":", ""), type),
                 cost, "", type, color, rarity, target);
         cardStrings = CardCrawlGame.languagePack.getCardStrings(this.cardID);
@@ -99,12 +101,15 @@ public abstract class AbstractEasyCard extends CustomCard {
             case CURSE:
                 prefix += "curse/";
                 break;
+            case STATUS:
+                prefix += "status/";
+                break;
             default:
                 missing = true;
                 textureString = makeImagePath("ui/missing.png");
                 break;
         }
-        if(!missing)
+        if (!missing)
             textureString = makeImagePath(prefix + cardName + ".png");
         FileHandle h = Gdx.files.internal(textureString);
         if (!h.exists()) {
@@ -134,7 +139,8 @@ public abstract class AbstractEasyCard extends CustomCard {
             super.applyPowers();
 
             isSecondDamageModified = (secondDamage != baseSecondDamage);
-        } else super.applyPowers();
+        } else
+            super.applyPowers();
     }
 
     @Override
@@ -153,7 +159,8 @@ public abstract class AbstractEasyCard extends CustomCard {
             super.applyPowersToBlock();
 
             isSecondBlockModified = (secondBlock != baseSecondBlock);
-        } else super.applyPowersToBlock();
+        } else
+            super.applyPowersToBlock();
     }
 
     @Override
@@ -172,7 +179,8 @@ public abstract class AbstractEasyCard extends CustomCard {
             super.calculateCardDamage(mo);
 
             isSecondDamageModified = (secondDamage != baseSecondDamage);
-        } else super.calculateCardDamage(mo);
+        } else
+            super.calculateCardDamage(mo);
     }
 
     public void resetAttributes() {
@@ -266,7 +274,8 @@ public abstract class AbstractEasyCard extends CustomCard {
         return result;
     }
 
-    // These shortcuts are specifically for cards. All other shortcuts that aren't specifically for cards can go in Wiz.
+    // These shortcuts are specifically for cards. All other shortcuts that aren't
+    // specifically for cards can go in Wiz.
     protected void dmg(AbstractMonster m, AbstractGameAction.AttackEffect fx) {
         atb(new DamageAction(m, new DamageInfo(AbstractDungeon.player, damage, damageTypeForTurn), fx));
     }
@@ -291,9 +300,11 @@ public abstract class AbstractEasyCard extends CustomCard {
         att(new DamageAction(m, new DamageInfo(AbstractDungeon.player, secondDamage, damageTypeForTurn), fx));
     }
 
-    private AbstractGameAction dmgRandomAction(AbstractGameAction.AttackEffect fx, Consumer<AbstractMonster> extraEffectToTarget, Consumer<AbstractMonster> effectBefore) {
+    private AbstractGameAction dmgRandomAction(AbstractGameAction.AttackEffect fx,
+            Consumer<AbstractMonster> extraEffectToTarget, Consumer<AbstractMonster> effectBefore) {
         return actionify(() -> {
-            AbstractMonster target = AbstractDungeon.getMonsters().getRandomMonster(null, true, AbstractDungeon.cardRandomRng);
+            AbstractMonster target = AbstractDungeon.getMonsters().getRandomMonster(null, true,
+                    AbstractDungeon.cardRandomRng);
             if (target != null) {
                 calculateCardDamage(target);
                 if (extraEffectToTarget != null)
@@ -309,7 +320,8 @@ public abstract class AbstractEasyCard extends CustomCard {
         dmgRandom(fx, null, null);
     }
 
-    protected void dmgRandom(AbstractGameAction.AttackEffect fx, Consumer<AbstractMonster> extraEffectToTarget, Consumer<AbstractMonster> effectBefore) {
+    protected void dmgRandom(AbstractGameAction.AttackEffect fx, Consumer<AbstractMonster> extraEffectToTarget,
+            Consumer<AbstractMonster> effectBefore) {
         atb(dmgRandomAction(fx, extraEffectToTarget, effectBefore));
     }
 
@@ -317,7 +329,8 @@ public abstract class AbstractEasyCard extends CustomCard {
         dmgRandomTop(fx, null, null);
     }
 
-    protected void dmgRandomTop(AbstractGameAction.AttackEffect fx, Consumer<AbstractMonster> extraEffectToTarget, Consumer<AbstractMonster> effectBefore) {
+    protected void dmgRandomTop(AbstractGameAction.AttackEffect fx, Consumer<AbstractMonster> extraEffectToTarget,
+            Consumer<AbstractMonster> effectBefore) {
         att(dmgRandomAction(fx, extraEffectToTarget, effectBefore));
     }
 

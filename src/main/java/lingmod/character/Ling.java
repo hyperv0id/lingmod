@@ -24,8 +24,8 @@ import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import lingmod.cards.ChongJinJiuCard;
-import lingmod.cards.Defend;
-import lingmod.cards.Strike;
+import lingmod.cards.attack.Strike;
+import lingmod.cards.skill.Defend;
 import lingmod.relics.LightRelic;
 import lingmod.util.TODO;
 

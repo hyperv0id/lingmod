@@ -1,10 +1,12 @@
-package lingmod.cards;
+package lingmod.cards.attack;
 
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.DreamMod;
 
 import static lingmod.ModCore.makeID;
