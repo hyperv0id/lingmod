@@ -1,36 +1,52 @@
 package lingmod.cards;
 
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import lingmod.cards.mod.AppendDescMod;
+
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
+import lingmod.cards.mod.MirrorMod;
 import lingmod.powers.DoubleCardPower;
 import lingmod.util.CardHelper;
 
 import static lingmod.ModCore.makeID;
 
 /**
- * 重进酒：作为上一张卡牌的复制打出
+ * 重进酒：打出卡牌时消耗，并替换为其复制
  */
 public class ChongJinJiuCard extends AbstractPoetCard {
 
     public final static String ID = makeID(ChongJinJiuCard.class.getSimpleName());
     public String lastCardDesc = null;
+
+    public AbstractCard lastCard = null;
+
     public ChongJinJiuCard() {
+        this(null);
+    }
+    public ChongJinJiuCard(AbstractCard lastCard) {
         super(ID, 1, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY);
+        this.lastCard = lastCard;
         this.exhaust = true;
         this.baseMagicNumber = 1;
+        CardModifierManager.addModifier(this, new MirrorMod());
         this.initializeDescription();
-        CardModifierManager.addModifier(this, new AppendDescMod());
     }
 
     @Override
     public void onPlayCard(AbstractCard c, AbstractMonster m) {
         super.onPlayCard(c, m);
+
         this.cardsToPreview = AbstractDungeon.actionManager.lastCard;
+        lastCard = AbstractDungeon.actionManager.lastCard;
+    }
+
+    @Override
+    public AbstractCard makeCopy() {
+        return new ChongJinJiuCard(lastCard);
     }
 
     @Override

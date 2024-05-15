@@ -3,7 +3,6 @@ package lingmod.cards;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import lingmod.cards.mod.AppendDescMod;
 
 import static lingmod.ModCore.makeID;
 
@@ -16,7 +15,6 @@ public class ZuiFeiChen extends AbstractEasyCard{
         this.exhaust = true;
         this.baseMagicNumber = 1;
         this.initializeDescription();
-        CardModifierManager.addModifier(this, new AppendDescMod());
     }
     @Override
     public void upp() {

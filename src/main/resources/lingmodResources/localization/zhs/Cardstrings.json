@@ -11,8 +11,8 @@
   },
   "${ModID}:ChongJinJiuCard": {
     "NAME": "重进酒",
-    "DESCRIPTION": "是 ${ModID}:诗 . 消耗 NL 视为本回合上张卡牌的复制，若未打出过，下一张卡牌将被打出两次",
-    "UPGRADE_DESCRIPTION": "是 ${ModID}:诗 . NL 视为本回合上张卡牌的复制，若未打出过，下一张卡牌将被打出两次"
+    "DESCRIPTION": "是 ${ModID}:诗 . 消耗 NL 视为本回合上张卡牌的复制",
+    "UPGRADE_DESCRIPTION": "是 ${ModID}:诗 . NL 视为本回合上张卡牌的复制"
   },
   "${ModID}:Defend": {
     "NAME": "防御",

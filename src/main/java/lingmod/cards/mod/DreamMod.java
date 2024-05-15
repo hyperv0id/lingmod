@@ -9,6 +9,9 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import lingmod.ModCore;
 
+/**
+ * 梦：打出x次后永久移除
+ */
 public class DreamMod extends  AbstractCardModifier{
     protected int limit = 1;
     protected boolean masterCardRemoved = false;

@@ -97,12 +97,6 @@
             <scope>system</scope>
             <systemPath>${Steam.path}/workshop/content/646570/1609158507/StSLib.jar</systemPath>
         </dependency>
-        <!-- 方舟动画插件 -->
-<!--        <dependency>-->
-<!--          <groupId>com.esotericsoftware.spine</groupId>-->
-<!--          <artifactId>spine-libgdx</artifactId>-->
-<!--          <version>4.1.0</version>-->
-<!--        </dependency>-->
     </dependencies>
 
 
