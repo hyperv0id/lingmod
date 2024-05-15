@@ -135,5 +135,10 @@
     "NAME": "浊酒澄心",
     "DESCRIPTION": "是 ${ModID}:酒牌 NL 获得 !M! 人工制品",
     "UPGRADE_DESCRIPTION": "是 ${ModID}:酒牌 NL 手牌中每有一张 ${ModID}:酒牌 ，获得 !M! 人工制品"
+  },
+  "${ModID}:SwapCup": {
+    "NAME": "换盏",
+    "DESCRIPTION": "选择两张牌，在这场战斗交换二者耗能",
+    "UPGRADE_DESCRIPTION": "选择两张牌，交换二者耗能 NL 如果是 ${ModID}:酒牌 ，先将其能耗置为 !M!"
   }
 }

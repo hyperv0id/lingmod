@@ -1,9 +1,9 @@
 package lingmod.cards.skill;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import lingmod.actions.SwapCostAction;
 import lingmod.cards.AbstractEasyCard;
 
 import static lingmod.ModCore.makeID;
@@ -13,19 +13,21 @@ import static lingmod.ModCore.makeID;
  */
 public class SwapCup extends AbstractEasyCard {
     public final static String ID = makeID(SwapCup.class.getSimpleName());
-    // intellij stuff attack, enemy, basic, 6, 3,  , , ,
 
     public SwapCup() {
-        super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
+        super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
+        baseMagicNumber = 0;
+    }
+    @Override
+    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
+        return p.hand.group.size() >= 2;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        // TODO: 选两张牌
-        // TODO: 交换这两张牌的费用
+        addToBot(new SwapCostAction(p, p, upgraded));
     }
 
     @Override
     public void upp() {
-        // TODO: 如果是酒，那么先将费用变为 0
     }
 }
