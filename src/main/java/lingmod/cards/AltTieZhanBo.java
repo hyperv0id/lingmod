@@ -6,8 +6,6 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.PlatedArmorPower;
-import lingmod.potions.DemoPotion;
-
 import static lingmod.ModCore.makeID;
 
 public class AltTieZhanBo extends AbstractEasyCard {

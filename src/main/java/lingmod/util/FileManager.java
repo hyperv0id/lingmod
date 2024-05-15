@@ -6,9 +6,7 @@ import lingmod.ModCore;
 
 import org.apache.logging.log4j.Logger;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.StringJoiner;
 
 public class FileManager {
     public static final String resourceRoot = ModCore.resourceRoot;

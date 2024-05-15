@@ -1,12 +1,10 @@
 package lingmod.relics;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import lingmod.powers.PoeticMoodPower;
 
-import static java.lang.Integer.max;
 import static lingmod.ModCore.makeID;
 
 /**

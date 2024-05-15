@@ -1,6 +1,5 @@
 package lingmod.powers;
 
-import basemod.interfaces.PostDrawSubscriber;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
