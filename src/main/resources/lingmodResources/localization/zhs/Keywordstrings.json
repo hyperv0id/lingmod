@@ -13,7 +13,23 @@
       "诗",
       "Poet"
     ],
-    "DESCRIPTION": "打出时获得 #b能量消耗 点诗意"
+    "DESCRIPTION": "打出时获得 #b耗能 点诗意"
+  },
+  {
+    "PROPER_NAME": "酒|卡牌",
+    "NAMES": [
+      "酒牌",
+      "WineCard"
+    ],
+    "DESCRIPTION": "打出时获得 #b3 ${ModID}:酒"
+  },
+  {
+    "PROPER_NAME": "酒|能力",
+    "NAMES": [
+      "酒",
+      "Wine"
+    ],
+    "DESCRIPTION": "造成伤害时增加 #bX 点，然后值减少1"
   },
   {
     "PROPER_NAME": "诗意",

@@ -130,5 +130,10 @@
   "${ModID}:Lonely": {
     "NAME": "孤独",
     "DESCRIPTION": "可被打出。在手牌中时，卡牌打出后耗能增加 1"
+  },
+  "${ModID}:ZhuoJiuChengXin": {
+    "NAME": "浊酒澄心",
+    "DESCRIPTION": "是 ${ModID}:酒牌 NL 获得 !M! 人工制品",
+    "UPGRADE_DESCRIPTION": "是 ${ModID}:酒牌 NL 手牌中每有一张 ${ModID}:酒牌 ，获得 !M! 人工制品"
   }
 }
