@@ -144,6 +144,10 @@
   },
   "${ModID}:ZhiZhan": {
     "NAME": "掷盏",
-    "DESCRIPTION": "造成 !D! 点伤害。 NL 力量和活力在此牌上发挥 !M! 倍效果。",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 力量和活力在此牌上发挥 !M! 倍效果。"
+  },
+  "${ModID}:LinYuanWangShui": {
+    "NAME": "临渊忘水",
+    "DESCRIPTION": "抽 !M! 张牌，回合结束时消耗所有手牌"
   }
 }

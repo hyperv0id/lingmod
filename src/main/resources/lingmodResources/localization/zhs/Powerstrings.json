@@ -53,5 +53,11 @@
     "DESCRIPTIONS": [
       "回合结束后 获得 1 仪式"
     ]
+  },
+  "${ModID}:WangShuiPower": {
+    "NAME": "忘水",
+    "DESCRIPTIONS": [
+      "回合结束后 消耗所有手牌"
+    ]
   }
 }

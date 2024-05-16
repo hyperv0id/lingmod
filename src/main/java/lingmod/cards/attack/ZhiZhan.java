@@ -23,7 +23,7 @@ public class ZhiZhan extends AbstractEasyCard {
 
     public ZhiZhan() {
         super(ID, 2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
-        this.magicNumber = 3;
+        this.baseMagicNumber = 3;
         this.baseDamage = 14;
     }
 
