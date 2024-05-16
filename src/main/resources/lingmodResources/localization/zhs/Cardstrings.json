@@ -125,7 +125,8 @@
   },
   "${ModID}:AltMetamorphosis": {
     "NAME": "羽化",
-    "DESCRIPTION": "向抽牌堆中加入 !M! 张能力牌，这些牌的耗能减少 1 NL 消耗"
+    "DESCRIPTION": "向抽牌堆中加入 !M! 张能力牌，这些牌的耗能减少 1 NL 消耗",
+    "UPGRADE_DESCRIPTION": "向抽牌堆中加入 !M! 张 #b升级过的 能力牌，这些牌的耗能减少 1 NL 消耗"
   },
   "${ModID}:Lonely": {
     "NAME": "孤独",
@@ -140,5 +141,9 @@
     "NAME": "换盏",
     "DESCRIPTION": "选择两张牌，在这场战斗交换二者耗能",
     "UPGRADE_DESCRIPTION": "选择两张牌，交换二者耗能 NL 如果是 ${ModID}:酒牌 ，先将其能耗置为 !M!"
+  },
+  "${ModID}:ZhiZhan": {
+    "NAME": "掷盏",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 力量和活力在此牌上发挥 !M! 倍效果。",
   }
 }

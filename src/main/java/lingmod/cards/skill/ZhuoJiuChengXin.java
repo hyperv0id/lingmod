@@ -12,6 +12,9 @@ import com.megacrit.cardcrawl.powers.ArtifactPower;
 import lingmod.cards.AbstractWineCard;
 import lingmod.util.CustomTags;;
 
+/**
+ * 获得人工制品，升级后获得手牌中 酒牌 数量的人工制品
+ */
 public class ZhuoJiuChengXin extends AbstractWineCard {
     public static final String ID = makeID(ZhuoJiuChengXin.class.getSimpleName());
 

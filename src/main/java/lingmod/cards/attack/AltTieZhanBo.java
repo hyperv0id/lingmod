@@ -33,7 +33,8 @@ public class AltTieZhanBo extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        upgradeBlock(3);upgradeDamage(BASE_DAMAGE_P);
+        upgradeBlock(3);
+        upgradeDamage(BASE_DAMAGE_P);
         upgradeMagicNumber(PA_NUM_P);
     }
 }

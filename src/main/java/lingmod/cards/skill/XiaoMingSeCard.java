@@ -35,7 +35,6 @@ public class XiaoMingSeCard extends AbstractPoetCard {
 
         this.isMagicNumberModified = true;
         this.magicNumber = countPoet(AbstractDungeon.player);
-        this.upgradedMagicNumber = true;
     }
 
     @Override
