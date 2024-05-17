@@ -1,7 +1,8 @@
 package lingmod.cards.skill;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -10,11 +11,6 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import lingmod.cards.AbstractPoetCard;
 import lingmod.powers.PoeticMoodPower;
-
-import java.util.ArrayList;
-import java.util.stream.Collectors;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 笑鸣瑟：每有一种一个敌人或状态牌，获得2点"诗意"。

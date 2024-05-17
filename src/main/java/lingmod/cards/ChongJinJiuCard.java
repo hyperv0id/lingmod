@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import basemod.cardmods.ExhaustMod;
 import basemod.helpers.CardModifierManager;
 import lingmod.cards.mod.MirrorMod;
 import lingmod.powers.DoubleCardPower;

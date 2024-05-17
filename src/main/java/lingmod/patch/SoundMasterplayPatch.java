@@ -4,8 +4,6 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.audio.Sfx;
 import com.megacrit.cardcrawl.audio.SoundMaster;
 import com.megacrit.cardcrawl.core.Settings;
-import lingmod.ModCore;
-
 import java.util.HashMap;
 
 import static lingmod.ModCore.makeVoicePath;

@@ -149,5 +149,9 @@
   "${ModID}:LinYuanWangShui": {
     "NAME": "临渊忘水",
     "DESCRIPTION": "抽 !M! 张牌，回合结束时消耗所有手牌"
+  },
+  "${ModID}:DrunkButterfly": {
+    "NAME": "醉蝶",
+    "DESCRIPTION": "造成 !D! 点伤害 NL 如果斩杀，可无视路线1次。 NL (现在可无视 !M! 次)"
   }
 }

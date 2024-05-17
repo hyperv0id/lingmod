@@ -1,6 +1,5 @@
 package lingmod.character;
 
-import basemod.interfaces.AddAudioSubscriber;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;

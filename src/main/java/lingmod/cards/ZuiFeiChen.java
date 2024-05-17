@@ -1,10 +1,9 @@
 package lingmod.cards;
 
-import basemod.helpers.CardModifierManager;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import static lingmod.ModCore.makeID;
 
 public class ZuiFeiChen extends AbstractEasyCard{
 

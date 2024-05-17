@@ -45,7 +45,7 @@ public class MonsterHelper {
             if (!MonsterHelper.isAttackIntent(mo)) return 0;
             int moDamage = basemod.ReflectionHacks.getPrivate(mo, AbstractMonster.class, "intentDmg");
             if (moDamage <= 0) return 0;
-            if (basemod.ReflectionHacks.getPrivate(mo, AbstractMonster.class, "isMultiDmg")) {
+            if ((boolean) basemod.ReflectionHacks.getPrivate(mo, AbstractMonster.class, "isMultiDmg")) {
                 moDamage *= (int) ReflectionHacks.getPrivate(mo, AbstractMonster.class, "intentMultiAmt");
             }
             total += moDamage;
