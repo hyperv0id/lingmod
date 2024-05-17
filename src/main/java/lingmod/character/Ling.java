@@ -5,7 +5,6 @@ import static lingmod.ModCore.SHOULDER1;
 import static lingmod.ModCore.SHOULDER2;
 import static lingmod.ModCore.characterColor;
 import static lingmod.ModCore.makeCharacterPath;
-import static lingmod.ModCore.makeID;
 import static lingmod.ModCore.makeImagePath;
 import static lingmod.character.Ling.Enums.LING_COLOR;
 
@@ -48,7 +47,7 @@ import lingmod.util.TODO;
 public class Ling extends CustomPlayer
 {
 
-    static final String ID = makeID("ModdedCharacter");
+    static final String ID = "Ling";
     public static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
     static final String[] NAMES = characterStrings.NAMES;
     static final String[] TEXT = characterStrings.TEXT;
