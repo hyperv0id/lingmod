@@ -2,20 +2,23 @@ package lingmod.cards.skill;
 
 import static lingmod.ModCore.makeID;
 
-import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.GrandFinalEffect;
 
 import basemod.abstracts.CustomSavable;
+import lingmod.actions.DrunkAction;
 /**
  * 醉蝶：斩杀时，无视路线
  */
 import lingmod.cards.AbstractEasyCard;
 
-public class DrunkButterfly extends AbstractEasyCard implements CustomSavable<Integer>{
+public class DrunkButterfly extends AbstractEasyCard implements CustomSavable<Integer> {
 
-    protected static int flyCnt = 0; // 
+    protected static int flyCnt = 0; //
 
     public static final String ID = makeID(DrunkButterfly.class.getSimpleName());
 
@@ -38,16 +41,14 @@ public class DrunkButterfly extends AbstractEasyCard implements CustomSavable<In
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        stackFlyCnt_O();
-        addToBot(new DamageAction(m, new DamageInfo(p, damage)));
+        if (Settings.FAST_MODE) {
+            this.addToBot(new VFXAction(new GrandFinalEffect(), 0.5F));
+        } else {
+            this.addToBot(new VFXAction(new GrandFinalEffect(), 0.7F));
+        }
+        addToBot(new DrunkAction(p, m, new DamageInfo(p, damage)));
 
         magicNumber = baseMagicNumber;
-    }
-
-    private void stackFlyCnt_O() {
-        DrunkButterfly.flyCnt++;
-        this.baseMagicNumber = flyCnt;
-        this.isMagicNumberModified = true;
     }
 
     @Override
@@ -69,6 +70,7 @@ public class DrunkButterfly extends AbstractEasyCard implements CustomSavable<In
     public static void pushFlyCnt() {
         DrunkButterfly.flyCnt++;
     }
+
     public static void popFlyCnt() {
         DrunkButterfly.flyCnt--;
     }

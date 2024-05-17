@@ -15,14 +15,12 @@ public class WangShuiPower extends AbstractEasyPower{
     public static final String ID = makeID(CLASS_NAME);
 
     public WangShuiPower(AbstractCreature owner) {
-        super(ID, getName(ID), PowerType.DEBUFF, true, owner, 0);
+        super(ID, getName(ID), PowerType.DEBUFF, false, owner, 0);
     }
 
     @Override
     public void atEndOfTurnPreEndTurnCards(boolean isPlayer) {
         super.atEndOfTurnPreEndTurnCards(isPlayer);
         addToBot(new ExhaustAllAction());
-        // addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
-
 }

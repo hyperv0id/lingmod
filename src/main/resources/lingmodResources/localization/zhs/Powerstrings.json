@@ -59,5 +59,17 @@
     "DESCRIPTIONS": [
       "回合结束后 消耗所有手牌"
     ]
+  },
+  "${ModID}:PoemIsShort": {
+    "NAME": "诗短",
+    "DESCRIPTIONS": [
+      "获得 #b0.%d 伤害减免"
+    ]
+  },
+  "${ModID}:DreamIsEndless": {
+    "NAME": "梦长",
+    "DESCRIPTIONS": [
+      "损失生命时，获得 #b1/%d 缠绕"
+    ]
   }
 }

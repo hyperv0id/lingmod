@@ -60,5 +60,13 @@
       "诗兴"
     ],
     "DESCRIPTION": "叠层作诗，叠满 12 层可以获得一些能力"
+  },
+  {
+    "PROPER_NAME": "缠绕",
+    "NAMES": [
+      "缠绕",
+      "Constricted"
+    ],
+    "DESCRIPTION": "能力，在你的回合结束时，受到 X 点伤害。可被格挡"
   }
 ]

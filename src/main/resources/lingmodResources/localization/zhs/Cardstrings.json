@@ -153,5 +153,9 @@
   "${ModID}:DrunkButterfly": {
     "NAME": "醉蝶",
     "DESCRIPTION": "造成 !D! 点伤害 NL 如果斩杀，可无视路线1次。 NL (现在可无视 !M! 次)"
+  },
+  "${ModID}:ShiDuanMengChang": {
+    "NAME": "诗短梦长",
+    "DESCRIPTION": "本回合受伤减半 NL 本回合损失生命时，其 1/!M!转换为 ${ModID}:缠绕"
   }
 }

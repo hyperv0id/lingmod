@@ -1,7 +1,5 @@
 package lingmod.cards.mod;
 
-import static lingmod.ModCore.logger;
-
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -26,12 +24,10 @@ public class MirrorMod extends AbstractCardModifier {
         if (!AbstractDungeon.player.hand.group.contains(card))
             return;
         // 1. 消耗自己
-        logger.info(card.cardID + " should exhaust---------------");
         addToTop(new ExhaustSpecificCardAction(card, group));
         // 2. 创建复制
         AbstractCard cp = otherCard.makeCopy();
         this.addToTop(new MakeTempCardInHandAction(cp, 1));
-        logger.info("copied " + cp.cardID);
         // 3. 添加Mod
         CardModifierManager.addModifier(cp, new MirrorMod());
     }

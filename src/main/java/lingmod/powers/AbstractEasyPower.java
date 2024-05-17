@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+
 import lingmod.ModCore;
 import lingmod.util.TexLoader;
 
@@ -22,8 +23,11 @@ public abstract class AbstractEasyPower extends AbstractPower {
     public boolean canGoNegative2 = false;
 
     protected String[] DESCRIPTIONS; // 原始DESC是static？？？
+    private boolean isJustApplied;
 
-    public AbstractEasyPower(String ID, String NAME, PowerType powerType, boolean isTurnBased, AbstractCreature owner, int amount) {
+    public AbstractEasyPower(String ID, String NAME, PowerType powerType, boolean isTurnBased, AbstractCreature owner,
+            int amount) {
+        isJustApplied = true; // 本回合施加的能力，如果
         this.ID = ID;
         this.isTurnBased = isTurnBased;
 
@@ -33,15 +37,19 @@ public abstract class AbstractEasyPower extends AbstractPower {
         this.amount = amount;
         this.type = powerType;
 
-        Texture normalTexture = TexLoader.getTexture(ModCore.modID + "Resources/images/powers/" + ID.replaceAll(ModCore.modID + ":", "") + "32.png");
-        Texture hiDefImage = TexLoader.getTexture(ModCore.modID + "Resources/images/powers/" + ID.replaceAll(ModCore.modID + ":", "") + "84.png");
+        Texture normalTexture = TexLoader.getTexture(
+                ModCore.modID + "Resources/images/powers/" + ID.replaceAll(ModCore.modID + ":", "") + "32.png");
+        Texture hiDefImage = TexLoader.getTexture(
+                ModCore.modID + "Resources/images/powers/" + ID.replaceAll(ModCore.modID + ":", "") + "84.png");
         if (hiDefImage != null) {
             region128 = new TextureAtlas.AtlasRegion(hiDefImage, 0, 0, hiDefImage.getWidth(), hiDefImage.getHeight());
             if (normalTexture != null)
-                region48 = new TextureAtlas.AtlasRegion(normalTexture, 0, 0, normalTexture.getWidth(), normalTexture.getHeight());
+                region48 = new TextureAtlas.AtlasRegion(normalTexture, 0, 0, normalTexture.getWidth(),
+                        normalTexture.getHeight());
         } else if (normalTexture != null) {
             this.img = normalTexture;
-            region48 = new TextureAtlas.AtlasRegion(normalTexture, 0, 0, normalTexture.getWidth(), normalTexture.getHeight());
+            region48 = new TextureAtlas.AtlasRegion(normalTexture, 0, 0, normalTexture.getWidth(),
+                    normalTexture.getHeight());
         }
 
         PowerStrings strings = CardCrawlGame.languagePack.getPowerStrings(ID);
@@ -59,11 +67,13 @@ public abstract class AbstractEasyPower extends AbstractPower {
                 c = greenColor2;
             }
 
-            FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, Integer.toString(amount2), x, y + 15.0F * Settings.scale, fontScale, c);
+            FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, Integer.toString(amount2), x,
+                    y + 15.0F * Settings.scale, fontScale, c);
         } else if (amount2 < 0 && canGoNegative2) {
             redColor2.a = c.a;
             c = redColor2;
-            FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, Integer.toString(amount2), x, y + 15.0F * Settings.scale, fontScale, c);
+            FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, Integer.toString(amount2), x,
+                    y + 15.0F * Settings.scale, fontScale, c);
         }
     }
 
@@ -73,12 +83,13 @@ public abstract class AbstractEasyPower extends AbstractPower {
         this.description = I18N.getDesc(this.ID)[0];
     }
 
-    public static class I18N{
-        public static String getName(String ID){
+    public static class I18N {
+        public static String getName(String ID) {
             PowerStrings strings = CardCrawlGame.languagePack.getPowerStrings(ID);
             return strings.NAME;
         }
-        public static String[] getDesc(String ID){
+
+        public static String[] getDesc(String ID) {
             PowerStrings strings = CardCrawlGame.languagePack.getPowerStrings(ID);
             return strings.DESCRIPTIONS;
         }
