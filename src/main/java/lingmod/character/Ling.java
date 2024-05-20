@@ -4,7 +4,9 @@ import static lingmod.ModCore.CORPSE;
 import static lingmod.ModCore.SHOULDER1;
 import static lingmod.ModCore.SHOULDER2;
 import static lingmod.ModCore.characterColor;
+import static lingmod.ModCore.logger;
 import static lingmod.ModCore.makeCharacterPath;
+import static lingmod.ModCore.makeID;
 import static lingmod.ModCore.makeImagePath;
 import static lingmod.character.Ling.Enums.LING_COLOR;
 
@@ -29,6 +31,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.cutscenes.CutscenePanel;
+import com.megacrit.cardcrawl.cutscenes.NeowNarrationScreen;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
@@ -37,6 +40,7 @@ import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 
+import basemod.ReflectionHacks;
 import basemod.abstracts.CustomPlayer;
 import lingmod.cards.ChongJinJiuCard;
 import lingmod.cards.attack.Strike;
@@ -44,8 +48,8 @@ import lingmod.cards.skill.Defend;
 import lingmod.cards.skill.DrunkButterfly;
 import lingmod.relics.LightRelic;
 import lingmod.util.TODO;
-public class Ling extends CustomPlayer
-{
+
+public class Ling extends CustomPlayer {
 
     static final String ID = "Ling";
     public static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
@@ -65,43 +69,50 @@ public class Ling extends CustomPlayer
             makeCharacterPath("ling/orb/layer5d.png"),
     };
 
-    private static final float[] LAYER_SPEED = new float[]{-40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F, -5.0F, 0.0F};
+    private static final float[] LAYER_SPEED = new float[] { -40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F,
+            -5.0F, 0.0F };
 
     public Ling(String name, PlayerClass setClass) {
-        super(name, Ling.Enums.PLAYER_LING, orbTextures, makeCharacterPath("ling/orb/vfx.png"), LAYER_SPEED, null, null);
-        //        super(name, setClass, new CustomEnergyOrb(orbTextures, makeCharacterPath("ling/orb/vfx.png"), null), new SpriterAnimation(
-        //                makeCharacterPath("ling/static.scml")));
+        super(name, Ling.Enums.PLAYER_LING, orbTextures, makeCharacterPath("ling/orb/vfx.png"), LAYER_SPEED, null,
+                null);
+        // super(name, setClass, new CustomEnergyOrb(orbTextures,
+        // makeCharacterPath("ling/orb/vfx.png"), null), new SpriterAnimation(
+        // makeCharacterPath("ling/static.scml")));
         initializeClass(null,
                 SHOULDER1,
                 SHOULDER2,
                 CORPSE,
                 getLoadout(), 20.0F, -10.0F, 166.0F, 327.0F, new EnergyManager(3));
 
-
         dialogX = (drawX + 0.0F * Settings.scale);
         dialogY = (drawY + 240.0F * Settings.scale);
-        //        String charID = "char_2015_dusk";
+        // String charID = "char_2015_dusk";
         String charID = "char_2023_ling";
         String atlasUrl = makeCharacterPath("ling/" + charID + ".atlas");
         String skeletonUrl = makeCharacterPath("ling/" + charID + ".json");
         super.loadAnimation(atlasUrl, skeletonUrl, 1f);
-        //        logger.info("Created character " + name);
+        // logger.info("Created character " + name);
         AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
         e.setTime(e.getEndTime() * MathUtils.random());
         e.setTimeScale(0.8F);
         // TODO: 解耦
         DrunkButterfly.resetFlyCnt();
+        // 替换碎心后尼奥对话
+        CharacterStrings cs = CardCrawlGame.languagePack
+                .getCharacterString(makeID("LingHeartKill"));
+        ReflectionHacks.setPrivateStaticFinal(NeowNarrationScreen.class, "charStrings", cs);
     }
 
     @Override
     protected void loadAnimation(String atlasUrl, String skeletonUrl, float scale) {
         // load animation from .skel rather than .json
-        System.out.println("Loading animation");
+        logger.info("Loading animation");
 
         this.atlas = new TextureAtlas(Gdx.files.internal(atlasUrl));
-        //        SkeletonJson json = new SkeletonJson(this.atlas);
+        // SkeletonJson json = new SkeletonJson(this.atlas);
         if (CardCrawlGame.dungeon != null && AbstractDungeon.player != null) {
-            if (AbstractDungeon.player.hasRelic("PreservedInsect") && !this.isPlayer && AbstractDungeon.getCurrRoom().eliteTrigger) {
+            if (AbstractDungeon.player.hasRelic("PreservedInsect") && !this.isPlayer
+                    && AbstractDungeon.getCurrRoom().eliteTrigger) {
                 scale += 0.3F;
             }
 
@@ -110,7 +121,7 @@ public class Ling extends CustomPlayer
             }
         }
 
-        //        json.setScale(Settings.renderScale / scale);
+        // json.setScale(Settings.renderScale / scale);
         SkeletonBinary skel = new SkeletonBinary(this.atlas);
         skel.setScale(Settings.renderScale / scale);
         SkeletonData skeletonData = skel.readSkeletonData(Gdx.files.internal(skeletonUrl));
@@ -132,8 +143,8 @@ public class Ling extends CustomPlayer
 
     private void playVictoryAnimation() {
         TODO.info("使用基建的Special动画");
-//        String charID = "char_2023_ling";
-//        super.loadAnimation(atlasUrl, skeletonUrl, 1f);
+        // String charID = "char_2023_ling";
+        // super.loadAnimation(atlasUrl, skeletonUrl, 1f);
         this.state.setAnimation(0, "Skill_02", false);
         this.state.addAnimation(0, "Idle", true, 0.0F);
     }
@@ -194,7 +205,6 @@ public class Ling extends CustomPlayer
                 false);
     }
 
-
     @Override
     public String getCustomModeCharacterButtonSoundKey() {
         return "UNLOCK_PING";
@@ -227,7 +237,7 @@ public class Ling extends CustomPlayer
 
     @Override
     public AbstractCard getStartCardForEvent() {
-        System.out.println("YOU NEED TO SET getStartCardForEvent() in your " + getClass().getSimpleName() + " file!");
+        logger.warn("YOU NEED TO SET getStartCardForEvent() in your " + getClass().getSimpleName() + " file!");
         return null;
     }
 
@@ -253,16 +263,14 @@ public class Ling extends CustomPlayer
 
     @Override
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect() {
-        return new AbstractGameAction.AttackEffect[]{
+        return new AbstractGameAction.AttackEffect[] {
                 AbstractGameAction.AttackEffect.FIRE,
                 AbstractGameAction.AttackEffect.BLUNT_HEAVY,
-                AbstractGameAction.AttackEffect.FIRE};
+                AbstractGameAction.AttackEffect.FIRE };
     }
 
     @Override
     public String getSpireHeartText() {
-        // 有全部钥匙：
-        // 没有全部钥匙：
         return TEXT[1];
     }
 
@@ -282,9 +290,7 @@ public class Ling extends CustomPlayer
         return panels;
     }
 
-
     public static class Enums {
-        //TODO: Change these.
         @SpireEnum
         public static AbstractPlayer.PlayerClass PLAYER_LING;
         @SpireEnum(name = "LING_COLOR")

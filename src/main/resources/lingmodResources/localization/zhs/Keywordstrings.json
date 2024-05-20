@@ -68,5 +68,13 @@
       "Constricted"
     ],
     "DESCRIPTION": "能力，在你的回合结束时，受到 X 点伤害。可被格挡"
+  },
+  {
+    "PROPER_NAME": "伤害增加",
+    "NAMES": [
+      "伤害增加",
+      "Increase Damage"
+    ],
+    "DESCRIPTION": "能力，本回合每次被攻击时受到的伤害增加X点"
   }
 ]

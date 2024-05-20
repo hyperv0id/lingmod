@@ -71,5 +71,11 @@
     "DESCRIPTIONS": [
       "损失生命时，获得 #b1/%d 缠绕"
     ]
+  },
+  "${ModID}:IncreaseDamagePower": {
+    "NAME": "伤害增加",
+    "DESCRIPTIONS": [
+      "本回合普通攻击造成的伤害增加 X 点"
+    ]
   }
 }

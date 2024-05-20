@@ -157,5 +157,9 @@
   "${ModID}:ShiDuanMengChang": {
     "NAME": "诗短梦长",
     "DESCRIPTION": "本回合受伤减半 NL 本回合损失生命时，其 1/!M!转换为 ${ModID}:缠绕"
+  },
+  "${ModID}:TianZhui": {
+    "NAME": "天坠",
+    "DESCRIPTION": "造成 !D! 点伤害 !M! 次，记录突破格挡的伤害，获得等量 ${ModID}:伤害增加"
   }
 }
