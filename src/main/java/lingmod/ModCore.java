@@ -5,6 +5,7 @@ import basemod.BaseMod;
 import basemod.abstracts.DynamicVariable;
 import basemod.eventUtil.AddEventParams;
 import basemod.eventUtil.EventUtils;
+import basemod.eventUtil.util.Condition;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
@@ -13,27 +14,22 @@ import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
-import com.megacrit.cardcrawl.audio.TempMusic;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import lingmod.Events.BeansEvent;
+import lingmod.Events.FallingEvent;
 import lingmod.Events.Sui12Event;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.cardvars.AbstractEasyDynamicVariable;
 import lingmod.character.Ling;
 import lingmod.potions.AbstractEasyPotion;
-import lingmod.powers.NellaFantasiaPower;
 import lingmod.relics.AbstractEasyRelic;
 import lingmod.util.ProAudio;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.nio.charset.StandardCharsets;
-
-import static lingmod.character.Ling.Enums.PLAYER_LING;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 @SpireInitializer
@@ -217,9 +213,25 @@ public class ModCore implements
 
     @Override
     public void receivePostInitialize() {
+        Condition allPass = new Condition() {
+            @Override
+            public boolean test() {
+                return true;
+            }
+        };
+
         BaseMod.addEvent(
                 new AddEventParams.Builder(Sui12Event.ID, Sui12Event.class)
                         .eventType(EventUtils.EventType.NORMAL)
+                        .create()
+        );
+        BaseMod.addEvent(
+                new AddEventParams.Builder(FallingEvent.ID, FallingEvent.class)
+                        .playerClass(Ling.Enums.PLAYER_LING)
+                        .overrideEvent(com.megacrit.cardcrawl.events.beyond.Falling.ID)
+                        .bonusCondition(allPass)
+                        .spawnCondition(allPass)
+                        .eventType(EventUtils.EventType.FULL_REPLACE)
                         .create()
         );
         BaseMod.addEvent(
