@@ -10,7 +10,7 @@ public class ZuiFeiChen extends AbstractEasyCard{
     public final static String ID = makeID(ZuiFeiChen.class.getSimpleName());
     public String lastCardDesc = null;
     public ZuiFeiChen() {
-        super(ID, 1, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY);
+        super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         this.exhaust = true;
         this.baseMagicNumber = 1;
         this.initializeDescription();

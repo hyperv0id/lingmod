@@ -1,5 +1,9 @@
 package lingmod.cards.skill;
 
+import static lingmod.ModCore.makeID;
+
+import java.util.ArrayList;
+
 import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.FastDrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -9,17 +13,13 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractPoetCard;
 import lingmod.util.CustomTags;
 
-import java.util.ArrayList;
-
-import static lingmod.ModCore.makeID;
-
 /**
  * 飞花令：丢弃手牌中所有诗，再抽取相同数量的牌
  */
 public class FeiHuaLingCard extends AbstractPoetCard{
     public static final String ID = makeID(FeiHuaLingCard.class.getSimpleName());
     public FeiHuaLingCard(){
-        super(ID, 1, CardType.SKILL, CardRarity.BASIC, CardTarget.SELF);
+        super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
     }
     int upgrade = 0;
 

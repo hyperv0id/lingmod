@@ -19,7 +19,7 @@ public class TranquilityCard extends AbstractEasyCard{
     public static final String ID = makeID(TranquilityCard.class.getSimpleName());
 
     public TranquilityCard() {
-        super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+        super(ID, 1, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY);
         this.baseDamage = 7;
         this.baseMagicNumber = 1;
     }
