@@ -3,6 +3,7 @@ package lingmod.cards.attack;
 import static lingmod.ModCore.makeID;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -69,6 +70,8 @@ public class ZhiZhan extends AbstractEasyCard {
             this.addToBot(
                     new VFXAction(new VerticalImpactEffect(m.hb.cX + m.hb.width / 4.0F, m.hb.cY - m.hb.height / 4.0F)));
         }
+
+        addToBot(new TalkAction(true, this.cardStrings.EXTENDED_DESCRIPTION[0], 2F, 2F));
 
         this.addToBot(
                 new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AttackEffect.BLUNT_HEAVY));

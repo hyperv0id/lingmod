@@ -12,8 +12,8 @@ import lingmod.cards.AbstractEasyCard;
 /**
  * 清平：打5，下次增加3点,升级后打8增加5点。是fibonacci数列
  */
-public class Tranquility extends AbstractEasyCard{
-    public static final String ID = makeID(Tranquility.class.getSimpleName());
+public class FibnarcciCard extends AbstractEasyCard{
+    public static final String ID = makeID(FibnarcciCard.class.getSimpleName());
 
     public static final int COST = 1;
 
@@ -22,7 +22,7 @@ public class Tranquility extends AbstractEasyCard{
     public static final int F3 = 2;
 
 
-    public Tranquility() {
+    public FibnarcciCard() {
         super(ID, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         this.baseDamage = F3;
         this.baseSecondDamage = F2;

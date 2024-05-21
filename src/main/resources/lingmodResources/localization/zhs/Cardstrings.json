@@ -20,7 +20,10 @@
   },
   "${ModID}:DingFengBoCard": {
     "NAME": "定风波",
-    "DESCRIPTION": "获得 !B! 格挡"
+    "DESCRIPTION": "获得 !B! 格挡",
+    "EXTENDED_DESCRIPTION": [
+      "一蓑烟雨任平生"
+    ]
   },
   "${ModID}:DrawAndShiv": {
     "NAME": "Draw and Shiv",
@@ -100,7 +103,8 @@
   },
   "${ModID}:XiaoYaoYou": {
     "NAME": "逍遥游",
-    "DESCRIPTION": "是 ${ModID}:诗 . 消耗 NL 获得 ${ModID}:逍遥"
+    "DESCRIPTION": "是 ${ModID}:诗 . 消耗 NL 获得 ${ModID}:逍遥",
+    "EXTENDED_DESCRIPTION":["长河远上,埋骸其下,吾自逍遥"]
   },
   "${ModID}:YuNiao": {
     "NAME": "鱼鸟梦",
@@ -115,13 +119,17 @@
     "DESCRIPTION": "回合结束后获得 !M! 仪式",
     "UPGRADE_DESCRIPTION": "立即获得 1 力量 NL 回合结束后获得 !M! 仪式"
   },
-  "${ModID}:Tranquility": {
+  "${ModID}:TranquilityCard": {
     "NAME": "“清平”",
+    "DESCRIPTION": "造成 !D! 点伤害，消耗时获得 !M! ${ModID}:诗意 "
+  },
+  "${ModID}:FibnarcciCard": {
+    "NAME": "斐波那契?",
     "DESCRIPTION": "造成 !D! 点伤害，下次打出伤害增加 !${ModID}:sd! 点"
   },
   "${ModID}:AltTieZhanBo": {
     "NAME": "铁斩波",
-    "DESCRIPTION": "造成 !D! 点伤害，获得 !M! 层多层护甲"
+    "DESCRIPTION": "造成 !D! 点伤害，获得造成伤害点格挡"
   },
   "${ModID}:AltMetamorphosis": {
     "NAME": "羽化",
@@ -144,7 +152,10 @@
   },
   "${ModID}:ZhiZhan": {
     "NAME": "掷盏",
-    "DESCRIPTION": "造成 !D! 点伤害。 NL 力量和活力在此牌上发挥 !M! 倍效果。"
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 力量和活力在此牌上发挥 !M! 倍效果。",
+    "EXTENDED_DESCRIPTION": [
+      "当年掷盏飞残暮，今宵抔酒对高城。"
+    ]
   },
   "${ModID}:LinYuanWangShui": {
     "NAME": "临渊忘水",
@@ -161,5 +172,9 @@
   "${ModID}:TianZhui": {
     "NAME": "天坠",
     "DESCRIPTION": "造成 !D! 点伤害 !M! 次，记录突破格挡的伤害，获得等量 ${ModID}:伤害增加"
+  },
+  "${ModID}:PeripateticismCard": {
+    "NAME": "“逍遥”",
+    "DESCRIPTION": "造成 !D! 点伤害。如果血量低于一半，那么 消耗 此牌 NL 消耗时抽 !M! 张牌，获得 !M! [E]"
   }
 }

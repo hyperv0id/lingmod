@@ -44,6 +44,7 @@ import basemod.ReflectionHacks;
 import basemod.abstracts.CustomPlayer;
 import lingmod.cards.ChongJinJiuCard;
 import lingmod.cards.attack.Strike;
+import lingmod.cards.attack.TranquilityCard;
 import lingmod.cards.skill.Defend;
 import lingmod.cards.skill.DrunkButterfly;
 import lingmod.relics.LightRelic;
@@ -187,6 +188,7 @@ public class Ling extends CustomPlayer {
             retVal.add(Defend.ID);
         }
         retVal.add(ChongJinJiuCard.ID);
+        retVal.add(TranquilityCard.ID);
         return retVal;
     }
 
