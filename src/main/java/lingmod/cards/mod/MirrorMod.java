@@ -1,5 +1,6 @@
 package lingmod.cards.mod;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -30,6 +31,11 @@ public class MirrorMod extends AbstractCardModifier {
         this.addToTop(new MakeTempCardInHandAction(cp, 1));
         // 3. 添加Mod
         CardModifierManager.addModifier(cp, new MirrorMod());
+    }
+
+    @Override
+    public Color getGlow(AbstractCard card) {
+        return Color.BLUE;
     }
 
     @Override

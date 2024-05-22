@@ -43,6 +43,7 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import basemod.ReflectionHacks;
 import basemod.abstracts.CustomPlayer;
 import lingmod.cards.ChongJinJiuCard;
+import lingmod.cards.aria.JingYeSiCard;
 import lingmod.cards.attack.Strike;
 import lingmod.cards.attack.TranquilityCard;
 import lingmod.cards.skill.Defend;
@@ -189,6 +190,7 @@ public class Ling extends CustomPlayer {
         }
         retVal.add(ChongJinJiuCard.ID);
         retVal.add(TranquilityCard.ID);
+        retVal.add(JingYeSiCard.ID); // 词牌：五言绝句
         return retVal;
     }
 

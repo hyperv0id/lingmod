@@ -104,7 +104,9 @@
   "${ModID}:XiaoYaoYou": {
     "NAME": "逍遥游",
     "DESCRIPTION": "是 ${ModID}:诗 . 消耗 NL 获得 ${ModID}:逍遥",
-    "EXTENDED_DESCRIPTION":["长河远上,埋骸其下,吾自逍遥"]
+    "EXTENDED_DESCRIPTION": [
+      "长河远上,埋骸其下,吾自逍遥"
+    ]
   },
   "${ModID}:YuNiao": {
     "NAME": "鱼鸟梦",
