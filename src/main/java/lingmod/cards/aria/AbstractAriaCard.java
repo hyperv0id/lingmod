@@ -11,6 +11,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.util.CustomTags;
 
+import java.util.ArrayList;
+
 /**
  * 词牌：规定了整场战斗的格调，按照格调打出额外效果
  */
@@ -18,7 +20,9 @@ public abstract class AbstractAriaCard extends AbstractEasyCard {
     public final static String ID = makeID(AbstractAriaCard.class.getSimpleName());
     public CardStrings cardStrings;
     protected boolean isOptionCard = false;
-    public boolean used = false;
+    protected boolean used = false;
+    protected int poeticCost = 0; // 打出需要消耗多少诗意
+    protected int[] costs;
 
     public AbstractAriaCard(String id, int cost, CardType cardType, CardRarity cardRarity, CardTarget cardTarget) {
         super(id, cost, cardType, cardRarity, cardTarget);

@@ -75,7 +75,6 @@ public class ZhiZhan extends AbstractEasyCard {
 
         this.addToBot(
                 new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AttackEffect.BLUNT_HEAVY));
-
     }
 
 }

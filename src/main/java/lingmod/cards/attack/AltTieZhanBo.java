@@ -12,7 +12,7 @@ import lingmod.cards.AbstractEasyCard;
 public class AltTieZhanBo extends AbstractEasyCard {
     public final static String ID = makeID(AltTieZhanBo.class.getSimpleName());
 
-    public final static int BASE_DAMAGE = 15; // 造成伤害
+    public final static int BASE_DAMAGE = 17; // 造成伤害
     public final static int BASE_DAMAGE_P = 5;
 
 
