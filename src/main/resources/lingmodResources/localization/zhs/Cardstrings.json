@@ -178,5 +178,9 @@
   "${ModID}:PeripateticismCard": {
     "NAME": "“逍遥”",
     "DESCRIPTION": "造成 !D! 点伤害。如果血量低于一半，那么 消耗 此牌 NL 消耗时抽 !M! 张牌，获得 !M! [E]"
+  },
+  "${ModID}:Feature_2_Card": {
+    "NAME": "随付笺咏醉屠苏",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 消耗卡牌时升级 NL 还可升级 !M! 次，每次升级增加 !${ModID}:m2! 点伤害，减少 1 点耗能。"
   }
 }

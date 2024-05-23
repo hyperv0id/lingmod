@@ -1,16 +1,16 @@
 package lingmod.relics;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
 import lingmod.character.Ling;
 import lingmod.character.VoiceMaster;
 import lingmod.powers.PoeticMoodPower;
-
-import static lingmod.ModCore.logger;
-import static lingmod.ModCore.makeID;
 
 /**
  * 一盏灯：灯挑夜，箭如雨，大漠飞火
@@ -37,7 +37,6 @@ public class LightRelic extends AbstractEasyRelic {
         AbstractPlayer player = AbstractDungeon.player;
         int level = AbstractDungeon.actNum;
         this.flash();
-        logger.info("诗意等级：" + level);
         addToBot(new ApplyPowerAction(player, player, new PoeticMoodPower(player, 1, level)));
     }
 
