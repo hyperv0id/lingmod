@@ -1,16 +1,17 @@
 package lingmod.powers;
 
+import static lingmod.ModCore.makeID;
+
+import org.apache.logging.log4j.Logger;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
-import lingmod.ModCore;
-import org.apache.logging.log4j.Logger;
 
-import static lingmod.ModCore.makeID;
+import lingmod.ModCore;
 
 /**
  * 逍遥：回合结束后抽牌++
@@ -23,8 +24,10 @@ public class XiaoYaoPower extends AbstractEasyPower {
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.BUFF;
-    private static final boolean TURN_BASED = true; //  是否回合后消失
+    private static final boolean TURN_BASED = true; // 是否回合后消失
     public static final Logger logger = ModCore.logger;
+
+    protected int adder = 1;
 
     public XiaoYaoPower(AbstractCreature owner, int amount) {
         super(POWER_ID, NAME, TYPE, TURN_BASED, owner, amount);
@@ -34,11 +37,32 @@ public class XiaoYaoPower extends AbstractEasyPower {
     @Override
     public void atEndOfTurn(boolean isPlayer) {
         super.atEndOfTurn(isPlayer);
-        if(owner != null) {
-            amount += 1;
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner, owner,
+        if (owner != null) {
+            amount += adder;
+            addToBot(new ApplyPowerAction(owner, owner,
                     new DrawCardNextTurnPower(owner, amount)));
             updateDescription();
+        }
+    }
+
+    @Override
+    public void atStartOfTurn() {
+        super.atStartOfTurn();
+        // 可以扩容
+        if (amount > 5) {
+            int amt = amount - 5;
+            if (amt > 5)
+                amt = 5; // 最多有 10+10 = 15张牌
+            addToBot(new ApplyPowerAction(owner, owner,
+                    new CapacityExpansionPower(owner, amt)));
+        }
+    }
+
+    @Override
+    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
+        // 回合结束后再次增加抽牌数
+        if (power.ID == this.ID) {
+            this.adder++;
         }
     }
 

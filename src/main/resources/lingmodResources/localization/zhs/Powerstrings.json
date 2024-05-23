@@ -13,7 +13,6 @@
       "连续打出相同卡牌时，升级本张牌"
     ]
   },
-
   "${ModID}:PoeticMoodPower": {
     "NAME": "诗兴",
     "DESCRIPTIONS": [
@@ -89,6 +88,12 @@
     "NAME": "随付笺咏醉屠苏",
     "DESCRIPTIONS": [
       "消耗卡牌时升级 #r随付笺咏醉屠苏"
+    ]
+  },
+  "${ModID}:CapacityExpansionPower": {
+    "NAME": "扩容",
+    "DESCRIPTIONS": [
+      "在本回合，手牌上限提高 !M! 张。"
     ]
   }
 }
