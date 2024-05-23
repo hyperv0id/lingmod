@@ -1,14 +1,20 @@
 package lingmod.powers;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.powers.*;
-import lingmod.ModCore;
-import lingmod.character.VoiceMaster;
-import org.apache.logging.log4j.Logger;
-
 import static lingmod.ModCore.makeID;
 import static lingmod.powers.AbstractEasyPower.I18N.getName;
+
+import org.apache.logging.log4j.Logger;
+
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
+import com.megacrit.cardcrawl.powers.BufferPower;
+import com.megacrit.cardcrawl.powers.DexterityPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
+
+import lingmod.ModCore;
+import lingmod.character.VoiceMaster;
 
 /**
  * 诗意
@@ -19,7 +25,7 @@ public class PoeticMoodPower extends AbstractEasyPower {
 
     public static final String CLASS_NAME = PoeticMoodPower.class.getSimpleName();
     public static final String ID = makeID(CLASS_NAME);
-
+    public static int powerGained = 0;
     public static int N_Threshold, N_Dexterity, N_Buffer, N_Artifact, N_Strength;
 
     static {
@@ -39,11 +45,12 @@ public class PoeticMoodPower extends AbstractEasyPower {
 
     public PoeticMoodPower(AbstractCreature owner, int amount) {
         super(ID, getName(ID), TYPE, false, owner, amount);
+        if(amount > powerGained) powerGained = amount;
     }
 
     public PoeticMoodPower(AbstractCreature owner, int amount, int level) {
         super(ID, getName(ID), TYPE, false, owner, amount);
-        //        this.isTwoAmount = true;
+        if(amount > powerGained) powerGained = amount;
         PoeticMoodPower.level = level;
     }
 
@@ -82,8 +89,16 @@ public class PoeticMoodPower extends AbstractEasyPower {
     }
 
     @Override
+    public void onVictory() {
+        // TODO Auto-generated method stub
+        super.onVictory();
+        powerGained = 0;
+    }
+
+    @Override
     public void stackPower(int stackAmount) {
         super.stackPower(stackAmount);
+        powerGained += stackAmount; // 记录
         while (this.amount >= N_Threshold) {
             this.execute();
         }

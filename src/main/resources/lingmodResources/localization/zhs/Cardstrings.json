@@ -182,5 +182,9 @@
   "${ModID}:Feature_2_Card": {
     "NAME": "随付笺咏醉屠苏",
     "DESCRIPTION": "造成 !D! 点伤害。 NL 消耗卡牌时升级 NL 还可升级 !M! 次，每次升级增加 !${ModID}:m2! 点伤害，减少 1 点耗能。"
+  },
+  "${ModID}:AltGuangHui": {
+    "NAME": "光辉ALT",
+    "DESCRIPTION": "造成获得过的 ${ModID}:诗意 总量的伤害 NL (造成 !D! 点伤害)"
   }
 }
