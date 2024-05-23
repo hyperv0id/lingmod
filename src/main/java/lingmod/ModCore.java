@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.localization.KeywordStrings;
+import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.localization.OrbStrings;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -47,6 +48,7 @@ import lingmod.Events.Sui12Event;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.cardvars.AbstractEasyDynamicVariable;
 import lingmod.character.Ling;
+import lingmod.monsters.MonsterSui_7;
 import lingmod.potions.AbstractEasyPotion;
 import lingmod.relics.AbstractEasyRelic;
 import lingmod.util.AriaCardManager;
@@ -210,7 +212,7 @@ public class ModCore implements
         BaseMod.loadCustomStringsFile(EventStrings.class, getStringPathI18N() + "/Eventstrings.json");
 
         BaseMod.loadCustomStringsFile(RunModStrings.class,getStringPathI18N() +  "/Modstrings.json");
-
+        BaseMod.loadCustomStringsFile(MonsterStrings.class, getStringPathI18N() + "/MonsterStrings.json");
         // 词牌单独放置
         BaseMod.loadCustomStringsFile(CardStrings.class,getStringPathI18N() +  "/AriaCardString.json");
         BaseMod.loadCustomStringsFile(KeywordStrings.class,getStringPathI18N() +  "/AriaCardKeywrds.json");
@@ -246,6 +248,11 @@ public class ModCore implements
             }
         };
 
+
+        // 添加怪物
+        BaseMod.addMonster(MonsterSui_7.ID, () -> new MonsterSui_7()); // 绩老七
+        // BaseMod.addMonsterEncounter(TheCity.ID, new MonsterInfo(MonsterSui_7.ID, 0));
+        // 添加事件
         BaseMod.addEvent(
                 new AddEventParams.Builder(Sui12Event.ID, Sui12Event.class)
                         .eventType(EventUtils.EventType.NORMAL)

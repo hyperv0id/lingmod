@@ -3,5 +3,10 @@
         "TEXT" :[
             "交换能量"
         ]
+    },
+    "${ModID}:Sui7DealAction" :{
+        "TEXT" :[
+            "选择牌交易"
+        ]
     }
 }

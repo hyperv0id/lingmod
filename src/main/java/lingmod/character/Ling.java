@@ -202,6 +202,7 @@ public class Ling extends CustomPlayer {
 
     @Override
     public void doCharSelectScreenSelectEffect() {
+        CardCrawlGame.music.unsilenceBGM(); // 沉默BGM
         CardCrawlGame.music.playTempBgmInstantly("寻隐.mp3", true);
         VoiceMaster.getInstance().select();
         CardCrawlGame.sound.playA("UNLOCK_PING", MathUtils.random(-0.2F, 0.2F));
