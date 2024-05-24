@@ -10,7 +10,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import static lingmod.ModCore.makeID;
 
@@ -52,19 +54,29 @@ public class Thunderer extends AbstractEasyCard {
         super.onRetained();
         // 手牌中添加一张 弦惊
         if(!this.canUpgrade()) return; // 最高等级了，不再生成
-        addToBot(new MakeTempCardInHandAction(this.makeCopy()));
+        AbstractCard cp = makeCopy();
+        if(upgraded) cp.upgrade();
+        addToBot(new MakeTempCardInHandAction(cp));
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, null);
         // 找一张 同等级的弦惊 合成
-        for(AbstractCard card: AbstractDungeon.player.hand.group) {
-            if(card!=this && card.cardID.equals(Thunderer.ID) && card.timesUpgraded == this.timesUpgraded) {
-                addToBot(new ExhaustSpecificCardAction(card, AbstractDungeon.player.hand));
-                this.upgrade();
-                break;
-            }
+        List<AbstractCard> cards =
+                AbstractDungeon.player.hand.group.stream().filter(card -> card!=this && card.cardID.equals(Thunderer.ID) && card.timesUpgraded == this.timesUpgraded).collect(Collectors.toList());
+        int nEx = 0;
+        int num = 1;
+        while (nEx+num <= cards.size()) {
+            nEx += num;
+            num <<= 1;
+        }
+        for (int i = 0; i < nEx; i++) {
+            addToBot(new ExhaustSpecificCardAction(cards.get(i), AbstractDungeon.player.hand));
+        }
+        while (num > 1){
+            upgrade();
+            num>>=1;
         }
     }
 }

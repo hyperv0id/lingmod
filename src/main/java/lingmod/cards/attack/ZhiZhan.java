@@ -17,6 +17,9 @@ import com.megacrit.cardcrawl.vfx.combat.VerticalImpactEffect;
 
 import lingmod.cards.AbstractEasyCard;
 
+/**
+ * img from: pixiv_106560931_0
+ */
 public class ZhiZhan extends AbstractEasyCard {
 
     public static final String ID = makeID(ZhiZhan.class.getSimpleName());

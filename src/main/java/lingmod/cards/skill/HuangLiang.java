@@ -21,7 +21,7 @@ public class HuangLiang extends AbstractEasyCard {
     public HuangLiang() {
         super(ID, 1, CardType.SKILL, AbstractCard.CardRarity.SPECIAL, CardTarget.SELF);
         purgeOnUse = true;
-        this.magicNumber = 70; // 获得 70 金币
+        this.baseMagicNumber = 70; // 获得 70 金币
         CardModifierManager.addModifier(this, new DreamMod(1));
     }
 

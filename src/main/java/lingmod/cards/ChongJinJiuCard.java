@@ -27,7 +27,7 @@ public class ChongJinJiuCard extends AbstractPoetCard {
         this(null);
     }
     public ChongJinJiuCard(AbstractCard lastCard) {
-        super(ID, 1, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY);
+        super(ID, 1, CardType.SKILL, CardRarity.BASIC, CardTarget.ENEMY);
         this.lastCard = lastCard;
         this.exhaust = true;
         this.baseMagicNumber = 1;
