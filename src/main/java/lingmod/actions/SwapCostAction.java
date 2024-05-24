@@ -84,7 +84,7 @@ public class SwapCostAction extends AbstractGameAction {
                     AbstractDungeon.player.hand.addToTop(c1);
                     AbstractDungeon.player.hand.addToTop(c2);
                 } else {
-                    logger.warn(this + "SwapCost May Have Bugs");
+                    logger.warn(this + "SwapCost May Occurred Bugs");
                 }
 
                 AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
