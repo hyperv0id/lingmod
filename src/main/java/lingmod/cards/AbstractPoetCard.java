@@ -21,7 +21,7 @@ public abstract class AbstractPoetCard extends AbstractEasyCard{
         cardStrings = CardCrawlGame.languagePack.getCardStrings(id);
         tags.add(CustomTags.POET);
         // 诗类卡牌的 前缀
-        CardStrings cs = CardCrawlGame.languagePack.getCardStrings(AbstractPoetCard.ID);
+        // CardStrings cs = CardCrawlGame.languagePack.getCardStrings(AbstractPoetCard.ID);
     }
 
     @Override

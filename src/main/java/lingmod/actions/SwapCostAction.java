@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
+
 import lingmod.util.CustomTags;
 
 public class SwapCostAction extends AbstractGameAction {
@@ -53,7 +54,7 @@ public class SwapCostAction extends AbstractGameAction {
         } else {
             if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
                 AbstractCard c1 = null, c2 = null;
-                Iterator var1 = AbstractDungeon.handCardSelectScreen.selectedCards.group.iterator();
+                Iterator<AbstractCard> var1 = AbstractDungeon.handCardSelectScreen.selectedCards.group.iterator();
                 if (var1.hasNext()) {
                     c1 = (AbstractCard) var1.next();
                     if (checkWine && c1.hasTag(CustomTags.WINE)) {

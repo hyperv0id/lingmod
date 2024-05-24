@@ -23,7 +23,7 @@ public abstract class AbstractEasyPower extends AbstractPower {
     public boolean canGoNegative2 = false;
 
     protected String[] DESCRIPTIONS; // 原始DESC是static？？？
-    private boolean isJustApplied;
+    protected boolean isJustApplied;
 
     public AbstractEasyPower(String ID, String NAME, PowerType powerType, boolean isTurnBased, AbstractCreature owner,
             int amount) {

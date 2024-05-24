@@ -1,12 +1,13 @@
 package lingmod.patch;
 
+import static lingmod.ModCore.makeVoicePath;
+
+import java.util.HashMap;
+
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.audio.Sfx;
 import com.megacrit.cardcrawl.audio.SoundMaster;
 import com.megacrit.cardcrawl.core.Settings;
-import java.util.HashMap;
-
-import static lingmod.ModCore.makeVoicePath;
 
 @SpirePatch(
     cls = "com.megacrit.cardcrawl.audio.SoundMaster",
@@ -14,7 +15,7 @@ import static lingmod.ModCore.makeVoicePath;
     paramtypes = {"java.lang.String", "boolean"}
 )
 public class SoundMasterplayPatch {
-    public static HashMap<String, Sfx> map = new HashMap();
+    public static HashMap<String, Sfx> map = new HashMap<>();
 
     public SoundMasterplayPatch() {
     }

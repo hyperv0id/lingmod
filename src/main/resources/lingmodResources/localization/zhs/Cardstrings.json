@@ -149,8 +149,8 @@
   },
   "${ModID}:SwapCup": {
     "NAME": "换盏",
-    "DESCRIPTION": "选择两张牌，在这场战斗交换二者耗能",
-    "UPGRADE_DESCRIPTION": "选择两张牌，交换二者耗能 NL 如果是 ${ModID}:酒牌 ，先将其能耗置为 !M!"
+    "DESCRIPTION": "消耗 NL 选择两张牌，在这场战斗交换二者耗能",
+    "UPGRADE_DESCRIPTION": "消耗 NL 选择两张牌，交换二者耗能 NL 如果是 ${ModID}:酒牌 ，先将其能耗置为 !M!"
   },
   "${ModID}:ZhiZhan": {
     "NAME": "掷盏",

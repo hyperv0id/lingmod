@@ -11,8 +11,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.util.CustomTags;
 
-import java.util.ArrayList;
-
 /**
  * 词牌：规定了整场战斗的格调，按照格调打出额外效果
  */

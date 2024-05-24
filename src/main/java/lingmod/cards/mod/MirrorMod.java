@@ -27,7 +27,7 @@ public class MirrorMod extends AbstractCardModifier {
         // 1. 消耗自己
         addToTop(new ExhaustSpecificCardAction(card, group));
         // 2. 创建复制
-        AbstractCard cp = otherCard.makeCopy();
+        AbstractCard cp = otherCard.makeStatEquivalentCopy();
         this.addToTop(new MakeTempCardInHandAction(cp, 1));
         // 3. 添加Mod
         CardModifierManager.addModifier(cp, new MirrorMod());

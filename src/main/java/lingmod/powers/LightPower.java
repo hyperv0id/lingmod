@@ -53,7 +53,7 @@ public class LightPower extends AbstractEasyPower {
     protected void sameIdAction(AbstractCard lastCard, AbstractCard now, UseCardAction action) {
         if (!lastCard.cardID.equals(now.cardID))
             return;
-        AbstractPlayer player = AbstractDungeon.player;
+        // AbstractPlayer player = AbstractDungeon.player;
         this.flash();
         if (lastCard.canUpgrade()) {
             // 升级特效

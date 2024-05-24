@@ -1,14 +1,12 @@
 package lingmod.Events;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import org.apache.logging.log4j.Logger;
+
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.localization.EventStrings;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
+
 import lingmod.ModCore;
-import org.apache.logging.log4j.Logger;
 
 public class BeansEvent extends AbstractImageEvent {
 
@@ -50,10 +48,10 @@ public class BeansEvent extends AbstractImageEvent {
 
     private void mainScreen(int i) {
 
-        float width = (float) Settings.WIDTH / 2;
-        float height = (float)Settings.HEIGHT / 2;
-        AbstractRelic relic = null;
-        AbstractPlayer player = AbstractDungeon.player;
+        // float width = (float) Settings.WIDTH / 2;
+        // float height = (float)Settings.HEIGHT / 2;
+        // AbstractRelic relic = null;
+        // AbstractPlayer player = AbstractDungeon.player;
 
         this.imageEventText.updateBodyText(DESCRIPTIONS[i+1]);
         this.screenNum = 1;

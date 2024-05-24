@@ -1,12 +1,12 @@
 package lingmod.cards.skill;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import lingmod.actions.SwapCostAction;
 import lingmod.cards.AbstractEasyCard;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 换盏：交换两张牌的费用，如果是酒，那么先将其费用变为0
@@ -17,6 +17,7 @@ public class SwapCup extends AbstractEasyCard {
     public SwapCup() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         baseMagicNumber = 0;
+        exhaust = true;
     }
     @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {

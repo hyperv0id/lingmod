@@ -14,7 +14,7 @@ import lingmod.cards.skill.DrunkButterfly;
 @SpirePatch(clz = MapRoomNode.class, method = "wingedIsConnectedTo")
 public class WingedIsConnectedToPatch {
     @SpireInsertPatch(rloc = 0)
-    public static SpireReturn Insert(MapRoomNode _instance, MapRoomNode node) {
+    public static SpireReturn<Boolean> Insert(MapRoomNode _instance, MapRoomNode node) {
         ArrayList<MapEdge> edges = _instance.getEdges();
         Iterator<MapEdge> var3 = edges.iterator();
         MapEdge edge;

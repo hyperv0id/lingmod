@@ -29,11 +29,10 @@ public class DreamIsEndless extends AbstractEasyPower {
     private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.DEBUFF;
     private static final boolean TURN_BASED = false; // 是否回合后消失
     public static final Logger logger = ModCore.logger;
-    private boolean justApplied;
 
     public DreamIsEndless(AbstractCreature owner, int amount) {
         super(POWER_ID, NAME, TYPE, TURN_BASED, owner, amount);
-        this.justApplied = true;
+        this.isJustApplied = true;
     }
 
     @Override

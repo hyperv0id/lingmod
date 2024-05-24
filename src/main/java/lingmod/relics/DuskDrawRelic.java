@@ -1,5 +1,9 @@
 package lingmod.relics;
 
+import static lingmod.ModCore.makeID;
+
+import java.util.ArrayList;
+
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
@@ -8,10 +12,6 @@ import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.Astrolabe;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
-
-import java.util.ArrayList;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 选择 3 张牌变化（概率升级）
@@ -38,7 +38,7 @@ public class DuskDrawRelic extends AbstractEasyRelic{
         if (tmp.group.isEmpty()) {
             this.cardsSelected = true;
         } else {
-            if (tmp.group.size() <= 3) {
+            if (tmp.group.size() <= TRANSFORM_NUM) {
                 this.giveCards(tmp.group);
             } else if (!AbstractDungeon.isScreenUp) {
                 AbstractDungeon.gridSelectScreen.open(tmp, 3, this.DESCRIPTIONS[1] + this.name + LocalizedStrings.PERIOD, false, false, false, false);

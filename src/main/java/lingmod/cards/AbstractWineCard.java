@@ -1,13 +1,14 @@
 package lingmod.cards;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import lingmod.powers.PoeticMoodPower;
 
-import static lingmod.ModCore.makeID;
+import lingmod.powers.PoeticMoodPower;
 
 /**
  * 是酒，打出后获得 3 活力
@@ -20,7 +21,7 @@ public abstract class AbstractWineCard extends AbstractEasyCard{
         super(id, cost, cardType, cardRarity, cardTarget);
         cardStrings = CardCrawlGame.languagePack.getCardStrings(id);
         // 酒类卡牌的 前缀
-        CardStrings cs = CardCrawlGame.languagePack.getCardStrings(AbstractWineCard.ID);
+        // CardStrings cs = CardCrawlGame.languagePack.getCardStrings(AbstractWineCard.ID);
     }
 
     @Override
