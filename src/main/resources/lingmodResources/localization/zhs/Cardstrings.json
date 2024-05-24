@@ -186,5 +186,9 @@
   "${ModID}:AltGuangHui": {
     "NAME": "光辉ALT",
     "DESCRIPTION": "造成获得过的 ${ModID}:诗意 总量的伤害 NL (造成 !D! 点伤害)"
+  },
+  "${ModID}:Thunderer": {
+    "NAME": "“弦惊”",
+    "DESCRIPTION": "造成 !D! 点伤害 NL 回合结束时手牌加入一张 #y弦惊 NL 打出后 消耗 #y同等级弦惊 合成升级"
   }
 }

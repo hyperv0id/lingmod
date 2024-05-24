@@ -28,7 +28,7 @@ public abstract class AbstractAriaCard extends AbstractEasyCard {
         tags.add(CustomTags.ARIA);
 
         this.dontTriggerOnUseCard = true; // 使用时不触发XX检查
-        this.retain = true; // 保留
+        this.selfRetain = true; // 保留
 
         CardStrings acs = CardCrawlGame.languagePack.getCardStrings(ID);
         this.cantUseMessage = acs.EXTENDED_DESCRIPTION[0];
