@@ -190,5 +190,31 @@
   "${ModID}:Thunderer": {
     "NAME": "“弦惊”",
     "DESCRIPTION": "造成 !D! 点伤害 NL 回合结束时手牌加入一张 弦惊 NL 打出后 消耗 尽可能多的同等级弦惊 合成升级"
+  },
+  "${ModID}:Whoami_Shuo": {
+    "NAME": "我无",
+    "DESCRIPTION": "打出攻击牌 !M! 次后，下一张攻击牌将打出两次"
+  },
+  "${ModID}:Whoami_Wang": {
+    "NAME": "无我",
+    "DESCRIPTION": "失去 !M! 点生命值，生成一个黄铜镜"
+  },
+  "${ModID}:Whoami_Ling": {
+    "NAME": "无怖",
+    "DESCRIPTION": "免疫敌人的异常 NL 得到来自己方的异常时移除此能力"
+  },
+  "${ModID}:Whoami_Nian": {
+    "NAME": "无悲",
+    "DESCRIPTION": "获得 !M! 缓冲，每打出一张攻击牌，失去 1 缓冲",
+    "EXTENDED_DESCRIPTION": [
+      "一把设计古朴的匕首。据说只要用来从事谋杀之类的事业，匕首的锋刃就会消失。"
+    ]
+  },
+  "${ModID}:Whoami_Dusk": {
+    "NAME": "无喜",
+    "DESCRIPTION": "选择一个非领袖敌人，使其失去 50%生命，并生成一个 墨魉",
+    "EXTENDED_DESCRIPTION": [
+      "一支看似无奇的毛笔。夕的笔，可生万物，也可生笔，用的时候要留神一点。"
+    ]
   }
 }

@@ -43,8 +43,8 @@ import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.OnStartBattleSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 import lingmod.Events.BeansEvent;
-import lingmod.Events.FallingEvent;
 import lingmod.Events.Sui12Event;
+import lingmod.Events.WhoamiEvent;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.cardvars.AbstractEasyDynamicVariable;
 import lingmod.character.Ling;
@@ -252,24 +252,29 @@ public class ModCore implements
         // 添加怪物
         BaseMod.addMonster(MonsterSui_7.ID, () -> new MonsterSui_7()); // 绩老七
         // BaseMod.addMonsterEncounter(TheCity.ID, new MonsterInfo(MonsterSui_7.ID, 0));
+        BaseMod.addEvent(
+            new AddEventParams.Builder(WhoamiEvent.ID, WhoamiEvent.class)
+            .eventType(EventUtils.EventType.ONE_TIME)
+        .create());
         // 添加事件
         BaseMod.addEvent(
                 new AddEventParams.Builder(Sui12Event.ID, Sui12Event.class)
-                        .eventType(EventUtils.EventType.NORMAL)
+                        .eventType(EventUtils.EventType.ONE_TIME)
                         .create()
         );
-        BaseMod.addEvent(
-                new AddEventParams.Builder(FallingEvent.ID, FallingEvent.class)
-                        .playerClass(Ling.Enums.PLAYER_LING)
-                        .overrideEvent(com.megacrit.cardcrawl.events.beyond.Falling.ID)
-                        .bonusCondition(allPass)
-                        .spawnCondition(allPass)
-                        .eventType(EventUtils.EventType.FULL_REPLACE)
-                        .create()
-        );
+        // TODO: 回到本层最底端逻辑没写
+        // BaseMod.addEvent(
+        //         new AddEventParams.Builder(FallingEvent.ID, FallingEvent.class)
+        //                 .playerClass(Ling.Enums.PLAYER_LING)
+        //                 .overrideEvent(com.megacrit.cardcrawl.events.beyond.Falling.ID)
+        //                 .bonusCondition(allPass)
+        //                 .spawnCondition(allPass)
+        //                 .eventType(EventUtils.EventType.FULL_REPLACE)
+        //                 .create()
+        // );
         BaseMod.addEvent(
                 new AddEventParams.Builder(BeansEvent.ID, BeansEvent.class)
-                        .eventType(EventUtils.EventType.NORMAL)
+                        .eventType(EventUtils.EventType.ONE_TIME)
                         .create()
         );
     }

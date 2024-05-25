@@ -95,5 +95,24 @@
     "DESCRIPTIONS": [
       "在本回合，手牌上限提高 !M! 张。"
     ]
+  },
+  "${ModID}:NoDebuffFromOther": {
+    "NAME": "无怖",
+    "DESCRIPTIONS": [
+      "你不会被敌人DEBUFF到，被自己DEBUFF到时，失去此能力"
+    ]
+  },
+  "${ModID}:Whoami_NianPower": {
+    "NAME": "无悲",
+    "DESCRIPTIONS": [
+      "打出攻击牌时，失去缓冲"
+    ]
+  },
+  "${ModID}:Whoami_ShuoPower": {
+    "NAME": "我无",
+    "DESCRIPTIONS": [
+      "打出 #r",
+      "张攻击牌后获得 双发"
+    ]
   }
 }
