@@ -54,7 +54,7 @@ import lingmod.relics.AbstractEasyRelic;
 import lingmod.util.AriaCardManager;
 import lingmod.util.ProAudio;
 
-@SuppressWarnings({"unused", "WeakerAccess"})
+@SuppressWarnings({ "unused", "WeakerAccess" })
 @SpireInitializer
 public class ModCore implements
         EditCardsSubscriber,
@@ -68,13 +68,17 @@ public class ModCore implements
 
     public static final String modID = "lingmod";
     public static final String resourceRoot = modID + "Resources";
-    public static final Logger logger = LogManager.getLogger(modID); //Used to output to the console.
+    public static final Logger logger = LogManager.getLogger(modID); // Used to output to the console.
 
     public static String makeID(String idText) {
         return modID + ":" + idText;
     }
 
-    public static Color characterColor = new Color(MathUtils.random(), MathUtils.random(), MathUtils.random(), 1); // This should be changed eventually
+    public static Color characterColor = new Color(MathUtils.random(), MathUtils.random(), MathUtils.random(), 1); // This
+                                                                                                                   // should
+                                                                                                                   // be
+                                                                                                                   // changed
+                                                                                                                   // eventually
 
     public static final String SHOULDER1 = makeCharacterPath("ling/shoulder.png");
     public static final String SHOULDER2 = makeCharacterPath("ling/shoulder2.png");
@@ -97,9 +101,9 @@ public class ModCore implements
 
     private static String getLangString() {
         // for (Settings.GameLanguage lang : SupportedLanguages) {
-        //     if (lang.equals(Settings.language)) {
-        //         return Settings.language.name().toLowerCase();
-        //     }
+        // if (lang.equals(Settings.language)) {
+        // return Settings.language.name().toLowerCase();
+        // }
         // }
         return "zhs";
     }
@@ -130,24 +134,25 @@ public class ModCore implements
         return modID + "Resources/images/powers/" + resourcePath;
     }
 
-    public static String makeCharacterPath(String resourcePath)
-    {
+    public static String makeCharacterPath(String resourcePath) {
         return modID + "Resources/images/char/" + resourcePath;
     }
 
     public static String makeCardPath(String resourcePath) {
         return modID + "Resources/images/cards/" + resourcePath;
     }
+
     public static String makeVoicePath(String resourcePath) {
         return modID + "Resources/audio/voice/" + resourcePath; // 语音路径
     }
+
     public static String makeMusicPath(String resourcePath) {
         return modID + "Resources/audio/music/" + resourcePath; // 背景音乐路径
     }
+
     public static String makeSFXPath(String resourcePath) {
         return modID + "Resources/audio/sfx/" + resourcePath; // 音效路径
     }
-
 
     public static void initialize() {
         ModCore thismod = new ModCore();
@@ -156,16 +161,18 @@ public class ModCore implements
     @Override
     public void receiveEditCharacters() {
         BaseMod.addCharacter(new Ling(Ling.characterStrings.NAMES[1], Ling.Enums.PLAYER_LING),
-            CHARSELECT_BUTTON, CHARSELECT_PORTRAIT, Ling.Enums.PLAYER_LING);
-        
+                CHARSELECT_BUTTON, CHARSELECT_PORTRAIT, Ling.Enums.PLAYER_LING);
+
         new AutoAdd(modID)
-            .packageFilter(AbstractEasyPotion.class)
-            .any(AbstractEasyPotion.class, (info, potion) -> {
-                if (potion.pool == null)
-                    BaseMod.addPotion(potion.getClass(), potion.liquidColor, potion.hybridColor, potion.spotsColor, potion.ID);
-                else
-                    BaseMod.addPotion(potion.getClass(), potion.liquidColor, potion.hybridColor, potion.spotsColor, potion.ID, potion.pool);
-            });
+                .packageFilter(AbstractEasyPotion.class)
+                .any(AbstractEasyPotion.class, (info, potion) -> {
+                    if (potion.pool == null)
+                        BaseMod.addPotion(potion.getClass(), potion.liquidColor, potion.hybridColor, potion.spotsColor,
+                                potion.ID);
+                    else
+                        BaseMod.addPotion(potion.getClass(), potion.liquidColor, potion.hybridColor, potion.spotsColor,
+                                potion.ID, potion.pool);
+                });
     }
 
     @Override
@@ -187,9 +194,8 @@ public class ModCore implements
     @Override
     public void receiveEditCards() {
         new AutoAdd(modID)
-            .packageFilter(AbstractEasyDynamicVariable.class)
-            .any(DynamicVariable.class, (info, var) -> 
-                BaseMod.addDynamicVariable(var));
+                .packageFilter(AbstractEasyDynamicVariable.class)
+                .any(DynamicVariable.class, (info, var) -> BaseMod.addDynamicVariable(var));
         new AutoAdd(modID)
                 .packageFilter(AbstractEasyCard.class)
                 .setDefaultSeen(true)
@@ -199,6 +205,7 @@ public class ModCore implements
     public static String getStringPathI18N() {
         return modID + "Resources/localization/" + getLangString();
     }
+
     @Override
     public void receiveEditStrings() {
         BaseMod.loadCustomStringsFile(CardStrings.class, getStringPathI18N() + "/Cardstrings.json");
@@ -210,12 +217,11 @@ public class ModCore implements
         BaseMod.loadCustomStringsFile(StanceStrings.class, getStringPathI18N() + "/Stancestrings.json");
         BaseMod.loadCustomStringsFile(PotionStrings.class, getStringPathI18N() + "/Potionstrings.json");
         BaseMod.loadCustomStringsFile(EventStrings.class, getStringPathI18N() + "/Eventstrings.json");
-
-        BaseMod.loadCustomStringsFile(RunModStrings.class,getStringPathI18N() +  "/Modstrings.json");
+        BaseMod.loadCustomStringsFile(RunModStrings.class, getStringPathI18N() + "/Modstrings.json");
         BaseMod.loadCustomStringsFile(MonsterStrings.class, getStringPathI18N() + "/MonsterStrings.json");
         // 词牌单独放置
-        BaseMod.loadCustomStringsFile(CardStrings.class,getStringPathI18N() +  "/AriaCardString.json");
-        BaseMod.loadCustomStringsFile(KeywordStrings.class,getStringPathI18N() +  "/AriaCardKeywrds.json");
+        BaseMod.loadCustomStringsFile(CardStrings.class, getStringPathI18N() + "/AriaCardString.json");
+        BaseMod.loadCustomStringsFile(KeywordStrings.class, getStringPathI18N() + "/AriaCardKeywrds.json");
     }
 
     @Override
@@ -228,9 +234,10 @@ public class ModCore implements
     @Override
     public void receiveEditKeywords() {
         Gson gson = new Gson();
-        String json =
-                Gdx.files.internal(getStringPathI18N() + "/Keywordstrings.json").readString(String.valueOf(StandardCharsets.UTF_8));
-        com.evacipated.cardcrawl.mod.stslib.Keyword[] keywords = gson.fromJson(json, com.evacipated.cardcrawl.mod.stslib.Keyword[].class);
+        String json = Gdx.files.internal(getStringPathI18N() + "/Keywordstrings.json")
+                .readString(String.valueOf(StandardCharsets.UTF_8));
+        com.evacipated.cardcrawl.mod.stslib.Keyword[] keywords = gson.fromJson(json,
+                com.evacipated.cardcrawl.mod.stslib.Keyword[].class);
 
         if (keywords != null) {
             for (Keyword keyword : keywords) {
@@ -248,35 +255,34 @@ public class ModCore implements
             }
         };
 
-
         // 添加怪物
         BaseMod.addMonster(MonsterSui_7.ID, () -> new MonsterSui_7()); // 绩老七
         // BaseMod.addMonsterEncounter(TheCity.ID, new MonsterInfo(MonsterSui_7.ID, 0));
         BaseMod.addEvent(
-            new AddEventParams.Builder(WhoamiEvent.ID, WhoamiEvent.class)
-            .eventType(EventUtils.EventType.ONE_TIME)
-        .create());
+                new AddEventParams.Builder(WhoamiEvent.ID, WhoamiEvent.class)
+                        .eventType(EventUtils.EventType.ONE_TIME)
+                        .create());
         // 添加事件
         BaseMod.addEvent(
                 new AddEventParams.Builder(Sui12Event.ID, Sui12Event.class)
                         .eventType(EventUtils.EventType.ONE_TIME)
-                        .create()
-        );
+                        .create());
         // TODO: 回到本层最底端逻辑没写
         // BaseMod.addEvent(
-        //         new AddEventParams.Builder(FallingEvent.ID, FallingEvent.class)
-        //                 .playerClass(Ling.Enums.PLAYER_LING)
-        //                 .overrideEvent(com.megacrit.cardcrawl.events.beyond.Falling.ID)
-        //                 .bonusCondition(allPass)
-        //                 .spawnCondition(allPass)
-        //                 .eventType(EventUtils.EventType.FULL_REPLACE)
-        //                 .create()
+        // new AddEventParams.Builder(FallingEvent.ID, FallingEvent.class)
+        // .playerClass(Ling.Enums.PLAYER_LING)
+        // .overrideEvent(com.megacrit.cardcrawl.events.beyond.Falling.ID)
+        // .bonusCondition(allPass)
+        // .spawnCondition(allPass)
+        // .eventType(EventUtils.EventType.FULL_REPLACE)
+        // .create()
         // );
         BaseMod.addEvent(
                 new AddEventParams.Builder(BeansEvent.ID, BeansEvent.class)
                         .eventType(EventUtils.EventType.ONE_TIME)
-                        .create()
-        );
+                        .create());
+        
+        
     }
 
     @Override

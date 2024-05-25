@@ -1,47 +1,40 @@
 package lingmod.powers;
 
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import lingmod.actions.NellaFantasiaAction;
-
 import static lingmod.ModCore.makeID;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.beyond.Transient;
+import com.megacrit.cardcrawl.powers.GainStrengthPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
+
 /**
- * 幻梦：回合开始抽的牌无消耗
+ * 幻梦/梦境：造成伤害时，使其失去 1 临时力量
  */
 public class NellaFantasiaPower extends AbstractEasyPower {
     public static final String CLASS_NAME = NellaFantasiaPower.class.getSimpleName();
     public static final String ID = makeID(CLASS_NAME);
 
-    public NellaFantasiaPower(AbstractPlayer player, int amount) {
-        super(ID, CLASS_NAME, PowerType.BUFF, true, player, amount);
+    public NellaFantasiaPower(AbstractCreature owner) {
+        super(ID, CLASS_NAME, PowerType.DEBUFF, true, owner, 0);
     }
 
     @Override
-    public void atStartOfTurnPostDraw() {
-        addToBot(new NellaFantasiaAction(AbstractDungeon.player));
-    }
-
-    protected void trigger() {
-        this.flash();
-        for(AbstractCard c: AbstractDungeon.player.hand.group){
-            c.costForTurn = 0;
-            c.isCostModifiedForTurn= true;
-        }
-        AbstractDungeon.player.hand.refreshHandLayout();
+    public void wasHPLost(DamageInfo info, int damageAmount) {
+        // 失去1力量
+        super.wasHPLost(info, damageAmount);
+        Transient t;
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner, owner, new StrengthPower(owner, -1)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner,
+                owner, new GainStrengthPower(owner, 1)));
     }
 
     @Override
     public void atEndOfTurn(boolean isPlayer) {
-        if(isPlayer) {
-            //
-            AbstractPlayer player = AbstractDungeon.player;
-            addToBot(new RemoveSpecificPowerAction(player, player, this));
-        } else {
-            // 恢复一半生命值
-        }
+        addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
 
     @Override

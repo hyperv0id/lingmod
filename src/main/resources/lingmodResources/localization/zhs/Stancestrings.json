@@ -1,9 +1,9 @@
 {
-  "XiaoYaoForm": {
-    "STANCE_ID": "XiaoYaoForm",
-    "NAME": "逍遥形态",
+  "${ModID}:NellaFantasiaStance": {
+    "STANCE_ID": "NellaFantasiaStance",
+    "NAME": "梦境",
     "DESCRIPTION": [
-      "每回合额外获得 #b1 抽牌数，退出后重置"
+      "全体受到伤害时，使其失去1力量1回合。回合结束后自动退出此姿态"
     ]
   }
 }

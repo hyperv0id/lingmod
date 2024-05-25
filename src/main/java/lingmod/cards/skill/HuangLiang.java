@@ -1,28 +1,27 @@
 package lingmod.cards.skill;
 
-import basemod.helpers.CardModifierManager;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.GainPennyEffect;
 
-import lingmod.cards.AbstractEasyCard;
-import lingmod.cards.mod.DreamMod;
-
-import static lingmod.ModCore.makeID;
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
+import lingmod.cards.AbstractNellaFantasiaCard;
 
 /**
  * 黄粱一梦：获得 70 金币
  */
-public class HuangLiang extends AbstractEasyCard {
+public class HuangLiang extends AbstractNellaFantasiaCard {
 
     public static final String ID = makeID(HuangLiang.class.getSimpleName());
     public HuangLiang() {
         super(ID, 1, CardType.SKILL, AbstractCard.CardRarity.SPECIAL, CardTarget.SELF);
-        purgeOnUse = true;
         this.baseMagicNumber = 70; // 获得 70 金币
-        CardModifierManager.addModifier(this, new DreamMod(1));
+        CardModifierManager.addModifier(this, new ExhaustMod());
     }
 
     @Override
@@ -36,7 +35,7 @@ public class HuangLiang extends AbstractEasyCard {
     }
 
     @Override
-    public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
+    public void use_n(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
         AbstractDungeon.effectList
                 .add(new GainPennyEffect(current_x, current_y));
         AbstractDungeon.player.gainGold(magicNumber);

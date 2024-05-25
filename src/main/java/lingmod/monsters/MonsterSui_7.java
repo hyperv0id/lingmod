@@ -78,7 +78,7 @@ public class MonsterSui_7 extends CustomMonster {
             case 1:
                 addToBot(new TalkAction(this, DIALOGS[2], 0.5F, 2.0F));
                 addToBot(new DamageAction(p, info, AttackEffect.FIRE));
-                addToBot(new ApplyPowerAction(p, this, new ConstrictedPower(p, this, info.base)));
+                addToBot(new ApplyPowerAction(p, this, new ConstrictedPower(p, this, info.output)));
                 break;
             default:
                 break;

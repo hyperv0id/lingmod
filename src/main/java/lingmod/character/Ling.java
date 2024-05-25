@@ -43,7 +43,6 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import basemod.ReflectionHacks;
 import basemod.abstracts.CustomPlayer;
 import lingmod.cards.ChongJinJiuCard;
-import lingmod.cards.aria.JingYeSiCard;
 import lingmod.cards.attack.Strike;
 import lingmod.cards.attack.TranquilityCard;
 import lingmod.cards.skill.Defend;

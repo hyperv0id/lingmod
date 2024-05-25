@@ -32,13 +32,13 @@
   "${ModID}:TiaoDengWenMengPower": {
     "NAME": "挑灯问梦",
     "DESCRIPTIONS": [
-      "下回合进入 ${ModID}:幻梦形态"
+      "下回合进入 ${ModID}:梦境"
     ]
   },
   "${ModID}:NellaFantasiaPower": {
-    "NAME": "幻梦",
+    "NAME": "梦境",
     "DESCRIPTIONS": [
-      "每回合初始手牌无消耗，但敌人在回合后恢复一半血量"
+      "受到伤害时失去 1 临时力量"
     ]
   },
   "${ModID}:XiaoYaoPower": {

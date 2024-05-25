@@ -1,17 +1,18 @@
 package lingmod.relics;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import static lingmod.ModCore.makeID;
 
 /**
- * 小血瓶：格挡可用于下一场战斗
+ * 国王的护戒：格挡可用于下一场战斗
  */
-public class AltXiaoXuePing extends AbstractEasyRelic {
-    public static final String ID = makeID(AltXiaoXuePing.class.getSimpleName());
+public class GuardianRingOfKing extends KingRelic {
+    public static final String ID = makeID(GuardianRingOfKing.class.getSimpleName());
 
-    public AltXiaoXuePing() {
+    public GuardianRingOfKing() {
         super(ID, RelicTier.SPECIAL, LandingSound.FLAT);
     }
 
@@ -26,6 +27,8 @@ public class AltXiaoXuePing extends AbstractEasyRelic {
     public void atBattleStart() {
         super.atBattleStart();
         addToBot(new GainBlockAction(AbstractDungeon.player, this.counter));
+        if(checkDoExtra()) 
+            addToBot(new GainBlockAction(AbstractDungeon.player, 5));
         this.counter = 0;
     }
 }
