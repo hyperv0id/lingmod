@@ -219,5 +219,13 @@
     "EXTENDED_DESCRIPTION": [
       "一支看似无奇的毛笔。夕的笔，可生万物，也可生笔，用的时候要留神一点。"
     ]
+  },
+  "${ModID}:BattleHymn": {
+    "NAME": "战歌",
+    "DESCRIPTION": "造成 !D! 点伤害，给予 !M! 层易伤。 NL 如果存在虚弱，那么抽 !M! 张牌"
+  },
+  "${ModID}:Lament": {
+    "NAME": "悲词",
+    "DESCRIPTION": "造成 !D! 点伤害，给予 !M! 层虚弱。 NL 如果存在易伤，那么抽 !M! 张牌"
   }
 }
