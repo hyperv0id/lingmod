@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import lingmod.actions.ExhaustAllAction;
 import lingmod.cards.AbstractPoetCard;
 
 import java.util.ArrayList;
@@ -44,6 +45,7 @@ public class NingZuoWuCard extends AbstractPoetCard {
         for (int i = 0; i < cnt; i++) {
             dmg(m, null);
         }
+        addToBot(new ExhaustAllAction());
         addToBot(new DrawCardAction(cnt));
         addToBot(new RemoveAllPowersAction(AbstractDungeon.player, false));
     }

@@ -6,6 +6,8 @@ import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import basemod.BaseMod;
@@ -18,9 +20,10 @@ import basemod.interfaces.PostPowerApplySubscriber;
 public class NoDebuffFromOther extends AbstractEasyPower implements PostPowerApplySubscriber{
     public static final String POWER_NAME = NoDebuffFromOther.class.getSimpleName();
     public static final String ID = makeID(POWER_NAME);
+    public static final PowerStrings ps = CardCrawlGame.languagePack.getPowerStrings(ID);
 
     public NoDebuffFromOther(AbstractPlayer p) {
-        super(ID, POWER_NAME, PowerType.BUFF, false, p, 0);
+        super(ID,ps.NAME, PowerType.BUFF, false, p, 0);
         BaseMod.subscribe(this);
     }
 
