@@ -45,7 +45,7 @@ public class ChongJinJiuCard extends AbstractPoetCard {
     }
 
     @Override
-    public boolean canPlay(AbstractCard card) {
+    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
         return false;
     }
 

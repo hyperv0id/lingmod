@@ -14,26 +14,21 @@ import lingmod.cards.AbstractEasyCard;
 /**
  * 天坠: 4*2, 记录伤害值，之后的伤害增加X点
  */
-public class TianZhui extends AbstractEasyCard{
+public class TianZhui extends AbstractEasyCard {
     public static final String ID = makeID(TianZhui.class.getSimpleName());
 
     public TianZhui() {
         super(ID, 1, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
-        this.baseDamage = 4;
-        this.baseMagicNumber = 2;
+        this.baseDamage = 8;
     }
 
     @Override
     public void upp() {
-        this.upgradeMagicNumber(1);
+        this.upgradeDamage(3);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (int i = 0; i < this.magicNumber; i++) {
-            calculateCardDamage(m);
-            logger.info("---TianZhui------------Damage: " + damage);
-            addToBot(new TianZhuiAction(m, new DamageInfo(p, damage, DamageType.NORMAL)));
-        }
+        addToBot(new TianZhuiAction(m, new DamageInfo(p, damage, DamageType.NORMAL)));
     }
 }

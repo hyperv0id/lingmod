@@ -2,6 +2,9 @@ package lingmod.powers;
 
 import static lingmod.ModCore.makeID;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.unique.PoisonLoseHpAction;
+import com.megacrit.cardcrawl.powers.PoisonPower;
 import org.apache.logging.log4j.Logger;
 
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -33,8 +36,6 @@ public class IncreaseDamagePower extends AbstractEasyPower {
 
     public IncreaseDamagePower(AbstractCreature owner, int amount, boolean isSourceMonster) {
         super(POWER_ID, NAME, TYPE, TURN_BASED, owner, amount);
-        // VulnerablePower
-
         if (AbstractDungeon.actionManager.turnHasEnded && isSourceMonster) {
             this.justApplied = true;
         }
@@ -44,22 +45,16 @@ public class IncreaseDamagePower extends AbstractEasyPower {
         if (this.justApplied) {
             this.justApplied = false;
         } else {
-            this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, "Vulnerable"));
+            this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
         }
     }
 
     @Override
-    public float atDamageFinalReceive(float damage, DamageType type) {
-        if (type == DamageType.NORMAL) {
-            return damage + this.amount;
-        } else {
-            return damage;
+    public int onAttackedToChangeDamage(DamageInfo info, int dmg) {
+        PoisonPower pp;
+        if (this.amount > 0 && !this.owner.isDeadOrEscaped() && info.type == DamageType.NORMAL) {
+            this.flash();
         }
+        return super.onAttackedToChangeDamage(info, dmg + amount);
     }
-
-    @Override
-    public float atDamageReceive(float damage, DamageInfo.DamageType type) {
-        return damage;
-    }
-
 }

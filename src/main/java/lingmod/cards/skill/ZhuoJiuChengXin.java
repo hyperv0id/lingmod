@@ -2,6 +2,8 @@ package lingmod.cards.skill;
 
 import static lingmod.ModCore.makeID;
 
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -21,6 +23,7 @@ public class ZhuoJiuChengXin extends AbstractWineCard {
     public ZhuoJiuChengXin() {
         super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
         baseMagicNumber = 1; // 获得 1层人工制品
+        CardModifierManager.addModifier(this, new ExhaustMod());
     }
 
     @Override
