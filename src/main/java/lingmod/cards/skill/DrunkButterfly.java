@@ -16,7 +16,7 @@ import lingmod.actions.DrunkAction;
  */
 import lingmod.cards.AbstractEasyCard;
 
-public class DrunkButterfly extends AbstractEasyCard implements CustomSavable<Integer> {
+public class DrunkButterfly extends AbstractEasyCard {
 
     protected static int flyCnt = 0; //
 
@@ -25,12 +25,10 @@ public class DrunkButterfly extends AbstractEasyCard implements CustomSavable<In
     public DrunkButterfly() {
         super(ID, 1, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
         baseDamage = 9;
-        baseMagicNumber = flyCnt; // 可以多少次无视路线
     }
 
     @Override
     public void initializeDescription() {
-        magicNumber = flyCnt;
         super.initializeDescription();
     }
 
@@ -49,33 +47,5 @@ public class DrunkButterfly extends AbstractEasyCard implements CustomSavable<In
         addToBot(new DrunkAction(p, m, new DamageInfo(p, damage)));
 
         magicNumber = baseMagicNumber;
-    }
-
-    @Override
-    public void onLoad(Integer n) {
-        DrunkButterfly.flyCnt = n;
-    }
-
-    @Override
-    public Integer onSave() {
-        return flyCnt;
-    }
-
-    public static boolean canFly() {
-        // FIXME: 需要有pop入口，不然可以一直飞
-        // return DrunkButterfly.flyCnt > 0;
-        return false;
-    }
-
-    public static void pushFlyCnt() {
-        DrunkButterfly.flyCnt++;
-    }
-
-    public static void popFlyCnt() {
-        DrunkButterfly.flyCnt--;
-    }
-
-    public static void resetFlyCnt() {
-        flyCnt = 0;
     }
 }

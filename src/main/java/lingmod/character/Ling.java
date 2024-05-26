@@ -97,7 +97,6 @@ public class Ling extends CustomPlayer {
         e.setTime(e.getEndTime() * MathUtils.random());
         e.setTimeScale(0.8F);
         // TODO: 解耦
-        DrunkButterfly.resetFlyCnt();
         // 替换碎心后尼奥对话
         CharacterStrings cs = CardCrawlGame.languagePack
                 .getCharacterString(makeID("LingHeartKill"));

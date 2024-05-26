@@ -1,11 +1,16 @@
 package lingmod.actions;
 
+import basemod.devcommands.relic.Relic;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.relics.FossilizedHelix;
+import com.megacrit.cardcrawl.relics.WingBoots;
 import lingmod.cards.skill.DrunkButterfly;
 
 /**
@@ -28,7 +33,22 @@ public class DrunkAction extends AbstractGameAction {
             this.target.damage(this.info);
             if ((((AbstractMonster) this.target).isDying || this.target.currentHealth <= 0) && !this.target.halfDead
                     && !this.target.hasPower("Minion")) {
-                DrunkButterfly.pushFlyCnt();
+                if (AbstractDungeon.player.relics.stream().anyMatch(r -> r.relicId.equals(WingBoots.ID))) {
+                    // 有羽翼之靴
+                    AbstractRelic relic =
+                            AbstractDungeon.player.relics.stream().filter(r -> r.relicId.equals(WingBoots.ID)).iterator().next();
+                    if (relic.grayscale) {
+                        relic.grayscale = false;
+                        relic.counter = 0;
+                    }
+                    relic.flash();
+                    relic.counter++;
+                } else {
+                    WingBoots fly = new WingBoots();
+                    fly.counter = 1;
+                    AbstractDungeon.getCurrRoom().addRelicToRewards(fly);
+                    // addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, fly));
+                }
             }
 
             if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {

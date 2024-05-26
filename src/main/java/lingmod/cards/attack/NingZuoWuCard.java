@@ -22,7 +22,7 @@ import java.util.List;
 import static lingmod.ModCore.makeID;
 
 /**
- * 宁作吾：消耗所有手牌，并抽等量牌，然后失去所有能力
+ * 宁作吾：消耗所有手牌，每张打5，并抽等量牌，然后失去所有能力
  * 能力数量参与计数
  */
 public class NingZuoWuCard extends AbstractPoetCard {
@@ -40,7 +40,7 @@ public class NingZuoWuCard extends AbstractPoetCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         super.use(p, m);
         int cnt = AbstractDungeon.player.hand.size();
-        if(upgraded) cnt += AbstractDungeon.player.powers.size();
+        if (upgraded) cnt += AbstractDungeon.player.powers.size();
         for (int i = 0; i < cnt; i++) {
             dmg(m, null);
         }
@@ -50,5 +50,6 @@ public class NingZuoWuCard extends AbstractPoetCard {
 
     @Override
     public void upp() {
+        upgradeDamage(1);
     }
 }

@@ -12,7 +12,10 @@
   "${ModID}:ChongJinJiuCard": {
     "NAME": "重进酒",
     "DESCRIPTION": "是 ${ModID}:诗 . 消耗 NL 视为本回合上张卡牌的复制",
-    "UPGRADE_DESCRIPTION": "是 ${ModID}:诗 . NL 视为本回合上张卡牌的复制"
+    "UPGRADE_DESCRIPTION": "是 ${ModID}:诗 . NL 视为本回合上张卡牌的复制",
+    "EXTENDED_DESCRIPTION": [
+      "没有打出过牌，无法复制"
+    ]
   },
   "${ModID}:Defend": {
     "NAME": "防御",
@@ -103,7 +106,7 @@
   },
   "${ModID}:XiaoYaoYou": {
     "NAME": "逍遥游",
-    "DESCRIPTION": "是 ${ModID}:诗 . 消耗 NL 获得 ${ModID}:逍遥",
+    "DESCRIPTION": "是 ${ModID}:诗 . NL 获得 ${ModID}:逍遥",
     "EXTENDED_DESCRIPTION": [
       "长河远上,埋骸其下,吾自逍遥"
     ]
@@ -135,8 +138,8 @@
   },
   "${ModID}:AltMetamorphosis": {
     "NAME": "羽化",
-    "DESCRIPTION": "向抽牌堆中加入 !M! 张能力牌，这些牌的耗能减少 1 NL 消耗",
-    "UPGRADE_DESCRIPTION": "向抽牌堆中加入 !M! 张 #b升级过的 能力牌，这些牌的耗能减少 1 NL 消耗"
+    "DESCRIPTION": "向抽牌堆中加入 !M! 张能力牌，这些牌的耗能减少 1",
+    "UPGRADE_DESCRIPTION": "向抽牌堆中加入 !M! 张 #b升级过的 能力牌，这些牌的耗能减少 1"
   },
   "${ModID}:Lonely": {
     "NAME": "孤独",
@@ -149,8 +152,8 @@
   },
   "${ModID}:SwapCup": {
     "NAME": "换盏",
-    "DESCRIPTION": "消耗 NL 选择两张牌，在这场战斗交换二者耗能",
-    "UPGRADE_DESCRIPTION": "消耗 NL 选择两张牌，交换二者耗能 NL 如果是 ${ModID}:酒牌 ，先将其能耗置为 !M!"
+    "DESCRIPTION": "选择两张牌，在这场战斗交换二者耗能",
+    "UPGRADE_DESCRIPTION": "选择两张牌，交换二者耗能 NL 如果是 ${ModID}:酒牌 ，先将其能耗置为 !M!"
   },
   "${ModID}:ZhiZhan": {
     "NAME": "掷盏",
@@ -165,7 +168,7 @@
   },
   "${ModID}:DrunkButterfly": {
     "NAME": "醉蝶",
-    "DESCRIPTION": "造成 !D! 点伤害 NL 如果斩杀，可无视路线1次。 NL (现在可无视 !M! 次)"
+    "DESCRIPTION": "造成 !D! 点伤害 NL 如果斩杀，可无视路线1次。"
   },
   "${ModID}:ShiDuanMengChang": {
     "NAME": "诗短梦长",

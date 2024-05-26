@@ -33,6 +33,7 @@ public class ChongJinJiuCard extends AbstractPoetCard {
         this.baseMagicNumber = 1;
         CardModifierManager.addModifier(this, new MirrorMod());
         this.initializeDescription();
+        cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
     }
 
     @Override
@@ -41,6 +42,11 @@ public class ChongJinJiuCard extends AbstractPoetCard {
 
         this.cardsToPreview = AbstractDungeon.actionManager.lastCard;
         lastCard = AbstractDungeon.actionManager.lastCard;
+    }
+
+    @Override
+    public boolean canPlay(AbstractCard card) {
+        return false;
     }
 
     @Override

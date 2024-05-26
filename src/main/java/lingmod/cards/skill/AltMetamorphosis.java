@@ -2,6 +2,8 @@ package lingmod.cards.skill;
 
 import static lingmod.ModCore.makeID;
 
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.common.UpgradeSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -21,7 +23,7 @@ public class AltMetamorphosis extends AbstractEasyCard{
     public AltMetamorphosis() {
         super(ID, 2, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
         baseMagicNumber = 2;
-        exhaust = true;
+        CardModifierManager.addModifier(this, new ExhaustMod());
     }
     
     @Override
