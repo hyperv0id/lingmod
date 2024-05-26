@@ -70,8 +70,8 @@
   },
   "${ModID}:NingZuoWuCard": {
     "NAME": "宁作吾",
-    "DESCRIPTION": "消耗 NL 移除所有能力，每有一种能力，造成 !D! 点伤害",
-    "UPGRADE_DESCRIPTION": "消耗 NL 移除所有能力，消耗手牌所有牌，每点造成 !D! 点伤害"
+    "DESCRIPTION": "消耗所有手牌，每张造成 !D! 伤害，然后抽等量牌。 NL 失去所有能力",
+    "UPGRADE_DESCRIPTION": "消耗所有手牌，每张造成 !D! 伤害，抽等量牌。 NL 失去所有能力，能力参与计数"
   },
   "${ModID}:SelectCardsPlusCardMods": {
     "NAME": "Cool Card Stuff",
