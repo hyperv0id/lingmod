@@ -37,7 +37,7 @@ public class FibnarcciCard extends AbstractEasyCard{
     }
     @Override
     public void upp() {
-        upgradeDamage(F2);
-        upgradeSecondDamage(F1);
+        upgradeDamage(secondDamage);
+        upgradeSecondDamage(damage);
     }
 }

@@ -120,5 +120,11 @@
     "DESCRIPTIONS": [
       "下回合开始时选择 X 张牌丢弃"
     ]
+  },
+  "${ModID}:YuGuoZhuoYingPower": {
+    "NAME": "雨过濯缨",
+    "DESCRIPTIONS": [
+      "受伤时立刻获得等量格挡"
+    ]
   }
 }

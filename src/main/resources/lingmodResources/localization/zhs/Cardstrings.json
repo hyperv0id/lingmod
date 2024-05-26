@@ -230,6 +230,18 @@
   },
   "${ModID}:ShanHeYuanKuo": {
     "NAME": "山河远阔",
-    "DESCRIPTION": "抽 !M! 张牌"
+    "DESCRIPTION": "抽 !M! 张牌，下回合少抽一张牌"
+  },
+  "${ModID}:YuGuoZhuoYing": {
+    "NAME": "雨过濯缨",
+    "DESCRIPTION": "受伤后立刻获得等量格挡"
+  },
+  "${ModID}:SurprisingThunder": {
+    "NAME": "远山惊雷",
+    "DESCRIPTION": "对主目标造成 !D! 伤害，其余造成一半的伤害"
+  },
+  "${ModID}:ChiJiuSui": {
+    "NAME": "辞旧岁",
+    "DESCRIPTION": "交换你的抽牌堆和弃牌堆，洗牌，抽一张牌"
   }
 }

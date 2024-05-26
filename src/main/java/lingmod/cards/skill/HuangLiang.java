@@ -20,18 +20,13 @@ public class HuangLiang extends AbstractNellaFantasiaCard {
     public static final String ID = makeID(HuangLiang.class.getSimpleName());
     public HuangLiang() {
         super(ID, 1, CardType.SKILL, AbstractCard.CardRarity.SPECIAL, CardTarget.SELF);
-        this.baseMagicNumber = 70; // 获得 70 金币
+        this.baseMagicNumber = 15; // 金币数量
         CardModifierManager.addModifier(this, new ExhaustMod());
     }
 
     @Override
-    public boolean canUpgrade() {
-        return false;
-    }
-
-    @Override
     public void upp() {
-
+        upgradeMagicNumber(5);
     }
 
     @Override
