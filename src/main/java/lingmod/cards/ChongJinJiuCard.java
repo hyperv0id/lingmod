@@ -33,7 +33,6 @@ public class ChongJinJiuCard extends AbstractPoemCard {
         this.baseMagicNumber = 1;
         CardModifierManager.addModifier(this, new MirrorMod());
         this.initializeDescription();
-        cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
     }
 
     // @Override

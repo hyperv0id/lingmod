@@ -10,20 +10,19 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.relics.Astrolabe;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 
 /**
- * 选择 3 张牌变化（概率升级）
+ * 选择 2 张牌变化（概率升级）
  * ref：Astrolabe 星盘
  */
-public class DuskDrawRelic extends AbstractEasyRelic{
-    public static final String ID = makeID("DuskDrawRelic");
+public class Beans_DuskRelic extends AbstractEasyRelic {
+    public static final String ID = makeID("Beans_DuskRelic");
 
-    private static final int TRANSFORM_NUM = 3;
+    private static final int TRANSFORM_NUM = 2;
     private boolean cardsSelected = true;
 
-    public  DuskDrawRelic(){
+    public Beans_DuskRelic() {
         super(ID, RelicTier.SPECIAL, LandingSound.CLINK);
     }
 
@@ -31,7 +30,7 @@ public class DuskDrawRelic extends AbstractEasyRelic{
         this.cardsSelected = false;
         CardGroup tmp = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
 
-        for(AbstractCard card : AbstractDungeon.player.masterDeck.getPurgeableCards().group) {
+        for (AbstractCard card : AbstractDungeon.player.masterDeck.getPurgeableCards().group) {
             tmp.addToTop(card);
         }
 
@@ -41,18 +40,20 @@ public class DuskDrawRelic extends AbstractEasyRelic{
             if (tmp.group.size() <= TRANSFORM_NUM) {
                 this.giveCards(tmp.group);
             } else if (!AbstractDungeon.isScreenUp) {
-                AbstractDungeon.gridSelectScreen.open(tmp, 3, this.DESCRIPTIONS[1] + this.name + LocalizedStrings.PERIOD, false, false, false, false);
+                AbstractDungeon.gridSelectScreen.open(tmp, TRANSFORM_NUM,
+                        this.DESCRIPTIONS[1] + this.name + LocalizedStrings.PERIOD, false, false, false, false);
             } else {
                 AbstractDungeon.dynamicBanner.hide();
                 AbstractDungeon.previousScreen = AbstractDungeon.screen;
-                AbstractDungeon.gridSelectScreen.open(tmp, 3, this.DESCRIPTIONS[1] + this.name + LocalizedStrings.PERIOD, false, false, false, false);
+                AbstractDungeon.gridSelectScreen.open(tmp, TRANSFORM_NUM,
+                        this.DESCRIPTIONS[1] + this.name + LocalizedStrings.PERIOD, false, false, false, false);
             }
         }
     }
 
     public void update() {
         super.update();
-        if (!this.cardsSelected && AbstractDungeon.gridSelectScreen.selectedCards.size() == 3) {
+        if (!this.cardsSelected && AbstractDungeon.gridSelectScreen.selectedCards.size() == TRANSFORM_NUM) {
             this.giveCards(AbstractDungeon.gridSelectScreen.selectedCards);
         }
     }
@@ -61,19 +62,20 @@ public class DuskDrawRelic extends AbstractEasyRelic{
         this.cardsSelected = true;
         float displayCount = 0.0F;
 
-        for(AbstractCard card : group) {
+        for (AbstractCard card : group) {
             card.untip();
             card.unhover();
             AbstractDungeon.player.masterDeck.removeCard(card);
             AbstractDungeon.transformCard(card, false, AbstractDungeon.cardRng); // 可以 sl 观星( •̀ ω •́ )✧
-            if (AbstractDungeon.screen != AbstractDungeon.CurrentScreen.TRANSFORM && AbstractDungeon.transformedCard != null) {
+            if (AbstractDungeon.screen != AbstractDungeon.CurrentScreen.TRANSFORM
+                    && AbstractDungeon.transformedCard != null) {
                 AbstractDungeon.topLevelEffectsQueue
                         .add(
                                 new ShowCardAndObtainEffect(
-                                        AbstractDungeon.getTransformedCard(), (float)Settings.WIDTH / 3.0F + displayCount, (float)Settings.HEIGHT / 2.0F, false
-                                )
-                        );
-                displayCount += (float)Settings.WIDTH / 6.0F;
+                                        AbstractDungeon.getTransformedCard(),
+                                        (float) Settings.WIDTH / 3.0F + displayCount, (float) Settings.HEIGHT / 2.0F,
+                                        false));
+                displayCount += (float) Settings.WIDTH / 6.0F;
             }
         }
 
@@ -82,6 +84,6 @@ public class DuskDrawRelic extends AbstractEasyRelic{
     }
 
     public AbstractRelic makeCopy() {
-        return new Astrolabe();
+        return new Beans_DuskRelic();
     }
 }

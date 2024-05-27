@@ -18,8 +18,8 @@ public class ShanHeYuanKuo extends AbstractEasyCard {
 
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
-        addToBot(new DrawCardAction(magicNumber));
         addToBot(new ApplyPowerAction(abstractPlayer, abstractPlayer, new LosePower(abstractPlayer, 1)));
+        addToBot(new DrawCardAction(magicNumber));
     }
 
     @Override

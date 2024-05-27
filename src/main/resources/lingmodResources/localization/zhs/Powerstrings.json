@@ -126,5 +126,11 @@
     "DESCRIPTIONS": [
       "受伤时立刻获得等量格挡"
     ]
+  },
+  "${ModID}:WinePower": {
+    "NAME": "酒",
+    "DESCRIPTIONS": [
+      "每层伤害增加 10%"
+    ]
   }
 }

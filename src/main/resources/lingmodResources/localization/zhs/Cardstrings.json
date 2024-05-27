@@ -219,11 +219,11 @@
   },
   "${ModID}:BattleHymn": {
     "NAME": "战歌",
-    "DESCRIPTION": "造成 !D! 点伤害，给予 !M! 层易伤。 NL 如果存在虚弱，那么抽 !M! 张牌"
+    "DESCRIPTION": "造成 !D! 点伤害，给予 !M! 层易伤。 NL 如果存在易伤，那么抽 !M! 张牌"
   },
   "${ModID}:Lament": {
     "NAME": "悲词",
-    "DESCRIPTION": "造成 !D! 点伤害，给予 !M! 层虚弱。 NL 如果存在易伤，那么抽 !M! 张牌"
+    "DESCRIPTION": "造成 !D! 点伤害，给予 !M! 层虚弱。 NL 如果存在虚弱，那么抽 !M! 张牌"
   },
   "${ModID}:ShanHeYuanKuo": {
     "NAME": "山河远阔",

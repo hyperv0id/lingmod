@@ -20,11 +20,11 @@
       "拾起时回复大量( #b50% )生命，但超出生命上限的部分会 #r倒扣"
     ]
   },
-  "${ModID}:DuskDrawRelic": {
-    "NAME": "一幅画",
+  "${ModID}:Beans_DuskRelic": {
+    "NAME": "墨冰淇淋",
     "FLAVOR": "潦草写就的涂鸦",
     "DESCRIPTIONS": [
-      "拾取时变化 3 张牌",
+      "拾取时变化 2 张牌",
       "选择 2 张牌变化"
     ]
   },
@@ -68,6 +68,27 @@
     "FLAVOR": "黄沙远来三千地，洗罢流年一屈指。",
     "DESCRIPTIONS": [
       "战斗开始时，获得 #r4 诗意"
+    ]
+  },
+  "${ModID}:Beans_NianRelic": {
+    "NAME": "辣椒老妈",
+    "FLAVOR": "罗德岛食堂做的是个锤子菜嘛",
+    "DESCRIPTIONS": [
+      "回合开始时，获得 #r3 活力"
+    ]
+  },
+  "${ModID}:Beans_LingRelic": {
+    "NAME": "酒精冰沙",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "战斗开始时，获得 #r3 酒"
+    ]
+  },
+  "${ModID}:Beans_ShuoRelic": {
+    "NAME": "玉门热干面",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "最大生命值+ #b7 ，右键获得 #b1 力量，战斗战斗胜利以增加次数"
     ]
   }
 }
