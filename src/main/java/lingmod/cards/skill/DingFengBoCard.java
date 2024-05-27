@@ -1,16 +1,16 @@
 package lingmod.cards.skill;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import lingmod.cards.AbstractPoetCard;
-
-import static lingmod.ModCore.makeID;
+import lingmod.cards.AbstractPoemCard;
 
 /**
  * 定风波：获得 10/13 格挡
  */
-public class DingFengBoCard extends AbstractPoetCard{
+public class DingFengBoCard extends AbstractPoemCard {
 
     public final static String CARD_ID = makeID(DingFengBoCard.class.getSimpleName());
 
@@ -26,7 +26,6 @@ public class DingFengBoCard extends AbstractPoetCard{
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        super.use(p, m);
         blck();
     }
 }

@@ -2,38 +2,41 @@ package lingmod.cards.skill;
 
 import static lingmod.ModCore.makeID;
 
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import lingmod.ModCore;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.util.CardHelper;
-import lingmod.util.TODO;
 
 /**
- * 挑灯问梦：随机获得一张梦
+ * 挑灯问梦：随机获得2张梦
  */
 public class TiaoDengWenMengCard extends AbstractEasyCard {
 
 
     public static final String ID = makeID(TiaoDengWenMengCard.class.getSimpleName());
+    
     public TiaoDengWenMengCard(){
         super(ID, 0, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         CardModifierManager.addModifier(this, new ExhaustMod());
+        this.baseMagicNumber = 2;
     }
 
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
-        AbstractCard c = CardHelper.returnTrulyRandomDreamInCombat();
-        if(c == null)
-            ModCore.logger.warn("Cannot found card with tag DREAM");
-        else {
-            if(this.upgraded) c.upgrade();
-            addToBot(new MakeTempCardInHandAction(c));
+        for (int i = 0; i < magicNumber; i++) {
+            AbstractCard c = CardHelper.returnTrulyRandomDreamInCombat();
+            if(c == null)
+                ModCore.logger.warn("Cannot found card with tag DREAM");
+            else {
+                if(this.upgraded) c.upgrade();
+                addToBot(new MakeTempCardInHandAction(c));
+            }
         }
     }
 

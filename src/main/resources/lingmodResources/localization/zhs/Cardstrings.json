@@ -12,10 +12,7 @@
   "${ModID}:ChongJinJiuCard": {
     "NAME": "重进酒",
     "DESCRIPTION": "是 ${ModID}:诗 . 消耗 NL 视为本回合上张卡牌的复制",
-    "UPGRADE_DESCRIPTION": "是 ${ModID}:诗 . NL 视为本回合上张卡牌的复制",
-    "EXTENDED_DESCRIPTION": [
-      "没有打出过牌，无法复制"
-    ]
+    "UPGRADE_DESCRIPTION": "是 ${ModID}:诗 . NL 视为本回合上张卡牌的复制"
   },
   "${ModID}:Defend": {
     "NAME": "防御",
@@ -93,7 +90,7 @@
   },
   "${ModID}:TiaoDengWenMengCard": {
     "NAME": "挑灯问梦",
-    "DESCRIPTION": "随机获得一张 ${ModID}:梦"
+    "DESCRIPTION": "随机获得 !M! 张 ${ModID}:梦"
   },
   "${ModID}:TwoTypesOfDamage": {
     "NAME": "Two Damage Values",

@@ -5,10 +5,10 @@ import static lingmod.ModCore.makeID;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import lingmod.cards.AbstractEasyCard;
+import lingmod.cards.AbstractPoemCard;
 import lingmod.powers.PoeticMoodPower;
 
-public class AltGuangHui extends AbstractEasyCard {
+public class AltGuangHui extends AbstractPoemCard {
     public static final String ID = makeID(AltGuangHui.class.getSimpleName());
 
     public AltGuangHui() {

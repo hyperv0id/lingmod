@@ -1,22 +1,21 @@
 package lingmod.cards;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.DuplicationPower;
 
 import basemod.helpers.CardModifierManager;
 import lingmod.cards.mod.MirrorMod;
-import lingmod.powers.DoubleCardPower;
-import lingmod.util.CardHelper;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 重进酒：打出卡牌时消耗，并替换为其复制
  */
-public class ChongJinJiuCard extends AbstractPoetCard {
+public class ChongJinJiuCard extends AbstractPoemCard {
 
     public final static String ID = makeID(ChongJinJiuCard.class.getSimpleName());
     public String lastCardDesc = null;
@@ -26,6 +25,7 @@ public class ChongJinJiuCard extends AbstractPoetCard {
     public ChongJinJiuCard() {
         this(null);
     }
+
     public ChongJinJiuCard(AbstractCard lastCard) {
         super(ID, 1, CardType.SKILL, CardRarity.BASIC, CardTarget.ENEMY);
         this.lastCard = lastCard;
@@ -36,18 +36,13 @@ public class ChongJinJiuCard extends AbstractPoetCard {
         cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
     }
 
-    @Override
-    public void onPlayCard(AbstractCard c, AbstractMonster m) {
-        super.onPlayCard(c, m);
+    // @Override
+    // public void onPlayCard(AbstractCard c, AbstractMonster m) {
+    //     super.onPlayCard(c, m);
 
-        this.cardsToPreview = AbstractDungeon.actionManager.lastCard;
-        lastCard = AbstractDungeon.actionManager.lastCard;
-    }
-
-    @Override
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        return false;
-    }
+    //     this.cardsToPreview = AbstractDungeon.actionManager.lastCard;
+    //     lastCard = AbstractDungeon.actionManager.lastCard;
+    // }
 
     @Override
     public AbstractCard makeCopy() {
@@ -65,13 +60,7 @@ public class ChongJinJiuCard extends AbstractPoetCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        super.use(p, m);
-        AbstractCard lastCard = CardHelper.lastCard(true);
-        if(lastCard != null) {
-            lastCard.use(p, m);
-        } else {
-            addToBot(new ApplyPowerAction(p, p, new DoubleCardPower(p, 1)));
-        }
+        addToBot(new ApplyPowerAction(p, m, new DuplicationPower(p, 1)));
     }
 
     @Override

@@ -10,13 +10,13 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import lingmod.cards.AbstractPoetCard;
+import lingmod.cards.AbstractPoemCard;
 import lingmod.util.CustomTags;
 
 /**
  * 飞花令：丢弃手牌中所有诗，再抽取相同数量的牌
  */
-public class FeiHuaLingCard extends AbstractPoetCard{
+public class FeiHuaLingCard extends AbstractPoemCard{
     public static final String ID = makeID(FeiHuaLingCard.class.getSimpleName());
     public FeiHuaLingCard(){
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
@@ -29,8 +29,8 @@ public class FeiHuaLingCard extends AbstractPoetCard{
         int times = upgrade - 1; // 不统计自己
         for (AbstractCard c: cards) {
             if(
-                AbstractPoetCard.class.isAssignableFrom(c.getClass()) ||
-                c.hasTag(CustomTags.POET)
+                AbstractPoemCard.class.isAssignableFrom(c.getClass()) ||
+                c.hasTag(CustomTags.POEM)
             ){
                 addToBot(new DiscardSpecificCardAction(c));
                 times++;

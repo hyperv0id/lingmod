@@ -9,13 +9,13 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-import lingmod.cards.AbstractPoetCard;
+import lingmod.cards.AbstractPoemCard;
 import lingmod.powers.PoeticMoodPower;
 
 /**
  * 笑鸣瑟：每有一种一个敌人或状态牌，获得2点"诗意"。
  */
-public class XiaoMingSeCard extends AbstractPoetCard {
+public class XiaoMingSeCard extends AbstractPoemCard {
 
     public static final String ID = makeID(XiaoMingSeCard.class.getSimpleName());
 
@@ -35,15 +35,13 @@ public class XiaoMingSeCard extends AbstractPoetCard {
 
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
-        super.use(player, monster); // 诗类牌：额外获得诗意
         int times = countPoet(player);
         addToBot(new ApplyPowerAction(player, player, new PoeticMoodPower((AbstractCreature) player,
                 times)));
     }
 
-
     // TODO: 作为 卡牌变量使用，而不是函数
-    protected int countPoet(AbstractPlayer player){
+    protected int countPoet(AbstractPlayer player) {
         long times = 0;
         // 统计异常状态
         times += player.powers.stream().filter(p -> p.type == AbstractPower.PowerType.DEBUFF).count();
@@ -52,7 +50,8 @@ public class XiaoMingSeCard extends AbstractPoetCard {
 
         // 统计状态 or 诅咒牌
         if (upgraded) {
-            times += player.hand.group.stream().filter(c -> c.type == CardType.CURSE || c.type == CardType.STATUS).count();
+            times += player.hand.group.stream().filter(c -> c.type == CardType.CURSE || c.type == CardType.STATUS)
+                    .count();
         }
         return (int) times * 2;
     }
