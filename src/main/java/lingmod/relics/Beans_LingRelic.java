@@ -26,5 +26,6 @@ public class Beans_LingRelic extends AbstractEasyRelic {
         this.flash();
         addToBot(new ApplyPowerAction(p, p, new WinePower(p, 3), 3));
         this.addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+        this.grayscale = true;
     }
 }

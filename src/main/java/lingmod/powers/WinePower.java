@@ -33,16 +33,11 @@ public class WinePower extends AbstractEasyPower {
     }
 
     @Override
-    public float atDamageGive(float damage, DamageType type) {
+    public float atDamageFinalGive(float damage, DamageType type) {
         if (type == DamageType.NORMAL && amount > 0) {
             damage *= 1F + 0.1 * amount;
         }
         return damage;
-    }
-    
-    @Override
-    public float atDamageFinalGive(float damage, DamageType type) {
-        return super.atDamageFinalGive(damage, type);
     }
     @Override
     public void onPlayCard(AbstractCard card, AbstractMonster m) {

@@ -1,9 +1,8 @@
 {
-    "${ModID}:DemoPotion": {
-        "NAME": "Awesome Demo Potion",
+    "${ModID}:BottledPawn": {
+        "NAME": "瓶装棋子",
         "DESCRIPTIONS": [
-            "Gain #b",
-            " #yStrength."
+            "在普通房间所有杀死敌人，失去一个药水栏位"
         ]
     }
 }
