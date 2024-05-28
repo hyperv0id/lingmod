@@ -1,8 +1,6 @@
 package lingmod.cards.mod;
 
-import basemod.cardmods.ExhaustMod;
 import com.badlogic.gdx.graphics.Color;
-import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -10,6 +8,7 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 import basemod.abstracts.AbstractCardModifier;
+import basemod.cardmods.ExhaustMod;
 import basemod.helpers.CardModifierManager;
 
 /**

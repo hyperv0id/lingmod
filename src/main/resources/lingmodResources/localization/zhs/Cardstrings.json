@@ -1,9 +1,4 @@
 {
-  "${ModID}:AbstractPoetCard": {
-    "NAME": "[ERROR]",
-    "DESCRIPTION": "[ERROR]",
-    "UPGRADE_DESCRIPTION": "[ERROR]"
-  },
   "${ModID}:AbstractWineCard": {
     "NAME": "[ERROR]",
     "DESCRIPTION": "[ERROR]",
@@ -25,53 +20,15 @@
       "一蓑烟雨任平生"
     ]
   },
-  "${ModID}:DrawAndShiv": {
-    "NAME": "Draw and Shiv",
-    "DESCRIPTION": "Draw 1 card. NL Add 1 *Shiv into your hand."
-  },
-  "${ModID}:EasyModalChoiceDemo": {
-    "NAME": "Easy Modal Choice",
-    "DESCRIPTION": "Choose one: Draw !M! cards or gain !${ModID}:m2! Strength.",
-    "EXTENDED_DESCRIPTION": [
-      "Draw",
-      "Draw ",
-      " cards.",
-      "Strength",
-      "Gain ",
-      " Strength."
-    ]
-  },
-  "${ModID}:EasyXCostDemo": {
-    "NAME": "Easy X Cost",
-    "DESCRIPTION": "{@@}Deal !D! damage X{!M!|>0=+!M!} times. NL Gain X{!M!|>0=+!M!} Strength. NL Exhaust."
-  },
-  "${ModID}:ExampleTwoAmountPowerCard": {
-    "NAME": "Two Amount Power",
-    "DESCRIPTION": "At the start of your turn, gain !M! Strength and !${ModID}:m2! Dexterity."
-  },
   "${ModID}:FeiHuaLingCard": {
     "NAME": "飞花令",
     "DESCRIPTION": "是 ${ModID}:诗 . NL 丢弃手牌中所有 ${ModID}:诗 ，再抽等量牌",
     "UPGRADE_DESCRIPTION": "是 ${ModID}:诗 . NL 丢弃手牌中所有 ${ModID}:诗 ，再抽 量+1 张牌"
   },
-  "${ModID}:InlinePowerDemo": {
-    "NAME": "Inline Power",
-    "DESCRIPTION": "Strikes deal !M! more damage. NL At the end of your turn, gain !M! Block.",
-    "EXTENDED_DESCRIPTION": [
-      "Strike+, Block+",
-      "#yStrikes deal #b",
-      " additional damage. At the end of your turn, gain #b",
-      " #yBlock."
-    ]
-  },
-  "${ModID}:MultiCardPreviewAndDrawCallback": {
-    "NAME": "Previews and Callbacks",
-    "DESCRIPTION": "{@@}Shuffle *Smite{!Upgrades!|>0=+} and *Safety{!Upgrades!|>0=+} into your draw pile. NL Draw 1 card. NL If it's Colorless, deal !D! damage to ALL enemies."
-  },
   "${ModID}:NingZuoWuCard": {
     "NAME": "宁作吾",
-    "DESCRIPTION": "消耗所有手牌，每张造成 !D! 伤害，然后抽等量牌。 NL 失去所有能力",
-    "UPGRADE_DESCRIPTION": "消耗所有手牌，每张造成 !D! 伤害，抽等量牌。 NL 失去所有能力，能力参与计数"
+    "DESCRIPTION": "消耗所有手牌，每张造成 !D! 伤害，然后抽等量牌。 NL 清除所有负面效果",
+    "UPGRADE_DESCRIPTION": "统计手牌和能力数，每个计数造成 !D! 伤害，消耗所有手牌，抽等量牌。 NL 清除所有负面效果"
   },
   "${ModID}:SelectCardsPlusCardMods": {
     "NAME": "Cool Card Stuff",
@@ -240,5 +197,9 @@
   "${ModID}:ChiJiuSui": {
     "NAME": "辞旧岁",
     "DESCRIPTION": "交换你的抽牌堆和弃牌堆，洗牌，抽一张牌"
+  },
+  "${ModID}:AGiftCard": {
+    "NAME": "“礼物”",
+    "DESCRIPTION": "给予所有敌人 !M! 层 虚弱 和 易伤 NL 给予自己 !${ModID}:m2! 层 易伤 和 虚弱 "
   }
 }

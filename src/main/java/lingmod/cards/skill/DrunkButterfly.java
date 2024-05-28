@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.GrandFinalEffect;
 
-import basemod.abstracts.CustomSavable;
 import lingmod.actions.DrunkAction;
 /**
  * 醉蝶：斩杀时，无视路线

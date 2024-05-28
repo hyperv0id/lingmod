@@ -1,6 +1,5 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.logger;
 import static lingmod.ModCore.makeID;
 
 import com.megacrit.cardcrawl.cards.DamageInfo;

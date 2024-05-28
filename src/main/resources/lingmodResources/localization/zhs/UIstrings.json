@@ -8,5 +8,10 @@
         "TEXT" :[
             "选择牌交易"
         ]
+    },
+    "${ModID}:NellaFantasiaMod" :{
+        "TEXT" :[
+            "是 lingmod:梦 。 NL %s"
+        ]
     }
 }

@@ -1,20 +1,20 @@
 package lingmod.cards.attack;
 
-import basemod.cardmods.RetainMod;
-import basemod.helpers.CardModifierManager;
+import static lingmod.ModCore.makeID;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import basemod.cardmods.RetainMod;
+import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
-
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 1费打10，18， 26， 34

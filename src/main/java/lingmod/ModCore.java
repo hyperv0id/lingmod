@@ -42,7 +42,6 @@ import basemod.interfaces.EditRelicsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.OnStartBattleSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
-import lingmod.Events.BeansEvent;
 import lingmod.Events.Sui12Event;
 import lingmod.Events.WhoamiEvent;
 import lingmod.cards.AbstractEasyCard;
@@ -277,10 +276,6 @@ public class ModCore implements
         // .eventType(EventUtils.EventType.FULL_REPLACE)
         // .create()
         // );
-        BaseMod.addEvent(
-                new AddEventParams.Builder(BeansEvent.ID, BeansEvent.class)
-                        .eventType(EventUtils.EventType.ONE_TIME)
-                        .create());
         
         
     }

@@ -2,9 +2,6 @@ package lingmod.powers;
 
 import static lingmod.ModCore.makeID;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.unique.PoisonLoseHpAction;
-import com.megacrit.cardcrawl.powers.PoisonPower;
 import org.apache.logging.log4j.Logger;
 
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -15,6 +12,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.PoisonPower;
 
 import lingmod.ModCore;
 

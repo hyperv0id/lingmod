@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.monsters.beyond.Transient;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
@@ -22,14 +21,14 @@ public class NellaFantasiaPower extends AbstractEasyPower {
     public static final PowerStrings ps = CardCrawlGame.languagePack.getPowerStrings(ID);
 
     public NellaFantasiaPower(AbstractCreature owner) {
-        super(ID, ps.NAME, PowerType.DEBUFF, true, owner, 0);
+        // 不能被人工制品挡
+        super(ID, ps.NAME, null, true, owner, 0);
     }
 
     @Override
     public void wasHPLost(DamageInfo info, int damageAmount) {
         // 失去1力量
         super.wasHPLost(info, damageAmount);
-        Transient t;
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner, owner, new StrengthPower(owner, -1)));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner,
                 owner, new GainStrengthPower(owner, 1)));

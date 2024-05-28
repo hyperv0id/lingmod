@@ -37,7 +37,7 @@ public class NingZuoWuCard extends AbstractPoemCard {
         }
         addToBot(new ExhaustAllAction());
         addToBot(new DrawCardAction(cnt));
-        addToBot(new RemoveAllPowersAction(AbstractDungeon.player, false));
+        addToBot(new RemoveAllPowersAction(AbstractDungeon.player, true));
     }
 
     @Override

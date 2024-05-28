@@ -2,21 +2,16 @@ package lingmod.cards.attack;
 
 import static lingmod.ModCore.makeID;
 
-import basemod.BaseMod;
-import basemod.cardmods.RetainMod;
-import basemod.helpers.CardModifierManager;
-import basemod.interfaces.OnStartBattleSubscriber;
-import basemod.interfaces.PostBattleSubscriber;
-import basemod.interfaces.PostExhaustSubscriber;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import basemod.BaseMod;
+import basemod.cardmods.RetainMod;
+import basemod.helpers.CardModifierManager;
+import basemod.interfaces.PostExhaustSubscriber;
 import lingmod.cards.AbstractEasyCard;
-import lingmod.powers.Feature_2_Power;
 
 /**
  * 随付笺咏醉屠苏: 召唤物被击倒/吸收/回收时令额外获得4(+1)点技力、攻击力+3%（攻击力加成最多叠加5层）
