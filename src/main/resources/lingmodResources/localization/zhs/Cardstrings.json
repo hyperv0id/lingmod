@@ -27,19 +27,8 @@
   },
   "${ModID}:NingZuoWuCard": {
     "NAME": "宁作吾",
-    "DESCRIPTION": "消耗所有手牌，每张造成 !D! 伤害，然后抽等量牌。 NL 清除所有负面效果",
-    "UPGRADE_DESCRIPTION": "统计手牌和能力数，每个计数造成 !D! 伤害，消耗所有手牌，抽等量牌。 NL 清除所有负面效果"
-  },
-  "${ModID}:SelectCardsPlusCardMods": {
-    "NAME": "Cool Card Stuff",
-    "DESCRIPTION": "Choose from 1 of 3 cost 0 cards from any class. NL Add it into your hand. NL It gains Ethereal and Exhaust.",
-    "EXTENDED_DESCRIPTION": [
-      "Choose a card to add into your hand with Ethereal and Exhaust."
-    ]
-  },
-  "${ModID}:StartupBlockCard": {
-    "NAME": "Startup And AOE",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Startup: Gain !M! Block."
+    "DESCRIPTION": "消耗所有手牌，每张造成 !D! 伤害，然后抽等量牌。 NL 将所有能力变为 ${ModID}:诗意 ",
+    "UPGRADE_DESCRIPTION": "统计手牌和能力数，每个计数造成 !D! 伤害，消耗所有手牌，抽等量牌。 NL  将所有能力变为 ${ModID}:诗意 "
   },
   "${ModID}:Strike": {
     "NAME": "打击",
@@ -67,11 +56,11 @@
   },
   "${ModID}:YuNiao": {
     "NAME": "鱼鸟梦",
-    "DESCRIPTION": "是 ${ModID}:梦 . 造成敌人要对你造成的伤害等量的伤害。 NL 造成 !D! 点伤害"
+    "DESCRIPTION": "造成敌人要对你造成的伤害等量的伤害。 NL 造成 !D! 点伤害"
   },
   "${ModID}:HuangLiang": {
     "NAME": "黄粱梦",
-    "DESCRIPTION": "是 ${ModID}:梦 . 获得 !M! 金币"
+    "DESCRIPTION": "获得 !M! 金币"
   },
   "${ModID}:AltDemonForm": {
     "NAME": "恶魔形态",
@@ -81,10 +70,6 @@
   "${ModID}:TranquilityCard": {
     "NAME": "“清平”",
     "DESCRIPTION": "造成 !D! 点伤害，消耗时获得 !M! ${ModID}:诗意 "
-  },
-  "${ModID}:FibnarcciCard": {
-    "NAME": "斐波那契?",
-    "DESCRIPTION": "造成 !D! 点伤害，下次打出伤害增加 !${ModID}:sd! 点"
   },
   "${ModID}:AltTieZhanBo": {
     "NAME": "铁斩波",
@@ -176,11 +161,11 @@
   },
   "${ModID}:BattleHymn": {
     "NAME": "战歌",
-    "DESCRIPTION": "造成 !D! 点伤害，给予 !M! 层易伤。 NL 如果存在易伤，那么抽 !M! 张牌"
+    "DESCRIPTION": "造成 !D! 点伤害，给予 !M! 层易伤。 NL 如果存在易伤，那么抽 !${ModID}:m2! 张牌"
   },
   "${ModID}:Lament": {
     "NAME": "悲词",
-    "DESCRIPTION": "造成 !D! 点伤害，给予 !M! 层虚弱。 NL 如果存在虚弱，那么抽 !M! 张牌"
+    "DESCRIPTION": "造成 !D! 点伤害，给予 !M! 层虚弱。 NL 如果存在虚弱，那么抽 !${ModID}:m2! 张牌"
   },
   "${ModID}:ShanHeYuanKuo": {
     "NAME": "山河远阔",
