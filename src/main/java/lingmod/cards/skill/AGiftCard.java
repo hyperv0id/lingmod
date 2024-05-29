@@ -15,9 +15,10 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 
 import basemod.cardmods.ExhaustMod;
 import basemod.helpers.CardModifierManager;
-import lingmod.cards.AbstractNellaFantasiaCard;
+import lingmod.cards.AbstractEasyCard;
+import lingmod.cards.mod.NellaFantasiaMod;
 
-public class AGiftCard extends AbstractNellaFantasiaCard {
+public class AGiftCard extends AbstractEasyCard {
 
     public static final String ID = makeID(AGiftCard.class.getSimpleName());
 
@@ -27,15 +28,12 @@ public class AGiftCard extends AbstractNellaFantasiaCard {
         baseSecondMagic = 1;
         Shockwave sw;
         CardModifierManager.addModifier(this, new ExhaustMod());
+        CardModifierManager.addModifier(this, new NellaFantasiaMod());
     }
 
     @Override
-    protected void use_n(AbstractPlayer p, AbstractMonster m) {
-
-        Iterator<AbstractMonster> var3 = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
-
-        while (var3.hasNext()) {
-            AbstractMonster mo = (AbstractMonster) var3.next();
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
             this.addToBot(new ApplyPowerAction(mo, p, new WeakPower(mo, this.magicNumber, false), this.magicNumber,
                     true, AttackEffect.NONE));
             this.addToBot(new ApplyPowerAction(mo, p, new VulnerablePower(mo, this.magicNumber, false),

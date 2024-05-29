@@ -78,7 +78,7 @@
     ]
   },
   "${ModID}:Beans_LingRelic": {
-    "NAME": "酒精冰沙",
+    "NAME": "酒精泡泡",
     "FLAVOR": "",
     "DESCRIPTIONS": [
       "战斗开始时，获得 #r3 酒"
@@ -86,9 +86,9 @@
   },
   "${ModID}:Beans_ShuoRelic": {
     "NAME": "玉门热干面",
-    "FLAVOR": "",
+    "FLAVOR": "令妹，今天晨练又没看到你",
     "DESCRIPTIONS": [
-      "最大生命值+ #b7 ，右键获得 #b1 力量，战斗战斗胜利以增加次数"
+      "右键获得 #b1 力量，战斗战斗胜利以增加次数"
     ]
   }
 }

@@ -90,8 +90,8 @@
     "NAME": "铁斩波",
     "DESCRIPTION": "造成 !D! 点伤害，获得造成伤害点格挡"
   },
-  "${ModID}:AltMetamorphosis": {
-    "NAME": "羽化",
+  "${ModID}:DreamOfButterfly": {
+    "NAME": "梦蝶",
     "DESCRIPTION": "向抽牌堆中加入 !M! 张能力牌，这些牌的耗能减少 1",
     "UPGRADE_DESCRIPTION": "向抽牌堆中加入 !M! 张 #b升级过的 能力牌，这些牌的耗能减少 1"
   },
@@ -122,7 +122,7 @@
   },
   "${ModID}:DrunkButterfly": {
     "NAME": "醉蝶",
-    "DESCRIPTION": "造成 !D! 点伤害 NL 如果斩杀，可无视路线1次。"
+    "DESCRIPTION": "对所有敌人造成 !D! 点伤害 NL 如果斩杀，可无视路线1次。"
   },
   "${ModID}:ShiDuanMengChang": {
     "NAME": "诗短梦长",
@@ -146,7 +146,7 @@
   },
   "${ModID}:Thunderer": {
     "NAME": "“弦惊”",
-    "DESCRIPTION": "造成 !D! 点伤害 NL 回合结束时手牌加入一张 弦惊 NL 打出后 消耗 尽可能多的同等级弦惊 合成升级"
+    "DESCRIPTION": "造成 !D! 点伤害 NL 回合结束时手牌加入一张 同等级弦惊 NL 打出后 消耗 尽可能多的同等级弦惊 来合成升级"
   },
   "${ModID}:Whoami_Shuo": {
     "NAME": "我无",
@@ -158,7 +158,7 @@
   },
   "${ModID}:Whoami_Ling": {
     "NAME": "无怖",
-    "DESCRIPTION": "免疫敌人的异常 NL 得到来自己方的异常时移除此能力"
+    "DESCRIPTION": "永久免疫任何敌人的异常 NL 得到来自己方的异常时移除此能力"
   },
   "${ModID}:Whoami_Nian": {
     "NAME": "无悲",

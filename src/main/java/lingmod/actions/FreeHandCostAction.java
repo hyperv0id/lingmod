@@ -6,9 +6,9 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import lingmod.powers.NellaFantasiaPower;
 
-public class NellaFantasiaAction extends AbstractGameAction {
+public class FreeHandCostAction extends AbstractGameAction {
     AbstractPlayer player;
-    public NellaFantasiaAction(AbstractPlayer owner) {
+    public FreeHandCostAction(AbstractPlayer owner) {
         this.player = owner;
     }
 

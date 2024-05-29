@@ -2,6 +2,7 @@ package lingmod;
 
 import java.nio.charset.StandardCharsets;
 
+import lingmod.aria.AriaTopPanel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -276,7 +277,10 @@ public class ModCore implements
         // .eventType(EventUtils.EventType.FULL_REPLACE)
         // .create()
         // );
-        
+
+
+        // 添加TopPanel按钮
+        BaseMod.addTopPanelItem(new AriaTopPanel());
         
     }
 

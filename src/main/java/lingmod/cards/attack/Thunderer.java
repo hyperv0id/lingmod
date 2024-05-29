@@ -25,7 +25,6 @@ public class Thunderer extends AbstractEasyCard {
     public static final String NAME = Thunderer.class.getSimpleName();
 
     public static final String ID = makeID(NAME);
-    public static final float compoPercent = 0.8F; // 80的伤害用于合成
     public static final int BASE_DMG = 10;
 
     public Thunderer() {
@@ -36,26 +35,30 @@ public class Thunderer extends AbstractEasyCard {
 
     @Override
     public boolean canUpgrade() {
-        return timesUpgraded < 3;
+        return timesUpgraded < BASE_DMG;
     }
 
     @Override
     public void upp() {
-        upgradeDamage((int) ( BASE_DMG * compoPercent));
-        String img = getCardTextureString(NAME +"_"+ timesUpgraded,  this.type);
-        this.textureImg = img;
-        if (img != null) {
-            this.loadCardImage(img);
+        upgradeDamage((int) (Math.max(0, BASE_DMG - timesUpgraded)));
+        if (timesUpgraded <= 3) {
+            // 只有4张图
+            String img = getCardTextureString(NAME + "_" + timesUpgraded, this.type);
+            this.textureImg = img;
+            if (img != null) {
+                this.loadCardImage(img);
+            }
         }
+        this.name = this.cardStrings.NAME + "+" + timesUpgraded;
+        initializeTitle();
     }
 
     @Override
     public void onRetained() {
         super.onRetained();
         // 手牌中添加一张 弦惊
-        if(!this.canUpgrade()) return; // 最高等级了，不再生成
-        AbstractCard cp = makeCopy();
-        if(upgraded) cp.upgrade();
+        if (!this.canUpgrade()) return; // 最高等级了，不再生成
+        AbstractCard cp = makeStatEquivalentCopy();
         addToBot(new MakeTempCardInHandAction(cp));
     }
 
@@ -64,19 +67,19 @@ public class Thunderer extends AbstractEasyCard {
         dmg(m, null);
         // 找一张 同等级的弦惊 合成
         List<AbstractCard> cards =
-                AbstractDungeon.player.hand.group.stream().filter(card -> card!=this && card.cardID.equals(Thunderer.ID) && card.timesUpgraded == this.timesUpgraded).collect(Collectors.toList());
+                AbstractDungeon.player.hand.group.stream().filter(card -> card != this && card.cardID.equals(Thunderer.ID) && card.timesUpgraded == this.timesUpgraded).collect(Collectors.toList());
         int nEx = 0;
         int num = 1;
-        while (nEx+num <= cards.size()) {
+        while (nEx + num <= cards.size()) {
             nEx += num;
             num <<= 1;
         }
         for (int i = 0; i < nEx; i++) {
             addToBot(new ExhaustSpecificCardAction(cards.get(i), AbstractDungeon.player.hand));
         }
-        while (num > 1){
+        while (num > 1) {
             upgrade();
-            num>>=1;
+            num >>= 1;
         }
     }
 }

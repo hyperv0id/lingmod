@@ -10,13 +10,14 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import basemod.cardmods.ExhaustMod;
 import basemod.helpers.CardModifierManager;
-import lingmod.cards.AbstractNellaFantasiaCard;
+import lingmod.cards.AbstractEasyCard;
+import lingmod.cards.mod.NellaFantasiaMod;
 
 /**
  * 梦为鱼鸟：造成怪物的伤害
  * 你梦中变成鸟便振翅直飞蓝天，你梦中变成鱼便摇尾潜入深渊
  */
-public class YuNiao extends AbstractNellaFantasiaCard{
+public class YuNiao extends AbstractEasyCard {
 
     public static final String ID = makeID(YuNiao.class.getSimpleName());
 
@@ -24,6 +25,7 @@ public class YuNiao extends AbstractNellaFantasiaCard{
         super(ID, 1, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ENEMY);
         baseDamage = 0;
         CardModifierManager.addModifier(this, new ExhaustMod());
+        CardModifierManager.addModifier(this, new NellaFantasiaMod());
     }
 
     @Override
@@ -42,7 +44,7 @@ public class YuNiao extends AbstractNellaFantasiaCard{
     }
 
     @Override
-    public void use_n(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
+    public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
         int totalDamage = calcIntentDmg();
         addToBot(new DamageAction(abstractMonster, new DamageInfo(abstractPlayer, totalDamage, DamageInfo.DamageType.NORMAL)));
     }

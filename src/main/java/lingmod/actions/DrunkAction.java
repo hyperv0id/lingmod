@@ -1,12 +1,17 @@
 package lingmod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.WingBoots;
+import com.megacrit.cardcrawl.rewards.RewardItem;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 如果斩杀，那么无视路线
@@ -41,8 +46,20 @@ public class DrunkAction extends AbstractGameAction {
                 } else {
                     WingBoots fly = new WingBoots();
                     fly.counter = 1;
-                    AbstractDungeon.getCurrRoom().addRelicToRewards(fly);
-                    // addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, fly));
+                    // 获取当前房间的奖励列表
+                    List<RewardItem> rewards = AbstractDungeon.getCurrRoom().rewards;
+                    rewards = rewards.stream()
+                            .filter(c -> c.relic != null && c.relic.relicId.equals(fly.relicId))
+                            .collect(Collectors.toList());
+                    // 如果找到了符合条件的奖励项，增加其计数器
+                    if (!rewards.isEmpty()) {
+                        RewardItem rewardItem = rewards.get(0);
+                        rewardItem.relic.counter++;
+                    } else {
+                        // 否则，向奖励列表中添加新的奖励项
+                        AbstractDungeon.getCurrRoom().addRelicToRewards(fly);
+                    }
+                    addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, fly));
                 }
             }
 

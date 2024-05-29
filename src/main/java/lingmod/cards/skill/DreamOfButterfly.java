@@ -12,18 +12,20 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import lingmod.cards.AbstractEasyCard;
+import lingmod.cards.mod.NellaFantasiaMod;
 
 /**
  * 羽化：造能力牌，其耗能-1
  */
-public class AltMetamorphosis extends AbstractEasyCard{
+public class DreamOfButterfly extends AbstractEasyCard{
 
-    public static final String ID = makeID(AltMetamorphosis.class.getSimpleName());
+    public static final String ID = makeID(DreamOfButterfly.class.getSimpleName());
 
-    public AltMetamorphosis() {
+    public DreamOfButterfly() {
         super(ID, 2, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
         baseMagicNumber = 2;
         CardModifierManager.addModifier(this, new ExhaustMod());
+        CardModifierManager.addModifier(this, new NellaFantasiaMod());
     }
     
     @Override

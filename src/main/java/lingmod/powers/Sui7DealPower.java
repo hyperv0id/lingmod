@@ -30,7 +30,7 @@ public class Sui7DealPower extends AngryPower{
         this.provider = provider;
         this.ID = POWER_ID;
         this.name = NAME;
-        this.type = PowerType.BUFF; // 不是负面
+        this.type = null; // 不是负面
         this.updateDescription();
     }
 

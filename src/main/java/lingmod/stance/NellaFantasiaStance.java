@@ -68,7 +68,6 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerTurnS
         if (sfxId != -1L) {
             this.stopIdleSfx();
         }
-
         CardCrawlGame.sound.play("STANCE_ENTER_CALM");
         sfxId = CardCrawlGame.sound.playAndLoop("STANCE_LOOP_CALM");
         AbstractDungeon.effectsQueue.add(new BorderFlashEffect(Color.SKY, true));
@@ -76,12 +75,11 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerTurnS
         AbstractPlayer p = AbstractDungeon.player;
         AbstractDungeon.actionManager.addToBottom(
                 new ApplyPowerAction(p, p, new NellaFantasiaPower(p)));
-        for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
+        for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
             AbstractPower power = new NellaFantasiaPower(mo);
             AbstractDungeon.actionManager.addToBottom(
                     new ApplyPowerAction(mo, mo, power));
         }
-        Blasphemy b;
     }
 
     public void onExitStance() {

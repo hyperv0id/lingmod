@@ -11,8 +11,7 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 /**
- * 最大生命值+7
- * 回合结束+1生命值
+ * 右键获得1力量，战斗胜利增加计数
  */
 public class Beans_ShuoRelic extends AbstractEasyRelic implements ClickableRelic {
     public static final String ID = makeID(Beans_ShuoRelic.class.getSimpleName());
@@ -23,9 +22,7 @@ public class Beans_ShuoRelic extends AbstractEasyRelic implements ClickableRelic
 
     @Override
     public void onEquip() {
-        logger.info("===============Why MaxHP does not increase");
-        AbstractDungeon.player.increaseMaxHp(7, true);
-        this.counter = 0;
+        this.counter = 3;
     }
 
     @Override
@@ -40,12 +37,8 @@ public class Beans_ShuoRelic extends AbstractEasyRelic implements ClickableRelic
 
     @Override
     public void onRightClick() {
-        if (this.counter > 0)
-            this.grayscale = false;
         AbstractPlayer p = AbstractDungeon.player;
         addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, 1)));
-        this.counter--;
-        if (this.counter <= 0)
-            this.grayscale = true;
+        this.grayscale = --this.counter <= 0;
     }
 }

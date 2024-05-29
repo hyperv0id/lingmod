@@ -10,18 +10,20 @@ import com.megacrit.cardcrawl.vfx.GainPennyEffect;
 
 import basemod.cardmods.ExhaustMod;
 import basemod.helpers.CardModifierManager;
-import lingmod.cards.AbstractNellaFantasiaCard;
+import lingmod.cards.AbstractEasyCard;
+import lingmod.cards.mod.NellaFantasiaMod;
 
 /**
  * 黄粱一梦：获得 70 金币
  */
-public class HuangLiang extends AbstractNellaFantasiaCard {
+public class HuangLiang extends AbstractEasyCard {
 
     public static final String ID = makeID(HuangLiang.class.getSimpleName());
     public HuangLiang() {
         super(ID, 1, CardType.SKILL, AbstractCard.CardRarity.SPECIAL, CardTarget.SELF);
         this.baseMagicNumber = 15; // 金币数量
         CardModifierManager.addModifier(this, new ExhaustMod());
+        CardModifierManager.addModifier(this, new NellaFantasiaMod());
     }
 
     @Override
@@ -30,7 +32,7 @@ public class HuangLiang extends AbstractNellaFantasiaCard {
     }
 
     @Override
-    public void use_n(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
+    public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
         AbstractDungeon.effectList
                 .add(new GainPennyEffect(current_x, current_y));
         AbstractDungeon.player.gainGold(magicNumber);

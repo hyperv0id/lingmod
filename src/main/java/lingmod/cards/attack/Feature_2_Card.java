@@ -51,5 +51,7 @@ public class Feature_2_Card extends AbstractEasyCard implements PostExhaustSubsc
     public void receivePostExhaust(AbstractCard card) {
         if (AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this))
             this.upgrade();
+        else if(card.isEthereal) // 虚无牌会在回合后消耗，但是不会触发上面的逻辑
+            this.upgrade();
     }
 }

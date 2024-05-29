@@ -1,4 +1,4 @@
-package lingmod.cards.aria;
+package lingmod.aria.cards;
 
 import static lingmod.ModCore.makeID;
 

@@ -24,7 +24,7 @@ public class Lament extends AbstractEasyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, null);
         addToBot(new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false)));
-        if(m.hasPower(VulnerablePower.POWER_ID)) addToBot(new DrawCardAction(magicNumber));
+        if(m.hasPower(WeakPower.POWER_ID)) addToBot(new DrawCardAction(magicNumber));
     }
 
     @Override
