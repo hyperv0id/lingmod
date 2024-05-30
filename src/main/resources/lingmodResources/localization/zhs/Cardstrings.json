@@ -186,5 +186,13 @@
   "${ModID}:ZuiFeiChen": {
     "NAME": "醉飞尘",
     "DESCRIPTION": "如果上一张是酒，那么获得 !M! 倍的酒，反之抽 !M! 张牌"
+  },
+  "${ModID}:QingMingDream": {
+    "NAME": "清明梦",
+    "DESCRIPTION": "只能在梦中打出，额外获得一回合，敌人减少的力量变为永久",
+    "EXTENDED_DESCRIPTION":[
+      "这不是梦",
+      "梦是真实的"
+    ]
   }
 }

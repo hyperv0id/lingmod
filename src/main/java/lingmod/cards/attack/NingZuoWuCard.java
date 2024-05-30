@@ -27,7 +27,7 @@ public class NingZuoWuCard extends AbstractPoemCard {
 
 
     public NingZuoWuCard() {
-        super(ID, 1, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
+        super(ID, 1, CardType.ATTACK, CardRarity.RARE, CardTarget.SELF);
         baseDamage = 5;
         CardModifierManager.addModifier(this, new ExhaustMod());
     }

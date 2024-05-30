@@ -2,12 +2,16 @@ package lingmod.cards.attack;
 
 import static lingmod.ModCore.makeID;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
+import com.badlogic.gdx.graphics.Color;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.GiantTextEffect;
+import com.megacrit.cardcrawl.vfx.combat.WeightyImpactEffect;
 
 import lingmod.cards.AbstractEasyCard;
 
@@ -26,7 +30,12 @@ public class SurprisingThunder extends AbstractEasyCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, AttackEffect.LIGHTNING);
+        if (m != null) {
+            dmg(m, null);
+            this.addToBot(new VFXAction(new WeightyImpactEffect(m.hb.cX, m.hb.cY, Color.GOLD.cpy())));
+            this.addToBot(new WaitAction(0.8F));
+            this.addToBot(new VFXAction(new GiantTextEffect(m.hb.cX, m.hb.cY)));
+        }
         for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
             if (mo != m) {
                 addToBot(new DamageAction(mo, new DamageInfo(p, damage / 2)));
