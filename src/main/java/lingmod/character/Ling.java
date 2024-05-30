@@ -13,16 +13,14 @@ import static lingmod.character.Ling.Enums.LING_COLOR;
 import java.util.ArrayList;
 import java.util.List;
 
+import basemod.BaseMod;
+import basemod.interfaces.PostDungeonInitializeSubscriber;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
-import com.esotericsoftware.spine.AnimationState;
-import com.esotericsoftware.spine.AnimationStateData;
-import com.esotericsoftware.spine.Skeleton;
-import com.esotericsoftware.spine.SkeletonBinary;
-import com.esotericsoftware.spine.SkeletonData;
+import com.esotericsoftware.spine.*;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -87,7 +85,7 @@ public class Ling extends CustomPlayer {
         dialogX = (drawX + 0.0F * Settings.scale);
         dialogY = (drawY + 240.0F * Settings.scale);
         // String charID = "char_2015_dusk";
-        String charID = "char_2023_ling";
+        String charID = "char_2023_ling_nian_9";
         String atlasUrl = makeCharacterPath("ling/" + charID + ".atlas");
         String skeletonUrl = makeCharacterPath("ling/" + charID + ".json");
         super.loadAnimation(atlasUrl, skeletonUrl, 1f);
