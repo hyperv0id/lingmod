@@ -17,7 +17,7 @@ import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
 
 /**
- * 1费打10，18， 26， 34
+ * 1费打10，19， 27， 34
  * 回合结束时创建本牌的复制
  * 打出后选择手牌中的弦惊合成
  */
