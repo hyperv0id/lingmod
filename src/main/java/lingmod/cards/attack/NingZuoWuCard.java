@@ -5,14 +5,13 @@ import static lingmod.ModCore.makeID;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.unique.RemoveAllPowersAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import basemod.cardmods.ExhaustMod;
 import basemod.helpers.CardModifierManager;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import lingmod.actions.ExhaustAllAction;
 import lingmod.cards.AbstractPoemCard;
 import lingmod.powers.PoeticMoodPower;

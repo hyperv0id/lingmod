@@ -2,8 +2,6 @@ package lingmod.cards.skill;
 
 import static lingmod.ModCore.makeID;
 
-import java.util.Iterator;
-
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.red.Shockwave;

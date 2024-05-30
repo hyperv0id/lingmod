@@ -1,12 +1,12 @@
 package lingmod.cards.attack;
 
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
+
+import basemod.helpers.CardModifierManager;
 import lingmod.ModCore;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.PoemMod;

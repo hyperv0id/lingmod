@@ -1,6 +1,5 @@
 package lingmod.relics;
 
-import static lingmod.ModCore.logger;
 import static lingmod.ModCore.makeID;
 
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
