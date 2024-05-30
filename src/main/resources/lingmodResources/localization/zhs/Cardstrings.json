@@ -27,8 +27,8 @@
   },
   "${ModID}:NingZuoWuCard": {
     "NAME": "宁作吾",
-    "DESCRIPTION": "消耗所有手牌，每张造成 !D! 伤害，然后抽等量牌。 NL 将所有能力变为 ${ModID}:诗意 ",
-    "UPGRADE_DESCRIPTION": "统计手牌和能力数，每个计数造成 !D! 伤害，消耗所有手牌，抽等量牌。 NL  将所有能力变为 ${ModID}:诗意 "
+    "DESCRIPTION": "消耗所有手牌，然后抽等量牌。 NL 将所有负面效果变为 ${ModID}:诗兴 ",
+    "UPGRADE_DESCRIPTION": "统计手牌和能力数，抽等量牌，消耗所有手牌。 NL  将所有负面效果变为 ${ModID}:诗兴 "
   },
   "${ModID}:Strike": {
     "NAME": "打击",
@@ -38,14 +38,10 @@
     "NAME": "挑灯问梦",
     "DESCRIPTION": "随机获得 !M! 张 ${ModID}:梦"
   },
-  "${ModID}:TwoTypesOfDamage": {
-    "NAME": "Two Damage Values",
-    "DESCRIPTION": "Deal !D! damage. NL If you're Vulnerable, deal !${ModID}:sd! damage instead."
-  },
   "${ModID}:XiaoMingSeCard": {
     "NAME": "笑鸣瑟",
-    "DESCRIPTION": "是 ${ModID}:诗 . NL 每有一个 异常状态，每有一个敌人，获得2点 ${ModID}:诗意 NL 可获得 !M! 点",
-    "UPGRADE_DESCRIPTION": "是 ${ModID}:诗 . NL 每有一个 敌人/异常/状态牌/诅咒牌，获得 2 点 ${ModID}:诗意 NL 共 !M! 点"
+    "DESCRIPTION": "是 ${ModID}:诗 . NL 每有一个 异常状态，每有一个敌人，获得2点 ${ModID}:诗兴 NL 可获得 !M! 点",
+    "UPGRADE_DESCRIPTION": "是 ${ModID}:诗 . NL 每有一个 敌人/异常/状态牌/诅咒牌，获得 2 点 ${ModID}:诗兴 NL 共 !M! 点"
   },
   "${ModID}:XiaoYaoYou": {
     "NAME": "逍遥游",
@@ -69,7 +65,7 @@
   },
   "${ModID}:TranquilityCard": {
     "NAME": "“清平”",
-    "DESCRIPTION": "造成 !D! 点伤害，消耗时获得 !M! ${ModID}:诗意 "
+    "DESCRIPTION": "造成 !D! 点伤害，消耗时获得 !M! ${ModID}:诗兴 "
   },
   "${ModID}:AltTieZhanBo": {
     "NAME": "铁斩波",
@@ -127,7 +123,7 @@
   },
   "${ModID}:AltGuangHui": {
     "NAME": "光辉ALT",
-    "DESCRIPTION": "造成获得过的 ${ModID}:诗意 总量的伤害 NL (造成 !D! 点伤害)"
+    "DESCRIPTION": "造成获得过的 ${ModID}:诗兴 总量的伤害 NL (造成 !D! 点伤害)"
   },
   "${ModID}:Thunderer": {
     "NAME": "“弦惊”",
@@ -185,7 +181,7 @@
   },
   "${ModID}:AGiftCard": {
     "NAME": "“礼物”",
-    "DESCRIPTION": "给予所有敌人 !M! 层 虚弱 和 易伤 NL 给予自己 !${ModID}:m2! 层 易伤 和 虚弱 "
+    "DESCRIPTION": "给予所有敌人 !M! 层 虚弱 和 易伤 NL 给予自己 !${ModID}:m2! 层 虚弱 "
   },
   "${ModID}:ZuiFeiChen": {
     "NAME": "醉飞尘",

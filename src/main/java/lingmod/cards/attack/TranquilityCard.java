@@ -12,7 +12,7 @@ import lingmod.cards.AbstractEasyCard;
 import lingmod.powers.PoeticMoodPower;
 
 /**
- * 清平：打7,消耗时获得1诗意。
+ * 清平：打7,消耗时获得1诗兴。
  */
 public class TranquilityCard extends AbstractEasyCard{
 

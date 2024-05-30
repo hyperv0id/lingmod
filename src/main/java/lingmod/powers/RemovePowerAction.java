@@ -18,7 +18,7 @@ public class RemovePowerAction extends AbstractGameAction {
     public void update() {
         for (AbstractPower p : c.powers) {
             if (p.type == powerType)
-                this.addToTop(new RemoveSpecificPowerAction(this.c, this.c, p.ID));
+                this.addToTop(new RemoveSpecificPowerAction(this.c, this.c, p));
         }
     }
 }

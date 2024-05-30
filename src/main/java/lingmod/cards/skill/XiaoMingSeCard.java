@@ -13,7 +13,7 @@ import lingmod.cards.AbstractPoemCard;
 import lingmod.powers.PoeticMoodPower;
 
 /**
- * 笑鸣瑟：每有一种一个敌人或状态牌，获得2点"诗意"。
+ * 笑鸣瑟：每有一种一个敌人或状态牌，获得2点"诗兴"。
  */
 public class XiaoMingSeCard extends AbstractPoemCard {
 

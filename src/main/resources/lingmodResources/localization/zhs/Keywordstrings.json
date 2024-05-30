@@ -13,7 +13,7 @@
       "诗",
       "Poet"
     ],
-    "DESCRIPTION": "打出时获得 #b耗能 点诗意"
+    "DESCRIPTION": "打出时获得 #b耗能 点诗兴"
   },
   {
     "PROPER_NAME": "酒|卡牌",
@@ -32,11 +32,11 @@
     "DESCRIPTION": "造成伤害时增加 #bX 点，然后值减少1"
   },
   {
-    "PROPER_NAME": "诗意",
+    "PROPER_NAME": "诗兴",
     "NAMES": [
-      "诗意"
+      "诗兴"
     ],
-    "DESCRIPTION": "叠层获得能力，诗类卡牌会额外获得诗意"
+    "DESCRIPTION": "叠层获得能力，诗类卡牌会额外获得诗兴"
   },
   {
     "PROPER_NAME": "逍遥",
@@ -66,7 +66,7 @@
     "NAMES": [
       "诗兴"
     ],
-    "DESCRIPTION": "叠层作诗，叠满 12 层可以获得一些能力"
+    "DESCRIPTION": "叠层作诗，叠满 12 层可以获得 缓冲"
   },
   {
     "PROPER_NAME": "缠绕",

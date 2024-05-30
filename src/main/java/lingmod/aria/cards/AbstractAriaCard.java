@@ -19,7 +19,7 @@ public abstract class AbstractAriaCard extends AbstractEasyCard {
     public CardStrings cardStrings;
     protected boolean isOptionCard = false;
     protected boolean used = false;
-    protected int poeticCost = 0; // 打出需要消耗多少诗意
+    protected int poeticCost = 0; // 打出需要消耗多少诗兴
     protected int[] costs;
 
     public AbstractAriaCard(String id, int cost, CardType cardType, CardRarity cardRarity, CardTarget cardTarget) {

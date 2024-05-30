@@ -35,7 +35,7 @@ public class AGiftCard extends AbstractEasyCard {
             this.addToBot(new ApplyPowerAction(mo, p, new VulnerablePower(mo, this.magicNumber, false),
                     this.magicNumber, true, AttackEffect.NONE));
         }
-        addToBot(new ApplyPowerAction(p, p, new VulnerablePower(p, secondMagic, false)));
+        // addToBot(new ApplyPowerAction(p, p, new VulnerablePower(p, secondMagic, false)));
         addToBot(new ApplyPowerAction(p, p, new WeakPower(p, secondMagic, false)));
     }
 

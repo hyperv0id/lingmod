@@ -1,14 +1,15 @@
 package lingmod.relics;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+
 import lingmod.powers.PoeticMoodPower;
 
-import static lingmod.ModCore.makeID;
-
 /**
- * 手摇鼓Alt：战斗开始时，获得4诗意
+ * 手摇鼓Alt：战斗开始时，获得4诗兴
  */
 public class AltShouYaoGu extends AbstractEasyRelic {
     public static final String ID = makeID(AltShouYaoGu.class.getSimpleName());
