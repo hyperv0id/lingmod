@@ -35,9 +35,8 @@ public class LightRelic extends AbstractEasyRelic {
     public void onPlayCard(AbstractCard c, AbstractMonster m) {
         super.onPlayCard(c, m);
         AbstractPlayer player = AbstractDungeon.player;
-        int level = AbstractDungeon.actNum;
         this.flash();
-        addToBot(new ApplyPowerAction(player, player, new PoeticMoodPower(player, 1, level)));
+        addToBot(new ApplyPowerAction(player, player, new PoeticMoodPower(player, 1)));
     }
 
     @Override

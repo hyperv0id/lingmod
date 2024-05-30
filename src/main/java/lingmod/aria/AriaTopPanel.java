@@ -18,7 +18,6 @@ import lingmod.ModCore;
  */
 public class AriaTopPanel extends TopPanelItem implements OnStartBattleSubscriber, CustomSavable<String> {
 
-    // FIXME: ADD IMG and ID
     protected static final String IMG_PATH = ModCore.makeImagePath("ui/ariadeck.png");
     private static final Texture IMG = new Texture(IMG_PATH);
     public static final String ID = "lingmod:AriaTopPanel";

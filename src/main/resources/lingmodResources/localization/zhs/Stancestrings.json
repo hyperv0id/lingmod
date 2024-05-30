@@ -5,5 +5,12 @@
     "DESCRIPTION": [
       "全体受到伤害时，使其失去1力量1回合。回合结束后自动退出此姿态"
     ]
+  },
+  "${ModID}:PoeticStance": {
+    "STANCE_ID": "PoeticStance",
+    "NAME": "作诗",
+    "DESCRIPTION": [
+      "进入时获得 1 敏捷 和 1 能量"
+    ]
   }
 }

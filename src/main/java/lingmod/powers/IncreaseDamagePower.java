@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.PoisonPower;
 
 import lingmod.ModCore;
 
@@ -49,7 +48,6 @@ public class IncreaseDamagePower extends AbstractEasyPower {
 
     @Override
     public int onAttackedToChangeDamage(DamageInfo info, int dmg) {
-        PoisonPower pp;
         if (this.amount > 0 && !this.owner.isDeadOrEscaped() && info.type == DamageType.NORMAL) {
             this.flash();
         }

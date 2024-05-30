@@ -4,7 +4,6 @@ import static lingmod.ModCore.makeID;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.cards.red.Shockwave;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -24,7 +23,6 @@ public class AGiftCard extends AbstractEasyCard {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ALL);
         baseMagicNumber = 3;
         baseSecondMagic = 1;
-        Shockwave sw;
         CardModifierManager.addModifier(this, new ExhaustMod());
         CardModifierManager.addModifier(this, new NellaFantasiaMod());
     }

@@ -1,3 +1,9 @@
 {
-    
+    "NellaFantasiaOrbSlot" : {
+        "DESCRIPTIONS":[
+            "#y梦境 会持续： #b%d 回合",
+            "这不是梦"
+        ],
+        "NAME" :"这场梦剩余 %d 回合"
+    }
 }

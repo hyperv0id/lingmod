@@ -12,7 +12,7 @@ public class AltGuangHui extends AbstractPoemCard {
     public static final String ID = makeID(AltGuangHui.class.getSimpleName());
 
     public AltGuangHui() {
-        super(ID, 3, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
+        super(ID, 2, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
     }
 
     @Override

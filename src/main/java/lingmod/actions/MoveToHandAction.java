@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 public class MoveToHandAction extends AbstractGameAction {
     private static float DRAW_PILE_X;
     private static float DRAW_PILE_Y;
-    private static float DISCARD_PILE_X;
+    // private static float DISCARD_PILE_X;
     protected CardGroup group = null;
     private AbstractCard c;
 
@@ -40,6 +40,6 @@ public class MoveToHandAction extends AbstractGameAction {
     static {
         DRAW_PILE_X = (float) Settings.WIDTH * 0.04F;
         DRAW_PILE_Y = 50.0F * Settings.scale;
-        DISCARD_PILE_X = (int) ((float) Settings.WIDTH + AbstractCard.IMG_WIDTH_S / 2.0F + 100.0F * Settings.scale);
+        // DISCARD_PILE_X = (int) ((float) Settings.WIDTH + AbstractCard.IMG_WIDTH_S / 2.0F + 100.0F * Settings.scale);
     }
 }

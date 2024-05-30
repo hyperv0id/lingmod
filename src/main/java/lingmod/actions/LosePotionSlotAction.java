@@ -25,7 +25,8 @@ public final class LosePotionSlotAction extends AbstractGameAction {
             }
         }
         logger.info("lose potion action" + index);
-        player.obtainPotion(index, copyNextPotion(potions, index));
+        if(index != potions.size()-1)
+            player.obtainPotion(index, copyNextPotion(potions, index));
         for (int i = index + 1; i < player.potionSlots; i++) {
             player.removePotion(potions.get(i));
             player.obtainPotion(i, copyNextPotion(potions, i));
