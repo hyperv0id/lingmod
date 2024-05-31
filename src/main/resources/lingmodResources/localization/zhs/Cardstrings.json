@@ -67,8 +67,8 @@
     "NAME": "“清平”",
     "DESCRIPTION": "造成 !D! 点伤害，消耗时获得 !M! ${ModID}:诗兴 "
   },
-  "${ModID}:AltTieZhanBo": {
-    "NAME": "铁斩波",
+  "${ModID}:GuoJiaXianMei": {
+    "NAME": "裹甲衔枚",
     "DESCRIPTION": "造成 !D! 点伤害，获得造成伤害点格挡"
   },
   "${ModID}:DreamOfButterfly": {
@@ -190,7 +190,7 @@
   "${ModID}:QingMingDream": {
     "NAME": "清明梦",
     "DESCRIPTION": "只能在梦中打出，额外获得一回合，敌人减少的力量变为永久",
-    "EXTENDED_DESCRIPTION":[
+    "EXTENDED_DESCRIPTION": [
       "这不是梦",
       "梦是真实的"
     ]
@@ -202,5 +202,9 @@
   "${ModID}:JiaoLu": {
     "NAME": "蕉鹿梦",
     "DESCRIPTION": "获得 !M! 力量和敏捷，回合结束后失去"
+  },
+  "${ModID}:Calm": {
+    "NAME": "心态平和",
+    "DESCRIPTION": "如果目标意图是攻击，那么获得 !M! 敏捷 ，否则获得 !M! 力量"
   }
 }

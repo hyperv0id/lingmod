@@ -18,7 +18,7 @@ import lingmod.cards.AbstractPoemCard;
 import lingmod.powers.PoeticMoodPower;
 
 /**
- * 宁作吾：消耗所有手牌，每张打5，并抽等量牌，然后失去所有能力
+ * 宁作吾：消耗所有手牌，抽等量牌，然后所有debuff变成诗
  * 能力数量参与计数
  */
 public class NingZuoWuCard extends AbstractPoemCard {
