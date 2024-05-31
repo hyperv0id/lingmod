@@ -74,7 +74,7 @@
   "${ModID}:DreamOfButterfly": {
     "NAME": "梦蝶",
     "DESCRIPTION": "向抽牌堆中加入 !M! 张能力牌，这些牌的耗能减少 1",
-    "UPGRADE_DESCRIPTION": "向抽牌堆中加入 !M! 张 #b升级过的 能力牌，这些牌的耗能减少 1"
+    "UPGRADE_DESCRIPTION": "向抽牌堆中加入 !M! 张升级过的能力牌，这些牌的耗能减少 1"
   },
   "${ModID}:Lonely": {
     "NAME": "孤独",
@@ -198,5 +198,9 @@
   "${ModID}:XunRiPeak": {
     "NAME": "寻日峰",
     "DESCRIPTION": "对所有敌人造成 !D! 的伤害 X 次 NL 如果在梦中，消耗所有 ${ModID}:诗兴 来增加次数"
+  },
+  "${ModID}:JiaoLu": {
+    "NAME": "蕉鹿梦",
+    "DESCRIPTION": "获得 !M! 力量和敏捷，回合结束后失去"
   }
 }
