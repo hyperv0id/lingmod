@@ -16,9 +16,9 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
+
 import lingmod.powers.PoeticMoodPower;
 
 /**
@@ -42,7 +42,7 @@ public class JingYeSiCard extends AbstractAriaCard {
     }
 
     public JingYeSiCard(int index) {
-        super(ID, 0, CardType.ATTACK, CardRarity.BASIC, CardTarget.SELF_AND_ENEMY);
+        super(ID, -2, CardType.ATTACK, CardRarity.BASIC, CardTarget.SELF_AND_ENEMY);
         costs = new int[]{5, 5, 5, 5};
         if (index >= 0) {
             this.optionIndex = index;
