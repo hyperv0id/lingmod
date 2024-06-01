@@ -2,36 +2,52 @@ package lingmod.stance;
 
 import static lingmod.ModCore.makeID;
 
+import java.util.HashMap;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.StanceStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.stances.AbstractStance;
 import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 import com.megacrit.cardcrawl.vfx.stance.CalmParticleEffect;
 import com.megacrit.cardcrawl.vfx.stance.StanceAuraEffect;
 
+import basemod.BaseMod;
+import basemod.interfaces.OnCardUseSubscriber;
+import basemod.interfaces.OnPlayerDamagedSubscriber;
 import lingmod.powers.NellaFantasiaPower;
 
 /**
  * 幻梦/梦境：全体受伤时失去1临时力量
  */
-public class NellaFantasiaStance extends AbstractStance {
+public class NellaFantasiaStance extends AbstractStance
+        implements
+        OnCardUseSubscriber,
+        OnPlayerDamagedSubscriber {
     public static final String STANCE_NAME = NellaFantasiaStance.class.getSimpleName();
     public static final String STANCE_ID = makeID(STANCE_NAME);
 
     private static final StanceStrings stanceString = CardCrawlGame.languagePack.getStanceString(STANCE_ID);
     private static long sfxId = -1L;
-    public int remainTurn = 0;
+    public static int remainTurn = 0;
+
+    // 记录其失去了多少力量，离开时恢复
+    public static HashMap<AbstractCreature, Integer> loseCnt = new HashMap<>();
 
     public NellaFantasiaStance() {
         this.ID = STANCE_ID;
@@ -64,30 +80,41 @@ public class NellaFantasiaStance extends AbstractStance {
         if (sfxId != -1L) {
             this.stopIdleSfx();
         }
+        BaseMod.subscribe(this);
         CardCrawlGame.sound.play("STANCE_ENTER_CALM");
         sfxId = CardCrawlGame.sound.playAndLoop("STANCE_LOOP_CALM");
         AbstractDungeon.effectsQueue.add(new BorderFlashEffect(Color.PURPLE, true));
-        this.remainTurn = 1;
+        remainTurn = 1;
+    }
 
+    public static void giveNellPowerToAll() {
         AbstractPlayer p = AbstractDungeon.player;
         AbstractDungeon.actionManager.addToBottom(
-        new ApplyPowerAction(p, p, new NellaFantasiaPower(p)));
+                new ApplyPowerAction(p, p, new NellaFantasiaPower(p)));
         for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
-        AbstractPower power = new NellaFantasiaPower(mo);
-        AbstractDungeon.actionManager.addToBottom(
-        new ApplyPowerAction(mo, mo, power));
+            AbstractPower power = new NellaFantasiaPower(mo);
+            AbstractDungeon.actionManager.addToBottom(
+                    new ApplyPowerAction(mo, mo, power));
         }
     }
 
     public void onExitStance() {
         this.stopIdleSfx();
-        AbstractPlayer p = AbstractDungeon.player;
-        AbstractDungeon.actionManager.addToBottom(
-                new RemoveSpecificPowerAction(p, p, NellaFantasiaPower.ID));
-        for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
-            AbstractDungeon.actionManager.addToBottom(
-                    new RemoveSpecificPowerAction(mo, mo, NellaFantasiaPower.ID));
-        }
+        BaseMod.unsubscribe(this);
+        // 恢复失去的力量
+        loseCnt.forEach((creature, cnt) -> {
+            if (creature != null)
+                AbstractDungeon.actionManager
+                        .addToBottom(new ApplyPowerAction(creature, creature, new StrengthPower(creature, cnt)));
+        });
+        loseCnt.clear();
+        // AbstractPlayer p = AbstractDungeon.player;
+        // AbstractDungeon.actionManager.addToBottom(
+        // new RemoveSpecificPowerAction(p, p, NellaFantasiaPower.ID));
+        // for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
+        // AbstractDungeon.actionManager.addToBottom(
+        // new RemoveSpecificPowerAction(mo, mo, NellaFantasiaPower.ID));
+        // }
     }
 
     public void stopIdleSfx() {
@@ -100,9 +127,44 @@ public class NellaFantasiaStance extends AbstractStance {
     @Override
     public void atStartOfTurn() {
         super.atStartOfTurn();
-        if (--remainTurn < 0) {
+        if (--remainTurn <= 0) {
             remainTurn = 0;
             AbstractDungeon.actionManager.addToBottom(new ChangeStanceAction("Neutral"));
+            // AbstractDungeon.actionManager.addToBottom(new
+            // RemoveSpecificPowerAction(AbstractDungeon.player,
+            // AbstractDungeon.player, NellaFantasiaPower.ID));
+        }
+    }
+
+    @Override
+    public int receiveOnPlayerDamaged(int dmg, DamageInfo info) {
+        AbstractPlayer player = AbstractDungeon.player;
+        if (info.type == DamageType.NORMAL || info.type == DamageType.THORNS) {
+            if (player.currentBlock < dmg) {
+                if (loseCnt.containsKey(player)) {
+                    loseCnt.put(player, loseCnt.get(player) + 1);
+                } else {
+                    loseCnt.put(player, 1);
+                }
+                AbstractDungeon.actionManager
+                        .addToBottom(new ApplyPowerAction(player, player, new StrengthPower(player, -1)));
+            }
+        }
+        return dmg;
+    }
+
+    @Override
+    public void receiveCardUsed(AbstractCard card) {
+        if (card.type != CardType.ATTACK)
+            return;
+        for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
+            if (loseCnt.containsKey(mo)) {
+                loseCnt.put(mo, loseCnt.get(mo) + 1);
+            } else {
+                loseCnt.put(mo, 1);
+            }
+            AbstractDungeon.actionManager
+                    .addToBottom(new ApplyPowerAction(mo, mo, new StrengthPower(mo, -1)));
         }
     }
 }
