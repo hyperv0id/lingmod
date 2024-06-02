@@ -13,5 +13,10 @@
         "TEXT" :[
             " lingmod:入梦 。 NL %s"
         ]
+    },
+    "${ModID}:PoemMod" :{
+        "TEXT" :[
+            " lingmod:诗兴 %d。 NL %s"
+        ]
     }
 }

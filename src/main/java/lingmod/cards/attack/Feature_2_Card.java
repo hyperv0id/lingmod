@@ -11,16 +11,16 @@ import basemod.BaseMod;
 import basemod.cardmods.RetainMod;
 import basemod.helpers.CardModifierManager;
 import basemod.interfaces.PostExhaustSubscriber;
-import lingmod.cards.AbstractEasyCard;
+import lingmod.cards.AbstractPoemCard;
 
 /**
  * 随付笺咏醉屠苏: 召唤物被击倒/吸收/回收时令额外获得4(+1)点技力、攻击力+3%（攻击力加成最多叠加5层）
  */
-public class Feature_2_Card extends AbstractEasyCard implements PostExhaustSubscriber {
+public class Feature_2_Card extends AbstractPoemCard implements PostExhaustSubscriber {
     public static final String ID = makeID(Feature_2_Card.class.getSimpleName());
 
     public Feature_2_Card() {
-        super(ID, 5, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+        super(ID, 5, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY, 2);
         CardModifierManager.addModifier(this, new RetainMod());
         baseDamage = 8;
         baseMagicNumber = 5;
