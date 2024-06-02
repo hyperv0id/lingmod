@@ -92,7 +92,7 @@
   },
   "${ModID}:ZhiZhan": {
     "NAME": "掷盏",
-    "DESCRIPTION": "造成 !D! 点伤害。 NL 力量和活力在此牌上发挥 !M! 倍效果。",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL ${ModID}:酒 在此牌上发挥 !M! 倍效果。",
     "EXTENDED_DESCRIPTION": [
       "当年掷盏飞残暮，今宵抔酒对高城。"
     ]

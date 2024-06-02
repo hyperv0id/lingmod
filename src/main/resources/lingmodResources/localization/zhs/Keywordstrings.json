@@ -21,7 +21,7 @@
       "酒牌",
       "WineCard"
     ],
-    "DESCRIPTION": "打出时获得 #b3 ${ModID}:酒"
+    "DESCRIPTION": "打出时获得 酒，每层酒可以增加一定百分比的伤害"
   },
   {
     "PROPER_NAME": "酒|能力",
@@ -29,7 +29,7 @@
       "酒",
       "Wine"
     ],
-    "DESCRIPTION": "造成伤害时增加 #bX 点，然后值减少1"
+    "DESCRIPTION": "造成伤害时增加 10%，然后值减少1"
   },
   {
     "PROPER_NAME": "诗兴",
