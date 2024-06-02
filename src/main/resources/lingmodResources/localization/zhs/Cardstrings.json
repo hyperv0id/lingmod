@@ -206,5 +206,13 @@
   "${ModID}:Calm": {
     "NAME": "心态平和",
     "DESCRIPTION": "如果目标意图是攻击，那么获得 !M! 敏捷 ，否则获得 !M! 力量"
+  },
+  "${ModID}:PoemVSQuickSand": {
+    "NAME": "诗对狂沙",
+    "DESCRIPTION": "失去生命时，获得 !M! ${ModID}:诗兴 "
+  },
+  "${ModID}:Sui_7DealCard": {
+    "NAME": "“交易”",
+    "DESCRIPTION": "抽到时再抽一张牌 NL ^_^"
   }
 }
