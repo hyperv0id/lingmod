@@ -2,12 +2,10 @@ package lingmod.cards.attack;
 
 import static lingmod.ModCore.makeID;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import lingmod.cards.AbstractEasyCard;
-import lingmod.powers.NoDebuffFromOther;
 
 /**
  * 我是谁？
@@ -31,6 +29,6 @@ public class Whoami_Dusk extends AbstractEasyCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new NoDebuffFromOther(p)));
+        // addToBot(new ApplyPowerAction(p, p, new NoDebuffFromOther(p)));
     }
 }

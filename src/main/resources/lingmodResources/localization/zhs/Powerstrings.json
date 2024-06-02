@@ -1,28 +1,8 @@
 {
-  "${ModID}:ExampleTwoAmountPower": {
-    "NAME": "Example 2",
-    "DESCRIPTIONS": [
-      "At the start of your turn, gain #b",
-      " #yStrength and #b",
-      " #yDexterity."
-    ]
-  },
   "${ModID}:PoeticMoodPower": {
     "NAME": "诗兴",
     "DESCRIPTIONS": [
       "叠满 12 层 开始作诗"
-    ]
-  },
-  "${ModID}:DoubleCardPower": {
-    "NAME": "重进酒",
-    "DESCRIPTIONS": [
-      "视为上一张卡牌的复制 NL 若无复制，下 #b%d 张卡牌将打出 #b2 次"
-    ]
-  },
-  "${ModID}:TiaoDengWenMengPower": {
-    "NAME": "挑灯问梦",
-    "DESCRIPTIONS": [
-      "下回合进入 ${ModID}:梦境"
     ]
   },
   "${ModID}:NellaFantasiaPower": {
@@ -72,12 +52,6 @@
     "DESCRIPTIONS": [
       "消耗牌时，绩获得 #r",
       " #y力量"
-    ]
-  },
-  "${ModID}:Feature_2_Power": {
-    "NAME": "随付笺咏醉屠苏",
-    "DESCRIPTIONS": [
-      "消耗卡牌时升级 #r随付笺咏醉屠苏"
     ]
   },
   "${ModID}:CapacityExpansionPower": {
