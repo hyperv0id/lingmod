@@ -2,6 +2,7 @@ package lingmod.powers;
 
 import static lingmod.ModCore.makeID;
 
+import com.megacrit.cardcrawl.powers.FlameBarrierPower;
 import org.apache.logging.log4j.Logger;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -23,16 +24,35 @@ public class PoemVSQuickSandPower extends AbstractEasyPower {
     private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.BUFF;
     private static final boolean TURN_BASED = true; //  是否回合后消失
     public static final Logger logger = ModCore.logger;
+    private boolean allowLoseHP = false;
 
     public PoemVSQuickSandPower(AbstractCreature owner, int amount) {
+        this(owner, amount, false);
+    }
+    public PoemVSQuickSandPower(AbstractCreature owner, int amount, boolean allowLoseHP) {
         super(POWER_ID, NAME, TYPE, TURN_BASED, owner, amount);
         updateDescription();
+        this.allowLoseHP = true;
     }
 
     @Override
     public void wasHPLost(DamageInfo info, int damageAmount) {
         super.wasHPLost(info, damageAmount);
-        addToBot(new ApplyPowerAction(owner, owner, new PoeticMoodPower(owner, this.amount)));
+        if(allowLoseHP) {
+            if (info.owner != null && info.owner != this.owner) {
+                this.flash();
+                addToBot(new ApplyPowerAction(owner, owner, new PoeticMoodPower(owner, this.amount)));
+            }
+        }
+    }
+
+    @Override
+    public int onAttacked(DamageInfo info, int damageAmount) {
+        if (info.owner != null && info.owner != this.owner) {
+            this.flash();
+            addToBot(new ApplyPowerAction(owner, owner, new PoeticMoodPower(owner, this.amount)));
+        }
+        return damageAmount;
     }
 }
 

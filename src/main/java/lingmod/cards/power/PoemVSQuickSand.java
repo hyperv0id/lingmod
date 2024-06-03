@@ -20,12 +20,11 @@ public class PoemVSQuickSand extends AbstractPoemCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new lingmod.powers.PoemVSQuickSandPower(p, magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new lingmod.powers.PoemVSQuickSandPower(p, magicNumber, upgraded)));
     }
 
     @Override
     public void upp() {
-        upgradeMagicNumber(1);
     }
 }
 //   "${ModID}:PoemVSQuickSand": {

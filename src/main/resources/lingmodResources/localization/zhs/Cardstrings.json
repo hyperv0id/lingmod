@@ -209,7 +209,8 @@
   },
   "${ModID}:PoemVSQuickSand": {
     "NAME": "诗对狂沙",
-    "DESCRIPTION": "失去生命时，获得 !M! ${ModID}:诗兴 "
+    "DESCRIPTION": "受到攻击时，获得 !M! ${ModID}:诗兴 ",
+    "UPGRADE_DESCRIPTION" : "受到攻击时，获得 !M! ${ModID}:诗兴 NL 失去生命时，再获得 !M! 点"
   },
   "${ModID}:Sui_7DealCard": {
     "NAME": "“交易”",
