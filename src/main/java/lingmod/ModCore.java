@@ -2,7 +2,6 @@ package lingmod;
 
 import java.nio.charset.StandardCharsets;
 
-import lingmod.aria.AriaTopPanel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -43,11 +42,12 @@ import basemod.interfaces.EditRelicsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import basemod.interfaces.OnStartBattleSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
-import lingmod.Events.Sui12Event;
-import lingmod.Events.WhoamiEvent;
+import lingmod.aria.AriaTopPanel;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.cardvars.AbstractEasyDynamicVariable;
 import lingmod.character.Ling;
+import lingmod.events.Sui12Event;
+import lingmod.events.WhoamiEvent;
 import lingmod.monsters.MonsterSui_7;
 import lingmod.potions.AbstractEasyPotion;
 import lingmod.relics.AbstractEasyRelic;
@@ -278,10 +278,9 @@ public class ModCore implements
         // .create()
         // );
 
-
         // 添加TopPanel按钮
         BaseMod.addTopPanelItem(new AriaTopPanel());
-        
+
     }
 
     @Override

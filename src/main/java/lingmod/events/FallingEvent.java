@@ -1,4 +1,4 @@
-package lingmod.Events;
+package lingmod.events;
 
 import static lingmod.ModCore.makeID;
 

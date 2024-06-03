@@ -1,4 +1,4 @@
-package lingmod.Events;
+package lingmod.events;
 
 import org.apache.logging.log4j.Logger;
 
