@@ -214,5 +214,9 @@
   "${ModID}:Sui_7DealCard": {
     "NAME": "“交易”",
     "DESCRIPTION": "抽到时再抽一张牌 NL ^_^"
+  },
+  "${ModID}:LieDaoZiWineCard": {
+    "NAME": "烈刀子",
+    "DESCRIPTION": "翻倍你的 ${ModID}:酒 "
   }
 }

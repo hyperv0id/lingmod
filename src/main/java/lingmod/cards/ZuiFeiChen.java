@@ -39,7 +39,6 @@ public class ZuiFeiChen extends AbstractEasyCard {
     @Override
     public void triggerOnCardPlayed(AbstractCard cardPlayed) {
         super.triggerOnCardPlayed(cardPlayed);
-        logger.info("=========check triggered");
         if (cardPlayed.hasTag(CustomTags.WINE)) {
             isLastWine = true;
             this.loadCardImage(IMG_2);
@@ -54,12 +53,9 @@ public class ZuiFeiChen extends AbstractEasyCard {
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
         if (isLastWine) {
             // 如果是酒，那么翻倍你的酒
-            AbstractPower wine = AbstractDungeon.player.powers.stream().filter(po -> po.ID.equals(WinePower.POWER_ID))
-                    .findFirst().orElse(null);
-            if (wine != null) {
-                addToBot(new ApplyPowerAction(abstractPlayer, abstractPlayer,
-                        new WinePower(abstractPlayer, wine.amount * magicNumber)));
-            }
+            AbstractDungeon.player.powers.stream().filter(po -> po.ID.equals(WinePower.POWER_ID))
+                    .findFirst().ifPresent(wine -> addToBot(new ApplyPowerAction(abstractPlayer, abstractPlayer,
+                            new WinePower(abstractPlayer, wine.amount * magicNumber))));
         } else {
             addToBot(new DrawCardAction(magicNumber));
         }

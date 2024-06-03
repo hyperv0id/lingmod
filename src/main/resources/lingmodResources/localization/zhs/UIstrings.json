@@ -18,5 +18,10 @@
         "TEXT" :[
             " lingmod:诗兴 %d。 NL %s"
         ]
+    },
+    "${ModID}:WineMod" :{
+        "TEXT" :[
+            " lingmod:酒 %d。 NL %s"
+        ]
     }
 }

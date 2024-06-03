@@ -32,7 +32,6 @@ public class ZhuoJiuChengXin extends AbstractWineCard {
 
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
-        super.use(abstractPlayer, abstractMonster);
         if (!upgraded)
             addToBot(new ApplyPowerAction(abstractPlayer, abstractMonster,
                     new ArtifactPower(abstractPlayer, magicNumber)));
