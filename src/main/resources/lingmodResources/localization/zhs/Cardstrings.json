@@ -216,7 +216,15 @@
     "DESCRIPTION": "抽到时再抽一张牌 NL ^_^"
   },
   "${ModID}:LieDaoZiWineCard": {
-    "NAME": "烈刀子",
+    "NAME": "烈刀子酒",
     "DESCRIPTION": "翻倍你的 ${ModID}:酒 "
+  },
+  "${ModID}:HuSongWineCard": {
+    "NAME": "湖松酒",
+    "DESCRIPTION": "获得 !B! 点格挡"
+  },
+  "${ModID}:GuiXingWineCard": {
+    "NAME": "归行酒",
+    "DESCRIPTION": "将弃牌堆一张随机牌加入手牌 NL 打出其他 ${ModID}:酒 时，将这张牌从弃牌堆加入手牌"
   }
 }
