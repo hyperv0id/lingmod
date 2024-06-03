@@ -24,7 +24,7 @@ public class XiaoYaoYou extends AbstractPoemCard {
 
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
-        this.addToBot(new ApplyPowerAction(abstractPlayer, abstractPlayer, new XiaoYaoPower(abstractPlayer, 0)));
+        this.addToBot(new ApplyPowerAction(abstractPlayer, abstractPlayer, new XiaoYaoPower(abstractPlayer)));
         this.addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[0], 2F, 2F));
     }
 
