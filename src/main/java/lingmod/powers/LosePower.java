@@ -4,9 +4,12 @@ import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 
 import lingmod.ModCore;
+
+import static java.lang.Math.min;
 
 /**
  * 回合开始时选择 x 张牌丢弃，类似少抽一张牌
@@ -25,7 +28,8 @@ public class LosePower extends AbstractEasyPower{
         super.atStartOfTurnPostDraw();
         // 选一张牌丢弃
         this.flash();
-        addToBot(new DiscardAction(owner, owner, amount, false));
+        int hand = AbstractDungeon.player.hand.size(); // 如果大于5，可能游戏无法进行
+        addToBot(new DiscardAction(owner, owner, min(amount, hand), false));
         addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
 }
