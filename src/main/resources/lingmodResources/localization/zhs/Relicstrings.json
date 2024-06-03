@@ -42,7 +42,7 @@
       "如果你本回合未打出过攻击牌，那么下回合的第一张攻击牌免费打出"
     ]
   },
-  "${ModID}:AltJinGangChu": {
+  "${ModID}:AGiftRelic": {
     "NAME": "金刚杵",
     "FLAVOR": "黄沙远来三千地，洗罢流年一屈指。",
     "DESCRIPTIONS": [

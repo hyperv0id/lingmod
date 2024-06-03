@@ -25,9 +25,8 @@ public class NingZuoWuCard extends AbstractPoemCard {
 
     public static final String ID = makeID(NingZuoWuCard.class.getSimpleName());
 
-
     public NingZuoWuCard() {
-        super(ID, 1, CardType.ATTACK, CardRarity.RARE, CardTarget.SELF);
+        super(ID, 1, CardType.ATTACK, CardRarity.RARE, CardTarget.SELF, 3);
         baseDamage = 5;
         CardModifierManager.addModifier(this, new ExhaustMod());
     }
@@ -35,8 +34,10 @@ public class NingZuoWuCard extends AbstractPoemCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         int cnt = AbstractDungeon.player.hand.size();
-        if (upgraded) cnt += AbstractDungeon.player.powers.size();
-        int powerSum = p.powers.stream().filter(power->power.type==PowerType.DEBUFF).mapToInt(power -> max(power.amount, 1)).sum();
+        if (upgraded)
+            cnt += AbstractDungeon.player.powers.size();
+        int powerSum = p.powers.stream().filter(power -> power.type == PowerType.DEBUFF)
+                .mapToInt(power -> max(power.amount, 1)).sum();
         addToBot(new ExhaustAllAction());
         addToBot(new DrawCardAction(cnt));
         addToBot(new RemoveAllPowersAction(p, true));

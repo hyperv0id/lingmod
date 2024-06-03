@@ -19,7 +19,7 @@ import lingmod.util.CustomTags;
 public class FeiHuaLingCard extends AbstractPoemCard{
     public static final String ID = makeID(FeiHuaLingCard.class.getSimpleName());
     public FeiHuaLingCard(){
-        super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
+        super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF, 1);
     }
     int upgrade = 0;
 

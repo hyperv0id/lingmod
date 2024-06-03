@@ -30,8 +30,8 @@ public class NellaFantasiaMod extends AbstractCardModifier {
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
         super.onUse(card, target, action);
         if (AbstractDungeon.player.stance.ID.equals(NellaFantasiaStance.STANCE_ID)) {
-            NellaFantasiaStance stance = (NellaFantasiaStance) AbstractDungeon.player.stance;
-            stance.remainTurn++;
+            NellaFantasiaStance.remainTurn++;
+            NellaFantasiaStance.giveNellPowerToAll(); // 尝试给所有敌人都附上DEBUFF
         } else {
             addToBot(new ChangeStanceAction(new NellaFantasiaStance()));
         }

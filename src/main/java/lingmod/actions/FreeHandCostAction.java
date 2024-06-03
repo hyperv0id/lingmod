@@ -4,8 +4,12 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+
 import lingmod.powers.NellaFantasiaPower;
 
+/**
+ * 手牌消耗变为0
+ */
 public class FreeHandCostAction extends AbstractGameAction {
     AbstractPlayer player;
     public FreeHandCostAction(AbstractPlayer owner) {

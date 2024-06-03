@@ -15,7 +15,7 @@ public class DingFengBoCard extends AbstractPoemCard {
     public final static String CARD_ID = makeID(DingFengBoCard.class.getSimpleName());
 
     public DingFengBoCard() {
-        super(CARD_ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
+        super(CARD_ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF, 1);
         baseBlock = 8;
     }
 

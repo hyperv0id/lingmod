@@ -18,7 +18,7 @@ public class XiaoYaoYou extends AbstractPoemCard {
     public static final String ID = makeID(XiaoYaoYou.class.getSimpleName());
 
     public XiaoYaoYou() {
-        super(ID, 3, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
+        super(ID, 3, CardType.POWER, CardRarity.RARE, CardTarget.SELF, 3);
         this.exhaust = true;
     }
 

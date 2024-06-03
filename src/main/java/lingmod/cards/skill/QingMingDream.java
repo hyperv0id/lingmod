@@ -5,18 +5,20 @@ import static lingmod.ModCore.makeID;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.watcher.SkipEnemiesTurnAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.GainStrengthPower;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.vfx.combat.WhirlwindEffect;
 
 import basemod.cardmods.ExhaustMod;
 import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.NellaFantasiaMod;
+import lingmod.powers.NellaFantasiaPower;
 import lingmod.stance.NellaFantasiaStance;
 
 /**
@@ -50,8 +52,9 @@ public class QingMingDream extends AbstractEasyCard {
         this.addToBot(new SkipEnemiesTurnAction());
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[1], 2F, 2F));
         for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
-            if (mo.hasPower(GainStrengthPower.POWER_ID))
-                addToBot(new RemoveSpecificPowerAction(p, m, GainStrengthPower.POWER_ID));
+            AbstractPower nellPower = p.getPower(NellaFantasiaPower.ID);
+            if (nellPower != null)
+                addToBot(new ApplyPowerAction(mo, p, new StrengthPower(mo, -nellPower.amount)));
         }
     }
 }
