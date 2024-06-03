@@ -185,7 +185,7 @@
   },
   "${ModID}:ZuiFeiChen": {
     "NAME": "醉飞尘",
-    "DESCRIPTION": "如果上一张是酒，那么获得 !M! 倍的酒，反之抽 !M! 张牌"
+    "DESCRIPTION": "每当抽取/消耗/丢弃 !M! 张牌，获得 2 ${ModID}:酒 "
   },
   "${ModID}:QingMingDream": {
     "NAME": "清明梦",

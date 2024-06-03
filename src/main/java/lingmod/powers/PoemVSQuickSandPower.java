@@ -2,7 +2,6 @@ package lingmod.powers;
 
 import static lingmod.ModCore.makeID;
 
-import com.megacrit.cardcrawl.powers.FlameBarrierPower;
 import org.apache.logging.log4j.Logger;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;

@@ -123,10 +123,16 @@
       "每层使伤害增加 10%，格挡增加 5%。打出攻击牌后减少一点"
     ]
   },
-  "ModID:PoemVSQuickSandPower": {
+  "${ModID}:PoemVSQuickSandPower": {
     "NAME": "诗对狂沙",
     "DESCRIPTIONS": [
       "每次受到伤害时，获得X诗兴"
+    ]
+  },
+  "${ModID}:ZuiFeiChenPower": {
+    "NAME": "醉飞尘",
+    "DESCRIPTIONS": [
+      "每抽取/丢弃/消耗 %d 张牌，获得 %d ${ModID}:酒 "
     ]
   }
 }
