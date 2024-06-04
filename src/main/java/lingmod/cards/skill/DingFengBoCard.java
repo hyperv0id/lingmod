@@ -1,11 +1,10 @@
 package lingmod.cards.skill;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.cards.AbstractPoemCard;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 定风波：获得 10/13 格挡

@@ -1,13 +1,12 @@
 package lingmod.powers;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 
-import basemod.BaseMod;
+import static lingmod.ModCore.makeID;
 
 // Referenced classes of package Goldenglow.powers:
 //            AbstractGoldenglowPower

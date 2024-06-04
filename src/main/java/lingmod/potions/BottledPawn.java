@@ -1,7 +1,5 @@
 package lingmod.potions;
 
-import static lingmod.ModCore.makeID;
-
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.InstantKillAction;
@@ -11,10 +9,11 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
-
 import lingmod.ModCore;
 import lingmod.actions.LosePotionSlotAction;
 import lingmod.character.Ling;
+
+import static lingmod.ModCore.makeID;
 
 public class BottledPawn extends AbstractEasyPotion {
     public static String ID = makeID(BottledPawn.class.getSimpleName());

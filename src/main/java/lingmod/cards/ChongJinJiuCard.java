@@ -1,16 +1,15 @@
 package lingmod.cards;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DuplicationPower;
-
-import basemod.helpers.CardModifierManager;
 import lingmod.cards.mod.MirrorMod;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 重进酒：打出卡牌时消耗，并替换为其复制

@@ -1,13 +1,13 @@
 package lingmod.relics;
 
-import static lingmod.ModCore.makeID;
-
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 右键获得1力量，战斗胜利增加计数

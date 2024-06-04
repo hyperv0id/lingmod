@@ -1,7 +1,6 @@
 package lingmod.monsters;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.abstracts.CustomMonster;
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
@@ -16,10 +15,10 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.powers.ConstrictedPower;
-
-import basemod.abstracts.CustomMonster;
 import lingmod.character.Ling;
 import lingmod.powers.Sui7DealPower;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 绩老七：

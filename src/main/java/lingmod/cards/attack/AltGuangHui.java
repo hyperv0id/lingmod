@@ -1,12 +1,11 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.cards.AbstractPoemCard;
 import lingmod.powers.PoeticMoodPower;
+
+import static lingmod.ModCore.makeID;
 
 public class AltGuangHui extends AbstractPoemCard {
     public static final String ID = makeID(AltGuangHui.class.getSimpleName());

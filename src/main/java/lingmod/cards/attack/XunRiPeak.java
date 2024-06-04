@@ -1,17 +1,16 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.unique.WhirlwindAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-
 import lingmod.cards.AbstractEasyCard;
 import lingmod.powers.PoeticMoodPower;
 import lingmod.stance.NellaFantasiaStance;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 寻日峰：群体4伤害x次，x为能量。如果在梦中：x为能量+诗兴

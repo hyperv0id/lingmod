@@ -3,7 +3,6 @@ package lingmod.util.dailymod;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.daily.mods.AbstractDailyMod;
 import com.megacrit.cardcrawl.localization.RunModStrings;
-
 import lingmod.ModCore;
 import lingmod.util.TODO;
 

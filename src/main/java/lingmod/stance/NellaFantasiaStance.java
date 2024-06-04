@@ -1,9 +1,10 @@
 package lingmod.stance;
 
-import static lingmod.ModCore.makeID;
-
-import java.util.HashMap;
-
+import basemod.BaseMod;
+import basemod.interfaces.OnCardUseSubscriber;
+import basemod.interfaces.OnPlayerDamagedSubscriber;
+import basemod.interfaces.PostBattleSubscriber;
+import basemod.interfaces.PostDeathSubscriber;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
@@ -27,13 +28,11 @@ import com.megacrit.cardcrawl.stances.AbstractStance;
 import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 import com.megacrit.cardcrawl.vfx.stance.CalmParticleEffect;
 import com.megacrit.cardcrawl.vfx.stance.StanceAuraEffect;
-
-import basemod.BaseMod;
-import basemod.interfaces.OnCardUseSubscriber;
-import basemod.interfaces.OnPlayerDamagedSubscriber;
-import basemod.interfaces.PostBattleSubscriber;
-import basemod.interfaces.PostDeathSubscriber;
 import lingmod.powers.NellaFantasiaPower;
+
+import java.util.HashMap;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 幻梦/梦境：全体受伤时失去1临时力量

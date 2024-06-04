@@ -1,13 +1,12 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.watcher.WallopAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.cards.AbstractPoemCard;
+
+import static lingmod.ModCore.makeID;
 
 public class GuoJiaXianMei extends AbstractPoemCard {
     public final static String ID = makeID(GuoJiaXianMei.class.getSimpleName());

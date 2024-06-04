@@ -1,13 +1,12 @@
 package lingmod.relics;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-
 import lingmod.powers.WinePower;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 战斗开始获得酒

@@ -1,13 +1,6 @@
 package lingmod.cards;
 
-import static lingmod.ModCore.makeImagePath;
-import static lingmod.ModCore.modID;
-import static lingmod.util.Wiz.actionify;
-import static lingmod.util.Wiz.atb;
-import static lingmod.util.Wiz.att;
-
-import java.util.function.Consumer;
-
+import basemod.abstracts.CustomCard;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
@@ -23,10 +16,14 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.abstracts.CustomCard;
 import lingmod.character.Ling;
 import lingmod.util.CardArtRoller;
+
+import java.util.function.Consumer;
+
+import static lingmod.ModCore.makeImagePath;
+import static lingmod.ModCore.modID;
+import static lingmod.util.Wiz.*;
 
 /**
  * 卡牌大小：500*380的高分辨率，250*190的低分辨率

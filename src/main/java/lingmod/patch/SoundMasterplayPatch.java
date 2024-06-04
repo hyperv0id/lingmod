@@ -1,13 +1,13 @@
 package lingmod.patch;
 
-import static lingmod.ModCore.makeVoicePath;
-
-import java.util.HashMap;
-
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.audio.Sfx;
 import com.megacrit.cardcrawl.audio.SoundMaster;
 import com.megacrit.cardcrawl.core.Settings;
+
+import java.util.HashMap;
+
+import static lingmod.ModCore.makeVoicePath;
 
 @SpirePatch(
     cls = "com.megacrit.cardcrawl.audio.SoundMaster",

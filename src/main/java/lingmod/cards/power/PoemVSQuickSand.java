@@ -1,12 +1,11 @@
 package lingmod.cards.power;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.cards.AbstractPoemCard;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 诗对狂沙：每次受到伤害时，获得 1/2 诗兴

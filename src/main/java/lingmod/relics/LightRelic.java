@@ -1,16 +1,15 @@
 package lingmod.relics;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.character.Ling;
 import lingmod.character.VoiceMaster;
 import lingmod.powers.PoeticMoodPower;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 一盏灯：灯挑夜，箭如雨，大漠飞火

@@ -1,13 +1,12 @@
 package lingmod.cards;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
-
-import basemod.helpers.CardModifierManager;
 import lingmod.cards.mod.PoemMod;
 import lingmod.util.CustomTags;
+
+import static lingmod.ModCore.makeID;
 
 public abstract class AbstractPoemCard extends AbstractEasyCard {
     public final static String ID = makeID(AbstractPoemCard.class.getSimpleName());

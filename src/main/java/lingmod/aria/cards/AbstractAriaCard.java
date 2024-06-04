@@ -1,15 +1,14 @@
 package lingmod.aria.cards;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.cards.AbstractEasyCard;
 import lingmod.util.CustomTags;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 词牌：规定了整场战斗的格调，按照格调打出额外效果

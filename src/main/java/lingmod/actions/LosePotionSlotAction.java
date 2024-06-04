@@ -1,15 +1,15 @@
 package lingmod.actions;
 
-import static lingmod.ModCore.logger;
-
-import java.util.ArrayList;
-
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.potions.PotionSlot;
+
+import java.util.ArrayList;
+
+import static lingmod.ModCore.logger;
 
 public final class LosePotionSlotAction extends AbstractGameAction {
 

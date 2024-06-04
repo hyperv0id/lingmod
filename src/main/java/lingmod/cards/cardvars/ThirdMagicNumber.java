@@ -1,7 +1,7 @@
 package lingmod.cards.cardvars;
 
-import lingmod.cards.AbstractEasyCard;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import lingmod.cards.AbstractEasyCard;
 
 import static lingmod.ModCore.makeID;
 

@@ -1,16 +1,14 @@
 package lingmod.powers;
 
-import static lingmod.ModCore.makeID;
-
-import org.apache.logging.log4j.Logger;
-
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-
 import lingmod.ModCore;
+import org.apache.logging.log4j.Logger;
+
+import static lingmod.ModCore.makeID;
 
 public class YuGuoZhuoYingPower extends AbstractEasyPower {
 

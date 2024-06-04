@@ -2,7 +2,6 @@ package lingmod.cards.skill;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.cards.AbstractEasyCard;
 
 import static lingmod.ModCore.makeID;

@@ -1,12 +1,11 @@
 package lingmod.cards.status;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.cards.AbstractEasyCard;
+
+import static lingmod.ModCore.makeID;
 
 public class Sui_7DealCard extends AbstractEasyCard {
     public final static String ID = makeID(Sui_7DealCard.class.getSimpleName());

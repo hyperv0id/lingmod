@@ -1,13 +1,12 @@
 package lingmod.cards.power;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.cards.AbstractEasyCard;
 import lingmod.powers.YuGuoZhuoYingPower;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 受伤后立刻获得等量护盾

@@ -3,7 +3,6 @@ package lingmod.util;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import lingmod.ModCore;
-
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;

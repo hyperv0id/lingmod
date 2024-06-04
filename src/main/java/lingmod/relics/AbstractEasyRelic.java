@@ -1,15 +1,14 @@
 package lingmod.relics;
 
-import static lingmod.ModCore.makeRelicPath;
-import static lingmod.ModCore.modID;
-
+import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.Gdx;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-
-import basemod.abstracts.CustomRelic;
 import lingmod.util.TexLoader;
+
+import static lingmod.ModCore.makeRelicPath;
+import static lingmod.ModCore.modID;
 
 public abstract class AbstractEasyRelic extends CustomRelic {
     public AbstractCard.CardColor color;

@@ -1,9 +1,5 @@
 package lingmod.powers;
 
-import static lingmod.ModCore.makeID;
-
-import org.apache.logging.log4j.Logger;
-
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -12,8 +8,10 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.ConstrictedPower;
-
 import lingmod.ModCore;
+import org.apache.logging.log4j.Logger;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 梦长，损失生命时部分 转换成缠绕

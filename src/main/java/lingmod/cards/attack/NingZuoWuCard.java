@@ -1,8 +1,7 @@
 package lingmod.cards.attack;
 
-import static java.lang.Math.max;
-import static lingmod.ModCore.makeID;
-
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.unique.RemoveAllPowersAction;
@@ -10,12 +9,12 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower.PowerType;
-
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
 import lingmod.actions.ExhaustAllAction;
 import lingmod.cards.AbstractPoemCard;
 import lingmod.powers.PoeticMoodPower;
+
+import static java.lang.Math.max;
+import static lingmod.ModCore.makeID;
 
 /**
  * 宁作吾：消耗所有手牌，抽等量牌，然后所有debuff变成诗

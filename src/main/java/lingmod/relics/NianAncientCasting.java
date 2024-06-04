@@ -1,9 +1,9 @@
 package lingmod.relics;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 古旧铸物 事件 每层3缓冲，每战斗6盾

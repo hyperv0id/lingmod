@@ -1,12 +1,12 @@
 package lingmod.powers;
 
-import static lingmod.ModCore.makeID;
-
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 幻梦/梦境：造成伤害时，使其失去 1 临时力量

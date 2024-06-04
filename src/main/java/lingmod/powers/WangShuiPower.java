@@ -1,12 +1,11 @@
 package lingmod.powers;
 
-import static lingmod.ModCore.makeID;
-import static lingmod.powers.AbstractEasyPower.I18N.getName;
-
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-
 import lingmod.actions.ExhaustAllAction;
+
+import static lingmod.ModCore.makeID;
+import static lingmod.powers.AbstractEasyPower.I18N.getName;
 
 /**
  * 忘水：回合结束时消耗所有手牌

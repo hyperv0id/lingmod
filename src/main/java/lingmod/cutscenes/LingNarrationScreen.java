@@ -1,11 +1,5 @@
 package lingmod.cutscenes;
 
-import static lingmod.ModCore.makeID;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Scanner;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -28,6 +22,12 @@ import com.megacrit.cardcrawl.ui.DialogWord.AppearEffect;
 import com.megacrit.cardcrawl.ui.DialogWord.WordColor;
 import com.megacrit.cardcrawl.ui.DialogWord.WordEffect;
 import com.megacrit.cardcrawl.ui.SpeechWord;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Scanner;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * LingNarrationScreen: 通关后 替代/增加 尼奥的台词

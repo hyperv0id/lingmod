@@ -1,7 +1,5 @@
 package lingmod.events;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -9,12 +7,13 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
-
 import lingmod.cards.attack.Whoami_Dusk;
 import lingmod.cards.power.Whoami_Ling;
 import lingmod.cards.power.Whoami_Nian;
 import lingmod.cards.power.Whoami_Shuo;
 import lingmod.cards.skill.Whoami_Wang;
+
+import static lingmod.ModCore.makeID;
 
 public class WhoamiEvent extends AbstractImageEvent {
     public static final String EVENT_NAME = WhoamiEvent.class.getSimpleName();

@@ -1,18 +1,14 @@
 package lingmod.util;
 
-import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.cardRandomRng;
-import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.srcCommonCardPool;
-import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.srcRareCardPool;
-import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.srcUncommonCardPool;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import lingmod.ModCore;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-
-import lingmod.ModCore;
+import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.*;
 
 public class CardHelper {
     public static AbstractCard lastCard(boolean isOnUseCard) {

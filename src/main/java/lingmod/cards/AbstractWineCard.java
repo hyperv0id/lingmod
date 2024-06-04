@@ -1,17 +1,12 @@
 package lingmod.cards;
 
-import static lingmod.ModCore.makeID;
-
 import basemod.helpers.CardModifierManager;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.cards.mod.WineMod;
-import lingmod.powers.WinePower;
 import lingmod.util.CustomTags;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 是酒，打出后获得 3 活力?

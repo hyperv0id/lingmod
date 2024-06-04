@@ -1,7 +1,7 @@
 package lingmod.powers;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.BaseMod;
+import basemod.interfaces.PostPowerApplySubscriber;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -9,8 +9,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-import basemod.BaseMod;
-import basemod.interfaces.PostPowerApplySubscriber;
+import static lingmod.ModCore.makeID;
 
 /**
  * 你无法再获得任何能力/异常

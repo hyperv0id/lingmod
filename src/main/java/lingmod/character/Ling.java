@@ -1,20 +1,7 @@
 package lingmod.character;
 
-import static lingmod.ModCore.CORPSE;
-import static lingmod.ModCore.SHOULDER1;
-import static lingmod.ModCore.SHOULDER2;
-import static lingmod.ModCore.characterColor;
-import static lingmod.ModCore.logger;
-import static lingmod.ModCore.makeCharacterPath;
-import static lingmod.ModCore.makeID;
-import static lingmod.ModCore.makeImagePath;
-import static lingmod.character.Ling.Enums.LING_COLOR;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import basemod.BaseMod;
-import basemod.interfaces.PostDungeonInitializeSubscriber;
+import basemod.ReflectionHacks;
+import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -37,15 +24,18 @@ import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
-
-import basemod.ReflectionHacks;
-import basemod.abstracts.CustomPlayer;
 import lingmod.cards.ChongJinJiuCard;
 import lingmod.cards.attack.Strike;
 import lingmod.cards.attack.TranquilityCard;
 import lingmod.cards.skill.Defend;
 import lingmod.relics.LightRelic;
 import lingmod.util.TODO;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static lingmod.ModCore.*;
+import static lingmod.character.Ling.Enums.LING_COLOR;
 
 public class Ling extends CustomPlayer {
 
