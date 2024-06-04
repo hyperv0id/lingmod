@@ -282,32 +282,38 @@ public abstract class AbstractEasyCard extends CustomCard {
     // These shortcuts are specifically for cards. All other shortcuts that aren't
     // specifically for cards can go in Wiz.
     protected void dmg(AbstractMonster m, AbstractGameAction.AttackEffect fx) {
-        if(fx == null) fx = AttackEffect.NONE;
+        if (fx == null)
+            fx = AttackEffect.NONE;
         atb(new DamageAction(m, new DamageInfo(AbstractDungeon.player, damage, damageTypeForTurn), fx));
     }
 
     protected void dmgTop(AbstractMonster m, AbstractGameAction.AttackEffect fx) {
-        if(fx == null) fx = AttackEffect.NONE;
+        if (fx == null)
+            fx = AttackEffect.NONE;
         att(new DamageAction(m, new DamageInfo(AbstractDungeon.player, damage, damageTypeForTurn), fx));
     }
 
     protected void allDmg(AbstractGameAction.AttackEffect fx) {
-        if(fx == null) fx = AttackEffect.NONE;
+        if (fx == null)
+            fx = AttackEffect.NONE;
         atb(new DamageAllEnemiesAction(AbstractDungeon.player, multiDamage, damageTypeForTurn, fx));
     }
 
     protected void allDmgTop(AbstractGameAction.AttackEffect fx) {
-        if(fx == null) fx = AttackEffect.NONE;
+        if (fx == null)
+            fx = AttackEffect.NONE;
         att(new DamageAllEnemiesAction(AbstractDungeon.player, multiDamage, damageTypeForTurn, fx));
     }
 
     protected void altDmg(AbstractMonster m, AbstractGameAction.AttackEffect fx) {
-        if(fx == null) fx = AttackEffect.NONE;
+        if (fx == null)
+            fx = AttackEffect.NONE;
         atb(new DamageAction(m, new DamageInfo(AbstractDungeon.player, secondDamage, damageTypeForTurn), fx));
     }
 
     protected void altDmgTop(AbstractMonster m, AbstractGameAction.AttackEffect fx) {
-        if(fx == null) fx = AttackEffect.NONE;
+        if (fx == null)
+            fx = AttackEffect.NONE;
         att(new DamageAction(m, new DamageInfo(AbstractDungeon.player, secondDamage, damageTypeForTurn), fx));
     }
 
@@ -328,24 +334,28 @@ public abstract class AbstractEasyCard extends CustomCard {
     }
 
     protected void dmgRandom(AbstractGameAction.AttackEffect fx) {
-        if(fx == null) fx = AttackEffect.NONE;
+        if (fx == null)
+            fx = AttackEffect.NONE;
         dmgRandom(fx, null, null);
     }
 
     protected void dmgRandom(AbstractGameAction.AttackEffect fx, Consumer<AbstractMonster> extraEffectToTarget,
             Consumer<AbstractMonster> effectBefore) {
-        if(fx == null) fx = AttackEffect.NONE;
+        if (fx == null)
+            fx = AttackEffect.NONE;
         atb(dmgRandomAction(fx, extraEffectToTarget, effectBefore));
     }
 
     protected void dmgRandomTop(AbstractGameAction.AttackEffect fx) {
-        if(fx == null) fx = AttackEffect.NONE;
+        if (fx == null)
+            fx = AttackEffect.NONE;
         dmgRandomTop(fx, null, null);
     }
 
     protected void dmgRandomTop(AbstractGameAction.AttackEffect fx, Consumer<AbstractMonster> extraEffectToTarget,
             Consumer<AbstractMonster> effectBefore) {
-        if(fx == null) fx = AttackEffect.NONE;
+        if (fx == null)
+            fx = AttackEffect.NONE;
         att(dmgRandomAction(fx, extraEffectToTarget, effectBefore));
     }
 
@@ -372,4 +382,27 @@ public abstract class AbstractEasyCard extends CustomCard {
     public CardArtRoller.ReskinInfo reskinInfo(String ID) {
         return null;
     }
+
+    public static void addToBotAbstract(final VoidSupplier func) {
+        AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+            public void update() {
+                func.get();
+                this.isDone = true;
+            }
+        });
+    }
+
+    public static void addToTopAbstract(final VoidSupplier func) {
+        AbstractDungeon.actionManager.addToTop(new AbstractGameAction() {
+            public void update() {
+                func.get();
+                this.isDone = true;
+            }
+        });
+    }
+
+    public interface VoidSupplier {
+        void get();
+    }
+
 }

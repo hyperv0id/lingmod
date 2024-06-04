@@ -1,12 +1,12 @@
 package lingmod.actions;
 
+import java.util.function.BiFunction;
+
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-
-import java.util.function.BiFunction;
 
 public class EasyXCostAction extends AbstractGameAction {
     public BiFunction<Integer, int[], Boolean> xActionUpdate;
@@ -38,7 +38,7 @@ public class EasyXCostAction extends AbstractGameAction {
             }
 
             if (AbstractDungeon.player.hasRelic(ChemicalX.ID)) {
-                effect += 2;
+                effect += ChemicalX.BOOST;
                 AbstractDungeon.player.getRelic(ChemicalX.ID).flash();
             }
 

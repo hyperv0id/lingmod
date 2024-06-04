@@ -175,10 +175,6 @@
     "NAME": "远山惊雷",
     "DESCRIPTION": "对主目标造成 !D! 伤害，其余造成一半的伤害"
   },
-  "${ModID}:ChiJiuSui": {
-    "NAME": "辞旧岁",
-    "DESCRIPTION": "交换你的抽牌堆和弃牌堆，洗牌，抽一张牌"
-  },
   "${ModID}:AGiftCard": {
     "NAME": "“礼物”",
     "DESCRIPTION": "给予所有敌人 !M! 层 虚弱 和 易伤 NL 给予自己 !${ModID}:m2! 层 虚弱 "
@@ -210,7 +206,7 @@
   "${ModID}:PoemVSQuickSand": {
     "NAME": "诗对狂沙",
     "DESCRIPTION": "受到攻击时，获得 !M! ${ModID}:诗兴 ",
-    "UPGRADE_DESCRIPTION" : "受到攻击时，获得 !M! ${ModID}:诗兴 NL 失去生命时，再获得 !M! 点"
+    "UPGRADE_DESCRIPTION": "受到攻击时，获得 !M! ${ModID}:诗兴 NL 失去生命时，再获得 !M! 点"
   },
   "${ModID}:Sui_7DealCard": {
     "NAME": "“交易”",
@@ -227,5 +223,9 @@
   "${ModID}:GuiXingWineCard": {
     "NAME": "归行酒",
     "DESCRIPTION": "将弃牌堆一张随机牌加入手牌 NL 打出其他 ${ModID}:酒 时，将这张牌从弃牌堆加入手牌"
+  },
+  "${ModID}:ChiJiuSui": {
+    "NAME": "辞旧岁",
+    "DESCRIPTION": "丢弃所有手牌，造成 !D!*张数 点伤害 X 次"
   }
 }
