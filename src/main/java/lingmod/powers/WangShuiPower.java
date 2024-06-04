@@ -3,6 +3,7 @@ package lingmod.powers;
 import static lingmod.ModCore.makeID;
 import static lingmod.powers.AbstractEasyPower.I18N.getName;
 
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 
 import lingmod.actions.ExhaustAllAction;
@@ -22,5 +23,9 @@ public class WangShuiPower extends AbstractEasyPower{
     public void atEndOfTurnPreEndTurnCards(boolean isPlayer) {
         super.atEndOfTurnPreEndTurnCards(isPlayer);
         addToBot(new ExhaustAllAction());
+    }
+    @Override
+    public void atStartOfTurn() {
+        addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
 }

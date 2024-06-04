@@ -3,13 +3,9 @@ package lingmod.actions;
 import static lingmod.ModCore.logger;
 import static lingmod.ModCore.makeID;
 
-import java.util.Iterator;
-
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -18,80 +14,88 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 import lingmod.util.CustomTags;
 
 public class SwapCostAction extends AbstractGameAction {
-
     private static final UIStrings uiStrings;
     public static final String[] TEXT;
     private AbstractPlayer p;
-    private boolean checkWine;
-    public static int numDiscarded;
-    private static final float DURATION;
+    public boolean checkWine = false;
+
+    public SwapCostAction() {
+        this.actionType = ActionType.CARD_MANIPULATION;
+        this.p = AbstractDungeon.player;
+        this.duration = Settings.ACTION_DUR_FAST;
+    }
+
+    public SwapCostAction(boolean checkWine) {
+        this();
+        this.checkWine = checkWine;
+    }
+
+    public void update() {
+        int exchange;
+        if (this.duration == Settings.ACTION_DUR_FAST) {
+            if (1 == this.p.hand.group.size()) {
+                this.isDone = true;
+                return;
+            }
+
+            if (2 == this.p.hand.group.size()) {
+                exchange = ((AbstractCard) this.p.hand.group.get(0)).costForTurn;
+                ((AbstractCard) this.p.hand.group.get(0))
+                        .setCostForTurn(((AbstractCard) this.p.hand.group.get(1)).costForTurn);
+                ((AbstractCard) this.p.hand.group.get(1)).setCostForTurn(exchange);
+                this.isDone = true;
+                return;
+            }
+
+            if (this.p.hand.group.size() > 2) {
+                AbstractDungeon.handCardSelectScreen.open(TEXT[0], 2, false, false, false, false);
+                this.tickDuration();
+                return;
+            }
+        }
+
+        if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
+            if (AbstractDungeon.handCardSelectScreen.selectedCards.size() < 2) {
+                logger.error("??? Why Size is not 2");
+                isDone = true;
+                return;
+            }
+            AbstractCard c1 = AbstractDungeon.handCardSelectScreen.selectedCards.group.get(0);
+            if (checkWine && c1.hasTag(CustomTags.WINE)) {
+                c1.cost = 0;
+                c1.isCostModified = true;
+                c1.setCostForTurn(0);
+            }
+            AbstractCard c2 = AbstractDungeon.handCardSelectScreen.selectedCards.group.get(1);
+            if (checkWine && c2.hasTag(CustomTags.WINE)) {
+                c2.cost = 0;
+                c2.isCostModified = true;
+                c2.setCostForTurn(0);
+            }
+            exchange = (c1).costForTurn;
+            (c1).setCostForTurn((c2).costForTurn);
+            (c2).setCostForTurn(exchange);
+            this.p.hand.addToTop(c1);
+            this.p.hand.addToTop(c2);
+            (c1).superFlash();
+            (c1).applyPowers();
+            (c2).superFlash();
+            (c2).applyPowers();
+            this.returnCards();
+            AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
+            AbstractDungeon.handCardSelectScreen.selectedCards.group.clear();
+            this.isDone = true;
+        }
+
+        this.tickDuration();
+    }
+
+    private void returnCards() {
+        this.p.hand.refreshHandLayout();
+    }
+
     static {
         uiStrings = CardCrawlGame.languagePack.getUIString(makeID("SwapCost"));
         TEXT = uiStrings.TEXT;
-        DURATION = Settings.ACTION_DUR_XFAST;
     }
-
-    public SwapCostAction(AbstractCreature target, AbstractCreature source, boolean wine) {
-        this.p = (AbstractPlayer) target;
-        this.duration = DURATION;
-        this.setValues(target, source);
-        this.actionType = ActionType.SPECIAL;
-        this.amount = 2;
-        this.checkWine = wine;
-    }
-
-    @Override
-    public void update() {
-        if (p.hand.size() < 2 || // 手牌中没有两张牌，无效
-                AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
-            this.isDone = true;
-            return;
-        }
-        if (this.duration == 0.5F) {
-            AbstractDungeon.handCardSelectScreen.open(TEXT[0], amount, false, true, false, false, true);
-            this.addToBot(new WaitAction(0.25F));
-            this.tickDuration();
-        } else {
-            if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
-                AbstractCard c1 = null, c2 = null;
-                Iterator<AbstractCard> var1 = AbstractDungeon.handCardSelectScreen.selectedCards.group.iterator();
-                if (var1.hasNext()) {
-                    c1 = (AbstractCard) var1.next();
-                    if (checkWine && c1.hasTag(CustomTags.WINE)) {
-                        c1.cost = 0;
-                        c1.isCostModified = true;
-                    }
-                }
-                if (var1.hasNext()) {
-                    c2 = (AbstractCard) var1.next();
-                    if (checkWine && c1.hasTag(CustomTags.WINE)) {
-                        c1.cost = 0;
-                        c1.isCostModified = true;
-                    }
-                }
-                if (c1 != null && c2 != null) {
-                    // 交换能量
-                    int t = c1.cost;
-
-                    c1.cost = c2.cost;
-                    c1.costForTurn = c1.cost;
-                    c1.isCostModified = true;
-
-                    c2.cost = t;
-                    c2.costForTurn = t;
-                    c2.isCostModified = true;
-
-                    AbstractDungeon.player.hand.addToTop(c1);
-                    AbstractDungeon.player.hand.addToTop(c2);
-                } else {
-                    logger.warn(this + "SwapCost May Occurred Bugs");
-                }
-
-                AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
-            }
-
-            this.tickDuration();
-        }
-    }
-
 }

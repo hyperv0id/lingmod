@@ -2,11 +2,11 @@ package lingmod.cards.skill;
 
 import static lingmod.ModCore.makeID;
 
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import lingmod.actions.SwapCostAction;
 import lingmod.cards.AbstractEasyCard;
 
@@ -21,13 +21,14 @@ public class SwapCup extends AbstractEasyCard {
         baseMagicNumber = 0;
         CardModifierManager.addModifier(this, new ExhaustMod());
     }
+
     @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
         return p.hand.group.size() >= 2;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new SwapCostAction(p, p, upgraded));
+        addToBot(new SwapCostAction(upgraded));
     }
 
     @Override

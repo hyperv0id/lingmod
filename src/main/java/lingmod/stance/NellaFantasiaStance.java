@@ -22,6 +22,7 @@ import com.megacrit.cardcrawl.localization.StanceStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.stances.AbstractStance;
 import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 import com.megacrit.cardcrawl.vfx.stance.CalmParticleEffect;
@@ -30,6 +31,8 @@ import com.megacrit.cardcrawl.vfx.stance.StanceAuraEffect;
 import basemod.BaseMod;
 import basemod.interfaces.OnCardUseSubscriber;
 import basemod.interfaces.OnPlayerDamagedSubscriber;
+import basemod.interfaces.PostBattleSubscriber;
+import basemod.interfaces.PostDeathSubscriber;
 import lingmod.powers.NellaFantasiaPower;
 
 /**
@@ -38,7 +41,9 @@ import lingmod.powers.NellaFantasiaPower;
 public class NellaFantasiaStance extends AbstractStance
         implements
         OnCardUseSubscriber,
-        OnPlayerDamagedSubscriber {
+        OnPlayerDamagedSubscriber,
+        PostBattleSubscriber,
+        PostDeathSubscriber {
     public static final String STANCE_NAME = NellaFantasiaStance.class.getSimpleName();
     public static final String STANCE_ID = makeID(STANCE_NAME);
 
@@ -139,7 +144,7 @@ public class NellaFantasiaStance extends AbstractStance
     @Override
     public int receiveOnPlayerDamaged(int dmg, DamageInfo info) {
         AbstractPlayer player = AbstractDungeon.player;
-        if (info.type == DamageType.NORMAL || info.type == DamageType.THORNS) {
+        if (info != null && info.type == DamageType.NORMAL || info.type == DamageType.THORNS) {
             if (player.currentBlock < dmg) {
                 if (loseCnt.containsKey(player)) {
                     loseCnt.put(player, loseCnt.get(player) + 1);
@@ -166,5 +171,15 @@ public class NellaFantasiaStance extends AbstractStance
             AbstractDungeon.actionManager
                     .addToBottom(new ApplyPowerAction(mo, mo, new StrengthPower(mo, -1)));
         }
+    }
+
+    @Override
+    public void receivePostDeath() {
+        BaseMod.unsubscribe(this);
+    }
+
+    @Override
+    public void receivePostBattle(AbstractRoom arg0) {
+        BaseMod.unsubscribe(this);
     }
 }

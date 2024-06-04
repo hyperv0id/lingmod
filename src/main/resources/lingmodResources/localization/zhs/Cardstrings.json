@@ -185,7 +185,7 @@
   },
   "${ModID}:QingMingDream": {
     "NAME": "清明梦",
-    "DESCRIPTION": "只能在梦中打出，额外获得一回合，敌人减少的力量变为永久",
+    "DESCRIPTION": "只能在梦中打出，敌人减少的力量变为永久",
     "EXTENDED_DESCRIPTION": [
       "这不是梦",
       "梦是真实的"

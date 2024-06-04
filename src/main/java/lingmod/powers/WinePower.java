@@ -4,6 +4,7 @@ import static lingmod.ModCore.makeID;
 
 import org.apache.logging.log4j.Logger;
 
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
@@ -52,7 +53,7 @@ public class WinePower extends AbstractEasyPower {
         super.onPlayCard(card, m);
         if (card.type == CardType.ATTACK) {
             this.flash();
-            amount--;
+            addToBot(new ReducePowerAction(owner, owner, this, 1));
         }
         if (this.amount == 0)
             addToBot(new RemoveSpecificPowerAction(owner, owner, this));
