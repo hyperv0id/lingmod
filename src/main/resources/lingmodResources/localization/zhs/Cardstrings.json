@@ -69,7 +69,7 @@
   },
   "${ModID}:GuoJiaXianMei": {
     "NAME": "裹甲衔枚",
-    "DESCRIPTION": "造成 !D! 点伤害，获得造成伤害点格挡"
+    "DESCRIPTION": "造成 !D! 点伤害，获得 !B! 点格挡"
   },
   "${ModID}:DreamOfButterfly": {
     "NAME": "梦蝶",
@@ -191,8 +191,8 @@
       "梦是真实的"
     ]
   },
-  "${ModID}:XunRiPeak": {
-    "NAME": "寻日峰",
+  "${ModID}:ZhuanJiangXunRi": {
+    "NAME": "“攥江寻日”",
     "DESCRIPTION": "对所有敌人造成 !D! 的伤害 X 次 NL 如果在梦中，消耗所有 ${ModID}:诗兴 来增加次数"
   },
   "${ModID}:JiaoLu": {

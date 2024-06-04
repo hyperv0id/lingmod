@@ -12,12 +12,15 @@ public class GuoJiaXianMei extends AbstractPoemCard {
     public final static String ID = makeID(GuoJiaXianMei.class.getSimpleName());
 
     public final static int BASE_DAMAGE = 17; // 造成伤害
+    public final static int BASE_BLOCK = 17;
+    public final static int BASE_BLOCK_P = 5;
     public final static int BASE_DAMAGE_P = 5;
 
 
     public GuoJiaXianMei() {
         super(ID, 3, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY, 3);
         baseDamage = BASE_DAMAGE;
+        baseBlock = BASE_BLOCK;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
@@ -26,7 +29,7 @@ public class GuoJiaXianMei extends AbstractPoemCard {
 
     @Override
     public void upp() {
-        upgradeBlock(3);
         upgradeDamage(BASE_DAMAGE_P);
+        upgradeBlock(BASE_BLOCK_P);
     }
 }

@@ -15,12 +15,12 @@ import static lingmod.ModCore.makeID;
 /**
  * 寻日峰：群体4伤害x次，x为能量。如果在梦中：x为能量+诗兴
  */
-public class XunRiPeak extends AbstractEasyCard {
-    public static final String NAME = XunRiPeak.class.getSimpleName();
+public class ZhuanJiangXunRi extends AbstractEasyCard {
+    public static final String NAME = ZhuanJiangXunRi.class.getSimpleName();
     public static final String ID = makeID(NAME);
     private boolean removePoem = false;
 
-    public XunRiPeak() {
+    public ZhuanJiangXunRi() {
         super(ID, -1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
         baseDamage = 4;
         isMultiDamage = true;
