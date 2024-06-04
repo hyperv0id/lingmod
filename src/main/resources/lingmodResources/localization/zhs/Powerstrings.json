@@ -60,10 +60,10 @@
       "在本回合，手牌上限提高 !M! 张。"
     ]
   },
-  "${ModID}:NoDebuffFromOther": {
+  "${ModID}:CantApplyPowerPower": {
     "NAME": "无怖",
     "DESCRIPTIONS": [
-      "你不会被敌人DEBUFF到，被自己DEBUFF到时，失去此能力"
+      "你和所有怪物都无法再获得任何能力或异常"
     ]
   },
   "${ModID}:Whoami_NianPower": {

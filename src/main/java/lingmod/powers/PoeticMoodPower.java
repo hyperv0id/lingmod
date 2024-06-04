@@ -22,7 +22,7 @@ public class PoeticMoodPower extends AbstractEasyPower {
     public static final String CLASS_NAME = PoeticMoodPower.class.getSimpleName();
     public static final String ID = makeID(CLASS_NAME);
     public static int powerGained = 0;
-    public static int BUFFER_NUM = 12;
+    public static int threshold = 12;
 
     private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.BUFF;
     public static final Logger logger = ModCore.logger;
@@ -31,14 +31,19 @@ public class PoeticMoodPower extends AbstractEasyPower {
         super(ID, getName(ID), TYPE, false, owner, amount);
     }
 
+    public void checkTrigger() {
+
+        if(this.amount >= threshold) {
+            this.flash();
+            this.stackPower(-threshold);
+            addToBot(new ApplyPowerAction(owner, owner, new BufferPower(owner, 1)));
+        }
+    }
+
 
     @Override
     public void stackPower(int stackAmount) {
         super.stackPower(stackAmount);
-        if(this.amount >= BUFFER_NUM) {
-            addToBot(new ApplyPowerAction(owner, owner, new BufferPower(owner, 1)));
-            this.amount -= BUFFER_NUM;
-            this.flash();
-        }
+        this.checkTrigger();
     }
 }

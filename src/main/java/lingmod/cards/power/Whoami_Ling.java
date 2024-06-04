@@ -4,10 +4,11 @@ import static lingmod.ModCore.makeID;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import lingmod.cards.AbstractEasyCard;
-import lingmod.powers.NoDebuffFromOther;
+import lingmod.powers.CantApplyPowerPower;
 
 /**
  * 我是谁？
@@ -21,17 +22,20 @@ public class Whoami_Ling extends AbstractEasyCard {
         super(ID, 1, CardType.POWER, CardRarity.SPECIAL, CardTarget.SELF);
     }
 
-
     @Override
     public boolean canUpgrade() {
         return false;
     }
 
     @Override
-    public void upp() {}
+    public void upp() {
+    }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new NoDebuffFromOther(p)));
+        addToBot(new ApplyPowerAction(p, p, new CantApplyPowerPower(p)));
+        for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
+            addToBot(new ApplyPowerAction(monster, p, new CantApplyPowerPower(monster)));
+        }
     }
 }
