@@ -13,11 +13,11 @@ import static lingmod.ModCore.makeID;
 /**
  * 清平：打7,消耗时获得1诗兴。
  */
-public class TranquilityCard extends AbstractEasyCard{
+public class Tranquility extends AbstractEasyCard{
 
-    public static final String ID = makeID(TranquilityCard.class.getSimpleName());
+    public static final String ID = makeID(Tranquility.class.getSimpleName());
 
-    public TranquilityCard() {
+    public Tranquility() {
         super(ID, 1, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY);
         this.baseDamage = 7;
         this.baseMagicNumber = 1;

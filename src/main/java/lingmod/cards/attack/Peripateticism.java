@@ -14,10 +14,10 @@ import static lingmod.ModCore.makeID;
  * “逍遥”：造成 !D! 点伤害。
  * 如果血量低于一半，那么 消耗 此牌 NL 消耗时抽 !M! 张牌，获得 !M! [E]
  */
-public class PeripateticismCard extends AbstractEasyCard{
-    public static final String ID = makeID(PeripateticismCard.class.getSimpleName());
+public class Peripateticism extends AbstractEasyCard{
+    public static final String ID = makeID(Peripateticism.class.getSimpleName());
 
-    public PeripateticismCard() {
+    public Peripateticism() {
         super(ID, 2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         this.baseDamage = 10;
         this.baseMagicNumber = 1;

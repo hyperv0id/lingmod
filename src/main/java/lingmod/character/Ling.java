@@ -26,7 +26,7 @@ import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import lingmod.cards.ChongJinJiuCard;
 import lingmod.cards.attack.Strike;
-import lingmod.cards.attack.TranquilityCard;
+import lingmod.cards.attack.Tranquility;
 import lingmod.cards.skill.Defend;
 import lingmod.relics.LightRelic;
 import lingmod.util.TODO;
@@ -56,6 +56,8 @@ public class Ling extends CustomPlayer {
             makeCharacterPath("ling/orb/layer4d.png"),
             makeCharacterPath("ling/orb/layer5d.png"),
     };
+    public static final String SHOULDER1 = makeCharacterPath("ling/shoulder.png");
+    public static final String CORPSE = makeCharacterPath("ling/corpse.png");
 
     private static final float[] LAYER_SPEED = new float[] { -40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F,
             -5.0F, 0.0F };
@@ -68,7 +70,7 @@ public class Ling extends CustomPlayer {
         // makeCharacterPath("ling/static.scml")));
         initializeClass(null,
                 SHOULDER1,
-                SHOULDER2,
+                SHOULDER1,
                 CORPSE,
                 getLoadout(), 20.0F, -10.0F, 166.0F, 327.0F, new EnergyManager(3));
 
@@ -174,7 +176,7 @@ public class Ling extends CustomPlayer {
             retVal.add(Defend.ID);
         }
         retVal.add(ChongJinJiuCard.ID);
-        retVal.add(TranquilityCard.ID);
+        retVal.add(Tranquility.ID);
         // TODO: 词牌单独UI
         // retVal.add(JingYeSiCard.ID); // 词牌：五言绝句
         return retVal;

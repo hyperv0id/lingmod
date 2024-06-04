@@ -63,7 +63,7 @@
     "DESCRIPTION": "回合结束后获得 !M! 仪式",
     "UPGRADE_DESCRIPTION": "立即获得 1 力量 NL 回合结束后获得 !M! 仪式"
   },
-  "${ModID}:TranquilityCard": {
+  "${ModID}:Tranquility": {
     "NAME": "“清平”",
     "DESCRIPTION": "造成 !D! 点伤害，消耗时获得 !M! ${ModID}:诗兴 "
   },
@@ -113,7 +113,7 @@
     "NAME": "天坠",
     "DESCRIPTION": "造成 !D! 点伤害，记录突破格挡的伤害，获得等量 ${ModID}:伤害增加"
   },
-  "${ModID}:PeripateticismCard": {
+  "${ModID}:Peripateticism": {
     "NAME": "“逍遥”",
     "DESCRIPTION": "造成 !D! 点伤害。如果血量低于一半，那么 消耗 此牌 NL 消耗时抽 !M! 张牌，获得 !M! [E]"
   },
