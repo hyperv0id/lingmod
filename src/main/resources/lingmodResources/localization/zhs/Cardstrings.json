@@ -218,7 +218,7 @@
   },
   "${ModID}:HuSongWineCard": {
     "NAME": "湖松酒",
-    "DESCRIPTION": "获得 !B! 点格挡"
+    "DESCRIPTION": "获得 !M! 点 多层护甲"
   },
   "${ModID}:GuiXingWineCard": {
     "NAME": "归行酒",
@@ -227,5 +227,9 @@
   "${ModID}:ChiJiuSui": {
     "NAME": "辞旧岁",
     "DESCRIPTION": "丢弃所有手牌，造成 !D!*张数 点伤害 X 次"
+  },
+  "${ModID}:FengQiTanJian": {
+    "NAME": "风起弹剑",
+    "DESCRIPTION": "造成 !D! 点伤害，抽一张牌，打出后此牌耗能+1"
   }
 }
