@@ -78,7 +78,7 @@
   },
   "${ModID}:Lonely": {
     "NAME": "孤独",
-    "DESCRIPTION": "可被打出。在手牌中时，卡牌打出后耗能增加 1"
+    "DESCRIPTION": "可被打出。在手牌中回合结束时，未打出的卡牌耗能增加 1"
   },
   "${ModID}:ZhuoJiuChengXin": {
     "NAME": "浊酒澄心",
