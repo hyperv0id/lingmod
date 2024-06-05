@@ -4,12 +4,15 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+
 import lingmod.ModCore;
 import lingmod.util.TexLoader;
 
@@ -92,5 +95,27 @@ public abstract class AbstractEasyPower extends AbstractPower {
             PowerStrings strings = CardCrawlGame.languagePack.getPowerStrings(ID);
             return strings.DESCRIPTIONS;
         }
+    }
+
+    public static void addToBotAbstract(final VoidSupplier func) {
+        AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+            public void update() {
+                func.get();
+                this.isDone = true;
+            }
+        });
+    }
+
+    public static void addToTopAbstract(final VoidSupplier func) {
+        AbstractDungeon.actionManager.addToTop(new AbstractGameAction() {
+            public void update() {
+                func.get();
+                this.isDone = true;
+            }
+        });
+    }
+
+    public interface VoidSupplier {
+        void get();
     }
 }

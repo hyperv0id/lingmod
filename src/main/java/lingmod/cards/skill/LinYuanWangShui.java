@@ -1,14 +1,15 @@
 package lingmod.cards.skill;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import lingmod.cards.AbstractEasyCard;
-import lingmod.powers.WangShuiPower;
-
 import static lingmod.ModCore.makeID;
+
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import basemod.helpers.CardModifierManager;
+import lingmod.cards.AbstractEasyCard;
+import lingmod.cards.mod.EtheralThisTurnMod;
 
 /**
  * 临渊忘水：抽3/4张，回合结束消耗所有
@@ -22,15 +23,20 @@ public class LinYuanWangShui extends AbstractEasyCard {
     }
 
     @Override
-    public void use(AbstractPlayer arg0, AbstractMonster arg1) {
+    public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DrawCardAction(magicNumber));
-        AbstractPlayer p = AbstractDungeon.player;
-        addToBot(new ApplyPowerAction(p, p, new WangShuiPower(p)));
+        // 抽牌后所有手牌获得虚无
+        addToBotAbstract(() -> {
+            for (AbstractCard card : p.hand.group) {
+                CardModifierManager.addModifier(card, new EtheralThisTurnMod());
+            }
+        });
+        // AbstractPlayer p = AbstractDungeon.player;
     }
 
     @Override
     public void upp() {
         upgradeMagicNumber(1);
     }
-    
+
 }

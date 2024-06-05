@@ -99,7 +99,7 @@
   },
   "${ModID}:LinYuanWangShui": {
     "NAME": "临渊忘水",
-    "DESCRIPTION": "抽 !M! 张牌，回合结束时消耗所有手牌"
+    "DESCRIPTION": "抽 !M! 张牌，本回合所有手牌获得 虚无"
   },
   "${ModID}:DrunkButterfly": {
     "NAME": "醉蝶",
