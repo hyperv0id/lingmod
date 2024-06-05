@@ -11,6 +11,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.curses.AscendersBane;
+import com.megacrit.cardcrawl.cards.curses.Pain;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -55,6 +56,12 @@ public class AbstractCardPatch {
             public static final String IMG_PATH;
             public static final Texture IMG;
 
+            static {
+                NAME = CardCrawlGame.languagePack.getCardStrings(ID).NAME;
+                IMG_PATH = makeCardPath("curse/ascendersBane.png");
+                IMG = ImageMaster.loadImage(IMG_PATH);
+            }
+
             @SpireInsertPatch(rloc = 1)
             public static void Insert(AscendersBane card) {
                 if (AbstractDungeon.player != null && AbstractDungeon.player instanceof Ling) {
@@ -69,11 +76,36 @@ public class AbstractCardPatch {
                 }
 
             }
+        }
+    }
+
+    public static class PainPatch {
+        @SpirePatch(clz = Pain.class, method = "<ctor>")
+        public static class PatchConstructor {
+            public static final String ID = makeID("Pain");
+            public static final String NAME;
+            public static final String IMG_PATH;
+            public static final Texture IMG;
 
             static {
                 NAME = CardCrawlGame.languagePack.getCardStrings(ID).NAME;
-                IMG_PATH = makeCardPath("curse/ascendersBane.png");
+                IMG_PATH = makeCardPath("curse/Pain.png");
                 IMG = ImageMaster.loadImage(IMG_PATH);
+            }
+
+            @SpireInsertPatch(rloc = 1)
+            public static void Insert(Pain card) {
+                if (AbstractDungeon.player != null && AbstractDungeon.player instanceof Ling) {
+                    card.name = NAME;
+                    card.assetUrl = IMG_PATH;
+                    Texture cardTexture = IMG;
+                    cardTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+                    int tw = cardTexture.getWidth();
+                    int th = cardTexture.getHeight();
+                    TextureAtlas.AtlasRegion cardImg = new TextureAtlas.AtlasRegion(cardTexture, 0, 0, tw, th);
+                    ReflectionHacks.setPrivateInherited(card, CustomCard.class, "portrait", cardImg);
+                }
+
             }
         }
     }
