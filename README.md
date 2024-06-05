@@ -1,14 +1,43 @@
-## Design
+## 简介
 
-### 遗物
+添加了来自**明日方舟**的角色**令**，拥有独特的战斗机制：诗、酒、梦境姿态、词牌
+
+- 令可以从卡牌中获得**诗兴**，叠满12层后获得一层缓冲
+- 通过喝**酒**，用醉意填补心灵，可以获得攻防加成
+- **词牌**是一种特殊的牌，你会在战斗开始选择一张词牌以规定本场战斗的**格调**，按规则打出后触发特殊效果
+- **梦境**是一种特殊的战斗状态，在梦中受到攻击会迷失自我，下降攻击力，离开时恢复。部分卡牌在梦中有特殊效果，请尽量维持梦境浓度。
+
+除此之外，**令**在火堆睡觉时也会触发事件。事件战斗中，你不会真正损失生命，也可选择将梦**化为现实**以获得遗物，化为现实后损失的生命是真实的。
 
 
-### 事件
 
-### 
+本mod共包含==60==张卡牌、==10==张特殊事件卡牌、==5==种遗物、==5==种药水、==1==个怪物。修改了部分插图、事件、UI。
+
+遥祝游戏愉快，有道不孤^_^
+
+### 素材来源
+
+本mod没有商业用途且没有商业意向，如果您通过任何付费渠道获得本mod，请联系作者。
+
+本mod的图像部分来自于pixiv作者、Lofter作者、B站截图、鹰角网络，其余部分来自 AI绘画，未搭建私炉。
+
+如有侵权请联系[我](mailto:20722003@bjtu.edu.cn)，本人珍重向您致歉。
+
+图片来源
+
+- pixiv.net: 101134396、107523985、117278402、115371200、117057971、116951660
+- 鹰角网络
+  - 龙泡泡来了系列表情包
+  - 明日方舟拆包: 角色小人Spine动画、部分CG、技能图标
+- Lofter: 鱼烤箱、我真服了、
+- bilibili: 念语losia
+  - BV1gQ4y1A74t
 
 
-## Dependencies
+
+
+
+### Mod依赖
 
 本mod的实现离不开以下项目的支持：
 
@@ -18,39 +47,3 @@
 - ModTheSpire
 - BaseMod
 - StSLib
-
-## License
-
-本mod没有商业用途且没有商业意向，如果您通过任何付费渠道获得本mod，请联系作者。
-
-本mod的图像部分来自于pixiv作者、Lofter作者、B站截图、鹰角网络且暂均**未获得授权**，如有侵权请联系[我](mailto:20722003@bjtu.edu.cn)，本人珍重向您致歉。其余部分来自 AI绘画，未搭建私炉。
-
-部分图片来源
-
-- pixiv.net: 101134396_p0、107523985、117278402、115371200、117057971、116951660
-- 鹰角网络
-  - 龙泡泡来了系列表情包
-  - 明日方舟拆包: 角色小人Spine动画、部分CG、技能图标
-- Lofter: 鱼烤箱、我真服了、
-- bilibili: 念语losia
-  - BV1gQ4y1A74t
-
-This is an example character template for the more experienced Slay the Spire modder.
-It contains the basics of an empty character, as well as:
-- Improved X cost action framework (Alchyr)
-- General action use wizard for any effects (GK + my own stuff)
-- Lambda power support (mine)
-- AbstractRelic, Power and Card with improved image loading and other shortcuts (alchyr + mine)
-- AbstractCard comes with secondary variable and secondary damage (me + Kio)
-- Automatic card recoloring (me + Mayhem)
-- Hopefully more! Let me know if there's something you'd want added!!
-
-Setup guide:
-1. Clone the project with Github, preferably downloading with Github Desktop to make it so IntelliJ integration is easy!
-2. Go into your `pom.xml`, and change the path to your steam installation, the artifactId, version number, name, description, and modID fields inside of that.
-3. Rename the mod's Resources folder. (the folder under the `resources` folder, initially named todomodResources. The change needs to match your mod ID, plus "Resources". IE: if your modid is "blah", `blahResources`.)
-4. In the modded character file, go to the Enums section at the bottom and change the PlayerClass and CardColor enums. They're also annotated with TODOs.
-5. In the main mod file, change the modID to match the modID field in your `pom.xml`.
-6. Delete LICENSE (and add [your own](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository) if needed).
-7. Change the author field in `resources/ModTheSpire.json` to your own name.
-8+. You'll probably want to rename your character in the `Charstrings.json` file to start off. From there, it's just making the mod of your dreams!
