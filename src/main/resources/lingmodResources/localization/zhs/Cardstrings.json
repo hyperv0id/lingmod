@@ -239,5 +239,9 @@
   "${ModID}:YunLiaoWineCard": {
     "NAME": "云辽酒",
     "DESCRIPTION": "获得 !M ${ModID}:酒 "
+  },
+  "${ModID}:GuanShanYuan": {
+    "NAME": "关山远",
+    "DESCRIPTION": "获得 !B! 格挡， 消耗 一张牌，获得其耗能 !M! 倍的格挡"
   }
 }
