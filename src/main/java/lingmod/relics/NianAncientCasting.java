@@ -1,6 +1,9 @@
 package lingmod.relics;
 
+import basemod.BaseMod;
+import basemod.interfaces.StartActSubscriber;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 import static lingmod.ModCore.makeID;
@@ -8,7 +11,7 @@ import static lingmod.ModCore.makeID;
 /**
  * 古旧铸物 事件 每层3缓冲，每战斗6盾
  */
-public class NianAncientCasting extends AbstractEasyRelic {
+public class NianAncientCasting extends AbstractEasyRelic implements StartActSubscriber {
 
     public static final String ID = makeID("NianAncientCasting");
 
@@ -20,6 +23,7 @@ public class NianAncientCasting extends AbstractEasyRelic {
         super(ID, RelicTier.SPECIAL, LandingSound.FLAT);
         this.actNum = AbstractDungeon.actNum;
         this.counter = BUFFER_NUM;
+        BaseMod.subscribe(this);
     }
 
     @Override
@@ -35,10 +39,21 @@ public class NianAncientCasting extends AbstractEasyRelic {
     @Override
     public void atBattleStart() {
         super.atBattleStart();
+        this.flash();
+        addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         if (this.actNum != AbstractDungeon.actNum) {
             this.counter = BUFFER_NUM;
         }
         this.actNum = AbstractDungeon.actNum;
         addToBot(new GainBlockAction(AbstractDungeon.player, BLOCK_NUM));
+    }
+
+    /**
+     *
+     */
+    @Override
+    public void receiveStartAct() {
+        this.flash();
+        this.counter = BUFFER_NUM;
     }
 }

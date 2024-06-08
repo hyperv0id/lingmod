@@ -2,6 +2,7 @@ package lingmod.util;
 
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.colorless.Bite;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import lingmod.ModCore;
 import lingmod.cards.mod.NellaFantasiaMod;
@@ -19,10 +20,7 @@ public class CardHelper {
         int onUseModi = isOnUseCard ? 1 : 0;
         if (cardsPlayed <= onUseModi)
             return null;
-
-        AbstractCard lastCard = null;
-        lastCard = AbstractDungeon.actionManager.cardsPlayedThisTurn.get(cardsPlayed - 1 - onUseModi);
-        return lastCard;
+        return AbstractDungeon.actionManager.cardsPlayedThisTurn.get(cardsPlayed - 1 - onUseModi);
     }
 
     public static ArrayList<AbstractCard> getAllCards() {
@@ -47,7 +45,7 @@ public class CardHelper {
             ModCore.logger.warn("Cannot find card with tag lingmod:wine");
             return null;
         }
-        return (AbstractCard) list.get(cardRandomRng.random(list.size() - 1));
+        return list.get(cardRandomRng.random(list.size() - 1));
     }
 
     /**
@@ -66,7 +64,15 @@ public class CardHelper {
             ModCore.logger.warn("Cannot find card with tag lingmod:dream");
             return null;
         }
-        ModCore.logger.info("Found Dream: " + list.stream().map(c -> c.name).toString());
-        return (AbstractCard) list.get(cardRandomRng.random(list.size() - 1));
+        // ModCore.logger.info("Found Dream: " + list.stream().map(c -> c.name).toString());
+        return list.get(cardRandomRng.random(list.size() - 1));
+    }
+
+    public static boolean isStarterStrike(AbstractCard card) {
+        return card.hasTag(AbstractCard.CardTags.STARTER_STRIKE) || card.cardID.equals(Bite.ID);
+    }
+
+    public static boolean isStarterDefend(AbstractCard card) {
+        return card.hasTag(AbstractCard.CardTags.STARTER_DEFEND);
     }
 }
