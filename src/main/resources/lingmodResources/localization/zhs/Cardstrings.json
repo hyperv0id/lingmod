@@ -231,5 +231,9 @@
   "${ModID}:FengQiTanJian": {
     "NAME": "风起弹剑",
     "DESCRIPTION": "造成 !D! 点伤害，抽一张牌，打出后此牌耗能+1"
+  },
+  "${ModID}:DrinkAlone": {
+    "NAME": "独酌",
+    "DESCRIPTION": "下一张耗能大于0的牌会打出多次，直到能量为0 NL 即使能量不足也可以打出"
   }
 }

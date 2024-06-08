@@ -25,10 +25,10 @@ public class MirrorMod extends AbstractCardModifier {
         if(!(group == AbstractDungeon.player.hand))
             return;
         // 1. 消耗自己
-        addToTop(new ExhaustSpecificCardAction(card, group));
+        addToBot(new ExhaustSpecificCardAction(card, group));
         // 2. 创建复制
         AbstractCard cp = otherCard.makeStatEquivalentCopy();
-        addToTop(new MakeTempCardInHandAction(cp, 1));
+        addToBot(new MakeTempCardInHandAction(cp, 1));
         // 3. 添加Mod
         CardModifierManager.addModifier(cp, new MirrorMod());
         // 如果自己消耗，那么复制体也应该消耗

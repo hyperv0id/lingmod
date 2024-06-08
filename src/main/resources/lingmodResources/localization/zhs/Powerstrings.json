@@ -108,5 +108,11 @@
     "DESCRIPTIONS": [
       "每抽取/丢弃/消耗 %d 张牌，获得 %d ${ModID}:酒 "
     ]
+  },
+  "${ModID}:DrinkAlonePower": {
+    "NAME": "独酌",
+    "DESCRIPTIONS": [
+      "下一张耗能大于0的牌会打出多次，直到能量为0 NL 即使能量不足也可以打出"
+    ]
   }
 }
