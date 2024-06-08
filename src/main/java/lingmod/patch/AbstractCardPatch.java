@@ -230,4 +230,64 @@ public class AbstractCardPatch {
             }
         }
     }
+    public static class RegretPatch {
+        @SpirePatch(clz = Regret.class, method = "<ctor>")
+        public static class PatchConstructor {
+            public static final String ID = "Regret";
+            public static final String NAME;
+            public static final String IMG_PATH;
+            public static final Texture IMG;
+
+            static {
+                NAME = CardCrawlGame.languagePack.getCardStrings(ID).NAME;
+                IMG_PATH = makeCardPath("curse/Regret.png");
+                IMG = ImageMaster.loadImage(IMG_PATH);
+            }
+
+            @SpireInsertPatch(rloc = 1)
+            public static void Insert(Regret card) {
+                if (AbstractDungeon.player instanceof Ling) {
+                    card.name = NAME;
+                    card.assetUrl = IMG_PATH;
+                    Texture cardTexture = IMG;
+                    cardTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+                    int tw = cardTexture.getWidth();
+                    int th = cardTexture.getHeight();
+                    TextureAtlas.AtlasRegion cardImg = new TextureAtlas.AtlasRegion(cardTexture, 0, 0, tw, th);
+                    ReflectionHacks.setPrivateInherited(card, CustomCard.class, "portrait", cardImg);
+                }
+
+            }
+        }
+    }
+    public static class DoubtPatch {
+        @SpirePatch(clz = Doubt.class, method = "<ctor>")
+        public static class PatchConstructor {
+            public static final String ID = "Doubt";
+            public static final String NAME;
+            public static final String IMG_PATH;
+            public static final Texture IMG;
+
+            static {
+                NAME = CardCrawlGame.languagePack.getCardStrings(ID).NAME;
+                IMG_PATH = makeCardPath("curse/Doubt.png");
+                IMG = ImageMaster.loadImage(IMG_PATH);
+            }
+
+            @SpireInsertPatch(rloc = 1)
+            public static void Insert(Doubt card) {
+                if (AbstractDungeon.player instanceof Ling) {
+                    card.name = NAME;
+                    card.assetUrl = IMG_PATH;
+                    Texture cardTexture = IMG;
+                    cardTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+                    int tw = cardTexture.getWidth();
+                    int th = cardTexture.getHeight();
+                    TextureAtlas.AtlasRegion cardImg = new TextureAtlas.AtlasRegion(cardTexture, 0, 0, tw, th);
+                    ReflectionHacks.setPrivateInherited(card, CustomCard.class, "portrait", cardImg);
+                }
+
+            }
+        }
+    }
 }
