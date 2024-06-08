@@ -36,7 +36,7 @@ public class AbstractCardPatch {
                     Texture portraitImg = ImageMaster.loadImage(newPath);
                     if (portraitImg != null) {
                         ReflectionHacks.setPrivate(popup, SingleCardViewPopup.class, "portraitImg", portraitImg);
-                        return SpireReturn.Return((Object) null);
+                        return SpireReturn.Return();
                     }
                 }
             }
@@ -185,6 +185,37 @@ public class AbstractCardPatch {
 
             @SpireInsertPatch(rloc = 1)
             public static void Insert(Shame card) {
+                if (AbstractDungeon.player instanceof Ling) {
+                    card.name = NAME;
+                    card.assetUrl = IMG_PATH;
+                    Texture cardTexture = IMG;
+                    cardTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+                    int tw = cardTexture.getWidth();
+                    int th = cardTexture.getHeight();
+                    TextureAtlas.AtlasRegion cardImg = new TextureAtlas.AtlasRegion(cardTexture, 0, 0, tw, th);
+                    ReflectionHacks.setPrivateInherited(card, CustomCard.class, "portrait", cardImg);
+                }
+
+            }
+        }
+    }
+
+    public static class CurseOfTheBellPatch {
+        @SpirePatch(clz = CurseOfTheBell.class, method = "<ctor>")
+        public static class PatchConstructor {
+            public static final String ID = "CurseOfTheBell";
+            public static final String NAME;
+            public static final String IMG_PATH;
+            public static final Texture IMG;
+
+            static {
+                NAME = CardCrawlGame.languagePack.getCardStrings(ID).NAME;
+                IMG_PATH = makeCardPath("curse/CurseOfTheBell.png");
+                IMG = ImageMaster.loadImage(IMG_PATH);
+            }
+
+            @SpireInsertPatch(rloc = 1)
+            public static void Insert(CurseOfTheBell card) {
                 if (AbstractDungeon.player instanceof Ling) {
                     card.name = NAME;
                     card.assetUrl = IMG_PATH;
