@@ -1,8 +1,7 @@
 package lingmod.patch;
 
-import static lingmod.ModCore.makeCardPath;
-import static lingmod.ModCore.makeID;
-
+import basemod.ReflectionHacks;
+import basemod.abstracts.CustomCard;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -15,10 +14,9 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.screens.SingleCardViewPopup;
-
-import basemod.ReflectionHacks;
-import basemod.abstracts.CustomCard;
 import lingmod.character.Ling;
+
+import static lingmod.ModCore.makeCardPath;
 
 public class AbstractCardPatch {
 

@@ -1,8 +1,11 @@
 package lingmod.util;
 
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import lingmod.ModCore;
+import lingmod.cards.mod.NellaFantasiaMod;
+import lingmod.cards.mod.WineMod;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,13 +35,14 @@ public class CardHelper {
 
     /**
      * 获得随机一张酒
-     * 
+     *
      * @return 随机的酒，稀有度平均过
      */
     public static AbstractCard returnTrulyRandomWineInCombat() {
         List<AbstractCard> list = getAllCards();
-        list = list.stream().filter(c -> c.hasTag(CustomTags.WINE) && !c.hasTag(AbstractCard.CardTags.HEALING))
-                .collect(Collectors.toList());
+        list =
+                list.stream().filter(c -> !c.hasTag(AbstractCard.CardTags.HEALING)).filter(c -> c.hasTag(CustomTags.WINE) || CardModifierManager.hasModifier(c, WineMod.ID))
+                        .collect(Collectors.toList());
         if (list.isEmpty()) {
             ModCore.logger.warn("Cannot find card with tag lingmod:wine");
             return null;
@@ -48,17 +52,21 @@ public class CardHelper {
 
     /**
      * 获得随机一张梦
-     * 
+     *
      * @return 随机的梦，稀有度平均过
      */
     public static AbstractCard returnTrulyRandomDreamInCombat() {
         List<AbstractCard> list = getAllCards();
-        list = list.stream().filter(c -> c.hasTag(CustomTags.WINE) && !c.hasTag(AbstractCard.CardTags.HEALING))
-                .collect(Collectors.toList());
+        list =
+                list.stream().filter(c -> !c.hasTag(AbstractCard.CardTags.HEALING)).filter(c ->
+                                (c.hasTag(CustomTags.DREAM)
+                                        || CardModifierManager.hasModifier(c, NellaFantasiaMod.ID)))
+                        .collect(Collectors.toList());
         if (list.isEmpty()) {
             ModCore.logger.warn("Cannot find card with tag lingmod:dream");
             return null;
         }
+        ModCore.logger.info("Found Dream: " + list.stream().map(c -> c.name).toString());
         return (AbstractCard) list.get(cardRandomRng.random(list.size() - 1));
     }
 }

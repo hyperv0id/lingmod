@@ -38,10 +38,15 @@ public class SwapCostAction extends AbstractGameAction {
             }
 
             if (2 == this.p.hand.group.size()) {
-                exchange = ((AbstractCard) this.p.hand.group.get(0)).costForTurn;
-                ((AbstractCard) this.p.hand.group.get(0))
-                        .setCostForTurn(((AbstractCard) this.p.hand.group.get(1)).costForTurn);
-                ((AbstractCard) this.p.hand.group.get(1)).setCostForTurn(exchange);
+                AbstractCard c1 = ((AbstractCard) this.p.hand.group.get(0));
+                AbstractCard c2 = ((AbstractCard) this.p.hand.group.get(1));
+
+                exchange = c1.costForTurn;
+                c1.setCostForTurn(c2.costForTurn);
+                c2.setCostForTurn(exchange);
+                exchange = c1.cost;
+                c1.cost = c2.cost;
+                c2.cost = exchange;
                 this.isDone = true;
                 return;
             }
@@ -72,8 +77,11 @@ public class SwapCostAction extends AbstractGameAction {
                 c2.setCostForTurn(0);
             }
             exchange = (c1).costForTurn;
-            (c1).setCostForTurn((c2).costForTurn);
-            (c2).setCostForTurn(exchange);
+            c1.setCostForTurn(c2.costForTurn);
+            c2.setCostForTurn(exchange);
+            exchange = c1.cost;
+            c1.cost = c2.cost;
+            c2.cost = exchange;
             this.p.hand.addToTop(c1);
             this.p.hand.addToTop(c2);
             (c1).superFlash();

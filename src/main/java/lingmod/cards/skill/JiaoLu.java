@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.NellaFantasiaMod;
+import lingmod.util.CustomTags;
 
 import static lingmod.ModCore.makeID;
 
@@ -22,7 +23,8 @@ public class JiaoLu extends AbstractEasyCard {
     public final static String ID = makeID(NAME);
 
     public JiaoLu() {
-        super(ID, 0, CardType.SKILL, CardRarity.BASIC, CardTarget.SELF);
+        super(ID, 0, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
+        tags.add(CustomTags.DREAM);
         CardModifierManager.addModifier(this, new NellaFantasiaMod());
         this.baseMagicNumber = 3;
     }

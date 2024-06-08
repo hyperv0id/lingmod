@@ -27,9 +27,9 @@ public class Calm extends AbstractEasyCard {
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (m != null && m.getIntentBaseDmg() >= 0) {
-            addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, magicNumber)));
-        } else {
             addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, magicNumber)));
+        } else {
+            addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, magicNumber)));
         }
     }
 }

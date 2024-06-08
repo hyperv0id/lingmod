@@ -12,7 +12,7 @@ import lingmod.ModCore;
 import lingmod.character.Ling;
 
 public class STS_EventPatch {
-    @SpirePatch(clz = Addict.class, method = "buttonEffect")
+    @SpirePatch(clz = Addict.class, method = SpirePatch.CONSTRUCTOR)
     public static class PleadingVagrantEventPatch {
         @SpirePrefixPatch
         public static SpireReturn<Void> buttonEffect(Addict __inst) {

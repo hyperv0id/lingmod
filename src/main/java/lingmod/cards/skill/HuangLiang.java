@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.GainPennyEffect;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.NellaFantasiaMod;
+import lingmod.util.CustomTags;
 
 import static lingmod.ModCore.makeID;
 
@@ -19,9 +20,10 @@ public class HuangLiang extends AbstractEasyCard {
 
     public static final String ID = makeID(HuangLiang.class.getSimpleName());
     public HuangLiang() {
-        super(ID, 1, CardType.SKILL, AbstractCard.CardRarity.SPECIAL, CardTarget.SELF);
+        super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         this.baseMagicNumber = 15; // 金币数量
         CardModifierManager.addModifier(this, new ExhaustMod());
+        tags.add(CustomTags.DREAM);
         CardModifierManager.addModifier(this, new NellaFantasiaMod());
     }
 

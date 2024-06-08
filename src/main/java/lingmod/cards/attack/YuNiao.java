@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.NellaFantasiaMod;
+import lingmod.util.CustomTags;
 
 import static lingmod.ModCore.makeID;
 import static lingmod.util.MonsterHelper.calcIntentDmg;
@@ -21,9 +22,10 @@ public class YuNiao extends AbstractEasyCard {
     public static final String ID = makeID(YuNiao.class.getSimpleName());
 
     public YuNiao() {
-        super(ID, 1, CardType.ATTACK, CardRarity.SPECIAL, CardTarget.ENEMY);
+        super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         baseDamage = 0;
         CardModifierManager.addModifier(this, new ExhaustMod());
+        tags.add(CustomTags.DREAM);
         CardModifierManager.addModifier(this, new NellaFantasiaMod());
     }
 

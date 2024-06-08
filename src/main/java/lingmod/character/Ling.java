@@ -1,6 +1,5 @@
 package lingmod.character;
 
-import basemod.ReflectionHacks;
 import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -16,7 +15,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.cutscenes.CutscenePanel;
-import com.megacrit.cardcrawl.cutscenes.NeowNarrationScreen;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
@@ -25,6 +23,7 @@ import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import lingmod.cards.ChongJinJiuCard;
+import lingmod.cards.attack.GuoJiaXianMei;
 import lingmod.cards.attack.Strike;
 import lingmod.cards.attack.Tranquility;
 import lingmod.cards.skill.Defend;
@@ -85,11 +84,6 @@ public class Ling extends CustomPlayer {
         AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
         e.setTime(e.getEndTime() * MathUtils.random());
         e.setTimeScale(0.8F);
-        // TODO: 解耦
-        // 替换碎心后尼奥对话
-        CharacterStrings cs = CardCrawlGame.languagePack
-                .getCharacterString(makeID("LingHeartKill"));
-        ReflectionHacks.setPrivateStaticFinal(NeowNarrationScreen.class, "charStrings", cs);
     }
 
     @Override
@@ -230,8 +224,8 @@ public class Ling extends CustomPlayer {
 
     @Override
     public AbstractCard getStartCardForEvent() {
-        logger.warn("YOU NEED TO SET getStartCardForEvent() in your " + getClass().getSimpleName() + " file!");
-        return null;
+        // logger.warn("YOU NEED TO SET getStartCardForEvent() in your " + getClass().getSimpleName() + " file!");
+        return new GuoJiaXianMei();
     }
 
     @Override

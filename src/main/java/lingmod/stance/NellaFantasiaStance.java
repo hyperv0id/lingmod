@@ -1,7 +1,8 @@
 package lingmod.stance;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.BaseMod;
+import basemod.interfaces.OnPlayerDamagedSubscriber;
+import basemod.interfaces.PostBattleSubscriber;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
@@ -20,9 +21,7 @@ import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 import com.megacrit.cardcrawl.vfx.stance.CalmParticleEffect;
 import com.megacrit.cardcrawl.vfx.stance.StanceAuraEffect;
 
-import basemod.BaseMod;
-import basemod.interfaces.OnPlayerDamagedSubscriber;
-import basemod.interfaces.PostBattleSubscriber;
+import static lingmod.ModCore.makeID;
 
 /**
  * 幻梦/梦境：全体受伤时失去1临时力量

@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.NellaFantasiaMod;
+import lingmod.util.CustomTags;
 
 import static lingmod.ModCore.makeID;
 
@@ -24,6 +25,7 @@ public class DreamOfButterfly extends AbstractEasyCard{
         super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
         baseMagicNumber = 2;
         CardModifierManager.addModifier(this, new ExhaustMod());
+        tags.add(CustomTags.DREAM);
         CardModifierManager.addModifier(this, new NellaFantasiaMod());
     }
     

@@ -17,8 +17,9 @@ import static lingmod.ModCore.makeID;
  * 此牌是酒
  */
 public class WineMod extends AbstractCardModifier {
+    public static final String ID = makeID(WineMod.class.getSimpleName());
     public int amount = 0;
-    public static final UIStrings uis = CardCrawlGame.languagePack.getUIString(makeID(WineMod.class.getSimpleName()));
+    public static final UIStrings uis = CardCrawlGame.languagePack.getUIString(ID);
     public WineMod(int wineAmount) {
         this.amount = wineAmount;
     }

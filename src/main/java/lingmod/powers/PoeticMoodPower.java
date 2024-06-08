@@ -31,7 +31,7 @@ public class PoeticMoodPower extends AbstractEasyPower {
 
     public void checkTrigger() {
 
-        if(this.amount >= threshold) {
+        if (this.amount >= threshold) {
             this.flash();
             this.stackPower(-threshold);
             addToBot(new ApplyPowerAction(owner, owner, new BufferPower(owner, 1)));
@@ -41,6 +41,8 @@ public class PoeticMoodPower extends AbstractEasyPower {
 
     @Override
     public void stackPower(int stackAmount) {
+        if (stackAmount > 0)
+            powerGained += stackAmount;
         super.stackPower(stackAmount);
         this.checkTrigger();
     }
