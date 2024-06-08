@@ -109,11 +109,5 @@
             "",
             ""
         ]
-    },
-    "${ModID}:SL_Monster_Talk": {
-        "NAME": "SL多次后的怪物特殊对话",
-        "DESCRIPTIONS": [
-            "我好像梦见过你"
-        ]
     }
 }

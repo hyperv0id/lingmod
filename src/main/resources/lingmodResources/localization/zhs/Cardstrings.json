@@ -235,5 +235,9 @@
   "${ModID}:DrinkAlone": {
     "NAME": "独酌",
     "DESCRIPTION": "下一张耗能大于0的牌会打出多次，直到能量为0 NL 即使能量不足也可以打出"
+  },
+  "${ModID}:YunLiaoWineCard": {
+    "NAME": "云辽酒",
+    "DESCRIPTION": "获得 !M ${ModID}:酒 "
   }
 }

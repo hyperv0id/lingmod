@@ -1,7 +1,5 @@
 package lingmod.patch;
 
-import static lingmod.ModCore.logger;
-
 import com.evacipated.cardcrawl.modthespire.lib.LineFinder;
 import com.evacipated.cardcrawl.modthespire.lib.Matcher;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInsertLocator;
@@ -22,12 +20,15 @@ import javassist.CtBehavior;
 public class OnSaveLoadPatch {
   public static int saveTimes = 0;
   public static int loadTimes = 0;
+  // TODO: 换房间后重置怪物对话
+  public static int saveThisRoom = 0;
+  public static int loadThisRoom = 0;
 
   @SpirePatch2(clz = ConfirmPopup.class, method = "yesButtonEffect")
   public static class OnSaveTrigger {
     @SpireInsertPatch(locator = OnSaveTriggerLocator.class)
     public static void Trigger() {
-      logger.info("==============================player saved" + saveTimes);
+      // logger.info("==============================player saved" + saveTimes);
       ++saveTimes;
     }
 
@@ -45,7 +46,7 @@ public class OnSaveLoadPatch {
   public static class OnLoadTrigger {
     @SpirePrefixPatch
     public static void Trigger() {
-      logger.info("====================================player loaded" + loadTimes);
+      // logger.info("====================================player loaded" + loadTimes);
       ++loadTimes;
     }
   }
