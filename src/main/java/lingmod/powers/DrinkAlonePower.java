@@ -64,7 +64,7 @@ public class DrinkAlonePower extends AbstractEasyPower {
                 }
                 AbstractDungeon.player.energy.use(energy);
             });
-            addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, "DuplicationPower"));
+            addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
         }
     }
     @Override

@@ -1,7 +1,5 @@
 package lingmod.monsters;
 
-import static lingmod.ModCore.makeID;
-
 import basemod.abstracts.CustomMonster;
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
@@ -21,6 +19,8 @@ import com.megacrit.cardcrawl.powers.ConstrictedPower;
 import lingmod.character.Ling;
 import lingmod.patch.OnSaveLoadPatch;
 import lingmod.powers.Sui7DealPower;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 绩老七：

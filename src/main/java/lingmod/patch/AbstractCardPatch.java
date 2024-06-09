@@ -24,7 +24,7 @@ public class AbstractCardPatch {
     public static class PatchLoadPortraitImg {
         public static SpireReturn Prefix(SingleCardViewPopup popup) {
             if (AbstractDungeon.player instanceof Ling) {
-                AbstractCard card = (AbstractCard) ReflectionHacks.getPrivate(popup, SingleCardViewPopup.class, "card");
+                AbstractCard card = ReflectionHacks.getPrivate(popup, SingleCardViewPopup.class, "card");
                 if (card.assetUrl != null && !card.assetUrl.equals("status/beta")) {
                     int endingIndex = card.assetUrl.lastIndexOf(".");
                     if (endingIndex == -1) {
@@ -230,6 +230,7 @@ public class AbstractCardPatch {
             }
         }
     }
+
     public static class RegretPatch {
         @SpirePatch(clz = Regret.class, method = "<ctor>")
         public static class PatchConstructor {
@@ -260,6 +261,7 @@ public class AbstractCardPatch {
             }
         }
     }
+
     public static class DoubtPatch {
         @SpirePatch(clz = Doubt.class, method = "<ctor>")
         public static class PatchConstructor {
@@ -290,4 +292,163 @@ public class AbstractCardPatch {
             }
         }
     }
+
+
+    public static class ParasitePatch {
+        @SpirePatch(clz = Parasite.class, method = "<ctor>")
+        public static class PatchConstructor {
+            public static final String ID = "Parasite";
+            public static final String NAME;
+            public static final String IMG_PATH;
+            public static final Texture IMG;
+
+            static {
+                NAME = CardCrawlGame.languagePack.getCardStrings(ID).NAME;
+                IMG_PATH = makeCardPath("curse/Parasite.png");
+                IMG = ImageMaster.loadImage(IMG_PATH);
+            }
+
+            @SpireInsertPatch(rloc = 1)
+            public static void Insert(Parasite card) {
+                if (AbstractDungeon.player instanceof Ling) {
+                    card.name = NAME;
+                    card.assetUrl = IMG_PATH;
+                    Texture cardTexture = IMG;
+                    cardTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+                    int tw = cardTexture.getWidth();
+                    int th = cardTexture.getHeight();
+                    TextureAtlas.AtlasRegion cardImg = new TextureAtlas.AtlasRegion(cardTexture, 0, 0, tw, th);
+                    ReflectionHacks.setPrivateInherited(card, CustomCard.class, "portrait", cardImg);
+                }
+
+            }
+        }
+    }
+
+
+    public static class InjuryPatch {
+        @SpirePatch(clz = Injury.class, method = "<ctor>")
+        public static class PatchConstructor {
+            public static final String ID = "Injury";
+            public static final String NAME;
+            public static final String IMG_PATH;
+            public static final Texture IMG;
+
+            static {
+                NAME = CardCrawlGame.languagePack.getCardStrings(ID).NAME;
+                IMG_PATH = makeCardPath("curse/Injury.png");
+                IMG = ImageMaster.loadImage(IMG_PATH);
+            }
+
+            @SpireInsertPatch(rloc = 1)
+            public static void Insert(Injury card) {
+                if (AbstractDungeon.player instanceof Ling) {
+                    card.name = NAME;
+                    card.assetUrl = IMG_PATH;
+                    Texture cardTexture = IMG;
+                    cardTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+                    int tw = cardTexture.getWidth();
+                    int th = cardTexture.getHeight();
+                    TextureAtlas.AtlasRegion cardImg = new TextureAtlas.AtlasRegion(cardTexture, 0, 0, tw, th);
+                    ReflectionHacks.setPrivateInherited(card, CustomCard.class, "portrait", cardImg);
+                }
+
+            }
+        }
+    }
+
+
+    public static class DecayPatch {
+        @SpirePatch(clz = Decay.class, method = "<ctor>")
+        public static class PatchConstructor {
+            public static final String ID = "Decay";
+            public static final String NAME;
+            public static final String IMG_PATH;
+            public static final Texture IMG;
+
+            static {
+                NAME = CardCrawlGame.languagePack.getCardStrings(ID).NAME;
+                IMG_PATH = makeCardPath("curse/Decay.png");
+                IMG = ImageMaster.loadImage(IMG_PATH);
+            }
+
+            @SpireInsertPatch(rloc = 1)
+            public static void Insert(Decay card) {
+                if (AbstractDungeon.player instanceof Ling) {
+                    card.name = NAME;
+                    card.assetUrl = IMG_PATH;
+                    Texture cardTexture = IMG;
+                    cardTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+                    int tw = cardTexture.getWidth();
+                    int th = cardTexture.getHeight();
+                    TextureAtlas.AtlasRegion cardImg = new TextureAtlas.AtlasRegion(cardTexture, 0, 0, tw, th);
+                    ReflectionHacks.setPrivateInherited(card, CustomCard.class, "portrait", cardImg);
+                }
+
+            }
+        }
+    }
+
+    public static class NormalityPatch {
+        @SpirePatch(clz = Normality.class, method = "<ctor>")
+        public static class PatchConstructor {
+            public static final String ID = "Normality";
+            public static final String NAME;
+            public static final String IMG_PATH;
+            public static final Texture IMG;
+
+            static {
+                NAME = CardCrawlGame.languagePack.getCardStrings(ID).NAME;
+                IMG_PATH = makeCardPath("curse/Normality.png");
+                IMG = ImageMaster.loadImage(IMG_PATH);
+            }
+
+            @SpireInsertPatch(rloc = 1)
+            public static void Insert(Normality card) {
+                if (AbstractDungeon.player instanceof Ling) {
+                    card.name = NAME;
+                    card.assetUrl = IMG_PATH;
+                    Texture cardTexture = IMG;
+                    cardTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+                    int tw = cardTexture.getWidth();
+                    int th = cardTexture.getHeight();
+                    TextureAtlas.AtlasRegion cardImg = new TextureAtlas.AtlasRegion(cardTexture, 0, 0, tw, th);
+                    ReflectionHacks.setPrivateInherited(card, CustomCard.class, "portrait", cardImg);
+                }
+            }
+        }
+    }
+
+    public static class NecronomicursePatch {
+        @SpirePatch(clz = Necronomicurse.class, method = "<ctor>")
+        public static class PatchConstructor {
+            public static final String ID = "Necronomicurse";
+            public static final String NAME;
+            public static final String IMG_PATH;
+            public static final Texture IMG;
+
+            static {
+                NAME = CardCrawlGame.languagePack.getCardStrings(ID).NAME;
+                IMG_PATH = makeCardPath("curse/Necronomicurse.png");
+                IMG = ImageMaster.loadImage(IMG_PATH);
+            }
+
+            @SpireInsertPatch(rloc = 1)
+            public static void Insert(Necronomicurse card) {
+                if (AbstractDungeon.player instanceof Ling) {
+                    card.name = NAME;
+                    card.assetUrl = IMG_PATH;
+                    Texture cardTexture = IMG;
+                    cardTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+                    int tw = cardTexture.getWidth();
+                    int th = cardTexture.getHeight();
+                    TextureAtlas.AtlasRegion cardImg = new TextureAtlas.AtlasRegion(cardTexture, 0, 0, tw, th);
+                    ReflectionHacks.setPrivateInherited(card, CustomCard.class, "portrait", cardImg);
+                }
+
+            }
+        }
+    }
+
+
 }
