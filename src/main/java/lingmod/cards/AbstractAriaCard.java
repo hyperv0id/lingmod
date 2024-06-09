@@ -24,8 +24,8 @@ public abstract class AbstractAriaCard extends AbstractEasyCard {
     public int poeticCost = 0; // 打出需要消耗多少诗兴
     protected int[] costs;
 
-    public AbstractAriaCard(String id, int poetCost, CardType cardType, CardRarity cardRarity, CardTarget cardTarget) {
-        super(id, -2, cardType, cardRarity, cardTarget);
+    public AbstractAriaCard(String id, int poetCost, CardType cardType, CardRarity cardRarity) {
+        super(id, -2, cardType, cardRarity, CardTarget.NONE);
         this.poeticCost = poetCost;
         cardStrings = CardCrawlGame.languagePack.getCardStrings(id);
         tags.add(CustomTags.ARIA);

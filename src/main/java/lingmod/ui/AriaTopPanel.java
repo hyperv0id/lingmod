@@ -168,7 +168,6 @@ public class AriaTopPanel extends TopPanelItem implements OnStartBattleSubscribe
 
         // 2. 添加按钮
         ArrayList<TopPanelItem> topPanelItems = ReflectionHacks.getPrivate(TopPanelHelper.topPanelGroup, TopPanelGroup.class, "topPanelItems");
-        // 假设 topPanelItems 是一个 List<TopPanelItem> 类型的集合
         TopPanelItem ariaTopPanel = topPanelItems.stream()
                 .filter(AriaTopPanel.class::isInstance)
                 .findFirst()

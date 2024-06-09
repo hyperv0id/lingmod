@@ -42,7 +42,7 @@ public class JingYeSiCard extends AbstractAriaCard {
     }
 
     public JingYeSiCard(int index) {
-        super(ID, -2, CardType.ATTACK, CardRarity.BASIC, CardTarget.SELF_AND_ENEMY);
+        super(ID, -2, CardType.ATTACK, CardRarity.BASIC);
         costs = new int[]{5, 5, 5, 5};
         if (index >= 0) {
             this.optionIndex = index;

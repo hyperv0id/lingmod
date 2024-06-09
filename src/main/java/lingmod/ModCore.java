@@ -5,7 +5,6 @@ import basemod.BaseMod;
 import basemod.abstracts.DynamicVariable;
 import basemod.eventUtil.AddEventParams;
 import basemod.eventUtil.EventUtils;
-import basemod.eventUtil.util.Condition;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
@@ -14,21 +13,26 @@ import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import lingmod.cards.AbstractEasyCard;
+import lingmod.cards.aria.JingYeSiCard;
 import lingmod.cards.cardvars.AbstractEasyDynamicVariable;
 import lingmod.character.Ling;
 import lingmod.events.Sui12Event;
 import lingmod.events.WhoamiEvent;
 import lingmod.monsters.MonsterSui_7;
+import lingmod.patch.PlayerFieldsPatch;
 import lingmod.potions.AbstractEasyPotion;
 import lingmod.relics.AbstractEasyRelic;
 import lingmod.ui.AriaTopPanel;
+import lingmod.ui.AriaViewScreen;
 import lingmod.util.AriaCardManager;
 import lingmod.util.ProAudio;
+import lingmod.util.Wiz;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -44,7 +48,8 @@ public class ModCore implements
         EditCharactersSubscriber,
         PostInitializeSubscriber,
         OnStartBattleSubscriber,
-        AddAudioSubscriber {
+        AddAudioSubscriber,
+        PostDungeonInitializeSubscriber {
 
     public static final String modID = "lingmod";
     public static final String resourceRoot = modID + "Resources";
@@ -225,16 +230,21 @@ public class ModCore implements
 
     @Override
     public void receivePostInitialize() {
-        Condition allPass = new Condition() {
-            @Override
-            public boolean test() {
-                return true;
-            }
-        };
+        addEvents();
+        addMonster();
+        addScreen();
+        // 添加TopPanel按钮
+        BaseMod.addTopPanelItem(new AriaTopPanel());
 
+    }
+
+    public void addMonster() {
         // 添加怪物
         BaseMod.addMonster(MonsterSui_7.ID, () -> new MonsterSui_7()); // 绩老七
         // BaseMod.addMonsterEncounter(TheCity.ID, new MonsterInfo(MonsterSui_7.ID, 0));
+    }
+
+    public void addEvents() {
         BaseMod.addEvent(
                 new AddEventParams.Builder(WhoamiEvent.ID, WhoamiEvent.class)
                         .eventType(EventUtils.EventType.ONE_TIME)
@@ -244,24 +254,24 @@ public class ModCore implements
                 new AddEventParams.Builder(Sui12Event.ID, Sui12Event.class)
                         .eventType(EventUtils.EventType.ONE_TIME)
                         .create());
-        // TODO: 回到本层最底端逻辑没写
-        // BaseMod.addEvent(
-        // new AddEventParams.Builder(FallingEvent.ID, FallingEvent.class)
-        // .playerClass(Ling.Enums.PLAYER_LING)
-        // .overrideEvent(com.megacrit.cardcrawl.events.beyond.Falling.ID)
-        // .bonusCondition(allPass)
-        // .spawnCondition(allPass)
-        // .eventType(EventUtils.EventType.FULL_REPLACE)
-        // .create()
-        // );
+    }
 
-        // 添加TopPanel按钮
-        BaseMod.addTopPanelItem(new AriaTopPanel());
-
+    public void addScreen() {
+        BaseMod.addCustomScreen(new AriaViewScreen());
     }
 
     @Override
     public void receiveOnBattleStart(AbstractRoom r) {
         AriaCardManager.onBattleStart(r);
+    }
+
+    /**
+     * 地牢生成后干什么
+     */
+    @Override
+    public void receivePostDungeonInitialize() {
+        // 给玩家生成初始词牌：静夜思
+        CardGroup ariaCards = (CardGroup) PlayerFieldsPatch.ariaCardGroup.get(Wiz.adp());
+        ariaCards.addToTop(new JingYeSiCard());
     }
 }
