@@ -31,12 +31,17 @@ import static lingmod.ModCore.makeID;
 public class Wiz {
     //The wonderful Wizard of Oz allows access to most easy compilations of data, or functions.
 
+    /**
+     * 获取当前玩家
+     *
+     * @return 当前文件
+     */
     public static AbstractPlayer adp() {
         return AbstractDungeon.player;
     }
 
     public static void forAllCardsInList(Consumer<AbstractCard> consumer, ArrayList<AbstractCard> cardsList) {
-        cardsList.forEach(c -> consumer.accept(c));
+        cardsList.forEach(consumer);
     }
 
     public static ArrayList<AbstractCard> getAllCardsInCardGroups(boolean includeHand, boolean includeExhaust) {
@@ -51,13 +56,13 @@ public class Wiz {
     }
 
     public static void forAllMonstersLiving(Consumer<AbstractMonster> consumer) {
-        getEnemies().forEach(mo -> consumer.accept(mo));
+        getEnemies().forEach(consumer);
     }
 
     public static void forAllMonstersLivingTop(Consumer<AbstractMonster> consumer) {
         ArrayList<AbstractMonster> enemies = getEnemies();
         Collections.reverse(enemies);
-        enemies.forEach(mo -> consumer.accept(mo));
+        enemies.forEach(consumer);
     }
 
     public static ArrayList<AbstractMonster> getEnemies() {

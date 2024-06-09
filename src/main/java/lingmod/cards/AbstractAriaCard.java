@@ -4,7 +4,9 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import lingmod.patch.TypeOverridePatch;
 import lingmod.util.CustomTags;
 
 import static lingmod.ModCore.makeID;
@@ -14,21 +16,26 @@ import static lingmod.ModCore.makeID;
  */
 public abstract class AbstractAriaCard extends AbstractEasyCard {
     public final static String ID = makeID(AbstractAriaCard.class.getSimpleName());
+    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
+    public static final String TYPE = uiStrings.TEXT[0];
     public CardStrings cardStrings;
     protected boolean isOptionCard = false;
     protected boolean used = false;
     public int poeticCost = 0; // 打出需要消耗多少诗兴
     protected int[] costs;
 
-    public AbstractAriaCard(String id, int cost, CardType cardType, CardRarity cardRarity, CardTarget cardTarget) {
-        super(id, cost, cardType, cardRarity, cardTarget);
+    public AbstractAriaCard(String id, int poetCost, CardType cardType, CardRarity cardRarity, CardTarget cardTarget) {
+        super(id, -2, cardType, cardRarity, cardTarget);
+        this.poeticCost = poetCost;
         cardStrings = CardCrawlGame.languagePack.getCardStrings(id);
         tags.add(CustomTags.ARIA);
+        tags.add(CardTags.HEALING); // 不能被树枝等检索到
 
         this.dontTriggerOnUseCard = true; // 使用时不触发XX检查
         this.selfRetain = true; // 保留
 
         CardStrings acs = CardCrawlGame.languagePack.getCardStrings(ID);
+        TypeOverridePatch.TypeOverrideField.typeOverride.set(this, TYPE);
         this.cantUseMessage = acs.EXTENDED_DESCRIPTION[0];
     }
 

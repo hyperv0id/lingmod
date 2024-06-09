@@ -23,5 +23,16 @@
         "TEXT" :[
             " lingmod:酒 %d。 NL %s"
         ]
+    },
+    "${ModID}:AbstractAriaCard": {
+        "TEXT": [
+            "词牌"
+        ]
+    },
+    "${ModID}:AriaTopPanel": {
+        "TEXT": [
+            "你的词牌",
+            "点击查看你创作的词牌"
+        ]
     }
 }
