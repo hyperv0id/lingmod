@@ -1,4 +1,4 @@
-package lingmod.aria;
+package lingmod.ui;
 
 import basemod.TopPanelItem;
 import basemod.abstracts.CustomSavable;

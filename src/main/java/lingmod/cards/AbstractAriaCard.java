@@ -1,11 +1,10 @@
-package lingmod.aria.cards;
+package lingmod.cards;
 
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import lingmod.cards.AbstractEasyCard;
 import lingmod.util.CustomTags;
 
 import static lingmod.ModCore.makeID;
@@ -18,7 +17,7 @@ public abstract class AbstractAriaCard extends AbstractEasyCard {
     public CardStrings cardStrings;
     protected boolean isOptionCard = false;
     protected boolean used = false;
-    protected int poeticCost = 0; // 打出需要消耗多少诗兴
+    public int poeticCost = 0; // 打出需要消耗多少诗兴
     protected int[] costs;
 
     public AbstractAriaCard(String id, int cost, CardType cardType, CardRarity cardRarity, CardTarget cardTarget) {

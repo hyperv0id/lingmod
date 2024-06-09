@@ -22,7 +22,7 @@ import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
-import lingmod.cards.ChongJinJiuCard;
+import lingmod.cards.attack.ChongJinJiuCard;
 import lingmod.cards.attack.GuoJiaXianMei;
 import lingmod.cards.attack.Strike;
 import lingmod.cards.attack.Tranquility;

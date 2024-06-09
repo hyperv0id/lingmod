@@ -1,4 +1,4 @@
-package lingmod.aria.cards;
+package lingmod.cards.aria;
 
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
+import lingmod.cards.AbstractAriaCard;
 import lingmod.powers.PoeticMoodPower;
 
 import java.util.ArrayList;
