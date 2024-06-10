@@ -4,9 +4,9 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.DrawPower;
 import lingmod.ModCore;
 import lingmod.cards.AbstractEasyCard;
+import lingmod.powers.DrawDownPower;
 
 public class ShanHeYuanKuo extends AbstractEasyCard {
     public static final String ID = ModCore.makeID(ShanHeYuanKuo.class.getSimpleName());
@@ -17,7 +17,7 @@ public class ShanHeYuanKuo extends AbstractEasyCard {
 
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
-        addToBot(new ApplyPowerAction(abstractPlayer, abstractPlayer, new DrawPower(abstractPlayer, -1)));
+        addToBot(new ApplyPowerAction(abstractPlayer, abstractPlayer, new DrawDownPower(abstractPlayer, -1)));
         addToBot(new DrawCardAction(magicNumber));
     }
 

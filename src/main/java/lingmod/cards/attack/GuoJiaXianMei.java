@@ -1,7 +1,5 @@
 package lingmod.cards.attack;
 
-import com.megacrit.cardcrawl.actions.watcher.WallopAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractPoemCard;
@@ -24,7 +22,9 @@ public class GuoJiaXianMei extends AbstractPoemCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new WallopAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL)));
+        dmg(m, null);
+        blck();
+        // addToBot(new WallopAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL)));
     }
 
     @Override

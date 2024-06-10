@@ -36,7 +36,9 @@
   },
   "${ModID}:TiaoDengWenMengCard": {
     "NAME": "挑灯问梦",
-    "DESCRIPTION": "随机获得 !M! 张 ${ModID}:梦"
+    "DESCRIPTION": "随机获得 !M! 张 ${ModID}:梦",
+    "UPGRADE_DESCRIPTION": "随机获得 !M! 张升级过的 ${ModID}:梦"
+
   },
   "${ModID}:XiaoMingSeCard": {
     "NAME": "笑鸣瑟",
@@ -65,7 +67,7 @@
   },
   "${ModID}:Tranquility": {
     "NAME": "“清平”",
-    "DESCRIPTION": "造成 !D! 点伤害，消耗时获得 !M! ${ModID}:诗兴 "
+    "DESCRIPTION": "造成 !D! 点伤害，消耗时获得 !M! ${ModID}:诗兴 并在抽牌堆加入此牌的复制 "
   },
   "${ModID}:GuoJiaXianMei": {
     "NAME": "裹甲衔枚",
@@ -115,7 +117,7 @@
   },
   "${ModID}:Peripateticism": {
     "NAME": "“逍遥”",
-    "DESCRIPTION": "造成 !D! 点伤害。如果血量低于一半，那么 消耗 此牌 NL 消耗时抽 !M! 张牌，获得 !M! [E]"
+    "DESCRIPTION": "给予 !D! 点 缠绕 。如果你的血量低于一半，那么 消耗 此牌 NL 被消耗时获得 [E] 并在弃牌堆中加入词牌的复制"
   },
   "${ModID}:Feature_2_Card": {
     "NAME": "随付笺咏醉屠苏",
@@ -218,11 +220,11 @@
   },
   "${ModID}:HuSongWineCard": {
     "NAME": "湖松酒",
-    "DESCRIPTION": "获得 !M! 点 多层护甲"
+    "DESCRIPTION": "获得 !M! 点 多层护甲 NL 此牌每打出一次，获得的护甲值减少1"
   },
   "${ModID}:GuiXingWineCard": {
     "NAME": "归行酒",
-    "DESCRIPTION": "将弃牌堆一张随机牌加入手牌 NL 打出其他 ${ModID}:酒 时，将这张牌从弃牌堆加入手牌"
+    "DESCRIPTION": "造成 !D! 点伤害。弃牌堆一张随机牌加入手牌 NL 打出 ${ModID}:酒 时，此牌从弃牌堆加入手牌"
   },
   "${ModID}:ChiJiuSui": {
     "NAME": "辞旧岁",

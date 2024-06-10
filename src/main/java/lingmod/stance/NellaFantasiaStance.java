@@ -33,8 +33,8 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamag
     private static final StanceStrings stanceString = CardCrawlGame.languagePack.getStanceString(STANCE_ID);
     private static long sfxId = -1L;
     public static int remainTurn = 0;
-    public int damageReceive = 0; // 受到伤害时减少多少点
-    public int damageGive = 0; // 造成伤害时减少多少点
+    public int dmgRecvLoss = 0; // 受到伤害时减少多少点
+    public int dmgGiveLoss = 0; // 造成伤害时减少多少点
 
     public NellaFantasiaStance() {
         this.ID = STANCE_ID;
@@ -68,8 +68,8 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamag
         if (sfxId != -1L) {
             this.stopIdleSfx();
         }
-        this.damageReceive = 0;
-        this.damageGive = 0;
+        this.dmgRecvLoss = 0;
+        this.dmgGiveLoss = 0;
         CardCrawlGame.sound.play("STANCE_ENTER_CALM");
         sfxId = CardCrawlGame.sound.playAndLoop("STANCE_LOOP_CALM");
         AbstractDungeon.effectsQueue.add(new BorderFlashEffect(Color.PURPLE, true));
@@ -79,7 +79,7 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamag
     @Override
     public float atDamageGive(float damage, DamageType type) {
         if (type == DamageType.NORMAL) {
-            return damage - this.damageGive;
+            return damage - this.dmgGiveLoss;
         }
         return damage;
     }
@@ -87,7 +87,7 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamag
     @Override
     public float atDamageReceive(float damage, DamageType damageType) {
         if (damageType == DamageType.NORMAL) {
-            return damage - this.damageReceive;
+            return damage - this.dmgRecvLoss;
         }
         return damage;
     }
@@ -95,7 +95,7 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamag
     @Override
     public void onPlayCard(AbstractCard card) {
         if (card.type == CardType.ATTACK) {
-            this.damageReceive++;
+            this.dmgRecvLoss++;
         }
     }
 
@@ -122,12 +122,12 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamag
 
     @Override
     public int receiveOnPlayerDamaged(int dmg, DamageInfo info) {
-        this.damageGive++;
+        this.dmgGiveLoss++;
         return dmg;
     }
 
     @Override
-    public void receivePostBattle(AbstractRoom arg0) {
-        BaseMod.unsubscribe(this);
+    public void receivePostBattle(AbstractRoom room) {
+        //        BaseMod.unsubscribe(this);
     }
 }

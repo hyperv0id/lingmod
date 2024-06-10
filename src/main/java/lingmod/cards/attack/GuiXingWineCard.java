@@ -1,4 +1,4 @@
-package lingmod.cards.skill;
+package lingmod.cards.attack;
 
 import com.megacrit.cardcrawl.actions.unique.RandomCardFromDiscardPileToHandAction;
 import com.megacrit.cardcrawl.actions.utility.DiscardToHandAction;
@@ -15,24 +15,27 @@ import static lingmod.ModCore.makeID;
  */
 public class GuiXingWineCard extends AbstractWineCard {
     public static final String ID = makeID(GuiXingWineCard.class.getSimpleName());
+
     public GuiXingWineCard() {
-        super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF, 2);
+        super(ID, 0, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY, 1);
+        baseDamage = 3;
     }
 
     @Override
     public void upp() {
-        updateCost(-1);
+        upgradeDamage(1);
     }
 
     @Override
     public void onPlayCard(AbstractCard c, AbstractMonster m) {
-        if(c.hasTag(CustomTags.WINE)) {
+        if (c.hasTag(CustomTags.WINE)) {
             addToBot(new DiscardToHandAction(this));
         }
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        dmg(m, null);
         addToBot(new RandomCardFromDiscardPileToHandAction());
     }
 }

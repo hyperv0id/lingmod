@@ -17,7 +17,6 @@ import static lingmod.ModCore.makeID;
  */
 public class TiaoDengWenMengCard extends AbstractEasyCard {
 
-
     public static final String ID = makeID(TiaoDengWenMengCard.class.getSimpleName());
     
     public TiaoDengWenMengCard(){
@@ -41,6 +40,6 @@ public class TiaoDengWenMengCard extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        CardModifierManager.removeModifiersById(this, ExhaustMod.ID, false);
+        // CardModifierManager.removeModifiersById(this, ExhaustMod.ID, false);
     }
 }

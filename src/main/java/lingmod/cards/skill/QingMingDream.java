@@ -51,7 +51,7 @@ public class QingMingDream extends AbstractEasyCard {
         AbstractStance stance = p.stance;
         int amount = 0;
         if (p.stance.ID.equals(NellaFantasiaStance.STANCE_ID)) {
-            amount = ((NellaFantasiaStance) stance).damageReceive;
+            amount = ((NellaFantasiaStance) stance).dmgRecvLoss;
         }
         if (amount > 0) {
             for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {

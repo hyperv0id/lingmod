@@ -29,5 +29,6 @@ public class HuSongWineCard extends AbstractWineCard {
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
         addToBot(new ApplyPowerAction(abstractPlayer, abstractPlayer,
                 new PlatedArmorPower(abstractPlayer, magicNumber)));
+        upgradeMagicNumber(-1);
     }
 }
