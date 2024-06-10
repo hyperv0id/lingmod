@@ -171,8 +171,6 @@ public class Ling extends CustomPlayer {
         }
         retVal.add(ChongJinJiuCard.ID);
         retVal.add(Tranquility.ID);
-        // TODO: 词牌单独UI
-        // retVal.add(JingYeSiCard.ID); // 词牌：五言绝句
         return retVal;
     }
 

@@ -151,21 +151,23 @@ public class AriaTopPanel extends TopPanelItem implements OnStartBattleSubscribe
                     .map(card -> new CardSave(card.cardID, card.timesUpgraded, card.misc))
                     .collect(Collectors.toCollection(ArrayList::new));
         }
+        ModCore.logger.info("Save Aria with " + retVal.size() + " cards");
         return retVal;
     }
 
     public void onLoad(List<CardSave> cardSaves) {
         CardGroup ariaCards = (CardGroup) PlayerFieldsPatch.ariaCardGroup.get(Wiz.adp());
 
-        for (CardSave s : cardSaves) {
-            AbstractCard card = CardLibrary.getCopy(s.id, s.upgrades, s.misc);
-            if (card instanceof AbstractAriaCard) {
-                AbstractAriaCard ariaCard = (AbstractAriaCard) card;
-                ariaCard.initializeDescription();
-                ariaCards.addToTop(ariaCard);
+        if (cardSaves != null) {
+            for (CardSave s : cardSaves) {
+                AbstractCard card = CardLibrary.getCopy(s.id, s.upgrades, s.misc);
+                if (card instanceof AbstractAriaCard) {
+                    AbstractAriaCard ariaCard = (AbstractAriaCard) card;
+                    ariaCard.initializeDescription();
+                    ariaCards.addToTop(ariaCard);
+                }
             }
         }
-
         // 2. 添加按钮
         ArrayList<TopPanelItem> topPanelItems = ReflectionHacks.getPrivate(TopPanelHelper.topPanelGroup, TopPanelGroup.class, "topPanelItems");
         TopPanelItem ariaTopPanel = topPanelItems.stream()

@@ -1,12 +1,12 @@
 package lingmod;
 
-import basemod.AutoAdd;
-import basemod.BaseMod;
+import basemod.*;
 import basemod.abstracts.DynamicVariable;
 import basemod.eventUtil.AddEventParams;
 import basemod.eventUtil.EventUtils;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
+import basemod.patches.com.megacrit.cardcrawl.helpers.TopPanel.TopPanelHelper;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
@@ -37,6 +37,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 
 @SuppressWarnings({ "unused", "WeakerAccess" })
 @SpireInitializer
@@ -48,6 +49,7 @@ public class ModCore implements
         EditCharactersSubscriber,
         PostInitializeSubscriber,
         OnStartBattleSubscriber,
+        StartGameSubscriber,
         AddAudioSubscriber,
         PostDungeonInitializeSubscriber {
 
@@ -234,8 +236,8 @@ public class ModCore implements
         addMonster();
         addScreen();
         // 添加TopPanel按钮
-        BaseMod.addTopPanelItem(new AriaTopPanel());
-
+        //        BaseMod.addTopPanelItem(new AriaTopPanel());
+        BaseMod.addSaveField(AriaTopPanel.ID, new AriaTopPanel());
     }
 
     public void addMonster() {
@@ -273,5 +275,17 @@ public class ModCore implements
         // 给玩家生成初始词牌：静夜思
         CardGroup ariaCards = (CardGroup) PlayerFieldsPatch.ariaCardGroup.get(Wiz.adp());
         ariaCards.addToTop(new JingYeSiCard());
+    }
+
+    /**
+     *
+     */
+    @Override
+    public void receiveStartGame() {
+        ArrayList<TopPanelItem> topPanelItems = ReflectionHacks.getPrivate(TopPanelHelper.topPanelGroup, TopPanelGroup.class, "topPanelItems");
+        long cnt = topPanelItems.stream().filter(i -> i instanceof AriaTopPanel).count();
+        if (cnt <= 0) {
+            BaseMod.addTopPanelItem(new AriaTopPanel());
+        }
     }
 }
