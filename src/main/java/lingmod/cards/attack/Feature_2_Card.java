@@ -9,6 +9,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractPoemCard;
+import lingmod.cards.mod.PoemMod;
+import lingmod.cards.mod.WineMod;
 
 import static lingmod.ModCore.makeID;
 
@@ -21,26 +23,30 @@ public class Feature_2_Card extends AbstractPoemCard implements PostExhaustSubsc
     public Feature_2_Card() {
         super(ID, 5, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY, 2);
         CardModifierManager.addModifier(this, new RetainMod());
+        CardModifierManager.addModifier(this, new WineMod(1));
+        CardModifierManager.addModifier(this, new PoemMod(2));
         baseDamage = 8;
-        baseMagicNumber = 5;
-        baseSecondMagic = 3;
+        baseMagicNumber = 1;
+        baseSecondMagic = 5;
         BaseMod.subscribe(this);
     }
 
     @Override
     public boolean canUpgrade() {
-        return timesUpgraded < magicNumber;
+        return timesUpgraded < secondMagic;
     }
 
     @Override
     public void upp() {
-        upgradeDamage(secondMagic);
         updateCost(-1);
+        upgradeMagicNumber(1);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, null);
+        for (int i = 0; i < magicNumber; i++) {
+            dmg(m, null);
+        }
     }
 
     /**
@@ -50,7 +56,7 @@ public class Feature_2_Card extends AbstractPoemCard implements PostExhaustSubsc
     public void receivePostExhaust(AbstractCard card) {
         if (AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this))
             this.upgrade();
-        else if(card.isEthereal) // 虚无牌会在回合后消耗，但是不会触发上面的逻辑
+        else if (card.isEthereal) // 虚无牌会在回合后消耗，但是不会触发上面的逻辑
             this.upgrade();
     }
 }

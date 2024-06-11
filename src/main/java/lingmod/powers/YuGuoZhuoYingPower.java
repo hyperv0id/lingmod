@@ -22,15 +22,20 @@ public class YuGuoZhuoYingPower extends AbstractEasyPower {
     private static final boolean TURN_BASED = true; // 是否回合后消失
     public static final Logger logger = ModCore.logger;
 
-    public YuGuoZhuoYingPower(AbstractCreature owner) {
-        super(POWER_ID, NAME, TYPE, TURN_BASED, owner, 0);
+    public YuGuoZhuoYingPower(AbstractCreature owner, int amount) {
+        super(POWER_ID, NAME, TYPE, TURN_BASED, owner, amount);
         updateDescription();
     }
 
     @Override
     public int onLoseHp(int dmg) {
-        addToTop(new GainBlockAction(owner, dmg));
+        addToTop(new GainBlockAction(owner, dmg * amount));
         return super.onLoseHp(dmg);
     }
 
+    @Override
+    public void updateDescription() {
+        super.updateDescription();
+        this.description = String.format(powerStrings.DESCRIPTIONS[0], amount);
+    }
 }

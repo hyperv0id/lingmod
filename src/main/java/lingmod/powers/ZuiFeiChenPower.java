@@ -1,5 +1,6 @@
 package lingmod.powers;
 
+import basemod.BaseMod;
 import basemod.interfaces.PostExhaustSubscriber;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -55,5 +56,11 @@ public class ZuiFeiChenPower extends AbstractEasyPower implements PostExhaustSub
     public void receivePostExhaust(AbstractCard abstractCard) {
         this.flash();
         this.stackPower(1);
+    }
+
+    @Override
+    public void onRemove() {
+        super.onRemove();
+        BaseMod.unsubscribe(this);
     }
 }

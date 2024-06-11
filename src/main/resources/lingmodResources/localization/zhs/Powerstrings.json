@@ -88,7 +88,7 @@
   "${ModID}:YuGuoZhuoYingPower": {
     "NAME": "雨过濯缨",
     "DESCRIPTIONS": [
-      "受伤后立刻获得等量格挡"
+      "失去生命后立刻获得其值 %d 倍的格挡"
     ]
   },
   "${ModID}:WinePower": {

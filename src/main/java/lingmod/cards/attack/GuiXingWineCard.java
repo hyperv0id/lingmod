@@ -1,12 +1,10 @@
 package lingmod.cards.attack;
 
 import com.megacrit.cardcrawl.actions.unique.RandomCardFromDiscardPileToHandAction;
-import com.megacrit.cardcrawl.actions.utility.DiscardToHandAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import lingmod.actions.GuiXingAction;
 import lingmod.cards.AbstractWineCard;
-import lingmod.util.CustomTags;
 
 import static lingmod.ModCore.makeID;
 
@@ -23,19 +21,14 @@ public class GuiXingWineCard extends AbstractWineCard {
 
     @Override
     public void upp() {
-        upgradeDamage(1);
-    }
-
-    @Override
-    public void onPlayCard(AbstractCard c, AbstractMonster m) {
-        if (c.hasTag(CustomTags.WINE)) {
-            addToBot(new DiscardToHandAction(this));
-        }
+        upgradeDamage(2);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, null);
-        addToBot(new RandomCardFromDiscardPileToHandAction());
+        if (!upgraded)
+            addToBot(new RandomCardFromDiscardPileToHandAction());
+        else addToBot(new GuiXingAction(false));
     }
 }

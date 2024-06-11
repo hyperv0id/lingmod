@@ -19,7 +19,7 @@ public class ZuiFeiChen extends AbstractEasyCard {
 
     public ZuiFeiChen() {
         super(ID, 1, CardType.POWER, CardRarity.COMMON, CardTarget.SELF);
-        this.baseMagicNumber = 4;
+        this.baseMagicNumber = 5;
         this.initializeDescription();
     }
 

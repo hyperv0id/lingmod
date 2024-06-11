@@ -12,4 +12,6 @@ public class CustomTags {
     public static AbstractCard.CardTags WINE; // 此卡是 酒 🍷
     @SpireEnum
     public static AbstractCard.CardTags ARIA; // 此卡是 词牌
+    @SpireEnum
+    public static AbstractCard.CardTags DERIV; // 化物
 }

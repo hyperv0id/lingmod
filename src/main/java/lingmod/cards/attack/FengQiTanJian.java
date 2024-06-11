@@ -17,17 +17,18 @@ public class FengQiTanJian extends AbstractEasyCard {
     public FengQiTanJian() {
         super(ID, 0, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         baseDamage = 10;
+        baseMagicNumber = 1;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AttackEffect.SLASH_HORIZONTAL);
-        addToBot(new DrawCardAction(1));
+        addToBot(new DrawCardAction(magicNumber));
         upgradeBaseCost(1);
     }
 
     @Override
     public void upp() {
-        upgradeDamage(3);
+        upgradeMagicNumber(1);
     }
 }
 // "${ModID}:FengQiTanJian": {

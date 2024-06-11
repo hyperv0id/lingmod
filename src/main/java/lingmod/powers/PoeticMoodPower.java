@@ -29,6 +29,12 @@ public class PoeticMoodPower extends AbstractEasyPower {
         super(ID, getName(ID), TYPE, false, owner, amount);
     }
 
+    @Override
+    public void onRemove() {
+        powerGained = 0;
+        super.onRemove();
+    }
+
     public void checkTrigger() {
 
         if (this.amount >= threshold) {

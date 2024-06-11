@@ -27,8 +27,8 @@
   },
   "${ModID}:NingZuoWuCard": {
     "NAME": "宁作吾",
-    "DESCRIPTION": "消耗所有手牌，然后抽等量牌。 NL 将所有负面效果变为 ${ModID}:诗兴 ",
-    "UPGRADE_DESCRIPTION": "统计手牌和能力数，抽等量牌，消耗所有手牌。 NL  将所有负面效果变为 ${ModID}:诗兴 "
+    "DESCRIPTION": "消耗所有手牌，然后抽等量牌。 NL 将所有能力变为 ${ModID}:诗兴 ",
+    "UPGRADE_DESCRIPTION": "统计手牌和能力数，抽等量牌，消耗所有手牌。 NL  将所有能力变为 ${ModID}:诗兴 "
   },
   "${ModID}:Strike": {
     "NAME": "打击",
@@ -41,8 +41,8 @@
   },
   "${ModID}:XiaoMingSeCard": {
     "NAME": "笑鸣瑟",
-    "DESCRIPTION": "是 ${ModID}:诗 . NL 每有一个 异常状态，每有一个敌人，获得2点 ${ModID}:诗兴 NL 可获得 !M! 点",
-    "UPGRADE_DESCRIPTION": "是 ${ModID}:诗 . NL 每有一个 敌人/异常/状态牌/诅咒牌，获得 2 点 ${ModID}:诗兴 NL 共 !M! 点"
+    "DESCRIPTION": "每有一个 异常状态，每有一个敌人，获得2点 ${ModID}:诗兴 NL 可获得 !M! 点",
+    "UPGRADE_DESCRIPTION": "每有一个 敌人/异常/状态牌/诅咒牌，获得 2 点 ${ModID}:诗兴 NL 共 !M! 点"
   },
   "${ModID}:XiaoYaoYou": {
     "NAME": "逍遥游",
@@ -100,7 +100,7 @@
   },
   "${ModID}:LinYuanWangShui": {
     "NAME": "临渊忘水",
-    "DESCRIPTION": "抽 !M! 张牌，本回合所有手牌获得 虚无"
+    "DESCRIPTION": "抽 !M! 张牌，所有手牌获得 虚无"
   },
   "${ModID}:DrunkButterfly": {
     "NAME": "醉蝶",
@@ -120,7 +120,7 @@
   },
   "${ModID}:Feature_2_Card": {
     "NAME": "随付笺咏醉屠苏",
-    "DESCRIPTION": "造成 !D! 点伤害。 NL 消耗卡牌时升级 NL 还可升级 !M! 次，每次升级增加 !${ModID}:m2! 点伤害，减少 1 点耗能。"
+    "DESCRIPTION": "造成 !D! 点伤害 !M! 次。 NL 在手牌中消耗卡牌时升级，至多升级5次"
   },
   "${ModID}:AltGuangHui": {
     "NAME": "光辉ALT",
@@ -170,7 +170,8 @@
   },
   "${ModID}:YuGuoZhuoYing": {
     "NAME": "雨过濯缨",
-    "DESCRIPTION": "受伤后立刻获得等量格挡"
+    "DESCRIPTION": "受伤后立刻获得等量格挡",
+    "UPGRADE_DESCRIPTION": "失去生命后立刻获得其值两倍的格挡"
   },
   "${ModID}:SurprisingThunder": {
     "NAME": "远山惊雷",
@@ -182,11 +183,11 @@
   },
   "${ModID}:ZuiFeiChen": {
     "NAME": "醉飞尘",
-    "DESCRIPTION": "每当抽取/消耗/丢弃 !M! 张牌，获得 2 ${ModID}:酒 "
+    "DESCRIPTION": "每当抽取/消耗/丢弃 !M! 张牌，获得 1 ${ModID}:酒 "
   },
   "${ModID}:QingMingDream": {
     "NAME": "清明梦",
-    "DESCRIPTION": "只能在梦中打出，敌人减少的力量变为永久",
+    "DESCRIPTION": "离开 lingmod:梦境 ，敌人减少的力量变为永久",
     "EXTENDED_DESCRIPTION": [
       "这不是梦",
       "梦是真实的"
@@ -223,7 +224,8 @@
   },
   "${ModID}:GuiXingWineCard": {
     "NAME": "归行酒",
-    "DESCRIPTION": "造成 !D! 点伤害。弃牌堆一张随机牌加入手牌 NL 打出 ${ModID}:酒 时，此牌从弃牌堆加入手牌"
+    "DESCRIPTION": "造成 !D! 点伤害。弃牌堆一张随机牌加入手牌",
+    "UPGRADE_DESCRIPTION": "造成 !D! 点伤害。弃牌堆选择一张牌加入手牌"
   },
   "${ModID}:ChiJiuSui": {
     "NAME": "辞旧岁",
@@ -255,7 +257,7 @@
   },
   "lingmod:YaGaoMengYuan": {
     "NAME": "崖高梦远",
-    "DESCRIPTION": "移除最后的能力，获得 [E] ，抽两张牌 NL 如果在梦中，获得 [E] "
+    "DESCRIPTION": "移除最后的能力，获得 [E] ，抽 !M! 张牌 NL 如果在梦中，获得 [E] "
   },
   "lingmod:WineWineWine": {
     "NAME": "酒！",

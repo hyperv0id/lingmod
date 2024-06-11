@@ -16,15 +16,17 @@ public class YuGuoZhuoYing extends AbstractEasyCard {
 
     public YuGuoZhuoYing() {
         super(ID, 2, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
+        this.baseMagicNumber = 1;
     }
 
     @Override
     public void upp() {
         updateCost(-1);
+        upgradeMagicNumber(1);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new YuGuoZhuoYingPower(p)));
+        addToBot(new ApplyPowerAction(p, p, new YuGuoZhuoYingPower(p, magicNumber)));
     }
 }

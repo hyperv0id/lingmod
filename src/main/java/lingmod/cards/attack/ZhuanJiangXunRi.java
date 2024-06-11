@@ -29,7 +29,7 @@ public class ZhuanJiangXunRi extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        upgradeDamage(3);
+        upgradeDamage(1);
     }
 
     @Override
