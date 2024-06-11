@@ -38,6 +38,8 @@
         </activation>
         <properties>
           <Steam.path>D:/apps/Steam/steamapps/</Steam.path>
+          <STS.path>${Steam.path}/common/SlayTheSpire/</STS.path>
+          <JAVA.path>${Steam.path}/common/SlayTheSpire/jre/bin/java.exe</JAVA.path>
         </properties>
       </profile>
       
@@ -51,6 +53,8 @@
         </activation>
         <properties>
           <Steam.path>${HOME}/Library/Application Support/Steam/steamapps/</Steam.path>
+          <STS.path>${Steam.path}/common/SlayTheSpire/</STS.path>
+          <JAVA.path>${Steam.path}/common/SlayTheSpire/jre/bin/java</JAVA.path>
         </properties>
       </profile>
       
@@ -64,6 +68,8 @@
         </activation>
         <properties>
           <Steam.path>${HOME}/.steam/steam/steamapps/</Steam.path>
+          <STS.path>${Steam.path}/common/SlayTheSpire/</STS.path>
+          <JAVA.path>${STS.path}/jre/bin/java</JAVA.path>
         </properties>
       </profile>
     </profiles>
@@ -133,6 +139,23 @@
                         <goals>
                             <goal>run</goal>
                         </goals>
+                    </execution>
+                    <execution>
+                      <id>run-mts-launcher</id>
+                      <phase>install</phase> <!-- 选择在 install 阶段之后执行 -->
+                      <configuration>
+                          <target>
+                            <property name="mts.launcher.dir" location="${STS.path}" />
+                            <echo message="Changing directory to ${mts.launcher.dir}" />
+                            <!-- 使用 exec 任务来运行你的命令 -->
+                            <exec dir="${mts.launcher.dir}" executable="${JAVA.path}" failonerror="true">
+                                <arg line="-jar mts-launcher.jar"/>
+                            </exec>
+                          </target>
+                      </configuration>
+                      <goals>
+                          <goal>run</goal>
+                      </goals>
                     </execution>
                 </executions>
             </plugin>

@@ -252,5 +252,9 @@
   "lingmod:WhitePawn": {
     "NAME": "白子",
     "DESCRIPTION": "获得 !B! 点格挡 NL 在梦中打出时，所有 lingmod:化物 技能牌的格挡提升 !M! 点"
+  },
+  "lingmod:YaGaoMengYuan": {
+    "NAME": "崖高梦远",
+    "DESCRIPTION": "移除最后的能力，获得 [E] ，抽两张牌 NL 如果在梦中，获得 [E] "
   }
 }
