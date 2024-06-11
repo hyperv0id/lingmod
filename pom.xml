@@ -109,6 +109,20 @@
                 <version>1.8</version>
                 <executions>
                     <execution>
+                        <!-- 配置maven-antrun-plugin来在clean阶段之前删除jar文件 -->
+                        <id>delete-previous-jar</id>
+                        <phase>pre-clean</phase> <!-- 可以在clean之前执行 -->
+                        <configuration>
+                            <target>
+                                <!-- 定义要删除的jar文件路径 -->
+                                <delete file="${Steam.path}/common/SlayTheSpire/mods/${project.artifactId}.jar" />
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                    <execution>
                         <phase>package</phase>
                         <configuration>
                             <target>
