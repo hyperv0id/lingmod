@@ -1,6 +1,7 @@
 package lingmod.cards.mod;
 
-import basemod.abstracts.AbstractCardModifier;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -9,14 +10,14 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
-import lingmod.powers.PoeticMoodPower;
 
-import static lingmod.ModCore.makeID;
+import basemod.abstracts.AbstractCardModifier;
+import lingmod.powers.PoeticMoodPower;
 
 /**
  * 打出诗类卡牌时获得 诗兴
  */
-public class PoemMod extends AbstractCardModifier {
+public class PoemMod extends AbsLingCardModifier {
     public int amount = 0;
 
     public static final UIStrings uiString = CardCrawlGame.languagePack.getUIString(makeID("PoemMod"));

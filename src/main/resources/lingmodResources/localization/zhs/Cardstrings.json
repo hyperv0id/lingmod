@@ -256,5 +256,12 @@
   "lingmod:YaGaoMengYuan": {
     "NAME": "崖高梦远",
     "DESCRIPTION": "移除最后的能力，获得 [E] ，抽两张牌 NL 如果在梦中，获得 [E] "
+  },
+  "lingmod:WineWineWine": {
+    "NAME": "酒！",
+    "DESCRIPTION": "在手牌中时，你不能打出 lingmod:酒牌 ",
+    "EXTENDED_DESCRIPTION": [
+      "我不能打出酒"
+    ]
   }
 }

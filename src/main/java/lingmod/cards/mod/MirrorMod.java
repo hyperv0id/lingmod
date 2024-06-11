@@ -1,8 +1,5 @@
 package lingmod.cards.mod;
 
-import basemod.abstracts.AbstractCardModifier;
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
@@ -10,10 +7,14 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
+import basemod.abstracts.AbstractCardModifier;
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
+
 /**
  * 重进酒：打出卡牌时，此牌消耗，变为那张牌的复制
  */
-public class MirrorMod extends AbstractCardModifier {
+public class MirrorMod extends AbsLingCardModifier {
 
     public MirrorMod() {
     }

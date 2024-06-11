@@ -282,4 +282,11 @@ public class Wiz {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * @return 卡牌是不是在手牌中
+     */
+    public static boolean isInHand(AbstractCard card) {
+        return AbstractDungeon.player.hand.contains(card);
+    }
+
 }
