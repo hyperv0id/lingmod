@@ -4,7 +4,6 @@
 		"prefix": "mycard",
 		"isFileTemplate": true,
 		"body": [
-			"package lingmod.cards;",
 			"",
 			"import com.megacrit.cardcrawl.characters.AbstractPlayer;",
 			"import com.megacrit.cardcrawl.monsters.AbstractMonster;",
@@ -23,11 +22,15 @@
 			"    public void use(AbstractPlayer p, AbstractMonster m) {",
 			"        ",
 			"    }",
+			"    @Override",
+			"    public void upp() {",
+			"        // TODO Auto-generated method stub",
+			"    }",
 			"}",
-			"  \"${ModID}:$TM_FILENAME_BASE\": {",
-			"    \"NAME\": \"${TM_FILENAME_BASE/(.*)/$1/}\",",
-			"    \"DESCRIPTION\": \"\"",
-			"  }"
+			"//  \"lingmod:$TM_FILENAME_BASE\": {",
+			"//    \"NAME\": \"${TM_FILENAME_BASE/(.*)/$1/}\",",
+			"//    \"DESCRIPTION\": \"\"",
+			"//  }"
 		]
 	},
 	"Damage": {
@@ -64,7 +67,7 @@
 			"    }",
 			"}",
 			"",
-			"//  \"${ModID}:$TM_FILENAME_BASE\": {",
+			"//  \"lingmod:$TM_FILENAME_BASE\": {",
 			"//    \"NAME\": \"${1}\",",
 			"//    \"DESCRIPTIONS\": [",
 			"//      \"${2}\",",

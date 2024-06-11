@@ -14,6 +14,11 @@
             " lingmod:入梦 。 NL %s"
         ]
     },
+    "${ModID}:DerivativeMod" :{
+        "TEXT" :[
+            " lingmod:化物 。 NL %s"
+        ]
+    },
     "${ModID}:PoemMod" :{
         "TEXT" :[
             " lingmod:诗兴 %d。 NL %s"

@@ -38,7 +38,6 @@
     "NAME": "挑灯问梦",
     "DESCRIPTION": "随机获得 !M! 张 ${ModID}:梦",
     "UPGRADE_DESCRIPTION": "随机获得 !M! 张升级过的 ${ModID}:梦"
-
   },
   "${ModID}:XiaoMingSeCard": {
     "NAME": "笑鸣瑟",
@@ -245,5 +244,13 @@
   "${ModID}:GuanShanYuan": {
     "NAME": "关山远",
     "DESCRIPTION": "获得 !B! 格挡， 消耗 一张牌，获得其耗能 !M! 倍的格挡"
+  },
+  "${ModID}:BlackPawn": {
+    "NAME": "黑子",
+    "DESCRIPTION": "造成 !D! 点伤害 NL 在梦中打出时，所有 lingmod:化物 攻击牌的伤害提升 !M! 点"
+  },
+  "lingmod:WhitePawn": {
+    "NAME": "白子",
+    "DESCRIPTION": "获得 !B! 点格挡 NL 在梦中打出时，所有 lingmod:化物 技能牌的格挡提升 !M! 点"
   }
 }

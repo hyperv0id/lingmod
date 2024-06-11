@@ -1,8 +1,22 @@
 package lingmod.util;
 
+import static lingmod.ModCore.makeID;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DiscardAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -17,19 +31,13 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
+
 import lingmod.actions.TimedVFXAction;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-
-import static lingmod.ModCore.makeID;
+import lingmod.stance.NellaFantasiaStance;
 
 public class Wiz {
-    //The wonderful Wizard of Oz allows access to most easy compilations of data, or functions.
+    // The wonderful Wizard of Oz allows access to most easy compilations of data,
+    // or functions.
 
     /**
      * 获取当前玩家
@@ -77,7 +85,8 @@ public class Wiz {
 
     public static ArrayList<AbstractCard> getCardsMatchingPredicate(Predicate<AbstractCard> pred, boolean allcards) {
         if (allcards)
-            return (ArrayList<AbstractCard>)CardLibrary.getAllCards().stream().filter(pred).collect(Collectors.toList());
+            return (ArrayList<AbstractCard>) CardLibrary.getAllCards().stream().filter(pred)
+                    .collect(Collectors.toList());
         else {
             ArrayList<AbstractCard> cardsList = new ArrayList<>();
             cardsList.addAll(AbstractDungeon.srcCommonCardPool.group);
@@ -105,11 +114,13 @@ public class Wiz {
     }
 
     public static boolean actuallyHovered(Hitbox hb) {
-        return InputHelper.mX > hb.x && InputHelper.mX < hb.x + hb.width && InputHelper.mY > hb.y && InputHelper.mY < hb.y + hb.height;
+        return InputHelper.mX > hb.x && InputHelper.mX < hb.x + hb.width && InputHelper.mY > hb.y
+                && InputHelper.mY < hb.y + hb.height;
     }
 
     public static boolean isInCombat() {
-        return CardCrawlGame.isInARun() && AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom() != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT;
+        return CardCrawlGame.isInARun() && AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom() != null
+                && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT;
     }
 
     public static void atb(AbstractGameAction action) {
@@ -222,7 +233,7 @@ public class Wiz {
 
     public static AbstractGameAction multiAction(AbstractGameAction... actions) {
         return actionify(() -> {
-            ArrayList<AbstractGameAction> actionsList = (ArrayList<AbstractGameAction>)Arrays.asList(actions);
+            ArrayList<AbstractGameAction> actionsList = (ArrayList<AbstractGameAction>) Arrays.asList(actions);
             Collections.reverse(actionsList);
             for (AbstractGameAction action : actions)
                 att(action);
@@ -231,5 +242,28 @@ public class Wiz {
 
     public static void playAudio(ProAudio a) {
         CardCrawlGame.sound.play(makeID(a.name()));
+    }
+
+    /**
+     * @return 姿态是不是梦
+     */
+    public static boolean isStanceNell() {
+        AbstractPlayer p = AbstractDungeon.player;
+        if (p.stance != null && p.stance.ID.equals(NellaFantasiaStance.STANCE_ID)) {
+            return true;
+        }
+        return false;
+    }
+
+    public static List<AbstractCard> allCardsInBattle(boolean exhaust) {
+        List<AbstractCard> ret = new ArrayList<>();
+        AbstractPlayer p = AbstractDungeon.player;
+        ret.addAll(p.hand.group);
+        ret.addAll(p.discardPile.group);
+        ret.addAll(p.drawPile.group);
+        if (exhaust) {
+            ret.addAll(p.exhaustPile.group);
+        }
+        return ret;
     }
 }
