@@ -19,6 +19,7 @@ import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -289,4 +290,36 @@ public class Wiz {
         return AbstractDungeon.player.hand.contains(card);
     }
 
+    /**
+     * 交换两个卡牌的费用，特判了诅咒牌
+     * 
+     * @param c1       卡牌1
+     * @param c2       卡牌2
+     * @param turnOnly 是否仅限本回合
+     */
+    public static void swapCardCost(AbstractCard c1, AbstractCard c2, boolean turnOnly) {
+        {
+            int tmp = c1.costForTurn;
+            c1.costForTurn = c2.costForTurn;
+            if (c1.costForTurn <= 0)
+                c1.costForTurn = 0;
+            c2.costForTurn = tmp;
+            if (c2.costForTurn <= 0)
+                c2.costForTurn = 0;
+        }
+        if (!turnOnly) {
+            int tmp = c1.cost;
+            c1.modifyCostForCombat(Math.max(c2.cost, 0));
+            c2.modifyCostForCombat(Math.max(0, tmp));
+        }
+        // 特判诅咒牌，不能让其耗能变化
+        if (c1.type == CardType.CURSE) {
+            c1.cost = -1;
+            c1.costForTurn = -1;
+        }
+        if (c2.type == CardType.CURSE) {
+            c2.cost = -1;
+            c2.costForTurn = -1;
+        }
+    }
 }

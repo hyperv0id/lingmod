@@ -116,7 +116,7 @@
   },
   "${ModID}:Peripateticism": {
     "NAME": "“逍遥”",
-    "DESCRIPTION": "给予 !D! 点 缠绕 。如果你的血量低于一半，那么 消耗 此牌 NL 被消耗时获得 [E] 并在弃牌堆中加入词牌的复制"
+    "DESCRIPTION": "给予 !D! 点 缠绕 。如果你的血量低于一半，那么 消耗 此牌 NL 被消耗时获得 [E] [E] 并在弃牌堆中加入此牌的复制"
   },
   "${ModID}:Feature_2_Card": {
     "NAME": "随付笺咏醉屠苏",
@@ -257,7 +257,7 @@
   },
   "lingmod:YaGaoMengYuan": {
     "NAME": "崖高梦远",
-    "DESCRIPTION": "移除最后的能力，获得 [E] ，抽 !M! 张牌 NL 如果在梦中，获得 [E] "
+    "DESCRIPTION": "抽 !M! 张牌，移除最后的能力，获得 [E] NL 如果在梦中，获得 [E] "
   },
   "lingmod:WineWineWine": {
     "NAME": "酒！",

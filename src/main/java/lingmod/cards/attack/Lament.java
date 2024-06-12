@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
+
 import lingmod.ModCore;
 import lingmod.cards.AbstractPoemCard;
 
@@ -13,6 +14,7 @@ import lingmod.cards.AbstractPoemCard;
  */
 public class Lament extends AbstractPoemCard {
     public static final String ID = ModCore.makeID(Lament.class.getSimpleName());
+
     public Lament() {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY, 2);
         baseDamage = 8;
@@ -24,11 +26,13 @@ public class Lament extends AbstractPoemCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, null);
         addToBot(new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false)));
-        if(m.hasPower(WeakPower.POWER_ID)) addToBot(new DrawCardAction(secondMagic));
+        if (m.hasPower(WeakPower.POWER_ID))
+            addToBot(new DrawCardAction(secondMagic));
     }
 
     @Override
     public void upp() {
         upgradeDamage(3);
+        upgradeSecondMagic(1);
     }
 }

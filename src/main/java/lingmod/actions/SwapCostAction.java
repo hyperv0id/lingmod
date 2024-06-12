@@ -1,5 +1,9 @@
 package lingmod.actions;
 
+import static lingmod.ModCore.logger;
+import static lingmod.ModCore.makeID;
+import static lingmod.util.Wiz.swapCardCost;
+
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -7,10 +11,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
-import lingmod.util.CustomTags;
 
-import static lingmod.ModCore.logger;
-import static lingmod.ModCore.makeID;
+import lingmod.util.CustomTags;
 
 public class SwapCostAction extends AbstractGameAction {
     private static final UIStrings uiStrings;
@@ -30,7 +32,6 @@ public class SwapCostAction extends AbstractGameAction {
     }
 
     public void update() {
-        int exchange;
         if (this.duration == Settings.ACTION_DUR_FAST) {
             if (1 == this.p.hand.group.size()) {
                 this.isDone = true;
@@ -40,13 +41,7 @@ public class SwapCostAction extends AbstractGameAction {
             if (2 == this.p.hand.group.size()) {
                 AbstractCard c1 = ((AbstractCard) this.p.hand.group.get(0));
                 AbstractCard c2 = ((AbstractCard) this.p.hand.group.get(1));
-
-                exchange = c1.costForTurn;
-                c1.setCostForTurn(c2.costForTurn);
-                c2.setCostForTurn(exchange);
-                exchange = c1.cost;
-                c1.cost = c2.cost;
-                c2.cost = exchange;
+                swapCardCost(c1, c2, false);
                 this.isDone = true;
                 return;
             }
@@ -76,12 +71,7 @@ public class SwapCostAction extends AbstractGameAction {
                 c2.isCostModified = true;
                 c2.setCostForTurn(0);
             }
-            exchange = (c1).costForTurn;
-            c1.setCostForTurn(c2.costForTurn);
-            c2.setCostForTurn(exchange);
-            exchange = c1.cost;
-            c1.cost = c2.cost;
-            c2.cost = exchange;
+            swapCardCost(c1, c2, false);
             this.p.hand.addToTop(c1);
             this.p.hand.addToTop(c2);
             (c1).superFlash();

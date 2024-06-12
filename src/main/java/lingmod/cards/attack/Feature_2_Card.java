@@ -1,18 +1,20 @@
 package lingmod.cards.attack;
 
-import basemod.BaseMod;
-import basemod.cardmods.RetainMod;
-import basemod.helpers.CardModifierManager;
-import basemod.interfaces.PostExhaustSubscriber;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import basemod.BaseMod;
+import basemod.cardmods.RetainMod;
+import basemod.helpers.CardModifierManager;
+import basemod.interfaces.PostExhaustSubscriber;
 import lingmod.cards.AbstractPoemCard;
 import lingmod.cards.mod.PoemMod;
 import lingmod.cards.mod.WineMod;
-
-import static lingmod.ModCore.makeID;
+import lingmod.util.CustomTags;
 
 /**
  * 随付笺咏醉屠苏: 召唤物被击倒/吸收/回收时令额外获得4(+1)点技力、攻击力+3%（攻击力加成最多叠加5层）
@@ -23,7 +25,9 @@ public class Feature_2_Card extends AbstractPoemCard implements PostExhaustSubsc
     public Feature_2_Card() {
         super(ID, 5, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY, 2);
         CardModifierManager.addModifier(this, new RetainMod());
+        this.tags.add(CustomTags.WINE);
         CardModifierManager.addModifier(this, new WineMod(1));
+        this.tags.add(CustomTags.POEM);
         CardModifierManager.addModifier(this, new PoemMod(2));
         baseDamage = 8;
         baseMagicNumber = 1;

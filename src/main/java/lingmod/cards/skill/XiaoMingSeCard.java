@@ -1,15 +1,16 @@
 package lingmod.cards.skill;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+
 import lingmod.cards.AbstractPoemCard;
 import lingmod.powers.PoeticMoodPower;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 笑鸣瑟：每有一种一个敌人或状态牌，获得2点"诗兴"。
@@ -20,8 +21,7 @@ public class XiaoMingSeCard extends AbstractPoemCard {
 
     public XiaoMingSeCard() {
         super(ID, 2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF, 2);
-        this.magicNumber = 0;
-        this.baseMagicNumber = 0;
+        this.baseMagicNumber = 3;
     }
 
     @Override
@@ -44,19 +44,19 @@ public class XiaoMingSeCard extends AbstractPoemCard {
         long times = 0;
         // 统计异常状态
         times += player.powers.stream().filter(p -> p.type == AbstractPower.PowerType.DEBUFF).count();
-        // 统计怪物个数
-        times += AbstractDungeon.getMonsters().monsters.size();
+        // 统计存活的怪物个数
+        times += AbstractDungeon.getMonsters().monsters.stream().filter(mo -> !mo.isDead).count();
 
         // 统计状态 or 诅咒牌
         if (upgraded) {
             times += player.hand.group.stream().filter(c -> c.type == CardType.CURSE || c.type == CardType.STATUS)
                     .count();
         }
-        return (int) times * 2;
+        return (int) times * baseMagicNumber;
     }
 
     @Override
     public void upp() {
-        upgradeBaseCost(1);
+        upgradeMagicNumber(1);
     }
 }

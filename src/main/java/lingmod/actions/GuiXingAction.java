@@ -1,5 +1,8 @@
 package lingmod.actions;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -8,10 +11,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
-import lingmod.cards.attack.GuiXingWineCard;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import lingmod.cards.attack.GuiXingWineCard;
 
 public class GuiXingAction extends AbstractGameAction {
     public static final String[] TEXT;
@@ -24,7 +25,7 @@ public class GuiXingAction extends AbstractGameAction {
 
     private final boolean upgrade;
     private AbstractPlayer p;
-    private ArrayList<AbstractCard> sameID_Cards = new ArrayList();
+    private ArrayList<AbstractCard> sameID_Cards = new ArrayList<>();
 
     public GuiXingAction(boolean upgrade) {
         this.upgrade = upgrade;

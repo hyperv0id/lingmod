@@ -1,5 +1,7 @@
 package lingmod.events;
 
+import org.apache.logging.log4j.Logger;
+
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -8,10 +10,10 @@ import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.events.GenericEventDialog;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+
 import lingmod.ModCore;
 import lingmod.relics.NianAncientCasting;
 import lingmod.relics.ShuRiceRelic;
-import org.apache.logging.log4j.Logger;
 
 /**
  * 事件：岁中十二人
@@ -113,6 +115,7 @@ public class Sui12Event extends AbstractImageEvent {
         this.imageEventText.updateDialogOption(0, OPTIONS[0]);
     }
 
+    @SuppressWarnings("unused")
     private void secondScreen(int buttonNo) {
         //        screenNum = 2;
         switch (buttonNo) {
