@@ -53,6 +53,6 @@ public class PoeticMoodPower extends AbstractEasyPower implements PostBattleSubs
     @Override
     public void receivePostBattle(AbstractRoom abstractRoom) {
         powerGained = 0; // 清空计数
-        BaseMod.unsubscribe(this);
+        //        BaseMod.unsubscribe(this);
     }
 }
