@@ -12,13 +12,13 @@ public class ZuiFeiChen extends AbstractEasyCard {
 
     public static final String NAME = ZuiFeiChen.class.getSimpleName();
     public final static String ID = makeID(NAME);
-    public static final CardType TYPE = CardType.ATTACK;
+    public static final CardType TYPE = CardType.POWER;
 
-    public static final String IMG_UP = getCardTextureString(NAME + "_0", TYPE);
+    public static final String IMG_UP = getCardTextureString(NAME + "_u", TYPE);
 
 
     public ZuiFeiChen() {
-        super(ID, 1, CardType.POWER, CardRarity.COMMON, CardTarget.SELF);
+        super(ID, 1, TYPE, CardRarity.COMMON, CardTarget.SELF);
         this.baseMagicNumber = 5;
         this.initializeDescription();
     }
