@@ -24,7 +24,7 @@ import lingmod.cards.cardvars.AbstractEasyDynamicVariable;
 import lingmod.character.Ling;
 import lingmod.events.Sui12Event;
 import lingmod.events.WhoamiEvent;
-import lingmod.monsters.MonsterSui_7;
+import lingmod.monsters.MonsterSui_7_Ji;
 import lingmod.patch.PlayerFieldsPatch;
 import lingmod.potions.AbstractEasyPotion;
 import lingmod.relics.AbstractEasyRelic;
@@ -242,7 +242,7 @@ public class ModCore implements
 
     public void addMonster() {
         // 添加怪物
-        BaseMod.addMonster(MonsterSui_7.ID, () -> new MonsterSui_7()); // 绩老七
+        BaseMod.addMonster(MonsterSui_7_Ji.ID, () -> new MonsterSui_7_Ji()); // 绩老七
         // BaseMod.addMonsterEncounter(TheCity.ID, new MonsterInfo(MonsterSui_7.ID, 0));
     }
 

@@ -75,4 +75,8 @@ public class CardHelper {
     public static boolean isStarterDefend(AbstractCard card) {
         return card.hasTag(AbstractCard.CardTags.STARTER_DEFEND);
     }
+
+    public static boolean isStarterSD(AbstractCard card) {
+        return isStarterDefend(card) || isStarterStrike(card);
+    }
 }

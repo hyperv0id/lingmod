@@ -1,23 +1,9 @@
 package lingmod.util;
 
-import static lingmod.ModCore.makeID;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DiscardAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -34,9 +20,18 @@ import com.megacrit.cardcrawl.powers.AbstractPower.PowerType;
 import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
-
 import lingmod.actions.TimedVFXAction;
 import lingmod.stance.NellaFantasiaStance;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+import static lingmod.ModCore.makeID;
 
 public class Wiz {
     // The wonderful Wizard of Oz allows access to most easy compilations of data,
@@ -272,7 +267,7 @@ public class Wiz {
 
     /**
      * 角色的所有可见能力
-     * 
+     *
      * @param type 筛选类型，null表示不筛选
      * @return 满足类型的所有可见能力
      */
@@ -292,7 +287,7 @@ public class Wiz {
 
     /**
      * 交换两个卡牌的费用，特判了诅咒牌
-     * 
+     *
      * @param c1       卡牌1
      * @param c2       卡牌2
      * @param turnOnly 是否仅限本回合
@@ -309,17 +304,27 @@ public class Wiz {
         }
         if (!turnOnly) {
             int tmp = c1.cost;
-            c1.modifyCostForCombat(Math.max(c2.cost, 0));
-            c2.modifyCostForCombat(Math.max(0, tmp));
+            c1.cost = Math.max(c2.cost, 0);
+            c2.cost = Math.max(tmp, 0);
         }
         // 特判诅咒牌，不能让其耗能变化
         if (c1.type == CardType.CURSE) {
-            c1.cost = -1;
-            c1.costForTurn = -1;
+            c1.cost = -2;
+            c1.costForTurn = -2;
         }
         if (c2.type == CardType.CURSE) {
-            c2.cost = -1;
-            c2.costForTurn = -1;
+            c2.cost = -2;
+            c2.costForTurn = -2;
         }
     }
+
+    /**
+     * 辅助方法，用于判断卡牌是否具有起始防御或攻击标签
+     *
+     * @return 是否是打防
+     */
+    public static boolean isStart_SD(AbstractCard card) {
+        return card.hasTag(AbstractCard.CardTags.STARTER_DEFEND) || card.hasTag(AbstractCard.CardTags.STARTER_STRIKE);
+    }
+
 }

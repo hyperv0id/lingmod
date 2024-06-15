@@ -233,7 +233,7 @@
   },
   "${ModID}:FengQiTanJian": {
     "NAME": "风起弹剑",
-    "DESCRIPTION": "造成 !D! 点伤害，抽一张牌，打出后此牌耗能+1"
+    "DESCRIPTION": "造成 !D! 点伤害，抽 !M! 张牌，打出后此牌耗能+1"
   },
   "${ModID}:DrinkAlone": {
     "NAME": "独酌",
@@ -265,5 +265,18 @@
     "EXTENDED_DESCRIPTION": [
       "我不能打出酒"
     ]
+  },
+  "lingmod:ZhengFuWangXiang": {
+    "NAME": "征夫望乡",
+    "DESCRIPTION": "消耗手牌中所有打击、防御，手牌加入一张 裹甲衔枚",
+    "UPGRADE_DESCRIPTION": "消耗牌库所有打击、防御，手牌加入一张 裹甲衔枚"
+  },
+  "${ModID}:QuShuiLiuShang": {
+    "NAME": "曲水流觞",
+    "DESCRIPTION": "你每有一种词牌，造成 !D! 伤害 NL （造成 !M! 次）"
+  },
+  "${ModID}:ChangFengChe": {
+    "NAME": "长风彻",
+    "DESCRIPTION": "造成 !D! 点伤害，如果手牌中只有打击或者防御，那么抽 !M! 张牌"
   }
 }

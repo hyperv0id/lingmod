@@ -1,7 +1,6 @@
 package lingmod.powers;
 
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -45,10 +44,19 @@ public class IncreaseDamagePower extends AbstractEasyPower {
     }
 
     @Override
-    public int onAttackedToChangeDamage(DamageInfo info, int dmg) {
-        if (this.amount > 0 && !this.owner.isDeadOrEscaped() && info.type == DamageType.NORMAL) {
+    public float atDamageFinalReceive(float damage, DamageType type) {
+        if (this.amount > 0 && !this.owner.isDeadOrEscaped() && type == DamageType.NORMAL) {
             this.flash();
+            return damage + this.amount;
         }
-        return super.onAttackedToChangeDamage(info, dmg + amount);
+        return super.atDamageFinalReceive(damage, type);
     }
+
+    //    @Override
+    //    public int onAttackedToChangeDamage(DamageInfo info, int dmg) {
+    //        if (this.amount > 0 && !this.owner.isDeadOrEscaped() && info.type == DamageType.NORMAL) {
+    //            this.flash();
+    //        }
+    //        return super.onAttackedToChangeDamage(info, dmg + amount);
+    //    }
 }

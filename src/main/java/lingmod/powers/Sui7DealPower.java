@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AngryPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import lingmod.actions.Sui7DealAction;
-import lingmod.monsters.MonsterSui_7;
+import lingmod.monsters.MonsterSui_7_Ji;
 
 import static lingmod.ModCore.makeID;
 
@@ -43,7 +43,7 @@ public class Sui7DealPower extends AngryPower{
         // TODO Auto-generated method stub
         super.atStartOfTurnPostDraw();
 
-        addToBot(new TalkAction(provider, MonsterSui_7.DIALOGS[1], 0.5F, 2.0F));
+        addToBot(new TalkAction(provider, MonsterSui_7_Ji.DIALOGS[1], 0.5F, 2.0F));
         addToBot(new Sui7DealAction(provider));
     }
 

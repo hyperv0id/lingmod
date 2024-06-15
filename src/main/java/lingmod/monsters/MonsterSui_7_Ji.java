@@ -27,8 +27,8 @@ import static lingmod.ModCore.makeID;
  * 1. 攻击时给予等量缠绕
  * 2. 选择1-n张牌消耗，然后替换成随机卡牌，每交易一张，绩获得1力量
  */
-public class MonsterSui_7 extends CustomMonster {
-  public static final String ID = makeID(MonsterSui_7.class.getSimpleName());
+public class MonsterSui_7_Ji extends CustomMonster {
+    public static final String ID = makeID(MonsterSui_7_Ji.class.getSimpleName());
   protected static final MonsterStrings ms =
       CardCrawlGame.languagePack.getMonsterStrings(ID);
   protected static final String NAME = ms.NAME;
@@ -39,7 +39,7 @@ public class MonsterSui_7 extends CustomMonster {
   protected boolean firstTurn = true;
   protected int baseDamage = 5;
 
-  public MonsterSui_7() {
+    public MonsterSui_7_Ji() {
     super(NAME, ID, MAX_HP, -10.0F, -30.0F, 476.0F, 410.0F, (String)null,
           -50.0F, 30.0F);
     // TODO: 使用绩的立绘，而不是老头

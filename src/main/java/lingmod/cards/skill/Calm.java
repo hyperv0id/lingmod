@@ -17,7 +17,7 @@ public class Calm extends AbstractEasyCard {
 
     public Calm() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY);
-        baseMagicNumber = 3;
+        baseMagicNumber = 2;
     }
 
     @Override
