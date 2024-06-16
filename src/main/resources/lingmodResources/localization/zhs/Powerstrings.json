@@ -2,7 +2,7 @@
   "${ModID}:PoeticMoodPower": {
     "NAME": "诗兴",
     "DESCRIPTIONS": [
-      "叠满 12 层 开始作诗"
+      "每叠满 12 层 获得 1能量 以及 1 缓冲"
     ]
   },
   "${ModID}:NellaFantasiaPower": {
@@ -15,12 +15,6 @@
     "NAME": "逍遥",
     "DESCRIPTIONS": [
       "回合结束后 抽牌数++，下回合多抽 #b%d 张"
-    ]
-  },
-  "${ModID}:AltDemonPower": {
-    "NAME": "恶魔形态",
-    "DESCRIPTIONS": [
-      "回合结束后 获得 1 仪式"
     ]
   },
   "${ModID}:WangShuiPower": {
@@ -94,13 +88,14 @@
   "${ModID}:WinePower": {
     "NAME": "酒",
     "DESCRIPTIONS": [
-      "每层使伤害增加 10%，格挡增加 5%。打出攻击牌后减少一点"
+      "每层使伤害增加 10%，格挡增加 5%。打出攻击牌后减少一点，回合后减半"
     ]
   },
   "${ModID}:PoemVSQuickSandPower": {
     "NAME": "诗对狂沙",
     "DESCRIPTIONS": [
-      "每次受到伤害时，获得X诗兴"
+      "每次受到伤害时，获得1诗兴",
+      "每次受到伤害、失去生命时，获得1诗兴"
     ]
   },
   "${ModID}:ZuiFeiChenPower": {
@@ -112,7 +107,7 @@
   "${ModID}:DrinkAlonePower": {
     "NAME": "独酌",
     "DESCRIPTIONS": [
-      "下一张耗能大于0的牌会打出多次，直到能量为0 NL 即使能量不足也可以打出"
+      "下一张耗能大于0的牌会打出多次，直到能量为0 NL 即使能量不足也可以打出，至少多打出一次"
     ]
   }
 }

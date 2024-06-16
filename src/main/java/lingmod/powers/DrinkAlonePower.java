@@ -1,5 +1,9 @@
 package lingmod.powers;
 
+import static lingmod.ModCore.makeID;
+
+import org.apache.logging.log4j.Logger;
+
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -12,10 +16,8 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-import lingmod.ModCore;
-import org.apache.logging.log4j.Logger;
 
-import static lingmod.ModCore.makeID;
+import lingmod.ModCore;
 
 public class DrinkAlonePower extends AbstractEasyPower {
     public static final String CLASS_NAME = DrinkAlonePower.class.getSimpleName();
@@ -49,6 +51,7 @@ public class DrinkAlonePower extends AbstractEasyPower {
                 }
                 int energy = EnergyPanel.totalCount;
                 int times = (int) Math.ceil(((double) energy) / cost); // 打出 上取整次
+                times = Math.max(1, times);
                 for (int i = 0; i < times; i++) {
                     AbstractCard tmp = card.makeStatEquivalentCopy();
                     AbstractDungeon.player.limbo.addToBottom(tmp);
@@ -60,7 +63,7 @@ public class DrinkAlonePower extends AbstractEasyPower {
                         tmp.calculateCardDamage(m);
                     }
                     tmp.purgeOnUse = true;
-                    AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(tmp, m, card.energyOnUse, true, true), true);
+                    AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(tmp, m, 0, true, true), true);
                 }
                 AbstractDungeon.player.energy.use(energy);
             });

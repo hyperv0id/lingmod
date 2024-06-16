@@ -1,15 +1,17 @@
 package lingmod.powers;
 
+import static lingmod.ModCore.makeID;
+
+import org.apache.logging.log4j.Logger;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import lingmod.ModCore;
-import org.apache.logging.log4j.Logger;
 
-import static lingmod.ModCore.makeID;
+import lingmod.ModCore;
 
 public class PoemVSQuickSandPower extends AbstractEasyPower {
     public static final String CLASS_NAME = PoemVSQuickSandPower.class.getSimpleName();
@@ -30,6 +32,13 @@ public class PoemVSQuickSandPower extends AbstractEasyPower {
         super(POWER_ID, NAME, TYPE, TURN_BASED, owner, amount);
         updateDescription();
         this.allowLoseHP = true;
+    }
+
+    @Override
+    public void updateDescription() {
+        super.updateDescription();
+        if(allowLoseHP) this.description = DESCRIPTIONS[1];
+        else this.description = DESCRIPTIONS[0];
     }
 
     @Override

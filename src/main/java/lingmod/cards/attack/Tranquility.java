@@ -1,15 +1,17 @@
 package lingmod.cards.attack;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
 import lingmod.cards.AbstractEasyCard;
 import lingmod.powers.PoeticMoodPower;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 清平：打7,消耗时获得 1 诗兴。
@@ -41,6 +43,7 @@ public class Tranquility extends AbstractEasyCard{
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AttackEffect.NONE);
+        this.addToBot(new ExhaustAction(1, false));
     }
     
 }

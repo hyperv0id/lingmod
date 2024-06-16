@@ -59,14 +59,9 @@
     "NAME": "黄粱梦",
     "DESCRIPTION": "获得 !M! 金币"
   },
-  "${ModID}:AltDemonForm": {
-    "NAME": "恶魔形态",
-    "DESCRIPTION": "回合结束后获得 !M! 仪式",
-    "UPGRADE_DESCRIPTION": "立即获得 1 力量 NL 回合结束后获得 !M! 仪式"
-  },
   "${ModID}:Tranquility": {
     "NAME": "“清平”",
-    "DESCRIPTION": "造成 !D! 点伤害，消耗时获得 !M! ${ModID}:诗兴 并在抽牌堆加入此牌的复制 "
+    "DESCRIPTION": "消耗一张牌，造成 !D! 点伤害，被消耗时获得 !M! ${ModID}:诗兴 并在抽牌堆加入此牌的复制 "
   },
   "${ModID}:GuoJiaXianMei": {
     "NAME": "裹甲衔枚",
@@ -84,12 +79,12 @@
   "${ModID}:ZhuoJiuChengXin": {
     "NAME": "浊酒澄心",
     "DESCRIPTION": "是 ${ModID}:酒牌 NL 获得 !M! 人工制品",
-    "UPGRADE_DESCRIPTION": "是 ${ModID}:酒牌 NL 手牌中每有一张 ${ModID}:酒牌 ，获得 !M! 人工制品"
+    "UPGRADE_DESCRIPTION": "是 ${ModID}:酒牌 NL 手牌中每有一张 ${ModID}:酒牌 ，获得 !M! 人工制品 "
   },
   "${ModID}:SwapCup": {
     "NAME": "换盏",
     "DESCRIPTION": "选择两张牌，在这场战斗交换二者耗能",
-    "UPGRADE_DESCRIPTION": "选择两张牌，交换二者耗能 NL 如果是 ${ModID}:酒牌 ，先将其能耗置为 !M!"
+    "UPGRADE_DESCRIPTION": "选择两张牌，交换二者耗能 NL 如果是 ${ModID}:酒牌 ，先将其能耗置为 !M! "
   },
   "${ModID}:ZhiZhan": {
     "NAME": "掷盏",

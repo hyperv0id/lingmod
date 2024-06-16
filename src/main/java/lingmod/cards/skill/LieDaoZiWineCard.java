@@ -1,15 +1,14 @@
 package lingmod.cards.skill;
 
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+
 import lingmod.cards.AbstractWineCard;
 import lingmod.powers.WinePower;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 列刀子：翻倍你的酒
@@ -21,7 +20,7 @@ public class LieDaoZiWineCard extends AbstractWineCard {
 
     public LieDaoZiWineCard() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
-        CardModifierManager.addModifier(this, new ExhaustMod());
+        // CardModifierManager.addModifier(this, new ExhaustMod());
     }
 
     @Override

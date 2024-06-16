@@ -1,8 +1,7 @@
 package lingmod.stance;
 
-import basemod.BaseMod;
-import basemod.interfaces.OnPlayerDamagedSubscriber;
-import basemod.interfaces.PostBattleSubscriber;
+import static lingmod.ModCore.makeID;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
@@ -21,7 +20,9 @@ import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 import com.megacrit.cardcrawl.vfx.stance.CalmParticleEffect;
 import com.megacrit.cardcrawl.vfx.stance.StanceAuraEffect;
 
-import static lingmod.ModCore.makeID;
+import basemod.BaseMod;
+import basemod.interfaces.OnPlayerDamagedSubscriber;
+import basemod.interfaces.PostBattleSubscriber;
 
 /**
  * 幻梦/梦境：全体受伤时失去1临时力量
@@ -33,8 +34,9 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamag
     private static final StanceStrings stanceString = CardCrawlGame.languagePack.getStanceString(STANCE_ID);
     private static long sfxId = -1L;
     public static int remainTurn = 0;
-    public int dmgRecvLoss = 0; // 受到伤害时减少多少点
-    public int dmgGiveLoss = 0; // 造成伤害时减少多少点
+    public static int lossAmt = 2; // 单次减少多少
+    public int dmgRecvLoss = 0; // 受到伤害时减少多少
+    public int dmgGiveLoss = 0; // 造成伤害时减少多少
 
     public NellaFantasiaStance() {
         this.ID = STANCE_ID;
@@ -79,7 +81,7 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamag
     @Override
     public float atDamageGive(float damage, DamageType type) {
         if (type == DamageType.NORMAL) {
-            return damage - this.dmgGiveLoss;
+            return damage - this.dmgGiveLoss * lossAmt;
         }
         return damage;
     }
@@ -87,7 +89,7 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamag
     @Override
     public float atDamageReceive(float damage, DamageType damageType) {
         if (damageType == DamageType.NORMAL) {
-            return damage - this.dmgRecvLoss;
+            return damage - this.dmgRecvLoss * lossAmt;
         }
         return damage;
     }

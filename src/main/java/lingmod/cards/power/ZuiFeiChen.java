@@ -1,20 +1,22 @@
 package lingmod.cards.power;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
 import lingmod.cards.AbstractEasyCard;
 import lingmod.powers.ZuiFeiChenPower;
 
-import static lingmod.ModCore.makeID;
-
+/**
+ * 每打出/消耗/丢弃 5/4 张牌，获得1酒
+ */
 public class ZuiFeiChen extends AbstractEasyCard {
 
     public static final String NAME = ZuiFeiChen.class.getSimpleName();
     public final static String ID = makeID(NAME);
     public static final CardType TYPE = CardType.POWER;
-
-    public static final String IMG_UP = getCardTextureString(NAME + "_u", TYPE);
 
 
     public ZuiFeiChen() {
@@ -26,7 +28,6 @@ public class ZuiFeiChen extends AbstractEasyCard {
     @Override
     public void upp() {
         upgradeMagicNumber(-1);
-        this.loadCardImage(IMG_UP);
     }
 
     @Override

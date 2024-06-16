@@ -1,12 +1,13 @@
 package lingmod.cards.attack;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import lingmod.cards.AbstractEasyCard;
 
-import static lingmod.ModCore.makeID;
+import lingmod.cards.AbstractEasyCard;
 
 /**
  * 0费打10,打出后耗能+1
@@ -23,7 +24,9 @@ public class FengQiTanJian extends AbstractEasyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AttackEffect.SLASH_HORIZONTAL);
         addToBot(new DrawCardAction(magicNumber));
-        upgradeBaseCost(1);
+        addToBotAbstract(() -> {
+            upgradeBaseCost(1);
+        });
     }
 
     @Override
