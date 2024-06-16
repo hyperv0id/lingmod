@@ -1,7 +1,7 @@
 package lingmod.powers;
 
-import basemod.BaseMod;
-import basemod.interfaces.PostPowerApplySubscriber;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -9,7 +9,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-import static lingmod.ModCore.makeID;
+import basemod.BaseMod;
+import basemod.interfaces.PostPowerApplySubscriber;
 
 /**
  * 你无法再获得任何能力/异常
@@ -39,9 +40,13 @@ public class CantApplyPowerPower extends AbstractEasyPower implements PostPowerA
 
     @Override
     public void receivePostPowerApplySubscriber(AbstractPower p2add, AbstractCreature target, AbstractCreature src) {
+        if(owner == null || !owner.powers.contains(this)) {
+            // 还没加进去😅😅😅
+            return;
+        }
         // if (p2add.type == PowerType.BUFF)
         // return;
-        if (target == owner) {
+        if (target == owner && !p2add.ID.equals(CantApplyPowerPower.ID)) {
             // if(src != owner) {
             this.flash();
             if (owner.powers.stream().map(p -> p.ID).anyMatch(id -> id == p2add.ID)) {

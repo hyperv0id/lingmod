@@ -300,6 +300,20 @@ public class Wiz {
      * @param turnOnly 是否仅限本回合
      */
     public static void swapCardCost(AbstractCard c1, AbstractCard c2, boolean turnOnly) {
+        // 特判X牌、状态、诅咒
+        if(c1.cost == -1 || c1.type == CardType.CURSE || c1.type == CardType.STATUS) {
+            c2.costForTurn = 0;
+            if(!turnOnly)
+                c2.cost = 0;
+            return;
+        }
+        if(c1.cost == -1 || c2.type == CardType.CURSE || c1.type == CardType.STATUS) {
+            c1.costForTurn = 0;
+            if(!turnOnly)
+                c1.cost = 0;
+            return;
+        }
+        // 一般交换
         {
             int tmp = c1.costForTurn;
             c1.costForTurn = c2.costForTurn;
@@ -313,15 +327,6 @@ public class Wiz {
             int tmp = c1.cost;
             c1.cost = Math.max(c2.cost, 0);
             c2.cost = Math.max(tmp, 0);
-        }
-        // 特判诅咒牌，不能让其耗能变化
-        if (c1.type == CardType.CURSE) {
-            c1.cost = -2;
-            c1.costForTurn = -2;
-        }
-        if (c2.type == CardType.CURSE) {
-            c2.cost = -2;
-            c2.costForTurn = -2;
         }
     }
 
