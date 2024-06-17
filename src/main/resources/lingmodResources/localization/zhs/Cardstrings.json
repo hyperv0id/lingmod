@@ -111,7 +111,7 @@
   },
   "${ModID}:Peripateticism": {
     "NAME": "“逍遥”",
-    "DESCRIPTION": "消耗所有技能牌，每张给予 !D! 缠绕 "
+    "DESCRIPTION": "消耗所有技能牌，每张给予 !D! 缠绕 NL 被消耗时获得 [E] [E]"
   },
   "${ModID}:Feature_2_Card": {
     "NAME": "随付笺咏醉屠苏",

@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -36,7 +35,7 @@ public class Peripateticism extends AbstractEasyCard {
     public void triggerOnExhaust() {
         super.triggerOnExhaust();
         addToBot(new GainEnergyAction(this.magicNumber)); // 获得能量
-        addToBot(new MakeTempCardInDiscardAction(makeCopy(), 1)); // 创建复制
+        // addToBot(new MakeTempCardInDiscardAction(makeCopy(), 1)); // 创建复制
     }
 
     @Override

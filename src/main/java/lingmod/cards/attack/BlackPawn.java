@@ -19,7 +19,7 @@ public class BlackPawn extends AbstractEasyCard {
     public final static String ID = makeID(BlackPawn.class.getSimpleName());
 
     public BlackPawn() {
-        super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
+        super(ID, 0, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         baseDamage = 6;
         baseMagicNumber = 2;
     }

@@ -11,14 +11,14 @@ import lingmod.cards.mod.DerivativeMod;
 import lingmod.util.Wiz;
 
 /**
- * 白子：防5,在梦中时，所有化物增加2格挡
+ * 白子：防0,在梦中时，所有化物增加2格挡
  */
 public class WhitePawn extends AbstractEasyCard {
     public final static String ID = makeID(WhitePawn.class.getSimpleName());
 
     public WhitePawn() {
-        super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
-        baseBlock = 5;
+        super(ID, 0, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
+        baseBlock = 4;
         baseMagicNumber = 2;
     }
 
