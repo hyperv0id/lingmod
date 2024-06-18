@@ -61,6 +61,6 @@ public class WinePower extends AbstractEasyPower {
 
     @Override
     public void atEndOfRound() {
-        this.amount = (this.amount + 1) / 2; // 减半
+        // this.amount = (this.amount + 1) / 2; // 减半
     }
 }

@@ -1,16 +1,20 @@
 package lingmod.cards.attack;
 
-import basemod.helpers.CardModifierManager;
+import static lingmod.ModCore.makeID;
+
+import java.util.ArrayList;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DuplicationPower;
+
+import basemod.abstracts.AbstractCardModifier;
+import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractPoemCard;
 import lingmod.cards.mod.MirrorMod;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 重进酒：打出卡牌时消耗，并替换为其复制
@@ -31,7 +35,7 @@ public class ChongJinJiuCard extends AbstractPoemCard {
         this.lastCard = lastCard;
         this.exhaust = true;
         this.baseMagicNumber = 1;
-        CardModifierManager.addModifier(this, new MirrorMod());
+        CardModifierManager.addModifier(this, new MirrorMod(false));
         this.initializeDescription();
     }
 
@@ -60,6 +64,13 @@ public class ChongJinJiuCard extends AbstractPoemCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, m, new DuplicationPower(p, 1)));
+        ArrayList<AbstractCardModifier> mods =  CardModifierManager.getModifiers(this, MirrorMod.ID);
+        for (AbstractCardModifier modi : mods) {
+            if(modi instanceof MirrorMod) {
+                MirrorMod _modi = (MirrorMod) modi;
+                _modi.exhaust = false; // 不再消耗
+            }
+        }
     }
 
     @Override

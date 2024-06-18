@@ -14,8 +14,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ConstrictedPower;
 
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
 
 /**
@@ -26,7 +24,6 @@ public class Peripateticism extends AbstractEasyCard {
 
     public Peripateticism() {
         super(ID, 2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
-        CardModifierManager.addModifier(this, new ExhaustMod());
         this.baseDamage = 5;
         this.baseMagicNumber = 2;
     }
@@ -48,7 +45,7 @@ public class Peripateticism extends AbstractEasyCard {
         addToBotAbstract(() -> {
             // 获取所有技能牌
             List<AbstractCard> cardsToExhaust = AbstractDungeon.player.hand.group.stream()
-                    .filter(c -> c.type == CardType.SKILL)
+                    .filter(c -> c.type != CardType.ATTACK)
                     .collect(Collectors.toList());
 
             cardsToExhaust.forEach(c -> {

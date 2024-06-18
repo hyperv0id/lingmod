@@ -27,8 +27,8 @@
   },
   "${ModID}:NingZuoWuCard": {
     "NAME": "宁作吾",
-    "DESCRIPTION": "消耗所有手牌，然后抽等量牌。 NL 将所有能力变为 ${ModID}:诗兴 ",
-    "UPGRADE_DESCRIPTION": "统计手牌和能力数，抽等量牌，消耗所有手牌。 NL  将所有能力变为 ${ModID}:诗兴 "
+    "DESCRIPTION": "消耗所有手牌，然后抽等量牌。将所有能力变为 ${ModID}:诗兴 ",
+    "UPGRADE_DESCRIPTION": "统计手牌和能力数，抽等量牌，消耗所有手牌。将所有能力变为 ${ModID}:诗兴 "
   },
   "${ModID}:Strike": {
     "NAME": "打击",
@@ -111,7 +111,7 @@
   },
   "${ModID}:Peripateticism": {
     "NAME": "“逍遥”",
-    "DESCRIPTION": "消耗所有技能牌，每张给予 !D! 缠绕 NL 被消耗时获得 [E] [E]"
+    "DESCRIPTION": "消耗所有非攻击牌，每张给予 !D! 缠绕 NL 被消耗时获得 [E] [E]"
   },
   "${ModID}:Feature_2_Card": {
     "NAME": "随付笺咏醉屠苏",
@@ -263,8 +263,8 @@
   },
   "lingmod:ZhengFuWangXiang": {
     "NAME": "征夫望乡",
-    "DESCRIPTION": "消耗手牌中所有打击、防御，手牌加入一张 裹甲衔枚",
-    "UPGRADE_DESCRIPTION": "消耗牌库所有打击、防御，手牌加入一张 裹甲衔枚"
+    "DESCRIPTION": "消耗手牌中所有打击、防御，在手牌中加入一张 裹甲衔枚",
+    "UPGRADE_DESCRIPTION": "消耗牌库所有打击、防御，在手牌中加入一张 裹甲衔枚"
   },
   "${ModID}:QuShuiLiuShang": {
     "NAME": "曲水流觞",
@@ -273,5 +273,13 @@
   "${ModID}:ChangFengChe": {
     "NAME": "长风彻",
     "DESCRIPTION": "造成 !D! 点伤害，如果手牌中只有打击或者防御，那么抽 !M! 张牌"
+  },
+  "lingmod:JianShanWenShi": {
+    "NAME": "见山问石",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 如果本回合 消耗 过牌，那么获得 [E] "
+  },
+  "lingmod:RuMengLing": {
+    "NAME": "如梦令",
+    "DESCRIPTION": "造成 !D! 点伤害。消耗最左边的牌，在手牌中放入此牌的复制。如果在梦中，那么抽 !M! 张牌"
   }
 }

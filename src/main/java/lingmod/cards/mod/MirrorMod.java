@@ -1,5 +1,7 @@
 package lingmod.cards.mod;
 
+import static lingmod.ModCore.makeID;
+
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
@@ -16,7 +18,11 @@ import basemod.helpers.CardModifierManager;
  */
 public class MirrorMod extends AbsLingCardModifier {
 
-    public MirrorMod() {
+    public static final String ID = makeID(MirrorMod.class.getSimpleName());
+
+    public boolean exhaust = false;
+    public MirrorMod(boolean exhaust) {
+        this.exhaust = exhaust;
     }
 
     @Override
@@ -31,9 +37,9 @@ public class MirrorMod extends AbsLingCardModifier {
         AbstractCard cp = otherCard.makeStatEquivalentCopy();
         addToBot(new MakeTempCardInHandAction(cp, 1));
         // 3. 添加Mod
-        CardModifierManager.addModifier(cp, new MirrorMod());
+        CardModifierManager.addModifier(cp, new MirrorMod(exhaust));
         // 如果自己消耗，那么复制体也应该消耗
-        if(card.exhaust) {
+        if(exhaust) {
             CardModifierManager.addModifier(cp, new ExhaustMod());
         }
     }
@@ -45,6 +51,6 @@ public class MirrorMod extends AbsLingCardModifier {
 
     @Override
     public AbstractCardModifier makeCopy() {
-        return new MirrorMod();
+        return new MirrorMod(exhaust);
     }
 }
