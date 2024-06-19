@@ -28,26 +28,19 @@ public class RuMengLing extends AbstractEasyCard {
         baseMagicNumber = 1;
         CardModifierManager.addModifier(this, new ExhaustMod());
         CardModifierManager.addModifier(this, new PoemMod(1));
-        freeToPlayOnce = true;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, null);
         addToBotAbstract(() -> {
-            AbstractCard card = p.hand.getBottomCard();
-            if (card != null) {
-                addToBot(new ExhaustSpecificCardAction(card, p.hand));
-                addToBot(new MakeTempCardInHandAction(this.makeStatEquivalentCopy()));
-            }
-        });
-        
-        addToBotAbstract(() -> {
             if (isStanceNell()) {
                 addToTop(new DrawCardAction(magicNumber));
             }
-        });
-        addToBotAbstract(() -> {
-            freeToPlayOnce = false;
+            if (p.hand.size() >= 1) {
+                AbstractCard card = p.hand.getBottomCard();
+                addToTop(new ExhaustSpecificCardAction(card, p.hand));
+                addToTop(new MakeTempCardInHandAction(this.makeStatEquivalentCopy()));
+            }
         });
     }
 

@@ -1,15 +1,17 @@
 package lingmod.powers;
 
+import static lingmod.ModCore.makeID;
+
+import org.apache.logging.log4j.Logger;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
-import lingmod.ModCore;
-import org.apache.logging.log4j.Logger;
 
-import static lingmod.ModCore.makeID;
+import lingmod.ModCore;
 
 /**
  * 逍遥：回合结束后抽牌++
@@ -39,20 +41,9 @@ public class XiaoYaoPower extends AbstractEasyPower {
             amount++;
             addToBot(new ApplyPowerAction(owner, owner,
                     new DrawCardNextTurnPower(owner, amount)));
+                    addToBot(new ApplyPowerAction(owner, owner,
+                            new CapacityExpansionPower(owner, amount)));
             updateDescription();
-        }
-    }
-
-    @Override
-    public void atStartOfTurn() {
-        super.atStartOfTurn();
-        // 可以扩容
-        if (amount > 5) {
-            int amt = amount - 5;
-            if (amt > 5)
-                amt = 5; // 最多有 10+10 = 15张牌
-            addToBot(new ApplyPowerAction(owner, owner,
-                    new CapacityExpansionPower(owner, amt)));
         }
     }
 
