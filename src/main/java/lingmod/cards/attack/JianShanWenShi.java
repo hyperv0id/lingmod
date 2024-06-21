@@ -11,28 +11,33 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import basemod.BaseMod;
 import basemod.interfaces.PostExhaustSubscriber;
 import lingmod.cards.AbstractEasyCard;
+import lingmod.interfaces.CardConfig;
+import lingmod.interfaces.CopyField;
 
-public class JianShanWenShi extends AbstractEasyCard implements PostExhaustSubscriber{
+@CardConfig(damage = 7, magic = 4)
+public class JianShanWenShi extends AbstractEasyCard implements PostExhaustSubscriber {
 
     public final static String ID = makeID(JianShanWenShi.class.getSimpleName());
 
+    @CopyField
     public boolean exhaustedThisTurn = false; // 本回合是否消耗过牌
 
     public JianShanWenShi() {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
-        baseDamage = 7;
+
         BaseMod.subscribe(this);
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AbstractGameAction.AttackEffect.BLUNT_LIGHT);
-        if(exhaustedThisTurn) {
+        if (exhaustedThisTurn) {
             addToBot(new GainEnergyAction(1));
         }
     }
+
     @Override
     public void upp() {
-        upgradeDamage(4);
+        upgradeDamage(magicNumber);
     }
 
     @Override
@@ -46,7 +51,7 @@ public class JianShanWenShi extends AbstractEasyCard implements PostExhaustSubsc
         this.exhaustedThisTurn = false;
     }
 }
-//  "lingmod:JianShanWenShi": {
-//    "NAME": "JianShanWenShi",
-//    "DESCRIPTION": ""
-//  }
+// "lingmod:JianShanWenShi": {
+// "NAME": "JianShanWenShi",
+// "DESCRIPTION": ""
+// }

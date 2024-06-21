@@ -8,15 +8,17 @@ import com.megacrit.cardcrawl.powers.VulnerablePower;
 
 import lingmod.ModCore;
 import lingmod.cards.AbstractPoemCard;
+import lingmod.interfaces.CardConfig;
 
+@CardConfig(damage = 7, magic = 2, magic2 = 1)
 public class BattleHymn extends AbstractPoemCard {
     public static final String ID = ModCore.makeID(BattleHymn.class.getSimpleName());
 
     public BattleHymn() {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY, 2);
-        baseDamage = 7;
-        baseMagicNumber = 2;
-        baseSecondMagic = 1;
+        // baseDamage = 7;
+        // baseMagicNumber = 2;
+        // baseSecondMagic = 1;
     }
 
     @Override

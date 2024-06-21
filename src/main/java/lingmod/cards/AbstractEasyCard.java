@@ -5,6 +5,7 @@ import static lingmod.ModCore.modID;
 import static lingmod.util.Wiz.actionify;
 import static lingmod.util.Wiz.atb;
 import static lingmod.util.Wiz.att;
+import static lingmod.util.Wiz.copyAnnotatedFields;
 
 import java.util.function.Consumer;
 
@@ -26,6 +27,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import basemod.abstracts.CustomCard;
 import lingmod.character.Ling;
+import lingmod.interfaces.CardConfig;
 import lingmod.util.CardArtRoller;
 
 /**
@@ -77,6 +79,24 @@ public abstract class AbstractEasyCard extends CustomCard {
                 CardArtRoller.computeCard(this);
             } else
                 needsArtRefresh = true;
+        }
+        initializeCardValues();
+    }
+
+    /**
+     * 通过注解获取卡牌信息，自动初始化避免出现-1
+     */
+    protected void initializeCardValues() {
+        CardConfig config = getClass().getAnnotation(CardConfig.class);
+        if (config != null) {
+            this.damage = this.baseDamage = config.damage();
+            this.secondDamage = this.baseSecondDamage = config.damage2();
+
+            this.magicNumber = this.baseMagicNumber = config.magic();
+            this.secondMagic = this.baseSecondMagic = config.magic2();
+
+            this.block = this.baseBlock = config.block();
+            this.secondBlock = this.baseSecondBlock = config.block2();
         }
     }
 
@@ -278,6 +298,9 @@ public abstract class AbstractEasyCard extends CustomCard {
             c.baseSecondBlock = c.secondBlock = baseSecondBlock;
             c.baseSecondMagic = c.secondMagic = baseSecondMagic;
             c.baseThirdMagic = c.thirdMagic = baseThirdMagic;
+        }
+        if (result instanceof AbstractEasyCard) {
+            copyAnnotatedFields(this, (AbstractEasyCard) result);
         }
         return result;
     }

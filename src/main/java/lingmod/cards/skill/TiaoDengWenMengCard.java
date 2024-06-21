@@ -1,16 +1,17 @@
 package lingmod.cards.skill;
 
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import lingmod.ModCore;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.util.CardHelper;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 挑灯问梦：随机获得2张梦
@@ -28,7 +29,7 @@ public class TiaoDengWenMengCard extends AbstractEasyCard {
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
         for (int i = 0; i < magicNumber; i++) {
-            AbstractCard c = CardHelper.returnTrulyRandomDreamInCombat();
+            AbstractCard c = CardHelper.getTrulyRandDreamInCombat();
             if(c == null)
                 ModCore.logger.warn("Cannot found card with tag DREAM");
             else {

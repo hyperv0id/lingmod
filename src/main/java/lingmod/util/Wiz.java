@@ -1,7 +1,9 @@
 package lingmod.util;
 
+import static lingmod.ModCore.logger;
 import static lingmod.ModCore.makeID;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -36,6 +38,8 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 
 import lingmod.actions.TimedVFXAction;
+import lingmod.cards.AbstractEasyCard;
+import lingmod.interfaces.CopyField;
 import lingmod.powers.PoeticMoodPower;
 import lingmod.stance.NellaFantasiaStance;
 
@@ -101,12 +105,12 @@ public class Wiz {
         }
     }
 
-    public static AbstractCard returnTrulyRandomPrediCardInCombat(Predicate<AbstractCard> pred, boolean allCards) {
+    public static AbstractCard getTrulyRandPrediCardInCombat(Predicate<AbstractCard> pred, boolean allCards) {
         return getRandomItem(getCardsMatchingPredicate(pred, allCards));
     }
 
-    public static AbstractCard returnTrulyRandomPrediCardInCombat(Predicate<AbstractCard> pred) {
-        return returnTrulyRandomPrediCardInCombat(pred, false);
+    public static AbstractCard getTrulyRandPrediCardInCombat(Predicate<AbstractCard> pred) {
+        return getTrulyRandPrediCardInCombat(pred, false);
     }
 
     public static <T> T getRandomItem(ArrayList<T> list, Random rng) {
@@ -280,7 +284,7 @@ public class Wiz {
     public static List<AbstractPower> allPowers(PowerType type) {
         return AbstractDungeon.player.powers.stream()
                 .filter(p -> !(p instanceof InvisiblePower))
-                .filter(p-> !p.ID.equals(PoeticMoodPower.ID)) // 诗有单独UI
+                .filter(p -> !p.ID.equals(PoeticMoodPower.ID)) // 诗有单独UI
                 .filter(p -> (type == null || p.type == type))
                 .collect(Collectors.toList());
     }
@@ -301,15 +305,15 @@ public class Wiz {
      */
     public static void swapCardCost(AbstractCard c1, AbstractCard c2, boolean turnOnly) {
         // 特判X牌、状态、诅咒
-        if(c1.cost == -1 || c1.type == CardType.CURSE || c1.type == CardType.STATUS) {
+        if (c1.cost == -1 || c1.type == CardType.CURSE || c1.type == CardType.STATUS) {
             c2.costForTurn = 0;
-            if(!turnOnly)
+            if (!turnOnly)
                 c2.cost = 0;
             return;
         }
-        if(c1.cost == -1 || c2.type == CardType.CURSE || c1.type == CardType.STATUS) {
+        if (c1.cost == -1 || c2.type == CardType.CURSE || c1.type == CardType.STATUS) {
             c1.costForTurn = 0;
-            if(!turnOnly)
+            if (!turnOnly)
                 c1.cost = 0;
             return;
         }
@@ -337,6 +341,34 @@ public class Wiz {
      */
     public static boolean isStart_SD(AbstractCard card) {
         return card.hasTag(AbstractCard.CardTags.STARTER_DEFEND) || card.hasTag(AbstractCard.CardTags.STARTER_STRIKE);
+    }
+
+    /**
+     * makeStatEquivalentCopy 自动 复制注解
+     * 
+     * @param source 原始类
+     * @param target 新的复制类
+     */
+    public static void copyAnnotatedFields(AbstractEasyCard source, AbstractEasyCard target) {
+        // 必须是同类
+        if (source == null || target == null) {
+            return;
+        }
+        Class<?> currentClass = source.getClass();
+        while (currentClass != null && AbstractEasyCard.class.isAssignableFrom(currentClass)) {
+            for (Field field : currentClass.getDeclaredFields()) {
+                if (field.isAnnotationPresent(CopyField.class)) {
+                    try {
+                        field.setAccessible(true);
+                        field.set(target, field.get(source));
+                    } catch (IllegalAccessException e) {
+                        logger.error("copy @CopyField failed TAT");
+                        e.printStackTrace();
+                    }
+                }
+            }
+            currentClass = currentClass.getSuperclass();
+        }
     }
 
 }

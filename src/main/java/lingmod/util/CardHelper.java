@@ -1,18 +1,22 @@
 package lingmod.util;
 
-import basemod.helpers.CardModifierManager;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.colorless.Bite;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import lingmod.ModCore;
-import lingmod.cards.mod.NellaFantasiaMod;
-import lingmod.cards.mod.WineMod;
+import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.cardRandomRng;
+import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.srcCommonCardPool;
+import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.srcRareCardPool;
+import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.srcUncommonCardPool;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.*;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.colorless.Bite;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+
+import basemod.helpers.CardModifierManager;
+import lingmod.ModCore;
+import lingmod.cards.mod.NellaFantasiaMod;
+import lingmod.cards.mod.WineMod;
 
 public class CardHelper {
     public static AbstractCard lastCard(boolean isOnUseCard) {
@@ -36,7 +40,7 @@ public class CardHelper {
      *
      * @return 随机的酒，稀有度平均过
      */
-    public static AbstractCard returnTrulyRandomWineInCombat() {
+    public static AbstractCard getTrulyRandWineInCombat() {
         List<AbstractCard> list = getAllCards();
         list =
                 list.stream().filter(c -> !c.hasTag(AbstractCard.CardTags.HEALING)).filter(c -> c.hasTag(CustomTags.WINE) || CardModifierManager.hasModifier(c, WineMod.ID))
@@ -53,7 +57,7 @@ public class CardHelper {
      *
      * @return 随机的梦，稀有度平均过
      */
-    public static AbstractCard returnTrulyRandomDreamInCombat() {
+    public static AbstractCard getTrulyRandDreamInCombat() {
         List<AbstractCard> list = getAllCards();
         list =
                 list.stream().filter(c -> !c.hasTag(AbstractCard.CardTags.HEALING)).filter(c ->
