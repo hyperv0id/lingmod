@@ -1,12 +1,13 @@
 package lingmod.cards.skill;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.PlatedArmorPower;
-import lingmod.cards.AbstractWineCard;
 
-import static lingmod.ModCore.makeID;
+import lingmod.cards.AbstractWineCard;
 
 /**
  * 4多层护甲
@@ -29,6 +30,8 @@ public class HuSongWineCard extends AbstractWineCard {
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
         addToBot(new ApplyPowerAction(abstractPlayer, abstractPlayer,
                 new PlatedArmorPower(abstractPlayer, magicNumber)));
-        upgradeMagicNumber(-1);
+        addToBotAbstract(() -> {
+            upgradeMagicNumber(-1);
+        });
     }
 }

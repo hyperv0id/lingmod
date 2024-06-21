@@ -22,6 +22,7 @@ public class ZiZai extends AbstractEasyCard {
     public ZiZai() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF_AND_ENEMY);
         baseMagicNumber = 3;
+        magicNumber = baseMagicNumber;
     }
 
     @Override
@@ -43,13 +44,14 @@ public class ZiZai extends AbstractEasyCard {
                 .filter(po -> !(po instanceof InvisiblePower))
                 .count();
         if (cnt >= magicNumber) {
-            addToBot(new GainEnergyAction(1));
+            addToBot(new GainEnergyAction(2));
         }
     }
 
     @Override
     public void upp() {
         // TODO Auto-generated method stub
+	upgradeMagicNumber(-1);
     }
 }
 // "lingmod:ZiZai": {

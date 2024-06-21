@@ -1,12 +1,14 @@
 package lingmod.cards.skill;
 
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import lingmod.ModCore;
+import lingmod.actions.ExhaustAllAction;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.attack.GuoJiaXianMei;
 import lingmod.util.Wiz;
@@ -30,8 +32,7 @@ public class ZhengFuWangXiang extends AbstractEasyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         // 消耗手牌所有打防
-        p.hand.group.stream().filter(Wiz::isStart_SD).forEach(c -> addToBot(new ExhaustSpecificCardAction(c,
-                p.hand)));
+        addToBot(new ExhaustAllAction(p.hand));
         if (upgraded) {
             p.discardPile.group.stream().filter(Wiz::isStart_SD).forEach(c -> addToBot(new ExhaustSpecificCardAction(c,
                     p.discardPile)));

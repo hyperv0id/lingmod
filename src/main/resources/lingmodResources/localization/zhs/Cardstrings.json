@@ -263,8 +263,8 @@
   },
   "lingmod:ZhengFuWangXiang": {
     "NAME": "征夫望乡",
-    "DESCRIPTION": "消耗手牌中所有打击、防御，在手牌中加入一张 裹甲衔枚",
-    "UPGRADE_DESCRIPTION": "消耗牌库所有打击、防御，在手牌中加入一张 裹甲衔枚"
+    "DESCRIPTION": "消耗手牌中所有手牌，在手牌中加入一张 裹甲衔枚",
+    "UPGRADE_DESCRIPTION": "消耗所有手牌，消耗牌库所有打击、防御，在手牌中加入一张 裹甲衔枚"
   },
   "${ModID}:QuShuiLiuShang": {
     "NAME": "曲水流觞",
@@ -281,5 +281,16 @@
   "lingmod:RuMengLing": {
     "NAME": "如梦令",
     "DESCRIPTION": "造成 !D! 点伤害。消耗最左边的牌，在手牌中放入此牌的复制。如果在梦中，那么抽 !M! 张牌"
+  },
+  "lingmod:NoNamed_0620": {
+    "NAME": "未命名",
+    "DESCRIPTION": "对主目标造成 !D! 伤害。每有一张耗能大于此牌的，获得 [E]"
+  },
+  "lingmod:ZiZai": {
+    "NAME": "自在",
+    "DESCRIPTION": "如果目标存在至少 !M! 种负面效果，那么获得 [E] [E] ",
+    "EXTENDED_DESCRIPTION": [
+      "真自在者不知何为自在"
+    ]
   }
 }
