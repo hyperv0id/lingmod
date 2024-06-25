@@ -2,33 +2,31 @@ package lingmod.cards.attack;
 
 import static lingmod.ModCore.makeID;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import basemod.BaseMod;
-import basemod.cardmods.RetainMod;
 import basemod.helpers.CardModifierManager;
 import basemod.interfaces.PostExhaustSubscriber;
-import lingmod.cards.AbstractPoemCard;
-import lingmod.cards.mod.PoemMod;
+import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.WineMod;
+import lingmod.powers.PoeticMoodPower;
 import lingmod.util.CustomTags;
 
 /**
  * 随付笺咏醉屠苏: 召唤物被击倒/吸收/回收时令额外获得4(+1)点技力、攻击力+3%（攻击力加成最多叠加5层）
  */
-public class Feature_2_Card extends AbstractPoemCard implements PostExhaustSubscriber {
+public class Feature_2_Card extends AbstractEasyCard implements PostExhaustSubscriber {
     public static final String ID = makeID(Feature_2_Card.class.getSimpleName());
 
     public Feature_2_Card() {
-        super(ID, 5, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY, 2);
-        CardModifierManager.addModifier(this, new RetainMod());
+        super(ID, 5, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         this.tags.add(CustomTags.WINE);
         CardModifierManager.addModifier(this, new WineMod(1));
-        this.tags.add(CustomTags.POEM);
-        CardModifierManager.addModifier(this, new PoemMod(2));
+        this.selfRetain = true;
         baseDamage = 8;
         baseMagicNumber = 1;
         baseSecondMagic = 5;
@@ -58,9 +56,13 @@ public class Feature_2_Card extends AbstractPoemCard implements PostExhaustSubsc
      */
     @Override
     public void receivePostExhaust(AbstractCard card) {
-        if (AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this))
+        AbstractPlayer p = AbstractDungeon.player;
+        if (p != null && AbstractDungeon.player.hand != null
+                && AbstractDungeon.player.hand.contains(this)) {
             this.upgrade();
-        else if (card.isEthereal) // 虚无牌会在回合后消耗，但是不会触发上面的逻辑
+            addToBot(new ApplyPowerAction(p, p,
+                    new PoeticMoodPower(p, 1)));
+        } else if (card.isEthereal) // 虚无牌会在回合后消耗，但是不会触发上面的逻辑
             this.upgrade();
     }
 }

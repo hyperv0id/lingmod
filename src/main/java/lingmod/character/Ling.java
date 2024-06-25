@@ -1,12 +1,24 @@
 package lingmod.character;
 
-import basemod.abstracts.CustomPlayer;
+import static lingmod.ModCore.characterColor;
+import static lingmod.ModCore.logger;
+import static lingmod.ModCore.makeCharacterPath;
+import static lingmod.ModCore.makeImagePath;
+import static lingmod.character.Ling.Enums.LING_COLOR;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
-import com.esotericsoftware.spine.*;
+import com.esotericsoftware.spine.AnimationState;
+import com.esotericsoftware.spine.AnimationStateData;
+import com.esotericsoftware.spine.Skeleton;
+import com.esotericsoftware.spine.SkeletonBinary;
+import com.esotericsoftware.spine.SkeletonData;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -22,6 +34,8 @@ import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
+
+import basemod.abstracts.CustomPlayer;
 import lingmod.cards.attack.ChongJinJiuCard;
 import lingmod.cards.attack.GuoJiaXianMei;
 import lingmod.cards.attack.Strike;
@@ -29,12 +43,6 @@ import lingmod.cards.attack.Tranquility;
 import lingmod.cards.skill.Defend;
 import lingmod.relics.LightRelic;
 import lingmod.util.TODO;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static lingmod.ModCore.*;
-import static lingmod.character.Ling.Enums.LING_COLOR;
 
 public class Ling extends CustomPlayer {
 
@@ -156,7 +164,7 @@ public class Ling extends CustomPlayer {
     @Override
     public CharSelectInfo getLoadout() {
         return new CharSelectInfo(NAMES[0], TEXT[0],
-                80, 80, 0, 99, 5, this, getStartingRelics(),
+                66, 66, 0, 99, 5, this, getStartingRelics(),
                 getStartingDeck(), false);
     }
 

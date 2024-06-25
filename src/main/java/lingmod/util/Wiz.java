@@ -40,6 +40,7 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import lingmod.actions.TimedVFXAction;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CopyField;
+import lingmod.interfaces.VoidSupplier;
 import lingmod.powers.PoeticMoodPower;
 import lingmod.stance.NellaFantasiaStance;
 
@@ -370,5 +371,15 @@ public class Wiz {
             currentClass = currentClass.getSuperclass();
         }
     }
+
+    public static void addToBotAbstract(final VoidSupplier func) {
+        AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+            public void update() {
+                func.get();
+                this.isDone = true;
+            }
+        });
+    }
+
 
 }

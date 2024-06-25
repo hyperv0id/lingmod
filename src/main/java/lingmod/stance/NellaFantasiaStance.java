@@ -1,6 +1,7 @@
 package lingmod.stance;
 
 import static lingmod.ModCore.makeID;
+import static lingmod.util.Wiz.addToBotAbstract;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -97,7 +98,9 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamag
     @Override
     public void onPlayCard(AbstractCard card) {
         if (card.type == CardType.ATTACK) {
-            this.dmgRecvLoss++;
+            addToBotAbstract(() -> {
+                this.dmgRecvLoss++;
+            });
         }
     }
 
@@ -124,12 +127,13 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamag
 
     @Override
     public int receiveOnPlayerDamaged(int dmg, DamageInfo info) {
-        this.dmgGiveLoss++;
+        if (dmg > 0) // 如果降到0了，就不会降低自己的伤害
+            this.dmgGiveLoss++;
         return dmg;
     }
 
     @Override
     public void receivePostBattle(AbstractRoom room) {
-        //        BaseMod.unsubscribe(this);
+        // BaseMod.unsubscribe(this);
     }
 }

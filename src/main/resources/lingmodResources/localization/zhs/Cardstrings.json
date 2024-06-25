@@ -115,7 +115,7 @@
   },
   "${ModID}:Feature_2_Card": {
     "NAME": "随付笺咏醉屠苏",
-    "DESCRIPTION": "造成 !D! 点伤害 !M! 次。 NL 在手牌中消耗卡牌时升级，至多升级5次"
+    "DESCRIPTION": " 保留 。造成 !D! 点伤害 !M! 次。 NL 消耗卡牌时增加1攻击次数，并获得1诗意，攻击次数至多增加5次"
   },
   "${ModID}:AltGuangHui": {
     "NAME": "光辉ALT",
@@ -196,9 +196,9 @@
     "NAME": "蕉鹿梦",
     "DESCRIPTION": "获得 !M! 力量和敏捷，回合结束后失去"
   },
-  "${ModID}:Calm": {
-    "NAME": "心态平和",
-    "DESCRIPTION": "如果目标意图是攻击，那么获得 !M! 敏捷 ，否则获得 !M! 力量"
+  "${ModID}:BeiMoTing": {
+    "NAME": "杯莫停",
+    "DESCRIPTION": "如果目标意图是攻击 ，进入 ${ModID}:梦  ， 否则获得 !M! ${ModID}:酒 "
   },
   "${ModID}:PoemVSQuickSand": {
     "NAME": "诗对狂沙",
@@ -236,7 +236,7 @@
   },
   "${ModID}:YunLiaoWineCard": {
     "NAME": "云辽酒",
-    "DESCRIPTION": "获得 !M ${ModID}:酒 "
+    "DESCRIPTION": "获得 !M! ${ModID}:酒 "
   },
   "${ModID}:GuanShanYuan": {
     "NAME": "关山远",

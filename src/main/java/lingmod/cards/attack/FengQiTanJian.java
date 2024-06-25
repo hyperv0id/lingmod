@@ -8,17 +8,17 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import lingmod.cards.AbstractEasyCard;
+import lingmod.interfaces.CardConfig;
 
 /**
- * 0费打10,打出后耗能+1
+ * 0费打8抽2,打出后耗能+1
  */
+@CardConfig(damage = 8, magic = 2)
 public class FengQiTanJian extends AbstractEasyCard {
     public final static String ID = makeID(FengQiTanJian.class.getSimpleName());
 
     public FengQiTanJian() {
         super(ID, 0, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
-        baseDamage = 10;
-        baseMagicNumber = 1;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {

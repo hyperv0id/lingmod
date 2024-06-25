@@ -28,6 +28,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import basemod.abstracts.CustomCard;
 import lingmod.character.Ling;
 import lingmod.interfaces.CardConfig;
+import lingmod.interfaces.VoidSupplier;
 import lingmod.util.CardArtRoller;
 
 /**
@@ -427,8 +428,5 @@ public abstract class AbstractEasyCard extends CustomCard {
         });
     }
 
-    public interface VoidSupplier {
-        void get();
-    }
 
 }
