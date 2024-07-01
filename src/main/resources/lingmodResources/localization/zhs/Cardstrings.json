@@ -292,5 +292,9 @@
     "EXTENDED_DESCRIPTION": [
       "真自在者不知何为自在"
     ]
+  },
+  "lingmod:JiangXiangNaTie": {
+    "NAME": "酱香拿铁",
+    "DESCRIPTION": "造成 !D! 点伤害，每层 ${ModID}:酒 额外 造成1点"
   }
 }
