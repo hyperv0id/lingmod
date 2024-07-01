@@ -1,12 +1,13 @@
 package lingmod.cards.curse;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import lingmod.cards.AbstractEasyCard;
 
-import static lingmod.ModCore.makeID;
+import lingmod.cards.AbstractEasyCard;
 
 /**
  * 孤独：可被打出。在手牌中时，未打出的牌耗能++
@@ -22,9 +23,10 @@ public class Lonely extends AbstractEasyCard {
 
     @Override
     public void triggerOnEndOfPlayerTurn() {
-        // TODO Auto-generated method stub
         super.triggerOnEndOfPlayerTurn();
         for (AbstractCard card : AbstractDungeon.player.hand.group) {
+            // 状态 or 诅咒
+            if(card.cost < 0) continue; 
             card.cost++;
             card.costForTurn++;
             card.isCostModified = true;

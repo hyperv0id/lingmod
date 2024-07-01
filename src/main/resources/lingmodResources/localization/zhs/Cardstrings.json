@@ -215,7 +215,7 @@
   },
   "${ModID}:HuSongWineCard": {
     "NAME": "湖松酒",
-    "DESCRIPTION": "获得 !M! 点 多层护甲 NL 此牌每打出一次，获得的护甲值减少1"
+    "DESCRIPTION": "回合结束时获得 !M! 格挡 NL 失去生命时，获得的格挡数增加1"
   },
   "${ModID}:GuiXingWineCard": {
     "NAME": "归行酒",
