@@ -7,7 +7,7 @@
     <version>0.0.1</version>
     <name>Ling(明日方舟-令)</name>
     <description>
-        Description: 明日方舟令mod。
+        明日方舟-令角色模组。 
     </description>
     <!-- Change the above for mod information. -->
 
@@ -40,6 +40,7 @@
           <Steam.path>D:/apps/Steam/steamapps/</Steam.path>
           <STS.path>${Steam.path}/common/SlayTheSpire/</STS.path>
           <JAVA.path>${Steam.path}/common/SlayTheSpire/jre/bin/java.exe</JAVA.path>
+          <MTS.path>${Steam.path}/workshop/content/646570/1605060445/ModTheSpire.jar</MTS.path>
         </properties>
       </profile>
       
@@ -55,6 +56,7 @@
           <Steam.path>${HOME}/Library/Application Support/Steam/steamapps/</Steam.path>
           <STS.path>${Steam.path}/common/SlayTheSpire/</STS.path>
           <JAVA.path>${Steam.path}/common/SlayTheSpire/jre/bin/java</JAVA.path>
+          <MTS.path>${Steam.path}/workshop/content/646570/1605060445/ModTheSpire.jar</MTS.path>
         </properties>
       </profile>
       
@@ -70,6 +72,7 @@
           <Steam.path>${HOME}/.steam/steam/steamapps/</Steam.path>
           <STS.path>${Steam.path}/common/SlayTheSpire/</STS.path>
           <JAVA.path>${STS.path}/jre/bin/java</JAVA.path>
+          <MTS.path>${Steam.path}/workshop/content/646570/1605060445/ModTheSpire.jar</MTS.path>
         </properties>
       </profile>
     </profiles>
@@ -145,11 +148,17 @@
                       <phase>install</phase> <!-- 选择在 install 阶段之后执行 -->
                       <configuration>
                           <target>
+                            <!-- <property name="mts.launcher.dir" location="${STS.path}" /> -->
+                            <!-- <echo message="Changing directory to ${mts.launcher.dir}" /> -->
+                            <!-- 使用 exec 任务来运行你的命令 -->
+                            <!-- <exec dir="${mts.launcher.dir}" executable="${JAVA.path}" failonerror="true"> -->
+                                <!-- <arg line="-jar mts-launcher.jar"/> -->
+                            <!-- </exec> -->
                             <property name="mts.launcher.dir" location="${STS.path}" />
                             <echo message="Changing directory to ${mts.launcher.dir}" />
                             <!-- 使用 exec 任务来运行你的命令 -->
                             <exec dir="${mts.launcher.dir}" executable="${JAVA.path}" failonerror="true">
-                                <arg line="-jar mts-launcher.jar"/>
+                                <arg line="-jar ${MTS.path}"/>
                             </exec>
                           </target>
                       </configuration>

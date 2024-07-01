@@ -1,7 +1,7 @@
 {
   "${ModID}:AGiftRelic": {
-    "NAME": "金刚杵",
-    "FLAVOR": "黄沙远来三千地，洗罢流年一屈指。",
+    "NAME": "琴",
+    "FLAVOR": "一个礼物，他是这么说的",
     "DESCRIPTIONS": [
       "战斗开始时，所有敌人失去 1 力量"
     ]
@@ -96,6 +96,13 @@
     "FLAVOR": "TODO: make this a sweet relic.",
     "DESCRIPTIONS": [
       "Has no effect."
+    ]
+  },
+  "${ModID}:BlackWine": {
+    "NAME": "黑色酒盏",
+    "FLAVOR": "逍遥常驻，有道不孤",
+    "DESCRIPTIONS": [
+      "回合开始时，费用高于 3 的卡牌可以免费打出 1 次"
     ]
   }
 }

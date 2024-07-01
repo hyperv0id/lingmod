@@ -28,6 +28,7 @@ public class XiaoYaoPower extends AbstractEasyPower {
     public static final Logger logger = ModCore.logger;
 
     private static int id_postfix = 0;
+    public static final int MAX_CAPA_EX = 5; // 扩容之多为5
 
     public XiaoYaoPower(AbstractCreature owner) {
         super(POWER_ID + id_postfix++, NAME, TYPE, TURN_BASED, owner, 0);
@@ -41,8 +42,8 @@ public class XiaoYaoPower extends AbstractEasyPower {
             amount++;
             addToBot(new ApplyPowerAction(owner, owner,
                     new DrawCardNextTurnPower(owner, amount)));
-                    addToBot(new ApplyPowerAction(owner, owner,
-                            new CapacityExpansionPower(owner, amount)));
+            addToBot(new ApplyPowerAction(owner, owner,
+                    new CapacityExpansionPower(owner, Math.max(amount, MAX_CAPA_EX))));
             updateDescription();
         }
     }
