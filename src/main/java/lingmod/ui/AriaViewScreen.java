@@ -1,6 +1,8 @@
 package lingmod.ui;
 
-import basemod.abstracts.CustomScreen;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
@@ -12,18 +14,17 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+
+import basemod.abstracts.CustomScreen;
 import lingmod.ModCore;
 import lingmod.patch.PlayerFieldsPatch;
 import lingmod.util.Wiz;
-
-import java.util.ArrayList;
-import java.util.Iterator;
 
 public class AriaViewScreen extends CustomScreen {
     public static final String ID = ModCore.makeID(AriaViewScreen.class.getSimpleName());
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
     private static final String[] TEXT = uiStrings.TEXT;
-    private static final int CARDS_PER_LINE = 6;
+    // private static final int CARDS_PER_LINE = 6;
     private static float drawStartX;
     private static float drawStartY;
     private static float padX;
@@ -99,7 +100,7 @@ public class AriaViewScreen extends CustomScreen {
             ((AbstractCard) cards.get(i)).updateHoverLogic();
             ((AbstractCard) cards.get(i)).setAngle(0.0F, true);
             this.hoveredCard = null;
-            Iterator var5 = cards.iterator();
+            Iterator<AbstractCard> var5 = cards.iterator();
 
             while (var5.hasNext()) {
                 AbstractCard c = (AbstractCard) var5.next();

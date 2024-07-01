@@ -1,16 +1,16 @@
 package lingmod.util;
 
+import static lingmod.ModCore.logger;
+import static lingmod.ModCore.makeImagePath;
+
+import java.util.HashMap;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
-
-import java.util.HashMap;
-
-import static lingmod.ModCore.logger;
-import static lingmod.ModCore.makeImagePath;
 
 public class TexLoader {
     private static HashMap<String, Texture> textures = new HashMap<>();
@@ -33,6 +33,7 @@ public class TexLoader {
         return textures.get(textureString);
     }
 
+    @SuppressWarnings("unused")
     private static void loadTexture(final String textureString) throws GdxRuntimeException {
         loadTexture(textureString, false);
     }

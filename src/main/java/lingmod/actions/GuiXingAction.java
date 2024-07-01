@@ -36,7 +36,7 @@ public class GuiXingAction extends AbstractGameAction {
     }
 
     public void update() {
-        Iterator c;
+        Iterator<AbstractCard> c;
         AbstractCard derp;
         if (this.duration == Settings.ACTION_DUR_FAST) {
             if (AbstractDungeon.player.hand.size() == 10) {

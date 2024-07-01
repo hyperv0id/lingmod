@@ -1,12 +1,13 @@
 package lingmod.monsters;
 
+import java.util.ArrayList;
+
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import lingmod.ModCore;
 
-import java.util.ArrayList;
+import lingmod.ModCore;
 
 /**
  * 二哥你又在下棋哦，陪我喝点酒好不好
@@ -15,6 +16,7 @@ public class MonsterSui_2_Wang extends AbstractMonster {
     public static final String ID = ModCore.makeID(MonsterSui_2_Wang.class.getSimpleName());
     public static final MonsterStrings ms = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final float orbOffset = 225.0F; // 棋盘宽高
+    @SuppressWarnings("rawtypes")
     public ArrayList[][] orbs; // 棋盘大小
     protected boolean firstMove = true;
 

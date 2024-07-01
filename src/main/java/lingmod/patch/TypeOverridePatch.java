@@ -1,16 +1,24 @@
 package lingmod.patch;
 
-import basemod.abstracts.CustomCard;
-import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.RenderCardDescriptors;
+import java.util.List;
+
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.evacipated.cardcrawl.modthespire.lib.ByRef;
+import com.evacipated.cardcrawl.modthespire.lib.LineFinder;
+import com.evacipated.cardcrawl.modthespire.lib.Matcher;
+import com.evacipated.cardcrawl.modthespire.lib.SpireField;
+import com.evacipated.cardcrawl.modthespire.lib.SpireInsertLocator;
+import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch2;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
-import javassist.CtBehavior;
 
-import java.util.List;
+import basemod.abstracts.CustomCard;
+import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.RenderCardDescriptors;
+import javassist.CtBehavior;
 
 public class TypeOverridePatch {
     public TypeOverridePatch() {
@@ -115,7 +123,7 @@ public class TypeOverridePatch {
             method = "<class>"
     )
     public static class TypeOverrideField {
-        public static SpireField<String> typeOverride = new SpireField(() -> {
+        public static SpireField<String> typeOverride = new SpireField<String>(() -> {
             return null;
         });
 
