@@ -1,14 +1,16 @@
 package lingmod.powers;
 
+import static lingmod.ModCore.makeID;
+
+import org.apache.logging.log4j.Logger;
+
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import lingmod.ModCore;
-import org.apache.logging.log4j.Logger;
 
-import static lingmod.ModCore.makeID;
+import lingmod.ModCore;
 
 public class YuGuoZhuoYingPower extends AbstractEasyPower {
 
@@ -21,15 +23,29 @@ public class YuGuoZhuoYingPower extends AbstractEasyPower {
     private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.BUFF;
     private static final boolean TURN_BASED = true; // 是否回合后消失
     public static final Logger logger = ModCore.logger;
+    public int magnitute = 1;
 
-    public YuGuoZhuoYingPower(AbstractCreature owner, int amount) {
-        super(POWER_ID, NAME, TYPE, TURN_BASED, owner, amount);
+    public YuGuoZhuoYingPower(AbstractCreature owner, int magnitute, boolean startTurn) {
+        super(POWER_ID, NAME, TYPE, TURN_BASED, owner, 0);
+        this.magnitute = magnitute;
         updateDescription();
     }
 
     @Override
+    public void atStartOfTurnPostDraw() {
+        super.atStartOfTurnPostDraw();
+        this.flash();
+        addToBot(new GainBlockAction(owner, amount));
+        this.amount = 0;
+    }
+
+    @Override
     public int onLoseHp(int dmg) {
-        addToTop(new GainBlockAction(owner, dmg * amount));
+        if (dmg <= 0)
+            return 0;
+        this.flash();
+        addToTop(new GainBlockAction(owner, dmg * magnitute));
+        this.amount += dmg * magnitute;
         return super.onLoseHp(dmg);
     }
 

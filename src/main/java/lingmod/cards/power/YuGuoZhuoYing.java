@@ -23,11 +23,10 @@ public class YuGuoZhuoYing extends AbstractEasyCard {
     @Override
     public void upp() {
         // updateCost(-1);
-        upgradeMagicNumber(1);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new YuGuoZhuoYingPower(p, magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new YuGuoZhuoYingPower(p, magicNumber, upgraded)));
     }
 }

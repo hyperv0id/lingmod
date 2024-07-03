@@ -13,7 +13,7 @@ out/
 # maven build target
 target/
 dependency-reduced-pom.xml
-
+.factorypath
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 

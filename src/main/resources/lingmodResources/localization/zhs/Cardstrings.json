@@ -165,8 +165,8 @@
   },
   "${ModID}:YuGuoZhuoYing": {
     "NAME": "雨过濯缨",
-    "DESCRIPTION": "受伤后立刻获得等量格挡",
-    "UPGRADE_DESCRIPTION": "失去生命后立刻获得其值两倍的格挡"
+    "DESCRIPTION": "失去生命的当下，立刻获得失去值 !M! 倍的格挡",
+    "UPGRADE_DESCRIPTION": "失去生命的当下，立刻获得失去值 !M! 倍的格挡 NL 回合开始时也会获得格挡"
   },
   "${ModID}:SurprisingThunder": {
     "NAME": "远山惊雷",
