@@ -24,19 +24,23 @@ public class YuGuoZhuoYingPower extends AbstractEasyPower {
     private static final boolean TURN_BASED = true; // 是否回合后消失
     public static final Logger logger = ModCore.logger;
     public int magnitute = 1;
+    public boolean startTurn;
 
     public YuGuoZhuoYingPower(AbstractCreature owner, int magnitute, boolean startTurn) {
         super(POWER_ID, NAME, TYPE, TURN_BASED, owner, 0);
         this.magnitute = magnitute;
+        this.startTurn = startTurn;
         updateDescription();
     }
 
     @Override
     public void atStartOfTurnPostDraw() {
         super.atStartOfTurnPostDraw();
-        this.flash();
-        addToBot(new GainBlockAction(owner, amount));
-        this.amount = 0;
+        if (startTurn) {
+            this.flash();
+            addToBot(new GainBlockAction(owner, amount));
+            this.amount = 0;
+        }
     }
 
     @Override
@@ -52,6 +56,10 @@ public class YuGuoZhuoYingPower extends AbstractEasyPower {
     @Override
     public void updateDescription() {
         super.updateDescription();
-        this.description = String.format(powerStrings.DESCRIPTIONS[0], amount);
+        if(!startTurn) {
+            this.description = String.format(powerStrings.DESCRIPTIONS[0], magnitute);
+        } else {
+            this.description = String.format(powerStrings.DESCRIPTIONS[1], magnitute);
+        }
     }
 }

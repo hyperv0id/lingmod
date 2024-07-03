@@ -82,7 +82,8 @@
   "${ModID}:YuGuoZhuoYingPower": {
     "NAME": "雨过濯缨",
     "DESCRIPTIONS": [
-      "失去生命后立刻获得其值 %d 倍的格挡"
+      "失去生命后立刻获得其值 %d 倍的格挡",
+      "失去生命后立刻获得其值 %d 倍的格挡，此能力获得的格挡会保留到下一回合"
     ]
   },
   "${ModID}:WinePower": {
