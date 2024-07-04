@@ -1,7 +1,6 @@
 package lingmod.stance;
 
 import static lingmod.ModCore.makeID;
-import static lingmod.util.Wiz.addToBotAbstract;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -15,7 +14,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.StanceStrings;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.stances.AbstractStance;
 import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 import com.megacrit.cardcrawl.vfx.stance.CalmParticleEffect;
@@ -23,12 +21,11 @@ import com.megacrit.cardcrawl.vfx.stance.StanceAuraEffect;
 
 import basemod.BaseMod;
 import basemod.interfaces.OnPlayerDamagedSubscriber;
-import basemod.interfaces.PostBattleSubscriber;
 
 /**
  * 幻梦/梦境：全体受伤时失去1临时力量
  */
-public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamagedSubscriber, PostBattleSubscriber {
+public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamagedSubscriber {
     public static final String STANCE_NAME = NellaFantasiaStance.class.getSimpleName();
     public static final String STANCE_ID = makeID(STANCE_NAME);
 
@@ -67,7 +64,6 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamag
     }
 
     public void onEnterStance() {
-        BaseMod.subscribe(this);
         if (sfxId != -1L) {
             this.stopIdleSfx();
         }
@@ -76,6 +72,7 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamag
         CardCrawlGame.sound.play("STANCE_ENTER_CALM");
         sfxId = CardCrawlGame.sound.playAndLoop("STANCE_LOOP_CALM");
         AbstractDungeon.effectsQueue.add(new BorderFlashEffect(Color.PURPLE, true));
+        BaseMod.subscribe(this);
         remainTurn = 1;
     }
 
@@ -90,6 +87,20 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamag
     @Override
     public float atDamageReceive(float damage, DamageType damageType) {
         if (damageType == DamageType.NORMAL) {
+            // // 其实是calculateDamage方法，但其为私有
+            // AbstractDungeon.getMonsters().monsters.forEach(mo -> {
+            //     // 重新计算damage
+            //     EnemyMoveInfo move = ReflectionHacks.getPrivate(mo, AbstractMonster.class, "move");
+            //     if (move.baseDamage > -1) {
+            //         try {
+            //             Method method = mo.getClass().getDeclaredMethod("calculateDamage");
+            //             method.invoke(mo, move.baseDamage);
+            //         } catch (Exception e) {
+            //             // Pass
+            //             e.printStackTrace();
+            //         }
+            //     }
+            // });
             return damage - this.dmgRecvLoss * lossAmt;
         }
         return damage;
@@ -98,9 +109,10 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamag
     @Override
     public void onPlayCard(AbstractCard card) {
         if (card.type == CardType.ATTACK) {
-            addToBotAbstract(() -> {
+            // addToBotAbstract(() -> {
+                // logger.info("敌方攻击力下降");
                 this.dmgRecvLoss++;
-            });
+            // });
         }
     }
 
@@ -130,10 +142,5 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamag
         if (dmg > 0) // 如果降到0了，就不会降低自己的伤害
             this.dmgGiveLoss++;
         return dmg;
-    }
-
-    @Override
-    public void receivePostBattle(AbstractRoom room) {
-        // BaseMod.unsubscribe(this);
     }
 }
