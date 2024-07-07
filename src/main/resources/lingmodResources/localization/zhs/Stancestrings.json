@@ -3,14 +3,8 @@
     "STANCE_ID": "NellaFantasiaStance",
     "NAME": "梦境",
     "DESCRIPTION": [
-      "全体受到伤害时，使其失去1力量1回合。回合结束后自动退出此姿态"
-    ]
-  },
-  "${ModID}:PoeticStance": {
-    "STANCE_ID": "PoeticStance",
-    "NAME": "作诗",
-    "DESCRIPTION": [
-      "进入时获得 1 敏捷 和 1 能量"
+      "X为否认值，出牌后+1，受到伤害后-1。 此姿态下，你造成的伤害增加 2X，受到的伤害减少X",
+      "大概是否认自身存在的效果"
     ]
   }
 }

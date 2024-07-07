@@ -1,7 +1,7 @@
 package lingmod.cards.skill;
 
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
@@ -11,12 +11,13 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.stances.AbstractStance;
 import com.megacrit.cardcrawl.stances.NeutralStance;
+
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.NellaFantasiaMod;
 import lingmod.stance.NellaFantasiaStance;
 import lingmod.util.CustomTags;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 清明梦：只能在梦中打出，敌人减少的力量变为永久
@@ -53,7 +54,7 @@ public class QingMingDream extends AbstractEasyCard {
         AbstractStance stance = p.stance;
         int amount = 0;
         if (p.stance.ID.equals(NellaFantasiaStance.STANCE_ID)) {
-            amount = ((NellaFantasiaStance) stance).dmgRecvLoss;
+            amount = ((NellaFantasiaStance) stance).dmgModi;
         }
         if (amount > 0) {
             for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {

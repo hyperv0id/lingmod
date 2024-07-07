@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -21,6 +20,7 @@ import com.megacrit.cardcrawl.vfx.stance.StanceAuraEffect;
 
 import basemod.BaseMod;
 import basemod.interfaces.OnPlayerDamagedSubscriber;
+import lingmod.util.Wiz;
 
 /**
  * 幻梦/梦境：全体受伤时失去1临时力量
@@ -31,10 +31,9 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamag
 
     private static final StanceStrings stanceString = CardCrawlGame.languagePack.getStanceString(STANCE_ID);
     private static long sfxId = -1L;
-    public static int remainTurn = 0;
-    public static int lossAmt = 2; // 单次减少多少
-    public int dmgRecvLoss = 0; // 受到伤害时减少多少
-    public int dmgGiveLoss = 0; // 造成伤害时减少多少
+
+    public int dmgModi = 0;
+    public static int remainTurn = 1;
 
     public NellaFantasiaStance() {
         this.ID = STANCE_ID;
@@ -67,19 +66,17 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamag
         if (sfxId != -1L) {
             this.stopIdleSfx();
         }
-        this.dmgRecvLoss = 0;
-        this.dmgGiveLoss = 0;
+        dmgModi = 0;
         CardCrawlGame.sound.play("STANCE_ENTER_CALM");
         sfxId = CardCrawlGame.sound.playAndLoop("STANCE_LOOP_CALM");
         AbstractDungeon.effectsQueue.add(new BorderFlashEffect(Color.PURPLE, true));
         BaseMod.subscribe(this);
-        remainTurn = 1;
     }
 
     @Override
     public float atDamageGive(float damage, DamageType type) {
         if (type == DamageType.NORMAL) {
-            return damage - this.dmgGiveLoss * lossAmt;
+            return damage + dmgModi;
         }
         return damage;
     }
@@ -89,31 +86,32 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamag
         if (damageType == DamageType.NORMAL) {
             // // 其实是calculateDamage方法，但其为私有
             // AbstractDungeon.getMonsters().monsters.forEach(mo -> {
-            //     // 重新计算damage
-            //     EnemyMoveInfo move = ReflectionHacks.getPrivate(mo, AbstractMonster.class, "move");
-            //     if (move.baseDamage > -1) {
-            //         try {
-            //             Method method = mo.getClass().getDeclaredMethod("calculateDamage");
-            //             method.invoke(mo, move.baseDamage);
-            //         } catch (Exception e) {
-            //             // Pass
-            //             e.printStackTrace();
-            //         }
-            //     }
+            // // 重新计算damage
+            // EnemyMoveInfo move = ReflectionHacks.getPrivate(mo, AbstractMonster.class,
+            // "move");
+            // if (move.baseDamage > -1) {
+            // try {
+            // Method method = mo.getClass().getDeclaredMethod("calculateDamage");
+            // method.invoke(mo, move.baseDamage);
+            // } catch (Exception e) {
+            // // Pass
+            // e.printStackTrace();
+            // }
+            // }
             // });
-            return damage - this.dmgRecvLoss * lossAmt;
+            return damage - dmgModi;
         }
         return damage;
     }
 
     @Override
     public void onPlayCard(AbstractCard card) {
-        if (card.type == CardType.ATTACK) {
-            // addToBotAbstract(() -> {
-                // logger.info("敌方攻击力下降");
-                this.dmgRecvLoss++;
-            // });
-        }
+        // if (card.type == CardType.ATTACK) {
+        // addToBotAbstract(() -> {
+        // logger.info("敌方攻击力下降");
+        dmgModi++;
+        // });
+        // }
     }
 
     public void onExitStance() {
@@ -140,7 +138,9 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamag
     @Override
     public int receiveOnPlayerDamaged(int dmg, DamageInfo info) {
         if (dmg > 0) // 如果降到0了，就不会降低自己的伤害
-            this.dmgGiveLoss++;
+            Wiz.addToBotAbstract(() -> {
+                dmgModi--;
+            });
         return dmg;
     }
 }
