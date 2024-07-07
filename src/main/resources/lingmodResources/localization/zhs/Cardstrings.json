@@ -296,5 +296,9 @@
   "lingmod:JiangXiangNaTie": {
     "NAME": "酱香拿铁",
     "DESCRIPTION": "造成 !D! 点伤害，每层 ${ModID}:酒 额外 造成1点"
+  },
+  "lingmod:GuLeiXinLiu": {
+    "NAME": "故垒新柳",
+    "DESCRIPTION": "发掘 一张牌，并使其 自身不再 消耗"
   }
 }
