@@ -1,12 +1,10 @@
 package lingmod.patch;
 
-import static lingmod.ModCore.logger;
 import static lingmod.ModCore.makeID;
 
-import java.util.ArrayList;
-
-import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
+import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -34,18 +32,17 @@ public class ScreenPatch {
 
     @SpirePatch(clz = DeathScreen.class, method = "getDeathText")
     public static class DeathScreen_DeathText {
-        @SuppressWarnings("rawtypes")
-        @SpireInsertPatch(rloc = 4, localvars = { "list" })
-        public static SpireReturn Insert(DeathScreen __inst, ArrayList<String> list) {
+
+        public static String[] deathTexts = { "酣眠", "坛子空了", "生皆梦幻，如露似电，无踪泡影", "国蚀器锈 如梦似电 无踪泡影" };
+
+        @SpirePostfixPatch
+        public static String Insert(String __result, DeathScreen __inst) {
             if (AbstractDungeon.player.chosenClass == Ling.Enums.PLAYER_LING) {
-                list.clear();
-                list.add("酣眠");
-                list.add("坛子空了");
-                list.add("生皆梦幻，如露似电，无踪泡影");
-                list.add("国蚀器锈 如梦似电 无踪泡影");
-                logger.info("added death text" + list.toString());
+                if (Math.random() > 0) { //todo: change this after test
+                    return deathTexts[MathUtils.random(0, deathTexts.length - 1)];
+                }
             }
-            return SpireReturn.Continue();
+            return __result;
         }
     }
 }

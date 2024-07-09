@@ -1,15 +1,16 @@
 package lingmod.cards.attack;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.unique.RandomCardFromDiscardPileToHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
 import lingmod.actions.GuiXingAction;
 import lingmod.cards.AbstractWineCard;
 
-import static lingmod.ModCore.makeID;
-
 /**
- * 打出酒时将此牌从弃牌堆放到手牌
+ * 弃牌堆一张酒放入手牌
  */
 public class GuiXingWineCard extends AbstractWineCard {
     public static final String ID = makeID(GuiXingWineCard.class.getSimpleName());

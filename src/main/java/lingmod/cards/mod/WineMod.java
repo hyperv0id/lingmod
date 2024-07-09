@@ -21,14 +21,17 @@ public class WineMod extends AbsLingCardModifier {
     public static final String ID = makeID(WineMod.class.getSimpleName());
     public int amount = 0;
     public static final UIStrings uis = CardCrawlGame.languagePack.getUIString(ID);
+
     public WineMod(int wineAmount) {
         this.amount = wineAmount;
     }
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
+        if (amount <= 0)
+            return rawDescription;
         String format = uis.TEXT[0];
-        return  String.format(format, amount, rawDescription);
+        return String.format(format, amount, rawDescription);
     }
 
     @Override

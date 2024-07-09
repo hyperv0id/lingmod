@@ -300,5 +300,16 @@
   "lingmod:GuLeiXinLiu": {
     "NAME": "故垒新柳",
     "DESCRIPTION": "发掘 一张牌，并使其 自身不再 消耗"
+  },
+  "lingmod:ShuoWangLing": {
+    "NAME": "朔望",
+    "DESCRIPTION": "只有在手牌 将空/已满 时才能打出 NL  造成 !D! 点伤害，抽 !M! 张牌",
+    "UPGRADE_DESCRIPTION": "只有在手牌 将空/已满/为3 时才能打出 NL  造成 !D! 点伤害，抽 !M! 张牌",
+    "EXTENDED_DESCRIPTION": [
+      "令",
+      "朔望则可击而破之",
+      "能出牌几时？朔望忽复尽",
+      "既朔未望，不可行也"
+    ]
   }
 }

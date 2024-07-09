@@ -10,6 +10,6 @@ public abstract class AbsLingCardModifier extends AbstractCardModifier {
     @Override
     public String identifier(AbstractCard card) {
         String name = this.getClass().getSimpleName();
-        return makeID(name);
+        return card.cardID + makeID(name);
     }
 }

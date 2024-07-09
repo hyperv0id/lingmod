@@ -6,8 +6,9 @@ import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import basemod.AutoAdd.Ignore;
 import lingmod.cards.AbstractEasyCard;
-
+@Ignore
 public class NoNamed_0620 extends AbstractEasyCard {
     public final static String ID = makeID(NoNamed_0620.class.getSimpleName());
 

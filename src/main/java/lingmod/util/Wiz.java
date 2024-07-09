@@ -39,6 +39,7 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 
 import lingmod.actions.TimedVFXAction;
 import lingmod.cards.AbstractEasyCard;
+import lingmod.character.Ling;
 import lingmod.interfaces.CopyField;
 import lingmod.interfaces.VoidSupplier;
 import lingmod.powers.PoeticMoodPower;
@@ -381,5 +382,16 @@ public class Wiz {
         });
     }
 
+    public static boolean isPlayerLing() {
+        if (AbstractDungeon.player != null) {
+            if (AbstractDungeon.player.chosenClass == Ling.Enums.PLAYER_LING) {
+                return true;
+            } else if (AbstractDungeon.player instanceof Ling) {
+                return true;
+            }
+            return false;
+        }
+        return false;
+    }
 
 }

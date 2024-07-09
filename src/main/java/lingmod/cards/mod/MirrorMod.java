@@ -20,16 +20,17 @@ public class MirrorMod extends AbsLingCardModifier {
 
     public static final String ID = makeID(MirrorMod.class.getSimpleName());
 
-    public boolean exhaust = false;
-    public MirrorMod(boolean exhaust) {
-        this.exhaust = exhaust;
+    public AbstractCard owner;
+
+    public MirrorMod(AbstractCard owner) {
+        this.owner = owner;
     }
 
     @Override
     public void onOtherCardPlayed(AbstractCard card, AbstractCard otherCard, CardGroup group) {
         super.onOtherCardPlayed(card, otherCard, group);
         // 0. 需要在手牌才能打出
-        if(!(group == AbstractDungeon.player.hand))
+        if (!(group == AbstractDungeon.player.hand))
             return;
         // 1. 消耗自己
         addToBot(new ExhaustSpecificCardAction(card, group));
@@ -37,9 +38,9 @@ public class MirrorMod extends AbsLingCardModifier {
         AbstractCard cp = otherCard.makeStatEquivalentCopy();
         addToBot(new MakeTempCardInHandAction(cp, 1));
         // 3. 添加Mod
-        CardModifierManager.addModifier(cp, new MirrorMod(exhaust));
+        CardModifierManager.addModifier(cp, new MirrorMod(owner));
         // 如果自己消耗，那么复制体也应该消耗
-        if(exhaust) {
+        if (owner.exhaust) {
             CardModifierManager.addModifier(cp, new ExhaustMod());
         }
     }
@@ -51,6 +52,6 @@ public class MirrorMod extends AbsLingCardModifier {
 
     @Override
     public AbstractCardModifier makeCopy() {
-        return new MirrorMod(exhaust);
+        return new MirrorMod(owner);
     }
 }
