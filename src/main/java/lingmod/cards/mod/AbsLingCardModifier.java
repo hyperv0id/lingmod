@@ -1,15 +1,14 @@
 package lingmod.cards.mod;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 
-import basemod.abstracts.AbstractCardModifier;
+import static lingmod.ModCore.makeID;
 
 public abstract class AbsLingCardModifier extends AbstractCardModifier {
     @Override
     public String identifier(AbstractCard card) {
         String name = this.getClass().getSimpleName();
-        return card.cardID + makeID(name);
+        return makeID(name);
     }
 }
