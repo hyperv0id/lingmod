@@ -22,7 +22,7 @@ public class MirrorMod extends AbsLingCardModifier {
     public static final String ID = makeID(MirrorMod.class.getSimpleName());
     public static final UIStrings uis = CardCrawlGame.languagePack.getUIString(ID);
 
-    public boolean exhaust = false;
+    public boolean exhaust;
 
     public MirrorMod(boolean exhaust) {
         this.exhaust = exhaust;

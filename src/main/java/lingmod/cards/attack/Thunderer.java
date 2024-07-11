@@ -39,7 +39,7 @@ public class Thunderer extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        upgradeDamage((int) (Math.max(0, BASE_DMG - timesUpgraded)));
+        upgradeDamage((Math.max(0, BASE_DMG - timesUpgraded)));
         if (timesUpgraded <= 4) {
             // 只有5张图
             String img = getCardTextureString(NAME + "_" + timesUpgraded, this.type);

@@ -37,8 +37,7 @@ public class ShuoWangLing extends AbstractEasyCard {
 
     @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        ArrayList<Integer> ok = new ArrayList<>();
-        ok.addAll(validCardNums);
+        ArrayList<Integer> ok = new ArrayList<>(validCardNums);
         ok.add(BaseMod.MAX_HAND_SIZE); // 特判
         // 随机化无法打出的对话/提示
         String[] exStrings = cardStrings.EXTENDED_DESCRIPTION;

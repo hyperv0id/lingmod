@@ -32,12 +32,7 @@ public class ZiZai extends AbstractEasyCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractCreature creature = null;
-        if (m != null) {
-            creature = m;
-        } else {
-            creature = p;
-        }
+        AbstractCreature creature = m == null ? p : m;
         long cnt = creature.powers.stream()
                 .filter(po -> po.type == PowerType.DEBUFF)
                 .filter(po -> !(po instanceof InvisiblePower))

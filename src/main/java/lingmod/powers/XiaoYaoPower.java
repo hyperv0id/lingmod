@@ -40,8 +40,6 @@ public class XiaoYaoPower extends AbstractEasyPower {
 
     /**
      * 不可叠加的能力，需要重找卡图
-     *
-     * @param ID
      */
     public void reloadTexture(String ID) {
         Texture normalTexture = TexLoader.getTexture(

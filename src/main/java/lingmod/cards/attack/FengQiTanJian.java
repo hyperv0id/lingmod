@@ -23,9 +23,7 @@ public class FengQiTanJian extends AbstractEasyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AttackEffect.SLASH_HORIZONTAL);
         addToBot(new DrawCardAction(magicNumber));
-        addToBotAbstract(() -> {
-            upgradeBaseCost(this.cost + 1);
-        });
+        addToBotAbstract(() -> upgradeBaseCost(this.cost + 1));
     }
 
     @Override
