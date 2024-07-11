@@ -190,6 +190,14 @@
                     <include>${ModID}Resources/**/*.json</include>
                 </includes>
             </resource>
+
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <!-- 不打包备用资源 -->
+                    <exclude>lingmodResources/images/misc/**</exclude>
+                </excludes>
+            </resource>
         </resources>
 
     </build>

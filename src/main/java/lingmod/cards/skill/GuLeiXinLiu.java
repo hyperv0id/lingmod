@@ -1,14 +1,16 @@
 package lingmod.cards.skill;
 
-import static lingmod.ModCore.makeID;
-
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import basemod.cardmods.ExhaustMod;
 import basemod.helpers.CardModifierManager;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
 
+import static lingmod.ModCore.makeID;
+
+/**
+ * TODO: 无法发掘
+ */
 public class GuLeiXinLiu extends AbstractEasyCard {
     public final static String ID = makeID(GuLeiXinLiu.class.getSimpleName());
 

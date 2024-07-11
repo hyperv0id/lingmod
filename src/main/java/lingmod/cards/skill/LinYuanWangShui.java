@@ -1,5 +1,6 @@
 package lingmod.cards.skill;
 
+import basemod.cardmods.ExhaustMod;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -7,18 +8,20 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.EtheralThisTurnMod;
+import lingmod.interfaces.CardConfig;
 
 import static lingmod.ModCore.makeID;
 
 /**
  * 临渊忘水：抽3/4张，回合结束消耗所有
  */
+@CardConfig(magic = 3)
 public class LinYuanWangShui extends AbstractEasyCard {
     public static final String ID = makeID(LinYuanWangShui.class.getSimpleName());
 
     public LinYuanWangShui() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
-        this.baseMagicNumber = 3;
+        CardModifierManager.addModifier(this, new ExhaustMod());
     }
 
     @Override

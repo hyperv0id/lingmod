@@ -1,18 +1,17 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.makeID;
-
-import java.util.ArrayList;
-
+import basemod.BaseMod;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.BaseMod;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
+
+import java.util.ArrayList;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 朔望：卡牌唯一/满：打50
@@ -24,7 +23,7 @@ public class ShuoWangLing extends AbstractEasyCard {
     public ArrayList<Integer> validCardNums = new ArrayList<>();
 
     public ShuoWangLing() {
-        super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+        super(ID, 0, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         validCardNums.add(1); // 朔
         validCardNums.add(10); // 望
     }

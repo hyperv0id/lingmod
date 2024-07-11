@@ -1,18 +1,17 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.makeID;
-import static lingmod.util.MonsterHelper.calcIntentDmg;
-
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.NellaFantasiaMod;
 import lingmod.util.CustomTags;
+
+import static lingmod.ModCore.makeID;
+import static lingmod.util.MonsterHelper.calcIntentDmg;
 
 /**
  * 梦为鱼鸟：造成怪物的伤害
@@ -43,6 +42,7 @@ public class YuNiao extends AbstractEasyCard {
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
         baseDamage = calcIntentDmg();
+        super.calculateCardDamage(mo);
     }
 
     @Override

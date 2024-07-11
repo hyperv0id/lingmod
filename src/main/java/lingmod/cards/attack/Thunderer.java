@@ -1,20 +1,19 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.makeID;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
+import basemod.cardmods.RetainMod;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.cardmods.RetainMod;
-import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 1费打10，19， 27， 34
@@ -41,8 +40,8 @@ public class Thunderer extends AbstractEasyCard {
     @Override
     public void upp() {
         upgradeDamage((int) (Math.max(0, BASE_DMG - timesUpgraded)));
-        if (timesUpgraded <= 3) {
-            // 只有4张图
+        if (timesUpgraded <= 4) {
+            // 只有5张图
             String img = getCardTextureString(NAME + "_" + timesUpgraded, this.type);
             this.textureImg = img;
             if (img != null) {
