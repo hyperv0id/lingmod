@@ -1,14 +1,13 @@
 package lingmod.cards.power;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.cards.AbstractWineCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.powers.HuSongPower;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 回合结束时获得 !M! 格挡，失去生命后增加1点
@@ -28,6 +27,6 @@ public class HuSongWineCard extends AbstractWineCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster mo) {
-        addToBot(new ApplyPowerAction(p, mo, new HuSongPower(p, magicNumber)));
+        addToBot(new ApplyPowerAction(p, mo, new HuSongPower(p, magicNumber, magicNumber)));
     }
 }

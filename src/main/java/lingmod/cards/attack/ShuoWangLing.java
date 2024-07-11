@@ -1,31 +1,26 @@
 package lingmod.cards.attack;
 
 import basemod.BaseMod;
-import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 
-import java.util.ArrayList;
-
 import static lingmod.ModCore.makeID;
 
 /**
  * 朔望：卡牌唯一/满：打50
  */
-@CardConfig(damage = 50, magic = 1)
+@CardConfig(damage = 1, damage2 = 19, block = 3, magic = 1)
 public class ShuoWangLing extends AbstractEasyCard {
     public final static String ID = makeID(ShuoWangLing.class.getSimpleName());
 
-    public ArrayList<Integer> validCardNums = new ArrayList<>();
-
     public ShuoWangLing() {
         super(ID, 0, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
-        validCardNums.add(1); // 朔
-        validCardNums.add(10); // 望
     }
 
     @Override
@@ -37,23 +32,33 @@ public class ShuoWangLing extends AbstractEasyCard {
 
     @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        ArrayList<Integer> ok = new ArrayList<>(validCardNums);
-        ok.add(BaseMod.MAX_HAND_SIZE); // 特判
-        // 随机化无法打出的对话/提示
-        String[] exStrings = cardStrings.EXTENDED_DESCRIPTION;
-        int lenEx = exStrings.length;
-        cantUseMessage = exStrings[MathUtils.random(1, lenEx - 1)];
-        return ok.contains(p.hand.size());
+        int siz = p.hand.size();
+        if (siz != 1 && siz != BaseMod.MAX_HAND_SIZE && siz != 10) {
+            return this.upgraded && siz == 3;
+        }
+        return true;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, AbstractGameAction.AttackEffect.BLUNT_LIGHT);
+        if (p.hand.size() == 1) {
+            for (int i = 0; i < 11; i++) {
+                dmg(m, null);
+            }
+        } else if (p.hand.size() == 10 || p.hand.size() == BaseMod.MAX_HAND_SIZE) {
+            for (int i = 0; i < 2; i++) {
+                altDmg(m, AbstractGameAction.AttackEffect.BLUNT_LIGHT);
+            }
+        } else if (upgraded && p.hand.size() == 3) {
+            for (int i = 0; i < 3; i++) {
+                blck();
+            }
+        }
+        addToBot(new DrawCardAction(magicNumber));
+        addToBot(new GainEnergyAction(magicNumber));
     }
 
     @Override
     public void upp() {
-        validCardNums.add(3); // 令
-        upgradeDamage(10);
         String ling = cardStrings.EXTENDED_DESCRIPTION[0];
         this.name = cardStrings.NAME + ling;
         this.initializeTitle();

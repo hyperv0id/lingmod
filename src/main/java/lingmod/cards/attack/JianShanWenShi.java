@@ -1,20 +1,23 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.BaseMod;
+import basemod.interfaces.PostExhaustSubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.BaseMod;
-import basemod.interfaces.PostExhaustSubscriber;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.CopyField;
 
-@CardConfig(damage = 7, magic = 4)
+import static lingmod.ModCore.makeID;
+
+/**
+ * 见山问石：如果消耗过牌，抽一，[E]
+ */
+@CardConfig(damage = 7, magic = 1)
 public class JianShanWenShi extends AbstractEasyCard implements PostExhaustSubscriber {
 
     public final static String ID = makeID(JianShanWenShi.class.getSimpleName());
@@ -24,20 +27,20 @@ public class JianShanWenShi extends AbstractEasyCard implements PostExhaustSubsc
 
     public JianShanWenShi() {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
-
         BaseMod.subscribe(this);
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AbstractGameAction.AttackEffect.BLUNT_LIGHT);
         if (exhaustedThisTurn) {
-            addToBot(new GainEnergyAction(1));
+            addToBot(new GainEnergyAction(magicNumber));
+            addToBot(new DrawCardAction(magicNumber));
         }
     }
 
     @Override
     public void upp() {
-        upgradeDamage(magicNumber);
+        upgradeDamage(4);
     }
 
     @Override

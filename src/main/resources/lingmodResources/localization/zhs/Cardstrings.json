@@ -214,7 +214,7 @@
   },
   "${ModID}:HuSongWineCard": {
     "NAME": "湖松酒",
-    "DESCRIPTION": "回合结束时获得 !M! 格挡 NL 失去生命时，获得的格挡数增加1"
+    "DESCRIPTION": "回合结束时获得 !M! 格挡 NL 当牌被消耗时，获得的格挡数增加 !M! "
   },
   "${ModID}:GuiXingWineCard": {
     "NAME": "归行酒",
@@ -275,7 +275,7 @@
   },
   "lingmod:JianShanWenShi": {
     "NAME": "见山问石",
-    "DESCRIPTION": "造成 !D! 点伤害。 NL 如果本回合 消耗 过牌，那么获得 [E] "
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 如果本回合 消耗 过牌，那么获得 [E] 并抽一张牌"
   },
   "lingmod:RuMengLing": {
     "NAME": "如梦令",
@@ -287,7 +287,7 @@
   },
   "lingmod:ZiZai": {
     "NAME": "自在",
-    "DESCRIPTION": "如果目标存在至少 !M! 种负面效果，那么获得 [E] [E] ",
+    "DESCRIPTION": "如果你或目标存在至少 !M! 种负面效果，那么获得 [E] [E] ",
     "EXTENDED_DESCRIPTION": [
       "真自在者不知何为自在"
     ]

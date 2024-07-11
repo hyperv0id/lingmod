@@ -29,11 +29,6 @@ public class MirrorMod extends AbsLingCardModifier {
     }
 
     @Override
-    public String modifyName(String cardName, AbstractCard card) {
-        return cardName + "*"; // temp card
-    }
-
-    @Override
     public void onOtherCardPlayed(AbstractCard card, AbstractCard otherCard, CardGroup group) {
         super.onOtherCardPlayed(card, otherCard, group);
         // 0. 需要在手牌才能打出
