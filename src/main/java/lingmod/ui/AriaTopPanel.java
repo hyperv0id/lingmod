@@ -1,12 +1,9 @@
 package lingmod.ui;
 
-import basemod.BaseMod;
-import basemod.ReflectionHacks;
-import basemod.TopPanelGroup;
-import basemod.TopPanelItem;
-import basemod.abstracts.CustomSavable;
-import basemod.interfaces.OnStartBattleSubscriber;
-import basemod.patches.com.megacrit.cardcrawl.helpers.TopPanel.TopPanelHelper;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -19,15 +16,17 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.localization.UIStrings;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
+
+import basemod.BaseMod;
+import basemod.ReflectionHacks;
+import basemod.TopPanelGroup;
+import basemod.TopPanelItem;
+import basemod.abstracts.CustomSavable;
+import basemod.patches.com.megacrit.cardcrawl.helpers.TopPanel.TopPanelHelper;
 import lingmod.ModCore;
 import lingmod.cards.AbstractAriaCard;
 import lingmod.patch.PlayerFieldsPatch;
 import lingmod.util.Wiz;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * 存放所有词牌的包裹，没法右键TAT
@@ -35,7 +34,7 @@ import java.util.stream.Collectors;
  * 1. 展示所有词牌，战斗开始时选择一个词牌名
  * 2. 选择后，展示此词牌的所有句子
  */
-public class AriaTopPanel extends TopPanelItem implements OnStartBattleSubscriber, CustomSavable<List<CardSave>> {
+public class AriaTopPanel extends TopPanelItem implements CustomSavable<List<CardSave>> {
 
     protected static final String IMG_PATH = ModCore.makeImagePath("ui/ariadeck.png");
     private static final Texture IMG = new Texture(IMG_PATH);
@@ -50,7 +49,6 @@ public class AriaTopPanel extends TopPanelItem implements OnStartBattleSubscribe
 
     @Override
     public void update() {
-        // TODO Auto-generated method stub
         super.update();
         if (this.hitbox.hovered && InputHelper.justClickedRight)
             this.onRightClick();
@@ -60,7 +58,7 @@ public class AriaTopPanel extends TopPanelItem implements OnStartBattleSubscribe
      * 右键点击查看当前词牌的衍生/句子
      */
     public void onRightClick() {
-        // TODO Auto-generated method stub
+        // TODO 右键点击查看当前词牌的衍生/句子
         ModCore.logger.info("Top Panel Aria Was RightClicked");
     }
 
@@ -135,11 +133,6 @@ public class AriaTopPanel extends TopPanelItem implements OnStartBattleSubscribe
             CardCrawlGame.sound.play("DECK_OPEN");
             toggleScreen();
         }
-    }
-
-    @Override
-    public void receiveOnBattleStart(AbstractRoom arg0) {
-        // TODO Auto-generated method stub
     }
 
     public List<CardSave> onSave() {

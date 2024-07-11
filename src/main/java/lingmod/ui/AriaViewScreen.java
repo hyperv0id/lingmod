@@ -57,7 +57,6 @@ public class AriaViewScreen extends CustomScreen {
      */
     @Override
     public void reopen() {
-        // FIXME: Auto Generated
         this.targetGroup = (CardGroup) PlayerFieldsPatch.ariaCardGroup.get(Wiz.adp());
         if (this.targetGroup.group.size() <= 6) {
             drawStartY = (float) Settings.HEIGHT * 0.5F;
