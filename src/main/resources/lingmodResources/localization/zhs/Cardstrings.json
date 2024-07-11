@@ -6,8 +6,8 @@
   },
   "${ModID}:ChongJinJiuCard": {
     "NAME": "重进酒",
-    "DESCRIPTION": "是 ${ModID}:诗 . 消耗 NL 视为本回合上张卡牌的复制",
-    "UPGRADE_DESCRIPTION": "是 ${ModID}:诗 . NL 视为本回合上张卡牌的复制"
+    "DESCRIPTION": "消耗 NL 视为本回合上张卡牌的复制",
+    "UPGRADE_DESCRIPTION": "视为本回合上张卡牌的复制"
   },
   "${ModID}:Defend": {
     "NAME": "防御",

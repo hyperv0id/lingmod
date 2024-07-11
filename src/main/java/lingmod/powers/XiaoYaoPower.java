@@ -1,17 +1,18 @@
 package lingmod.powers;
 
-import static lingmod.ModCore.makeID;
-
-import org.apache.logging.log4j.Logger;
-
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
-
 import lingmod.ModCore;
+import lingmod.util.TexLoader;
+import org.apache.logging.log4j.Logger;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 逍遥：回合结束后抽牌++
@@ -32,7 +33,31 @@ public class XiaoYaoPower extends AbstractEasyPower {
 
     public XiaoYaoPower(AbstractCreature owner) {
         super(POWER_ID + id_postfix++, NAME, TYPE, TURN_BASED, owner, 0);
+        reloadTexture(POWER_ID);
+        // 覆盖卡图
         this.updateDescription();
+    }
+
+    /**
+     * 不可叠加的能力，需要重找卡图
+     *
+     * @param ID
+     */
+    public void reloadTexture(String ID) {
+        Texture normalTexture = TexLoader.getTexture(
+                ModCore.modID + "Resources/images/powers/" + ID.replaceAll(ModCore.modID + ":", "") + "32.png");
+        Texture hiDefImage = TexLoader.getTexture(
+                ModCore.modID + "Resources/images/powers/" + ID.replaceAll(ModCore.modID + ":", "") + "84.png");
+        if (hiDefImage != null) {
+            region128 = new TextureAtlas.AtlasRegion(hiDefImage, 0, 0, hiDefImage.getWidth(), hiDefImage.getHeight());
+            if (normalTexture != null)
+                region48 = new TextureAtlas.AtlasRegion(normalTexture, 0, 0, normalTexture.getWidth(),
+                        normalTexture.getHeight());
+        } else if (normalTexture != null) {
+            this.img = normalTexture;
+            region48 = new TextureAtlas.AtlasRegion(normalTexture, 0, 0, normalTexture.getWidth(),
+                    normalTexture.getHeight());
+        }
     }
 
     @Override
