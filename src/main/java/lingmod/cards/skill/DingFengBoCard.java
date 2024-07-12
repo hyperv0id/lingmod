@@ -1,20 +1,23 @@
 package lingmod.cards.skill;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import lingmod.cards.AbstractPoemCard;
 
-import static lingmod.ModCore.makeID;
+import lingmod.cards.AbstractEasyCard;
+import lingmod.interfaces.CardConfig;
 
 /**
  * 定风波：获得 10/13 格挡
  */
-public class DingFengBoCard extends AbstractPoemCard {
+@CardConfig(poemAmount = 2)
+public class DingFengBoCard extends AbstractEasyCard {
 
     public final static String CARD_ID = makeID(DingFengBoCard.class.getSimpleName());
 
     public DingFengBoCard() {
-        super(CARD_ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF, 1);
+        super(CARD_ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
         baseBlock = 8;
     }
 

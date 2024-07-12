@@ -9,18 +9,20 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-import lingmod.cards.AbstractPoemCard;
+import lingmod.cards.AbstractEasyCard;
+import lingmod.interfaces.CardConfig;
 import lingmod.powers.PoeticMoodPower;
 
 /**
  * 笑鸣瑟：每有一种一个敌人或状态牌，获得2点"诗兴"。
  */
-public class XiaoMingSeCard extends AbstractPoemCard {
+@CardConfig(poemAmount = 2)
+public class XiaoMingSeCard extends AbstractEasyCard {
 
     public static final String ID = makeID(XiaoMingSeCard.class.getSimpleName());
 
     public XiaoMingSeCard() {
-        super(ID, 2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF, 2);
+        super(ID, 2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         this.baseMagicNumber = 3;
     }
 

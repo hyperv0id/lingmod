@@ -7,15 +7,15 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 
 import lingmod.ModCore;
-import lingmod.cards.AbstractPoemCard;
+import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 
-@CardConfig(damage = 7, magic = 2, magic2 = 1)
-public class BattleHymn extends AbstractPoemCard {
+@CardConfig(damage = 7, magic = 2, magic2 = 1, poemAmount = 2)
+public class BattleHymn extends AbstractEasyCard {
     public static final String ID = ModCore.makeID(BattleHymn.class.getSimpleName());
 
     public BattleHymn() {
-        super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY, 2);
+        super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         // baseDamage = 7;
         // baseMagicNumber = 2;
         // baseSecondMagic = 1;

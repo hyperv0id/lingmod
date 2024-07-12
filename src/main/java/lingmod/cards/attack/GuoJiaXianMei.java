@@ -1,12 +1,15 @@
 package lingmod.cards.attack;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import lingmod.cards.AbstractPoemCard;
-
 import static lingmod.ModCore.makeID;
 
-public class GuoJiaXianMei extends AbstractPoemCard {
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import lingmod.cards.AbstractEasyCard;
+import lingmod.interfaces.CardConfig;
+
+@CardConfig(damage = 17, block = 17, poemAmount = 3)
+public class GuoJiaXianMei extends AbstractEasyCard {
     public final static String ID = makeID(GuoJiaXianMei.class.getSimpleName());
 
     public final static int BASE_DAMAGE = 17; // 造成伤害
@@ -16,7 +19,7 @@ public class GuoJiaXianMei extends AbstractPoemCard {
 
 
     public GuoJiaXianMei() {
-        super(ID, 3, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY, 3);
+        super(ID, 3, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         baseDamage = BASE_DAMAGE;
         baseBlock = BASE_BLOCK;
     }

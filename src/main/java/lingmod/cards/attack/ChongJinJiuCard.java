@@ -1,25 +1,28 @@
 package lingmod.cards.attack;
 
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DuplicationPower;
-import lingmod.cards.AbstractPoemCard;
-import lingmod.cards.mod.MirrorMod;
 
-import static lingmod.ModCore.makeID;
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
+import lingmod.cards.AbstractEasyCard;
+import lingmod.cards.mod.MirrorMod;
+import lingmod.interfaces.CardConfig;
 
 /**
  * 重进酒：打出卡牌时消耗，并替换为其复制
  */
-public class ChongJinJiuCard extends AbstractPoemCard {
+@CardConfig(poemAmount = 1)
+public class ChongJinJiuCard extends AbstractEasyCard {
 
     public final static String ID = makeID(ChongJinJiuCard.class.getSimpleName());
 
     public ChongJinJiuCard() {
-        super(ID, 1, CardType.SKILL, CardRarity.BASIC, CardTarget.ENEMY, 1);
+        super(ID, 1, CardType.SKILL, CardRarity.BASIC, CardTarget.ENEMY);
         this.baseMagicNumber = 1;
         CardModifierManager.addModifier(this, new ExhaustMod());
         CardModifierManager.addModifier(this, new MirrorMod(exhaust));

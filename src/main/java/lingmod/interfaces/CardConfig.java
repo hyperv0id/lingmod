@@ -14,4 +14,6 @@ public @interface CardConfig {
     int magic2() default -1;
     int block() default -1;
     int block2() default -1;
+    int wineAmount() default -1;
+    int poemAmount() default -1;
 }

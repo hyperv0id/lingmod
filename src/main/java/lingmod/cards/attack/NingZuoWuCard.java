@@ -1,6 +1,6 @@
 package lingmod.cards.attack;
 
-import static java.lang.Math.max;
+
 import static lingmod.ModCore.logger;
 import static lingmod.ModCore.makeID;
 
@@ -17,7 +17,8 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import basemod.cardmods.ExhaustMod;
 import basemod.helpers.CardModifierManager;
 import lingmod.actions.ExhaustAllAction;
-import lingmod.cards.AbstractPoemCard;
+import lingmod.cards.AbstractEasyCard;
+import lingmod.interfaces.CardConfig;
 import lingmod.powers.PoeticMoodPower;
 import lingmod.util.Wiz;
 
@@ -25,12 +26,13 @@ import lingmod.util.Wiz;
  * 宁作吾：消耗所有手牌，抽等量牌，然后所有debuff变成诗
  * 能力数量参与计数
  */
-public class NingZuoWuCard extends AbstractPoemCard {
+@CardConfig(poemAmount = 3)
+public class NingZuoWuCard extends AbstractEasyCard {
 
     public static final String ID = makeID(NingZuoWuCard.class.getSimpleName());
 
     public NingZuoWuCard() {
-        super(ID, 1, CardType.ATTACK, CardRarity.RARE, CardTarget.SELF, 3);
+        super(ID, 1, CardType.ATTACK, CardRarity.RARE, CardTarget.SELF);
         baseDamage = 5;
         CardModifierManager.addModifier(this, new ExhaustMod());
     }
@@ -45,7 +47,7 @@ public class NingZuoWuCard extends AbstractPoemCard {
             List<AbstractPower> powerList = Wiz.allPowers(null);
             logger.info("NingZuoWu: draw " + cnt + " cards");
 
-            cnt += powerList.stream().mapToInt(power -> max(power.amount, 1)).count();
+            cnt += powerList.stream().mapToInt(power -> Math.max(power.amount, 1)).count();
             // 4. 转换成诗意
             addToTop(new ApplyPowerAction(p, p, new PoeticMoodPower(p, (int) cnt)));
             // 3. 移除所有能力

@@ -26,10 +26,14 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import basemod.abstracts.CustomCard;
+import basemod.helpers.CardModifierManager;
+import lingmod.cards.mod.PoemMod;
+import lingmod.cards.mod.WineMod;
 import lingmod.character.Ling;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.VoidSupplier;
 import lingmod.util.CardArtRoller;
+import lingmod.util.CustomTags;
 
 /**
  * 卡牌大小：500*380的高分辨率，250*190的低分辨率
@@ -89,6 +93,7 @@ public abstract class AbstractEasyCard extends CustomCard {
      */
     protected void initializeCardValues() {
         CardConfig config = getClass().getAnnotation(CardConfig.class);
+        // 基本属性
         if (config != null) {
             this.damage = this.baseDamage = config.damage();
             this.secondDamage = this.baseSecondDamage = config.damage2();
@@ -98,6 +103,18 @@ public abstract class AbstractEasyCard extends CustomCard {
 
             this.block = this.baseBlock = config.block();
             this.secondBlock = this.baseSecondBlock = config.block2();
+            // process wine
+            int wineAmt = config.wineAmount();
+            if (wineAmt >= 0) {
+                this.tags.add(CustomTags.WINE);
+                CardModifierManager.addModifier(this, new WineMod(wineAmt));
+            }
+            // process poem
+            int poemAmt = config.poemAmount();
+            if (poemAmt >= 0) {
+                this.tags.add(CustomTags.POEM);
+                CardModifierManager.addModifier(this, new PoemMod(poemAmt));
+            }
         }
     }
 
@@ -427,6 +444,5 @@ public abstract class AbstractEasyCard extends CustomCard {
             }
         });
     }
-
 
 }

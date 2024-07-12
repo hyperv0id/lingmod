@@ -7,19 +7,18 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
 import lingmod.ModCore;
-import lingmod.cards.AbstractPoemCard;
+import lingmod.cards.AbstractEasyCard;
+import lingmod.interfaces.CardConfig;
 
 /**
  * 悲词：打7/11 挂虚弱，如果有易伤 抽 1/2
  */
-public class Lament extends AbstractPoemCard {
+@CardConfig(damage = 8, magic = 2, magic2 = 1, poemAmount = 2)
+public class Lament extends AbstractEasyCard {
     public static final String ID = ModCore.makeID(Lament.class.getSimpleName());
 
     public Lament() {
-        super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY, 2);
-        baseDamage = 8;
-        baseMagicNumber = 2;
-        baseSecondMagic = 1;
+        super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
     }
 
     @Override
