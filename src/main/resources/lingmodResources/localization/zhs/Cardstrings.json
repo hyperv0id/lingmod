@@ -26,8 +26,7 @@
   },
   "${ModID}:NingZuoWuCard": {
     "NAME": "宁作吾",
-    "DESCRIPTION": "消耗所有手牌，然后抽等量牌。将所有能力变为 ${ModID}:诗兴 ",
-    "UPGRADE_DESCRIPTION": "统计手牌和能力数，抽等量牌，消耗所有手牌。将所有能力变为 ${ModID}:诗兴 "
+    "DESCRIPTION": "消耗手牌来去除异常状态，每消耗一张 抽 !M! 张牌，获得 [E]"
   },
   "${ModID}:Strike": {
     "NAME": "打击",
@@ -251,7 +250,7 @@
   },
   "lingmod:YaGaoMengYuan": {
     "NAME": "崖高梦远",
-    "DESCRIPTION": "抽 !M! 张牌，移除最后的能力，获得 [E] NL 如果在梦中，获得 [E] "
+    "DESCRIPTION": "当前能量翻倍，手牌本回合耗能+1 NL 梦中：只改变技能牌"
   },
   "lingmod:WineWineWine": {
     "NAME": "酒！",
@@ -279,7 +278,8 @@
   },
   "lingmod:RuMengLing": {
     "NAME": "如梦令",
-    "DESCRIPTION": "造成 !D! 点伤害。消耗最左边的牌，在手牌中放入此牌的复制。如果在梦中，那么抽 !M! 张牌"
+    "DESCRIPTION": "消耗最左边的牌，弃牌堆中加入其 !M! 张复制",
+    "UPGRADE_DESCRIPTION": "选择一张牌消耗，弃牌堆中加入其 !M! 张复制"
   },
   "lingmod:NoNamed_0620": {
     "NAME": "未命名",
@@ -302,8 +302,8 @@
   },
   "lingmod:ShuoWangLing": {
     "NAME": "朔望",
-    "DESCRIPTION": "只有在手牌 将空/已满 时才能打出 NL  造成 !D! 点伤害，抽 !M! 张牌",
-    "UPGRADE_DESCRIPTION": "只有在手牌 将空/已满/为3 时才能打出 NL  造成 !D! 点伤害，抽 !M! 张牌",
+    "DESCRIPTION": "统计手牌数 NL 将空: 打 !D! 点 !M! 次 NL 已满: 打 !${ModID}:sd! 点 !${ModID}:m2! 次",
+    "UPGRADE_DESCRIPTION": "统计手牌数 NL 将空: 打 !D! 点 11 次 NL 已满: 打 !${ModID}:sd! 点 !${ModID}:m2! 次 NL 3: !B! 格挡 !${ModID}:sb! 次",
     "EXTENDED_DESCRIPTION": [
       "令",
       "朔望则可击而破之",

@@ -2,8 +2,6 @@ package lingmod.cards.attack;
 
 import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -15,7 +13,7 @@ import static lingmod.ModCore.makeID;
 /**
  * 朔望：卡牌唯一/满：打50
  */
-@CardConfig(damage = 1, damage2 = 19, block = 3, magic = 1)
+@CardConfig(damage = 1, damage2 = 19, block = 3, block2 = 3, magic = 11, magic2 = 2)
 public class ShuoWangLing extends AbstractEasyCard {
     public final static String ID = makeID(ShuoWangLing.class.getSimpleName());
 
@@ -41,7 +39,7 @@ public class ShuoWangLing extends AbstractEasyCard {
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (p.hand.size() == 1) {
-            for (int i = 0; i < 11; i++) {
+            for (int i = 0; i < magicNumber; i++) {
                 dmg(m, null);
             }
         } else if (p.hand.size() == 10 || p.hand.size() == BaseMod.MAX_HAND_SIZE) {
@@ -53,8 +51,6 @@ public class ShuoWangLing extends AbstractEasyCard {
                 blck();
             }
         }
-        addToBot(new DrawCardAction(magicNumber));
-        addToBot(new GainEnergyAction(magicNumber));
     }
 
     @Override
