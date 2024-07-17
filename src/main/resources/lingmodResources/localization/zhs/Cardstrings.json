@@ -49,9 +49,9 @@
       "长河远上,埋骸其下,吾自逍遥"
     ]
   },
-  "${ModID}:YuNiao": {
+  "${ModID}:YuNiaoDreamCard": {
     "NAME": "鱼鸟梦",
-    "DESCRIPTION": "造成敌人要对你造成的伤害等量的伤害。 NL 造成 !D! 点伤害"
+    "DESCRIPTION": "造成敌人要对你造成的伤害等量的伤害。 NL （!D! 点伤害） NL 梦中：你变形成此怪物，受到攻击时，同名怪物受到相同伤害"
   },
   "${ModID}:HuangLiang": {
     "NAME": "黄粱梦",
@@ -213,7 +213,7 @@
   },
   "${ModID}:HuSongWineCard": {
     "NAME": "湖松酒",
-    "DESCRIPTION": "回合结束时获得 !M! 格挡 NL 当牌被消耗时，获得的格挡数增加 !M! "
+    "DESCRIPTION": "敌人的多段攻击次数减少 !M!% NL 否则给予 ${ModID}:m2! 虚弱 "
   },
   "${ModID}:GuiXingWineCard": {
     "NAME": "归行酒",
@@ -302,8 +302,8 @@
   },
   "lingmod:ShuoWangLing": {
     "NAME": "朔望",
-    "DESCRIPTION": "统计手牌数 NL 将空: 打 !D! 点 !M! 次 NL 已满: 打 !${ModID}:sd! 点 !${ModID}:m2! 次",
-    "UPGRADE_DESCRIPTION": "统计手牌数 NL 将空: 打 !D! 点 11 次 NL 已满: 打 !${ModID}:sd! 点 !${ModID}:m2! 次 NL 3: !B! 格挡 !${ModID}:sb! 次",
+    "DESCRIPTION": "抽1张牌。统计手牌数 NL 将空: 打 !D! 点 !M! 次 NL 已满: 打 !${ModID}:sd! 点 !${ModID}:m2! 次",
+    "UPGRADE_DESCRIPTION": "抽1张牌。统计手牌数 NL 将空: 打 !D! 点 11 次 NL 已满: 打 !${ModID}:sd! 点 !${ModID}:m2! 次 NL 3: !B! 格挡 !${ModID}:sb! 次",
     "EXTENDED_DESCRIPTION": [
       "令",
       "朔望则可击而破之",

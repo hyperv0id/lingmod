@@ -2,6 +2,7 @@ package lingmod.relics;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import lingmod.character.Ling;
 
 import static lingmod.ModCore.makeID;
 
@@ -12,7 +13,7 @@ public class ShuRiceRelic extends AbstractEasyRelic {
     public static final float healAmount = 0.5f;
 
     public ShuRiceRelic() {
-        super(ID, RelicTier.SPECIAL, LandingSound.FLAT);
+        super(ID, RelicTier.SPECIAL, LandingSound.FLAT, Ling.Enums.LING_COLOR);
     }
 
     @Override

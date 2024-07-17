@@ -4,7 +4,6 @@ import basemod.*;
 import basemod.abstracts.DynamicVariable;
 import basemod.eventUtil.AddEventParams;
 import basemod.eventUtil.EventUtils;
-import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import basemod.patches.com.megacrit.cardcrawl.helpers.TopPanel.TopPanelHelper;
 import com.badlogic.gdx.Gdx;
@@ -164,11 +163,11 @@ public class ModCore implements
         new AutoAdd(modID)
                 .packageFilter(AbstractEasyRelic.class)
                 .any(AbstractEasyRelic.class, (info, relic) -> {
-                    if (relic.color == null) {
-                        BaseMod.addRelic(relic, RelicType.SHARED);
-                    } else {
-                        BaseMod.addRelicToCustomPool(relic, relic.color);
-                    }
+                    //                    if (relic.color == null) {
+                    //                        BaseMod.addRelic(relic, RelicType.SHARED);
+                    //                    } else {
+                    BaseMod.addRelicToCustomPool(relic, Ling.Enums.LING_COLOR); // 默认角色专属
+                    //                    }
                     if (!info.seen) {
                         UnlockTracker.markRelicAsSeen(relic.relicId);
                     }

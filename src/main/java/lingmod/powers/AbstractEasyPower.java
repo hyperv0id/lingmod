@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-
 import lingmod.ModCore;
 import lingmod.interfaces.VoidSupplier;
 import lingmod.util.TexLoader;
@@ -115,4 +114,22 @@ public abstract class AbstractEasyPower extends AbstractPower {
             }
         });
     }
+
+    protected void loadTexture(String powerName) {
+        Texture normalTexture = TexLoader.getTexture(
+                ModCore.modID + "Resources/images/powers/" + powerName + "32.png");
+        Texture hiDefImage = TexLoader.getTexture(
+                ModCore.modID + "Resources/images/powers/" + powerName + "84.png");
+        if (hiDefImage != null) {
+            region128 = new TextureAtlas.AtlasRegion(hiDefImage, 0, 0, hiDefImage.getWidth(), hiDefImage.getHeight());
+            if (normalTexture != null)
+                region48 = new TextureAtlas.AtlasRegion(normalTexture, 0, 0, normalTexture.getWidth(),
+                        normalTexture.getHeight());
+        } else if (normalTexture != null) {
+            this.img = normalTexture;
+            region48 = new TextureAtlas.AtlasRegion(normalTexture, 0, 0, normalTexture.getWidth(),
+                    normalTexture.getHeight());
+        }
+    }
+
 }

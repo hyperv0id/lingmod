@@ -1,14 +1,7 @@
 package lingmod.cards;
 
-import static lingmod.ModCore.makeImagePath;
-import static lingmod.ModCore.modID;
-import static lingmod.util.Wiz.actionify;
-import static lingmod.util.Wiz.atb;
-import static lingmod.util.Wiz.att;
-import static lingmod.util.Wiz.copyAnnotatedFields;
-
-import java.util.function.Consumer;
-
+import basemod.abstracts.CustomCard;
+import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
@@ -24,9 +17,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.abstracts.CustomCard;
-import basemod.helpers.CardModifierManager;
+import lingmod.cards.mod.NellaFantasiaMod;
 import lingmod.cards.mod.PoemMod;
 import lingmod.cards.mod.WineMod;
 import lingmod.character.Ling;
@@ -34,6 +25,12 @@ import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.VoidSupplier;
 import lingmod.util.CardArtRoller;
 import lingmod.util.CustomTags;
+
+import java.util.function.Consumer;
+
+import static lingmod.ModCore.makeImagePath;
+import static lingmod.ModCore.modID;
+import static lingmod.util.Wiz.*;
 
 /**
  * 卡牌大小：500*380的高分辨率，250*190的低分辨率
@@ -65,12 +62,12 @@ public abstract class AbstractEasyCard extends CustomCard {
     private boolean needsArtRefresh = false;
 
     public AbstractEasyCard(final String cardID, final int cost, final CardType type, final CardRarity rarity,
-            final CardTarget target) {
+                            final CardTarget target) {
         this(cardID, cost, type, rarity, target, Ling.Enums.LING_COLOR);
     }
 
     public AbstractEasyCard(final String cardID, final int cost, final CardType type, final CardRarity rarity,
-            final CardTarget target, final CardColor color) {
+                            final CardTarget target, final CardColor color) {
         super(cardID, "", getCardTextureString(cardID.replace(modID + ":", ""), type),
                 cost, "", type, color, rarity, target);
         cardStrings = CardCrawlGame.languagePack.getCardStrings(this.cardID);
@@ -114,6 +111,12 @@ public abstract class AbstractEasyCard extends CustomCard {
             if (poemAmt >= 0) {
                 this.tags.add(CustomTags.POEM);
                 CardModifierManager.addModifier(this, new PoemMod(poemAmt));
+            }
+            // process dream
+            boolean isDream = config.isDream();
+            if (isDream) {
+                this.tags.add(CustomTags.DREAM);
+                CardModifierManager.addModifier(this, new NellaFantasiaMod());
             }
         }
     }
@@ -362,7 +365,7 @@ public abstract class AbstractEasyCard extends CustomCard {
     }
 
     private AbstractGameAction dmgRandomAction(AbstractGameAction.AttackEffect fx,
-            Consumer<AbstractMonster> extraEffectToTarget, Consumer<AbstractMonster> effectBefore) {
+                                               Consumer<AbstractMonster> extraEffectToTarget, Consumer<AbstractMonster> effectBefore) {
         return actionify(() -> {
             AbstractMonster target = AbstractDungeon.getMonsters().getRandomMonster(null, true,
                     AbstractDungeon.cardRandomRng);
@@ -384,7 +387,7 @@ public abstract class AbstractEasyCard extends CustomCard {
     }
 
     protected void dmgRandom(AbstractGameAction.AttackEffect fx, Consumer<AbstractMonster> extraEffectToTarget,
-            Consumer<AbstractMonster> effectBefore) {
+                             Consumer<AbstractMonster> effectBefore) {
         if (fx == null)
             fx = AttackEffect.NONE;
         atb(dmgRandomAction(fx, extraEffectToTarget, effectBefore));
@@ -397,7 +400,7 @@ public abstract class AbstractEasyCard extends CustomCard {
     }
 
     protected void dmgRandomTop(AbstractGameAction.AttackEffect fx, Consumer<AbstractMonster> extraEffectToTarget,
-            Consumer<AbstractMonster> effectBefore) {
+                                Consumer<AbstractMonster> effectBefore) {
         if (fx == null)
             fx = AttackEffect.NONE;
         att(dmgRandomAction(fx, extraEffectToTarget, effectBefore));

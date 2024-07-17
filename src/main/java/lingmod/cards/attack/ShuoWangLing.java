@@ -2,6 +2,7 @@ package lingmod.cards.attack;
 
 import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -38,6 +39,7 @@ public class ShuoWangLing extends AbstractEasyCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new DrawCardAction(1));
         if (p.hand.size() == 1) {
             for (int i = 0; i < magicNumber; i++) {
                 dmg(m, null);

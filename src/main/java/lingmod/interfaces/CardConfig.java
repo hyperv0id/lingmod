@@ -16,4 +16,6 @@ public @interface CardConfig {
     int block2() default -1;
     int wineAmount() default -1;
     int poemAmount() default -1;
+
+    boolean isDream() default false;
 }
