@@ -1,5 +1,9 @@
 package lingmod.powers;
 
+import static lingmod.ModCore.makeID;
+
+import java.util.Objects;
+
 import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -12,10 +16,6 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FlameBarrierPower;
 
-import java.util.Objects;
-
-import static lingmod.ModCore.makeID;
-
 /**
  * 角色UI变成对应怪物，受到伤害时，同名怪物受到等量伤害
  */
@@ -26,6 +26,7 @@ public class YuNiaoPower extends AbstractEasyPower {
     public static int idCnt = 0;
     private final AbstractCreature target;
     public FlameBarrierPower reference;
+    @SuppressWarnings("unused")
     private AnimationState animationState;
 
     public YuNiaoPower(AbstractCreature owner, AbstractCreature target) {

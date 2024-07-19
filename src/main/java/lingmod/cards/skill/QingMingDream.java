@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import com.megacrit.cardcrawl.stances.AbstractStance;
 import com.megacrit.cardcrawl.stances.NeutralStance;
 
 import basemod.cardmods.ExhaustMod;
@@ -51,10 +50,9 @@ public class QingMingDream extends AbstractEasyCard {
         // 1.0F), true)));
         // this.addToBot(new SkipEnemiesTurnAction());
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[1], 2F, 2F));
-        AbstractStance stance = p.stance;
         int amount = 0;
         if (p.stance.ID.equals(NellaFantasiaStance.STANCE_ID)) {
-            amount = ((NellaFantasiaStance) stance).dmgModi;
+            amount = NellaFantasiaStance.dmgModi;
         }
         if (amount > 0) {
             for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
