@@ -172,7 +172,7 @@
   },
   "${ModID}:AGiftCard": {
     "NAME": "“礼物”",
-    "DESCRIPTION": "给予所有敌人 !M! 层 易伤 和 虚弱 NL 给予自己 !${ModID}:m2! 层 易伤 和 虚弱 "
+    "DESCRIPTION": "给予所有敌人 !M! 层 易伤 和 虚弱 NL 自己 !${ModID}:m2! 层 易伤 和 虚弱 "
   },
   "${ModID}:ZuiFeiChen": {
     "NAME": "醉飞尘",
@@ -213,7 +213,7 @@
   },
   "${ModID}:HuSongWineCard": {
     "NAME": "湖松酒",
-    "DESCRIPTION": "敌人的多段攻击次数减少 !M!% NL 否则给予 ${ModID}:m2! 虚弱 "
+    "DESCRIPTION": "敌人的多段攻击次数减少 !M!% NL 否则给予 !${ModID}:m2! 虚弱 "
   },
   "${ModID}:GuiXingWineCard": {
     "NAME": "归行酒",
@@ -303,12 +303,9 @@
   "lingmod:ShuoWangLing": {
     "NAME": "朔望",
     "DESCRIPTION": "抽1张牌。统计手牌数 NL 将空: 打 !D! 点 !M! 次 NL 已满: 打 !${ModID}:sd! 点 !${ModID}:m2! 次",
-    "UPGRADE_DESCRIPTION": "抽1张牌。统计手牌数 NL 将空: 打 !D! 点 11 次 NL 已满: 打 !${ModID}:sd! 点 !${ModID}:m2! 次 NL 3: !B! 格挡 !${ModID}:sb! 次",
+    "UPGRADE_DESCRIPTION": "抽1张牌。统计手牌数 NL 将空: 打 !D! 点 11 次 NL 已满: 打 !${ModID}:sd! 点 !${ModID}:m2! 次 NL 为三: !B! 格挡 !${ModID}:sb! 次",
     "EXTENDED_DESCRIPTION": [
-      "令",
-      "朔望则可击而破之",
-      "能出牌几时？朔望忽复尽",
-      "既朔未望，不可行也"
+      "令"
     ]
   }
 }

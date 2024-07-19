@@ -116,5 +116,12 @@
     "DESCRIPTIONS": [
       "回合结束时获得 %d 格挡 。牌被消耗时，此能力值增加 %d "
     ]
+  },
+  "lingmod:YuNiaoPower": {
+    "NAME": "鱼鸟",
+    "DESCRIPTIONS": [
+      "你受到伤害时，%s 受到等量伤害",
+      "怪物"
+    ]
   }
 }

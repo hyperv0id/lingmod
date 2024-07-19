@@ -21,7 +21,7 @@ public class HuSongWineCard extends AbstractWineCard {
     public static final String ID = makeID(HuSongWineCard.class.getSimpleName());
 
     public HuSongWineCard() {
-        super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY, 3);
+        super(ID, 0, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY, 3);
     }
 
     @Override
@@ -34,10 +34,12 @@ public class HuSongWineCard extends AbstractWineCard {
     public void use(AbstractPlayer p, AbstractMonster mo) {
         if (!mo.isDeadOrEscaped()) {
             mo.createIntent();
-            if (!MonsterHelper.isAttackIntent(mo)) return;
+            if (!MonsterHelper.isAttackIntent(mo))
+                return;
             if ((boolean) basemod.ReflectionHacks.getPrivate(mo, AbstractMonster.class, "isMultiDmg")) {
                 int multi = (int) ReflectionHacks.getPrivate(mo, AbstractMonster.class, "intentMultiAmt");
-                multi *= (int) ((100 - magicNumber) / 100.0);
+                multi *= (100 - magicNumber);
+                multi /= 100;
                 ReflectionHacks.setPrivate(mo, AbstractMonster.class, "intentMultiAmt", multi);
             } else {
                 addToBot(new ApplyPowerAction(mo, p, new WeakPower(mo, 1, false)));

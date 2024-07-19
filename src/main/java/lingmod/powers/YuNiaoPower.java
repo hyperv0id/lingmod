@@ -2,8 +2,6 @@ package lingmod.powers;
 
 import static lingmod.ModCore.makeID;
 
-import java.util.Objects;
-
 import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -23,28 +21,39 @@ public class YuNiaoPower extends AbstractEasyPower {
     public static final String POWER_NAME = YuNiaoPower.class.getSimpleName();
     public static final String ID = makeID(POWER_NAME);
     public static final PowerStrings ps = CardCrawlGame.languagePack.getPowerStrings(ID);
-    public static int idCnt = 0;
     private final AbstractCreature target;
     public FlameBarrierPower reference;
     @SuppressWarnings("unused")
     private AnimationState animationState;
 
     public YuNiaoPower(AbstractCreature owner, AbstractCreature target) {
-        super(ID + idCnt, ps.NAME, PowerType.BUFF, false, owner, 0);
+        super(ID, ps.NAME, PowerType.BUFF, false, owner, 0);
         this.target = target;
         this.loadTexture(POWER_NAME);
+        updateDescription();
+    }
+
+    @Override
+    public void updateDescription() {
+        if (target == null)
+            this.description = String.format(DESCRIPTIONS[0], DESCRIPTIONS[1]);
+        else
+            this.description = String.format(DESCRIPTIONS[0], target.name);
     }
 
     public int onAttacked(DamageInfo info, int damageAmount) {
-        if (info.owner != null && info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != this.owner) {
+        if (info.owner != null && info.type != DamageInfo.DamageType.THORNS
+                && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != this.owner) {
             this.flash();
-            for (AbstractMonster mo :
-                    AbstractDungeon.getMonsters().monsters) {
+            // logger.info("YuNiaoPower: " + info.base + " " + info.output + " " + damageAmount);
+            for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
                 // 判断死亡
-                if (mo.isDeadOrEscaped()) continue;
+                if (mo.isDeadOrEscaped())
+                    continue;
                 // 判断同名
-                if (Objects.equals(mo.id, target.id)) {
-                    this.addToTop(new DamageAction(info.owner, new DamageInfo(this.owner, damageAmount, DamageInfo.DamageType.THORNS),
+                if (mo.name.equals(target.name) || mo.id.equals(target.id)) {
+                    this.addToTop(new DamageAction(mo,
+                            new DamageInfo(this.owner, damageAmount, DamageInfo.DamageType.THORNS),
                             AbstractGameAction.AttackEffect.FIRE));
                 }
             }

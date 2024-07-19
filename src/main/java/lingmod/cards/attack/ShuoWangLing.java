@@ -1,15 +1,16 @@
 package lingmod.cards.attack;
 
-import basemod.BaseMod;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import basemod.BaseMod;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 朔望：卡牌唯一/满：打50
@@ -24,18 +25,13 @@ public class ShuoWangLing extends AbstractEasyCard {
 
     @Override
     public void triggerOnGlowCheck() {
-        if (this.canUse(AbstractDungeon.player, null)) {
+        AbstractPlayer p = AbstractDungeon.player;
+        int siz = p.hand.size();
+        if (siz == 1 || siz == BaseMod.MAX_HAND_SIZE || siz == 10) {
+            this.glowColor = GOLD_BORDER_GLOW_COLOR;
+        } else if (upgraded && siz == 3) {
             this.glowColor = GOLD_BORDER_GLOW_COLOR;
         }
-    }
-
-    @Override
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        int siz = p.hand.size();
-        if (siz != 1 && siz != BaseMod.MAX_HAND_SIZE && siz != 10) {
-            return this.upgraded && siz == 3;
-        }
-        return true;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
