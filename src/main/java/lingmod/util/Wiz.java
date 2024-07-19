@@ -394,4 +394,27 @@ public class Wiz {
         return false;
     }
 
+    /**
+     * 随机化手牌费用，你的手牌平均费用越低，那么随机化后的越低
+     * 不过会随着卡牌的打出而变得“倒霉”
+     */
+    public static void shuffleHandCost() {
+        int maxCost = AbstractDungeon.player.hand.group.stream()
+                .max((a, b) -> Integer.compare(a.costForTurn, b.costForTurn))
+                .map(card -> card.costForTurn)
+                .orElse(3); // Replace with a default value if no card is found
+        AbstractDungeon.player.hand.group.forEach(card -> {
+            if (card.cost >= 0) {
+                int newCost = AbstractDungeon.cardRandomRng.random(maxCost);
+                if (card.cost != newCost) {
+                    card.cost = newCost;
+                    card.costForTurn = card.cost;
+                    card.isCostModified = true;
+                }
+
+                card.freeToPlayOnce = false;
+            }
+        });
+    }
+
 }

@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
-import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -27,8 +26,6 @@ public class WinePower extends AbstractEasyPower {
 
     private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.BUFF;
     public static final Logger logger = ModCore.logger;
-    public static float damageModi = 0.1F; // 每层增加多少 伤害
-    public static float blockModi = 0.05F; // 每层增加多少 格挡
 
     public WinePower(AbstractCreature owner, int amount) {
         super(POWER_ID, NAME, TYPE, true, owner, amount);
@@ -36,26 +33,16 @@ public class WinePower extends AbstractEasyPower {
     }
 
     @Override
-    public float atDamageFinalGive(float damage, DamageType type) {
-        if (type == DamageType.NORMAL && amount > 0) {
-            damage *= 1F + damageModi * amount;
-        }
-        return damage;
-    }
-
-    @Override
-    public float modifyBlock(float blockAmount) {
-        return blockAmount * (1F + blockModi * amount);
-    }
-
-    @Override
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
         super.onPlayCard(card, m);
         if (card.type == CardType.ATTACK) {
             this.flash();
-            addToBot(new ReducePowerAction(owner, owner, this, 1));
+            int cost = Math.min(this.amount, card.costForTurn);
+            if (card.freeToPlayOnce || card.freeToPlay())
+                cost = 0;
+            addToBot(new ReducePowerAction(owner, owner, this, cost));
         }
-        if (this.amount == 0)
+        if (this.amount <= 0)
             addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
 
