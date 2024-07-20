@@ -123,5 +123,11 @@
       "你受到伤害时，%s 受到等量伤害",
       "怪物"
     ]
+  },
+  "lingmod:NvErHongPower": {
+    "NAME": "女儿红",
+    "DESCRIPTIONS": [
+      "打出 酒牌 后，抽 %d 张牌。"
+    ]
   }
 }

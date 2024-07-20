@@ -59,7 +59,7 @@
   },
   "${ModID}:Tranquility": {
     "NAME": "“清平”",
-    "DESCRIPTION": "消耗一张牌，造成 !D! 点伤害，被消耗时获得 !M! ${ModID}:诗兴 并在抽牌堆加入此牌的复制 "
+    "DESCRIPTION": "消耗一张牌，造成 !D! 点伤害，获得 !M! ${ModID}:诗兴 NL 自身被消耗时也获得 !M! ${ModID}:诗兴"
   },
   "${ModID}:GuoJiaXianMei": {
     "NAME": "裹甲衔枚",
@@ -307,5 +307,9 @@
     "EXTENDED_DESCRIPTION": [
       "令"
     ]
+  },
+  "lingmod:NvErHong": {
+    "NAME": "女儿红",
+    "DESCRIPTION": "打出 ${ModID}:酒牌 后，抽 !M! 张牌。"
   }
 }

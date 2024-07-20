@@ -16,7 +16,6 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import basemod.abstracts.AbstractCardModifier;
 import lingmod.powers.WinePower;
-import lingmod.util.Wiz;
 
 /**
  * 此牌是酒
@@ -67,7 +66,6 @@ public class WineMod extends AbsLingCardModifier {
         super.onUse(card, target, action);
         AbstractPlayer p = AbstractDungeon.player;
         addToTop(new ApplyPowerAction(p, p, new WinePower(p, amount)));
-        Wiz.addToBotAbstract(Wiz::shuffleHandCost); // 打乱手牌费用
     }
 
     @Override
