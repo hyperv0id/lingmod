@@ -2,7 +2,6 @@ package lingmod.powers;
 
 import static lingmod.ModCore.makeID;
 
-import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -13,6 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FlameBarrierPower;
+import lingmod.util.Morph;
 
 /**
  * 角色UI变成对应怪物，受到伤害时，同名怪物受到等量伤害
@@ -21,14 +21,12 @@ public class YuNiaoPower extends AbstractEasyPower {
     public static final String POWER_NAME = YuNiaoPower.class.getSimpleName();
     public static final String ID = makeID(POWER_NAME);
     public static final PowerStrings ps = CardCrawlGame.languagePack.getPowerStrings(ID);
-    private final AbstractCreature target;
+    private static AbstractCreature target;
     public FlameBarrierPower reference;
-    @SuppressWarnings("unused")
-    private AnimationState animationState;
 
     public YuNiaoPower(AbstractCreature owner, AbstractCreature target) {
         super(ID, ps.NAME, PowerType.BUFF, false, owner, 0);
-        this.target = target;
+        YuNiaoPower.target = target;
         this.loadTexture(POWER_NAME);
         updateDescription();
     }
@@ -39,6 +37,13 @@ public class YuNiaoPower extends AbstractEasyPower {
             this.description = String.format(DESCRIPTIONS[0], DESCRIPTIONS[1]);
         else
             this.description = String.format(DESCRIPTIONS[0], target.name);
+    }
+
+    @Override
+    public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
+        // target变了，但是实例没变，需要重建target
+        updateDescription();
     }
 
     public int onAttacked(DamageInfo info, int damageAmount) {
@@ -67,15 +72,14 @@ public class YuNiaoPower extends AbstractEasyPower {
 
     @Override
     public void onInitialApplication() {
-        super.onInitialApplication();
-        // TODO: 卡图变成怪物
-        this.animationState = target.state;
+        // 卡图变成怪物
+        Morph.morph(AbstractDungeon.player, target);
     }
 
     @Override
     public void onRemove() {
-        // TODO: 卡图变为原来的
-        super.onRemove();
+        // 卡图变为原来的
+        Morph.restorePlayerMorph();
     }
 
     @Override
