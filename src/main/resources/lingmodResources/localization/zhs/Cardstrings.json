@@ -311,5 +311,9 @@
   "lingmod:NvErHong": {
     "NAME": "女儿红",
     "DESCRIPTION": "打出 ${ModID}:酒牌 后，抽 !M! 张牌。"
+  },
+  "lingmod:ChunFengBuZhi": {
+    "NAME": "春风不至",
+    "DESCRIPTION": "当前手牌耗能变为0 ，这些牌打出后会被 消耗"
   }
 }

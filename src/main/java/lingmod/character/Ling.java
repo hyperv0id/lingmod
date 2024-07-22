@@ -164,7 +164,7 @@ public class Ling extends CustomPlayer {
     @Override
     public CharSelectInfo getLoadout() {
         return new CharSelectInfo(NAMES[0], TEXT[0],
-                66, 66, 0, 99, 5, this, getStartingRelics(),
+                74, 74, 0, 99, 5, this, getStartingRelics(),
                 getStartingDeck(), false);
     }
 

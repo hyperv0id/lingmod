@@ -37,9 +37,9 @@
   },
   "${ModID}:Beans_LingRelic": {
     "NAME": "酒精泡泡",
-    "FLAVOR": "",
+    "FLAVOR": "一白忘忧再消愁，三碗同天竞风流",
     "DESCRIPTIONS": [
-      "战斗开始时，获得 #r3 酒"
+      "打出酒牌后，随机化非酒牌的费用"
     ]
   },
   "${ModID}:Beans_NianRelic": {

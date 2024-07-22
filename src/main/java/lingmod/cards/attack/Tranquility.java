@@ -10,11 +10,11 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import lingmod.cards.AbstractEasyCard;
-import lingmod.powers.PoeticMoodPower;
 import lingmod.interfaces.CardConfig;
+import lingmod.powers.PoeticMoodPower;
 
 /**
- * 清平：打7,消耗时获得 1 诗兴。
+ * 清平：消耗一张牌，造成 !D! 点伤害，获得 !M! ${ModID}:诗兴 NL 自身被消耗时也获得 !M! ${ModID}:诗兴
  */
 @CardConfig(damage=7, magic=1)
 public class Tranquility extends AbstractEasyCard{

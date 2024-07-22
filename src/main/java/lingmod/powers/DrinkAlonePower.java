@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import lingmod.ModCore;
+import lingmod.cards.skill.DrinkAlone;
 
 public class DrinkAlonePower extends AbstractEasyPower {
     public static final String CLASS_NAME = DrinkAlonePower.class.getSimpleName();
@@ -40,7 +41,11 @@ public class DrinkAlonePower extends AbstractEasyPower {
     public void onUseCard(AbstractCard card, UseCardAction action) {
         super.onUseCard(card, action);
         int cost = card.costForTurn;
-        if (cost <= 0) return;
+        if (cost <= 0)
+            return;
+        // 对自己无效
+        if (card.cardID.equals(DrinkAlone.ID))
+            return;
         if (!card.purgeOnUse) {
             this.flash();
             // 卡牌打出多次
@@ -70,6 +75,7 @@ public class DrinkAlonePower extends AbstractEasyPower {
             addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
         }
     }
+
     @Override
     public void updateDescription() {
         this.description = String.format(DESCRIPTIONS[0], amount);

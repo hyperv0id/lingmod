@@ -12,24 +12,24 @@ import basemod.cardmods.ExhaustMod;
 import basemod.helpers.CardModifierManager;
 import lingmod.actions.ExhaustToDiscardAction;
 import lingmod.cards.AbstractEasyCard;
-import lingmod.cards.mod.PoemMod;
 import lingmod.interfaces.CardConfig;
 
 /**
  * 消耗最左边的牌，弃牌堆中加入2张复制
  * 选择
  */
-@CardConfig(magic = 2, poemAmount = 2)
+@CardConfig(damage = 5,magic = 2, poemAmount = 2)
 public class RuMengLing extends AbstractEasyCard {
     public final static String ID = makeID(RuMengLing.class.getSimpleName());
 
     public RuMengLing() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         CardModifierManager.addModifier(this, new ExhaustMod());
-        CardModifierManager.addModifier(this, new PoemMod(1));
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
+        dmg(m, null);
+        dmg(m, null);
         if (!upgraded) {
             addToBotAbstract(() -> {
                 if (!p.hand.isEmpty()) {
@@ -46,6 +46,6 @@ public class RuMengLing extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        upgradeDamage(4);
+        upgradeDamage(2);
     }
 }

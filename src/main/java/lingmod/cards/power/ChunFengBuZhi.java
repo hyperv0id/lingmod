@@ -5,13 +5,13 @@ import static lingmod.ModCore.makeID;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import basemod.AutoAdd.Ignore;
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
 
 /**
  * 本回合所有手牌耗能0，打出后消耗
  */
-@Ignore
 public class ChunFengBuZhi extends AbstractEasyCard {
     public final static String ID = makeID(ChunFengBuZhi.class.getSimpleName());
 
@@ -22,7 +22,11 @@ public class ChunFengBuZhi extends AbstractEasyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         p.hand.group.forEach(c -> {
             c.costForTurn = 0;
-            c.exhaust = true;
+            c.cost = 0;
+            c.isCostModifiedForTurn = true;
+            c.isCostModified = true;
+            if (!c.exhaust)
+                CardModifierManager.addModifier(c, new ExhaustMod());
         });
     }
 

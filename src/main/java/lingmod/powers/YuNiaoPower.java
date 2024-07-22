@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FlameBarrierPower;
+
 import lingmod.util.Morph;
 
 /**
@@ -55,10 +56,12 @@ public class YuNiaoPower extends AbstractEasyPower {
                 // 判断死亡
                 if (mo.isDeadOrEscaped())
                     continue;
+                int amt = Math.max(info.output, info.base);
+                amt = Math.max(amt, damageAmount);
                 // 判断同名
                 if (mo.name.equals(target.name) || mo.id.equals(target.id)) {
                     this.addToTop(new DamageAction(mo,
-                            new DamageInfo(this.owner, damageAmount, DamageInfo.DamageType.THORNS),
+                            new DamageInfo(this.owner, amt, DamageInfo.DamageType.THORNS),
                             AbstractGameAction.AttackEffect.FIRE));
                 }
             }

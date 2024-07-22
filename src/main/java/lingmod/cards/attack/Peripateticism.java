@@ -15,17 +15,17 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ConstrictedPower;
 
 import lingmod.cards.AbstractEasyCard;
+import lingmod.interfaces.CardConfig;
 
 /**
  * “逍遥”：消耗所有技能牌，每张给予 8 缠绕
  */
+@CardConfig(damage = 7, magic = 2)
 public class Peripateticism extends AbstractEasyCard {
     public static final String ID = makeID(Peripateticism.class.getSimpleName());
 
     public Peripateticism() {
         super(ID, 2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
-        this.baseDamage = 5;
-        this.baseMagicNumber = 2;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class Peripateticism extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        upgradeDamage(2);
+        upgradeDamage(3);
     }
 
     @Override
