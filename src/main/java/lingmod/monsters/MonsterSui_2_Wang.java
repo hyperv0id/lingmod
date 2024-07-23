@@ -1,13 +1,12 @@
 package lingmod.monsters;
 
-import java.util.ArrayList;
-
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.ModCore;
+
+import java.util.ArrayList;
 
 /**
  * 二哥你又在下棋哦，陪我喝点酒好不好

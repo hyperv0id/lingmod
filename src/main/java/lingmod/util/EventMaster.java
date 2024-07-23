@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 public class EventMaster {
     public static void triggerEvent(AbstractEvent event) {
+        ModCore.logger.info("触发事件：" + event.getClass().getSimpleName());
         if (AbstractDungeon.currMapNode == null) return;
 
         RoomEventDialog.optionList.clear();

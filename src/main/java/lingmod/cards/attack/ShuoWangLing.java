@@ -1,16 +1,15 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.BaseMod;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 朔望：卡牌唯一/满：打50

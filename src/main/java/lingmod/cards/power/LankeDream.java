@@ -1,15 +1,14 @@
 package lingmod.cards.power;
 
-import static lingmod.ModCore.makeID;
-
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import basemod.AutoAdd.Ignore;
 import basemod.helpers.CardModifierManager;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.NellaFantasiaMod;
 import lingmod.stance.NellaFantasiaStance;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 在梦中打出牌 额外 减少 1 力量

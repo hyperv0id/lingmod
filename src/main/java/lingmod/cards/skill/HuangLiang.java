@@ -1,17 +1,16 @@
 package lingmod.cards.skill;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.GainPennyEffect;
-
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.NellaFantasiaMod;
 import lingmod.util.CustomTags;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 黄粱一梦：获得 20 金币

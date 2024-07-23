@@ -1,7 +1,7 @@
 package lingmod.patch;
 
-import static lingmod.ModCore.makeCardPath;
-
+import basemod.ReflectionHacks;
+import basemod.abstracts.CustomCard;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -9,27 +9,14 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.curses.AscendersBane;
-import com.megacrit.cardcrawl.cards.curses.Clumsy;
-import com.megacrit.cardcrawl.cards.curses.CurseOfTheBell;
-import com.megacrit.cardcrawl.cards.curses.Decay;
-import com.megacrit.cardcrawl.cards.curses.Doubt;
-import com.megacrit.cardcrawl.cards.curses.Injury;
-import com.megacrit.cardcrawl.cards.curses.Necronomicurse;
-import com.megacrit.cardcrawl.cards.curses.Normality;
-import com.megacrit.cardcrawl.cards.curses.Pain;
-import com.megacrit.cardcrawl.cards.curses.Parasite;
-import com.megacrit.cardcrawl.cards.curses.Regret;
-import com.megacrit.cardcrawl.cards.curses.Shame;
-import com.megacrit.cardcrawl.cards.curses.Writhe;
+import com.megacrit.cardcrawl.cards.curses.*;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.screens.SingleCardViewPopup;
-
-import basemod.ReflectionHacks;
-import basemod.abstracts.CustomCard;
 import lingmod.character.Ling;
+
+import static lingmod.ModCore.makeCardPath;
 
 @SuppressWarnings("rawtypes")
 public class AbstractCardPatch {

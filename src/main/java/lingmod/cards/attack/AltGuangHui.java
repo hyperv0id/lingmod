@@ -1,13 +1,12 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.powers.PoeticMoodPower;
+
+import static lingmod.ModCore.makeID;
 
 @CardConfig(poemAmount = 2)
 public class AltGuangHui extends AbstractEasyCard {

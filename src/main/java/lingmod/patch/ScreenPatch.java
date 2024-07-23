@@ -1,7 +1,6 @@
 package lingmod.patch;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.ReflectionHacks;
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
@@ -12,9 +11,9 @@ import com.megacrit.cardcrawl.cutscenes.NeowNarrationScreen;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.DeathScreen;
-
-import basemod.ReflectionHacks;
 import lingmod.character.Ling;
+
+import static lingmod.ModCore.makeID;
 
 public class ScreenPatch {
     @SpirePatch(clz = NeowNarrationScreen.class, method = SpirePatch.CONSTRUCTOR)

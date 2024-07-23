@@ -1,13 +1,12 @@
 package lingmod.cards.power;
 
-import static lingmod.ModCore.makeID;
-
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import basemod.cardmods.ExhaustMod;
 import basemod.helpers.CardModifierManager;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 本回合所有手牌耗能0，打出后消耗

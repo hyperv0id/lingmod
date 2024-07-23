@@ -1,13 +1,12 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.AutoAdd.Ignore;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.AutoAdd.Ignore;
 import lingmod.cards.AbstractEasyCard;
+
+import static lingmod.ModCore.makeID;
 @Ignore
 public class NoNamed_0620 extends AbstractEasyCard {
     public final static String ID = makeID(NoNamed_0620.class.getSimpleName());

@@ -1,14 +1,13 @@
 package lingmod.character;
 
+import basemod.BaseMod;
+import basemod.interfaces.PostExhaustSubscriber;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
-
-import basemod.BaseMod;
-import basemod.interfaces.PostExhaustSubscriber;
 import lingmod.ModCore;
 
 public class TalkManager implements PostExhaustSubscriber {

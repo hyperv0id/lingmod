@@ -1,8 +1,7 @@
 package lingmod.cards.mod;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
-
 import basemod.cardmods.EtherealMod;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 
 public class EtheralThisTurnMod extends EtherealMod {
 

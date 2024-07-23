@@ -1,14 +1,13 @@
 package lingmod.cards.skill;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.DerivativeMod;
 import lingmod.util.Wiz;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 白子：防0,在梦中时，所有化物增加2格挡

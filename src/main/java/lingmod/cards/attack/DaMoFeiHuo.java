@@ -1,16 +1,15 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.makeID;
-
-import java.util.stream.Collectors;
-
+import basemod.AutoAdd.Ignore;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.AutoAdd.Ignore;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
+
+import java.util.stream.Collectors;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * TODO: 还没想好，大概是每少一种牌，增加15点伤害

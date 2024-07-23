@@ -1,19 +1,18 @@
 package lingmod.cards.skill;
 
-import static lingmod.ModCore.makeID;
-
-import java.util.ArrayList;
-
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.FastDrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.AutoAdd;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.util.CustomTags;
+
+import java.util.ArrayList;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 飞花令：丢弃手牌中所有诗，再抽取相同数量的牌

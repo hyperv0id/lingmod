@@ -1,13 +1,12 @@
 package lingmod.potions;
 
+import basemod.abstracts.CustomPotion;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
-
-import basemod.abstracts.CustomPotion;
 
 public abstract class AbstractEasyPotion extends CustomPotion {
     public AbstractPlayer.PlayerClass pool;

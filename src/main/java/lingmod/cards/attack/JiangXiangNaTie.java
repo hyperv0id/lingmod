@@ -1,19 +1,18 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-
-import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.WineMod;
 import lingmod.interfaces.CardConfig;
 import lingmod.powers.WinePower;
 import lingmod.util.CustomTags;
+
+import static lingmod.ModCore.makeID;
 
 @CardConfig(damage = 16)
 public class JiangXiangNaTie extends AbstractEasyCard {

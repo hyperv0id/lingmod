@@ -29,10 +29,7 @@ import lingmod.powers.PoeticMoodPower;
 import lingmod.stance.NellaFantasiaStance;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -254,10 +251,7 @@ public class Wiz {
      */
     public static boolean isStanceNell() {
         AbstractPlayer p = AbstractDungeon.player;
-        if (p.stance != null && p.stance.ID.equals(NellaFantasiaStance.STANCE_ID)) {
-            return true;
-        }
-        return false;
+        return p.stance != null && p.stance.ID.equals(NellaFantasiaStance.STANCE_ID);
     }
 
     public static List<AbstractCard> allCardsInBattle(boolean exhaust) {
@@ -308,7 +302,7 @@ public class Wiz {
                 c2.cost = 0;
             return;
         }
-        if (c1.cost == -1 || c2.type == CardType.CURSE || c1.type == CardType.STATUS) {
+        if (c2.cost == -1 || c2.type == CardType.CURSE || c2.type == CardType.STATUS) {
             c1.costForTurn = 0;
             if (!turnOnly)
                 c1.cost = 0;
@@ -360,7 +354,6 @@ public class Wiz {
                         field.set(target, field.get(source));
                     } catch (IllegalAccessException e) {
                         logger.error("copy @CopyField failed TAT");
-                        e.printStackTrace();
                     }
                 }
             }
@@ -381,10 +374,7 @@ public class Wiz {
         if (AbstractDungeon.player != null) {
             if (AbstractDungeon.player.chosenClass == Ling.Enums.PLAYER_LING) {
                 return true;
-            } else if (AbstractDungeon.player instanceof Ling) {
-                return true;
-            }
-            return false;
+            } else return AbstractDungeon.player instanceof Ling;
         }
         return false;
     }
@@ -395,7 +385,7 @@ public class Wiz {
      */
     public static void shuffleHandCost(boolean noWine) {
         int maxCost = AbstractDungeon.player.hand.group.stream()
-                .max((a, b) -> Integer.compare(a.costForTurn, b.costForTurn))
+                .max(Comparator.comparingInt(a -> a.costForTurn))
                 .map(card -> card.costForTurn)
                 .orElse(3); // Replace with a default value if no card is found
         AbstractDungeon.player.hand.group.forEach(card -> {

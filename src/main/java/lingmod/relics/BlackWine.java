@@ -1,8 +1,8 @@
 package lingmod.relics;
 
-import static lingmod.ModCore.makeID;
-
 import lingmod.util.Wiz;
+
+import static lingmod.ModCore.makeID;
 
 public class BlackWine extends AbstractEasyRelic {
     public static final String ID = makeID(BlackWine.class.getSimpleName());

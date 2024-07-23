@@ -1,15 +1,14 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.AutoAdd;
 import lingmod.actions.TianZhuiAction;
 import lingmod.cards.AbstractEasyCard;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 天坠: 4*2, 记录伤害值，之后的伤害增加X点

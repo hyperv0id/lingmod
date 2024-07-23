@@ -1,13 +1,12 @@
 package lingmod.cards.power;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.AutoAdd.Ignore;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.AutoAdd.Ignore;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 回合结束时，如果敌人意图不能对你造成伤害，那么对其造成 !M! * 否认值 点伤害

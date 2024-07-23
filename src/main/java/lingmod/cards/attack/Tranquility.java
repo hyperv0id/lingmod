@@ -1,17 +1,16 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.powers.PoeticMoodPower;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 清平：消耗一张牌，造成 !D! 点伤害，获得 !M! ${ModID}:诗兴 NL 自身被消耗时也获得 !M! ${ModID}:诗兴

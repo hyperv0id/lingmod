@@ -1,13 +1,12 @@
 package lingmod.relics;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.util.CustomTags;
 import lingmod.util.Wiz;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 打出酒后，所有手牌费用随机化，有特殊机制

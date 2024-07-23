@@ -1,16 +1,15 @@
 package lingmod.cards.skill;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.AutoAdd;
 import lingmod.actions.EasyXCostAction;
 import lingmod.cards.AbstractEasyCard;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 辞旧岁：丢弃所有手牌，每张造成 3X 点伤害

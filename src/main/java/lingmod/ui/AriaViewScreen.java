@@ -1,8 +1,6 @@
 package lingmod.ui;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
+import basemod.abstracts.CustomScreen;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
@@ -14,11 +12,12 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-
-import basemod.abstracts.CustomScreen;
 import lingmod.ModCore;
 import lingmod.patch.PlayerFieldsPatch;
 import lingmod.util.Wiz;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class AriaViewScreen extends CustomScreen {
     public static final String ID = ModCore.makeID(AriaViewScreen.class.getSimpleName());

@@ -1,12 +1,11 @@
 package lingmod.cards.mod;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.UIStrings;
 
-import basemod.abstracts.AbstractCardModifier;
+import static lingmod.ModCore.makeID;
 
 /**
  * 化物：在梦中打出时会连续打出两次
