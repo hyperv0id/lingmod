@@ -12,9 +12,12 @@ import lingmod.cards.power.Whoami_Ling;
 import lingmod.cards.power.Whoami_Nian;
 import lingmod.cards.power.Whoami_Shuo;
 import lingmod.cards.skill.Whoami_Wang;
+import lingmod.interfaces.CampfireSleepEvent;
 
 import static lingmod.ModCore.makeID;
 
+
+@CampfireSleepEvent
 public class WhoamiEvent extends AbstractImageEvent {
     public static final String EVENT_NAME = WhoamiEvent.class.getSimpleName();
     public static final String ID = makeID(EVENT_NAME);

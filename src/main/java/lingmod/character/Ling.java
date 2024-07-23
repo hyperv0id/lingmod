@@ -1,24 +1,13 @@
 package lingmod.character;
 
-import static lingmod.ModCore.characterColor;
-import static lingmod.ModCore.logger;
-import static lingmod.ModCore.makeCharacterPath;
-import static lingmod.ModCore.makeImagePath;
-import static lingmod.character.Ling.Enums.LING_COLOR;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import basemod.AutoAdd;
+import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
-import com.esotericsoftware.spine.AnimationState;
-import com.esotericsoftware.spine.AnimationStateData;
-import com.esotericsoftware.spine.Skeleton;
-import com.esotericsoftware.spine.SkeletonBinary;
-import com.esotericsoftware.spine.SkeletonData;
+import com.esotericsoftware.spine.*;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -28,21 +17,28 @@ import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.cutscenes.CutscenePanel;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.events.AbstractEvent;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
-
-import basemod.abstracts.CustomPlayer;
 import lingmod.cards.attack.ChongJinJiuCard;
 import lingmod.cards.attack.GuoJiaXianMei;
 import lingmod.cards.attack.Strike;
 import lingmod.cards.attack.Tranquility;
 import lingmod.cards.skill.Defend;
+import lingmod.events.Sui12Event;
+import lingmod.interfaces.CampfireSleepEvent;
 import lingmod.relics.LightRelic;
 import lingmod.util.TODO;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static lingmod.ModCore.*;
+import static lingmod.character.Ling.Enums.LING_COLOR;
 
 public class Ling extends CustomPlayer {
 
@@ -68,6 +64,7 @@ public class Ling extends CustomPlayer {
 
     private static final float[] LAYER_SPEED = new float[] { -40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F,
             -5.0F, 0.0F };
+    public static List<AbstractEvent> sleepEvents = new ArrayList<>(); // 在篝火处睡觉会触发的事件
 
     public Ling(String name, PlayerClass setClass) {
         super(name, Ling.Enums.PLAYER_LING, orbTextures, makeCharacterPath("ling/orb/vfx.png"), LAYER_SPEED, null,
@@ -93,6 +90,7 @@ public class Ling extends CustomPlayer {
         e.setTime(e.getEndTime() * MathUtils.random());
         e.setTimeScale(0.8F);
     }
+
 
     @Override
     protected void loadAnimation(String atlasUrl, String skeletonUrl, float scale) {
@@ -281,6 +279,25 @@ public class Ling extends CustomPlayer {
         panels.add(new CutscenePanel(makeImagePath("ui/ending/end_2.png")));
         panels.add(new CutscenePanel(makeImagePath("ui/ending/end_3.png")));
         return panels;
+    }
+
+    public static AbstractEvent rollEvent() {
+        if (sleepEvents.isEmpty()) {
+            // 懒得写SL了
+            initSleepEvents();
+        }
+        int len = Ling.sleepEvents.size();
+        int r = AbstractDungeon.eventRng.random(len - 1);
+        return Ling.sleepEvents.get(r);
+    }
+
+    public static void initSleepEvents() {
+        new AutoAdd(modID).packageFilter(Sui12Event.class).any(AbstractEvent.class, (info, event) -> {
+            if (event.getClass().getAnnotation(CampfireSleepEvent.class) == null) return;
+            logger.info("添加火堆睡觉事件：" + event.getClass().getSimpleName());
+            Ling.sleepEvents.add(event);
+        });
+
     }
 
     public static class Enums {

@@ -14,6 +14,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
@@ -38,7 +39,7 @@ import org.apache.logging.log4j.Logger;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
-@SuppressWarnings({ "unused", "WeakerAccess" })
+@SuppressWarnings({"unused", "WeakerAccess"})
 @SpireInitializer
 public class ModCore implements
         EditCardsSubscriber,
@@ -61,10 +62,10 @@ public class ModCore implements
     }
 
     public static Color characterColor = new Color(MathUtils.random(), MathUtils.random(), MathUtils.random(), 1); // This
-                                                                                                                   // should
-                                                                                                                   // be
-                                                                                                                   // changed
-                                                                                                                   // eventually
+    // should
+    // be
+    // changed
+    // eventually
 
     private static final String ATTACK_S_ART = makeImagePath("512/attack.png");
     private static final String SKILL_S_ART = makeImagePath("512/skill.png");
@@ -271,9 +272,13 @@ public class ModCore implements
      */
     @Override
     public void receivePostDungeonInitialize() {
+        if (AbstractDungeon.player.chosenClass != Ling.Enums.PLAYER_LING) return;
         // 给玩家生成初始词牌：静夜思
         CardGroup ariaCards = (CardGroup) PlayerFieldsPatch.ariaCardGroup.get(Wiz.adp());
         ariaCards.addToTop(new JingYeSiCard());
+        // 生成事件
+        Ling.sleepEvents.clear(); // 清空
+        Ling.initSleepEvents();
     }
 
     /**
