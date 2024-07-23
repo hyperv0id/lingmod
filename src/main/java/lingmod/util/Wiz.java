@@ -1,25 +1,9 @@
 package lingmod.util;
 
-import static lingmod.ModCore.logger;
-import static lingmod.ModCore.makeID;
-
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DiscardAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -36,7 +20,6 @@ import com.megacrit.cardcrawl.powers.AbstractPower.PowerType;
 import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
-
 import lingmod.actions.TimedVFXAction;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.character.Ling;
@@ -44,6 +27,18 @@ import lingmod.interfaces.CopyField;
 import lingmod.interfaces.VoidSupplier;
 import lingmod.powers.PoeticMoodPower;
 import lingmod.stance.NellaFantasiaStance;
+
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+import static lingmod.ModCore.logger;
+import static lingmod.ModCore.makeID;
 
 public class Wiz {
     // The wonderful Wizard of Oz allows access to most easy compilations of data,
@@ -416,6 +411,21 @@ public class Wiz {
                 card.freeToPlayOnce = false;
             }
         });
+    }
+
+    /**
+     * 改变卡牌的费用
+     *
+     * @param card   卡牌
+     * @param addAmt 增加多少，负数减少
+     */
+    public static void addCost(AbstractCard card, int addAmt) {
+        card.cost += addAmt;
+        card.cost = Math.max(0, card.cost);
+        card.costForTurn += addAmt;
+        card.costForTurn = Math.max(0, card.costForTurn);
+        card.isCostModified = true;
+        card.isCostModifiedForTurn = true;
     }
 
 }

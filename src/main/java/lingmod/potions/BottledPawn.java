@@ -6,17 +6,19 @@ import com.megacrit.cardcrawl.actions.common.InstantKillAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.relics.PreservedInsect;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
-import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
 import lingmod.ModCore;
 import lingmod.actions.LosePotionSlotAction;
 import lingmod.character.Ling;
+import lingmod.util.Wiz;
 
 import static lingmod.ModCore.makeID;
 
 public class BottledPawn extends AbstractEasyPotion {
     public static String ID = makeID(BottledPawn.class.getSimpleName());
+    PreservedInsect pi;
 
     public BottledPawn() {
         super(ID, PotionRarity.COMMON, PotionSize.ANVIL, new Color(0.2f, 0.4f, 0.9f, 1f),
@@ -29,14 +31,20 @@ public class BottledPawn extends AbstractEasyPotion {
 
     @Override
     public boolean canUse() {
-        return super.canUse() && !(AbstractDungeon.getCurrRoom() instanceof MonsterRoomBoss) && !(AbstractDungeon.getCurrRoom() instanceof MonsterRoomElite);
+        return super.canUse() && !(AbstractDungeon.getCurrRoom() instanceof MonsterRoomBoss);
     }
-
     public void use(AbstractCreature target) {
-        if(AbstractDungeon.getCurrRoom().phase == RoomPhase.COMBAT) {
+        if (AbstractDungeon.getCurrRoom().phase == RoomPhase.COMBAT) {
             addToBot((AbstractGameAction) new LosePotionSlotAction());
-            for (AbstractMonster mo: AbstractDungeon.getCurrRoom().monsters.monsters) {
-                addToBot(new InstantKillAction(mo));
+            for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
+                if (AbstractDungeon.getCurrRoom().eliteTrigger) {
+                    Wiz.addToBotAbstract(() -> {
+                        mo.currentHealth = (int) ((float) mo.maxHealth * 0.5);
+                        mo.healthBarUpdatedEvent();
+                    });
+                } else { // 普通怪物
+                    addToBot(new InstantKillAction(mo));
+                }
             }
         }
 
