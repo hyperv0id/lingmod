@@ -1,7 +1,7 @@
 package lingmod.powers;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.BaseMod;
+import basemod.interfaces.PostPowerApplySubscriber;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -9,8 +9,9 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-import basemod.BaseMod;
-import basemod.interfaces.PostPowerApplySubscriber;
+import java.util.Objects;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 你无法再获得任何能力/异常
@@ -49,7 +50,7 @@ public class CantApplyPowerPower extends AbstractEasyPower implements PostPowerA
         if (target == owner && !p2add.ID.equals(CantApplyPowerPower.ID)) {
             // if(src != owner) {
             this.flash();
-            if (owner.powers.stream().map(p -> p.ID).anyMatch(id -> id == p2add.ID)) {
+            if (owner.powers.stream().map(p -> p.ID).anyMatch(id -> Objects.equals(id, p2add.ID))) {
                 addToBot(new ReducePowerAction(target, owner, p2add, p2add.amount));
             } else {
                 addToBot(new RemoveSpecificPowerAction(target, owner, p2add));
@@ -59,5 +60,9 @@ public class CantApplyPowerPower extends AbstractEasyPower implements PostPowerA
         // addToBot(new RemoveSpecificPowerAction(target, owner, this));
         // BaseMod.unsubscribe(this);
         // }
+        // 自己给自己施加DEBUFF
+        if (target == owner && p2add.type == PowerType.DEBUFF && target == src) {
+            addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+        }
     }
 }

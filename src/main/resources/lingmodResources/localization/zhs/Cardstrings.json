@@ -133,7 +133,8 @@
   },
   "${ModID}:Whoami_Ling": {
     "NAME": "无怖",
-    "DESCRIPTION": "永久免疫任何敌人的异常 NL 得到来自己方的异常时移除此能力"
+    "DESCRIPTION": "你和敌人无法再获得任何能力 NL 对自己施加异常时移除此效果",
+    "UPGRADE_DESCRIPTION": "清除所有异常 NL 你和敌人无法再获得任何能力 NL 对自己施加异常时移除此效果"
   },
   "${ModID}:Whoami_Nian": {
     "NAME": "无悲",
