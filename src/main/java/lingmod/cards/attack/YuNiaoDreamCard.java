@@ -4,11 +4,14 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.powers.YuNiaoPower;
 import lingmod.util.Wiz;
+
+import java.util.Objects;
 
 import static lingmod.ModCore.makeID;
 import static lingmod.util.MonsterHelper.calcIntentDmg;
@@ -40,8 +43,11 @@ public class YuNiaoDreamCard extends AbstractEasyCard {
 
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
-        addToBot(new DamageAction(abstractMonster,
-                new DamageInfo(abstractPlayer, damage, DamageInfo.DamageType.NORMAL)));
+        for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
+            if (!Objects.equals(mo.name, abstractMonster.name)) continue;
+            addToBot(new DamageAction(mo,
+                    new DamageInfo(abstractPlayer, damage, DamageInfo.DamageType.NORMAL)));
+        }
         if (Wiz.isStanceNell()) {
             addToBot(new ApplyPowerAction(abstractPlayer, abstractPlayer, new YuNiaoPower(abstractPlayer, abstractMonster)));
         }

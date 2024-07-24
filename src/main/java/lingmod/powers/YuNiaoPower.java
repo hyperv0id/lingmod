@@ -10,23 +10,27 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.FlameBarrierPower;
+import com.megacrit.cardcrawl.stances.AbstractStance;
+import lingmod.ModCore;
+import lingmod.stance.NellaFantasiaStance;
 import lingmod.util.Morph;
 
 import static lingmod.ModCore.makeID;
 
 /**
  * 角色UI变成对应怪物，受到伤害时，同名怪物受到等量伤害
+ * 离开梦时失去
  */
 public class YuNiaoPower extends AbstractEasyPower {
     public static final String POWER_NAME = YuNiaoPower.class.getSimpleName();
     public static final String ID = makeID(POWER_NAME);
     public static final PowerStrings ps = CardCrawlGame.languagePack.getPowerStrings(ID);
-    private static AbstractCreature target;
+    private final AbstractCreature target;
     public FlameBarrierPower reference;
 
     public YuNiaoPower(AbstractCreature owner, AbstractCreature target) {
         super(ID, ps.NAME, PowerType.BUFF, false, owner, 0);
-        YuNiaoPower.target = target;
+        this.target = target;
         this.loadTexture(POWER_NAME);
         updateDescription();
     }
@@ -37,13 +41,6 @@ public class YuNiaoPower extends AbstractEasyPower {
             this.description = String.format(DESCRIPTIONS[0], DESCRIPTIONS[1]);
         else
             this.description = String.format(DESCRIPTIONS[0], target.name);
-    }
-
-    @Override
-    public void stackPower(int stackAmount) {
-        super.stackPower(stackAmount);
-        // target变了，但是实例没变，需要重建target
-        updateDescription();
     }
 
     public int onAttacked(DamageInfo info, int damageAmount) {
@@ -68,14 +65,26 @@ public class YuNiaoPower extends AbstractEasyPower {
         return damageAmount;
     }
 
-    public void atEndOfRound() {
-        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, ID));
+    @Override
+    public void onChangeStance(AbstractStance oldStance, AbstractStance newStance) {
+        super.onChangeStance(oldStance, newStance);
+        if (oldStance.ID.equals(NellaFantasiaStance.STANCE_ID)) {
+            addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player, AbstractDungeon.player, this));
+        }
     }
 
     @Override
     public void onInitialApplication() {
         // 卡图变成怪物
-        Morph.morph(AbstractDungeon.player, target);
+        AbstractCreature inst;
+        try {
+            inst = target.getClass().getDeclaredConstructor().newInstance();
+        } catch (Exception e) {
+            ModCore.logger.error("Cannot Create New Instance for: " + target.getClass().getSimpleName() + " will use " +
+                    "existing instance: " + target);
+            inst = target;
+        }
+        Morph.morph(AbstractDungeon.player, inst);
     }
 
     @Override
