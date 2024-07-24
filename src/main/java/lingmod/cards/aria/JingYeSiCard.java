@@ -1,5 +1,12 @@
 package lingmod.cards.aria;
 
+import static lingmod.ModCore.makeID;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
@@ -11,15 +18,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
+
 import lingmod.cards.AbstractAriaCard;
 import lingmod.powers.PoeticMoodPower;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 普通五言：床前明月光，疑是地上霜，举头望明月，低头思故乡

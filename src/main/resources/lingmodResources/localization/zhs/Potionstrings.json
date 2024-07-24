@@ -10,5 +10,11 @@
         "DESCRIPTIONS": [
             "本次战斗中，所有打击的耗能变为0"
         ]
+    },
+    "${ModID}:ForgetPotion": {
+        "NAME": "忘忧水",
+        "DESCRIPTIONS": [
+            "也许能忘记烦心事，饮用请遵医嘱"
+        ]
     }
 }
