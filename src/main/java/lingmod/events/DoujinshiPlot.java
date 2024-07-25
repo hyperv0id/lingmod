@@ -45,7 +45,6 @@ public class DoujinshiPlot extends PhasedEvent {
                         .addOption(OPTIONS[8], (i) -> exit()) // 离开
                         .addOption(OPTIONS[1], (i) -> {
                             // 购买药水
-                            // TODO: 药水位可能不够
                             if (AbstractDungeon.player.potions.stream()
                                     .anyMatch(potion -> potion instanceof PotionSlot)) {
                                 AbstractDungeon.player.obtainPotion(new ForgetPotion());

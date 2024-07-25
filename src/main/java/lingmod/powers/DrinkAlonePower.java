@@ -1,5 +1,9 @@
 package lingmod.powers;
 
+import static lingmod.ModCore.makeID;
+
+import org.apache.logging.log4j.Logger;
+
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -12,12 +16,14 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+
 import lingmod.ModCore;
 import lingmod.cards.skill.DrinkAlone;
-import org.apache.logging.log4j.Logger;
 
-import static lingmod.ModCore.makeID;
-
+/**
+ * 下一张牌将消耗全部能量，打出 X 次
+ * 每次获得 X 酒
+ */
 public class DrinkAlonePower extends AbstractEasyPower {
     public static final String CLASS_NAME = DrinkAlonePower.class.getSimpleName();
     public static final String POWER_ID = makeID(CLASS_NAME);
@@ -29,19 +35,21 @@ public class DrinkAlonePower extends AbstractEasyPower {
     public static final Logger logger = ModCore.logger;
     public static int postfix = 0;
 
-    public DrinkAlonePower(AbstractPlayer owner) {
+    public DrinkAlonePower(AbstractPlayer owner, int amount) {
         super(POWER_ID + postfix++, NAME, TYPE, false, owner, 0);
         this.owner = owner;
+        this.amount = amount;
         this.updateDescription();
+        loadTexture("Icon_Amplify");
     }
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        super.onUseCard(card, action);
-        int cost = card.costForTurn;
-        if (cost <= 0)
+        if (this.amount <= 0) {
+            addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
             return;
-        // 对自己无效
+        }
+        super.onUseCard(card, action);
         if (card.cardID.equals(DrinkAlone.ID))
             return;
         if (!card.purgeOnUse) {
@@ -52,10 +60,7 @@ public class DrinkAlonePower extends AbstractEasyPower {
                 if (action.target != null) {
                     m = (AbstractMonster) action.target;
                 }
-                int energy = EnergyPanel.totalCount;
-                int times = (int) Math.ceil(((double) energy) / cost); // 打出 上取整次
-                times = Math.max(1, times);
-                for (int i = 0; i < times; i++) {
+                for (int i = 0; i < amount; i++) {
                     AbstractCard tmp = card.makeStatEquivalentCopy();
                     AbstractDungeon.player.limbo.addToBottom(tmp);
                     tmp.current_x = card.current_x;
@@ -66,9 +71,10 @@ public class DrinkAlonePower extends AbstractEasyPower {
                         tmp.calculateCardDamage(m);
                     }
                     tmp.purgeOnUse = true;
+                    tmp.energyOnUse = 0; // 免费打出
                     AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(tmp, m, 0, true, true), true);
                 }
-                AbstractDungeon.player.energy.use(energy);
+                AbstractDungeon.player.energy.use(EnergyPanel.totalCount);
             });
             addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
         }
@@ -76,6 +82,6 @@ public class DrinkAlonePower extends AbstractEasyPower {
 
     @Override
     public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[0], amount);
+        this.description = String.format(DESCRIPTIONS[0], amount, amount);
     }
 }

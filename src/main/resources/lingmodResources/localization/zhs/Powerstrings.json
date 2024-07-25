@@ -108,7 +108,7 @@
   "${ModID}:DrinkAlonePower": {
     "NAME": "独酌",
     "DESCRIPTIONS": [
-      "下一张耗能大于0的牌会打出多次，直到能量为0 NL 即使能量不足也可以打出，至少多打出一次"
+      "下一张牌会消耗全部能量，打出 %d 次，每次获得 %d 酒"
     ]
   },
   "lingmod:HuSongPower": {

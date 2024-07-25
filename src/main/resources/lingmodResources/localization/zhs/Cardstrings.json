@@ -214,7 +214,7 @@
   },
   "${ModID}:HuSongWineCard": {
     "NAME": "湖松酒",
-    "DESCRIPTION": "敌人的多段攻击次数减少 !M!% NL 否则给予 !${ModID}:m2! 虚弱 "
+    "DESCRIPTION": "敌人的多段攻击次数减少 !M!% NL 给予 !${ModID}:m2! 虚弱 "
   },
   "${ModID}:GuiXingWineCard": {
     "NAME": "归行酒",
@@ -231,7 +231,8 @@
   },
   "${ModID}:DrinkAlone": {
     "NAME": "独酌",
-    "DESCRIPTION": "下一张耗能大于0的牌会打出多次，直到能量为0 NL 即使能量不足也可以打出"
+    "DESCRIPTION": "下一张牌将消耗全部能量，额外打出 X 次 NL 每次获得 X 酒",
+    "UPGRADE_DESCRIPTION": "下一张牌将消耗全部能量，额外打出 X+1 次 NL 每次获得 X 酒"
   },
   "${ModID}:YunLiaoWineCard": {
     "NAME": "云辽酒",

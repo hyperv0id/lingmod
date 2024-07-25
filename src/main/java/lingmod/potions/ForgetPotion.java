@@ -32,7 +32,7 @@ public class ForgetPotion extends AbstractEasyPotion {
      */
     @Override
     public void use(AbstractCreature arg0) {
-        // 帮助选择0号
+        if(DoujinshiPlot.__inst == null) return;
         DoujinshiPlot.__inst.transitionKey(DoujinshiPlot.Phases.DOUJINSHI);
         DoujinshiPlot.__inst.imageEventText.loadImage(makeImagePath("events/DoujinshiPlot_1.png"));
     }
