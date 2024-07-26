@@ -56,7 +56,7 @@ public class AriaViewScreen extends CustomScreen {
      */
     @Override
     public void reopen() {
-        this.targetGroup = (CardGroup) PlayerFieldsPatch.ariaCardGroup.get(Wiz.adp());
+        this.targetGroup = PlayerFieldsPatch.ariaCardGroup.get(Wiz.adp());
         if (this.targetGroup.group.size() <= 6) {
             drawStartY = (float) Settings.HEIGHT * 0.5F;
         } else {
@@ -91,17 +91,17 @@ public class AriaViewScreen extends CustomScreen {
                 ++lineNum;
             }
 
-            ((AbstractCard) cards.get(i)).target_x = drawStartX + (float) mod * padX;
-            ((AbstractCard) cards.get(i)).target_y = drawStartY - (float) lineNum * padY;
-            ((AbstractCard) cards.get(i)).fadingOut = false;
-            ((AbstractCard) cards.get(i)).update();
-            ((AbstractCard) cards.get(i)).updateHoverLogic();
-            ((AbstractCard) cards.get(i)).setAngle(0.0F, true);
+            cards.get(i).target_x = drawStartX + (float) mod * padX;
+            cards.get(i).target_y = drawStartY - (float) lineNum * padY;
+            cards.get(i).fadingOut = false;
+            cards.get(i).update();
+            cards.get(i).updateHoverLogic();
+            cards.get(i).setAngle(0.0F, true);
             this.hoveredCard = null;
             Iterator<AbstractCard> var5 = cards.iterator();
 
             while (var5.hasNext()) {
-                AbstractCard c = (AbstractCard) var5.next();
+                AbstractCard c = var5.next();
                 if (c.hb.hovered) {
                     this.hoveredCard = c;
                 }
@@ -115,17 +115,17 @@ public class AriaViewScreen extends CustomScreen {
         ArrayList<AbstractCard> cards = this.targetGroup.group;
 
         for (int i = 0; i < cards.size(); ++i) {
-            ((AbstractCard) cards.get(i)).setAngle(0.0F, true);
+            cards.get(i).setAngle(0.0F, true);
             int mod = i % 5;
             if (mod == 0 && i != 0) {
                 ++lineNum;
             }
 
-            ((AbstractCard) cards.get(i)).lighten(true);
-            ((AbstractCard) cards.get(i)).current_x = drawStartX + (float) mod * padX;
-            ((AbstractCard) cards.get(i)).current_y = drawStartY - (float) lineNum * padY - MathUtils.random(100.0F * Settings.scale, 200.0F * Settings.scale);
-            ((AbstractCard) cards.get(i)).targetDrawScale = 0.75F;
-            ((AbstractCard) cards.get(i)).drawScale = 0.75F;
+            cards.get(i).lighten(true);
+            cards.get(i).current_x = drawStartX + (float) mod * padX;
+            cards.get(i).current_y = drawStartY - (float) lineNum * padY - MathUtils.random(100.0F * Settings.scale, 200.0F * Settings.scale);
+            cards.get(i).targetDrawScale = 0.75F;
+            cards.get(i).drawScale = 0.75F;
         }
 
     }

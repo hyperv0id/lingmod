@@ -41,7 +41,8 @@ public abstract class AbstractEasyPotion extends CustomPotion {
 
     public abstract String getDescription();
 
-    public void addAdditionalTips() {}
+    public void addAdditionalTips() {
+    }
 
     @SuppressWarnings("deprecation")
     public AbstractPotion makeCopy() {

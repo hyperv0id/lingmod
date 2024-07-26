@@ -22,8 +22,8 @@ import org.apache.logging.log4j.Logger;
 public class Sui12Event extends AbstractImageEvent {
     public static final String ID = ModCore.makeID("Sui12Event");
     public static final String IMG_PATH = ModCore.makeImagePath("events/Sui12Event.png");
-    private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(ID);
     public static final Logger logger = ModCore.logger;
+    private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(ID);
     private static final String NAME = eventStrings.NAME;
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;

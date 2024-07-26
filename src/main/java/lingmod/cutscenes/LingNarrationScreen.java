@@ -33,6 +33,26 @@ import static lingmod.ModCore.makeID;
  * LingNarrationScreen: 通关后 替代/增加 尼奥的台词
  */
 public class LingNarrationScreen {
+    private static final float CHAR_SPACING;
+    private static final float LINE_SPACING;
+    private static final GlyphLayout gl;
+    private static final ArrayList<SpeechWord> words;
+    private static final CharacterStrings charStrings;
+    private static float curLineWidth;
+    private static int curLine;
+    private static Scanner s;
+
+    static {
+        charStrings = CardCrawlGame.languagePack
+                .getCharacterString(makeID("LingHeartKill"));
+        curLineWidth = 0.0F;
+        curLine = 0;
+        gl = new GlyphLayout();
+        words = new ArrayList<SpeechWord>();
+        CHAR_SPACING = 8.0F * Settings.scale;
+        LINE_SPACING = 38.0F * Settings.scale;
+    }
+
     private Color bgColor;
     private Color eyeColor;
     private NeowEye eye1;
@@ -40,17 +60,9 @@ public class LingNarrationScreen {
     private NeowEye eye3;
     private int currentDialog = 0;
     private int clickCount = 0;
-    private static float curLineWidth;
-    private static int curLine;
-    private static Scanner s;
-    private static GlyphLayout gl;
-    private static ArrayList<SpeechWord> words;
-    private static CharacterStrings charStrings;
-    private static final float CHAR_SPACING;
-    private static final float LINE_SPACING;
-    private BitmapFont font;
-    private float x;
-    private float y;
+    private final BitmapFont font;
+    private final float x;
+    private final float y;
     private float wordTimer;
     private boolean textDone;
     private boolean fadingOut;
@@ -110,7 +122,7 @@ public class LingNarrationScreen {
         Iterator<SpeechWord> var1 = words.iterator();
 
         while (var1.hasNext()) {
-            SpeechWord w = (SpeechWord) var1.next();
+            SpeechWord w = var1.next();
             w.update();
         }
 
@@ -128,7 +140,6 @@ public class LingNarrationScreen {
             if (this.fadeOutTimer < 0.0F) {
                 this.fadeOutTimer = 0.0F;
                 this.exit();
-                return;
             }
         } else if ((InputHelper.justClickedLeft || CInputActionSet.select.isJustPressed() || this.clickCount > 3)
                 && this.textDone) {
@@ -180,7 +191,7 @@ public class LingNarrationScreen {
                 Iterator<SpeechWord> var5 = words.iterator();
 
                 while (var5.hasNext()) {
-                    SpeechWord w = (SpeechWord) var5.next();
+                    SpeechWord w = var5.next();
                     w.shiftY(LINE_SPACING);
                 }
 
@@ -197,7 +208,7 @@ public class LingNarrationScreen {
                 var3 = words.iterator();
 
                 while (var3.hasNext()) {
-                    w = (SpeechWord) var3.next();
+                    w = var3.next();
                     w.shiftY(LINE_SPACING);
                 }
 
@@ -209,7 +220,7 @@ public class LingNarrationScreen {
                 var3 = words.iterator();
 
                 while (var3.hasNext()) {
-                    w = (SpeechWord) var3.next();
+                    w = var3.next();
                     if (w.line == curLine) {
                         w.setX(this.x + temp);
                         gl.setText(this.font, w.word);
@@ -238,7 +249,7 @@ public class LingNarrationScreen {
                 Iterator<SpeechWord> var7 = words.iterator();
 
                 while (var7.hasNext()) {
-                    SpeechWord w = (SpeechWord) var7.next();
+                    SpeechWord w = var7.next();
                     w.shiftY(LINE_SPACING);
                 }
 
@@ -257,7 +268,7 @@ public class LingNarrationScreen {
                     var5 = words.iterator();
 
                     while (var5.hasNext()) {
-                        w = (SpeechWord) var5.next();
+                        w = var5.next();
                         w.shiftY(LINE_SPACING);
                     }
 
@@ -269,7 +280,7 @@ public class LingNarrationScreen {
                     var5 = words.iterator();
 
                     while (var5.hasNext()) {
-                        w = (SpeechWord) var5.next();
+                        w = var5.next();
                         if (w.line == curLine) {
                             w.setX(this.x + temp);
                             gl.setText(this.font, w.word);
@@ -310,7 +321,7 @@ public class LingNarrationScreen {
         Iterator<SpeechWord> var2 = words.iterator();
 
         while (var2.hasNext()) {
-            SpeechWord w = (SpeechWord) var2.next();
+            SpeechWord w = var2.next();
             w.render(sb);
         }
 
@@ -319,16 +330,5 @@ public class LingNarrationScreen {
             sb.draw(ImageMaster.WHITE_SQUARE_IMG, 0.0F, 0.0F, (float) Settings.WIDTH, (float) Settings.HEIGHT);
         }
 
-    }
-
-    static {
-        charStrings = CardCrawlGame.languagePack
-                .getCharacterString(makeID("LingHeartKill"));
-        curLineWidth = 0.0F;
-        curLine = 0;
-        gl = new GlyphLayout();
-        words = new ArrayList<SpeechWord>();
-        CHAR_SPACING = 8.0F * Settings.scale;
-        LINE_SPACING = 38.0F * Settings.scale;
     }
 }

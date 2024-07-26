@@ -24,7 +24,6 @@ public class Sui7DealAction extends AbstractGameAction {
         this.actionType = ActionType.CARD_MANIPULATION;
     }
 
-    
 
     public void update() {
         if (this.duration == 0.5F) {

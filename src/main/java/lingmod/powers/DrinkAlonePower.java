@@ -1,9 +1,5 @@
 package lingmod.powers;
 
-import static lingmod.ModCore.makeID;
-
-import org.apache.logging.log4j.Logger;
-
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -16,9 +12,11 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-
 import lingmod.ModCore;
 import lingmod.cards.skill.DrinkAlone;
+import org.apache.logging.log4j.Logger;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 下一张牌将消耗全部能量，打出 X 次
@@ -30,9 +28,8 @@ public class DrinkAlonePower extends AbstractEasyPower {
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-
-    private static final AbstractPower.PowerType TYPE = PowerType.BUFF;
     public static final Logger logger = ModCore.logger;
+    private static final AbstractPower.PowerType TYPE = PowerType.BUFF;
     public static int postfix = 0;
 
     public DrinkAlonePower(AbstractPlayer owner, int amount) {

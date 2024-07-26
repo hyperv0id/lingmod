@@ -42,6 +42,8 @@ import static lingmod.character.Ling.Enums.LING_COLOR;
 
 public class Ling extends CustomPlayer {
 
+    public static final String SHOULDER1 = makeCharacterPath("ling/shoulder.png");
+    public static final String CORPSE = makeCharacterPath("ling/corpse.png");
     static final String ID = "Ling";
     public static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
     static final String[] NAMES = characterStrings.NAMES;
@@ -59,11 +61,8 @@ public class Ling extends CustomPlayer {
             makeCharacterPath("ling/orb/layer4d.png"),
             makeCharacterPath("ling/orb/layer5d.png"),
     };
-    public static final String SHOULDER1 = makeCharacterPath("ling/shoulder.png");
-    public static final String CORPSE = makeCharacterPath("ling/corpse.png");
-
-    private static final float[] LAYER_SPEED = new float[] { -40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F,
-            -5.0F, 0.0F };
+    private static final float[] LAYER_SPEED = new float[]{-40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F,
+            -5.0F, 0.0F};
     public static List<AbstractEvent> sleepEvents = new ArrayList<>(); // 在篝火处睡觉会触发的事件
 
     public Ling(String name, PlayerClass setClass) {
@@ -91,6 +90,24 @@ public class Ling extends CustomPlayer {
         e.setTimeScale(0.8F);
     }
 
+    public static AbstractEvent rollEvent() {
+        if (sleepEvents.isEmpty()) {
+            // 懒得写SL了
+            initSleepEvents();
+        }
+        int len = Ling.sleepEvents.size();
+        int r = AbstractDungeon.eventRng.random(len - 1);
+        return Ling.sleepEvents.get(r);
+    }
+
+    public static void initSleepEvents() {
+        new AutoAdd(modID).packageFilter(Sui12Event.class).any(AbstractEvent.class, (info, event) -> {
+            if (event.getClass().getAnnotation(CampfireSleepEvent.class) == null) return;
+            logger.info("添加火堆睡觉事件：" + event.getClass().getSimpleName());
+            Ling.sleepEvents.add(event);
+        });
+
+    }
 
     @Override
     protected void loadAnimation(String atlasUrl, String skeletonUrl, float scale) {
@@ -254,10 +271,10 @@ public class Ling extends CustomPlayer {
 
     @Override
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect() {
-        return new AbstractGameAction.AttackEffect[] {
+        return new AbstractGameAction.AttackEffect[]{
                 AbstractGameAction.AttackEffect.FIRE,
                 AbstractGameAction.AttackEffect.BLUNT_HEAVY,
-                AbstractGameAction.AttackEffect.FIRE };
+                AbstractGameAction.AttackEffect.FIRE};
     }
 
     @Override
@@ -279,25 +296,6 @@ public class Ling extends CustomPlayer {
         panels.add(new CutscenePanel(makeImagePath("ui/ending/end_2.png")));
         panels.add(new CutscenePanel(makeImagePath("ui/ending/end_3.png")));
         return panels;
-    }
-
-    public static AbstractEvent rollEvent() {
-        if (sleepEvents.isEmpty()) {
-            // 懒得写SL了
-            initSleepEvents();
-        }
-        int len = Ling.sleepEvents.size();
-        int r = AbstractDungeon.eventRng.random(len - 1);
-        return Ling.sleepEvents.get(r);
-    }
-
-    public static void initSleepEvents() {
-        new AutoAdd(modID).packageFilter(Sui12Event.class).any(AbstractEvent.class, (info, event) -> {
-            if (event.getClass().getAnnotation(CampfireSleepEvent.class) == null) return;
-            logger.info("添加火堆睡觉事件：" + event.getClass().getSimpleName());
-            Ling.sleepEvents.add(event);
-        });
-
     }
 
     public static class Enums {

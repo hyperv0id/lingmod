@@ -10,29 +10,12 @@ import java.util.HashMap;
 import static lingmod.ModCore.makeVoicePath;
 
 @SpirePatch(
-    cls = "com.megacrit.cardcrawl.audio.SoundMaster",
-    method = "play",
-    paramtypes = {"java.lang.String", "boolean"}
+        cls = "com.megacrit.cardcrawl.audio.SoundMaster",
+        method = "play",
+        paramtypes = {"java.lang.String", "boolean"}
 )
 public class SoundMasterplayPatch {
     public static HashMap<String, Sfx> map = new HashMap<>();
-
-    public SoundMasterplayPatch() {
-    }
-
-    public static long Postfix(long res, SoundMaster _inst, String key, boolean useBgmVolume) {
-        if (map.containsKey(key)) {
-            return useBgmVolume
-                ? ((Sfx)map.get(key)).play(Settings.MUSIC_VOLUME * Settings.MASTER_VOLUME)
-                : ((Sfx)map.get(key)).play(Settings.SOUND_VOLUME * Settings.MASTER_VOLUME);
-        } else {
-            return res;
-        }
-    }
-
-    private static Sfx load(String filename) {
-        return new Sfx(makeVoicePath("") + filename, false);
-    }
 
     static {
         map.put("cn_topolect/3星结束行动", load("cn_topolect/3星结束行动.ogg"));
@@ -45,5 +28,22 @@ public class SoundMasterplayPatch {
         map.put("cn_topolect/选中干员1", load("cn_topolect/选中干员1.ogg"));
         map.put("cn_topolect/选中干员2", load("cn_topolect/选中干员2.ogg"));
         map.put("cn_topolect/行动出发", load("cn_topolect/行动出发.ogg"));
+    }
+
+    public SoundMasterplayPatch() {
+    }
+
+    public static long Postfix(long res, SoundMaster _inst, String key, boolean useBgmVolume) {
+        if (map.containsKey(key)) {
+            return useBgmVolume
+                    ? map.get(key).play(Settings.MUSIC_VOLUME * Settings.MASTER_VOLUME)
+                    : map.get(key).play(Settings.SOUND_VOLUME * Settings.MASTER_VOLUME);
+        } else {
+            return res;
+        }
+    }
+
+    private static Sfx load(String filename) {
+        return new Sfx(makeVoicePath("") + filename, false);
     }
 }

@@ -27,7 +27,7 @@ public class GuardianRingOfKing extends KingRelic {
     public void atBattleStart() {
         super.atBattleStart();
         addToBot(new GainBlockAction(AbstractDungeon.player, this.counter));
-        if(checkDoExtra()) 
+        if (checkDoExtra())
             addToBot(new GainBlockAction(AbstractDungeon.player, 5));
         this.counter = 0;
     }

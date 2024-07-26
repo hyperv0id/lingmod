@@ -129,5 +129,17 @@
     "DESCRIPTIONS": [
       "打出 酒牌 后，抽 %d 张牌。"
     ]
+  },
+  "lingmod:InvincibleForPlayer": {
+    "NAME": "无法干扰",
+    "DESCRIPTIONS": [
+      "你无法对其造成伤害"
+    ]
+  },
+  "lingmod:GiveGoldAsHP": {
+    "NAME": "掌柜的答谢",
+    "DESCRIPTIONS": [
+      "战斗结束后给予生命值 %d 倍的金币"
+    ]
   }
 }

@@ -1,11 +1,11 @@
 package lingmod;
 
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
+import basemod.*;
+import basemod.abstracts.DynamicVariable;
+import basemod.eventUtil.AddEventParams;
+import basemod.eventUtil.EventUtils;
+import basemod.interfaces.*;
+import basemod.patches.com.megacrit.cardcrawl.helpers.TopPanel.TopPanelHelper;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
@@ -15,40 +15,11 @@ import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.localization.CharacterStrings;
-import com.megacrit.cardcrawl.localization.EventStrings;
-import com.megacrit.cardcrawl.localization.KeywordStrings;
-import com.megacrit.cardcrawl.localization.MonsterStrings;
-import com.megacrit.cardcrawl.localization.OrbStrings;
-import com.megacrit.cardcrawl.localization.PotionStrings;
-import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.localization.RelicStrings;
-import com.megacrit.cardcrawl.localization.RunModStrings;
-import com.megacrit.cardcrawl.localization.StanceStrings;
-import com.megacrit.cardcrawl.localization.UIStrings;
+import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
-
-import basemod.AutoAdd;
-import basemod.BaseMod;
-import basemod.ReflectionHacks;
-import basemod.TopPanelGroup;
-import basemod.TopPanelItem;
-import basemod.abstracts.DynamicVariable;
-import basemod.eventUtil.AddEventParams;
-import basemod.eventUtil.EventUtils;
-import basemod.interfaces.AddAudioSubscriber;
-import basemod.interfaces.EditCardsSubscriber;
-import basemod.interfaces.EditCharactersSubscriber;
-import basemod.interfaces.EditKeywordsSubscriber;
-import basemod.interfaces.EditRelicsSubscriber;
-import basemod.interfaces.EditStringsSubscriber;
-import basemod.interfaces.OnStartBattleSubscriber;
-import basemod.interfaces.PostDungeonInitializeSubscriber;
-import basemod.interfaces.PostInitializeSubscriber;
-import basemod.interfaces.StartGameSubscriber;
-import basemod.patches.com.megacrit.cardcrawl.helpers.TopPanel.TopPanelHelper;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.aria.JingYeSiCard;
 import lingmod.cards.cardvars.AbstractEasyDynamicVariable;
@@ -56,7 +27,9 @@ import lingmod.character.Ling;
 import lingmod.events.DoujinshiPlot;
 import lingmod.events.Sui12Event;
 import lingmod.events.WhoamiEvent;
+import lingmod.monsters.InnManager;
 import lingmod.monsters.MonsterSui_7_Ji;
+import lingmod.monsters.MountainPicker;
 import lingmod.patch.PlayerFieldsPatch;
 import lingmod.potions.AbstractEasyPotion;
 import lingmod.relics.AbstractEasyRelic;
@@ -65,8 +38,13 @@ import lingmod.ui.AriaViewScreen;
 import lingmod.util.AriaCardManager;
 import lingmod.util.ProAudio;
 import lingmod.util.Wiz;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-@SuppressWarnings({ "unused", "WeakerAccess" })
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+
+@SuppressWarnings({"unused", "WeakerAccess"})
 @SpireInitializer
 public class ModCore implements
         EditCardsSubscriber,
@@ -83,19 +61,12 @@ public class ModCore implements
     public static final String modID = "lingmod";
     public static final String resourceRoot = modID + "Resources";
     public static final Logger logger = LogManager.getLogger(modID); // Used to output to the console.
-
-    public static String makeID(String idText) {
-        return modID + ":" + idText;
-    }
-
-    public static Color characterColor = new Color(MathUtils.random(), MathUtils.random(), MathUtils.random(), 1); // This
+    private static final String ATTACK_S_ART = makeImagePath("512/attack.png");
+    private static final String SKILL_S_ART = makeImagePath("512/skill.png");
     // should
     // be
     // changed
     // eventually
-
-    private static final String ATTACK_S_ART = makeImagePath("512/attack.png");
-    private static final String SKILL_S_ART = makeImagePath("512/skill.png");
     private static final String POWER_S_ART = makeImagePath("512/power.png");
     private static final String CARD_ENERGY_S = makeImagePath("512/energy.png");
     private static final String TEXT_ENERGY = makeImagePath("512/text_energy.png");
@@ -105,19 +76,10 @@ public class ModCore implements
     private static final String CARD_ENERGY_L = makeImagePath("1024/energy.png");
     private static final String CHARSELECT_BUTTON = makeImagePath("ui/char_select/button.png");
     private static final String CHARSELECT_PORTRAIT = makeImagePath("ui/char_select/portrait.png");
-
+    public static Color characterColor = new Color(MathUtils.random(), MathUtils.random(), MathUtils.random(), 1); // This
     public static Settings.GameLanguage[] SupportedLanguages = {
             Settings.GameLanguage.ENG,
     };
-
-    private static String getLangString() {
-        // for (Settings.GameLanguage lang : SupportedLanguages) {
-        // if (lang.equals(Settings.language)) {
-        // return Settings.language.name().toLowerCase();
-        // }
-        // }
-        return "zhs";
-    }
 
     public ModCore() {
         BaseMod.subscribe(this);
@@ -127,6 +89,19 @@ public class ModCore implements
                 ATTACK_S_ART, SKILL_S_ART, POWER_S_ART, CARD_ENERGY_S,
                 ATTACK_ART_L, SKILL_ART_L, POWER_ART_L,
                 CARD_ENERGY_L, TEXT_ENERGY);
+    }
+
+    public static String makeID(String idText) {
+        return modID + ":" + idText;
+    }
+
+    private static String getLangString() {
+        // for (Settings.GameLanguage lang : SupportedLanguages) {
+        // if (lang.equals(Settings.language)) {
+        // return Settings.language.name().toLowerCase();
+        // }
+        // }
+        return "zhs";
     }
 
     public static String makePath(String resourcePath) {
@@ -167,6 +142,19 @@ public class ModCore implements
 
     public static void initialize() {
         ModCore thismod = new ModCore();
+    }
+
+    public static String getStringPathI18N() {
+        return modID + "Resources/localization/" + getLangString();
+    }
+
+    public static String makeImagePath(String path, ResourceType type) {
+        // 如果没有指定文件类型，直接改成png
+        if (path.split("\\.").length == 1) {
+            path += ".png";
+        }
+        path = type.toString().toLowerCase() + "/" + path;
+        return makeImagePath(path);
     }
 
     @Override
@@ -211,10 +199,6 @@ public class ModCore implements
                 .packageFilter(AbstractEasyCard.class)
                 .setDefaultSeen(true)
                 .cards();
-    }
-
-    public static String getStringPathI18N() {
-        return modID + "Resources/localization/" + getLangString();
     }
 
     @Override
@@ -267,13 +251,6 @@ public class ModCore implements
         BaseMod.addSaveField(AriaTopPanel.ID, new AriaTopPanel());
     }
 
-    public void addMonster() {
-        // 添加怪物
-        BaseMod.addMonster(MonsterSui_7_Ji.ID, MonsterSui_7_Ji.NAME, () -> new MonsterSui_7_Ji()); // 绩老七
-        // BaseMod.addMonster(MonsterSui_2_Wang.ID, () -> new MonsterSui_2_Wang()); //
-        // 岁老二
-    }
-
     public void addEvents() {
         // 我是谁，可以获得卡牌
         BaseMod.addEvent(
@@ -308,7 +285,7 @@ public class ModCore implements
         if (AbstractDungeon.player.chosenClass != Ling.Enums.PLAYER_LING)
             return;
         // 给玩家生成初始词牌：静夜思
-        CardGroup ariaCards = (CardGroup) PlayerFieldsPatch.ariaCardGroup.get(Wiz.adp());
+        CardGroup ariaCards = PlayerFieldsPatch.ariaCardGroup.get(Wiz.adp());
         ariaCards.addToTop(new JingYeSiCard());
         // 生成事件
         Ling.sleepEvents.clear(); // 清空
@@ -328,16 +305,20 @@ public class ModCore implements
         }
     }
 
-    public static enum ResourceType {
-        CARDS, CHAR, EVENTS, MASKS, MISC, MONSTERS, POWERS, RELICS, UI
+    public void addMonster() {
+        // 添加怪物
+        BaseMod.addMonster(MonsterSui_7_Ji.ID, MonsterSui_7_Ji.NAME, MonsterSui_7_Ji::new); // 绩老七
+        // BaseMod.addMonster(MonsterSui_2_Wang.ID, () -> new MonsterSui_2_Wang()); //
+        // 岁老二
+
+        // 挑山人大战行裕掌柜。
+        BaseMod.addMonster(makeID("挑山人大战行裕掌柜"), "挑山人大战行裕掌柜", () -> new MonsterGroup(new AbstractMonster[]{
+                new MountainPicker(),
+                new InnManager()
+        }));
     }
 
-    public static String makeImagePath(String path, ResourceType type) {
-        // 如果没有指定文件类型，直接改成png
-        if (path.split(".").length == 1) {
-            path += ".png";
-        }
-        path = type.toString().toLowerCase() + "/" + path;
-        return makeImagePath(path);
+    public enum ResourceType {
+        CARDS, CHAR, EVENTS, MASKS, MISC, MONSTERS, POWERS, RELICS, UI
     }
 }

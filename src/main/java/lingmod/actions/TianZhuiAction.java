@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import lingmod.powers.IncreaseDamagePower;
 
 public class TianZhuiAction extends AbstractGameAction {
-    private DamageInfo info;
+    private final DamageInfo info;
 
     public TianZhuiAction(AbstractCreature target, DamageInfo info) {
         this.info = info;
@@ -31,7 +31,7 @@ public class TianZhuiAction extends AbstractGameAction {
             if (this.isDone) {
                 AbstractDungeon.effectList.add(
                         new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, AttackEffect.BLUNT_HEAVY, false));
-                        this.target.damage(this.info);
+                this.target.damage(this.info);
                 if (this.target.lastDamageTaken > 0) {
                     this.addToTop(new ApplyPowerAction(this.target, this.source, new IncreaseDamagePower(target, target.lastDamageTaken, true)));
                     if (this.target.hb != null) {

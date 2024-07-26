@@ -13,12 +13,12 @@ import static java.lang.Math.min;
 /**
  * 回合开始时选择 x 张牌丢弃，类似少抽一张牌
  */
-public class LosePower extends AbstractEasyPower{
+public class LosePower extends AbstractEasyPower {
     public static final String POWER_NAME = LosePower.class.getSimpleName();
     public static final String ID = ModCore.makeID(POWER_NAME);
     public static final PowerStrings ps = CardCrawlGame.languagePack.getPowerStrings(ID);
 
-    public LosePower( AbstractCreature owner, int amount) {
+    public LosePower(AbstractCreature owner, int amount) {
         super(ID, ps.NAME, PowerType.DEBUFF, false, owner, amount);
     }
 

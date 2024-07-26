@@ -23,8 +23,8 @@ public class GuiXingAction extends AbstractGameAction {
     }
 
     private final boolean upgrade;
-    private AbstractPlayer p;
-    private ArrayList<AbstractCard> sameID_Cards = new ArrayList<>();
+    private final AbstractPlayer p;
+    private final ArrayList<AbstractCard> sameID_Cards = new ArrayList<>();
 
     public GuiXingAction(boolean upgrade) {
         this.upgrade = upgrade;
@@ -44,7 +44,7 @@ public class GuiXingAction extends AbstractGameAction {
             } else if (this.p.discardPile.isEmpty()) {
                 this.isDone = true;
             } else if (this.p.discardPile.size() == 1) {
-                if (((AbstractCard) this.p.discardPile.group.get(0)).cardID.equals("Exhume")) {
+                if (this.p.discardPile.group.get(0).cardID.equals("Exhume")) {
                     this.isDone = true;
                 } else {
                     AbstractCard card = this.p.discardPile.getTopCard();
@@ -67,7 +67,7 @@ public class GuiXingAction extends AbstractGameAction {
                 c = this.p.discardPile.group.iterator();
 
                 while (c.hasNext()) {
-                    derp = (AbstractCard) c.next();
+                    derp = c.next();
                     derp.stopGlowing();
                     derp.unhover();
                     derp.unfadeOut();
@@ -76,7 +76,7 @@ public class GuiXingAction extends AbstractGameAction {
                 c = this.p.discardPile.group.iterator();
 
                 while (c.hasNext()) {
-                    derp = (AbstractCard) c.next();
+                    derp = c.next();
                     if (derp.cardID.equals(GuiXingWineCard.ID)) {
                         c.remove();
                         this.sameID_Cards.add(derp);
@@ -95,7 +95,7 @@ public class GuiXingAction extends AbstractGameAction {
         } else {
             if (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
                 for (c = AbstractDungeon.gridSelectScreen.selectedCards.iterator(); c.hasNext(); derp.unhover()) {
-                    derp = (AbstractCard) c.next();
+                    derp = c.next();
                     this.p.hand.addToHand(derp);
                     if (AbstractDungeon.player.hasPower("Corruption") && derp.type == AbstractCard.CardType.SKILL) {
                         derp.setCostForTurn(-9);
@@ -113,7 +113,7 @@ public class GuiXingAction extends AbstractGameAction {
                 this.sameID_Cards.clear();
 
                 for (c = this.p.discardPile.group.iterator(); c.hasNext(); derp.target_y = 0.0F) {
-                    derp = (AbstractCard) c.next();
+                    derp = c.next();
                     derp.unhover();
                     derp.target_x = (float) CardGroup.DISCARD_PILE_X;
                 }

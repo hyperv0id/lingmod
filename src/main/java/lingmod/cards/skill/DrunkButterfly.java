@@ -17,9 +17,8 @@ import static lingmod.ModCore.makeID;
  */
 public class DrunkButterfly extends AbstractEasyCard {
 
-    protected static int flyCnt = 0; //
-
     public static final String ID = makeID(DrunkButterfly.class.getSimpleName());
+    protected static int flyCnt = 0; //
 
     public DrunkButterfly() {
         super(ID, 1, CardType.ATTACK, CardRarity.RARE, CardTarget.ALL_ENEMY);

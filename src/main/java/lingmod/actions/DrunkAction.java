@@ -17,8 +17,8 @@ import java.util.stream.Collectors;
  * 如果斩杀，那么无视路线
  */
 public class DrunkAction extends AbstractGameAction {
-    private DamageInfo info;
     private static final float DURATION = 0.1F;
+    private final DamageInfo info;
 
     public DrunkAction(AbstractPlayer p, AbstractMonster m, DamageInfo info) {
         this.setValues(m, p);
@@ -30,11 +30,11 @@ public class DrunkAction extends AbstractGameAction {
     @Override
     public void update() {
         if (this.duration == DURATION && this.target != null) {
-            boolean alreadyDead = ((AbstractMonster) this.target).isDying || this.target.currentHealth <= 0;
+            boolean alreadyDead = this.target.isDying || this.target.currentHealth <= 0;
             // 如果已经死了，那么不再计算
-            if(!alreadyDead){
+            if (!alreadyDead) {
                 this.target.damage(this.info);
-                if ((((AbstractMonster) this.target).isDying || this.target.currentHealth <= 0) && !this.target.halfDead
+                if ((this.target.isDying || this.target.currentHealth <= 0) && !this.target.halfDead
                         && !this.target.hasPower("Minion")) {
                     if (AbstractDungeon.player.relics.stream().anyMatch(r -> r.relicId.equals(WingBoots.ID))) {
                         // 有羽翼之靴
@@ -46,8 +46,7 @@ public class DrunkAction extends AbstractGameAction {
                         }
                         relic.flash();
                         relic.counter++;
-                    }
-                    else {
+                    } else {
                         WingBoots fly = new WingBoots();
                         fly.counter = 1;
                         // 获取当前房间的奖励列表

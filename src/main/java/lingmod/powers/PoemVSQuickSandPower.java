@@ -17,15 +17,15 @@ public class PoemVSQuickSandPower extends AbstractEasyPower {
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-
+    public static final Logger logger = ModCore.logger;
     private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.BUFF;
     private static final boolean TURN_BASED = true; //  是否回合后消失
-    public static final Logger logger = ModCore.logger;
     private boolean allowLoseHP = false;
 
     public PoemVSQuickSandPower(AbstractCreature owner, int amount) {
         this(owner, amount, false);
     }
+
     public PoemVSQuickSandPower(AbstractCreature owner, int amount, boolean allowLoseHP) {
         super(POWER_ID, NAME, TYPE, TURN_BASED, owner, amount);
         updateDescription();
@@ -35,14 +35,14 @@ public class PoemVSQuickSandPower extends AbstractEasyPower {
     @Override
     public void updateDescription() {
         super.updateDescription();
-        if(allowLoseHP) this.description = DESCRIPTIONS[1];
+        if (allowLoseHP) this.description = DESCRIPTIONS[1];
         else this.description = DESCRIPTIONS[0];
     }
 
     @Override
     public void wasHPLost(DamageInfo info, int damageAmount) {
         super.wasHPLost(info, damageAmount);
-        if(allowLoseHP) {
+        if (allowLoseHP) {
             if (info.owner != null && info.owner != this.owner) {
                 this.flash();
                 addToBot(new ApplyPowerAction(owner, owner, new PoeticMoodPower(owner, this.amount)));

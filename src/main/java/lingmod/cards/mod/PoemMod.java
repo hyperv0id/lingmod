@@ -17,21 +17,18 @@ import static lingmod.ModCore.makeID;
  * 打出诗类卡牌时获得 诗兴
  */
 public class PoemMod extends AbsLingCardModifier {
-    public int amount = 0;
-
     public static final UIStrings uiString = CardCrawlGame.languagePack.getUIString(makeID("PoemMod"));
+    public int amount = 0;
 
     public PoemMod(int amount) {
         this.amount = amount;
     }
 
-    
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
         return String.format(uiString.TEXT[0], amount, rawDescription);
     }
-
 
 
     @Override

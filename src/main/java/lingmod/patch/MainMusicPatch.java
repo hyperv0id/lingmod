@@ -18,6 +18,7 @@ public class MainMusicPatch {
     public static class getSongPatch {
         public getSongPatch() {
         }
+
         //        @SpirePrefixPatch
         public static Music Postfix(Music res, MainMusic _inst, String key) {
             String mName = "寻隐";
@@ -30,23 +31,23 @@ public class MainMusicPatch {
             return res;
         }
     }
-//    @SpirePatch(clz = MainMusic.class, method = "newMusic")
-//    public static class newMusicPatch {
-//        public newMusicPatch() {
-//        }
-//        //        @SpirePrefixPatch
-//        public static Music Postfix(Music res, MainMusic _inst, String path) {
-//            String kName = "CHAR_SELECT";
-//            String mName = "寻隐";
-//            String mPath = makeMusicPath(mName + ".mp3");
-//
-//            if (path.equals(makeID(kName)))
-//                return Gdx.audio.newMusic(Gdx.files.internal(mPath));
-//            if (AbstractDungeon.player != null
-//                    && AbstractDungeon.player.chosenClass == Ling.Enums.PLAYER_LING
-//                    && path.equals(kName)
-//            ) return Gdx.audio.newMusic(Gdx.files.internal(mPath));
-//            return res;
-//        }
-//    }
+    //    @SpirePatch(clz = MainMusic.class, method = "newMusic")
+    //    public static class newMusicPatch {
+    //        public newMusicPatch() {
+    //        }
+    //        //        @SpirePrefixPatch
+    //        public static Music Postfix(Music res, MainMusic _inst, String path) {
+    //            String kName = "CHAR_SELECT";
+    //            String mName = "寻隐";
+    //            String mPath = makeMusicPath(mName + ".mp3");
+    //
+    //            if (path.equals(makeID(kName)))
+    //                return Gdx.audio.newMusic(Gdx.files.internal(mPath));
+    //            if (AbstractDungeon.player != null
+    //                    && AbstractDungeon.player.chosenClass == Ling.Enums.PLAYER_LING
+    //                    && path.equals(kName)
+    //            ) return Gdx.audio.newMusic(Gdx.files.internal(mPath));
+    //            return res;
+    //        }
+    //    }
 }

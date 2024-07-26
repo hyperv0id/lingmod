@@ -15,13 +15,12 @@ import static lingmod.ModCore.makeID;
 
 public class ZuiFeiChenPower extends AbstractEasyPower implements PostExhaustSubscriber {
     public static final String POWER_ID = makeID(ZuiFeiChenPower.class.getSimpleName());
+    public static final Logger logger = ModCore.logger;
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-
     private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.BUFF;
     private static final boolean TURN_BASED = true; // 是否回合后消失
-    public static final Logger logger = ModCore.logger;
     protected final int gain;
     protected final int threshold;
 

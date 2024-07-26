@@ -7,11 +7,18 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 public class MoveToHandAction extends AbstractGameAction {
-    private static float DRAW_PILE_X;
-    private static float DRAW_PILE_Y;
+    private static final float DRAW_PILE_X;
+    private static final float DRAW_PILE_Y;
+
+    static {
+        DRAW_PILE_X = (float) Settings.WIDTH * 0.04F;
+        DRAW_PILE_Y = 50.0F * Settings.scale;
+        // DISCARD_PILE_X = (int) ((float) Settings.WIDTH + AbstractCard.IMG_WIDTH_S / 2.0F + 100.0F * Settings.scale);
+    }
+
     // private static float DISCARD_PILE_X;
     protected CardGroup group = null;
-    private AbstractCard c;
+    private final AbstractCard c;
 
     public MoveToHandAction(AbstractCard card, CardGroup group) {
         this.c = card;
@@ -21,7 +28,7 @@ public class MoveToHandAction extends AbstractGameAction {
 
     @Override
     public void update() {
-        if(this.duration == DEFAULT_DURATION){
+        if (this.duration == DEFAULT_DURATION) {
             c.unhover();
             c.lighten(true);
             c.setAngle(0.0F);
@@ -35,11 +42,5 @@ public class MoveToHandAction extends AbstractGameAction {
             AbstractDungeon.player.hand.applyPowers();
         }
         tickDuration();
-    }
-
-    static {
-        DRAW_PILE_X = (float) Settings.WIDTH * 0.04F;
-        DRAW_PILE_Y = 50.0F * Settings.scale;
-        // DISCARD_PILE_X = (int) ((float) Settings.WIDTH + AbstractCard.IMG_WIDTH_S / 2.0F + 100.0F * Settings.scale);
     }
 }

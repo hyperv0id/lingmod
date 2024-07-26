@@ -31,10 +31,6 @@ import static com.badlogic.gdx.graphics.GL20.GL_DST_COLOR;
 import static com.badlogic.gdx.graphics.GL20.GL_ZERO;
 
 public class CardArtRoller {
-    private static final Texture attackMask = TexLoader.getTexture(ModCore.makeImagePath("masks/AttackMask.png"));
-    private static final Texture skillMask = TexLoader.getTexture(ModCore.makeImagePath("masks/SkillMask.png"));
-    private static final Texture powerMask = TexLoader.getTexture(ModCore.makeImagePath("masks/PowerMask.png"));
-
     public static final String partialHueRodrigues =
             "vec3 applyHue(vec3 rgb, float hue)\n" +
                     "{\n" +
@@ -59,7 +55,6 @@ public class CardArtRoller {
             + "   v_lightFix = 1.0 + pow(v_color.a, 1.41421356);\n"
             + "   gl_Position =  u_projTrans * a_position;\n"
             + "}\n";
-
     public static final String fragmentShaderHSLC =
             "#ifdef GL_ES\n" +
                     "#define LOWP lowp\n" +
@@ -89,7 +84,10 @@ public class CardArtRoller {
                     "     dot(tgt.rgb, vec3(1.0, -0.375, -0.5)),\n" + // back to blue
                     "     tgt.a), 0.0, 1.0);\n" + // keep alpha, then clamp
                     "}";
-
+    private static final ShaderProgram shade = new ShaderProgram(vertexShaderHSLC, fragmentShaderHSLC);
+    private static final Texture attackMask = TexLoader.getTexture(ModCore.makeImagePath("masks/AttackMask.png"));
+    private static final Texture skillMask = TexLoader.getTexture(ModCore.makeImagePath("masks/SkillMask.png"));
+    private static final Texture powerMask = TexLoader.getTexture(ModCore.makeImagePath("masks/PowerMask.png"));
     private static final String vertexBicolorShader = "#version 330\n" +
             "\n" +
             "uniform mat4 u_projTrans;\n" +
@@ -106,7 +104,6 @@ public class CardArtRoller {
             "    v_color = a_color;\n" +
             "    v_texCoord = a_texCoord0;\n" +
             "}";
-
     private static final String fragmentBicolorShader = "const float SQRT = 1.73205;\n" +
             "\n" +
             "varying vec2 v_texCoord;\n" +
@@ -149,33 +146,31 @@ public class CardArtRoller {
             "\n" +
             "    gl_FragColor = vec4(newColor,color.a);\n" +
             "}";
-
-    private static HashMap<String, TextureAtlas.AtlasRegion> doneCards = new HashMap<>();
     public static HashMap<String, ReskinInfo> infos = new HashMap<>();
-    private static ShaderProgram shade = new ShaderProgram(vertexShaderHSLC, fragmentShaderHSLC);
-    private static ShaderProgram bicolorShader = new ShaderProgram(vertexBicolorShader,fragmentBicolorShader);
-    private static String[] strikes = {
+    private static final HashMap<String, TextureAtlas.AtlasRegion> doneCards = new HashMap<>();
+    private static final ShaderProgram bicolorShader = new ShaderProgram(vertexBicolorShader, fragmentBicolorShader);
+    private static final String[] strikes = {
             Strike_Red.ID,
             Strike_Blue.ID,
             Strike_Green.ID,
             Strike_Purple.ID
     };
-    private static String[] defends = {
+    private static final String[] defends = {
             Defend_Red.ID,
             Defend_Blue.ID,
             Defend_Green.ID,
             Defend_Watcher.ID
     };
-    private static ArrayList<String> possAttacks = new ArrayList<>();
-    private static ArrayList<String> openAttacks = new ArrayList<>();
-    private static ArrayList<String> doneAttacks = new ArrayList<>();
-    private static ArrayList<String> possSkills = new ArrayList<>();
-    private static ArrayList<String> openSkills = new ArrayList<>();
-    private static ArrayList<String> doneSkills = new ArrayList<>();
-    private static ArrayList<String> possPowers = new ArrayList<>();
-    private static ArrayList<String> openPowers = new ArrayList<>();
-    private static ArrayList<String> donePowers = new ArrayList<>();
-    private static CardLibrary.LibraryType[] basicColors = {
+    private static final ArrayList<String> possAttacks = new ArrayList<>();
+    private static final ArrayList<String> openAttacks = new ArrayList<>();
+    private static final ArrayList<String> doneAttacks = new ArrayList<>();
+    private static final ArrayList<String> possSkills = new ArrayList<>();
+    private static final ArrayList<String> openSkills = new ArrayList<>();
+    private static final ArrayList<String> doneSkills = new ArrayList<>();
+    private static final ArrayList<String> possPowers = new ArrayList<>();
+    private static final ArrayList<String> openPowers = new ArrayList<>();
+    private static final ArrayList<String> donePowers = new ArrayList<>();
+    private static final CardLibrary.LibraryType[] basicColors = {
             CardLibrary.LibraryType.RED,
             CardLibrary.LibraryType.GREEN,
             CardLibrary.LibraryType.BLUE,
@@ -187,6 +182,8 @@ public class CardArtRoller {
 
     private static FrameBuffer smallBuffer = null;
     private static OrthographicCamera smallCamera = null;
+    private static FrameBuffer portraitBuffer = null;
+    private static OrthographicCamera portraitCamera = null;
 
     public static void computeCard(AbstractEasyCard c) {
         c.portrait = doneCards.computeIfAbsent(c.cardID, key -> {
@@ -348,9 +345,6 @@ public class CardArtRoller {
         });
     }
 
-    private static FrameBuffer portraitBuffer = null;
-    private static OrthographicCamera portraitCamera = null;
-
     public static Texture getPortraitTexture(AbstractCard c) {
         ReskinInfo r = infos.get(c.cardID);
         Color HSLC = new Color(r.H, r.S, r.L, r.C);
@@ -456,6 +450,7 @@ public class CardArtRoller {
         }
         return skillMask;
     }
+
     public static int getMaskIndex(AbstractCard card) {
         switch (card.type) {
             case SKILL:

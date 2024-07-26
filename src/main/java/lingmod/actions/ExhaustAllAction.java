@@ -11,8 +11,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
  * 消耗所有牌，可指定CardGroup
  */
 public class ExhaustAllAction extends AbstractGameAction {
-    private float startingDuration;
     protected CardGroup cardGroup;
+    private final float startingDuration;
 
     /**
      * 消耗所有手牌

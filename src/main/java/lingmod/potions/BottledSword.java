@@ -19,6 +19,11 @@ public class BottledSword extends AbstractEasyPotion {
 
     public static String ID = makeID(BottledSword.class.getSimpleName());
 
+    public BottledSword() {
+        super(ID, PotionRarity.COMMON, PotionSize.ANVIL, new Color(0.4f, 0.2f, 0.5f, 1f),
+                new Color(0.6f, 0.8f, 1.0f, 1f), null, Ling.Enums.PLAYER_LING, ModCore.characterColor);
+    }
+
     public static ArrayList<CardGroup> getAllCardGroup() {
         ArrayList<CardGroup> cg = new ArrayList<>();
         cg.add(AbstractDungeon.player.hand);
@@ -26,11 +31,6 @@ public class BottledSword extends AbstractEasyPotion {
         cg.add(AbstractDungeon.player.drawPile);
         cg.add(AbstractDungeon.player.exhaustPile);
         return cg;
-    }
-
-    public BottledSword() {
-        super(ID, PotionRarity.COMMON, PotionSize.ANVIL, new Color(0.4f, 0.2f, 0.5f, 1f),
-                new Color(0.6f, 0.8f, 1.0f, 1f), null, Ling.Enums.PLAYER_LING, ModCore.characterColor);
     }
 
     public int getPotency(int ascensionlevel) {

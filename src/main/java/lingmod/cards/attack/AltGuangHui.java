@@ -31,5 +31,5 @@ public class AltGuangHui extends AbstractEasyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, null);
     }
-    
+
 }

@@ -18,6 +18,7 @@ import static lingmod.ModCore.makeID;
 public class HuangLiang extends AbstractEasyCard {
 
     public static final String ID = makeID(HuangLiang.class.getSimpleName());
+
     public HuangLiang() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         this.baseMagicNumber = 15; // 金币数量

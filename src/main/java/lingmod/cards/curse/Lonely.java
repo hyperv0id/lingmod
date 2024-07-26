@@ -25,7 +25,7 @@ public class Lonely extends AbstractEasyCard {
         super.triggerOnEndOfPlayerTurn();
         for (AbstractCard card : AbstractDungeon.player.hand.group) {
             // 状态 or 诅咒
-            if(card.cost < 0) continue; 
+            if (card.cost < 0) continue;
             card.cost++;
             card.costForTurn++;
             card.isCostModified = true;

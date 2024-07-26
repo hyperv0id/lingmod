@@ -2,7 +2,6 @@ package lingmod.cards.skill;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -36,7 +35,7 @@ public class XiaoMingSeCard extends AbstractEasyCard {
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
         int times = countPoet(player);
-        addToBot(new ApplyPowerAction(player, player, new PoeticMoodPower((AbstractCreature) player,
+        addToBot(new ApplyPowerAction(player, player, new PoeticMoodPower(player,
                 times)));
     }
 

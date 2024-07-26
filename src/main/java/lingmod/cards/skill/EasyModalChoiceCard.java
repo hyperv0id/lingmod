@@ -11,9 +11,9 @@ import static lingmod.ModCore.makeID;
 @AutoAdd.Ignore
 public class EasyModalChoiceCard extends AbstractEasyCard {
 
-    private Runnable onUseOrChosen;
-    private String passedName;
-    private String passedDesc;
+    private final Runnable onUseOrChosen;
+    private final String passedName;
+    private final String passedDesc;
 
     public EasyModalChoiceCard(String name, String description, Runnable onUseOrChosen) {
         super(makeID(name), -2, CardType.SKILL, CardRarity.SPECIAL, CardTarget.NONE, CardColor.COLORLESS);

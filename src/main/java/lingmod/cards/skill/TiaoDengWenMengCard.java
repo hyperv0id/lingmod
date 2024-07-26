@@ -18,8 +18,8 @@ import static lingmod.ModCore.makeID;
 public class TiaoDengWenMengCard extends AbstractEasyCard {
 
     public static final String ID = makeID(TiaoDengWenMengCard.class.getSimpleName());
-    
-    public TiaoDengWenMengCard(){
+
+    public TiaoDengWenMengCard() {
         super(ID, 0, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         CardModifierManager.addModifier(this, new ExhaustMod());
         this.baseMagicNumber = 2;
@@ -29,10 +29,10 @@ public class TiaoDengWenMengCard extends AbstractEasyCard {
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
         for (int i = 0; i < magicNumber; i++) {
             AbstractCard c = CardHelper.getTrulyRandDreamInCombat();
-            if(c == null)
+            if (c == null)
                 ModCore.logger.warn("Cannot found card with tag DREAM");
             else {
-                if(this.upgraded) c.upgrade();
+                if (this.upgraded) c.upgrade();
                 addToBot(new MakeTempCardInHandAction(c));
             }
         }

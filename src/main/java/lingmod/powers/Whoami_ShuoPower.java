@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.powers.DoubleTapPower;
 
 import static lingmod.ModCore.makeID;
 
-public class Whoami_ShuoPower extends AbstractEasyPower{
+public class Whoami_ShuoPower extends AbstractEasyPower {
     public static final String ID = makeID(Whoami_ShuoPower.class.getSimpleName());
     public static final PowerStrings ps = CardCrawlGame.languagePack.getPowerStrings(ID);
     public int counter;
@@ -29,9 +29,9 @@ public class Whoami_ShuoPower extends AbstractEasyPower{
 
     @Override
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
-        if(card.type == CardType.ATTACK) {
+        if (card.type == CardType.ATTACK) {
             this.amount++;
-            if(this.amount >= counter) {
+            if (this.amount >= counter) {
                 this.amount = 0;
                 addToBot(new ApplyPowerAction(owner, owner, new DoubleTapPower(owner, 1)));
             }

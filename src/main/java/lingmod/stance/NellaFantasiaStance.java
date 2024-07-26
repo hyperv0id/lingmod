@@ -29,12 +29,11 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamag
     public static final String STANCE_ID = makeID(STANCE_NAME);
 
     private static final StanceStrings stanceString = CardCrawlGame.languagePack.getStanceString(STANCE_ID);
-    private static long sfxId = -1L;
-
     public static int dmgModi = 0;
     public static int adder = 1; // 打出牌时增加的否定值
     public static int suber = 1; // 打出牌时减少的否定值
     public static int remainTurn = 1;
+    private static long sfxId = -1L;
 
     public NellaFantasiaStance() {
         this.ID = STANCE_ID;
@@ -110,7 +109,7 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamag
         // if (card.type == CardType.ATTACK) {
         // addToBotAbstract(() -> {
         // logger.info("敌方攻击力下降");
-        dmgModi+=adder;
+        dmgModi += adder;
         // });
         // }
     }
@@ -140,7 +139,7 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamag
     public int receiveOnPlayerDamaged(int dmg, DamageInfo info) {
         if (dmg > 0) // 如果降到0了，就不会降低自己的伤害
             Wiz.addToBotAbstract(() -> {
-                dmgModi-= suber;
+                dmgModi -= suber;
             });
         return dmg;
     }

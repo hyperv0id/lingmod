@@ -12,7 +12,7 @@ import static lingmod.ModCore.makeID;
 /**
  * 免伤50%，转换为1/M缠绕
  */
-public class ShiDuanMengChang extends AbstractEasyCard{
+public class ShiDuanMengChang extends AbstractEasyCard {
 
     public static final String ID = makeID(ShiDuanMengChang.class.getSimpleName());
 
@@ -33,5 +33,5 @@ public class ShiDuanMengChang extends AbstractEasyCard{
         // 转换成缠绕
         addToBot(new ApplyPowerAction(p, p, new DreamIsEndless(p, magicNumber)));
     }
-    
+
 }

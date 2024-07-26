@@ -18,12 +18,13 @@ public class BeiChangMeng extends AbstractEasyCard {
 
     public BeiChangMeng() {
         super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
-        
+
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        
+
     }
+
     @Override
     public void upp() {
         upgradeMagicNumber(1);

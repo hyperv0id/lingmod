@@ -9,12 +9,19 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface CardConfig {
     int damage() default -1;
+
     int damage2() default -1;
+
     int magic() default -1;
+
     int magic2() default -1;
+
     int block() default -1;
+
     int block2() default -1;
+
     int wineAmount() default -1;
+
     int poemAmount() default -1;
 
     boolean isDream() default false;

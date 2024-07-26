@@ -1,14 +1,7 @@
 package lingmod.cards;
 
-import static lingmod.ModCore.makeImagePath;
-import static lingmod.ModCore.modID;
-import static lingmod.util.Wiz.actionify;
-import static lingmod.util.Wiz.atb;
-import static lingmod.util.Wiz.att;
-import static lingmod.util.Wiz.copyAnnotatedFields;
-
-import java.util.function.Consumer;
-
+import basemod.abstracts.CustomCard;
+import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
@@ -25,9 +18,6 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-
-import basemod.abstracts.CustomCard;
-import basemod.helpers.CardModifierManager;
 import lingmod.cards.mod.NellaFantasiaMod;
 import lingmod.cards.mod.PoemMod;
 import lingmod.cards.mod.WineMod;
@@ -37,6 +27,12 @@ import lingmod.interfaces.VoidSupplier;
 import lingmod.powers.WinePower;
 import lingmod.util.CardArtRoller;
 import lingmod.util.CustomTags;
+
+import java.util.function.Consumer;
+
+import static lingmod.ModCore.makeImagePath;
+import static lingmod.ModCore.modID;
+import static lingmod.util.Wiz.*;
 
 /**
  * 卡牌大小：500*380的高分辨率，250*190的低分辨率
@@ -68,12 +64,12 @@ public abstract class AbstractEasyCard extends CustomCard {
     private boolean needsArtRefresh = false;
 
     public AbstractEasyCard(final String cardID, final int cost, final CardType type, final CardRarity rarity,
-            final CardTarget target) {
+                            final CardTarget target) {
         this(cardID, cost, type, rarity, target, Ling.Enums.LING_COLOR);
     }
 
     public AbstractEasyCard(final String cardID, final int cost, final CardType type, final CardRarity rarity,
-            final CardTarget target, final CardColor color) {
+                            final CardTarget target, final CardColor color) {
         super(cardID, "", getCardTextureString(cardID.replace(modID + ":", ""), type),
                 cost, "", type, color, rarity, target);
         cardStrings = CardCrawlGame.languagePack.getCardStrings(this.cardID);
@@ -89,6 +85,63 @@ public abstract class AbstractEasyCard extends CustomCard {
                 needsArtRefresh = true;
         }
         initializeCardValues();
+    }
+
+    public static String getCardTextureString(final String cardName, final AbstractCard.CardType cardType) {
+        String textureString = "";
+        String prefix = "cards/";
+        boolean missing = false;
+        switch (cardType) {
+            case ATTACK:
+                prefix += "attack/";
+                break;
+            case POWER:
+                prefix += "power/";
+                break;
+            case SKILL:
+                prefix += "skill/";
+                break;
+            case CURSE:
+                prefix += "curse/";
+                break;
+            case STATUS:
+                prefix += "status/";
+                break;
+            default:
+                missing = true;
+                textureString = makeImagePath("ui/missing.png");
+                break;
+        }
+        if (!missing)
+            textureString = makeImagePath(prefix + cardName + ".png");
+        FileHandle h = Gdx.files.internal(textureString);
+        if (!h.exists()) {
+            // 尝试使用默认图片
+            textureString = makeImagePath(prefix + "default.png");
+            h = Gdx.files.internal(textureString);
+            if (!h.exists()) {
+                textureString = makeImagePath("ui/missing.png");
+            }
+        }
+        return textureString;
+    }
+
+    public static void addToBotAbstract(final VoidSupplier func) {
+        AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+            public void update() {
+                func.get();
+                this.isDone = true;
+            }
+        });
+    }
+
+    public static void addToTopAbstract(final VoidSupplier func) {
+        AbstractDungeon.actionManager.addToTop(new AbstractGameAction() {
+            public void update() {
+                func.get();
+                this.isDone = true;
+            }
+        });
     }
 
     /**
@@ -134,45 +187,6 @@ public abstract class AbstractEasyCard extends CustomCard {
         } else {
             return super.getPortraitImage();
         }
-    }
-
-    public static String getCardTextureString(final String cardName, final AbstractCard.CardType cardType) {
-        String textureString = "";
-        String prefix = "cards/";
-        boolean missing = false;
-        switch (cardType) {
-            case ATTACK:
-                prefix += "attack/";
-                break;
-            case POWER:
-                prefix += "power/";
-                break;
-            case SKILL:
-                prefix += "skill/";
-                break;
-            case CURSE:
-                prefix += "curse/";
-                break;
-            case STATUS:
-                prefix += "status/";
-                break;
-            default:
-                missing = true;
-                textureString = makeImagePath("ui/missing.png");
-                break;
-        }
-        if (!missing)
-            textureString = makeImagePath(prefix + cardName + ".png");
-        FileHandle h = Gdx.files.internal(textureString);
-        if (!h.exists()) {
-            // 尝试使用默认图片
-            textureString = makeImagePath(prefix + "default.png");
-            h = Gdx.files.internal(textureString);
-            if (!h.exists()) {
-                textureString = makeImagePath("ui/missing.png");
-            }
-        }
-        return textureString;
     }
 
     @Override
@@ -381,7 +395,7 @@ public abstract class AbstractEasyCard extends CustomCard {
     }
 
     private AbstractGameAction dmgRandomAction(AbstractGameAction.AttackEffect fx,
-            Consumer<AbstractMonster> extraEffectToTarget, Consumer<AbstractMonster> effectBefore) {
+                                               Consumer<AbstractMonster> extraEffectToTarget, Consumer<AbstractMonster> effectBefore) {
         return actionify(() -> {
             AbstractMonster target = AbstractDungeon.getMonsters().getRandomMonster(null, true,
                     AbstractDungeon.cardRandomRng);
@@ -403,7 +417,7 @@ public abstract class AbstractEasyCard extends CustomCard {
     }
 
     protected void dmgRandom(AbstractGameAction.AttackEffect fx, Consumer<AbstractMonster> extraEffectToTarget,
-            Consumer<AbstractMonster> effectBefore) {
+                             Consumer<AbstractMonster> effectBefore) {
         if (fx == null)
             fx = AttackEffect.NONE;
         atb(dmgRandomAction(fx, extraEffectToTarget, effectBefore));
@@ -416,7 +430,7 @@ public abstract class AbstractEasyCard extends CustomCard {
     }
 
     protected void dmgRandomTop(AbstractGameAction.AttackEffect fx, Consumer<AbstractMonster> extraEffectToTarget,
-            Consumer<AbstractMonster> effectBefore) {
+                                Consumer<AbstractMonster> effectBefore) {
         if (fx == null)
             fx = AttackEffect.NONE;
         att(dmgRandomAction(fx, extraEffectToTarget, effectBefore));
@@ -444,24 +458,6 @@ public abstract class AbstractEasyCard extends CustomCard {
 
     public CardArtRoller.ReskinInfo reskinInfo(String ID) {
         return null;
-    }
-
-    public static void addToBotAbstract(final VoidSupplier func) {
-        AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
-            public void update() {
-                func.get();
-                this.isDone = true;
-            }
-        });
-    }
-
-    public static void addToTopAbstract(final VoidSupplier func) {
-        AbstractDungeon.actionManager.addToTop(new AbstractGameAction() {
-            public void update() {
-                func.get();
-                this.isDone = true;
-            }
-        });
     }
 
 }

@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
 
 import static lingmod.ModCore.makeID;
+
 @Ignore
 public class NoNamed_0620 extends AbstractEasyCard {
     public final static String ID = makeID(NoNamed_0620.class.getSimpleName());

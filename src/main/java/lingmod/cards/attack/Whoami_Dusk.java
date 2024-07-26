@@ -24,7 +24,8 @@ public class Whoami_Dusk extends AbstractEasyCard {
     }
 
     @Override
-    public void upp() {}
+    public void upp() {
+    }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {

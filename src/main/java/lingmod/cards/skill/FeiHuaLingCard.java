@@ -20,22 +20,23 @@ import static lingmod.ModCore.makeID;
  */
 @AutoAdd.Ignore
 @CardConfig(poemAmount = 1)
-public class FeiHuaLingCard extends AbstractEasyCard{
+public class FeiHuaLingCard extends AbstractEasyCard {
     public static final String ID = makeID(FeiHuaLingCard.class.getSimpleName());
-    public FeiHuaLingCard(){
+    int upgrade = 0;
+
+    public FeiHuaLingCard() {
         super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
     }
-    int upgrade = 0;
 
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
         ArrayList<AbstractCard> cards = abstractPlayer.hand.group;
         int times = upgrade - 1; // 不统计自己
-        for (AbstractCard c: cards) {
-            if(
-                AbstractEasyCard.class.isAssignableFrom(c.getClass()) ||
-                c.hasTag(CustomTags.POEM)
-            ){
+        for (AbstractCard c : cards) {
+            if (
+                    AbstractEasyCard.class.isAssignableFrom(c.getClass()) ||
+                            c.hasTag(CustomTags.POEM)
+            ) {
                 addToBot(new DiscardSpecificCardAction(c));
                 times++;
             }

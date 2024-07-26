@@ -13,6 +13,11 @@ import static lingmod.ModCore.logger;
 
 public final class LosePotionSlotAction extends AbstractGameAction {
 
+    public LosePotionSlotAction() {
+        duration = Settings.ACTION_DUR_MED;
+        actionType = com.megacrit.cardcrawl.actions.AbstractGameAction.ActionType.WAIT;
+    }
+
     public void update() {
         AbstractPlayer player = AbstractDungeon.player;
         player.potionSlots--;
@@ -25,7 +30,7 @@ public final class LosePotionSlotAction extends AbstractGameAction {
             }
         }
         logger.info("lose potion action" + index);
-        if(index != potions.size()-1)
+        if (index != potions.size() - 1)
             player.obtainPotion(index, copyNextPotion(potions, index));
         for (int i = index + 1; i < player.potionSlots; i++) {
             player.removePotion(potions.get(i));
@@ -37,13 +42,8 @@ public final class LosePotionSlotAction extends AbstractGameAction {
         this.isDone = true;
     }
 
-    private final AbstractPotion copyNextPotion(ArrayList<AbstractPotion> potions, int index) {
-        AbstractPotion abstractpotion = ((AbstractPotion) potions.get(index + 1)).makeCopy();
-        return abstractpotion == null ? (AbstractPotion) new PotionSlot(index) : abstractpotion;
-    }
-
-    public LosePotionSlotAction() {
-        duration = Settings.ACTION_DUR_MED;
-        actionType = com.megacrit.cardcrawl.actions.AbstractGameAction.ActionType.WAIT;
+    private AbstractPotion copyNextPotion(ArrayList<AbstractPotion> potions, int index) {
+        AbstractPotion abstractpotion = potions.get(index + 1).makeCopy();
+        return abstractpotion == null ? new PotionSlot(index) : abstractpotion;
     }
 }

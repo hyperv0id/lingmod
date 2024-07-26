@@ -22,7 +22,7 @@ public class AGiftRelic extends AbstractEasyRelic {
     public void atBattleStart() {
         super.atBattleStart();
         AbstractPlayer player = AbstractDungeon.player;
-        for(AbstractMonster mo: AbstractDungeon.getMonsters().monsters)
+        for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters)
             addToBot(new ApplyPowerAction(mo, player, new StrengthPower(mo, -1)));
     }
 }

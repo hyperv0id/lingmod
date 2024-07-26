@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.powers.DrawPower;
 public class DrawDownPower extends DrawPower {
 
     /**
-     * 
      * @param owner  持有者
      * @param amount 持有数量，绝对值表示减少数量
      */

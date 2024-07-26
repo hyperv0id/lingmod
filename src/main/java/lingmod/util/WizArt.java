@@ -16,9 +16,16 @@ import com.megacrit.cardcrawl.core.Settings;
 
 public class WizArt {
 
+    //SpriteBatch state save (only one at a time)
+    //saves the current SpriteBatch settings to load them back after you're done, to make sure you're not disturbing anything that happens around what you're doing
+    private static final StateData stateSave = new StateData();
+    //basic fbo over the whole screen. I think one global fbo like this actually covers most fbo uses.
+    //other uses can just use their own
+    public static FrameBuffer fbo = null;
+
     //draw helpers
     public static void draw(SpriteBatch sb, TextureRegion tex, float x, float y, float scale) {
-        sb.draw(tex, x, y, 0, 0, tex.getRegionWidth(),tex.getRegionHeight(),scale, scale, 0f);
+        sb.draw(tex, x, y, 0, 0, tex.getRegionWidth(), tex.getRegionHeight(), scale, scale, 0f);
     }
 
     public static void drawCentered(SpriteBatch sb, TextureRegion tex, float cX, float cY, float scale) {
@@ -45,6 +52,9 @@ public class WizArt {
         sb.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
     }
 
+
+    //buffer helpers
+
     public static void setToAdditiveBlend(SpriteBatch sb) {
         sb.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_DST_ALPHA);
     }
@@ -53,14 +63,6 @@ public class WizArt {
     public static void setToMaskBlend(SpriteBatch sb) {
         sb.setBlendFunction(GL20.GL_DST_ALPHA, GL20.GL_ONE_MINUS_DST_ALPHA);
     }
-
-
-
-    //buffer helpers
-
-    //basic fbo over the whole screen. I think one global fbo like this actually covers most fbo uses.
-    //other uses can just use their own
-    public static FrameBuffer fbo = null;
 
     public static void beginFbo() {
         if (fbo == null) {
@@ -120,11 +122,6 @@ public class WizArt {
         swapColorTexture(fb, true);
         clearCurrentBuffer();
     }
-
-
-    //SpriteBatch state save (only one at a time)
-    //saves the current SpriteBatch settings to load them back after you're done, to make sure you're not disturbing anything that happens around what you're doing
-    private static final StateData stateSave = new StateData();
 
     public static void saveState(SpriteBatch sb) {
         stateSave.save(sb);

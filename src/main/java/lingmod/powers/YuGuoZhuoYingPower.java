@@ -17,10 +17,9 @@ public class YuGuoZhuoYingPower extends AbstractEasyPower {
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-
+    public static final Logger logger = ModCore.logger;
     private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.BUFF;
     private static final boolean TURN_BASED = true; // 是否回合后消失
-    public static final Logger logger = ModCore.logger;
     public int magnitute = 1;
     public boolean startTurn;
 
@@ -54,7 +53,7 @@ public class YuGuoZhuoYingPower extends AbstractEasyPower {
     @Override
     public void updateDescription() {
         super.updateDescription();
-        if(!startTurn) {
+        if (!startTurn) {
             this.description = String.format(powerStrings.DESCRIPTIONS[0], magnitute);
         } else {
             this.description = String.format(powerStrings.DESCRIPTIONS[1], magnitute);

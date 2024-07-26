@@ -14,10 +14,16 @@ import static lingmod.ModCore.makeID;
 import static lingmod.util.Wiz.swapCardCost;
 
 public class SwapCostAction extends AbstractGameAction {
-    private static final UIStrings uiStrings;
     public static final String[] TEXT;
-    private AbstractPlayer p;
+    private static final UIStrings uiStrings;
+
+    static {
+        uiStrings = CardCrawlGame.languagePack.getUIString(makeID("SwapCost"));
+        TEXT = uiStrings.TEXT;
+    }
+
     public boolean checkWine = false;
+    private final AbstractPlayer p;
 
     public SwapCostAction() {
         this.actionType = ActionType.CARD_MANIPULATION;
@@ -38,8 +44,8 @@ public class SwapCostAction extends AbstractGameAction {
             }
 
             if (2 == this.p.hand.group.size()) {
-                AbstractCard c1 = ((AbstractCard) this.p.hand.group.get(0));
-                AbstractCard c2 = ((AbstractCard) this.p.hand.group.get(1));
+                AbstractCard c1 = this.p.hand.group.get(0);
+                AbstractCard c2 = this.p.hand.group.get(1);
                 swapCardCost(c1, c2, false);
                 this.isDone = true;
                 return;
@@ -88,10 +94,5 @@ public class SwapCostAction extends AbstractGameAction {
 
     private void returnCards() {
         this.p.hand.refreshHandLayout();
-    }
-
-    static {
-        uiStrings = CardCrawlGame.languagePack.getUIString(makeID("SwapCost"));
-        TEXT = uiStrings.TEXT;
     }
 }

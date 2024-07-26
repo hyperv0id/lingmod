@@ -24,21 +24,17 @@ public class WhoamiEvent extends AbstractImageEvent {
     private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(ID);
     public static final String MAIN_ING = "images/events/theNest.jpg";
     // public static final String MAIN_ING = makeImagePath("events/Whoami_Main.png");
-
-
-    private static final String NAME = eventStrings.NAME;
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
-
-    private WhoamiEvent.CurScreen curScreen = CurScreen.CHOICE;
-
+    private static final String NAME = eventStrings.NAME;
     AbstractCard[] cards = {
-        new Whoami_Shuo(),
-        new Whoami_Wang(),
-        new Whoami_Ling(),
-        new Whoami_Nian(),
-        new Whoami_Dusk(),
+            new Whoami_Shuo(),
+            new Whoami_Wang(),
+            new Whoami_Ling(),
+            new Whoami_Nian(),
+            new Whoami_Dusk(),
     };
+    private WhoamiEvent.CurScreen curScreen = CurScreen.CHOICE;
 
     public WhoamiEvent() {
         super(NAME, DESCRIPTIONS[0], MAIN_ING);
@@ -66,19 +62,19 @@ public class WhoamiEvent extends AbstractImageEvent {
     }
 
     private void choseCard(int btn) {
-        AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(cards[btn].makeCopy(), (float)Settings.WIDTH / 2.0F, (float)Settings.HEIGHT / 2.0F));
-        
-        this.imageEventText.updateBodyText(DESCRIPTIONS[btn+1]);
-        imageEventText.setDialogOption(OPTIONS[OPTIONS.length-1]);
+        AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(cards[btn].makeCopy(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
+
+        this.imageEventText.updateBodyText(DESCRIPTIONS[btn + 1]);
+        imageEventText.setDialogOption(OPTIONS[OPTIONS.length - 1]);
         this.imageEventText.clearRemainingOptions();
     }
 
 
-    private static enum CurScreen {
+    private enum CurScreen {
         CHOICE,
         RESULT;
 
-        private CurScreen() {
+        CurScreen() {
         }
     }
 }

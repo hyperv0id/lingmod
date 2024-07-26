@@ -27,7 +27,8 @@ public class Whoami_Shuo extends AbstractEasyCard {
     }
 
     @Override
-    public void upp() {}
+    public void upp() {
+    }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {

@@ -6,6 +6,7 @@ public class AriaCardManager {
 
     /**
      * 开局时选择一个词牌，来规定整场战斗的格调
+     *
      * @param r
      */
     public static void onBattleStart(AbstractRoom r) {

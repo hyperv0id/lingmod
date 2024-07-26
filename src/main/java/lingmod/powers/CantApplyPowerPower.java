@@ -1,17 +1,16 @@
 package lingmod.powers;
 
-import static lingmod.ModCore.makeID;
-
-import java.util.Objects;
-
+import basemod.BaseMod;
+import basemod.interfaces.PostPowerApplySubscriber;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-import basemod.BaseMod;
-import basemod.interfaces.PostPowerApplySubscriber;
+import java.util.Objects;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 你无法再获得任何能力/异常
@@ -47,8 +46,8 @@ public class CantApplyPowerPower extends AbstractEasyPower implements PostPowerA
         }
         // 自己给自己施加DEBUFF，移除这个能力
         if (target == owner && p2add.type == PowerType.DEBUFF && target == src) {
-                addToBot(new RemoveSpecificPowerAction(target, owner, p2add));
-                addToTop(new RemoveSpecificPowerAction(owner, owner, this));
+            addToBot(new RemoveSpecificPowerAction(target, owner, p2add));
+            addToTop(new RemoveSpecificPowerAction(owner, owner, this));
             return;
         }
         // if (p2add.type == PowerType.BUFF)

@@ -20,8 +20,8 @@ import java.util.stream.Collectors;
  */
 public class GuLeiXinLiuAction extends AbstractGameAction {
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("ExhumeAction");
-    private final AbstractPlayer p;
     public static final String[] TEXT = uiStrings.TEXT;
+    private final AbstractPlayer p;
     // private static ExhumeAction refer;
     private final CardGroup exhumeGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
 

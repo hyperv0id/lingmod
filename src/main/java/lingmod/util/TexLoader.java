@@ -13,14 +13,14 @@ import static lingmod.ModCore.logger;
 import static lingmod.ModCore.makeImagePath;
 
 public class TexLoader {
-    private static HashMap<String, Texture> textures = new HashMap<>();
+    private static final HashMap<String, Texture> textures = new HashMap<>();
 
     /**
      * @param textureString - String path to the texture you want to load relative
      *                      to resources,
      *                      Example: makeImagePath("missing.png")
      * @return <b>com.badlogic.gdx.graphics.Texture</b> - The texture from the path
-     *         provided
+     * provided
      */
     public static Texture getTexture(final String textureString) {
         if (textures.get(textureString) == null) {

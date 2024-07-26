@@ -17,7 +17,7 @@ import static lingmod.ModCore.makeID;
  * 消耗最左边的牌，弃牌堆中加入2张复制
  * 选择
  */
-@CardConfig(damage = 5,magic = 2, poemAmount = 2)
+@CardConfig(damage = 5, magic = 2, poemAmount = 2)
 public class RuMengLing extends AbstractEasyCard {
     public final static String ID = makeID(RuMengLing.class.getSimpleName());
 

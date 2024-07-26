@@ -17,11 +17,19 @@ import static lingmod.ModCore.makeID;
 /**
  * 回合开始时选择牌交易，消耗牌时，绩获得1力量
  */
-public class Sui7DealPower extends AngryPower{
+public class Sui7DealPower extends AngryPower {
     public static final String POWER_ID;
-    private static final PowerStrings powerStrings;
     public static final String NAME;
     public static final String[] DESCRIPTIONS;
+    private static final PowerStrings powerStrings;
+
+    static {
+        POWER_ID = makeID(Sui7DealPower.class.getSimpleName());
+        powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
+        NAME = powerStrings.NAME;
+        DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+    }
+
     public AbstractCreature provider;
 
     public Sui7DealPower(AbstractCreature owner, AbstractCreature provider, int strengthAmount) {
@@ -52,12 +60,5 @@ public class Sui7DealPower extends AngryPower{
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
         return damageAmount;
-    }
-
-    static {
-        POWER_ID = makeID(Sui7DealPower.class.getSimpleName());
-        powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
-        NAME = powerStrings.NAME;
-        DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     }
 }

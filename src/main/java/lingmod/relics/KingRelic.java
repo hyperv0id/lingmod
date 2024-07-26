@@ -10,9 +10,9 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
  */
 public abstract class KingRelic extends AbstractEasyRelic implements ClickableRelic {
 
+    protected static final int TRIGGER_CNT = 3;
     protected static boolean triggered = false;
     protected boolean doExtra = false; // 多个国王套的隐藏机制
-    protected static final int TRIGGER_CNT = 3;
 
     public KingRelic(String setId, AbstractRelic.RelicTier tier, AbstractRelic.LandingSound sfx) {
         super(setId, tier, sfx);

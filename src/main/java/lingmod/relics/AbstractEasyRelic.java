@@ -13,7 +13,7 @@ import static lingmod.ModCore.modID;
 public abstract class AbstractEasyRelic extends CustomRelic {
     public AbstractCard.CardColor color;
 
-    
+
     public AbstractEasyRelic(String setId, AbstractRelic.RelicTier tier, AbstractRelic.LandingSound sfx) {
         this(setId, tier, sfx, null);
     }
@@ -22,7 +22,7 @@ public abstract class AbstractEasyRelic extends CustomRelic {
     public AbstractEasyRelic(String setId, AbstractRelic.RelicTier tier, AbstractRelic.LandingSound sfx, AbstractCard.CardColor color) {
         super(setId, TexLoader.getTexture(makeRelicPath(setId.replace(modID + ":", "") + ".png")), tier, sfx);
         outlineImg = TexLoader.getTexture(makeRelicPath(setId.replace(modID + ":", "") + "Outline.png"));
-        if(outlineImg == null) {
+        if (outlineImg == null) {
             outlineImg = TexLoader.getTexture(makeRelicPath("Missing" + "Outline.png"));
         }
         this.color = color;
@@ -32,7 +32,7 @@ public abstract class AbstractEasyRelic extends CustomRelic {
     public void loadLargeImg() {
         if (this.largeImg == null) {
             String relicName = relicId.replace(modID + ":", "");
-            String path =  makeRelicPath(relicName + "_p.png");
+            String path = makeRelicPath(relicName + "_p.png");
             if (Gdx.files.internal(path).exists()) {
                 this.largeImg = ImageMaster.loadImage(path);
             }

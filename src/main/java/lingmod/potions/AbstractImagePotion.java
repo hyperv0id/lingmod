@@ -23,9 +23,9 @@ import static lingmod.ModCore.makeImagePath;
  * 从紫音mod抄来的带图药水
  */
 public abstract class AbstractImagePotion extends AbstractPotion {
+    public Color potionImageColor;
     protected Texture potionImg;
     protected Texture potionOutlineImg;
-    public Color potionImageColor;
 
     public AbstractImagePotion(String id, String potionImg, AbstractPotion.PotionRarity rarity) {
         super(CardCrawlGame.languagePack.getPotionString(id).NAME, id, rarity, PotionSize.S, PotionColor.STRENGTH);
@@ -36,7 +36,7 @@ public abstract class AbstractImagePotion extends AbstractPotion {
 
     public void render(SpriteBatch sb) {
         if (this.potionImg != null) {
-            float angle = (Float)ReflectionHacks.getPrivate(this, AbstractPotion.class, "angle");
+            float angle = ReflectionHacks.getPrivate(this, AbstractPotion.class, "angle");
             sb.setColor(this.potionImageColor);
             sb.draw(this.potionImg, this.posX - 32.0F, this.posY - 32.0F, 32.0F, 32.0F, 64.0F, 64.0F, this.scale, this.scale, angle, 0, 0, 64, 64, false, false);
         }
@@ -55,7 +55,7 @@ public abstract class AbstractImagePotion extends AbstractPotion {
 
     public void renderLightOutline(SpriteBatch sb) {
         if (this.potionOutlineImg != null) {
-            float angle = (Float)ReflectionHacks.getPrivate(this, AbstractPotion.class, "angle");
+            float angle = ReflectionHacks.getPrivate(this, AbstractPotion.class, "angle");
             sb.setColor(Settings.QUARTER_TRANSPARENT_BLACK_COLOR);
             sb.draw(this.potionOutlineImg, this.posX - 32.0F, this.posY - 32.0F, 32.0F, 32.0F, 64.0F, 64.0F, this.scale, this.scale, angle, 0, 0, 64, 64, false, false);
         }
@@ -64,7 +64,7 @@ public abstract class AbstractImagePotion extends AbstractPotion {
 
     public void renderOutline(SpriteBatch sb) {
         if (this.potionOutlineImg != null) {
-            float angle = (Float)ReflectionHacks.getPrivate(this, AbstractPotion.class, "angle");
+            float angle = ReflectionHacks.getPrivate(this, AbstractPotion.class, "angle");
             sb.setColor(Settings.HALF_TRANSPARENT_BLACK_COLOR);
             sb.draw(this.potionOutlineImg, this.posX - 32.0F, this.posY - 32.0F, 32.0F, 32.0F, 64.0F, 64.0F, this.scale, this.scale, angle, 0, 0, 64, 64, false, false);
         }
@@ -73,7 +73,7 @@ public abstract class AbstractImagePotion extends AbstractPotion {
 
     public void renderOutline(SpriteBatch sb, Color c) {
         if (this.potionOutlineImg != null) {
-            float angle = (Float)ReflectionHacks.getPrivate(this, AbstractPotion.class, "angle");
+            float angle = ReflectionHacks.getPrivate(this, AbstractPotion.class, "angle");
             sb.setColor(c);
             sb.draw(this.potionOutlineImg, this.posX - 32.0F, this.posY - 32.0F, 32.0F, 32.0F, 64.0F, 64.0F, this.scale, this.scale, angle, 0, 0, 64, 64, false, false);
         }
@@ -119,7 +119,7 @@ public abstract class AbstractImagePotion extends AbstractPotion {
         }
 
         if (this.hb.hovered) {
-            TipHelper.queuePowerTips((float)InputHelper.mX + 50.0F * Settings.scale, (float)InputHelper.mY + 50.0F * Settings.scale, this.tips);
+            TipHelper.queuePowerTips((float) InputHelper.mX + 50.0F * Settings.scale, (float) InputHelper.mY + 50.0F * Settings.scale, this.tips);
             this.scale = 1.5F * Settings.scale;
         } else {
             this.scale = MathHelper.scaleLerpSnap(this.scale, 1.2F * Settings.scale);

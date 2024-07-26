@@ -32,7 +32,7 @@ public class ScreenPatch {
     @SpirePatch(clz = DeathScreen.class, method = "getDeathText")
     public static class DeathScreen_DeathText {
 
-        public static String[] deathTexts = { "酣眠", "坛子空了", "生皆梦幻，如露似电，无踪泡影", "国蚀器锈 如梦似电 无踪泡影" };
+        public static String[] deathTexts = {"酣眠", "坛子空了", "生皆梦幻，如露似电，无踪泡影", "国蚀器锈 如梦似电 无踪泡影"};
 
         @SpirePostfixPatch
         public static String Insert(String __result, DeathScreen __inst) {

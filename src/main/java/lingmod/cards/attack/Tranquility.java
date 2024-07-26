@@ -15,8 +15,8 @@ import static lingmod.ModCore.makeID;
 /**
  * 清平：消耗一张牌，造成 !D! 点伤害，获得 !M! ${ModID}:诗兴 NL 自身被消耗时也获得 !M! ${ModID}:诗兴
  */
-@CardConfig(damage=7, magic=1)
-public class Tranquility extends AbstractEasyCard{
+@CardConfig(damage = 7, magic = 1)
+public class Tranquility extends AbstractEasyCard {
 
     public static final String ID = makeID(Tranquility.class.getSimpleName());
 
@@ -43,7 +43,7 @@ public class Tranquility extends AbstractEasyCard{
         dmg(m, AttackEffect.NONE);
         addToBotAbstract(() -> {
             this.addToTop(new ExhaustAction(1, false));
-            if(p.hand.size() > 0) {
+            if (p.hand.size() > 0) {
                 addToBot(new ApplyPowerAction(p, p, new PoeticMoodPower(p, magicNumber)));
             }
         });

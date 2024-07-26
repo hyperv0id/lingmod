@@ -12,19 +12,20 @@ import com.megacrit.cardcrawl.powers.BufferPower;
 
 import static lingmod.ModCore.makeID;
 
-public class Whoami_NianPower extends AbstractEasyPower{
+public class Whoami_NianPower extends AbstractEasyPower {
     public static final String POWER_NAME = Whoami_NianPower.class.getSimpleName();
     public static final String ID = makeID(POWER_NAME);
     public static final PowerStrings ps = CardCrawlGame.languagePack.getPowerStrings(ID);
+
     public Whoami_NianPower(AbstractCreature owner) {
         super(ID, ps.NAME, PowerType.DEBUFF, false, owner, 0);
     }
-    
+
     @Override
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
         super.onPlayCard(card, m);
-        if(card.type == CardType.ATTACK) {
-            if(owner.powers.stream().noneMatch(p->p.ID.equals(BufferPower.POWER_ID))) {
+        if (card.type == CardType.ATTACK) {
+            if (owner.powers.stream().noneMatch(p -> p.ID.equals(BufferPower.POWER_ID))) {
                 addToBot(new RemoveSpecificPowerAction(owner, owner, this));
             } else {
                 this.flash();

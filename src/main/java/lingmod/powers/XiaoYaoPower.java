@@ -23,13 +23,11 @@ public class XiaoYaoPower extends AbstractEasyPower {
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-
+    public static final Logger logger = ModCore.logger;
+    public static final int MAX_CAPA_EX = 5; // 扩容之多为5
     private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.BUFF;
     private static final boolean TURN_BASED = true; // 是否回合后消失
-    public static final Logger logger = ModCore.logger;
-
     private static int id_postfix = 0;
-    public static final int MAX_CAPA_EX = 5; // 扩容之多为5
 
     public XiaoYaoPower(AbstractCreature owner) {
         super(POWER_ID + id_postfix++, NAME, TYPE, TURN_BASED, owner, 0);

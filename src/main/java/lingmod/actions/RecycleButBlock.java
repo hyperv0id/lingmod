@@ -14,9 +14,15 @@ import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import java.util.Iterator;
 
 public class RecycleButBlock extends AbstractGameAction {
-    private static final UIStrings uiStrings;
     public static final String[] TEXT;
-    private AbstractPlayer p;
+    private static final UIStrings uiStrings;
+
+    static {
+        uiStrings = CardCrawlGame.languagePack.getUIString("RecycleAction");
+        TEXT = uiStrings.TEXT;
+    }
+
+    private final AbstractPlayer p;
     private int magnification = 1;
 
     public RecycleButBlock(int magnification) {
@@ -48,7 +54,7 @@ public class RecycleButBlock extends AbstractGameAction {
 
                 // 遍历选定的手牌中的卡片
                 for (Iterator<AbstractCard> var1 = AbstractDungeon.handCardSelectScreen.selectedCards.group
-                        .iterator(); var1.hasNext();) {
+                        .iterator(); var1.hasNext(); ) {
                     c = var1.next(); // 获取下一张卡片
                     if (c.costForTurn > 0) {
                         // 如果卡片有正的费用，获得相应的格挡
@@ -65,10 +71,5 @@ public class RecycleButBlock extends AbstractGameAction {
 
             this.tickDuration();
         }
-    }
-
-    static {
-        uiStrings = CardCrawlGame.languagePack.getUIString("RecycleAction");
-        TEXT = uiStrings.TEXT;
     }
 }

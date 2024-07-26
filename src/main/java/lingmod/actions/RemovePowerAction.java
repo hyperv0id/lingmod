@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class RemovePowerAction extends AbstractGameAction {
     private final AbstractPower.PowerType powerType;
-    private AbstractCreature c;
+    private final AbstractCreature c;
 
     public RemovePowerAction(AbstractCreature c, AbstractPower.PowerType powerType) {
         this.powerType = powerType;

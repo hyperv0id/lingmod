@@ -1,14 +1,13 @@
 package lingmod.potions;
 
-import static lingmod.ModCore.makeID;
-import static lingmod.ModCore.makeImagePath;
-
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-
 import lingmod.ModCore;
 import lingmod.character.Ling;
 import lingmod.events.DoujinshiPlot;
+
+import static lingmod.ModCore.makeID;
+import static lingmod.ModCore.makeImagePath;
 
 public class ForgetPotion extends AbstractEasyPotion {
     public static String ID = makeID(ForgetPotion.class.getSimpleName());
@@ -32,7 +31,7 @@ public class ForgetPotion extends AbstractEasyPotion {
      */
     @Override
     public void use(AbstractCreature arg0) {
-        if(DoujinshiPlot.__inst == null) return;
+        if (DoujinshiPlot.__inst == null) return;
         DoujinshiPlot.__inst.transitionKey(DoujinshiPlot.Phases.DOUJINSHI);
         DoujinshiPlot.__inst.imageEventText.loadImage(makeImagePath("events/DoujinshiPlot_1.png"));
     }

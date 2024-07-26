@@ -1,7 +1,6 @@
 package lingmod.cards.mod;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -9,9 +8,9 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
-
-import basemod.abstracts.AbstractCardModifier;
 import lingmod.stance.NellaFantasiaStance;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 这张卡牌是诗

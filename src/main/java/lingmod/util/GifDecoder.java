@@ -1,27 +1,28 @@
 package lingmod.util;
 
-// Copied from: https://github.com/mekomidev/gdxengine/blob/master/core/src/com/mekomidev/gdxengine/utils/loaders/GifDecoder.java
-/**
- * Copyright (c) 2013 Xcellent Creations, Inc.
- *
- * Permission is hereby granted, free of charge, to any person obtaining
- * a copy of this software and associated documentation files (the
- * "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish,
- * distribute, sublicense, and/or sell copies of the Software, and to
- * permit persons to whom the Software is furnished to do so, subject to
- * the following conditions:
- *
- * The above copyright notice and this permission notice shall be
- * included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+/*
+  Copied from: https://github.com/mekomidev/gdxengine/blob/master/core/src/com/mekomidev/gdxengine/utils/loaders
+  /GifDecoder.java
+  Copyright (c) 2013 Xcellent Creations, Inc.
+  <p>
+  Permission is hereby granted, free of charge, to any person obtaining
+  a copy of this software and associated documentation files (the
+  "Software"), to deal in the Software without restriction, including
+  without limitation the rights to use, copy, modify, merge, publish,
+  distribute, sublicense, and/or sell copies of the Software, and to
+  permit persons to whom the Software is furnished to do so, subject to
+  the following conditions:
+  <p>
+  The above copyright notice and this permission notice shall be
+  included in all copies or substantial portions of the Software.
+  <p>
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+  LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+  OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
 import com.badlogic.gdx.graphics.Color;
@@ -47,20 +48,20 @@ import java.util.ArrayList;
  * for animation purposes. Image data can be read from either and InputStream
  * source
  * or a byte[].
- *
+ * <p></p>
  * This class is optimized for running animations with the frames, there
  * are no methods to get individual frame images, only to decode the next frame
  * in the
  * animation sequence. Instead, it lowers its memory footprint by only housing
  * the minimum
  * data necessary to decode the next frame in the animation sequence.
- *
+ * <p></p>
  * The animation must be manually moved forward using {@link #advance()} before
  * requesting the next
  * frame. This method must also be called before you request the first frame or
  * an error will
  * occur.
- *
+ * <p></p>
  * Implementation adapted from sample code published in Lyons. (2004). <em>Java
  * for Programmers</em>,
  * republished under the MIT Open Source License
@@ -101,12 +102,11 @@ public class GifDecoder {
      * GIF Disposal Method meaning clear canvas to frame before last
      */
     private static final int DISPOSAL_PREVIOUS = 3;
-
+    static GifDecoder gdec = new GifDecoder();
     /**
      * Global status code of GIF data parsing
      */
     protected int status;
-
     // Global File Header values and parsing flags
     protected int width; // full image width
     protected int height; // full image height
@@ -120,98 +120,37 @@ public class GifDecoder {
     protected int pixelAspect; // pixel aspect ratio
     protected boolean lctFlag; // local color table flag
     protected int lctSize; // local color table size
-
     // Raw GIF data from input source
     protected ByteBuffer rawData;
-
     // Raw data read working array
     protected byte[] block = new byte[256]; // current data block
     protected int blockSize = 0; // block size last graphic control extension info
-
     // LZW decoder working arrays
     protected short[] prefix;
     protected byte[] suffix;
     protected byte[] pixelStack;
     protected byte[] mainPixels;
     protected int[] mainScratch, copyScratch;
-
     protected ArrayList<GifFrame> frames; // frames read from current file
     protected GifFrame currentFrame;
-
     protected DixieMap previousImage, currentImage, renderImage;
-
     protected int framePointer;
     protected int frameCount;
 
-    /**
-     * Inner model class housing metadata for each frame
-     */
-    private static class GifFrame {
-        public int ix, iy, iw, ih;
-        /* Control Flags */
-        public boolean interlace;
-        public boolean transparency;
-        /* Disposal Method */
-        public int dispose;
-        /* Transparency Index */
-        public int transIndex;
-        /* Delay, in ms, to next frame */
-        public int delay;
-        /* Index in the raw buffer where we need to start reading to decode */
-        public int bufferFrameStart;
-        /* Local Color Table */
-        public int[] lct;
+    public static Animation<TextureRegion> loadGIFAnimation(PlayMode playType, InputStream is, int len) {
+        gdec.read(is, len);
+        return gdec.getAnimation(playType);
     }
 
-    private static class DixieMap extends Pixmap {
-        DixieMap(int w, int h, Pixmap.Format f) {
-            super(w, h, f);
-        }
+    public static Animation<TextureRegion> loadGIFAnimation(PlayMode playType, byte[] is) {
+        gdec.read(is);
+        return gdec.getAnimation(playType);
+    }
 
-        DixieMap(int[] data, int w, int h, Pixmap.Format f) {
-            super(w, h, f);
-
-            int x, y;
-
-            for (y = 0; y < h; y++) {
-                for (x = 0; x < w; x++) {
-                    int pxl_ARGB8888 = data[x + y * w];
-                    int pxl_RGBA8888 = ((pxl_ARGB8888 >> 24) & 0x000000ff) | ((pxl_ARGB8888 << 8) & 0xffffff00);
-                    // convert ARGB8888 > RGBA8888
-                    drawPixel(x, y, pxl_RGBA8888);
-                }
-            }
-        }
-
-        void setPixels(int[] pixels, int offset, int stride, int x, int y, int width, int height) {
-            getPixels();
-            for (y = 0; y < height; y++) {
-                for (x = 0; x < width; x++) {
-                    int pxl_ARGB8888 = pixels[x + y * width];
-                    int pxl_RGBA8888 = ((pxl_ARGB8888 >> 24) & 0x000000ff) | ((pxl_ARGB8888 << 8) & 0xffffff00);
-                    // convert ARGB8888 > RGBA8888
-                    drawPixel(x, y, pxl_RGBA8888);
-                }
-            }
-
-        }
-
-        void getPixels(int[] pixels, int offset, int stride, int x, int y, int width, int height) {
-            java.nio.ByteBuffer bb = getPixels();
-
-            int k, l;
-
-            for (k = y; k < y + height; k++) {
-                int _offset = offset;
-                for (l = x; l < x + width; l++) {
-                    int pxl = bb.getInt(4 * (l + k * width));
-
-                    // convert RGBA8888 > ARGB8888
-                    pixels[_offset++] = ((pxl >> 8) & 0x00ffffff) | ((pxl << 24) & 0xff000000);
-                }
-                offset += stride;
-            }
-        }
+    public static Animation<TextureRegion> loadGIFAnimation(Animation.PlayMode playMode, InputStream is) {
+        GifDecoder gdec = new GifDecoder();
+        gdec.read(is);
+        return gdec.getAnimation(playMode);
     }
 
     /**
@@ -560,7 +499,7 @@ public class GifDecoder {
 
         // Decode GIF pixel stream.
         datum = bits = count = first = top = pi = bi = 0;
-        for (i = 0; i < npix;) {
+        for (i = 0; i < npix; ) {
             if (top == 0) {
                 if (bits < code_size) {
                     // Load bytes until there are enough bits for a code.
@@ -911,7 +850,7 @@ public class GifDecoder {
 
         int width = frame.getWidth();
         int height = frame.getHeight();
-        int vzones = (int) Math.sqrt((double) nrFrames);
+        int vzones = (int) Math.sqrt(nrFrames);
         int hzones = vzones;
         while (vzones * hzones < nrFrames)
             vzones++;
@@ -975,23 +914,5 @@ public class GifDecoder {
         copyScratch = null;
 
         return result; // return animation object
-    }
-
-    static GifDecoder gdec = new GifDecoder();
-
-    public static Animation<TextureRegion> loadGIFAnimation(PlayMode playType, InputStream is, int len) {
-        gdec.read(is, len);
-        return gdec.getAnimation(playType);
-    }
-
-    public static Animation<TextureRegion> loadGIFAnimation(PlayMode playType, byte[] is) {
-        gdec.read(is);
-        return gdec.getAnimation(playType);
-    }
-
-    public static Animation<TextureRegion> loadGIFAnimation(Animation.PlayMode playMode, InputStream is) {
-        GifDecoder gdec = new GifDecoder();
-        gdec.read(is);
-        return gdec.getAnimation(playMode);
     }
 }

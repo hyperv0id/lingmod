@@ -16,19 +16,16 @@ import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import lingmod.ModCore;
 
 import static lingmod.ModCore.makeID;
+
 public class FallingEvent extends AbstractImageEvent {
     public static final String ID = makeID(FallingEvent.class.getSimpleName());
     private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(ID);
-    public static final String NAME;
-    public static final String[] DESCRIPTIONS;
-    public static final String[] OPTIONS;
-    static {
-        NAME = eventStrings.NAME;
-        DESCRIPTIONS = eventStrings.DESCRIPTIONS;
-        OPTIONS = eventStrings.OPTIONS;
-    }
+    public static final String NAME = eventStrings.NAME;
+    public static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
+    public static final String[] OPTIONS = eventStrings.OPTIONS;
     private static final String DIALOG_1 = DESCRIPTIONS[0];
     private static final String DIALOG_2 = DESCRIPTIONS[1];
+
     private FallingEvent.CurScreen screen = FallingEvent.CurScreen.INTRO;
     private boolean attack;
     private boolean skill;
@@ -68,7 +65,7 @@ public class FallingEvent extends AbstractImageEvent {
     }
 
     protected void buttonEffect(int buttonPressed) {
-        switch(this.screen) {
+        switch (this.screen) {
             case INTRO:
                 this.screen = FallingEvent.CurScreen.CHOICE;
                 this.imageEventText.updateBodyText(DIALOG_2);
@@ -78,21 +75,21 @@ public class FallingEvent extends AbstractImageEvent {
                 } else {
                     if (this.skill) {
                         this.imageEventText
-                            .setDialogOption(OPTIONS[1] + FontHelper.colorString(this.skillCard.name, "r"), this.skillCard.makeStatEquivalentCopy());
+                                .setDialogOption(OPTIONS[1] + FontHelper.colorString(this.skillCard.name, "r"), this.skillCard.makeStatEquivalentCopy());
                     } else {
                         this.imageEventText.setDialogOption(OPTIONS[2], true);
                     }
 
                     if (this.power) {
                         this.imageEventText
-                            .setDialogOption(OPTIONS[3] + FontHelper.colorString(this.powerCard.name, "r"), this.powerCard.makeStatEquivalentCopy());
+                                .setDialogOption(OPTIONS[3] + FontHelper.colorString(this.powerCard.name, "r"), this.powerCard.makeStatEquivalentCopy());
                     } else {
                         this.imageEventText.setDialogOption(OPTIONS[4], true);
                     }
 
                     if (this.attack) {
                         this.imageEventText
-                            .setDialogOption(OPTIONS[5] + FontHelper.colorString(this.attackCard.name, "r"), this.attackCard.makeStatEquivalentCopy());
+                                .setDialogOption(OPTIONS[5] + FontHelper.colorString(this.attackCard.name, "r"), this.attackCard.makeStatEquivalentCopy());
                     } else {
                         this.imageEventText.setDialogOption(OPTIONS[6], true);
                     }
@@ -103,7 +100,7 @@ public class FallingEvent extends AbstractImageEvent {
                 this.screen = FallingEvent.CurScreen.RESULT;
                 this.imageEventText.clearAllDialogs();
                 this.imageEventText.setDialogOption(OPTIONS[7]);
-                switch(buttonPressed) {
+                switch (buttonPressed) {
                     case 0:
                         if (!this.skill && !this.power && !this.attack) {
                             this.imageEventText.updateBodyText(DESCRIPTIONS[5]);
@@ -134,7 +131,7 @@ public class FallingEvent extends AbstractImageEvent {
                         // TODO: 回到地图底层
                         // 扣一半血
                         AbstractDungeon.actionManager.addToBottom(new DamageAction(p, new DamageInfo(
-                                p, p.currentHealth/2)));
+                                p, p.currentHealth / 2)));
                         this.openMap();
                         return;
                     default:
@@ -146,13 +143,12 @@ public class FallingEvent extends AbstractImageEvent {
     }
 
 
-
-    private static enum CurScreen {
+    private enum CurScreen {
         INTRO,
         CHOICE,
         RESULT;
 
-        private CurScreen() {
+        CurScreen() {
         }
     }
 }

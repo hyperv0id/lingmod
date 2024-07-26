@@ -13,8 +13,6 @@ import lingmod.util.CustomTags;
 
 import static lingmod.ModCore.makeID;
 
-;
-
 /**
  * 获得人工制品，升级后获得手牌中 酒牌 数量的人工制品
  */

@@ -336,7 +336,7 @@ public class Wiz {
 
     /**
      * makeStatEquivalentCopy 自动 复制注解
-     * 
+     *
      * @param source 原始类
      * @param target 新的复制类
      */
@@ -389,7 +389,7 @@ public class Wiz {
                 .map(card -> card.costForTurn)
                 .orElse(3); // Replace with a default value if no card is found
         AbstractDungeon.player.hand.group.forEach(card -> {
-            if(noWine && card.hasTag(CustomTags.WINE)) return;
+            if (noWine && card.hasTag(CustomTags.WINE)) return;
             if (card.cost >= 0) {
                 int newCost = AbstractDungeon.cardRandomRng.random(maxCost);
                 if (card.cost != newCost) {

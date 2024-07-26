@@ -1,7 +1,6 @@
 package lingmod.potions;
 
 import com.badlogic.gdx.graphics.Color;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.InstantKillAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -33,9 +32,10 @@ public class BottledPawn extends AbstractEasyPotion {
     public boolean canUse() {
         return super.canUse() && !(AbstractDungeon.getCurrRoom() instanceof MonsterRoomBoss);
     }
+
     public void use(AbstractCreature target) {
         if (AbstractDungeon.getCurrRoom().phase == RoomPhase.COMBAT) {
-            addToBot((AbstractGameAction) new LosePotionSlotAction());
+            addToBot(new LosePotionSlotAction());
             for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
                 if (AbstractDungeon.getCurrRoom().eliteTrigger) {
                     Wiz.addToBotAbstract(() -> {

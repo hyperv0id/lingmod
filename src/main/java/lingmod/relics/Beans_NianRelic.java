@@ -9,10 +9,10 @@ import static lingmod.ModCore.makeID;
 /**
  * 每回合 3 活力
  */
-public class Beans_NianRelic extends AbstractEasyRelic{
+public class Beans_NianRelic extends AbstractEasyRelic {
     public static final String ID = makeID(Beans_NianRelic.class.getSimpleName());
 
-    public  Beans_NianRelic(){
+    public Beans_NianRelic() {
         super(ID, RelicTier.SPECIAL, LandingSound.CLINK);
 
     }

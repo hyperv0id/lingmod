@@ -21,6 +21,7 @@ public class MonsterHelper {
 
     /**
      * calculate damage for all monsters
+     *
      * @return total damage
      */
     public static int calcIntentDmg() {
@@ -33,8 +34,8 @@ public class MonsterHelper {
 
 
     /**
-     *
      * calculate damage for specific monsters
+     *
      * @param mo specific monster
      * @return total damage
      */
@@ -46,7 +47,7 @@ public class MonsterHelper {
             int moDamage = basemod.ReflectionHacks.getPrivate(mo, AbstractMonster.class, "intentDmg");
             if (moDamage <= 0) return 0;
             if ((boolean) basemod.ReflectionHacks.getPrivate(mo, AbstractMonster.class, "isMultiDmg")) {
-                moDamage *= (int) ReflectionHacks.getPrivate(mo, AbstractMonster.class, "intentMultiAmt");
+                moDamage *= (Integer) ReflectionHacks.getPrivate(mo, AbstractMonster.class, "intentMultiAmt");
             }
             total += moDamage;
         }

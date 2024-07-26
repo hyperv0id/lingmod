@@ -10,6 +10,7 @@ public class JiangNan extends AbstractDailyMod {
 
     public static final String ID = ModCore.makeID(JiangNan.class.getSimpleName());
     private static final RunModStrings modStrings = CardCrawlGame.languagePack.getRunModString(ID);
+
     public JiangNan() {
         super(ID, modStrings.NAME, modStrings.DESCRIPTION, "", false);
         TODO.info("江南模式未实现");

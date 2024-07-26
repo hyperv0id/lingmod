@@ -35,30 +35,15 @@ import java.util.stream.Collectors;
  */
 public class AriaTopPanel extends TopPanelItem implements CustomSavable<List<CardSave>> {
 
-    protected static final String IMG_PATH = ModCore.makeImagePath("ui/ariadeck.png");
-    private static final Texture IMG = new Texture(IMG_PATH);
     public static final String ID = ModCore.makeID(AriaTopPanel.class.getSimpleName());
-    public static CardGroup ariaGroup; // 所有词牌的group
     public static final UIStrings ui = CardCrawlGame.languagePack.getUIString(ID);
     public static final String[] TEXT = ui.TEXT;
+    protected static final String IMG_PATH = ModCore.makeImagePath("ui/ariadeck.png");
+    private static final Texture IMG = new Texture(IMG_PATH);
+    public static CardGroup ariaGroup; // 所有词牌的group
 
     public AriaTopPanel() {
         super(IMG, ID);
-    }
-
-    @Override
-    public void update() {
-        super.update();
-        if (this.hitbox.hovered && InputHelper.justClickedRight)
-            this.onRightClick();
-    }
-
-    /**
-     * 右键点击查看当前词牌的衍生/句子
-     */
-    public void onRightClick() {
-        // TODO 右键点击查看当前词牌的衍生/句子
-        ModCore.logger.info("Top Panel Aria Was RightClicked");
     }
 
     /**
@@ -115,11 +100,26 @@ public class AriaTopPanel extends TopPanelItem implements CustomSavable<List<Car
             }
 
             if (AbstractDungeon.screen != CurrentScreen.VICTORY) {
-                BaseMod.openCustomScreen(AriaViewScreen.Enum.ARIA_CARD_VIEW_SCREEN, new Object[0]);
+                BaseMod.openCustomScreen(AriaViewScreen.Enum.ARIA_CARD_VIEW_SCREEN);
             }
         }
 
         InputHelper.justClickedLeft = false;
+    }
+
+    @Override
+    public void update() {
+        super.update();
+        if (this.hitbox.hovered && InputHelper.justClickedRight)
+            this.onRightClick();
+    }
+
+    /**
+     * 右键点击查看当前词牌的衍生/句子
+     */
+    public void onRightClick() {
+        // TODO 右键点击查看当前词牌的衍生/句子
+        ModCore.logger.info("Top Panel Aria Was RightClicked");
     }
 
     /**
@@ -135,7 +135,7 @@ public class AriaTopPanel extends TopPanelItem implements CustomSavable<List<Car
     }
 
     public List<CardSave> onSave() {
-        CardGroup ariaCards = (CardGroup) PlayerFieldsPatch.ariaCardGroup.get(Wiz.adp());
+        CardGroup ariaCards = PlayerFieldsPatch.ariaCardGroup.get(Wiz.adp());
         ArrayList<CardSave> retVal = new ArrayList<>();
         // 检查ariaCards.group是否为null
         if (ariaCards.group != null) {
@@ -148,7 +148,7 @@ public class AriaTopPanel extends TopPanelItem implements CustomSavable<List<Car
     }
 
     public void onLoad(List<CardSave> cardSaves) {
-        CardGroup ariaCards = (CardGroup) PlayerFieldsPatch.ariaCardGroup.get(Wiz.adp());
+        CardGroup ariaCards = PlayerFieldsPatch.ariaCardGroup.get(Wiz.adp());
 
         if (cardSaves != null) {
             for (CardSave s : cardSaves) {

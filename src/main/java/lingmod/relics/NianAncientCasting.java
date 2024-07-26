@@ -14,10 +14,9 @@ import static lingmod.ModCore.makeID;
 public class NianAncientCasting extends AbstractEasyRelic implements StartActSubscriber {
 
     public static final String ID = makeID("NianAncientCasting");
-
-    public int actNum; // 地图在哪里
     public static final int BUFFER_NUM = 3; // 获得几层缓冲
     public static final int BLOCK_NUM = 4; // 获得几层格挡
+    public int actNum; // 地图在哪里
 
     public NianAncientCasting() {
         super(ID, RelicTier.SPECIAL, LandingSound.FLAT);

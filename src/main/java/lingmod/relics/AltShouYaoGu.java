@@ -13,6 +13,7 @@ import static lingmod.ModCore.makeID;
 public class AltShouYaoGu extends AbstractEasyRelic {
     public static final String ID = makeID(AltShouYaoGu.class.getSimpleName());
     public static final int NUM = 4;
+
     public AltShouYaoGu() {
         super(ID, RelicTier.COMMON, LandingSound.FLAT);
     }

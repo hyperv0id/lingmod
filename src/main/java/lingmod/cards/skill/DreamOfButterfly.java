@@ -17,7 +17,7 @@ import static lingmod.ModCore.makeID;
 /**
  * 梦蝶：造（升级过的）能力牌，其耗能-1
  */
-public class DreamOfButterfly extends AbstractEasyCard{
+public class DreamOfButterfly extends AbstractEasyCard {
 
     public static final String ID = makeID(DreamOfButterfly.class.getSimpleName());
 
@@ -28,12 +28,12 @@ public class DreamOfButterfly extends AbstractEasyCard{
         tags.add(CustomTags.DREAM);
         CardModifierManager.addModifier(this, new NellaFantasiaMod());
     }
-    
+
     @Override
     public void use(AbstractPlayer arg0, AbstractMonster arg1) {
         for (int i = 0; i < magicNumber; i++) {
             AbstractCard c = AbstractDungeon.returnTrulyRandomCardInCombat(CardType.POWER).makeCopy();
-            if(upgraded) {
+            if (upgraded) {
                 addToBot(new UpgradeSpecificCardAction(c));
             }
             c.cost -= 1;
@@ -42,7 +42,7 @@ public class DreamOfButterfly extends AbstractEasyCard{
             addToBot(new MakeTempCardInDrawPileAction(c, 1, true, true));
         }
     }
-    
+
     @Override
     public void upp() {
     }

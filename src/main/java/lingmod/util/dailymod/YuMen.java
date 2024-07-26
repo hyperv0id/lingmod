@@ -9,6 +9,7 @@ import lingmod.util.TODO;
 public class YuMen extends AbstractDailyMod {
     public static final String ID = ModCore.makeID(YuMen.class.getSimpleName());
     private static final RunModStrings modStrings = CardCrawlGame.languagePack.getRunModString(ID);
+
     public YuMen() {
         super(ID, modStrings.NAME, modStrings.DESCRIPTION, "", false);
         TODO.info("玉门模式未实现");

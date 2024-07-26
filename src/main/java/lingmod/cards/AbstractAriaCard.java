@@ -19,9 +19,9 @@ public abstract class AbstractAriaCard extends AbstractEasyCard {
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
     public static final String TYPE = uiStrings.TEXT[0]; // 词牌
     public CardStrings cardStrings;
+    public int poeticCost = 0; // 打出需要消耗多少诗兴
     protected boolean isOptionCard = false;
     protected boolean used = false;
-    public int poeticCost = 0; // 打出需要消耗多少诗兴
     protected int[] costs;
 
     public AbstractAriaCard(String id, int poetCost, CardType cardType, CardRarity cardRarity) {

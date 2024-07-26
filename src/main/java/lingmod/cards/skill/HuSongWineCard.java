@@ -1,17 +1,16 @@
 package lingmod.cards.skill;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.ReflectionHacks;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
-
-import basemod.ReflectionHacks;
 import lingmod.cards.AbstractWineCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.util.MonsterHelper;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 敌人多段攻击，攻击次数减少 20%
@@ -40,7 +39,7 @@ public class HuSongWineCard extends AbstractWineCard {
                     if (!MonsterHelper.isAttackIntent(mo))
                         return;
                     if ((boolean) basemod.ReflectionHacks.getPrivate(mo, AbstractMonster.class, "isMultiDmg")) {
-                        int multi = (int) ReflectionHacks.getPrivate(mo, AbstractMonster.class, "intentMultiAmt");
+                        int multi = ReflectionHacks.getPrivate(mo, AbstractMonster.class, "intentMultiAmt");
                         multi *= (100 - magicNumber);
                         multi /= 100;
                         ReflectionHacks.setPrivate(mo, AbstractMonster.class, "intentMultiAmt", multi);

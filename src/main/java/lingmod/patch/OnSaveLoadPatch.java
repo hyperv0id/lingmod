@@ -12,36 +12,36 @@ import javassist.CtBehavior;
  * sl时记录si次数
  */
 public class OnSaveLoadPatch {
-  public static int saveTimes = 0;
-  public static int loadTimes = 0;
-  // TODO: 换房间后重置怪物对话
-  public static int saveThisRoom = 0;
-  public static int loadThisRoom = 0;
+    public static int saveTimes = 0;
+    public static int loadTimes = 0;
+    // TODO: 换房间后重置怪物对话
+    public static int saveThisRoom = 0;
+    public static int loadThisRoom = 0;
 
-  @SpirePatch2(clz = ConfirmPopup.class, method = "yesButtonEffect")
-  public static class OnSaveTrigger {
-    @SpireInsertPatch(locator = OnSaveTriggerLocator.class)
-    public static void Trigger() {
-      // logger.info("==============================player saved" + saveTimes);
-      ++saveTimes;
+    @SpirePatch2(clz = ConfirmPopup.class, method = "yesButtonEffect")
+    public static class OnSaveTrigger {
+        @SpireInsertPatch(locator = OnSaveTriggerLocator.class)
+        public static void Trigger() {
+            // logger.info("==============================player saved" + saveTimes);
+            ++saveTimes;
+        }
+
+        public static class OnSaveTriggerLocator extends SpireInsertLocator {
+            public int[] Locate(CtBehavior behavior)
+                    throws PatchingException, CannotCompileException {
+                Matcher.MethodCallMatcher matcher =
+                        new Matcher.MethodCallMatcher(MusicMaster.class, "fadeAll");
+                return LineFinder.findInOrder(behavior, matcher);
+            }
+        }
     }
 
-    public static class OnSaveTriggerLocator extends SpireInsertLocator {
-      public int[] Locate(CtBehavior behavior)
-          throws PatchingException, CannotCompileException {
-        Matcher.MethodCallMatcher matcher =
-            new Matcher.MethodCallMatcher(MusicMaster.class, "fadeAll");
-        return LineFinder.findInOrder(behavior, matcher);
-      }
+    @SpirePatch2(clz = CardCrawlGame.class, method = "loadPlayerSave")
+    public static class OnLoadTrigger {
+        @SpirePrefixPatch
+        public static void Trigger() {
+            // logger.info("====================================player loaded" + loadTimes);
+            ++loadTimes;
+        }
     }
-  }
-
-  @SpirePatch2(clz = CardCrawlGame.class, method = "loadPlayerSave")
-  public static class OnLoadTrigger {
-    @SpirePrefixPatch
-    public static void Trigger() {
-      // logger.info("====================================player loaded" + loadTimes);
-      ++loadTimes;
-    }
-  }
 }

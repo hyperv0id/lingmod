@@ -22,11 +22,10 @@ public class PoeticMoodPower extends AbstractEasyPower implements PostBattleSubs
 
     public static final String CLASS_NAME = PoeticMoodPower.class.getSimpleName();
     public static final String ID = makeID(CLASS_NAME);
+    public static final Logger logger = ModCore.logger;
+    private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.BUFF;
     public static int powerGained = 0;
     public static int threshold = 12;
-
-    private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.BUFF;
-    public static final Logger logger = ModCore.logger;
 
     public PoeticMoodPower(AbstractCreature owner, int amount) {
         super(ID, getName(ID), TYPE, false, owner, amount);

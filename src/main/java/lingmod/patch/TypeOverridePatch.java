@@ -30,7 +30,7 @@ public class TypeOverridePatch {
         )
         public static void plz(AbstractCard __instance, @ByRef String[] text) {
             if (!(__instance instanceof CustomCard) && TypeOverridePatch.TypeOverrideField.typeOverride.get(__instance) != null) {
-                text[0] = (String) TypeOverridePatch.TypeOverrideField.typeOverride.get(__instance);
+                text[0] = TypeOverrideField.typeOverride.get(__instance);
             }
 
         }
@@ -60,7 +60,7 @@ public class TypeOverridePatch {
         )
         public static void OverrideType(AbstractCard ___card, SpriteBatch sb, float x, float y, float[] tOffset, float[] tWidth, @ByRef String[] typeText, @ByRef List<String>[] descriptors) {
             if (TypeOverridePatch.TypeOverrideField.typeOverride.get(___card) != null) {
-                typeText[0] = (String) TypeOverridePatch.TypeOverrideField.typeOverride.get(___card);
+                typeText[0] = TypeOverrideField.typeOverride.get(___card);
                 GlyphLayout gl = new GlyphLayout();
                 FontHelper.cardTypeFont.getData().setScale(1.0F);
                 gl.setText(FontHelper.cardTypeFont, typeText[0]);
@@ -94,7 +94,7 @@ public class TypeOverridePatch {
         )
         public static void OverrideType(AbstractCard ___card, SpriteBatch sb, String[] text) {
             if (TypeOverridePatch.TypeOverrideField.typeOverride.get(___card) != null) {
-                text[0] = (String) TypeOverridePatch.TypeOverrideField.typeOverride.get(___card);
+                text[0] = TypeOverrideField.typeOverride.get(___card);
             }
 
         }

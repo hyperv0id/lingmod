@@ -25,9 +25,9 @@ public class LightRelic extends AbstractEasyRelic {
     @Override
     public void atBattleStart() {
         VoiceMaster.getInstance().beginBattle();
-//        this.flash();
-//        AbstractPlayer p = AbstractDungeon.player;
-//        addToBot(new ApplyPowerAction(p, p, new LightPower(p, 0)));
+        //        this.flash();
+        //        AbstractPlayer p = AbstractDungeon.player;
+        //        addToBot(new ApplyPowerAction(p, p, new LightPower(p, 0)));
     }
 
     @Override
