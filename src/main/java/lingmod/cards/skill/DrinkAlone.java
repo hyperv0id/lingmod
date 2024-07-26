@@ -4,7 +4,10 @@ import static lingmod.ModCore.makeID;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import lingmod.cards.AbstractEasyCard;
@@ -27,6 +30,11 @@ public class DrinkAlone extends AbstractEasyCard {
     public void calculateCardDamage(AbstractMonster mo) {
         super.calculateCardDamage(mo);
         magicNumber = EnergyPanel.totalCount + baseMagicNumber;
+        if (AbstractDungeon.player.hasRelic(ChemicalX.ID)) {
+            AbstractRelic chemicalX = AbstractDungeon.player.getRelic(ChemicalX.ID);
+            chemicalX.flash();
+            magicNumber += 2;
+        }
     }
 
     @Override

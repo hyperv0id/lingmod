@@ -1,5 +1,5 @@
 {
-    "${ModID}:MonsterSui_7": {
+    "${ModID}:MonsterSui_7_Ji": {
         "MOVES": [
             ""
         ],
@@ -15,6 +15,15 @@
             "太不像话了你",
             "难得回来一次就闹这么一场",
             "有什么话都可以饭桌上慢慢聊"
+        ]
+    },
+    "${ModID}:MonsterSui_2_Wang": {
+        "MOVES": [
+            ""
+        ],
+        "NAME": "望",
+        "DIALOG": [
+            "你弄丢了我的礼物"
         ]
     }
 }

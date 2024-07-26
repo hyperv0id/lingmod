@@ -269,8 +269,9 @@ public class ModCore implements
 
     public void addMonster() {
         // 添加怪物
-        BaseMod.addMonster(MonsterSui_7_Ji.ID, () -> new MonsterSui_7_Ji()); // 绩老七
-        // BaseMod.addMonsterEncounter(TheCity.ID, new MonsterInfo(MonsterSui_7.ID, 0));
+        BaseMod.addMonster(MonsterSui_7_Ji.ID, MonsterSui_7_Ji.NAME, () -> new MonsterSui_7_Ji()); // 绩老七
+        // BaseMod.addMonster(MonsterSui_2_Wang.ID, () -> new MonsterSui_2_Wang()); //
+        // 岁老二
     }
 
     public void addEvents() {
@@ -325,5 +326,18 @@ public class ModCore implements
         if (cnt <= 0) {
             BaseMod.addTopPanelItem(new AriaTopPanel());
         }
+    }
+
+    public static enum ResourceType {
+        CARDS, CHAR, EVENTS, MASKS, MISC, MONSTERS, POWERS, RELICS, UI
+    }
+
+    public static String makeImagePath(String path, ResourceType type) {
+        // 如果没有指定文件类型，直接改成png
+        if (path.split(".").length == 1) {
+            path += ".png";
+        }
+        path = type.toString().toLowerCase() + "/" + path;
+        return makeImagePath(path);
     }
 }
