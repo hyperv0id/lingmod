@@ -1,20 +1,23 @@
 package lingmod.events;
 
-import basemod.abstracts.events.PhasedEvent;
-import basemod.abstracts.events.phases.CombatPhase;
-import basemod.abstracts.events.phases.TextPhase;
+import static lingmod.ModCore.logger;
+import static lingmod.ModCore.makeID;
+import static lingmod.ModCore.makeImagePath;
+
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.potions.PotionSlot;
 import com.megacrit.cardcrawl.relics.AbstractRelic.RelicTier;
-import lingmod.cards.AbstractAriaCard;
-import lingmod.cards.aria.JingYeSiCard;
+
+import basemod.abstracts.events.PhasedEvent;
+import basemod.abstracts.events.phases.CombatPhase;
+import basemod.abstracts.events.phases.TextPhase;
+import lingmod.cards.AbstractVerseCard;
+import lingmod.cards.verse.JingYeSiCard;
 import lingmod.potions.ForgetPotion;
 import lingmod.util.AiraReward;
-
-import static lingmod.ModCore.*;
 
 /**
  * 本子情节，但是永远潇洒的令姐
@@ -29,7 +32,7 @@ public class DoujinshiPlot extends PhasedEvent {
 
     public static DoujinshiPlot __inst;
 
-    AbstractAriaCard battleReward;
+    AbstractVerseCard battleReward;
 
     public DoujinshiPlot() {
         super(ID, title, makeImagePath("events/DoujinshiPlot_0.png"));

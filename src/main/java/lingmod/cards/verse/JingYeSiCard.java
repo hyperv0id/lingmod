@@ -1,4 +1,11 @@
-package lingmod.cards.aria;
+package lingmod.cards.verse;
+
+import static lingmod.ModCore.makeID;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -11,15 +18,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
-import lingmod.cards.AbstractAriaCard;
+
+import lingmod.cards.AbstractVerseCard;
 import lingmod.powers.PoeticMoodPower;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 普通五言：床前明月光，疑是地上霜，举头望明月，低头思故乡
@@ -28,12 +29,12 @@ import static lingmod.ModCore.makeID;
  * "NL 造成 !D! 点伤害",
  * "获得 !B! 格挡"
  */
-public class JingYeSiCard extends AbstractAriaCard {
+public class JingYeSiCard extends AbstractVerseCard {
     public static final String ID = makeID(JingYeSiCard.class.getSimpleName());
 
     protected static LinkedList<JingYeSiCard> cards = new LinkedList<>();
 
-    protected static ArrayList<AbstractAriaCard> choices = new ArrayList<>();
+    protected static ArrayList<AbstractVerseCard> choices = new ArrayList<>();
 
     private int optionIndex = -1;
 
@@ -103,7 +104,7 @@ public class JingYeSiCard extends AbstractAriaCard {
      *
      * @return 能打出的子句
      */
-    protected List<AbstractAriaCard> getChoicesOnUse() {
+    protected List<AbstractVerseCard> getChoicesOnUse() {
         AbstractPlayer p = AbstractDungeon.player;
         if (p.getPower(PoeticMoodPower.ID) != null) {
             int amount = p.getPower(PoeticMoodPower.ID).amount;
@@ -114,7 +115,7 @@ public class JingYeSiCard extends AbstractAriaCard {
 
     @Override
     public AbstractCard makeStatEquivalentCopy() {
-        AbstractAriaCard c = new JingYeSiCard(optionIndex);
+        AbstractVerseCard c = new JingYeSiCard(optionIndex);
         if (this.upgraded) c.upgrade();
         return c;
     }

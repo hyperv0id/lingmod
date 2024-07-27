@@ -1,6 +1,8 @@
 package lingmod.ui;
 
-import basemod.abstracts.CustomScreen;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
@@ -12,15 +14,14 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+
+import basemod.abstracts.CustomScreen;
 import lingmod.ModCore;
 import lingmod.patch.PlayerFieldsPatch;
 import lingmod.util.Wiz;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
-public class AriaViewScreen extends CustomScreen {
-    public static final String ID = ModCore.makeID(AriaViewScreen.class.getSimpleName());
+public class VerseViewScreen extends CustomScreen {
+    public static final String ID = ModCore.makeID(VerseViewScreen.class.getSimpleName());
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
     private static final String[] TEXT = uiStrings.TEXT;
     // private static final int CARDS_PER_LINE = 6;
@@ -31,7 +32,7 @@ public class AriaViewScreen extends CustomScreen {
     private CardGroup targetGroup;
     private AbstractCard hoveredCard;
 
-    public AriaViewScreen() {
+    public VerseViewScreen() {
         drawStartX = (float) Settings.WIDTH;
         drawStartX -= 5.0F * AbstractCard.IMG_WIDTH * 0.75F;
         drawStartX -= 4.0F * Settings.CARD_VIEW_PAD_X;
@@ -43,7 +44,7 @@ public class AriaViewScreen extends CustomScreen {
 
     @Override
     public AbstractDungeon.CurrentScreen curScreen() {
-        return Enum.ARIA_CARD_VIEW_SCREEN;
+        return Enum.VERSE_CARD_VIEW_SCREEN;
     }
 
     @Override
@@ -56,7 +57,7 @@ public class AriaViewScreen extends CustomScreen {
      */
     @Override
     public void reopen() {
-        this.targetGroup = PlayerFieldsPatch.ariaCardGroup.get(Wiz.adp());
+        this.targetGroup = PlayerFieldsPatch.verseCardGroup.get(Wiz.adp());
         if (this.targetGroup.group.size() <= 6) {
             drawStartY = (float) Settings.HEIGHT * 0.5F;
         } else {
@@ -175,7 +176,7 @@ public class AriaViewScreen extends CustomScreen {
 
     public static class Enum {
         @SpireEnum
-        public static AbstractDungeon.CurrentScreen ARIA_CARD_VIEW_SCREEN;
+        public static AbstractDungeon.CurrentScreen VERSE_CARD_VIEW_SCREEN;
 
         public Enum() {
         }

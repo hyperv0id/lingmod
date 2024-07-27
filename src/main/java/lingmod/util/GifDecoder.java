@@ -1,5 +1,13 @@
 package lingmod.util;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.BufferUnderflowException;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.util.ArrayList;
+
 /*
   Copied from: https://github.com/mekomidev/gdxengine/blob/master/core/src/com/mekomidev/gdxengine/utils/loaders
   /GifDecoder.java
@@ -33,14 +41,6 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Animation.PlayMode;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.BufferUnderflowException;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.util.ArrayList;
 
 /**
  * Reads frame data from a GIF image source and decodes it into individual
@@ -606,7 +606,7 @@ public class GifDecoder {
     }
 
     /**
-     * Reads next variable length block from input.
+     * Reads next vverseble length block from input.
      *
      * @return number of bytes stored in "buffer"
      */
@@ -829,7 +829,7 @@ public class GifDecoder {
     }
 
     /**
-     * Skips variable length blocks up to and including next zero length block.
+     * Skips vverseble length blocks up to and including next zero length block.
      */
     protected void skip() {
         do {

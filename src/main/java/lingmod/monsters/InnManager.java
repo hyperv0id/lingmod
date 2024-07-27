@@ -1,5 +1,8 @@
 package lingmod.monsters;
 
+import static lingmod.ModCore.makeID;
+import static lingmod.ModCore.makeImagePath;
+
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.EscapeAction;
@@ -12,13 +15,10 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.monsters.exordium.Looter;
 import com.megacrit.cardcrawl.vfx.combat.SmokeBombEffect;
+
 import lingmod.powers.GiveGoldAsHP;
 import lingmod.powers.InvincibleForPlayer;
-
-import static lingmod.ModCore.makeID;
-import static lingmod.ModCore.makeImagePath;
 
 /**
  * 挑山人大战掌柜的
@@ -52,12 +52,10 @@ public class InnManager extends AbstractMonster {
         super.useUniversalPreBattleAction();
         addToBot(new ApplyPowerAction(this, this, new InvincibleForPlayer(this)));
         addToBot(new ApplyPowerAction(this, this, new GiveGoldAsHP(this, 2)));
-        Looter l;
     }
 
     @Override
     public void takeTurn() {
-        AbstractDungeon.getCurrRoom().mugged = true;
         AbstractDungeon.actionManager.addToBottom(new VFXAction(new SmokeBombEffect(this.hb.cX, this.hb.cY)));
         AbstractDungeon.actionManager.addToBottom(new EscapeAction(this));
         AbstractDungeon.actionManager.addToBottom(new SetMoveAction(this, (byte) 3, Intent.ESCAPE));

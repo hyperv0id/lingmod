@@ -9,9 +9,9 @@
             "获得 !B! 格挡"
         ]
     },
-    "${ModID}:AbstractAriaCard": {
+    "${ModID}:AbstractVerseCard": {
         "NAME": "词牌牌",
-        "DESCRIPTION": "AbstractAriaCard词牌抽象类",
+        "DESCRIPTION": "AbstractVerseCard词牌抽象类",
         "EXTENDED_DESCRIPTION": [
             "诗兴不足，无法作诗"
         ]

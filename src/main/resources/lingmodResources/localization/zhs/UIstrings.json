@@ -29,18 +29,18 @@
             " lingmod:酒 %d。 NL %s"
         ]
     },
-    "${ModID}:AbstractAriaCard": {
+    "${ModID}:AbstractVerseCard": {
         "TEXT": [
             "词牌"
         ]
     },
-    "${ModID}:AriaTopPanel": {
+    "${ModID}:VerseTopPanel": {
         "TEXT": [
             "你的词牌",
             "点击查看你创作的词牌"
         ]
     },
-    "${ModID}:AriaViewScreen": {
+    "${ModID}:VerseViewScreen": {
         "TEXT": [
             "你的所有词牌",
             "返回"

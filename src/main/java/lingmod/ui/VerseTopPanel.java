@@ -1,11 +1,9 @@
 package lingmod.ui;
 
-import basemod.BaseMod;
-import basemod.ReflectionHacks;
-import basemod.TopPanelGroup;
-import basemod.TopPanelItem;
-import basemod.abstracts.CustomSavable;
-import basemod.patches.com.megacrit.cardcrawl.helpers.TopPanel.TopPanelHelper;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -18,14 +16,17 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.localization.UIStrings;
+
+import basemod.BaseMod;
+import basemod.ReflectionHacks;
+import basemod.TopPanelGroup;
+import basemod.TopPanelItem;
+import basemod.abstracts.CustomSavable;
+import basemod.patches.com.megacrit.cardcrawl.helpers.TopPanel.TopPanelHelper;
 import lingmod.ModCore;
-import lingmod.cards.AbstractAriaCard;
+import lingmod.cards.AbstractVerseCard;
 import lingmod.patch.PlayerFieldsPatch;
 import lingmod.util.Wiz;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * 存放所有词牌的包裹，没法右键TAT
@@ -33,16 +34,16 @@ import java.util.stream.Collectors;
  * 1. 展示所有词牌，战斗开始时选择一个词牌名
  * 2. 选择后，展示此词牌的所有句子
  */
-public class AriaTopPanel extends TopPanelItem implements CustomSavable<List<CardSave>> {
+public class VerseTopPanel extends TopPanelItem implements CustomSavable<List<CardSave>> {
 
-    public static final String ID = ModCore.makeID(AriaTopPanel.class.getSimpleName());
+    public static final String ID = ModCore.makeID(VerseTopPanel.class.getSimpleName());
     public static final UIStrings ui = CardCrawlGame.languagePack.getUIString(ID);
     public static final String[] TEXT = ui.TEXT;
-    protected static final String IMG_PATH = ModCore.makeImagePath("ui/ariadeck.png");
+    protected static final String IMG_PATH = ModCore.makeImagePath("ui/versedeck.png");
     private static final Texture IMG = new Texture(IMG_PATH);
-    public static CardGroup ariaGroup; // 所有词牌的group
+    public static CardGroup verseGroup; // 所有词牌的group
 
-    public AriaTopPanel() {
+    public VerseTopPanel() {
         super(IMG, ID);
     }
 
@@ -50,7 +51,7 @@ public class AriaTopPanel extends TopPanelItem implements CustomSavable<List<Car
      * 摘抄自：宝可梦MOD-PokemonTeamButton
      */
     private static void toggleScreen() {
-        if (AbstractDungeon.screen == AriaViewScreen.Enum.ARIA_CARD_VIEW_SCREEN) {
+        if (AbstractDungeon.screen == VerseViewScreen.Enum.VERSE_CARD_VIEW_SCREEN) {
             AbstractDungeon.closeCurrentScreen();
         } else {
             if (AbstractDungeon.screen == AbstractDungeon.CurrentScreen.COMBAT_REWARD) {
@@ -100,7 +101,7 @@ public class AriaTopPanel extends TopPanelItem implements CustomSavable<List<Car
             }
 
             if (AbstractDungeon.screen != CurrentScreen.VICTORY) {
-                BaseMod.openCustomScreen(AriaViewScreen.Enum.ARIA_CARD_VIEW_SCREEN);
+                BaseMod.openCustomScreen(VerseViewScreen.Enum.VERSE_CARD_VIEW_SCREEN);
             }
         }
 
@@ -119,7 +120,7 @@ public class AriaTopPanel extends TopPanelItem implements CustomSavable<List<Car
      */
     public void onRightClick() {
         // TODO 右键点击查看当前词牌的衍生/句子
-        ModCore.logger.info("Top Panel Aria Was RightClicked");
+        ModCore.logger.info("Top Panel Verse Was RightClicked");
     }
 
     /**
@@ -127,7 +128,7 @@ public class AriaTopPanel extends TopPanelItem implements CustomSavable<List<Car
      */
     @Override
     protected void onClick() {
-        ModCore.logger.info("Top Panel Aria Was Clicked");
+        ModCore.logger.info("Top Panel Verse Was Clicked");
         if (!CardCrawlGame.isPopupOpen) {
             CardCrawlGame.sound.play("DECK_OPEN");
             toggleScreen();
@@ -135,38 +136,38 @@ public class AriaTopPanel extends TopPanelItem implements CustomSavable<List<Car
     }
 
     public List<CardSave> onSave() {
-        CardGroup ariaCards = PlayerFieldsPatch.ariaCardGroup.get(Wiz.adp());
+        CardGroup verseCards = PlayerFieldsPatch.verseCardGroup.get(Wiz.adp());
         ArrayList<CardSave> retVal = new ArrayList<>();
-        // 检查ariaCards.group是否为null
-        if (ariaCards.group != null) {
-            retVal = ariaCards.group.stream()
+        // 检查verseCards.group是否为null
+        if (verseCards.group != null) {
+            retVal = verseCards.group.stream()
                     .map(card -> new CardSave(card.cardID, card.timesUpgraded, card.misc))
                     .collect(Collectors.toCollection(ArrayList::new));
         }
-        ModCore.logger.info("Save Aria with " + retVal.size() + " cards");
+        ModCore.logger.info("Save Verse with " + retVal.size() + " cards");
         return retVal;
     }
 
     public void onLoad(List<CardSave> cardSaves) {
-        CardGroup ariaCards = PlayerFieldsPatch.ariaCardGroup.get(Wiz.adp());
+        CardGroup verseCards = PlayerFieldsPatch.verseCardGroup.get(Wiz.adp());
 
         if (cardSaves != null) {
             for (CardSave s : cardSaves) {
                 AbstractCard card = CardLibrary.getCopy(s.id, s.upgrades, s.misc);
-                if (card instanceof AbstractAriaCard) {
-                    AbstractAriaCard ariaCard = (AbstractAriaCard) card;
-                    ariaCard.initializeDescription();
-                    ariaCards.addToTop(ariaCard);
+                if (card instanceof AbstractVerseCard) {
+                    AbstractVerseCard verseCard = (AbstractVerseCard) card;
+                    verseCard.initializeDescription();
+                    verseCards.addToTop(verseCard);
                 }
             }
         }
         // 2. 添加按钮
         ArrayList<TopPanelItem> topPanelItems = ReflectionHacks.getPrivate(TopPanelHelper.topPanelGroup, TopPanelGroup.class, "topPanelItems");
-        TopPanelItem ariaTopPanel = topPanelItems.stream()
-                .filter(AriaTopPanel.class::isInstance)
+        TopPanelItem verseTopPanel = topPanelItems.stream()
+                .filter(VerseTopPanel.class::isInstance)
                 .findFirst()
                 .orElse(null);
-        if (ariaTopPanel == null) {
+        if (verseTopPanel == null) {
             BaseMod.addTopPanelItem(this);
         }
     }

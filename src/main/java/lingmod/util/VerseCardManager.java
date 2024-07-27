@@ -2,7 +2,7 @@ package lingmod.util;
 
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
-public class AriaCardManager {
+public class VerseCardManager {
 
     /**
      * 开局时选择一个词牌，来规定整场战斗的格调
