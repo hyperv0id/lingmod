@@ -1,16 +1,16 @@
 package lingmod.cards;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.patch.TypeOverridePatch;
 import lingmod.util.CustomTags;
+import lingmod.util.VerseLoader;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 词牌：规定了整场战斗的格调，按照格调打出额外效果
@@ -19,7 +19,7 @@ public abstract class AbstractVerseCard extends AbstractEasyCard {
     public final static String ID = makeID(AbstractVerseCard.class.getSimpleName());
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
     public static final String TYPE = uiStrings.TEXT[0]; // 词牌
-    public CardStrings cardStrings;
+    public VerseStrings verseStrings;
     public int poeticCost = 0; // 打出需要消耗多少诗兴
     protected boolean isOptionCard = false;
     protected boolean used = false;
@@ -28,10 +28,9 @@ public abstract class AbstractVerseCard extends AbstractEasyCard {
     public AbstractVerseCard(String id, int poetCost, CardType cardType, CardRarity cardRarity) {
         super(id, -2, cardType, cardRarity, CardTarget.NONE);
         this.poeticCost = poetCost;
-        cardStrings = CardCrawlGame.languagePack.getCardStrings(id);
         tags.add(CustomTags.VERSE);
         tags.add(CardTags.HEALING); // 不能被树枝等检索到
-
+        verseStrings = VerseLoader.getStr(id);
         this.dontTriggerOnUseCard = true; // 使用时不触发XX检查
         this.selfRetain = true; // 保留
 
@@ -48,6 +47,16 @@ public abstract class AbstractVerseCard extends AbstractEasyCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        // TODO: 创建 EXTEND 个choice副本，给玩家选择，选择后
+    }
+
+    @Override
+    public void initializeDescription() {
+        if (verseStrings == null) {
+            verseStrings = VerseLoader.getStr(cardID);
+        }
+        if (verseStrings != null) {
+            this.rawDescription = verseStrings.DESCRIPTION;
+        }
+        super.initializeDescription();
     }
 }
