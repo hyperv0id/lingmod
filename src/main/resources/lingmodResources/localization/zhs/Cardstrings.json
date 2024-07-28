@@ -317,5 +317,9 @@
   "lingmod:ChunFengBuZhi": {
     "NAME": "春风不至",
     "DESCRIPTION": "当前手牌耗能变为0 ，这些牌打出后会被 消耗"
+  },
+  "lingmod:QiangJinJiu": {
+    "NAME": "将进酒",
+    "DESCRIPTION": "随机化敌人的意图 NL 如果有敌人的意图不是攻击，那么获得 !M! ${ModID}:酒 "
   }
 }

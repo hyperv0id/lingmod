@@ -11,7 +11,7 @@
     },
     "${ModID}:NellaFantasiaMod" :{
         "TEXT" :[
-            " lingmod:入梦 。 NL %s"
+            " lingmod:梦 。 NL %s"
         ]
     },
     "${ModID}:DerivativeMod" :{

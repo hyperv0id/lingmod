@@ -1,11 +1,12 @@
 package lingmod.stance;
 
-import basemod.BaseMod;
-import basemod.interfaces.OnPlayerDamagedSubscriber;
+import static lingmod.ModCore.makeID;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
-import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
@@ -17,9 +18,10 @@ import com.megacrit.cardcrawl.stances.AbstractStance;
 import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 import com.megacrit.cardcrawl.vfx.stance.CalmParticleEffect;
 import com.megacrit.cardcrawl.vfx.stance.StanceAuraEffect;
-import lingmod.util.Wiz;
 
-import static lingmod.ModCore.makeID;
+import basemod.BaseMod;
+import basemod.interfaces.OnPlayerDamagedSubscriber;
+import lingmod.util.Wiz;
 
 /**
  * 幻梦/梦境：全体受伤时失去1临时力量
@@ -71,6 +73,7 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamag
         sfxId = CardCrawlGame.sound.playAndLoop("STANCE_LOOP_CALM");
         AbstractDungeon.effectsQueue.add(new BorderFlashEffect(Color.PURPLE, true));
         BaseMod.subscribe(this);
+        AbstractDungeon.actionManager.addToBottom(new DrawCardAction(1));
     }
 
     @Override
@@ -115,7 +118,8 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamag
     }
 
     public void onExitStance() {
-        BaseMod.unsubscribe(this);
+        AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
+        BaseMod.unsubscribeLater(this);
         this.stopIdleSfx();
     }
 
@@ -126,14 +130,14 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerDamag
         }
     }
 
-    @Override
-    public void atStartOfTurn() {
-        super.atStartOfTurn();
-        if (--remainTurn <= 0) {
-            remainTurn = 0;
-            AbstractDungeon.actionManager.addToBottom(new ChangeStanceAction("Neutral"));
-        }
-    }
+    // @Override
+    // public void atStartOfTurn() {
+    //     super.atStartOfTurn();
+    //     if (--remainTurn <= 0) {
+    //         remainTurn = 0;
+    //         AbstractDungeon.actionManager.addToBottom(new ChangeStanceAction("Neutral"));
+    //     }
+    // }
 
     @Override
     public int receiveOnPlayerDamaged(int dmg, DamageInfo info) {

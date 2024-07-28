@@ -1,22 +1,26 @@
 package lingmod.cards.mod;
 
-import basemod.abstracts.AbstractCardModifier;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
-import lingmod.stance.NellaFantasiaStance;
+import com.megacrit.cardcrawl.stances.NeutralStance;
 
-import static lingmod.ModCore.makeID;
+import basemod.abstracts.AbstractCardModifier;
+import lingmod.stance.NellaFantasiaStance;
+import lingmod.util.Wiz;
 
 /**
  * 这张卡牌是诗
- * <p></p>
+ * <p>
+ * </p>
  * 打出：切换诗-普通姿态
- * <p></p>
+ * <p>
+ * </p>
  * 进入：抽1。离开：获得[E]
  */
 public class NellaFantasiaMod extends AbsLingCardModifier {
@@ -35,8 +39,8 @@ public class NellaFantasiaMod extends AbsLingCardModifier {
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
         super.onUse(card, target, action);
-        if (AbstractDungeon.player.stance.ID.equals(NellaFantasiaStance.STANCE_ID)) {
-            NellaFantasiaStance.remainTurn++;
+        if (Wiz.isStanceNell()) {
+            addToBot(new ChangeStanceAction(NeutralStance.STANCE_ID));
         } else {
             addToBot(new ChangeStanceAction(new NellaFantasiaStance()));
         }
