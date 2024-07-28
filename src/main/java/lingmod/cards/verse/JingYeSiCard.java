@@ -1,15 +1,11 @@
 package lingmod.cards.verse;
 
-import lingmod.cards.AbstractVerseCard;
-
 import static lingmod.ModCore.makeID;
+
+import lingmod.cards.AbstractVerseCard;
 
 /**
  * 普通五言：床前明月光，疑是地上霜，举头望明月，低头思故乡
- * "给予 !M! 虚弱",
- * "给予 !M! 易伤",
- * "NL 造成 !D! 点伤害",
- * "获得 !B! 格挡"
  */
 public class JingYeSiCard extends AbstractVerseCard {
     public static final String ID = makeID(JingYeSiCard.class.getSimpleName());

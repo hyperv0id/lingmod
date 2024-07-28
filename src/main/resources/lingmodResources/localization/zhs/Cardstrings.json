@@ -187,9 +187,9 @@
       "梦是真实的"
     ]
   },
-  "${ModID}:ZhuanJiangXunRi": {
-    "NAME": "“攥江寻日”",
-    "DESCRIPTION": "对所有敌人造成 !D! 的伤害 X 次 NL 如果在梦中，消耗所有 ${ModID}:诗兴 来增加次数"
+  "${ModID}:XunRiFeng": {
+    "NAME": "“寻日峰”",
+    "DESCRIPTION": "选择任意张牌消耗，抽等量牌 NL 再次打出会将这些消耗的牌放入手牌"
   },
   "${ModID}:JiaoLu": {
     "NAME": "蕉鹿梦",

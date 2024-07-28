@@ -1,17 +1,19 @@
 package lingmod.powers;
 
+import static java.lang.Math.min;
+
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import lingmod.ModCore;
 
-import static java.lang.Math.min;
+import lingmod.ModCore;
 
 /**
  * 回合开始时选择 x 张牌丢弃，类似少抽一张牌
+ * @deprecated
  */
 public class LosePower extends AbstractEasyPower {
     public static final String POWER_NAME = LosePower.class.getSimpleName();

@@ -1,16 +1,18 @@
 package lingmod.cards;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
 import lingmod.patch.TypeOverridePatch;
 import lingmod.util.CustomTags;
 import lingmod.util.VerseLoader;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 词牌：规定了整场战斗的格调，按照格调打出额外效果
@@ -31,6 +33,7 @@ public abstract class AbstractVerseCard extends AbstractEasyCard {
         tags.add(CustomTags.VERSE);
         tags.add(CardTags.HEALING); // 不能被树枝等检索到
         verseStrings = VerseLoader.getStr(id);
+        this.name = verseStrings.NAME;
         this.dontTriggerOnUseCard = true; // 使用时不触发XX检查
         this.selfRetain = true; // 保留
 
@@ -43,7 +46,6 @@ public abstract class AbstractVerseCard extends AbstractEasyCard {
     public void onChoseThisOption() {
         addToBot(new MakeTempCardInHandAction(this, false));
     }
-
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
@@ -58,5 +60,20 @@ public abstract class AbstractVerseCard extends AbstractEasyCard {
             this.rawDescription = verseStrings.DESCRIPTION;
         }
         super.initializeDescription();
+    }
+
+    /**
+     * 在其他卡牌被打出时，会发生什么?
+     * TODO: 根据打出的平仄修改费用，英文：level tone、oblique tone
+     */
+    @Override
+    public void onPlayCard(AbstractCard c, AbstractMonster m) {
+        if (c.type == CardType.ATTACK) {
+            // 攻击牌对应"仄声"
+        } else if (c.type == CardType.SKILL) {
+            // 技能牌对应"平声"
+        } else {
+            // 其他牌，BOTH
+        }
     }
 }
