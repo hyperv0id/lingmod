@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 
-import lingmod.cards.attack.XunRiFeng;
+import lingmod.cards.skill.XunRiFeng;
 
 /**
  * 选择任意张牌消耗，但是会将选择的牌记录下来

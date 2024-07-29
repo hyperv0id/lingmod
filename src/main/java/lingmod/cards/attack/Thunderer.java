@@ -1,20 +1,21 @@
 package lingmod.cards.attack;
 
-import basemod.cardmods.RetainMod;
-import basemod.helpers.CardModifierManager;
+import static lingmod.ModCore.makeID;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import basemod.cardmods.RetainMod;
+import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 1费打9
@@ -30,6 +31,11 @@ public class Thunderer extends AbstractEasyCard {
     public Thunderer() {
         super(ID, 1, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
         CardModifierManager.addModifier(this, new RetainMod());
+    }
+
+    @Override
+    public boolean canUpgrade() {
+        return timesUpgraded <= 4;
     }
 
     @Override
@@ -50,7 +56,7 @@ public class Thunderer extends AbstractEasyCard {
     public void onRetained() {
         super.onRetained();
         // 手牌中添加一张 弦惊
-        if (!this.canUpgrade()) return; // 最高等级了，不再生成
+        // if (!this.canUpgrade()) return; // 最高等级了，不再生成
         AbstractCard cp = makeStatEquivalentCopy();
         addToBot(new MakeTempCardInHandAction(cp));
     }

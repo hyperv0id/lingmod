@@ -1,4 +1,4 @@
-package lingmod.cards.attack;
+package lingmod.cards.skill;
 
 import static lingmod.ModCore.makeID;
 

@@ -1,14 +1,17 @@
 package lingmod.potions;
 
+import static lingmod.ModCore.makeID;
+import static lingmod.ModCore.makeImagePath;
+
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+
+import basemod.AutoAdd.Ignore;
 import lingmod.ModCore;
 import lingmod.character.Ling;
 import lingmod.events.DoujinshiPlot;
 
-import static lingmod.ModCore.makeID;
-import static lingmod.ModCore.makeImagePath;
-
+@Ignore
 public class ForgetPotion extends AbstractEasyPotion {
     public static String ID = makeID(ForgetPotion.class.getSimpleName());
 

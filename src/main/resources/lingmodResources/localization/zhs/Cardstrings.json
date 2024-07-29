@@ -59,7 +59,10 @@
   },
   "${ModID}:Tranquility": {
     "NAME": "“清平”",
-    "DESCRIPTION": "消耗一张牌，造成 !D! 点伤害，获得 !M! ${ModID}:诗兴 NL 自身被消耗时也获得 !M! ${ModID}:诗兴"
+    "DESCRIPTION": " ${ModID}:合成 一张牌，造成 !D! 点伤害 NL ${ModID}:合成 ：获得 !M! ${ModID}:诗兴 NL 此牌的基础攻击增加 !M! ",
+    "EXTENDED_DESCRIPTION": [
+      "选择一张牌消耗"
+    ]
   },
   "${ModID}:GuoJiaXianMei": {
     "NAME": "裹甲衔枚",
@@ -109,7 +112,7 @@
   },
   "${ModID}:Peripateticism": {
     "NAME": "“逍遥”",
-    "DESCRIPTION": "消耗所有非攻击牌，每张给予 !D! 缠绕 NL 被消耗时获得 [E] [E]"
+    "DESCRIPTION": " ${ModID}:合成 所有非攻击牌，每张 给予 !M! 缠绕 NL ${ModID}:合成 ： 立刻结算缠绕效果"
   },
   "${ModID}:Feature_2_Card": {
     "NAME": "随付笺咏醉屠苏",
@@ -121,7 +124,7 @@
   },
   "${ModID}:Thunderer": {
     "NAME": "“弦惊”",
-    "DESCRIPTION": "造成 !D! 点伤害 NL 回合结束时手牌加入一张 同等级弦惊 NL 打出后 消耗 尽可能多的同等级弦惊 来合成升级"
+    "DESCRIPTION": "造成 !D! 点伤害  ${ModID}:合成 所有弦惊 NL 保留时手牌加入一张 弦惊 NL  ${ModID}:合成 ： 被消耗牌的攻击附加到此牌 "
   },
   "${ModID}:Whoami_Shuo": {
     "NAME": "我无",
