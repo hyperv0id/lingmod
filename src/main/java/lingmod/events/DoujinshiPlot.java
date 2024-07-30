@@ -28,15 +28,15 @@ public class DoujinshiPlot extends PhasedEvent {
     private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(ID);
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
-    private static final String title = eventStrings.NAME;
 
     public static DoujinshiPlot __inst;
 
     AbstractVerseCard battleReward;
 
     public DoujinshiPlot() {
-        super(ID, title, makeImagePath("events/DoujinshiPlot_0.png"));
+        super(ID, eventStrings.NAME, makeImagePath("events/DoujinshiPlot_0.png"));
         NAME = eventStrings.NAME;
+        body = DESCRIPTIONS[0];
         super.title = title;
         __inst = this;
         // 售卖药水

@@ -1,11 +1,13 @@
 package lingmod.events;
 
+import org.apache.logging.log4j.Logger;
+
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.localization.EventStrings;
+
 import lingmod.ModCore;
 import lingmod.interfaces.CampfireSleepEvent;
-import org.apache.logging.log4j.Logger;
 
 
 @CampfireSleepEvent
@@ -27,6 +29,6 @@ public class YuMenNaturalDisastersEvent extends AbstractImageEvent {
 
     @Override
     protected void buttonEffect(int i) {
-
+        openMap();
     }
 }

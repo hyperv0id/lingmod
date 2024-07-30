@@ -1,11 +1,11 @@
 package lingmod;
 
-import basemod.*;
-import basemod.abstracts.DynamicVariable;
-import basemod.eventUtil.AddEventParams;
-import basemod.eventUtil.EventUtils;
-import basemod.interfaces.*;
-import basemod.patches.com.megacrit.cardcrawl.helpers.TopPanel.TopPanelHelper;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
@@ -15,18 +15,53 @@ import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.events.beyond.Falling;
+import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.localization.CharacterStrings;
+import com.megacrit.cardcrawl.localization.EventStrings;
+import com.megacrit.cardcrawl.localization.MonsterStrings;
+import com.megacrit.cardcrawl.localization.OrbStrings;
+import com.megacrit.cardcrawl.localization.PotionStrings;
+import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.localization.RelicStrings;
+import com.megacrit.cardcrawl.localization.RunModStrings;
+import com.megacrit.cardcrawl.localization.StanceStrings;
+import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+
+import basemod.AutoAdd;
+import basemod.BaseMod;
+import basemod.ReflectionHacks;
+import basemod.TopPanelGroup;
+import basemod.TopPanelItem;
+import basemod.abstracts.DynamicVariable;
+import basemod.eventUtil.AddEventParams;
+import basemod.eventUtil.EventUtils;
+import basemod.eventUtil.util.Condition;
+import basemod.interfaces.AddAudioSubscriber;
+import basemod.interfaces.EditCardsSubscriber;
+import basemod.interfaces.EditCharactersSubscriber;
+import basemod.interfaces.EditKeywordsSubscriber;
+import basemod.interfaces.EditRelicsSubscriber;
+import basemod.interfaces.EditStringsSubscriber;
+import basemod.interfaces.OnStartBattleSubscriber;
+import basemod.interfaces.PostDungeonInitializeSubscriber;
+import basemod.interfaces.PostInitializeSubscriber;
+import basemod.interfaces.StartGameSubscriber;
+import basemod.patches.com.megacrit.cardcrawl.helpers.TopPanel.TopPanelHelper;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.cardvars.AbstractEasyDynamicVariable;
 import lingmod.cards.verse.JingYeSiCard;
 import lingmod.character.Ling;
 import lingmod.events.DoujinshiPlot;
+import lingmod.events.FallingEvent;
+import lingmod.events.NianGuestStar;
 import lingmod.events.Sui12Event;
 import lingmod.events.WhoamiEvent;
+import lingmod.events.YuMenNaturalDisastersEvent;
 import lingmod.monsters.InnManager;
 import lingmod.monsters.MonsterSui_7_Ji;
 import lingmod.monsters.MountainPicker;
@@ -39,11 +74,6 @@ import lingmod.util.ProAudio;
 import lingmod.util.VerseCardManager;
 import lingmod.util.VerseLoader;
 import lingmod.util.Wiz;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 
 @SuppressWarnings({ "unused", "WeakerAccess" })
 @SpireInitializer
@@ -252,19 +282,46 @@ public class ModCore implements
     }
 
     public void addEvents() {
-        // 我是谁，可以获得卡牌
-        BaseMod.addEvent(
-                new AddEventParams.Builder(WhoamiEvent.ID, WhoamiEvent.class)
-                        .eventType(EventUtils.EventType.ONE_TIME)
-                        .create());
+        Condition falseCondition = new Condition() {
+            @Override
+            public boolean test() {
+                return false;
+            }
+        };
+        // 本子情节
+        // TODO: 怪物没有写
+        BaseMod.addEvent(new AddEventParams.Builder(DoujinshiPlot.ID, DoujinshiPlot.class)
+                .eventType(EventUtils.EventType.ONE_TIME)
+                .endsWithRewardsUI(true)
+                .create());
+        // TODO: 坠落，不能重回此层最底端
+        BaseMod.addEvent(new AddEventParams.Builder(FallingEvent.ID, FallingEvent.class)
+                .eventType(EventUtils.EventType.ONE_TIME)
+                .overrideEvent(Falling.ID)
+                .spawnCondition(falseCondition)
+                .create());
+        // 友情出演：陪年大导演欺负夕。
+        // TODO: 怪物没有写
+        BaseMod.addEvent(new AddEventParams.Builder(NianGuestStar.ID, NianGuestStar.class)
+                .eventType(EventUtils.EventType.NORMAL)
+                .spawnCondition(falseCondition)
+                .endsWithRewardsUI(true)
+                .create());
         // 岁中十二人，可以获得遗物
         BaseMod.addEvent(
                 new AddEventParams.Builder(Sui12Event.ID, Sui12Event.class)
                         .eventType(EventUtils.EventType.ONE_TIME)
                         .create());
-        // 本子情节
-        BaseMod.addEvent(new AddEventParams.Builder(DoujinshiPlot.ID, DoujinshiPlot.class)
-                .eventType(EventUtils.EventType.ONE_TIME)
+        // 我是谁，可以获得卡牌
+        BaseMod.addEvent(
+                new AddEventParams.Builder(WhoamiEvent.ID, WhoamiEvent.class)
+                        .eventType(EventUtils.EventType.ONE_TIME)
+                        .create());
+        // TODO: 玉门狂沙
+        BaseMod.addEvent(new AddEventParams.Builder(YuMenNaturalDisastersEvent.ID, YuMenNaturalDisastersEvent.class)
+                .eventType(EventUtils.EventType.NORMAL)
+                .spawnCondition(falseCondition)
+                .endsWithRewardsUI(true)
                 .create());
     }
 
