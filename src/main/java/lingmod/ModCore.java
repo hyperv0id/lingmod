@@ -59,6 +59,7 @@ import lingmod.character.Ling;
 import lingmod.events.DoujinshiPlot;
 import lingmod.events.FallingEvent;
 import lingmod.events.NianGuestStar;
+import lingmod.events.Shu_KarmaOfMonsters;
 import lingmod.events.Sui12Event;
 import lingmod.events.WhoamiEvent;
 import lingmod.events.YuMenNaturalDisastersEvent;
@@ -303,6 +304,12 @@ public class ModCore implements
         // 友情出演：陪年大导演欺负夕。
         // TODO: 怪物没有写
         BaseMod.addEvent(new AddEventParams.Builder(NianGuestStar.ID, NianGuestStar.class)
+                .eventType(EventUtils.EventType.NORMAL)
+                .spawnCondition(falseCondition)
+                .endsWithRewardsUI(true)
+                .create());
+        // 黍：预见之后的怪物并获得水果
+        BaseMod.addEvent(new AddEventParams.Builder(Shu_KarmaOfMonsters.ID, Shu_KarmaOfMonsters.class)
                 .eventType(EventUtils.EventType.NORMAL)
                 .spawnCondition(falseCondition)
                 .endsWithRewardsUI(true)

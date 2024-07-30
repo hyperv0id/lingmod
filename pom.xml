@@ -158,7 +158,7 @@
                             <echo message="Changing directory to ${mts.launcher.dir}" />
                             <!-- 使用 exec 任务来运行你的命令 -->
                             <exec dir="${mts.launcher.dir}" executable="${JAVA.path}" failonerror="true">
-                                <arg line="-jar ${MTS.path}"/>
+                                <arg line="-jar ${MTS.path} --skip-intro --mods basemod,stslib,quickrestart,loadout,${ModID}"/>
                             </exec>
                           </target>
                       </configuration>

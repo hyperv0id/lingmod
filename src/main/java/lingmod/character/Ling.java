@@ -70,8 +70,8 @@ public class Ling extends CustomPlayer {
             makeCharacterPath("ling/orb/layer4d.png"),
             makeCharacterPath("ling/orb/layer5d.png"),
     };
-    private static final float[] LAYER_SPEED = new float[]{-40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F,
-            -5.0F, 0.0F};
+    private static final float[] LAYER_SPEED = new float[] { -40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F,
+            -5.0F, 0.0F };
     public static List<AbstractEvent> sleepEvents = new ArrayList<>(); // 在篝火处睡觉会触发的事件
 
     public Ling(String name, PlayerClass setClass) {
@@ -111,7 +111,8 @@ public class Ling extends CustomPlayer {
 
     public static void initSleepEvents() {
         new AutoAdd(modID).packageFilter(Sui12Event.class).any(AbstractEvent.class, (info, event) -> {
-            if (event.getClass().getAnnotation(CampfireSleepEvent.class) == null) return;
+            if (event.getClass().getAnnotation(CampfireSleepEvent.class) == null)
+                return;
             logger.info("添加火堆睡觉事件：" + event.getClass().getSimpleName());
             Ling.sleepEvents.add(event);
         });
@@ -254,7 +255,8 @@ public class Ling extends CustomPlayer {
 
     @Override
     public AbstractCard getStartCardForEvent() {
-        // logger.warn("YOU NEED TO SET getStartCardForEvent() in your " + getClass().getSimpleName() + " file!");
+        // logger.warn("YOU NEED TO SET getStartCardForEvent() in your " +
+        // getClass().getSimpleName() + " file!");
         return new GuoJiaXianMei();
     }
 
@@ -280,10 +282,10 @@ public class Ling extends CustomPlayer {
 
     @Override
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect() {
-        return new AbstractGameAction.AttackEffect[]{
+        return new AbstractGameAction.AttackEffect[] {
                 AbstractGameAction.AttackEffect.FIRE,
                 AbstractGameAction.AttackEffect.BLUNT_HEAVY,
-                AbstractGameAction.AttackEffect.FIRE};
+                AbstractGameAction.AttackEffect.FIRE };
     }
 
     @Override
