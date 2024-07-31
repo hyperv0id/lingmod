@@ -1,21 +1,21 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.makeID;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
+import basemod.cardmods.RetainMod;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.cardmods.RetainMod;
-import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.lang.Math.max;
+import static lingmod.ModCore.makeID;
 
 /**
  * 1费打9
@@ -68,7 +68,7 @@ public class Thunderer extends AbstractEasyCard {
             // 找一张 同等级的弦惊 合成
             List<AbstractCard> cards =
                     AbstractDungeon.player.hand.group.stream().filter(card -> card != this && card.cardID.equals(Thunderer.ID) && card.timesUpgraded == this.timesUpgraded).collect(Collectors.toList());
-            int totalDamage = cards.stream().mapToInt(c -> c.baseDamage).sum();
+            int totalDamage = cards.stream().mapToInt(c -> max(1, c.costForTurn) * c.baseDamage).sum();
             this.upgradeDamage(totalDamage);
             int nEx = 0;
             int num = 1;

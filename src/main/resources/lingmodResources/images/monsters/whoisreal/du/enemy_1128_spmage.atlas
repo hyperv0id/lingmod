@@ -1,0 +1,111 @@
+
+enemy_1128_spmage.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+C_L_Hand
+  rotate: false
+  xy: 221, 124
+  size: 61, 112
+  orig: 61, 112
+  offset: 0, 0
+  index: -1
+C_Hair_VI
+  rotate: false
+  xy: 391, 1
+  size: 40, 123
+  orig: 40, 123
+  offset: 0, 0
+  index: -1
+C_Hair_V
+  rotate: false
+  xy: 333, 173
+  size: 67, 65
+  orig: 67, 65
+  offset: 0, 0
+  index: -1
+C_Hair_IV
+  rotate: false
+  xy: 402, 173
+  size: 67, 48
+  orig: 67, 48
+  offset: 0, 0
+  index: -1
+C_Hair_III
+  rotate: false
+  xy: 1, 227
+  size: 77, 21
+  orig: 77, 21
+  offset: 0, 0
+  index: -1
+C_Hair_II
+  rotate: false
+  xy: 402, 223
+  size: 49, 30
+  orig: 49, 30
+  offset: 0, 0
+  index: -1
+C_Hair_I
+  rotate: false
+  xy: 453, 223
+  size: 44, 31
+  orig: 44, 31
+  offset: 0, 0
+  index: -1
+C_Tail
+  rotate: false
+  xy: 303, 1
+  size: 86, 68
+  orig: 86, 68
+  offset: 0, 0
+  index: -1
+C_Waist
+  rotate: false
+  xy: 1, 1
+  size: 106, 152
+  orig: 106, 152
+  offset: 0, 0
+  index: -1
+C_Head
+  rotate: false
+  xy: 109, 1
+  size: 133, 121
+  orig: 133, 121
+  offset: 0, 0
+  index: -1
+C_Gill
+  rotate: false
+  xy: 1, 155
+  size: 92, 70
+  orig: 92, 70
+  offset: 0, 0
+  index: -1
+C_Tentacle_III
+  rotate: false
+  xy: 244, 1
+  size: 57, 105
+  orig: 57, 105
+  offset: 0, 0
+  index: -1
+C_R_Hand
+  rotate: false
+  xy: 109, 124
+  size: 110, 125
+  orig: 110, 125
+  offset: 0, 0
+  index: -1
+C_Tentacle_II
+  rotate: false
+  xy: 333, 71
+  size: 47, 100
+  orig: 47, 100
+  offset: 0, 0
+  index: -1
+C_Tentacle_I
+  rotate: false
+  xy: 284, 108
+  size: 47, 124
+  orig: 47, 124
+  offset: 0, 0
+  index: -1

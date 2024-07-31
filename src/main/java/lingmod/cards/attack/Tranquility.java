@@ -1,7 +1,5 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.makeID;
-
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -10,10 +8,12 @@ import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.powers.PoeticMoodPower;
+
+import static java.lang.Math.max;
+import static lingmod.ModCore.makeID;
 
 /**
  * 清平：消耗一张牌，造成 !D! 点伤害，获得 !M! ${ModID}:诗兴 NL 自身被消耗时也获得 !M! ${ModID}:诗兴
@@ -46,7 +46,7 @@ public class Tranquility extends AbstractEasyCard {
         dmg(m, AttackEffect.NONE);
         this.addToBot(new SelectCardsInHandAction(ExhaustAction.TEXT[0], (cards) -> {
             addToTop(new ExhaustSpecificCardAction(cards.get(0), p.hand));
-            this.baseDamage += magicNumber;
+            this.baseDamage += max(1, costForTurn) * magicNumber;
             addToTop(new ApplyPowerAction(p, p, new PoeticMoodPower(p, magicNumber)));
         }));
     }

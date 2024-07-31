@@ -21,7 +21,7 @@ public class GuanShanYuan extends AbstractEasyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, block));
         // Recycle ref;
-        addToBot(new RecycleButBlock(magicNumber));
+        addToBot(new RecycleButBlock(this, magicNumber));
     }
 
     @Override

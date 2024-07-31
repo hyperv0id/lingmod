@@ -243,7 +243,7 @@
   },
   "${ModID}:GuanShanYuan": {
     "NAME": "关山远",
-    "DESCRIPTION": "获得 !B! 格挡， 消耗 一张牌，获得其耗能 !M! 倍的格挡"
+    "DESCRIPTION": "获得 !B! 格挡， ${ModID}:合成 一张牌 NL ${ModID}:合成 ：格挡增加 !M! "
   },
   "${ModID}:BlackPawn": {
     "NAME": "黑子",

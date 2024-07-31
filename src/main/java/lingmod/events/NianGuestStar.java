@@ -1,17 +1,15 @@
 package lingmod.events;
 
-import static lingmod.ModCore.makeID;
-import static lingmod.ModCore.makeImagePath;
-
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.helpers.MonsterHelper;
-import com.megacrit.cardcrawl.localization.EventStrings;
-
 import basemod.abstracts.events.PhasedEvent;
 import basemod.abstracts.events.phases.CombatPhase;
 import basemod.abstracts.events.phases.TextPhase;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.EventStrings;
 import lingmod.ModCore.ResourceType;
 import lingmod.interfaces.CampfireSleepEvent;
+
+import static lingmod.ModCore.makeID;
+import static lingmod.ModCore.makeImagePath;
 
 @CampfireSleepEvent
 public class NianGuestStar extends PhasedEvent {
@@ -21,7 +19,7 @@ public class NianGuestStar extends PhasedEvent {
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
     private static final String IMG_1 = makeImagePath("Nian_Ask.png", ResourceType.EVENTS);
-    private static final String IMG_2 = makeImagePath("1721132190506", ResourceType.EVENTS);
+    private static final String IMG_2 = makeImagePath("1721132190506.png", ResourceType.EVENTS);
     private static final String IMG_3 = makeImagePath("Nian_PreBattle.png", ResourceType.EVENTS);
 
     public NianGuestStar() {
@@ -37,7 +35,6 @@ public class NianGuestStar extends PhasedEvent {
                         .addOption(OPTIONS[2],
                                 (i) -> {
                                     imageEventText.loadImage(IMG_3);
-                                    ;
                                     transitionKey("PRE_BATTLE");
                                 }));
 
@@ -47,13 +44,12 @@ public class NianGuestStar extends PhasedEvent {
                         .addOption(OPTIONS[1],
                                 (i) -> {
                                     imageEventText.loadImage(IMG_3);
-                                    ;
                                     transitionKey("PRE_BATTLE");
                                 }));
         registerPhase("PRE_BATTLE",
                 new TextPhase(DESCRIPTIONS[2]).addOption(OPTIONS[1], (i) -> transitionKey("BATTLE")));
         // TODO: 替换为夕的画中生灵
-        registerPhase("BATTLE", new CombatPhase(MonsterHelper.LOTS_OF_SLIMES_ENC)
+        registerPhase("BATTLE", new CombatPhase(NianGuestStar.ID)
                 .addRewards(true, (room) -> {
                     room.addPotionToRewards();
                 }));

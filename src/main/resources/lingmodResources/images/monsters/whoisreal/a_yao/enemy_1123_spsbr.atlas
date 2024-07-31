@@ -1,0 +1,118 @@
+
+enemy_1123_spsbr.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+C_L_Fire
+  rotate: false
+  xy: 88, 228
+  size: 54, 47
+  orig: 54, 47
+  offset: 0, 0
+  index: -1
+C_L_Front_Leg
+  rotate: false
+  xy: 471, 102
+  size: 38, 80
+  orig: 38, 80
+  offset: 0, 0
+  index: -1
+C_L_Back_Leg
+  rotate: false
+  xy: 471, 184
+  size: 22, 37
+  orig: 22, 37
+  offset: 0, 0
+  index: -1
+C_Tongue
+  rotate: false
+  xy: 167, 202
+  size: 107, 46
+  orig: 107, 46
+  offset: 0, 0
+  index: -1
+C_Mouth
+  rotate: false
+  xy: 1, 228
+  size: 85, 55
+  orig: 85, 55
+  offset: 0, 0
+  index: -1
+C_Body
+  rotate: false
+  xy: 179, 1
+  size: 151, 131
+  orig: 151, 131
+  offset: 0, 0
+  index: -1
+C_Head
+  rotate: false
+  xy: 332, 1
+  size: 139, 99
+  orig: 139, 99
+  offset: 0, 0
+  index: -1
+C_Mouth_Open
+  rotate: false
+  xy: 167, 134
+  size: 112, 66
+  orig: 112, 66
+  offset: 0, 0
+  index: -1
+C_Mouth_Close
+  rotate: false
+  xy: 332, 102
+  size: 137, 88
+  orig: 137, 88
+  offset: 0, 0
+  index: -1
+C_Head_Close
+  rotate: false
+  xy: 1, 122
+  size: 164, 104
+  orig: 164, 104
+  offset: 0, 0
+  index: -1
+C_Head_0pen
+  rotate: false
+  xy: 1, 1
+  size: 176, 119
+  orig: 176, 119
+  offset: 0, 0
+  index: -1
+C_Slaver_02
+  rotate: false
+  xy: 144, 228
+  size: 20, 37
+  orig: 20, 37
+  offset: 0, 0
+  index: -1
+C_Slaver_01
+  rotate: false
+  xy: 144, 267
+  size: 10, 19
+  orig: 10, 19
+  offset: 0, 0
+  index: -1
+C_R_Back_Leg
+  rotate: false
+  xy: 471, 223
+  size: 22, 36
+  orig: 22, 36
+  offset: 0, 0
+  index: -1
+C_R_Front_Leg
+  rotate: false
+  xy: 473, 1
+  size: 29, 85
+  orig: 29, 85
+  offset: 0, 0
+  index: -1
+C_R_Fire
+  rotate: false
+  xy: 281, 134
+  size: 47, 51
+  orig: 47, 51
+  offset: 0, 0
+  index: -1

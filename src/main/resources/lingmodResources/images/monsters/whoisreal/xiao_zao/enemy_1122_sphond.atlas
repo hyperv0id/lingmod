@@ -1,0 +1,132 @@
+
+enemy_1122_sphond.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+C_L_Back_Leg_04
+  rotate: false
+  xy: 1, 220
+  size: 22, 13
+  orig: 22, 13
+  offset: 0, 0
+  index: -1
+C_L_Back_Leg_01
+  rotate: false
+  xy: 93, 145
+  size: 39, 44
+  orig: 39, 44
+  offset: 0, 0
+  index: -1
+C_L_Back_Leg_02
+  rotate: false
+  xy: 219, 133
+  size: 32, 25
+  orig: 32, 25
+  offset: 0, 0
+  index: -1
+C_L_Back_Leg_03
+  rotate: false
+  xy: 219, 88
+  size: 21, 43
+  orig: 21, 43
+  offset: 0, 0
+  index: -1
+C_Tail
+  rotate: false
+  xy: 133, 88
+  size: 84, 55
+  orig: 84, 55
+  offset: 0, 0
+  index: -1
+C_L_Front_Leg_03
+  rotate: false
+  xy: 226, 51
+  size: 26, 14
+  orig: 26, 14
+  offset: 0, 0
+  index: -1
+C_L_Front_Leg_01
+  rotate: false
+  xy: 42, 147
+  size: 44, 35
+  orig: 44, 35
+  offset: 0, 0
+  index: -1
+C_L_Front_Leg_02
+  rotate: false
+  xy: 29, 184
+  size: 24, 49
+  orig: 24, 49
+  offset: 0, 0
+  index: -1
+C_Body
+  rotate: false
+  xy: 1, 1
+  size: 130, 103
+  orig: 130, 103
+  offset: 0, 0
+  index: -1
+C_Mouth
+  rotate: false
+  xy: 226, 1
+  size: 28, 29
+  orig: 28, 29
+  offset: 0, 0
+  index: -1
+C_R_Front_Leg_03
+  rotate: false
+  xy: 1, 235
+  size: 30, 15
+  orig: 30, 15
+  offset: 0, 0
+  index: -1
+C_R_Front_Leg_01
+  rotate: false
+  xy: 42, 106
+  size: 49, 39
+  orig: 49, 39
+  offset: 0, 0
+  index: -1
+C_R_Front_Leg_02
+  rotate: false
+  xy: 1, 163
+  size: 26, 55
+  orig: 26, 55
+  offset: 0, 0
+  index: -1
+C_R_Back_Leg_04
+  rotate: false
+  xy: 226, 32
+  size: 27, 17
+  orig: 27, 17
+  offset: 0, 0
+  index: -1
+C_R_Back_Leg_01
+  rotate: false
+  xy: 1, 106
+  size: 39, 55
+  orig: 39, 55
+  offset: 0, 0
+  index: -1
+C_R_Back_Leg_02
+  rotate: false
+  xy: 93, 106
+  size: 38, 29
+  orig: 38, 29
+  offset: 0, 0
+  index: -1
+C_R_Back_Leg_03
+  rotate: false
+  xy: 55, 184
+  size: 21, 49
+  orig: 21, 49
+  offset: 0, 0
+  index: -1
+C_Head
+  rotate: false
+  xy: 133, 1
+  size: 91, 85
+  orig: 91, 85
+  offset: 0, 0
+  index: -1

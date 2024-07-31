@@ -1,28 +1,21 @@
 package lingmod.events;
 
-import static lingmod.ModCore.makeImagePath;
-
-import java.util.ArrayList;
-
-import org.apache.logging.log4j.Logger;
-
+import basemod.ReflectionHacks;
+import basemod.abstracts.events.PhasedEvent;
+import basemod.abstracts.events.phases.TextPhase;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.relics.Circlet;
-import com.megacrit.cardcrawl.relics.Ginger;
-import com.megacrit.cardcrawl.relics.Mango;
-import com.megacrit.cardcrawl.relics.Pear;
-import com.megacrit.cardcrawl.relics.Strawberry;
+import com.megacrit.cardcrawl.relics.*;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-
-import basemod.ReflectionHacks;
-import basemod.abstracts.events.PhasedEvent;
-import basemod.abstracts.events.phases.TextPhase;
 import lingmod.ModCore;
 import lingmod.ModCore.ResourceType;
+import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
+
+import static lingmod.ModCore.makeImagePath;
 
 /**
  * 黍预见后面的怪物，假设只在火堆中触发，不会有弱怪池
@@ -46,7 +39,7 @@ public class Shu_KarmaOfMonsters extends PhasedEvent {
     public static final int ELITE_AMT = 3;
 
     public Shu_KarmaOfMonsters() {
-        super(ID, eventStrings.NAME, makeImagePath("Shu_KarmaOfMonsters", ResourceType.EVENTS));
+        super(ID, eventStrings.NAME, makeImagePath("Shu_KarmaOfMonsters.png", ResourceType.EVENTS));
         noCardsInRewards = true; // 没有卡牌奖励
         calcFruit();
         calcStrongEnemy();

@@ -11,8 +11,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
-import java.util.Iterator;
-
 public class RecycleButBlock extends AbstractGameAction {
     public static final String[] TEXT;
     private static final UIStrings uiStrings;
@@ -23,13 +21,15 @@ public class RecycleButBlock extends AbstractGameAction {
     }
 
     private final AbstractPlayer p;
+    private final AbstractCard caller;
     private int magnification = 1;
 
-    public RecycleButBlock(int magnification) {
+    public RecycleButBlock(AbstractCard caller, int magnification) {
         this.actionType = ActionType.CARD_MANIPULATION;
         this.p = AbstractDungeon.player;
         this.duration = Settings.ACTION_DUR_FAST;
         this.magnification = magnification;
+        this.caller = caller;
     }
 
     public void update() {
@@ -53,13 +53,13 @@ public class RecycleButBlock extends AbstractGameAction {
                 AbstractCard c;
 
                 // 遍历选定的手牌中的卡片
-                for (Iterator<AbstractCard> var1 = AbstractDungeon.handCardSelectScreen.selectedCards.group
-                        .iterator(); var1.hasNext(); ) {
-                    c = var1.next(); // 获取下一张卡片
+                for (AbstractCard card : AbstractDungeon.handCardSelectScreen.selectedCards.group) {
+                    c = card; // 获取下一张卡片
                     if (c.costForTurn > 0) {
                         // 如果卡片有正的费用，获得相应的格挡
-                        addToTop(new GainBlockAction(AbstractDungeon.player,
-                                magnification * EnergyPanel.getCurrentEnergy()));
+                        int amt = magnification * EnergyPanel.getCurrentEnergy();
+                        addToTop(new GainBlockAction(AbstractDungeon.player, amt));
+                        caller.baseBlock += amt;
                     }
 
                     // 将卡片移动到弃牌堆
