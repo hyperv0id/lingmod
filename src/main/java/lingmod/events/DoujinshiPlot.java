@@ -52,15 +52,15 @@ public class DoujinshiPlot extends PhasedEvent {
                             } else {
                                 logger.info("No Potion Slot To Use");
                             }
-                        })
-                        .addOption(OPTIONS[10], (i) -> {
-                            transitionKey(Phases.DOUJINSHI);
-                            imageEventText.loadImage(makeImagePath("events/DoujinshiPlot_1.png"));
                         }));
         // 怂恿喝下药水
         registerPhase(Phases.DRINK, new TextPhase(DESCRIPTIONS[1])
                 .addOption(OPTIONS[9], (i) -> {
                     exit();
+                })
+                .addOption(OPTIONS[10], (i) -> {
+                    transitionKey(Phases.DOUJINSHI);
+                    imageEventText.loadImage(makeImagePath("events/DoujinshiPlot_1.png"));
                 }));
         // 喝下药水，暂时失去权能
         registerPhase(Phases.DOUJINSHI, new TextPhase(DESCRIPTIONS[2])

@@ -51,7 +51,7 @@
   },
   "${ModID}:YuNiaoDreamCard": {
     "NAME": "鱼鸟梦",
-    "DESCRIPTION": "造成敌人要对你造成的伤害等量的伤害。 NL （!D! 点伤害） NL 梦中：你变形成此怪物，受到攻击时，同名怪物受到相同伤害"
+    "DESCRIPTION": "计算你会受到的伤害，敌人受到等量伤害 NL （!D! 点伤害） NL 变形成此怪物，受到任何攻击时，同名怪物受到相同伤害"
   },
   "${ModID}:HuangLiang": {
     "NAME": "黄粱梦",

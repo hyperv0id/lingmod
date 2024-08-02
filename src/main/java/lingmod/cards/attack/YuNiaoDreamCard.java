@@ -1,20 +1,17 @@
 package lingmod.cards.attack;
 
+import static lingmod.ModCore.makeID;
+import static lingmod.util.MonsterHelper.calcIntentDmg;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.powers.YuNiaoPower;
-import lingmod.util.Wiz;
-
-import java.util.Objects;
-
-import static lingmod.ModCore.makeID;
-import static lingmod.util.MonsterHelper.calcIntentDmg;
 
 /**
  * 梦为鱼鸟：计算怪物对你造成的伤害，给予等量伤害, TODO: 你的图像变成这个怪物，怪物攻击你时，同名怪物受到相同伤害。
@@ -29,7 +26,6 @@ public class YuNiaoDreamCard extends AbstractEasyCard {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
     }
 
-
     @Override
     public void upp() {
         updateCost(-1);
@@ -42,14 +38,12 @@ public class YuNiaoDreamCard extends AbstractEasyCard {
     }
 
     @Override
-    public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
-        for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
-            if (!Objects.equals(mo.name, abstractMonster.name)) continue;
-            addToBot(new DamageAction(mo,
-                    new DamageInfo(abstractPlayer, damage, DamageInfo.DamageType.NORMAL)));
-        }
-        if (Wiz.isStanceNell()) {
-            addToBot(new ApplyPowerAction(abstractPlayer, abstractPlayer, new YuNiaoPower(abstractPlayer, abstractMonster)));
-        }
+    public void use(AbstractPlayer abstractPlayer, AbstractMonster mo) {
+        // for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
+        // if (!Objects.equals(mo.name, mo.name)) continue;
+        addToBot(new DamageAction(mo,
+                new DamageInfo(abstractPlayer, damage, DamageInfo.DamageType.NORMAL)));
+        // }
+        addToBot(new ApplyPowerAction(abstractPlayer, abstractPlayer, new YuNiaoPower(abstractPlayer, mo)));
     }
 }

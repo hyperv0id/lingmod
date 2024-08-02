@@ -1,5 +1,9 @@
 package lingmod.powers;
 
+import static lingmod.ModCore.makeID;
+
+import org.apache.logging.log4j.Logger;
+
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -11,10 +15,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import lingmod.ModCore;
-import org.apache.logging.log4j.Logger;
 
-import static lingmod.ModCore.makeID;
+import lingmod.ModCore;
 
 public class WinePower extends AbstractEasyPower {
 
@@ -31,8 +33,9 @@ public class WinePower extends AbstractEasyPower {
         this.amount = amount;
     }
 
-    public float atDamageGive(float damage, DamageInfo.DamageType type) {
-        return type == DamageType.NORMAL ? damage + (float) this.amount : damage;
+    public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCard card) {
+        int mul = 1 + Math.max(0, card.costForTurn);
+        return type == DamageType.NORMAL ? damage + this.amount * mul : damage;
     }
 
     @Override
@@ -40,11 +43,13 @@ public class WinePower extends AbstractEasyPower {
         super.onPlayCard(card, m);
         if (card.type == CardType.ATTACK) {
             this.flash();
-            int cost = Math.min(this.amount, card.costForTurn);
-            if (card.freeToPlayOnce || card.freeToPlay())
-                cost = 0;
-            addToBot(new ReducePowerAction(owner, owner, this, cost));
+            addToBot(new ReducePowerAction(owner, owner, this, 1));
         }
+    }
+
+    @Override
+    public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
         if (this.amount <= 0)
             addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }

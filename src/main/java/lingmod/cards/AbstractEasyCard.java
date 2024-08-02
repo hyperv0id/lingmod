@@ -1,7 +1,14 @@
 package lingmod.cards;
 
-import basemod.abstracts.CustomCard;
-import basemod.helpers.CardModifierManager;
+import static lingmod.ModCore.makeImagePath;
+import static lingmod.ModCore.modID;
+import static lingmod.util.Wiz.actionify;
+import static lingmod.util.Wiz.atb;
+import static lingmod.util.Wiz.att;
+import static lingmod.util.Wiz.copyAnnotatedFields;
+
+import java.util.function.Consumer;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
@@ -17,22 +24,17 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
+
+import basemod.abstracts.CustomCard;
+import basemod.helpers.CardModifierManager;
 import lingmod.cards.mod.NellaFantasiaMod;
 import lingmod.cards.mod.PoemMod;
 import lingmod.cards.mod.WineMod;
 import lingmod.character.Ling;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.VoidSupplier;
-import lingmod.powers.WinePower;
 import lingmod.util.CardArtRoller;
 import lingmod.util.CustomTags;
-
-import java.util.function.Consumer;
-
-import static lingmod.ModCore.makeImagePath;
-import static lingmod.ModCore.modID;
-import static lingmod.util.Wiz.*;
 
 /**
  * 卡牌大小：500*380的高分辨率，250*190的低分辨率
@@ -234,13 +236,14 @@ public abstract class AbstractEasyCard extends CustomCard {
         this.magicNumber = baseMagicNumber;
         this.damage = this.baseDamage;
         this.block = this.baseBlock;
-        AbstractPower wine = AbstractDungeon.player.getPower(WinePower.POWER_ID);
-        // 采用费用计算酒的攻击
-        int wineAmount = 0;
-        if (wine != null) {
-            wineAmount = wine.amount;
-            wine.amount *= 1 + this.costForTurn;
-        }
+        // AbstractPower wine = AbstractDungeon.player.getPower(WinePower.POWER_ID);
+        
+        // // 采用费用计算酒的攻击
+        // int wineAmount = 0;
+        // if (wine != null) {
+        //     wineAmount = wine.amount;
+        //     wine.amount *= 1 + Math.max(0, this.costForTurn - 1);
+        // }
         if (baseSecondDamage > -1) {
             secondDamage = baseSecondDamage;
 
@@ -257,9 +260,9 @@ public abstract class AbstractEasyCard extends CustomCard {
             isSecondDamageModified = (secondDamage != baseSecondDamage);
         } else
             super.calculateCardDamage(mo);
-        if (wine != null) {
-            wine.amount = wineAmount;
-        }
+        // if (wine != null) {
+        //     wine.amount = wineAmount;
+        // }
     }
 
     public void resetAttributes() {
