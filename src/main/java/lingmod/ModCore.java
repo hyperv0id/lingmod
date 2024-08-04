@@ -246,15 +246,11 @@ public class ModCore implements
         // 添加TopPanel按钮
         // BaseMod.addTopPanelItem(new VerseTopPanel());
         BaseMod.addSaveField(VerseTopPanel.ID, new VerseTopPanel());
+        BaseMod.addSaveField(CampfireEventManager.class.getName(), new CampfireEventManager());
     }
 
     public void addEvents() {
-        Condition falseCondition = new Condition() {
-            @Override
-            public boolean test() {
-                return false;
-            }
-        };
+        Condition falseCondition = () -> false;
         // 本子情节
         // TODO: 怪物没有写
         BaseMod.addEvent(new AddEventParams.Builder(DoujinshiPlot.ID, DoujinshiPlot.class)
@@ -318,8 +314,9 @@ public class ModCore implements
         CardGroup verseCards = PlayerFieldsPatch.verseCardGroup.get(Wiz.adp());
         verseCards.addToTop(new JingYeSiCard());
         // 生成事件
-        Ling.sleepEvents.clear(); // 清空
-        Ling.initSleepEvents();
+        CampfireEventManager.sleptEvents.clear(); // 重置看过的事件
+        CampfireEventManager.sleepEvents.clear(); // 清空
+        CampfireEventManager.initSleepEvents();
     }
 
     /**

@@ -31,7 +31,7 @@ public class Shu_KarmaOfMonsters extends PhasedEvent {
     private static final String[] OPTIONS = eventStrings.OPTIONS;
 
     public String phase = "START";
-    public AbstractRelic fruit;
+    public AbstractRelic fruit = new Circlet(); // 不初始化导致SL错误
     public String monsters;
     public String elites;
 
@@ -41,9 +41,6 @@ public class Shu_KarmaOfMonsters extends PhasedEvent {
     public Shu_KarmaOfMonsters() {
         super(ID, eventStrings.NAME, makeImagePath("Shu_KarmaOfMonsters.png", ResourceType.EVENTS));
         noCardsInRewards = true; // 没有卡牌奖励
-        calcFruit();
-        calcStrongEnemy();
-        calcElite();
         OPTIONS[3] = String.format(OPTIONS[3], SMALL_AMT);
         OPTIONS[4] = String.format(OPTIONS[4], ELITE_AMT);
         // 开始
@@ -52,12 +49,24 @@ public class Shu_KarmaOfMonsters extends PhasedEvent {
                 .addOption(OPTIONS[2], (i) -> transitionKey("FRUIT")));
         // 看手相
         registerPhase("LOOK", new TextPhase(DESCRIPTIONS[1])
-                .addOption(OPTIONS[3], (i) -> transitionKey("MONSTER"))
-                .addOption(OPTIONS[4], (i) -> transitionKey("ELITE")));
+                .addOption(OPTIONS[3], (i) -> {
+                    calcStrongEnemy();
+                    transitionKey("MONSTER");
+                })
+                .addOption(OPTIONS[4], (i) -> {
+                    calcElite();
+                    transitionKey("ELITE");
+                }));
         registerPhase("MONSTER", new TextPhase(DESCRIPTIONS[2] + monsters)
-                .addOption(OPTIONS[5], (i) -> transitionKey("FRUIT")));
+                .addOption(OPTIONS[5], (i) -> {
+                    calcFruit();
+                    transitionKey("FRUIT");
+                }));
         registerPhase("ELITE", new TextPhase(DESCRIPTIONS[3] + elites)
-                .addOption(OPTIONS[5], (i) -> transitionKey("FRUIT")));
+                .addOption(OPTIONS[5], (i) -> {
+                    calcFruit();
+                    transitionKey("FRUIT");
+                }));
 
         // 获得水果
         registerPhase("FRUIT", new TextPhase(DESCRIPTIONS[4] + fruit.name)
@@ -77,7 +86,7 @@ public class Shu_KarmaOfMonsters extends PhasedEvent {
     }
 
     protected void calcStrongEnemy() {
-        monsters = "";
+        StringBuilder sb = new StringBuilder();
         if (AbstractDungeon.monsterList.size() < SMALL_AMT) {
             ReflectionHacks.privateMethod(AbstractDungeon.class, "generateStrongEnemies", Integer.class)
                     .invoke(CardCrawlGame.dungeon, 12);
@@ -86,15 +95,17 @@ public class Shu_KarmaOfMonsters extends PhasedEvent {
             String name = AbstractDungeon.monsterList.get(index);
             String name_i18n = MonsterHelper.getEncounterName(name);
             if (!name_i18n.isEmpty()) {
-                monsters += " NL NL " + name_i18n;
+                // monsters += " NL NL " + name_i18n;
+                sb.append(" NL NL ");
+                sb.append(name_i18n);
             }
             // logger.info("接下来的强怪将是：" + name);
         }
-
+        monsters = sb.toString();
     }
 
     protected void calcElite() {
-        elites = "";
+        StringBuilder sb = new StringBuilder();
         if (AbstractDungeon.monsterList.size() < ELITE_AMT) {
             ReflectionHacks.privateMethod(AbstractDungeon.class, "generateElites", Integer.class)
                     .invoke(CardCrawlGame.dungeon, 10);
@@ -103,10 +114,13 @@ public class Shu_KarmaOfMonsters extends PhasedEvent {
             String name = AbstractDungeon.eliteMonsterList.get(index);
             String name_i18n = MonsterHelper.getEncounterName(name);
             if (!name_i18n.isEmpty()) {
-                elites += " NL NL " + name_i18n;
+                sb.append(" NL NL ");
+                sb.append(name_i18n);
+                // elites += " NL NL " + name_i18n;
             }
             // logger.info("接下来的精英将是：" + name);
         }
+        elites = sb.toString();
     }
 
     protected void calcFruit() {

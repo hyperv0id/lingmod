@@ -55,6 +55,7 @@ public class AYao extends AbstractMonster {
         state.setAnimation(0, "Attack", false);
         AnimationState.TrackEntry e = state.addAnimation(0, "Idle", true, 0F);
         e.setTime(e.getEndTime() * MathUtils.random());
+        this.flipHorizontal = true;
     }
 
     public AYao() {

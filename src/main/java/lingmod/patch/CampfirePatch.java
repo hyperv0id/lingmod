@@ -2,7 +2,7 @@ package lingmod.patch;
 
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.vfx.campfire.CampfireSleepEffect;
-import lingmod.character.Ling;
+import lingmod.events.CampfireEventManager;
 import lingmod.util.EventMaster;
 
 import static lingmod.ModCore.logger;
@@ -17,7 +17,7 @@ public class CampfirePatch {
             if (__inst.isDone) {
                 logger.info("睡觉事件触发");
                 // TODO: 没有保存功能
-                EventMaster.triggerEvent(Ling.rollEvent());
+                EventMaster.triggerEvent(CampfireEventManager.rollEvent());
             }
         }
     }

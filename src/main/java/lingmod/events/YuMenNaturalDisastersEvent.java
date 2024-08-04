@@ -1,16 +1,16 @@
 package lingmod.events;
 
-import org.apache.logging.log4j.Logger;
-
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.localization.EventStrings;
-
 import lingmod.ModCore;
 import lingmod.interfaces.CampfireSleepEvent;
+import org.apache.logging.log4j.Logger;
 
 
 @CampfireSleepEvent
+@AutoAdd.Ignore
 public class YuMenNaturalDisastersEvent extends AbstractImageEvent {
     public static final String ID = ModCore.makeID("YuMenNaturalDisastersEvent");
     public static final String IMG_PATH = ModCore.makeImagePath("events/YuMenNaturalDisastersEvent.png");

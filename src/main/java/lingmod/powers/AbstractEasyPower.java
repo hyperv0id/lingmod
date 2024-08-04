@@ -59,6 +59,14 @@ public abstract class AbstractEasyPower extends AbstractPower {
         updateDescription();
     }
 
+    @Override
+    public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
+        if (this.amount > 999) {
+            this.amount = 999;
+        }
+    }
+
     public static void addToBotAbstract(final VoidSupplier func) {
         AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
             public void update() {
