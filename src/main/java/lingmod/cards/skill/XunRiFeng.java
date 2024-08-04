@@ -1,17 +1,16 @@
 package lingmod.cards.skill;
 
-import static lingmod.ModCore.makeID;
+import basemod.BaseMod;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import lingmod.actions.CardTimeTravelAction;
+import lingmod.cards.AbstractEasyCard;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.BaseMod;
-import lingmod.actions.CardTimeTravelAction;
-import lingmod.cards.AbstractEasyCard;
+import static lingmod.ModCore.makeID;
 
 /**
  * 寻日峰：消耗任意张，抽等量。再次打出：把消耗的放入手牌
@@ -22,7 +21,7 @@ public class XunRiFeng extends AbstractEasyCard {
     public List<AbstractCard> exHaustedCards;
 
     public XunRiFeng() {
-        super(ID, 2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.SELF);
+        super(ID, 2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         exHaustedCards = new ArrayList<>();
     }
 

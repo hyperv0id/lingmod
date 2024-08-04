@@ -21,45 +21,32 @@ public class ZuiFeiChenPower extends AbstractEasyPower implements PostExhaustSub
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.BUFF;
     private static final boolean TURN_BASED = true; // 是否回合后消失
-    protected final int gain;
-    protected final int threshold;
 
-    public ZuiFeiChenPower(AbstractCreature owner, int threshold, int gain) {
-        super(POWER_ID, NAME, TYPE, TURN_BASED, owner, 0);
-        this.threshold = threshold;
-        this.gain = gain;
+    public ZuiFeiChenPower(AbstractCreature owner, int amount) {
+        super(POWER_ID, NAME, TYPE, TURN_BASED, owner, amount);
         updateDescription();
     }
 
     @Override
     public void updateDescription() {
-        this.description = String.format(powerStrings.DESCRIPTIONS[0], threshold, gain);
-    }
-
-    @Override
-    public void onDrawOrDiscard() {
-        super.onDrawOrDiscard();
-        this.stackPower(1);
-    }
-
-    @Override
-    public void stackPower(int stackAmount) {
-        super.stackPower(stackAmount);
-        while (amount >= threshold) {
-            amount -= threshold;
-            addToBot(new ApplyPowerAction(owner, owner, new WinePower(owner, gain)));
-        }
+        this.description = String.format(powerStrings.DESCRIPTIONS[0]);
     }
 
     @Override
     public void receivePostExhaust(AbstractCard abstractCard) {
         this.flash();
-        this.stackPower(1);
+        addToBot(new ApplyPowerAction(owner, owner, new WinePower(owner, amount)));
+    }
+
+    @Override
+    public void onInitialApplication() {
+        super.onInitialApplication();
+        BaseMod.subscribe(this);
     }
 
     @Override
     public void onRemove() {
         super.onRemove();
-        BaseMod.unsubscribe(this);
+        BaseMod.unsubscribeLater(this);
     }
 }

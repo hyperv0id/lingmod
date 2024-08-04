@@ -102,7 +102,7 @@
   "${ModID}:ZuiFeiChenPower": {
     "NAME": "醉飞尘",
     "DESCRIPTIONS": [
-      "每抽取/丢弃/消耗 %d 张牌，获得 %d ${ModID}:酒 "
+      "每消耗 #b1 张牌，获得 #b%d #b${ModID}:酒 "
     ]
   },
   "${ModID}:DrinkAlonePower": {

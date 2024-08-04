@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
+import lingmod.interfaces.CardConfig;
 import lingmod.powers.ZuiFeiChenPower;
 
 import static lingmod.ModCore.makeID;
@@ -11,6 +12,7 @@ import static lingmod.ModCore.makeID;
 /**
  * 每打出/消耗/丢弃 5/4 张牌，获得1酒
  */
+@CardConfig(magic = 1)
 public class ZuiFeiChen extends AbstractEasyCard {
 
     public static final String NAME = ZuiFeiChen.class.getSimpleName();
@@ -19,7 +21,7 @@ public class ZuiFeiChen extends AbstractEasyCard {
 
 
     public ZuiFeiChen() {
-        super(ID, 1, TYPE, CardRarity.COMMON, CardTarget.SELF);
+        super(ID, 1, TYPE, CardRarity.UNCOMMON, CardTarget.SELF);
         this.baseMagicNumber = 5;
         this.initializeDescription();
     }
@@ -31,6 +33,6 @@ public class ZuiFeiChen extends AbstractEasyCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new ZuiFeiChenPower(p, magicNumber, 1)));
+        addToBot(new ApplyPowerAction(p, p, new ZuiFeiChenPower(p, magicNumber)));
     }
 }

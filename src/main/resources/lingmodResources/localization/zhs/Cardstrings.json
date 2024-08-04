@@ -180,7 +180,7 @@
   },
   "${ModID}:ZuiFeiChen": {
     "NAME": "醉飞尘",
-    "DESCRIPTION": "每当抽取/消耗/丢弃 !M! 张牌，获得 1 ${ModID}:酒 "
+    "DESCRIPTION": "当卡牌被消耗时，获得 !M! ${ModID}:酒 "
   },
   "${ModID}:QingMingDream": {
     "NAME": "清明梦",
@@ -266,8 +266,8 @@
   },
   "lingmod:ZhengFuWangXiang": {
     "NAME": "征夫望乡",
-    "DESCRIPTION": "消耗手牌中所有手牌，在手牌中加入一张 裹甲衔枚",
-    "UPGRADE_DESCRIPTION": "消耗所有手牌，消耗牌库所有打击、防御，在手牌中加入一张 裹甲衔枚"
+    "DESCRIPTION": "消耗所有手牌， lingmod:合成 为一张 特殊的裹甲衔枚 NL lingmod:合成 : 裹甲衔枚 的 数值为 !M! 点防御和攻击",
+    "UPGRADE_DESCRIPTION": "消耗所有手牌以及所有打击防御， lingmod:合成 为一张 特殊的裹甲衔枚 NL lingmod:合成 : 裹甲衔枚 的 数值为 !M! 点防御和攻击"
   },
   "${ModID}:QuShuiLiuShang": {
     "NAME": "曲水流觞",
