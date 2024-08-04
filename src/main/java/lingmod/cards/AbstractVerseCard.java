@@ -1,10 +1,6 @@
 package lingmod.cards;
 
-import static lingmod.ModCore.makeID;
-
-import java.util.Arrays;
-import java.util.List;
-
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -12,10 +8,14 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.patch.TypeOverridePatch;
 import lingmod.util.CustomTags;
 import lingmod.util.VerseLoader;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 词牌：规定了整场战斗的格调，按照格调打出额外效果
@@ -90,6 +90,16 @@ public abstract class AbstractVerseCard extends AbstractEasyCard {
 
         this.cost = toneManager.remainToken();
 
+    }
+
+    @Override
+    public void render(SpriteBatch sb) {
+        super.render(sb);
+    }
+
+    @Override
+    public void renderInLibrary(SpriteBatch sb) {
+        super.renderInLibrary(sb);
     }
 
     protected enum Tone {

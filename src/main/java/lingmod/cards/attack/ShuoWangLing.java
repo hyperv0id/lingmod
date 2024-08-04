@@ -33,6 +33,12 @@ public class ShuoWangLing extends AbstractEasyCard {
         }
     }
 
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        super.calculateCardDamage(mo);
+        if (this.damage <= 1) this.damage = 1;
+    }
+
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DrawCardAction(1));
         if (p.hand.size() == 1) {

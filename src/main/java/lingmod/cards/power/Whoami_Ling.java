@@ -3,7 +3,6 @@ package lingmod.cards.power;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.unique.RemoveAllPowersAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.powers.CantApplyPowerPower;
@@ -12,8 +11,8 @@ import static lingmod.ModCore.makeID;
 
 /**
  * 我是谁？
- * 你不会被敌人DEBUFF到，被自己DEBUFF时失去此能力
- * 清除所有异常 NL 你和敌人无法再获得任何能力"
+ * 不能获得新能力，被自己DEBUFF时失去此能力
+ * 清除所有异常
  */
 public class Whoami_Ling extends AbstractEasyCard {
     public static final String NAME = Whoami_Ling.class.getSimpleName();
@@ -32,9 +31,6 @@ public class Whoami_Ling extends AbstractEasyCard {
         if (upgraded)
             addToBot(new RemoveAllPowersAction(p, true));
         addToBot(new ApplyPowerAction(p, p, new CantApplyPowerPower(p)));
-        for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
-            addToBot(new ApplyPowerAction(monster, p, new CantApplyPowerPower(monster)));
-        }
     }
 
 }

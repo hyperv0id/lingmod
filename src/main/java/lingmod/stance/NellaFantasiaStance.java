@@ -1,12 +1,13 @@
 package lingmod.stance;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.BaseMod;
+import basemod.interfaces.OnPlayerTurnStartPostDrawSubscriber;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -14,14 +15,17 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.StanceStrings;
 import com.megacrit.cardcrawl.stances.AbstractStance;
+import com.megacrit.cardcrawl.stances.NeutralStance;
 import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 import com.megacrit.cardcrawl.vfx.stance.CalmParticleEffect;
 import com.megacrit.cardcrawl.vfx.stance.StanceAuraEffect;
 
+import static lingmod.ModCore.makeID;
+
 /**
  * 幻梦/梦境：在出牌时，你和敌人造成的伤害都会减少1
  */
-public class NellaFantasiaStance extends AbstractStance {
+public class NellaFantasiaStance extends AbstractStance implements OnPlayerTurnStartPostDrawSubscriber {
     public static final String STANCE_NAME = NellaFantasiaStance.class.getSimpleName();
     public static final String STANCE_ID = makeID(STANCE_NAME);
 
@@ -30,6 +34,7 @@ public class NellaFantasiaStance extends AbstractStance {
     public static int adder = 1; // 打出牌时增加的否定值
     public static int remainTurn = 1;
     private static long sfxId = -1L;
+    public static boolean exitOnStartTurn = true;
 
     public NellaFantasiaStance() {
         this.ID = STANCE_ID;
@@ -40,6 +45,7 @@ public class NellaFantasiaStance extends AbstractStance {
     @Override
     public void updateDescription() {
         this.description = stanceString.DESCRIPTION[0];
+        this.description = this.description.replace("!X!", String.valueOf(dmgModi));
     }
 
     public void updateAnimation() {
@@ -66,7 +72,7 @@ public class NellaFantasiaStance extends AbstractStance {
         CardCrawlGame.sound.play("STANCE_ENTER_CALM");
         sfxId = CardCrawlGame.sound.playAndLoop("STANCE_LOOP_CALM");
         AbstractDungeon.effectsQueue.add(new BorderFlashEffect(Color.PURPLE, true));
-        // BaseMod.subscribe(this);
+        BaseMod.subscribe(this);
         AbstractDungeon.actionManager.addToBottom(new DrawCardAction(1));
     }
 
@@ -107,13 +113,14 @@ public class NellaFantasiaStance extends AbstractStance {
         // addToBotAbstract(() -> {
         // logger.info("敌方攻击力下降");
         dmgModi += adder;
+        updateDescription();
         // });
         // }
     }
 
     public void onExitStance() {
         AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
-        // BaseMod.unsubscribeLater(this);
+        BaseMod.unsubscribeLater(this);
         this.stopIdleSfx();
     }
 
@@ -121,6 +128,13 @@ public class NellaFantasiaStance extends AbstractStance {
         if (sfxId != -1L) {
             CardCrawlGame.sound.stop("STANCE_LOOP_CALM", sfxId);
             sfxId = -1L;
+        }
+    }
+
+    @Override
+    public void receiveOnPlayerTurnStartPostDraw() {
+        if (exitOnStartTurn) {
+            AbstractDungeon.actionManager.addToBottom(new ChangeStanceAction(NeutralStance.STANCE_ID));
         }
     }
 

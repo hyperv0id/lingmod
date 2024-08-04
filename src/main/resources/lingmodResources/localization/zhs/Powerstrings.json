@@ -89,7 +89,7 @@
   "${ModID}:WinePower": {
     "NAME": "酒",
     "DESCRIPTIONS": [
-      "每层使伤害增加 1，根据卡牌费用效果翻倍 NL 点打出攻击牌后减少一点"
+      "每层使伤害增加 #b1，根据卡牌 #g费用 效果翻倍 NL 点打出攻击牌后减少一点，如果不在梦中，回合结束时减半"
     ]
   },
   "${ModID}:PoemVSQuickSandPower": {
@@ -137,7 +137,7 @@
     ]
   },
   "lingmod:GiveGoldAsHP": {
-    "NAME": "掌柜的答谢",
+    "NAME": "谢礼",
     "DESCRIPTIONS": [
       "战斗结束后给予生命值 %d 倍的金币"
     ]

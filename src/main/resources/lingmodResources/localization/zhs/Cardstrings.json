@@ -112,7 +112,7 @@
   },
   "${ModID}:Peripateticism": {
     "NAME": "“逍遥”",
-    "DESCRIPTION": " ${ModID}:合成 所有非攻击牌，每张 给予 !M! 缠绕 NL ${ModID}:合成 ： 立刻结算缠绕效果"
+    "DESCRIPTION": " ${ModID}:合成 所有非攻击牌，立刻结算缠绕效果 NL ${ModID}:合成 ：给予 !M! 缠绕"
   },
   "${ModID}:Feature_2_Card": {
     "NAME": "随付笺咏醉屠苏",
@@ -136,8 +136,8 @@
   },
   "${ModID}:Whoami_Ling": {
     "NAME": "无怖",
-    "DESCRIPTION": "你和敌人无法再获得任何能力 NL 对自己施加异常时移除此效果",
-    "UPGRADE_DESCRIPTION": "清除所有异常 NL 你和敌人无法再获得任何能力 NL 对自己施加异常时移除此效果"
+    "DESCRIPTION": "你无法再获得任何新能力 NL 对自己施加异常时移除此效果",
+    "UPGRADE_DESCRIPTION": "清除所有异常 NL 你无法再获得任何新能力 NL 自己对自己施加异常时移除此效果"
   },
   "${ModID}:Whoami_Nian": {
     "NAME": "无悲",
@@ -234,8 +234,8 @@
   },
   "${ModID}:DrinkAlone": {
     "NAME": "独酌",
-    "DESCRIPTION": "下一张牌将消耗全部能量，额外打出 X 次 NL 每次获得 X 酒",
-    "UPGRADE_DESCRIPTION": "下一张牌将消耗全部能量，额外打出 X+1 次 NL 每次获得 X 酒"
+    "DESCRIPTION": "获得 X 酒 NL 下一张牌将消耗全部能量，额外打出 X 次",
+    "UPGRADE_DESCRIPTION": "每次获得 X 酒 NL 下一张牌将消耗全部能量，额外打出 X+1 次"
   },
   "${ModID}:YunLiaoWineCard": {
     "NAME": "云辽酒",

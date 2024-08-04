@@ -254,12 +254,12 @@ public class ModCore implements
         // 本子情节
         // TODO: 怪物没有写
         BaseMod.addEvent(new AddEventParams.Builder(DoujinshiPlot.ID, DoujinshiPlot.class)
-                .eventType(EventUtils.EventType.ONE_TIME)
+                .eventType(EventUtils.EventType.NORMAL)
                 .endsWithRewardsUI(true)
                 .create());
         // TODO: 坠落，不能重回此层最底端
         BaseMod.addEvent(new AddEventParams.Builder(FallingEvent.ID, FallingEvent.class)
-                .eventType(EventUtils.EventType.ONE_TIME)
+                .eventType(EventUtils.EventType.NORMAL)
                 .overrideEvent(Falling.ID)
                 .spawnCondition(falseCondition)
                 .create());
@@ -279,12 +279,12 @@ public class ModCore implements
         // 岁中十二人，可以获得遗物
         BaseMod.addEvent(
                 new AddEventParams.Builder(Sui12Event.ID, Sui12Event.class)
-                        .eventType(EventUtils.EventType.ONE_TIME)
+                        .eventType(EventUtils.EventType.NORMAL)
                         .create());
         // 我是谁，可以获得卡牌
         BaseMod.addEvent(
                 new AddEventParams.Builder(WhoamiEvent.ID, WhoamiEvent.class)
-                        .eventType(EventUtils.EventType.ONE_TIME)
+                        .eventType(EventUtils.EventType.NORMAL)
                         .create());
         // TODO: 玉门狂沙
         BaseMod.addEvent(new AddEventParams.Builder(YuMenNaturalDisastersEvent.ID, YuMenNaturalDisastersEvent.class)
