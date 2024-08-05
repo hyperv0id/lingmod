@@ -28,6 +28,7 @@ public class ZhengFuWangXiang extends AbstractEasyCard {
 
     @Override
     public void upp() {
+        upgradeMagicNumber(3);
     }
 
     @Override
@@ -46,6 +47,8 @@ public class ZhengFuWangXiang extends AbstractEasyCard {
 
         GuoJiaXianMei gjxm = new GuoJiaXianMei();
         gjxm.baseDamage = gjxm.baseBlock = this.magicNumber * (int) cnt;
+        gjxm.cost = Math.min((int) cnt, gjxm.cost);
+        gjxm.setCostForTurn(gjxm.cost);
         addToBot(new MakeTempCardInHandAction(gjxm));
     }
 

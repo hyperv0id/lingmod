@@ -1,5 +1,6 @@
 package lingmod.monsters.whoisreal;
 
+import basemod.abstracts.CustomMonster;
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -14,7 +15,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AngryPower;
 import com.megacrit.cardcrawl.vfx.SpeechBubble;
 import lingmod.ModCore;
@@ -22,9 +22,9 @@ import lingmod.ModCore;
 /**
  * 阿咬，你猜猜它为什么叫阿咬？
  */
-public class AYao extends AbstractMonster {
+public class AYao extends CustomMonster {
     public static final String ID = ModCore.makeID(AYao.class.getSimpleName());
-    public static final String spinePath = ModCore.makeImagePath("whoisreal/a_yao/enemy_1123_spsbr",
+    public static final String spinePath = ModCore.makeImagePath("who_is_real/a_yao/enemy_1123_spsbr",
             ModCore.ResourceType.MONSTERS);
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     private static final int SCRATCH_DAMAGE = 4;

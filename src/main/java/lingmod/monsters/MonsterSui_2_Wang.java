@@ -1,10 +1,10 @@
 package lingmod.monsters;
 
+import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.ModCore;
 import lingmod.ModCore.ResourceType;
 
@@ -15,7 +15,7 @@ import static lingmod.ModCore.makeImagePath;
 /**
  * 二哥你又在下棋哦，陪我喝点酒好不好
  */
-public class MonsterSui_2_Wang extends AbstractMonster {
+public class MonsterSui_2_Wang extends CustomMonster {
     public static final String ID = ModCore.makeID(MonsterSui_2_Wang.class.getSimpleName());
     public static final MonsterStrings ms = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final float orbOffset = 225.0F; // 棋盘宽高

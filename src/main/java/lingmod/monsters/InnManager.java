@@ -1,8 +1,6 @@
 package lingmod.monsters;
 
-import static lingmod.ModCore.makeID;
-import static lingmod.ModCore.makeImagePath;
-
+import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.EscapeAction;
@@ -14,17 +12,18 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.SmokeBombEffect;
-
 import lingmod.powers.GiveGoldAsHP;
 import lingmod.powers.InvincibleForPlayer;
+
+import static lingmod.ModCore.makeID;
+import static lingmod.ModCore.makeImagePath;
 
 /**
  * 挑山人大战掌柜的
  * TODO: 复制的史莱姆意图
  */
-public class InnManager extends AbstractMonster {
+public class InnManager extends CustomMonster {
     public static final String ID = makeID(InnManager.class.getSimpleName());
     public static final int MAX_HP = 100;
     protected static final MonsterStrings ms = CardCrawlGame.languagePack.getMonsterStrings(ID);

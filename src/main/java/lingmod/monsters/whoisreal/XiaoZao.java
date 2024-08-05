@@ -1,18 +1,18 @@
 package lingmod.monsters.whoisreal;
 
+import basemod.abstracts.CustomMonster;
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.ModCore.ResourceType;
 
 import static lingmod.ModCore.makeID;
 import static lingmod.ModCore.makeImagePath;
 
-public class XiaoZao extends AbstractMonster {
+public class XiaoZao extends CustomMonster {
     public static final String ID = makeID(XiaoZao.class.getSimpleName());
-    public static final String spinePath = makeImagePath("whoisreal/xiao_zao/enemy_1122_sphond", ResourceType.MONSTERS);
+    public static final String spinePath = makeImagePath("who_is_real/xiao_zao/enemy_1122_sphond", ResourceType.MONSTERS);
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
 
     public XiaoZao(float x, float y) {
