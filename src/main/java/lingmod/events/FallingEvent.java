@@ -1,5 +1,6 @@
 package lingmod.events;
 
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
@@ -17,6 +18,7 @@ import lingmod.ModCore;
 
 import static lingmod.ModCore.makeID;
 
+@AutoAdd.Ignore
 public class FallingEvent extends AbstractImageEvent {
     public static final String ID = makeID(FallingEvent.class.getSimpleName());
     private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(ID);
