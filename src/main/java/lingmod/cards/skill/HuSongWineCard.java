@@ -1,18 +1,20 @@
 package lingmod.cards.skill;
 
-import basemod.ReflectionHacks;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
+
+import basemod.ReflectionHacks;
 import lingmod.cards.AbstractWineCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.util.MonsterHelper;
 
-import static lingmod.ModCore.makeID;
-
 /**
+ * TODO: 无法修改多段
  * 敌人多段攻击，攻击次数减少 20%
  * 否则给予虚弱
  */

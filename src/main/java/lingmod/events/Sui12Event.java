@@ -1,5 +1,7 @@
 package lingmod.events;
 
+import org.apache.logging.log4j.Logger;
+
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -8,11 +10,11 @@ import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.events.GenericEventDialog;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+
 import lingmod.ModCore;
 import lingmod.interfaces.CampfireSleepEvent;
 import lingmod.relics.NianAncientCasting;
-import lingmod.relics.ShuRiceRelic;
-import org.apache.logging.log4j.Logger;
+import lingmod.relics.Shu_SeedRelic;
 
 /**
  * 事件：岁中十二人
@@ -86,8 +88,8 @@ public class Sui12Event extends AbstractImageEvent {
                 screenID = ScreenID.CHOSE_LING;
                 break;
             case 2: // 黍
-                if (!player.hasRelic(ShuRiceRelic.ID))
-                    relic = new ShuRiceRelic();
+                if (!player.hasRelic(Shu_SeedRelic.ID))
+                    relic = new Shu_SeedRelic();
                 screenID = ScreenID.CHOSE_SHU;
                 break;
             case 3: // 年

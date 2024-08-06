@@ -1,14 +1,29 @@
 package lingmod.character;
 
-import basemod.abstracts.CustomPlayer;
+import static lingmod.ModCore.characterColor;
+import static lingmod.ModCore.logger;
+import static lingmod.ModCore.makeCharacterPath;
+import static lingmod.ModCore.makeImagePath;
+import static lingmod.character.Ling.Enums.LING_COLOR;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
-import com.esotericsoftware.spine.*;
+import com.esotericsoftware.spine.AnimationState;
+import com.esotericsoftware.spine.AnimationStateData;
+import com.esotericsoftware.spine.Skeleton;
+import com.esotericsoftware.spine.SkeletonBinary;
+import com.esotericsoftware.spine.SkeletonData;
+import com.evacipated.cardcrawl.mod.stslib.relics.OnAfterUseCardRelic;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -21,22 +36,24 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
+
+import basemod.BaseMod;
+import basemod.abstracts.CustomPlayer;
+import basemod.interfaces.OnStartBattleSubscriber;
+import basemod.interfaces.PostExhaustSubscriber;
 import lingmod.cards.attack.ChongJinJiuCard;
 import lingmod.cards.attack.GuoJiaXianMei;
 import lingmod.cards.attack.Strike;
 import lingmod.cards.attack.Tranquility;
 import lingmod.cards.skill.Defend;
+import lingmod.powers.PoeticMoodPower;
+import lingmod.powers.WinePower;
 import lingmod.relics.LightRelic;
 import lingmod.util.TODO;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static lingmod.ModCore.*;
-import static lingmod.character.Ling.Enums.LING_COLOR;
-
-public class Ling extends CustomPlayer {
+public class Ling extends CustomPlayer implements OnAfterUseCardRelic, PostExhaustSubscriber, OnStartBattleSubscriber {
 
     public static final String SHOULDER1 = makeCharacterPath("ling/shoulder.png");
     public static final String CORPSE = makeCharacterPath("ling/corpse.png");
@@ -83,6 +100,7 @@ public class Ling extends CustomPlayer {
         AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
         e.setTime(e.getEndTime() * MathUtils.random());
         e.setTimeScale(0.8F);
+        BaseMod.subscribe(this);
     }
 
     @Override
@@ -275,13 +293,27 @@ public class Ling extends CustomPlayer {
         return panels;
     }
 
+    @Override
+    public void onAfterUseCard(AbstractCard card, UseCardAction action) {
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new PoeticMoodPower(this, 1)));
+    }
+
+    @Override
+    public void receivePostExhaust(AbstractCard card) {
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new WinePower(this, 1)));
+    }
+
     public static class Enums {
         @SpireEnum
         public static AbstractPlayer.PlayerClass PLAYER_LING;
         @SpireEnum(name = "LING_COLOR")
         public static AbstractCard.CardColor LING_COLOR;
         @SpireEnum(name = "LING_COLOR")
-        @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
+    }
+
+    @Override
+    public void receiveOnBattleStart(AbstractRoom arg0) {
+        VoiceMaster.getInstance().beginBattle();
     }
 }

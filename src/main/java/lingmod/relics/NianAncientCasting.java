@@ -1,12 +1,13 @@
 package lingmod.relics;
 
-import basemod.BaseMod;
-import basemod.interfaces.StartActSubscriber;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
-import static lingmod.ModCore.makeID;
+import basemod.BaseMod;
+import basemod.interfaces.StartActSubscriber;
 
 /**
  * 古旧铸物 事件 每层3缓冲，每战斗6盾
@@ -15,7 +16,7 @@ public class NianAncientCasting extends AbstractEasyRelic implements StartActSub
 
     public static final String ID = makeID("NianAncientCasting");
     public static final int BUFFER_NUM = 3; // 获得几层缓冲
-    public static final int BLOCK_NUM = 4; // 获得几层格挡
+    public static final int BLOCK_NUM = 6; // 获得几层格挡
     public int actNum; // 地图在哪里
 
     public NianAncientCasting() {

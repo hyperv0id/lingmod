@@ -159,7 +159,7 @@
   },
   "${ModID}:Lament": {
     "NAME": "悲词",
-    "DESCRIPTION": "造成 !D! 点伤害，给予 !M! 层虚弱。 NL 如果存在虚弱，那么抽 !${ModID}:m2! 张牌"
+    "DESCRIPTION": "统计你和敌人的负面效果，每种负面效果获得 !B! 点格挡。"
   },
   "${ModID}:ShanHeYuanKuo": {
     "NAME": "山河远阔",

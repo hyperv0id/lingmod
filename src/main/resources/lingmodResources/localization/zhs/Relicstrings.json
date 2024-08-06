@@ -67,7 +67,7 @@
     "NAME": "一盏灯",
     "FLAVOR": "灯挑夜，箭如雨，大漠飞火",
     "DESCRIPTIONS": [
-      "打出牌时获得 1 诗兴"
+      "打出牌时获得 1 诗兴 NL 消耗牌时获得 1 酒"
     ]
   },
   "${ModID}:NianAncientCasting": {
@@ -84,25 +84,18 @@
       "你的三个技能效果改为生成召唤物"
     ]
   },
-  "${ModID}:ShuRiceRelic": {
-    "NAME": "一粒米",
-    "FLAVOR": "黍姐觉得你饿了",
+  "${ModID}:Shu_SeedRelic": {
+    "NAME": "种子",
+    "FLAVOR": "如果你没有行差踏错，种子会在合适的时候发芽",
     "DESCRIPTIONS": [
-      "拾起时回复大量( #b50% )生命，但超出生命上限的部分会 #r倒扣"
-    ]
-  },
-  "${ModID}:TodoItem": {
-    "NAME": "Todo Item",
-    "FLAVOR": "TODO: make this a sweet relic.",
-    "DESCRIPTIONS": [
-      "Has no effect."
+      "右键获得 %d 再生，击败BOSS后可再次使用"
     ]
   },
   "${ModID}:BlackWine": {
     "NAME": "黑色酒盏",
     "FLAVOR": "逍遥常驻，有道不孤",
     "DESCRIPTIONS": [
-      "回合开始时，费用高于 3 的卡牌可以免费打出 1 次"
+      "回合开始时，费用不小于 3 的卡牌可以免费打出 1 次"
     ]
   }
 }

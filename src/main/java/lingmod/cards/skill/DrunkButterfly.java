@@ -1,5 +1,7 @@
 package lingmod.cards.skill;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -7,14 +9,15 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.GrandFinalEffect;
+
 import lingmod.actions.DrunkAction;
 import lingmod.cards.AbstractEasyCard;
-
-import static lingmod.ModCore.makeID;
+import lingmod.interfaces.CardConfig;
 
 /**
  * 醉蝶：斩杀时，无视路线
  */
+@CardConfig(damage = 10)
 public class DrunkButterfly extends AbstractEasyCard {
 
     public static final String ID = makeID(DrunkButterfly.class.getSimpleName());
@@ -22,7 +25,6 @@ public class DrunkButterfly extends AbstractEasyCard {
 
     public DrunkButterfly() {
         super(ID, 1, CardType.ATTACK, CardRarity.RARE, CardTarget.ALL_ENEMY);
-        baseDamage = 9;
     }
 
     @Override
@@ -32,11 +34,12 @@ public class DrunkButterfly extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        upgradeDamage(4);
+        upgradeDamage(3);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster abstractMonster) {
+        // TODO: 切换特效
         if (Settings.FAST_MODE) {
             this.addToBot(new VFXAction(new GrandFinalEffect(), 0.3F));
         } else {

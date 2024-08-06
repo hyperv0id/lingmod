@@ -134,9 +134,6 @@ public class Morph {
         }
     }
 
-    /**
-     * TODO: 没有保存功能，导致SL后为怪物模型
-     */
     public static void restorePlayerMorph() {
         AbstractPlayer p = AbstractDungeon.player;
         Ling ling = new Ling(Ling.characterStrings.NAMES[1], Ling.Enums.PLAYER_LING);

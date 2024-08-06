@@ -1,36 +1,37 @@
 package lingmod.cards.attack;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.WeakPower;
+import com.megacrit.cardcrawl.powers.AbstractPower.PowerType;
+
 import lingmod.ModCore;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 
 /**
- * 悲词：打7/11 挂虚弱，如果有易伤 抽 1/2
+ * 悲词：统计你和敌人的负面效果，每个获得 !B! 格挡
  */
-@CardConfig(damage = 8, magic = 2, magic2 = 1, poemAmount = 2)
+@CardConfig(block = 8, poemAmount = 2)
 public class Lament extends AbstractEasyCard {
     public static final String ID = ModCore.makeID(Lament.class.getSimpleName());
 
     public Lament() {
-        super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
+        super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, null);
-        addToBot(new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false)));
-        if (m.hasPower(WeakPower.POWER_ID))
-            addToBot(new DrawCardAction(secondMagic));
+        long cnt = p.powers.stream().filter(po -> po.type == PowerType.DEBUFF).count();
+        for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
+            cnt += mo.powers.stream().filter(po -> po.type == PowerType.DEBUFF).count();
+        }
+        addToBot(new GainBlockAction(p, block * (int) cnt));
     }
 
     @Override
     public void upp() {
-        upgradeDamage(3);
-        upgradeSecondMagic(1);
+        upgradeBlock(2);
     }
 }

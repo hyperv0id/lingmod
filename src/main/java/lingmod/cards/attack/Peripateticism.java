@@ -1,5 +1,11 @@
 package lingmod.cards.attack;
 
+import static java.lang.Math.max;
+import static lingmod.ModCore.makeID;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -7,19 +13,14 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ConstrictedPower;
+
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static java.lang.Math.max;
-import static lingmod.ModCore.makeID;
 
 /**
  * “逍遥”：消耗所有技能牌，每张给予 8 缠绕
  */
-@CardConfig(damage = 8, magic = 5)
+@CardConfig(magic = 6)
 public class Peripateticism extends AbstractEasyCard {
     public static final String ID = makeID(Peripateticism.class.getSimpleName());
 
@@ -29,7 +30,7 @@ public class Peripateticism extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        upgradeMagicNumber(2);
+        upgradeMagicNumber(1);
     }
 
     @Override
@@ -46,9 +47,11 @@ public class Peripateticism extends AbstractEasyCard {
                 addToTop(new ApplyPowerAction(m, p, new ConstrictedPower(m, p, magicNumber * max(1, c.costForTurn))));
             });
             addToBotAbstract(() -> {
-                ConstrictedPower pw = (ConstrictedPower) m.getPower(ConstrictedPower.POWER_ID);
-                if (pw != null) {
-                    pw.atEndOfTurn(false);
+                for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
+                    ConstrictedPower pw = (ConstrictedPower) mo.getPower(ConstrictedPower.POWER_ID);
+                    if (pw != null) {
+                        pw.atEndOfTurn(false);
+                    }
                 }
             });
         });
