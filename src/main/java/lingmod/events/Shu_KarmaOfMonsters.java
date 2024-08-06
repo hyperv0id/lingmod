@@ -43,6 +43,7 @@ public class Shu_KarmaOfMonsters extends PhasedEvent {
     public AbstractRelic fruit = new Circlet(); // 不初始化导致SL错误
     public String monsters;
     public String elites;
+    public static String NAME = eventStrings.NAME;
 
     public static final int SMALL_AMT = 5;
     public static final int ELITE_AMT = 3;
@@ -102,11 +103,9 @@ public class Shu_KarmaOfMonsters extends PhasedEvent {
             String name = AbstractDungeon.monsterList.get(index);
             String name_i18n = MonsterHelper.getEncounterName(name);
             if (!name_i18n.isEmpty()) {
-                // monsters += " NL NL " + name_i18n;
                 sb.append(" NL NL ");
                 sb.append(name_i18n);
             }
-            // logger.info("接下来的强怪将是：" + name);
         }
         monsters = sb.toString();
     }
@@ -123,9 +122,7 @@ public class Shu_KarmaOfMonsters extends PhasedEvent {
             if (!name_i18n.isEmpty()) {
                 sb.append(" NL NL ");
                 sb.append(name_i18n);
-                // elites += " NL NL " + name_i18n;
             }
-            // logger.info("接下来的精英将是：" + name);
         }
         elites = sb.toString();
     }

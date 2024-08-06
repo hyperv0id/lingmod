@@ -31,6 +31,7 @@ public class DoujinshiPlot extends PhasedEvent {
 
     public static DoujinshiPlot __inst;
 
+    public static String NAME = eventStrings.NAME;
     AbstractVerseCard battleReward;
 
     public DoujinshiPlot() {

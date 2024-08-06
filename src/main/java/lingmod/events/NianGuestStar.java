@@ -1,15 +1,16 @@
 package lingmod.events;
 
+import static lingmod.ModCore.makeID;
+import static lingmod.ModCore.makeImagePath;
+
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.EventStrings;
+
 import basemod.abstracts.events.PhasedEvent;
 import basemod.abstracts.events.phases.CombatPhase;
 import basemod.abstracts.events.phases.TextPhase;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.localization.EventStrings;
 import lingmod.ModCore.ResourceType;
 import lingmod.interfaces.CampfireSleepEvent;
-
-import static lingmod.ModCore.makeID;
-import static lingmod.ModCore.makeImagePath;
 
 @CampfireSleepEvent
 public class NianGuestStar extends PhasedEvent {
@@ -21,11 +22,11 @@ public class NianGuestStar extends PhasedEvent {
     private static final String IMG_1 = makeImagePath("Nian_Ask.png", ResourceType.EVENTS);
     private static final String IMG_2 = makeImagePath("1721132190506.png", ResourceType.EVENTS);
     private static final String IMG_3 = makeImagePath("Nian_PreBattle.png", ResourceType.EVENTS);
+    public static String NAME = eventStrings.NAME;
 
     public NianGuestStar() {
         super(ID, eventStrings.NAME, IMG_1);
         body = DESCRIPTIONS[0];
-        NAME = title = eventStrings.NAME;
         registerPhase("Nian_Ask",
                 new TextPhase(DESCRIPTIONS[0])
                         .addOption(OPTIONS[0], (i) -> {

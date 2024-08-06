@@ -24,6 +24,7 @@ public class Beans_Ling extends PhasedEvent {
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
     protected AbstractRelic relic = new Beans_LingRelic();
+   public static String NAME = eventStrings.NAME;
 
     public Beans_Ling() {
         super(ID, eventStrings.NAME, makeImagePath("Beans_Ling_1.png", ResourceType.EVENTS));
