@@ -14,9 +14,11 @@ import basemod.abstracts.events.PhasedEvent;
 import basemod.abstracts.events.phases.TextPhase;
 import lingmod.ModCore.ResourceType;
 import lingmod.interfaces.CampfireSleepEvent;
+import lingmod.interfaces.Credit;
 import lingmod.relics.Beans_NianRelic;
 
 @CampfireSleepEvent
+@Credit(platform = "lofter", username = "鱼烤箱")
 public class Beans_Nian extends PhasedEvent {
 
     public static final String ID = makeID(Beans_Nian.class.getSimpleName());
