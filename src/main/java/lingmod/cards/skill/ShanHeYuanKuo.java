@@ -4,8 +4,10 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DrawReductionPower;
 
+import basemod.ReflectionHacks;
 import lingmod.ModCore;
 import lingmod.cards.AbstractEasyCard;
 
@@ -19,7 +21,9 @@ public class ShanHeYuanKuo extends AbstractEasyCard {
 
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
-        addToBot(new ApplyPowerAction(abstractPlayer, abstractPlayer, new DrawReductionPower(abstractPlayer, 0)));
+        AbstractPower po = new DrawReductionPower(abstractPlayer, 1);
+        ReflectionHacks.setPrivate(po, po.getClass(), "justApplied", false);
+        addToBot(new ApplyPowerAction(abstractPlayer, abstractPlayer, po));
         addToBot(new DrawCardAction(magicNumber));
     }
 

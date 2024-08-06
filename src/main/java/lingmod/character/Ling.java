@@ -39,7 +39,6 @@ import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 
-import basemod.BaseMod;
 import basemod.abstracts.CustomPlayer;
 import basemod.interfaces.OnStartBattleSubscriber;
 import basemod.interfaces.PostExhaustSubscriber;
@@ -80,9 +79,6 @@ public class Ling extends CustomPlayer implements OnAfterUseCardRelic, PostExhau
     public Ling(String name, PlayerClass setClass) {
         super(name, Ling.Enums.PLAYER_LING, orbTextures, makeCharacterPath("ling/orb/vfx.png"), LAYER_SPEED, null,
                 null);
-        // super(name, setClass, new CustomEnergyOrb(orbTextures,
-        // makeCharacterPath("ling/orb/vfx.png"), null), new SpriterAnimation(
-        // makeCharacterPath("ling/static.scml")));
         initializeClass(null,
                 SHOULDER1,
                 SHOULDER1,
@@ -100,7 +96,6 @@ public class Ling extends CustomPlayer implements OnAfterUseCardRelic, PostExhau
         AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
         e.setTime(e.getEndTime() * MathUtils.random());
         e.setTimeScale(0.8F);
-        BaseMod.subscribe(this);
     }
 
     @Override

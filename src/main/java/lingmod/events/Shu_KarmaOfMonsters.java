@@ -1,26 +1,35 @@
 package lingmod.events;
 
-import basemod.ReflectionHacks;
-import basemod.abstracts.events.PhasedEvent;
-import basemod.abstracts.events.phases.TextPhase;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.MonsterHelper;
-import com.megacrit.cardcrawl.localization.EventStrings;
-import com.megacrit.cardcrawl.relics.*;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import lingmod.ModCore;
-import lingmod.ModCore.ResourceType;
-import org.apache.logging.log4j.Logger;
+import static lingmod.ModCore.makeImagePath;
 
 import java.util.ArrayList;
 
-import static lingmod.ModCore.makeImagePath;
+import org.apache.logging.log4j.Logger;
+
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.MonsterHelper;
+import com.megacrit.cardcrawl.localization.EventStrings;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.relics.Circlet;
+import com.megacrit.cardcrawl.relics.Ginger;
+import com.megacrit.cardcrawl.relics.Mango;
+import com.megacrit.cardcrawl.relics.Pear;
+import com.megacrit.cardcrawl.relics.Strawberry;
+
+import basemod.ReflectionHacks;
+import basemod.abstracts.events.PhasedEvent;
+import basemod.abstracts.events.phases.TextPhase;
+import lingmod.ModCore;
+import lingmod.ModCore.ResourceType;
+import lingmod.interfaces.CampfireSleepEvent;
 
 /**
  * 黍预见后面的怪物，假设只在火堆中触发，不会有弱怪池
  * TODO: BOSS房前、4层特判
  */
+@CampfireSleepEvent
 public class Shu_KarmaOfMonsters extends PhasedEvent {
 
     public static final String ID = ModCore.makeID(Shu_KarmaOfMonsters.class.getSimpleName());
@@ -72,10 +81,8 @@ public class Shu_KarmaOfMonsters extends PhasedEvent {
         registerPhase("FRUIT", new TextPhase(DESCRIPTIONS[4] + fruit.name)
                 .addOption(OPTIONS[0], (i) -> openMap())
                 .addOption(OPTIONS[6] + fruit.name, fruit, (i) -> {
-                    AbstractDungeon.getCurrRoom().rewards.clear();
-                    AbstractDungeon.getCurrRoom().addRelicToRewards(fruit);
-                    AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
-                    AbstractDungeon.combatRewardScreen.open();
+                    AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2),
+                            (float) (Settings.HEIGHT / 2), fruit);
                     transitionKey("EXIT");
                 }));
         // 离开
