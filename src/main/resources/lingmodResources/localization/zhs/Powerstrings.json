@@ -140,5 +140,11 @@
     "DESCRIPTIONS": [
       "战斗结束后给予生命值 %d 倍的金币"
     ]
+  },
+  "lingmod:ShanHeYuanKuoPower": {
+    "NAME": "山河远阔",
+    "DESCRIPTIONS": [
+      "本回合你每打出一张牌，就抽一张牌"
+    ]
   }
 }

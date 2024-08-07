@@ -1,17 +1,15 @@
 package lingmod.powers;
 
-import static lingmod.ModCore.makeID;
-import static lingmod.powers.AbstractEasyPower.I18N.getName;
-
-import org.apache.logging.log4j.Logger;
-
+import basemod.BaseMod;
+import basemod.interfaces.PostBattleSubscriber;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-
-import basemod.BaseMod;
-import basemod.interfaces.PostBattleSubscriber;
 import lingmod.ModCore;
+import org.apache.logging.log4j.Logger;
+
+import static lingmod.ModCore.makeID;
+import static lingmod.powers.AbstractEasyPower.I18N.getName;
 
 /**
  * 诗兴
@@ -24,7 +22,6 @@ public class PoeticMoodPower extends AbstractEasyPower implements PostBattleSubs
     public static final Logger logger = ModCore.logger;
     private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.BUFF;
     public static int powerGained = 0;
-    public static int threshold = 12;
 
     public PoeticMoodPower(AbstractCreature owner, int amount) {
         super(ID, getName(ID), TYPE, false, owner, amount);
@@ -34,6 +31,6 @@ public class PoeticMoodPower extends AbstractEasyPower implements PostBattleSubs
     @Override
     public void receivePostBattle(AbstractRoom abstractRoom) {
         powerGained = 0; // 清空计数
-        // BaseMod.unsubscribe(this);
+        BaseMod.unsubscribeLater(this);
     }
 }

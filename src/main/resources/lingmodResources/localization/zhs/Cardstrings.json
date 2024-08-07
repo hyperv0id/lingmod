@@ -163,7 +163,7 @@
   },
   "${ModID}:ShanHeYuanKuo": {
     "NAME": "山河远阔",
-    "DESCRIPTION": "抽 !M! 张牌，下回合少抽一张牌"
+    "DESCRIPTION": "本回合每打出 1 张牌，就抽 !M! 张牌"
   },
   "${ModID}:YuGuoZhuoYing": {
     "NAME": "雨过濯缨",

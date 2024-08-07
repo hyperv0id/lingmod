@@ -1,34 +1,30 @@
 package lingmod.cards.skill;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.DrawReductionPower;
-
-import basemod.ReflectionHacks;
 import lingmod.ModCore;
 import lingmod.cards.AbstractEasyCard;
+import lingmod.interfaces.CardConfig;
+import lingmod.powers.ShanHeYuanKuoPower;
 
+/**
+ * 本回合你每打出一张牌就抽一张牌
+ */
+@CardConfig(magic = 1)
 public class ShanHeYuanKuo extends AbstractEasyCard {
     public static final String ID = ModCore.makeID(ShanHeYuanKuo.class.getSimpleName());
 
     public ShanHeYuanKuo() {
-        super(ID, 0, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
-        baseMagicNumber = 3;
+        super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
     }
 
     @Override
-    public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
-        AbstractPower po = new DrawReductionPower(abstractPlayer, 1);
-        ReflectionHacks.setPrivate(po, po.getClass(), "justApplied", false);
-        addToBot(new ApplyPowerAction(abstractPlayer, abstractPlayer, po));
-        addToBot(new DrawCardAction(magicNumber));
+    public void use(AbstractPlayer p, AbstractMonster mo) {
+        addToBot(new ApplyPowerAction(p, p, new ShanHeYuanKuoPower(p, magicNumber)));
     }
 
     @Override
     public void upp() {
-        upgradeMagicNumber(1);
     }
 }
