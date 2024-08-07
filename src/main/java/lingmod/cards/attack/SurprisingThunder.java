@@ -11,9 +11,11 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.GiantTextEffect;
 import com.megacrit.cardcrawl.vfx.combat.WeightyImpactEffect;
 import lingmod.cards.AbstractEasyCard;
+import lingmod.interfaces.CardConfig;
 
 import static lingmod.ModCore.makeID;
 
+@CardConfig(damage = 10)
 public class SurprisingThunder extends AbstractEasyCard {
     public static final String ID = makeID(SurprisingThunder.class.getSimpleName());
 
@@ -24,22 +26,23 @@ public class SurprisingThunder extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        upgradeDamage(7);
+        upgradeDamage(3);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (m != null) {
+            damage *= 2;
             dmg(m, null);
+            damage /= 2;
             this.addToBot(new VFXAction(new WeightyImpactEffect(m.hb.cX, m.hb.cY, Color.GOLD.cpy())));
             this.addToBot(new WaitAction(0.8F));
             this.addToBot(new VFXAction(new GiantTextEffect(m.hb.cX, m.hb.cY)));
         }
         for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
             if (mo != m) {
-                addToBot(new DamageAction(mo, new DamageInfo(p, damage / 2)));
+                addToBot(new DamageAction(mo, new DamageInfo(p, damage)));
             }
         }
     }
-
 }

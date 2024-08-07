@@ -172,7 +172,7 @@
   },
   "${ModID}:SurprisingThunder": {
     "NAME": "远山惊雷",
-    "DESCRIPTION": "对主目标造成 !D! 伤害，其余造成一半的伤害"
+    "DESCRIPTION": "对所有敌人造成 !D! 点伤害 NL 对主目标额外造成双倍伤害"
   },
   "${ModID}:AGiftCard": {
     "NAME": "“礼物”",
@@ -324,5 +324,9 @@
   "lingmod:QiangJinJiu": {
     "NAME": "将进酒",
     "DESCRIPTION": "随机化敌人的意图 NL 如果有敌人的意图不是攻击，那么获得 !M! ${ModID}:酒 "
+  },
+  "lingmod:ShiFangTuNa": {
+    "NAME": "十方吐纳",
+    "DESCRIPTION": "造成 !D! 点伤害 !M! 次 NL 次数为敌人数量"
   }
 }
