@@ -19,11 +19,8 @@ import com.esotericsoftware.spine.AnimationStateData;
 import com.esotericsoftware.spine.Skeleton;
 import com.esotericsoftware.spine.SkeletonBinary;
 import com.esotericsoftware.spine.SkeletonData;
-import com.evacipated.cardcrawl.mod.stslib.relics.OnAfterUseCardRelic;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -36,23 +33,18 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 
 import basemod.abstracts.CustomPlayer;
-import basemod.interfaces.OnStartBattleSubscriber;
-import basemod.interfaces.PostExhaustSubscriber;
 import lingmod.cards.attack.ChongJinJiuCard;
 import lingmod.cards.attack.GuoJiaXianMei;
 import lingmod.cards.attack.Strike;
 import lingmod.cards.attack.Tranquility;
 import lingmod.cards.skill.Defend;
-import lingmod.powers.PoeticMoodPower;
-import lingmod.powers.WinePower;
 import lingmod.relics.LightRelic;
 import lingmod.util.TODO;
 
-public class Ling extends CustomPlayer implements OnAfterUseCardRelic, PostExhaustSubscriber, OnStartBattleSubscriber {
+public class Ling extends CustomPlayer {
 
     public static final String SHOULDER1 = makeCharacterPath("ling/shoulder.png");
     public static final String CORPSE = makeCharacterPath("ling/corpse.png");
@@ -288,16 +280,6 @@ public class Ling extends CustomPlayer implements OnAfterUseCardRelic, PostExhau
         return panels;
     }
 
-    @Override
-    public void onAfterUseCard(AbstractCard card, UseCardAction action) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new PoeticMoodPower(this, 1)));
-    }
-
-    @Override
-    public void receivePostExhaust(AbstractCard card) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new WinePower(this, 1)));
-    }
-
     public static class Enums {
         @SpireEnum
         public static AbstractPlayer.PlayerClass PLAYER_LING;
@@ -305,10 +287,5 @@ public class Ling extends CustomPlayer implements OnAfterUseCardRelic, PostExhau
         public static AbstractCard.CardColor LING_COLOR;
         @SpireEnum(name = "LING_COLOR")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
-    }
-
-    @Override
-    public void receiveOnBattleStart(AbstractRoom arg0) {
-        VoiceMaster.getInstance().beginBattle();
     }
 }
