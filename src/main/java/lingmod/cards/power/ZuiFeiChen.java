@@ -22,13 +22,12 @@ public class ZuiFeiChen extends AbstractEasyCard {
 
     public ZuiFeiChen() {
         super(ID, 1, TYPE, CardRarity.UNCOMMON, CardTarget.SELF);
-        this.baseMagicNumber = 5;
         this.initializeDescription();
     }
 
     @Override
     public void upp() {
-        upgradeMagicNumber(-1);
+        upgradeMagicNumber(1);
     }
 
     @Override

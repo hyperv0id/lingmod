@@ -29,7 +29,7 @@ public class NingZuoWuCard extends AbstractEasyCard {
     public static final String ID = makeID(NingZuoWuCard.class.getSimpleName());
 
     public NingZuoWuCard() {
-        super(ID, 3, CardType.ATTACK, CardRarity.RARE, CardTarget.SELF);
+        super(ID, 3, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
     }
 
     @Override

@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.powers.FlameBarrierPower;
 import com.megacrit.cardcrawl.stances.AbstractStance;
 import lingmod.ModCore;
 import lingmod.stance.NellaFantasiaStance;
+import lingmod.util.MonsterHelper;
 import lingmod.util.Morph;
 
 import static lingmod.ModCore.makeID;
@@ -76,10 +77,11 @@ public class YuNiaoPower extends AbstractEasyPower {
     @Override
     public void onInitialApplication() {
         // 卡图变成怪物
-        AbstractCreature inst;
-        try {
-            inst = target.getClass().getDeclaredConstructor().newInstance();
-        } catch (Exception e) {
+        AbstractCreature inst = null;
+        if (target instanceof AbstractMonster) {
+            inst = MonsterHelper.createMonster(((AbstractMonster) target).getClass());
+        }
+        if (inst == null) {
             ModCore.logger.error("Cannot Create New Instance for: " + target.getClass().getSimpleName() + " will use " +
                     "existing instance: " + target);
             inst = target;

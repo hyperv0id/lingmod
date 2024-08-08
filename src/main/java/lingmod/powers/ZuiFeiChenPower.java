@@ -29,7 +29,7 @@ public class ZuiFeiChenPower extends AbstractEasyPower implements PostExhaustSub
 
     @Override
     public void updateDescription() {
-        this.description = String.format(powerStrings.DESCRIPTIONS[0]);
+        this.description = String.format(powerStrings.DESCRIPTIONS[0], amount);
     }
 
     @Override

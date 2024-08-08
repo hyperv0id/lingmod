@@ -1,13 +1,12 @@
 package lingmod.relics;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.BaseMod;
+import basemod.interfaces.StartActSubscriber;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
-import basemod.BaseMod;
-import basemod.interfaces.StartActSubscriber;
+import static lingmod.ModCore.makeID;
 
 /**
  * 古旧铸物 事件 每层3缓冲，每战斗6盾
@@ -28,12 +27,11 @@ public class NianAncientCasting extends AbstractEasyRelic implements StartActSub
 
     @Override
     public int onLoseHpLast(int damageAmount) {
-        if (this.counter > 0) {
-            this.flash();
-            counter--;
-            return 0;
-        }
-        return damageAmount;
+        if (counter <= 0) return damageAmount;
+        if (AbstractDungeon.player.currentBlock >= damageAmount) return damageAmount;
+        this.flash();
+        counter--;
+        return 0;
     }
 
     @Override

@@ -15,7 +15,7 @@ public class GuiXingWineCard extends AbstractWineCard {
     public static final String ID = makeID(GuiXingWineCard.class.getSimpleName());
 
     public GuiXingWineCard() {
-        super(ID, 0, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY, 1);
+        super(ID, 0, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY, 2);
         baseDamage = 3;
     }
 

@@ -1,7 +1,8 @@
 package lingmod.relics;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.util.CustomTags;
 import lingmod.util.Wiz;
@@ -22,11 +23,7 @@ public class Beans_LingRelic extends AbstractEasyRelic {
     public void onPlayCard(AbstractCard c, AbstractMonster m) {
         if (!c.hasTag(CustomTags.WINE))
             return;
-        addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                Wiz.shuffleHandCost(true);
-            }
-        });
+        addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+        Wiz.addToBotAbstract(() -> Wiz.shuffleHandCost(true));
     }
 }

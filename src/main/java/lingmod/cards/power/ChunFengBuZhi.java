@@ -20,6 +20,7 @@ public class ChunFengBuZhi extends AbstractEasyCard {
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         p.hand.group.forEach(c -> {
+            if (c.cost <= 0) return; // 不处理特殊牌
             c.costForTurn = 0;
             c.cost = 0;
             c.isCostModifiedForTurn = true;

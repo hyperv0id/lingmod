@@ -88,7 +88,7 @@
   "${ModID}:WinePower": {
     "NAME": "酒",
     "DESCRIPTIONS": [
-      "每层使伤害增加 #b1，根据卡牌 #g费用 效果翻倍 NL 点打出攻击牌后减少一点，如果不在梦中，回合结束时减半"
+      "每层使伤害增加 #b1，根据卡牌 #g费用 效果翻倍 NL 打出攻击牌后数值减少，梦中减少1，否则减少一半"
     ]
   },
   "${ModID}:PoemVSQuickSandPower": {
