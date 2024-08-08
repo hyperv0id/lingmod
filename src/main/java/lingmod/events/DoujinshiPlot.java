@@ -1,23 +1,20 @@
 package lingmod.events;
 
-import static lingmod.ModCore.logger;
-import static lingmod.ModCore.makeID;
-import static lingmod.ModCore.makeImagePath;
-
+import basemod.abstracts.events.PhasedEvent;
+import basemod.abstracts.events.phases.CombatPhase;
+import basemod.abstracts.events.phases.TextPhase;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.potions.PotionSlot;
 import com.megacrit.cardcrawl.relics.AbstractRelic.RelicTier;
-
-import basemod.abstracts.events.PhasedEvent;
-import basemod.abstracts.events.phases.CombatPhase;
-import basemod.abstracts.events.phases.TextPhase;
 import lingmod.cards.AbstractVerseCard;
 import lingmod.cards.verse.JingYeSiCard;
 import lingmod.potions.ForgetPotion;
-import lingmod.util.AiraReward;
+import lingmod.util.VerseReward;
+
+import static lingmod.ModCore.*;
 
 /**
  * 本子情节，但是永远潇洒的令姐
@@ -38,8 +35,12 @@ public class DoujinshiPlot extends PhasedEvent {
         super(ID, eventStrings.NAME, makeImagePath("events/DoujinshiPlot_0.png"));
         NAME = eventStrings.NAME;
         body = DESCRIPTIONS[0];
-        super.title = title;
         __inst = this;
+    }
+
+    @Override
+    public void onEnterRoom() {
+        super.onEnterRoom();
         // 售卖药水
         registerPhase(Phases.SALE,
                 new TextPhase(DESCRIPTIONS[0])
@@ -56,9 +57,7 @@ public class DoujinshiPlot extends PhasedEvent {
                         }));
         // 怂恿喝下药水
         registerPhase(Phases.DRINK, new TextPhase(DESCRIPTIONS[1])
-                .addOption(OPTIONS[9], (i) -> {
-                    exit();
-                })
+                .addOption(OPTIONS[9], (i) -> exit())
                 .addOption(OPTIONS[10], (i) -> {
                     transitionKey(Phases.DOUJINSHI);
                     imageEventText.loadImage(makeImagePath("events/DoujinshiPlot_1.png"));
@@ -92,7 +91,7 @@ public class DoujinshiPlot extends PhasedEvent {
                 new TextPhase(DESCRIPTIONS[6]).addOption(OPTIONS[6], (i) -> transitionKey(Phases.BATTLE)));
         // 进入战斗
         registerPhase(Phases.BATTLE, new CombatPhase(MonsterHelper.BLUE_SLAVER_ENC).addRewards(true, (room) -> {
-            room.rewards.add(new AiraReward(battleReward));
+            room.rewards.add(new VerseReward(battleReward));
             room.addRelicToRewards(RelicTier.COMMON);
             logger.info(battleReward.name);
         }));

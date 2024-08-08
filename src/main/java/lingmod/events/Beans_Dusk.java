@@ -1,21 +1,20 @@
 package lingmod.events;
 
-import static lingmod.ModCore.makeID;
-import static lingmod.ModCore.makeImagePath;
-
+import basemod.abstracts.events.PhasedEvent;
+import basemod.abstracts.events.phases.TextPhase;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-
-import basemod.abstracts.events.PhasedEvent;
-import basemod.abstracts.events.phases.TextPhase;
 import lingmod.ModCore.ResourceType;
 import lingmod.interfaces.CampfireSleepEvent;
 import lingmod.interfaces.Credit;
 import lingmod.relics.Beans_DuskRelic;
+
+import static lingmod.ModCore.makeID;
+import static lingmod.ModCore.makeImagePath;
 
 @CampfireSleepEvent
 @Credit(platform = "lofter", username = "鱼烤箱")
@@ -33,14 +32,17 @@ public class Beans_Dusk extends PhasedEvent {
 
     public Beans_Dusk() {
         super(ID, eventStrings.NAME, IMG_PATH);
+    }
+
+    @Override
+    public void onEnterRoom() {
+        super.onEnterRoom();
         registerPhase(Phases.BEGIN, new TextPhase(DESCRIPTIONS[0])
                 .addOption(OPTIONS[1] + relic.name, (i) -> {
                     AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2),
                             (float) (Settings.HEIGHT / 2), relic);
                     transitionKey(Phases.CHOOSE_1);
-                }, relic).addOption(OPTIONS[2], (i) -> {
-                    transitionKey(Phases.CHOOSE_2);
-                }));
+                }, relic).addOption(OPTIONS[2], (i) -> transitionKey(Phases.CHOOSE_2)));
 
         registerPhase(Phases.CHOOSE_1, new TextPhase(DESCRIPTIONS[1])
                 .addOption(OPTIONS[0], (i) -> {

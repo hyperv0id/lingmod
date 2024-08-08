@@ -1,20 +1,19 @@
 package lingmod.events;
 
-import static lingmod.ModCore.makeID;
-import static lingmod.ModCore.makeImagePath;
-
+import basemod.abstracts.events.PhasedEvent;
+import basemod.abstracts.events.phases.TextPhase;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-
-import basemod.abstracts.events.PhasedEvent;
-import basemod.abstracts.events.phases.TextPhase;
 import lingmod.ModCore.ResourceType;
 import lingmod.interfaces.CampfireSleepEvent;
 import lingmod.interfaces.Credit;
 import lingmod.relics.Beans_ShuoRelic;
+
+import static lingmod.ModCore.makeID;
+import static lingmod.ModCore.makeImagePath;
 
 @CampfireSleepEvent
 @Credit(platform = "lofter", username = "快要饿死的星河", link = "https://xinghe43472.lofter.com/post/4cfb6ad3_2b8125334")
@@ -30,6 +29,11 @@ public class Beans_Shuo extends PhasedEvent {
 
     public Beans_Shuo() {
         super(ID, eventStrings.NAME, IMG_PATH);
+    }
+
+    @Override
+    public void onEnterRoom() {
+        super.onEnterRoom();
         registerPhase(Phases.BEGIN, new TextPhase(DESCRIPTIONS[0])
                 .addOption(OPTIONS[1] + relic.name, (i) -> {
                     AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2),
@@ -37,9 +41,7 @@ public class Beans_Shuo extends PhasedEvent {
                     this.imageEventText.loadImage(makeImagePath("Beans_Shuo_1.png", ResourceType.EVENTS));
                     transitionKey(Phases.CHOOSE_1);
                 })
-                .addOption(OPTIONS[2], (i) -> {
-                    transitionKey(Phases.CHOOSE_2);
-                }));
+                .addOption(OPTIONS[2], (i) -> transitionKey(Phases.CHOOSE_2)));
 
         registerPhase(Phases.CHOOSE_1, new TextPhase(DESCRIPTIONS[1])
                 .addOption(OPTIONS[2], (i) -> openMap()));

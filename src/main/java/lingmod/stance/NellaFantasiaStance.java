@@ -74,6 +74,7 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerTurnS
         AbstractDungeon.effectsQueue.add(new BorderFlashEffect(Color.PURPLE, true));
         BaseMod.subscribe(this);
         AbstractDungeon.actionManager.addToBottom(new DrawCardAction(1));
+        updateDescription();
     }
 
     @Override
@@ -87,21 +88,6 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerTurnS
     @Override
     public float atDamageReceive(float damage, DamageType damageType) {
         if (damageType == DamageType.NORMAL) {
-            // // 其实是calculateDamage方法，但其为私有
-            // AbstractDungeon.getMonsters().monsters.forEach(mo -> {
-            // // 重新计算damage
-            // EnemyMoveInfo move = ReflectionHacks.getPrivate(mo, AbstractMonster.class,
-            // "move");
-            // if (move.baseDamage > -1) {
-            // try {
-            // Method method = mo.getClass().getDeclaredMethod("calculateDamage");
-            // method.invoke(mo, move.baseDamage);
-            // } catch (Exception e) {
-            // // Pass
-            // e.printStackTrace();
-            // }
-            // }
-            // });
             return damage - dmgModi;
         }
         return damage;
@@ -109,13 +95,8 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerTurnS
 
     @Override
     public void onPlayCard(AbstractCard card) {
-        // if (card.type == CardType.ATTACK) {
-        // addToBotAbstract(() -> {
-        // logger.info("敌方攻击力下降");
         dmgModi += adder;
         updateDescription();
-        // });
-        // }
     }
 
     public void onExitStance() {
@@ -137,22 +118,4 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerTurnS
             AbstractDungeon.actionManager.addToBottom(new ChangeStanceAction(NeutralStance.STANCE_ID));
         }
     }
-
-    // @Override
-    // public void atStartOfTurn() {
-    // super.atStartOfTurn();
-    // if (--remainTurn <= 0) {
-    // remainTurn = 0;
-    // AbstractDungeon.actionManager.addToBottom(new ChangeStanceAction("Neutral"));
-    // }
-    // }
-
-    // @Override
-    // public int receiveOnPlayerDamaged(int dmg, DamageInfo info) {
-    // if (dmg > 0) // 如果降到0了，就不会降低自己的伤害
-    // Wiz.addToBotAbstract(() -> {
-    // dmgModi -= suber;
-    // });
-    // return dmg;
-    // }
 }

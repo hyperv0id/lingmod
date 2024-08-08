@@ -1,16 +1,16 @@
 package lingmod.events;
 
-import static lingmod.ModCore.makeID;
-import static lingmod.ModCore.makeImagePath;
-
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.localization.EventStrings;
-
 import basemod.abstracts.events.PhasedEvent;
 import basemod.abstracts.events.phases.CombatPhase;
 import basemod.abstracts.events.phases.TextPhase;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.EventStrings;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import lingmod.ModCore.ResourceType;
 import lingmod.interfaces.CampfireSleepEvent;
+
+import static lingmod.ModCore.makeID;
+import static lingmod.ModCore.makeImagePath;
 
 @CampfireSleepEvent
 public class NianGuestStar extends PhasedEvent {
@@ -27,6 +27,11 @@ public class NianGuestStar extends PhasedEvent {
     public NianGuestStar() {
         super(ID, eventStrings.NAME, IMG_1);
         body = DESCRIPTIONS[0];
+    }
+
+    @Override
+    public void onEnterRoom() {
+        super.onEnterRoom();
         registerPhase("Nian_Ask",
                 new TextPhase(DESCRIPTIONS[0])
                         .addOption(OPTIONS[0], (i) -> {
@@ -51,10 +56,7 @@ public class NianGuestStar extends PhasedEvent {
                 new TextPhase(DESCRIPTIONS[2]).addOption(OPTIONS[1], (i) -> transitionKey("BATTLE")));
         // TODO: 替换为夕的画中生灵
         registerPhase("BATTLE", new CombatPhase(NianGuestStar.ID)
-                .addRewards(true, (room) -> {
-                    room.addPotionToRewards();
-                }));
+                .addRewards(true, AbstractRoom::addPotionToRewards));
         transitionKey("Nian_Ask");
     }
-
 }

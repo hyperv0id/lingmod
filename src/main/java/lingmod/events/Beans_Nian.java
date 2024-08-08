@@ -1,21 +1,20 @@
 package lingmod.events;
 
-import static lingmod.ModCore.makeID;
-import static lingmod.ModCore.makeImagePath;
-
+import basemod.abstracts.events.PhasedEvent;
+import basemod.abstracts.events.phases.TextPhase;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-
-import basemod.abstracts.events.PhasedEvent;
-import basemod.abstracts.events.phases.TextPhase;
 import lingmod.ModCore.ResourceType;
 import lingmod.interfaces.CampfireSleepEvent;
 import lingmod.interfaces.Credit;
 import lingmod.relics.Beans_NianRelic;
+
+import static lingmod.ModCore.makeID;
+import static lingmod.ModCore.makeImagePath;
 
 @CampfireSleepEvent
 @Credit(platform = "lofter", username = "鱼烤箱")
@@ -32,6 +31,11 @@ public class Beans_Nian extends PhasedEvent {
     public Beans_Nian() {
         super(ID, eventStrings.NAME, IMG_PATH);
 
+    }
+
+    @Override
+    public void onEnterRoom() {
+        super.onEnterRoom();
         registerPhase(Phases.BEGIN, new TextPhase(DESCRIPTIONS[0])
                 .addOption(OPTIONS[1] + relic.name, (i) -> {
                     AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2),
@@ -57,7 +61,7 @@ public class Beans_Nian extends PhasedEvent {
         transitionKey(Phases.BEGIN);
     }
 
-    static enum Phases {
+    enum Phases {
         BEGIN, CHOOSE_1, CHOOSE_2
     }
 }

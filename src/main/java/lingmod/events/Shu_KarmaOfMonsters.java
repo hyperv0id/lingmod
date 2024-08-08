@@ -1,29 +1,22 @@
 package lingmod.events;
 
-import static lingmod.ModCore.makeImagePath;
-
-import java.util.ArrayList;
-
-import org.apache.logging.log4j.Logger;
-
+import basemod.ReflectionHacks;
+import basemod.abstracts.events.PhasedEvent;
+import basemod.abstracts.events.phases.TextPhase;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.relics.Circlet;
-import com.megacrit.cardcrawl.relics.Ginger;
-import com.megacrit.cardcrawl.relics.Mango;
-import com.megacrit.cardcrawl.relics.Pear;
-import com.megacrit.cardcrawl.relics.Strawberry;
-
-import basemod.ReflectionHacks;
-import basemod.abstracts.events.PhasedEvent;
-import basemod.abstracts.events.phases.TextPhase;
+import com.megacrit.cardcrawl.relics.*;
 import lingmod.ModCore;
 import lingmod.ModCore.ResourceType;
 import lingmod.interfaces.CampfireSleepEvent;
+import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
+
+import static lingmod.ModCore.makeImagePath;
 
 /**
  * 黍预见后面的怪物，假设只在火堆中触发，不会有弱怪池
@@ -53,30 +46,26 @@ public class Shu_KarmaOfMonsters extends PhasedEvent {
         noCardsInRewards = true; // 没有卡牌奖励
         OPTIONS[3] = String.format(OPTIONS[3], SMALL_AMT);
         OPTIONS[4] = String.format(OPTIONS[4], ELITE_AMT);
+    }
+
+    @Override
+    public void onEnterRoom() {
+        super.onEnterRoom();
+        calcFruit();
+        calcStrongEnemy();
+        calcElite();
         // 开始
         registerPhase("START", new TextPhase(DESCRIPTIONS[0])
                 .addOption(OPTIONS[1], (i) -> transitionKey("LOOK"))
                 .addOption(OPTIONS[2], (i) -> transitionKey("FRUIT")));
         // 看手相
         registerPhase("LOOK", new TextPhase(DESCRIPTIONS[1])
-                .addOption(OPTIONS[3], (i) -> {
-                    calcStrongEnemy();
-                    transitionKey("MONSTER");
-                })
-                .addOption(OPTIONS[4], (i) -> {
-                    calcElite();
-                    transitionKey("ELITE");
-                }));
+                .addOption(OPTIONS[3], (i) -> transitionKey("MONSTER"))
+                .addOption(OPTIONS[4], (i) -> transitionKey("ELITE")));
         registerPhase("MONSTER", new TextPhase(DESCRIPTIONS[2] + monsters)
-                .addOption(OPTIONS[5], (i) -> {
-                    calcFruit();
-                    transitionKey("FRUIT");
-                }));
+                .addOption(OPTIONS[5], (i) -> transitionKey("FRUIT")));
         registerPhase("ELITE", new TextPhase(DESCRIPTIONS[3] + elites)
-                .addOption(OPTIONS[5], (i) -> {
-                    calcFruit();
-                    transitionKey("FRUIT");
-                }));
+                .addOption(OPTIONS[5], (i) -> transitionKey("FRUIT")));
 
         // 获得水果
         registerPhase("FRUIT", new TextPhase(DESCRIPTIONS[4] + fruit.name)

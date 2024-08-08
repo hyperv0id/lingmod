@@ -1,19 +1,18 @@
 package lingmod.events;
 
-import static lingmod.ModCore.logger;
-import static lingmod.ModCore.modID;
+import basemod.AutoAdd;
+import basemod.ReflectionHacks;
+import basemod.abstracts.CustomSavable;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.events.AbstractEvent;
+import com.megacrit.cardcrawl.events.AbstractImageEvent;
+import lingmod.interfaces.CampfireSleepEvent;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.events.AbstractEvent;
-import com.megacrit.cardcrawl.events.AbstractImageEvent;
-
-import basemod.AutoAdd;
-import basemod.ReflectionHacks;
-import basemod.abstracts.CustomSavable;
-import lingmod.interfaces.CampfireSleepEvent;
+import static lingmod.ModCore.logger;
+import static lingmod.ModCore.modID;
 
 public class CampfireEventManager implements CustomSavable<List<String>> {
     public static List<AbstractEvent> sleepEvents = new ArrayList<>(); // 在篝火处睡觉会触发的事件
@@ -30,7 +29,11 @@ public class CampfireEventManager implements CustomSavable<List<String>> {
         logger.info("Visit Event: " + e.getClass().getSimpleName());
         sleepEvents.remove(e);
         sleptEvents.add(e.getClass().getName()); // 设置为看过了
-        return e;
+        try {
+            return e.getClass().getDeclaredConstructor().newInstance();
+        } catch (Exception ex) {
+            return e;
+        }
     }
 
     public static void initSleepEvents() {
