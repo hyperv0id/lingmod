@@ -22,7 +22,7 @@ public class RuMengLing extends AbstractEasyCard {
     public final static String ID = makeID(RuMengLing.class.getSimpleName());
 
     public RuMengLing() {
-        super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+        super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         CardModifierManager.addModifier(this, new ExhaustMod());
     }
 

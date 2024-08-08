@@ -1,6 +1,7 @@
 package lingmod.relics;
 
 import basemod.BaseMod;
+import basemod.abstracts.CustomSavable;
 import basemod.interfaces.StartActSubscriber;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
@@ -11,7 +12,7 @@ import static lingmod.ModCore.makeID;
 /**
  * 古旧铸物 事件 每层3缓冲，每战斗6盾
  */
-public class NianAncientCasting extends AbstractEasyRelic implements StartActSubscriber {
+public class NianAncientCasting extends AbstractEasyRelic implements StartActSubscriber, CustomSavable<Integer> {
 
     public static final String ID = makeID("NianAncientCasting");
     public static final int BUFFER_NUM = 3; // 获得几层缓冲
@@ -53,5 +54,16 @@ public class NianAncientCasting extends AbstractEasyRelic implements StartActSub
     public void receiveStartAct() {
         this.flash();
         this.counter = BUFFER_NUM;
+    }
+
+    @Override
+    public Integer onSave() {
+        return this.counter;
+    }
+
+    @Override
+    public void onLoad(Integer integer) {
+        if (integer == null) return;
+        this.counter = integer;
     }
 }

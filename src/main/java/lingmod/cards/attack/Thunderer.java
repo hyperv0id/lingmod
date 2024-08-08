@@ -22,11 +22,12 @@ import static lingmod.ModCore.makeID;
  * 回合结束时创建本牌的复制
  * 打出后选择手牌中的弦惊合成
  */
-@CardConfig(damage = 9)
+@CardConfig(damage = 9, magic = 1)
 public class Thunderer extends AbstractEasyCard {
     public static final String NAME = Thunderer.class.getSimpleName();
 
     public static final String ID = makeID(NAME);
+    public int bgid = 0;
 
     public Thunderer() {
         super(ID, 1, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
@@ -34,21 +35,21 @@ public class Thunderer extends AbstractEasyCard {
     }
 
     @Override
-    public boolean canUpgrade() {
-        return timesUpgraded <= 4;
+    public void upp() {
+        upgradeDamage(3);
     }
 
-    @Override
-    public void upp() {
-        if (timesUpgraded <= 4) {
+    public void upbg() {
+        if (bgid <= 4) {
             // 只有5张图
-            String img = getCardTextureString(NAME + "_" + timesUpgraded, this.type);
+            String img = getCardTextureString(NAME + "_" + bgid, this.type);
             this.textureImg = img;
             if (img != null) {
                 this.loadCardImage(img);
             }
         }
-        this.name = this.cardStrings.NAME + "+" + timesUpgraded;
+        this.name = this.cardStrings.NAME + "+" + bgid;
+        bgid++;
         initializeTitle();
     }
 
@@ -63,25 +64,21 @@ public class Thunderer extends AbstractEasyCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, null);
+        for (int i = 0; i < magicNumber; i++) {
+            dmgRandom(null);
+        }
         addToBotAbstract(() -> {
-            // 找一张 同等级的弦惊 合成
+            // 弦惊 合成
             List<AbstractCard> cards =
-                    AbstractDungeon.player.hand.group.stream().filter(card -> card != this && card.cardID.equals(Thunderer.ID) && card.timesUpgraded == this.timesUpgraded).collect(Collectors.toList());
-            int totalDamage = cards.stream().mapToInt(c -> max(1, c.costForTurn) * c.baseDamage).sum();
-            this.upgradeDamage(totalDamage);
-            int nEx = 0;
-            int num = 1;
-            while (nEx + num <= cards.size()) {
-                nEx += num;
-                num <<= 1;
-            }
-            for (int i = 0; i < nEx; i++) {
-                addToBot(new ExhaustSpecificCardAction(cards.get(i), AbstractDungeon.player.hand));
-            }
-            while (num > 1) {
-                upgrade();
-                num >>= 1;
+                    AbstractDungeon.player.hand.group.stream().filter(card -> card != this && card.cardID.equals(Thunderer.ID)).collect(Collectors.toList());
+            int total = cards.stream().mapToInt(c -> max(1, c.costForTurn)).sum();
+            this.upgradeMagicNumber(total);
+            cards.forEach(card -> addToBot(new ExhaustSpecificCardAction(card, AbstractDungeon.player.hand)));
+            // 更新背景
+            int siz = cards.size();
+            while (siz > 0) {
+                siz >>= 1;
+                upbg();
             }
         });
     }

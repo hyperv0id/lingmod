@@ -21,7 +21,7 @@ public class XunRiFeng extends AbstractEasyCard {
     public List<AbstractCard> exHaustedCards;
 
     public XunRiFeng() {
-        super(ID, 2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
+        super(ID, 2, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
         exHaustedCards = new ArrayList<>();
     }
 

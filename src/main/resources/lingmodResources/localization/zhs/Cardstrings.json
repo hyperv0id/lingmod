@@ -124,7 +124,7 @@
   },
   "${ModID}:Thunderer": {
     "NAME": "“弦惊”",
-    "DESCRIPTION": "造成 !D! 点伤害  ${ModID}:合成 所有弦惊 NL 保留时手牌加入一张 弦惊 NL  ${ModID}:合成 ： 被消耗牌的攻击附加到此牌 "
+    "DESCRIPTION": "随机造成 !D! 点伤害 !M! 次  ${ModID}:合成 所有弦惊 NL 保留时手牌加入一张 弦惊 NL  ${ModID}:合成 ： 攻击次数增加1 "
   },
   "${ModID}:Whoami_Shuo": {
     "NAME": "我无",
@@ -255,7 +255,19 @@
   },
   "lingmod:YaGaoMengYuan": {
     "NAME": "崖高梦远",
-    "DESCRIPTION": "当前能量翻倍，手牌本回合耗能+1 NL 梦中：只改变技能牌"
+    "DESCRIPTION": "当前能量翻倍，手牌耗能临时+1 NL 梦中：只改变技能牌",
+    "UPGRADE_DESCRIPTION": "选择：能量临时翻倍，卡牌费用临时+1； NL 能量上限+1，卡牌费用永久翻倍",
+    "EXTENDED_DESCRIPTION": [
+      "崖高？ 梦远？"
+    ]
+  },
+  "lingmod:YaGaoMengYuan_C1": {
+    "NAME": "崖高",
+    "DESCRIPTION": "当前能量翻倍，手牌耗能临时+1 NL 梦中：只改变技能牌"
+  },
+  "lingmod:YaGaoMengYuan_C2": {
+    "NAME": "梦远",
+    "DESCRIPTION": "能量上限+1，手牌耗能永久翻倍 NL 梦中：只改变技能牌"
   },
   "lingmod:WineWineWine": {
     "NAME": "酒！",
@@ -327,6 +339,6 @@
   },
   "lingmod:ShiFangTuNa": {
     "NAME": "十方吐纳",
-    "DESCRIPTION": "造成 !D! 点伤害 !M! 次 NL 次数为敌人数量"
+    "DESCRIPTION": "每有一名怪物，造成 !D! 点伤害。 NL （共 !M! 次）"
   }
 }

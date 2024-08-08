@@ -18,7 +18,7 @@ public class TianZhui extends AbstractEasyCard {
     public static final String ID = makeID(TianZhui.class.getSimpleName());
 
     public TianZhui() {
-        super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+        super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
         this.baseDamage = 8;
     }
 

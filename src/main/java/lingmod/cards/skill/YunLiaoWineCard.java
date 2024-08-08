@@ -15,7 +15,7 @@ public class YunLiaoWineCard extends AbstractWineCard {
     public static final String ID = makeID(YunLiaoWineCard.class.getSimpleName());
 
     public YunLiaoWineCard() {
-        super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF, 0);
+        super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF, 0);
     }
 
     @Override
