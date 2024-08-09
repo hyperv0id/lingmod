@@ -101,7 +101,7 @@
   "${ModID}:ZuiFeiChenPower": {
     "NAME": "醉飞尘",
     "DESCRIPTIONS": [
-      "每消耗 #b1 张牌，获得 #b%d #b${ModID}:酒 "
+      "每消耗 #b1 张牌，获得 #b%d #y酒 "
     ]
   },
   "${ModID}:DrinkAlonePower": {
@@ -145,6 +145,12 @@
     "NAME": "山河远阔",
     "DESCRIPTIONS": [
       "本回合你每打出一张牌，就抽一张牌"
+    ]
+  },
+  "lingmod:BeiChangMengPower": {
+    "NAME": "悲长梦",
+    "DESCRIPTIONS": [
+      "离开梦境时，触发能力的回合结束效果"
     ]
   }
 }

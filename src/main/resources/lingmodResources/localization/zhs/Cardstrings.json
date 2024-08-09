@@ -4,6 +4,10 @@
     "DESCRIPTION": "[ERROR]",
     "UPGRADE_DESCRIPTION": "[ERROR]"
   },
+  "${ModID}:ExampleDream": {
+    "NAME": "“梦”",
+    "DESCRIPTION": "进入 lingmod:梦境"
+  },
   "${ModID}:ChongJinJiuCard": {
     "NAME": "重进酒",
     "DESCRIPTION": "视为本回合上张卡牌的复制"
@@ -340,5 +344,9 @@
   "lingmod:ShiFangTuNa": {
     "NAME": "十方吐纳",
     "DESCRIPTION": "每有一名怪物，造成 !D! 点伤害。 NL （共 !M! 次）"
+  },
+  "lingmod:BeiChangMeng": {
+    "NAME": "悲长梦",
+    "DESCRIPTION": "离开梦境时，触发所有能力的回合结束效果"
   }
 }

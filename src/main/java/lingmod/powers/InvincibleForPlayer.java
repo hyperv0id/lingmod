@@ -14,11 +14,11 @@ import lingmod.ModCore;
  */
 public class InvincibleForPlayer extends InvinciblePower {
     public static final String ID = ModCore.makeID(InvincibleForPlayer.class.getSimpleName());
-    public static final PowerStrings ps = CardCrawlGame.languagePack.getPowerStrings(ID);
+    public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(ID);
 
     public InvincibleForPlayer(AbstractCreature owner) {
         super(owner, 0);
-        this.name = ps.NAME;
+        this.name = powerStrings.NAME;
     }
 
     @Override
@@ -40,6 +40,6 @@ public class InvincibleForPlayer extends InvinciblePower {
 
     @Override
     public void updateDescription() {
-        this.description = ps.DESCRIPTIONS[0];
+        this.description = powerStrings.DESCRIPTIONS[0];
     }
 }

@@ -28,7 +28,7 @@ public class CapacityExpansionPower extends AbstractEasyPower {
     }
 
     public String getDescription() {
-        return DESCRIPTIONS[0];
+        return DESCRIPTIONS[0].replaceAll("!M!", String.valueOf(amount));
     }
 
     public void onInitialApplication() {

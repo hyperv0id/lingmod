@@ -19,23 +19,23 @@ import static lingmod.ModCore.makeID;
 public class CantApplyPowerPower extends AbstractEasyPower implements PostPowerApplySubscriber {
     public static final String POWER_NAME = CantApplyPowerPower.class.getSimpleName();
     public static final String ID = makeID(POWER_NAME);
-    public static final PowerStrings ps = CardCrawlGame.languagePack.getPowerStrings(ID);
+    public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(ID);
 
     public CantApplyPowerPower(AbstractCreature owner) {
-        super(ID, ps.NAME, PowerType.DEBUFF, false, owner, 0);
+        super(ID, powerStrings.NAME, PowerType.DEBUFF, false, owner, 0);
         BaseMod.subscribe(this);
     }
 
     @Override
     public void onRemove() {
         super.onRemove();
-        BaseMod.unsubscribe(this);
+        BaseMod.unsubscribeLater(this);
     }
 
     @Override
     public void onVictory() {
         super.onVictory();
-        BaseMod.unsubscribe(this);
+        BaseMod.unsubscribeLater(this);
     }
 
     @Override
@@ -50,20 +50,13 @@ public class CantApplyPowerPower extends AbstractEasyPower implements PostPowerA
             addToTop(new RemoveSpecificPowerAction(owner, owner, this));
             return;
         }
-        // if (p2add.type == PowerType.BUFF)
-        // return;
         if (target == owner && !p2add.ID.equals(CantApplyPowerPower.ID)) {
             // if(src != owner) {
             this.flash();
-            if (owner.powers.stream().map(p -> p.ID).anyMatch(id -> Objects.equals(id, p2add.ID))) {
+            if (owner.powers.stream().map(p -> p.ID).noneMatch(id -> Objects.equals(id, p2add.ID))) {
                 // addToBot(new ReducePowerAction(target, owner, p2add, p2add.amount));
-            } else {
                 addToBot(new RemoveSpecificPowerAction(target, owner, p2add));
             }
         }
-        // } else {
-        // addToBot(new RemoveSpecificPowerAction(target, owner, this));
-        // BaseMod.unsubscribe(this);
-        // }
     }
 }

@@ -3,6 +3,8 @@ package lingmod.powers;
 import basemod.BaseMod;
 import basemod.interfaces.PostBattleSubscriber;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import lingmod.ModCore;
@@ -22,6 +24,7 @@ public class PoeticMoodPower extends AbstractEasyPower implements PostBattleSubs
     public static final Logger logger = ModCore.logger;
     private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.BUFF;
     public static int powerGained = 0;
+    public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(ID);
 
     public PoeticMoodPower(AbstractCreature owner, int amount) {
         super(ID, getName(ID), TYPE, false, owner, amount);

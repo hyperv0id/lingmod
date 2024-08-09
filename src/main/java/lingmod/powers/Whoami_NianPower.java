@@ -15,10 +15,10 @@ import static lingmod.ModCore.makeID;
 public class Whoami_NianPower extends AbstractEasyPower {
     public static final String POWER_NAME = Whoami_NianPower.class.getSimpleName();
     public static final String ID = makeID(POWER_NAME);
-    public static final PowerStrings ps = CardCrawlGame.languagePack.getPowerStrings(ID);
+    public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(ID);
 
     public Whoami_NianPower(AbstractCreature owner) {
-        super(ID, ps.NAME, PowerType.DEBUFF, false, owner, 0);
+        super(ID, powerStrings.NAME, PowerType.DEBUFF, false, owner, 0);
     }
 
     @Override

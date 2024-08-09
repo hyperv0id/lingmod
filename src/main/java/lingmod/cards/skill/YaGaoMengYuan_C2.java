@@ -1,5 +1,6 @@
 package lingmod.cards.skill;
 
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -16,6 +17,7 @@ import static lingmod.util.Wiz.isStanceNell;
 /**
  * 能量上限++ & 手牌翻倍
  */
+@AutoAdd.Ignore
 public class YaGaoMengYuan_C2 extends YaGaoMengYuan {
     public static final String ID = makeID(YaGaoMengYuan_C2.class.getSimpleName());
     public static final CardStrings cs = CardCrawlGame.languagePack.getCardStrings(ID);

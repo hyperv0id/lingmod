@@ -13,11 +13,11 @@ import static lingmod.ModCore.makeID;
 
 public class Whoami_ShuoPower extends AbstractEasyPower {
     public static final String ID = makeID(Whoami_ShuoPower.class.getSimpleName());
-    public static final PowerStrings ps = CardCrawlGame.languagePack.getPowerStrings(ID);
+    public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(ID);
     public int counter;
 
     public Whoami_ShuoPower(AbstractCreature owner, int counter) {
-        super(ID, ps.NAME, PowerType.BUFF, true, owner, 0);
+        super(ID, powerStrings.NAME, PowerType.BUFF, true, owner, 0);
         this.counter = counter;
     }
 

@@ -25,12 +25,12 @@ import static lingmod.ModCore.makeID;
 public class YuNiaoPower extends AbstractEasyPower {
     public static final String POWER_NAME = YuNiaoPower.class.getSimpleName();
     public static final String ID = makeID(POWER_NAME);
-    public static final PowerStrings ps = CardCrawlGame.languagePack.getPowerStrings(ID);
+    public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(ID);
     private final AbstractCreature target;
     public FlameBarrierPower reference;
 
     public YuNiaoPower(AbstractCreature owner, AbstractCreature target) {
-        super(ID, ps.NAME, PowerType.BUFF, false, owner, 0);
+        super(ID, powerStrings.NAME, PowerType.BUFF, false, owner, 0);
         this.target = target;
         this.loadTexture(POWER_NAME);
         updateDescription();
