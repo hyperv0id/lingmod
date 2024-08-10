@@ -132,7 +132,7 @@
   "lingmod:InvincibleForPlayer": {
     "NAME": "无法干扰",
     "DESCRIPTIONS": [
-      "你无法对其造成伤害"
+      "玩家方无法对其造成伤害"
     ]
   },
   "lingmod:GiveGoldAsHP": {
@@ -150,13 +150,25 @@
   "lingmod:BeiChangMengPower": {
     "NAME": "悲长梦",
     "DESCRIPTIONS": [
-      "离开梦境时，触发能力的回合结束效果"
+      "离开梦境时，触发能力和遗物的回合结束效果"
     ]
   },
   "lingmod:SeeThroughPower": {
     "NAME": "看破",
     "DESCRIPTIONS": [
       "无效角色打出的下 #b!X! 张牌"
+    ]
+  },
+  "lingmod:Go_LibertyPressure": {
+    "NAME": "逼气",
+    "DESCRIPTIONS": [
+      "玩家打出 #r攻击牌 后，使其获得 #b1 层 #r易伤"
+    ]
+  },
+  "lingmod:Go_CornerApproach": {
+    "NAME": "挂角",
+    "DESCRIPTIONS": [
+      "玩家打出 #r技能牌 后，使其获得 #b1 层 #r虚弱"
     ]
   }
 }

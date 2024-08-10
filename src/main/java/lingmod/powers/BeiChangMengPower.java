@@ -2,7 +2,9 @@ package lingmod.powers;
 
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.stances.AbstractStance;
 import lingmod.stance.NellaFantasiaStance;
 
@@ -22,6 +24,7 @@ public class BeiChangMengPower extends AbstractEasyPower {
         super.onChangeStance(oldStance, newStance);
         if (oldStance.ID.equals(NellaFantasiaStance.STANCE_ID)) {
             owner.applyEndOfTurnTriggers();
+            AbstractDungeon.player.relics.forEach(AbstractRelic::onPlayerEndTurn);
         }
     }
 }
