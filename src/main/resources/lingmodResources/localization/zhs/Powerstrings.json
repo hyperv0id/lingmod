@@ -152,5 +152,11 @@
     "DESCRIPTIONS": [
       "离开梦境时，触发能力的回合结束效果"
     ]
+  },
+  "lingmod:SeeThroughPower": {
+    "NAME": "看破",
+    "DESCRIPTIONS": [
+      "无效角色打出的下 #b!X! 张牌"
+    ]
   }
 }
