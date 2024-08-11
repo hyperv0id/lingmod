@@ -11,14 +11,14 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import static lingmod.ModCore.makeID;
 
 /**
- * 看破
+ * 读棋（看破）：无效化下X张牌
  */
-public class SeeThroughPower extends AbstractEasyPower {
-    public static final String POWER_NAME = SeeThroughPower.class.getSimpleName();
+public class Go_ReadAhead extends AbstractEasyPower {
+    public static final String POWER_NAME = Go_ReadAhead.class.getSimpleName();
     public static final String ID = makeID(POWER_NAME);
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(ID);
 
-    public SeeThroughPower(AbstractCreature owner, int amount) {
+    public Go_ReadAhead(AbstractCreature owner, int amount) {
         super(ID, powerStrings.NAME, PowerType.BUFF, true, owner, amount);
     }
 

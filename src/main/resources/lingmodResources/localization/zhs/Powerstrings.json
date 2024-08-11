@@ -153,10 +153,10 @@
       "离开梦境时，触发能力和遗物的回合结束效果"
     ]
   },
-  "lingmod:SeeThroughPower": {
-    "NAME": "看破",
+  "lingmod:Go_ReadAhead": {
+    "NAME": "读棋",
     "DESCRIPTIONS": [
-      "无效角色打出的下 #b!X! 张牌"
+      "#y无效 打出的下 #b!X! 张牌"
     ]
   },
   "lingmod:Go_LibertyPressure": {

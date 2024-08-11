@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import javassist.CannotCompileException;
 import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
-import lingmod.powers.SeeThroughPower;
+import lingmod.powers.Go_ReadAhead;
 
 /**
  * from Pokemon Regions(MagicGuardPatch)
@@ -22,8 +22,8 @@ public class PlayCardPatch {
         if (AbstractDungeon.getCurrRoom() != null && AbstractDungeon.getCurrRoom().monsters != null) {
 
             for (AbstractMonster monster : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                if (monster.hasPower(SeeThroughPower.ID)) {
-                    AbstractPower power = monster.getPower(SeeThroughPower.ID);
+                if (monster.hasPower(Go_ReadAhead.ID)) {
+                    AbstractPower power = monster.getPower(Go_ReadAhead.ID);
                     return power.amount >= 1;
                 }
             }
