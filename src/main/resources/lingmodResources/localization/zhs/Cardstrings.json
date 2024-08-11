@@ -348,5 +348,10 @@
   "lingmod:BeiChangMeng": {
     "NAME": "悲长梦",
     "DESCRIPTION": "离开梦境时，触发所有能力的回合结束效果"
+  },
+  "lingmod:NostalgiaAndCuriosity": {
+    "NAME": "怀恋与好奇",
+    "DESCRIPTION": "从拿牌记录中随机抽3张牌 NL 选择其中一张加入手牌。",
+    "UPGRADE_DESCRIPTION": "从拿牌记录中随机抽3张牌 NL 选一张加入手牌并使其本回合耗能为0"
   }
 }

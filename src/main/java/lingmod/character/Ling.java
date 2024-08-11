@@ -50,8 +50,8 @@ public class Ling extends CustomPlayer {
     public static final String CORPSE = makeCharacterPath("ling/corpse.png");
     static final String ID = "Ling";
     public static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
-    static final String[] NAMES = characterStrings.NAMES;
-    static final String[] TEXT = characterStrings.TEXT;
+    public static final String[] NAMES = characterStrings.NAMES;
+    public static final String[] TEXT = characterStrings.TEXT;
     private static final String[] orbTextures = {
             makeCharacterPath("ling/orb/layer1.png"),
             makeCharacterPath("ling/orb/layer2.png"),
