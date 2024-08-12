@@ -170,5 +170,11 @@
     "DESCRIPTIONS": [
       "玩家打出 #r技能牌 后，使其获得 #b1 层 #r虚弱"
     ]
+  },
+  "lingmod:Go_Endgame": {
+    "NAME": "收官",
+    "DESCRIPTIONS": [
+      "本回合玩家打出 #r非攻击牌 后， 自身获得 #b1 层 #r荆棘"
+    ]
   }
 }
