@@ -64,6 +64,7 @@ import lingmod.monsters.InnManager;
 import lingmod.monsters.MonsterGroups;
 import lingmod.monsters.MonsterSui_7_Ji;
 import lingmod.monsters.MountainPicker;
+import lingmod.monsters.Wang_MountainGhost;
 import lingmod.patch.PlayerFieldsPatch;
 import lingmod.potions.AbstractEasyPotion;
 import lingmod.relics.AbstractEasyRelic;
@@ -337,6 +338,7 @@ public class ModCore implements
         BaseMod.addMonster(MonsterSui_7_Ji.ID, MonsterSui_7_Ji.NAME, MonsterSui_7_Ji::new); // 绩老七
         // BaseMod.addMonster(MonsterSui_2_Wang.ID, () -> new MonsterSui_2_Wang()); //
         // 岁老二
+        BaseMod.addMonster(Wang_MountainGhost.ID, Wang_MountainGhost::new);
 
         // 挑山人大战行裕掌柜。
         BaseMod.addMonster(makeID("挑山人大战行裕掌柜"), "挑山人大战行裕掌柜", () -> new MonsterGroup(new AbstractMonster[] {

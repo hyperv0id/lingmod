@@ -26,15 +26,6 @@
       "你弄丢了我的礼物"
     ]
   },
-  "${ModID}:Wang_MountainGhost.png": {
-    "MOVES": [
-      ""
-    ],
-    "NAME": "山鬼？",
-    "DIALOG": [
-      "每隔一甲子就会出来吃人"
-    ]
-  },
   "${ModID}:InnManager": {
     "MOVES": [
       "攻击挑山人"
@@ -64,5 +55,15 @@
     "DIALOG": [
       "受岁相感染而生的器伥。千刀磨砻，方得一印，此类器伥性情怯懦，遇事会急急地躲开。"
     ]
+  },
+  "${ModID}:Wang_MountainGhost": {
+    "NAME": "甲子的妖怪",
+    "DIALOG": [
+      "每隔一甲子就会出来吃人。",
+      "几十年不见，礼轻情意重"
+    ]
+  },
+  "${ModID}:Ling_WineTaoist": {
+    "NAME": "酒道士"
   }
 }

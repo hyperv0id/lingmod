@@ -1,9 +1,8 @@
 package lingmod.monsters;
 
-import basemod.BaseMod;
-import basemod.abstracts.CustomMonster;
-import basemod.interfaces.PostBattleSubscriber;
-import basemod.interfaces.PostExhaustSubscriber;
+import static lingmod.ModCore.makeID;
+import static lingmod.ModCore.makeImagePath;
+
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -21,11 +20,13 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.powers.ConstrictedPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+
+import basemod.BaseMod;
+import basemod.abstracts.CustomMonster;
+import basemod.interfaces.PostBattleSubscriber;
+import basemod.interfaces.PostExhaustSubscriber;
 import lingmod.character.Ling;
 import lingmod.patch.OnSaveLoadPatch;
-
-import static lingmod.ModCore.makeID;
-import static lingmod.ModCore.makeImagePath;
 
 /**
  * 绩老七：

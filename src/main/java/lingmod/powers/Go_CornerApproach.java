@@ -1,5 +1,7 @@
 package lingmod.powers;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -11,8 +13,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * Skill --> 虚弱
@@ -37,7 +37,7 @@ public class Go_CornerApproach extends AbstractEasyPower {
         super.onAfterUseCard(card, action);
         if (card.type != AbstractCard.CardType.SKILL) return;
         AbstractCreature src = action.source == null ? AbstractDungeon.player : action.source;
-        addToBot(new ApplyPowerAction(owner, src, new WeakPower(src, 1,
+        addToBot(new ApplyPowerAction(src, owner, new WeakPower(src, 1,
                 owner.getClass().isAssignableFrom(AbstractMonster.class))));
         addToBot(new ReducePowerAction(owner, owner, this, 1));
         super.onAfterUseCard(card, action);

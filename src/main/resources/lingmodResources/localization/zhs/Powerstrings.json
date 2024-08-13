@@ -156,7 +156,7 @@
   "lingmod:Go_ReadAhead": {
     "NAME": "读棋",
     "DESCRIPTIONS": [
-      "#y无效 打出的下 #b!X! 张牌"
+      "#y无效 打出的下 #b%d 张牌"
     ]
   },
   "lingmod:Go_LibertyPressure": {

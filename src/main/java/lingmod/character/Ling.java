@@ -68,6 +68,10 @@ public class Ling extends CustomPlayer {
     private static final float[] LAYER_SPEED = new float[] { -40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F,
             -5.0F, 0.0F };
 
+    public Ling() {
+        this(Ling.characterStrings.NAMES[1], Ling.Enums.PLAYER_LING);
+    }
+
     public Ling(String name, PlayerClass setClass) {
         super(name, Ling.Enums.PLAYER_LING, orbTextures, makeCharacterPath("ling/orb/vfx.png"), LAYER_SPEED, null,
                 null);
@@ -132,29 +136,37 @@ public class Ling extends CustomPlayer {
         TODO.info("使用基建的Special动画");
         // String charID = "char_2023_ling";
         // super.loadAnimation(atlasUrl, skeletonUrl, 1f);
-        this.state.setAnimation(0, "Skill_02", false);
-        this.state.addAnimation(0, "Idle", true, 0.0F);
+        if (this.atlas != null && this.state != null) {
+            this.state.setAnimation(0, "Skill_02", false);
+            this.state.addAnimation(0, "Idle", true, 0.0F);
+        }
     }
 
     @Override
     public void useFastAttackAnimation() {
         super.useFastAttackAnimation();
-        this.state.setAnimation(0, "Skill_02", false);
-        this.state.addAnimation(0, "Idle", true, 0.0F);
+        if (this.atlas != null && this.state != null) {
+            this.state.setAnimation(0, "Skill_02", false);
+            this.state.addAnimation(0, "Idle", true, 0.0F);
+        }
     }
 
     @Override
     public void playDeathAnimation() {
         super.playDeathAnimation();
-        this.state.setAnimation(0, "Die", false);
+        if (this.atlas != null && this.state != null) {
+            this.state.setAnimation(0, "Die", false);
+        }
         VoiceMaster.getInstance().death();
     }
 
     @Override
     public void useSlowAttackAnimation() {
         super.useSlowAttackAnimation();
-        this.state.setAnimation(0, "Skill_03_Loop", false);
-        this.state.addAnimation(0, "Idle", true, 0.0F);
+        if (this.atlas != null && this.state != null) {
+            this.state.setAnimation(0, "Skill_03_Loop", false);
+            this.state.addAnimation(0, "Idle", true, 0.0F);
+        }
     }
 
     @Override
