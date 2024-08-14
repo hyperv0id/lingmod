@@ -1,5 +1,6 @@
 package lingmod.cards.skill;
 
+import basemod.AutoAdd;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -12,6 +13,7 @@ import static lingmod.ModCore.makeID;
 /**
  * 白子：防0,在梦中时，所有化物增加2格挡
  */
+@AutoAdd.Ignore
 public class WhitePawn extends AbstractEasyCard {
     public final static String ID = makeID(WhitePawn.class.getSimpleName());
 

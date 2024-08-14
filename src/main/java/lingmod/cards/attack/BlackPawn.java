@@ -1,5 +1,6 @@
 package lingmod.cards.attack;
 
+import basemod.AutoAdd;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -16,6 +17,7 @@ import static lingmod.ModCore.makeID;
 /**
  * 黑子：打6，弃牌堆放入一张黑子，你牌库中每有一张黑子，伤害增加2
  */
+@AutoAdd.Ignore
 @CardConfig(damage = 6, magic = 2)
 public class BlackPawn extends AbstractEasyCard {
     public final static String ID = makeID(BlackPawn.class.getSimpleName());

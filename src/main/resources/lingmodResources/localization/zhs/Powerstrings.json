@@ -150,7 +150,7 @@
   "lingmod:BeiChangMengPower": {
     "NAME": "悲长梦",
     "DESCRIPTIONS": [
-      "离开梦境时，触发能力和遗物的回合结束效果"
+      "离开梦境时，触发 #b能力 、 #b遗物 、#b 手牌 的 #b回合结束 效果"
     ]
   },
   "lingmod:Go_ReadAhead": {

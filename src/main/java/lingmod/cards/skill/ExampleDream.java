@@ -14,7 +14,7 @@ public class ExampleDream extends AbstractEasyCard {
     public static final String ID = makeID(ExampleDream.class.getSimpleName());
 
     public ExampleDream() {
-        super(ID, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
+        super(ID, 0, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
     }
 
     @Override
