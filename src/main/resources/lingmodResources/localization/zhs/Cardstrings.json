@@ -140,8 +140,8 @@
   },
   "${ModID}:Whoami_Ling": {
     "NAME": "无怖",
-    "DESCRIPTION": "所有人都无法再获得任何新能力 NL 对自己施加异常时移除此效果",
-    "UPGRADE_DESCRIPTION": "清除所有异常 NL 所有人都无法再获得任何新能力 NL 自己对自己施加异常时移除此效果"
+    "DESCRIPTION": "无法再获得任何新能力 NL 自己对自己施加异常时移除此效果",
+    "UPGRADE_DESCRIPTION": "清除所有异常 NL 无法再获得任何新能力 NL 自己对自己施加异常时移除此效果"
   },
   "${ModID}:Whoami_Nian": {
     "NAME": "无悲",
@@ -251,11 +251,14 @@
   },
   "${ModID}:BlackPawn": {
     "NAME": "黑子",
-    "DESCRIPTION": "造成 !D! 点伤害 NL 在梦中打出时，所有 lingmod:化物 攻击牌的伤害提升 !M! 点"
+    "DESCRIPTION": "造成 !D! 点伤害 !M! 次，次数为黑子数量 NL 梦中打出：在抽牌堆加入一张此牌的复制"
   },
   "lingmod:WhitePawn": {
     "NAME": "白子",
-    "DESCRIPTION": "获得 !B! 点格挡 NL 在梦中打出时，所有 lingmod:化物 技能牌的格挡提升 !M! 点"
+    "DESCRIPTION": "获得 !B! 点格挡 NL 在梦中打出：选择抽牌堆一张牌变化为此牌",
+    "EXTENDED_DESCRIPTION": [
+      "选择一张牌变化为“白子”"
+    ]
   },
   "lingmod:YaGaoMengYuan": {
     "NAME": "崖高梦远",
@@ -353,5 +356,9 @@
     "NAME": "怀恋与好奇",
     "DESCRIPTION": "从拿牌记录中随机抽3张牌 NL 选择其中一张加入手牌。",
     "UPGRADE_DESCRIPTION": "从拿牌记录中随机抽3张牌 NL 选一张加入手牌并使其本回合耗能为0"
+  },
+  "lingmod:Ling_Grieve": {
+    "NAME": "伤怀",
+    "DESCRIPTION": "其他卡牌被消耗时，向手牌中加入一张伤怀。"
   }
 }

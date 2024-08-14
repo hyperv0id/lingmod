@@ -176,5 +176,11 @@
     "DESCRIPTIONS": [
       "本回合玩家打出 #r非攻击牌 后， 自身获得 #b1 层 #r荆棘"
     ]
+  },
+  "lingmod:HP_Lock_Power": {
+    "NAME": "事件-锁血",
+    "DESCRIPTIONS": [
+      "在此事件战斗中 #g不会死亡"
+    ]
   }
 }

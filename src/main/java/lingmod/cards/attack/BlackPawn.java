@@ -1,10 +1,8 @@
 package lingmod.cards.attack;
 
-import basemod.AutoAdd;
 import com.badlogic.gdx.graphics.Color;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.VerticalAuraEffect;
@@ -15,10 +13,10 @@ import lingmod.util.Wiz;
 import static lingmod.ModCore.makeID;
 
 /**
- * 黑子：打6，弃牌堆放入一张黑子，你牌库中每有一张黑子，伤害增加2
+ * 黑子：打6 X 次，次数为黑子数量。
+ * 在抽牌堆放入一张黑子
  */
-@AutoAdd.Ignore
-@CardConfig(damage = 6, magic = 2)
+@CardConfig(damage = 6, magic = 1)
 public class BlackPawn extends AbstractEasyCard {
     public final static String ID = makeID(BlackPawn.class.getSimpleName());
 
@@ -28,26 +26,22 @@ public class BlackPawn extends AbstractEasyCard {
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
-        this.magicNumber = baseMagicNumber;
-        int totalCnt = Wiz.allCardsInBattle(false).stream()
-                .mapToInt(c -> c.cardID.equals(ID) ? 1 : 0).sum();
-
-        int realBaseDamage = this.baseDamage;
-        this.baseDamage += this.magicNumber * totalCnt;
+        this.baseMagicNumber = (int) Wiz.allCardsInBattle(false).stream().filter(c -> c.cardID.equals(BlackPawn.ID)).count();
         super.calculateCardDamage(mo);
-        this.baseDamage = realBaseDamage;
-        this.isDamageModified = this.damage != this.baseDamage;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, AbstractGameAction.AttackEffect.BLUNT_LIGHT);
-        this.addToBot(new VFXAction(p, new VerticalAuraEffect(Color.FIREBRICK, p.hb.cX, p.hb.cY), 0.0F));
-        this.addToBot(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(), 1));
+        for (int i = 0; i < magicNumber; i++) {
+            dmg(m, null);
+            this.addToBot(new VFXAction(p, new VerticalAuraEffect(Color.FIREBRICK, p.hb.cX, p.hb.cY), 0.0F));
+        }
+        if (Wiz.isStanceNell())
+            this.addToBot(new MakeTempCardInDrawPileAction(this.makeStatEquivalentCopy(), 1, true, true));
     }
 
     @Override
     public void upp() {
-        upgradeDamage(magicNumber);
+        upgradeDamage(3);
     }
 }
 // "${ModID}:BlackPawn": {

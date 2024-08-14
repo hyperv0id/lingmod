@@ -3,7 +3,6 @@ package lingmod.cards.power;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.unique.RemoveAllPowersAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.powers.CantApplyPowerPower;
@@ -31,7 +30,8 @@ public class Whoami_Ling extends AbstractEasyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (upgraded)
             addToBot(new RemoveAllPowersAction(p, true));
-        AbstractDungeon.getMonsters().monsters.forEach(mo -> addToBot(new ApplyPowerAction(mo, mo, new CantApplyPowerPower(mo))));
+        //AbstractDungeon.getMonsters().monsters.forEach(mo -> addToBot(new ApplyPowerAction(mo, mo,
+        //        new CantApplyPowerPower(mo))));
         addToBot(new ApplyPowerAction(p, p, new CantApplyPowerPower(p)));
     }
 

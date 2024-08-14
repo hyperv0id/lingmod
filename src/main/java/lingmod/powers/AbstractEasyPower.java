@@ -64,6 +64,8 @@ public abstract class AbstractEasyPower extends AbstractPower {
         super.stackPower(stackAmount);
         if (this.amount > 999) {
             this.amount = 999;
+        } else if (this.amount < -999) {
+            this.amount = -999;
         }
     }
 

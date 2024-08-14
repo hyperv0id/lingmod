@@ -26,7 +26,7 @@ public class QingMingDream extends AbstractEasyCard {
     public static final String ID = makeID(NAME);
 
     public QingMingDream() {
-        super(ID, 2, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
+        super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
         tags.add(CustomTags.DREAM);
         CardModifierManager.addModifier(this, new NellaFantasiaMod());
         CardModifierManager.addModifier(this, new ExhaustMod());

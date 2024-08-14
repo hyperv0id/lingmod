@@ -1,9 +1,7 @@
 package lingmod.monsters;
 
-import static lingmod.ModCore.logger;
-import static lingmod.ModCore.makeID;
-import static lingmod.ModCore.makeImagePath;
-
+import basemod.ReflectionHacks;
+import basemod.abstracts.CustomMonster;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -19,16 +17,12 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.MalleablePower;
 import com.megacrit.cardcrawl.vfx.SpeechBubble;
-
-import basemod.ReflectionHacks;
-import basemod.abstracts.CustomMonster;
 import lingmod.character.Ling;
-import lingmod.powers.Go_CornerApproach;
-import lingmod.powers.Go_Endgame;
-import lingmod.powers.Go_LibertyPressure;
-import lingmod.powers.Go_ReadAhead;
+import lingmod.powers.*;
 import lingmod.util.Morph;
 import lingmod.util.Wiz;
+
+import static lingmod.ModCore.*;
 
 /**
  * 二哥，你又在算计哦。陪我喝两小酒好不好
@@ -83,6 +77,8 @@ public class Wang_MountainGhost extends CustomMonster {
                 Morph.morph(AbstractDungeon.player, new Ling_WineTaoist());
                 logger.debug("IMG After Morph?: " + AbstractDungeon.player.img);
             }
+            // 事件怪物，玩家锁血
+            addToBot(new ApplyPowerAction(AbstractDungeon.player, this, new HP_Lock_Power(AbstractDungeon.player)));
         });
         // addToBot(new ApplyPowerAction(this, this, new ReactivePower(this)));
     }
@@ -99,7 +95,7 @@ public class Wang_MountainGhost extends CustomMonster {
 
     @Override
     protected void getMove(int moveID) {
-        moveID /= (100 / 8); // rool from rand [0-99]
+        moveID /= (int) (100.0 / 8); // rool from rand [0-99]
         if (this.hasPower(Go_Endgame.ID)) // 收官后一直进攻
             moveID = 0;
         switch (moveID) {
@@ -183,6 +179,5 @@ public class Wang_MountainGhost extends CustomMonster {
         }
 
         this.rollMove();
-
     }
 }
