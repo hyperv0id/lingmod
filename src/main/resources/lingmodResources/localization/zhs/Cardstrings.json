@@ -136,7 +136,7 @@
   },
   "${ModID}:Whoami_Wang": {
     "NAME": "无我",
-    "DESCRIPTION": "失去 !M! 点生命值，生成一个黄铜镜"
+    "DESCRIPTION": "失去 !M! 点生命值，获得 1 无实体"
   },
   "${ModID}:Whoami_Ling": {
     "NAME": "无怖",

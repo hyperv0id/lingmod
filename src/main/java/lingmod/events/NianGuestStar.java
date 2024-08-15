@@ -4,6 +4,7 @@ import basemod.abstracts.events.PhasedEvent;
 import basemod.abstracts.events.phases.CombatPhase;
 import basemod.abstracts.events.phases.TextPhase;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import lingmod.ModCore.ResourceType;
@@ -55,7 +56,7 @@ public class NianGuestStar extends PhasedEvent {
         registerPhase("PRE_BATTLE",
                 new TextPhase(DESCRIPTIONS[2]).addOption(OPTIONS[1], (i) -> transitionKey("BATTLE")));
         // TODO: 替换为夕的画中生灵
-        registerPhase("BATTLE", new CombatPhase(NianGuestStar.ID)
+        registerPhase("BATTLE", new CombatPhase(MonsterHelper.GREMLIN_GANG_ENC)
                 .addRewards(true, AbstractRoom::addPotionToRewards));
         transitionKey("Nian_Ask");
     }

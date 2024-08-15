@@ -65,8 +65,9 @@ public class WhoamiEvent extends AbstractImageEvent {
         AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(cards[btn].makeCopy(), (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
 
         this.imageEventText.updateBodyText(DESCRIPTIONS[btn + 1]);
+        this.imageEventText.optionList.clear();
         imageEventText.setDialogOption(OPTIONS[OPTIONS.length - 1]);
-        this.imageEventText.clearRemainingOptions();
+        //        this.imageEventText.setDialogOption(OPTIONS[5]);
     }
 
 
