@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.exordium.GremlinTsundere;
 import lingmod.ModCore;
+import lingmod.util.Wiz;
 
 import static lingmod.ModCore.makeImagePath;
 
@@ -24,6 +25,7 @@ public class XiaoZaoPatch {
     public static class XiaoZao_InitPatch {
         @SpirePostfixPatch
         public static void init(GremlinTsundere __inst) {
+            if (!Wiz.isPlayerLing()) return;
             ReflectionHacks.RMethod loadAnimation = ReflectionHacks.privateMethod(AbstractCreature.class, "loadAnimation",
                     String.class,
                     String.class,
@@ -39,6 +41,7 @@ public class XiaoZaoPatch {
     public static class XiaoZao_AttackSlowAnimPatch {
         @SpirePostfixPatch
         public static void postfix(AbstractCreature __inst) {
+            if (!Wiz.isPlayerLing()) return;
             if (__inst instanceof GremlinTsundere) {
                 __inst.state.setAnimation(0, "Attack", false);
                 __inst.state.addAnimation(0, "Idle", true, 0F);
@@ -50,6 +53,7 @@ public class XiaoZaoPatch {
     public static class XiaoZao_AttackFastAnimPatch {
         @SpirePostfixPatch
         public static void postfix(AbstractCreature __inst) {
+            if (!Wiz.isPlayerLing()) return;
             if (__inst instanceof GremlinTsundere) {
                 __inst.state.setAnimation(0, "Attack", false);
                 __inst.state.addAnimation(0, "Idle", true, 0F);

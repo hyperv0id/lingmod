@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.exordium.GremlinFat;
 import lingmod.ModCore;
+import lingmod.util.Wiz;
 
 import static lingmod.ModCore.makeImagePath;
 
@@ -17,9 +18,10 @@ public class TouXian {
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
 
     @SpirePatch(clz = GremlinFat.class, method = SpirePatch.CONSTRUCTOR)
-    public static class XiaoZao_InitPatch {
+    public static class TouXian_InitPatch {
         @SpirePostfixPatch
         public static void init(GremlinFat __inst) {
+            if (!Wiz.isPlayerLing()) return;
             ReflectionHacks.RMethod loadAnimation = ReflectionHacks.privateMethod(AbstractCreature.class, "loadAnimation",
                     String.class,
                     String.class,
@@ -32,9 +34,10 @@ public class TouXian {
     }
 
     @SpirePatch(clz = AbstractCreature.class, method = "useSlowAttackAnimation")
-    public static class XiaoZao_AttackSlowAnimPatch {
+    public static class TouXian_AttackSlowAnimPatch {
         @SpirePostfixPatch
         public static void postfix(AbstractCreature __inst) {
+            if (!Wiz.isPlayerLing()) return;
             if (__inst instanceof GremlinFat) {
                 __inst.state.setAnimation(0, "Attack", false);
                 __inst.state.addAnimation(0, "Idle", true, 0F);
@@ -43,9 +46,10 @@ public class TouXian {
     }
 
     @SpirePatch(clz = AbstractCreature.class, method = "useFastAttackAnimation")
-    public static class XiaoZao_AttackFastAnimPatch {
+    public static class TouXian_AttackFastAnimPatch {
         @SpirePostfixPatch
         public static void postfix(AbstractCreature __inst) {
+            if (!Wiz.isPlayerLing()) return;
             if (__inst instanceof GremlinFat) {
                 __inst.state.setAnimation(0, "Attack", false);
                 __inst.state.addAnimation(0, "Idle", true, 0F);

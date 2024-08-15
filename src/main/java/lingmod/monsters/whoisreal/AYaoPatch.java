@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.exordium.GremlinWarrior;
 import lingmod.ModCore;
+import lingmod.util.Wiz;
 
 /**
  * 给火大地精换个皮
@@ -22,6 +23,7 @@ public class AYaoPatch {
     public static class AYao_InitPatch {
         @SpirePostfixPatch
         public static void init(GremlinWarrior __inst) {
+            if (!Wiz.isPlayerLing()) return;
             ReflectionHacks.RMethod loadAnimation = ReflectionHacks.privateMethod(AbstractCreature.class, "loadAnimation",
                     String.class,
                     String.class,
@@ -37,6 +39,7 @@ public class AYaoPatch {
     public static class AYao_AttackSlowAnimPatch {
         @SpirePostfixPatch
         public static void postfix(AbstractCreature __inst) {
+            if (!Wiz.isPlayerLing()) return;
             if (__inst instanceof GremlinWarrior) {
                 __inst.state.setAnimation(0, "Attack", false);
                 __inst.state.addAnimation(0, "Idle", true, 0F);
@@ -48,6 +51,7 @@ public class AYaoPatch {
     public static class AYao_AttackFastAnimPatch {
         @SpirePostfixPatch
         public static void postfix(AbstractCreature __inst) {
+            if (!Wiz.isPlayerLing()) return;
             if (__inst instanceof GremlinWarrior) {
                 __inst.state.setAnimation(0, "Attack", false);
                 __inst.state.addAnimation(0, "Idle", true, 0F);
