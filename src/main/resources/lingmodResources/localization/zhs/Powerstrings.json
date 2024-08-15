@@ -180,7 +180,7 @@
   "lingmod:HP_Lock_Power": {
     "NAME": "事件-锁血",
     "DESCRIPTIONS": [
-      "在此事件战斗中 #g不会死亡"
+      "#g不会死亡 ，保留1点生命"
     ]
   }
 }

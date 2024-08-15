@@ -1,7 +1,5 @@
 package lingmod.powers;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -10,6 +8,8 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.ThornsPower;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 收官：打出非攻击牌，就获得 1 荆棘
@@ -22,6 +22,7 @@ public class Go_Endgame extends AbstractEasyPower {
 
     public Go_Endgame(AbstractCreature owner) {
         super(ID, powerStrings.NAME, PowerType.BUFF, true, owner, 0);
+        loadRegion("thousandCuts");
     }
 
     @Override

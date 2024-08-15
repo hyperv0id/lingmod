@@ -77,10 +77,10 @@ public class Wang_MountainGhost extends CustomMonster {
                 Morph.morph(AbstractDungeon.player, new Ling_WineTaoist());
                 logger.debug("IMG After Morph?: " + AbstractDungeon.player.img);
             }
-            // 事件怪物，玩家锁血
-            addToBot(new ApplyPowerAction(AbstractDungeon.player, this, new HP_Lock_Power(AbstractDungeon.player)));
         });
         // addToBot(new ApplyPowerAction(this, this, new ReactivePower(this)));
+        // 事件怪物，玩家锁血
+        addToBot(new ApplyPowerAction(AbstractDungeon.player, this, new HP_Lock_Power(AbstractDungeon.player)));
     }
 
     public void die() {
