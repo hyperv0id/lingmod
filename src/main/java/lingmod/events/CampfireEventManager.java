@@ -1,22 +1,23 @@
 package lingmod.events;
 
-import basemod.AutoAdd;
-import basemod.ReflectionHacks;
-import basemod.abstracts.CustomSavable;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.events.AbstractEvent;
-import com.megacrit.cardcrawl.events.AbstractImageEvent;
-import lingmod.interfaces.CampfireSleepEvent;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import static lingmod.ModCore.logger;
 import static lingmod.ModCore.modID;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.events.AbstractEvent;
+import com.megacrit.cardcrawl.events.AbstractImageEvent;
+
+import basemod.AutoAdd;
+import basemod.ReflectionHacks;
+import basemod.abstracts.CustomSavable;
+import lingmod.interfaces.CampfireSleepEvent;
+
 public class CampfireEventManager implements CustomSavable<List<String>> {
     public static List<AbstractEvent> sleepEvents = new ArrayList<>(); // 在篝火处睡觉会触发的事件
-    public static List<String> sleptEvents = new ArrayList<>(); // 已经触发过的事件
 
     public static AbstractEvent rollEvent() {
         if (sleepEvents.isEmpty()) {
@@ -26,9 +27,8 @@ public class CampfireEventManager implements CustomSavable<List<String>> {
         int len = sleepEvents.size();
         int r = AbstractDungeon.eventRng.random(len - 1);
         AbstractEvent e = sleepEvents.get(r);
+        sleepEvents.remove(e); // 移除事件
         logger.info("Visit Event: " + e.getClass().getSimpleName());
-        sleepEvents.remove(e);
-        sleptEvents.add(e.getClass().getName()); // 设置为看过了
         try {
             return e.getClass().getDeclaredConstructor().newInstance();
         } catch (Exception ex) {
@@ -39,8 +39,6 @@ public class CampfireEventManager implements CustomSavable<List<String>> {
     public static void initSleepEvents() {
         new AutoAdd(modID).packageFilter(Sui12Event.class).any(AbstractEvent.class, (info, event) -> {
             if (event.getClass().getAnnotation(CampfireSleepEvent.class) == null)
-                return;
-            if (sleptEvents != null && sleptEvents.contains(event.getClass().getName()))
                 return;
             String name = "";
             if (event instanceof AbstractImageEvent)
@@ -55,15 +53,23 @@ public class CampfireEventManager implements CustomSavable<List<String>> {
 
     @Override
     public List<String> onSave() {
-        return sleptEvents;
+        return sleepEvents.stream().map(event -> event.getClass().getName()).collect(Collectors.toList());
     }
 
     @Override
     public void onLoad(List<String> strings) {
-        sleptEvents.clear();
-        if (strings != null)
-            sleptEvents = strings;
-        initSleepEvents();
+        sleepEvents.clear();
+        for (String clzString : strings) {
+            try {
+                Class<?> clz = Class.forName(clzString);
+                AbstractEvent eve = (AbstractEvent) clz.newInstance();
+                sleepEvents.add(eve);
+            } catch (Exception e) {
+                logger.error("Create Campfire Event Failed: " + clzString);
+                logger.error("Create Campfire Event Failed: " + e.getLocalizedMessage());
+                continue;
+            }
+        }
     }
 
 }

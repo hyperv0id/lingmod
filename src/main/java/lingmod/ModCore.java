@@ -315,7 +315,6 @@ public class ModCore implements
         CardGroup verseCards = PlayerFieldsPatch.verseCardGroup.get(Wiz.adp());
         verseCards.addToTop(new JingYeSiCard());
         // 生成事件
-        CampfireEventManager.sleptEvents.clear(); // 重置看过的事件
         CampfireEventManager.sleepEvents.clear(); // 清空
         CampfireEventManager.initSleepEvents();
     }
