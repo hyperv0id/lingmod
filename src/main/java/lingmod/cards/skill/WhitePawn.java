@@ -1,15 +1,14 @@
 package lingmod.cards.skill;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.common.EmptyDeckShuffleAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import lingmod.actions.WhitePawnAction;
+import lingmod.actions.TransformDrawPileAction;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.util.Wiz;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 白子：防6
@@ -35,13 +34,13 @@ public class WhitePawn extends AbstractEasyCard {
         if (Wiz.isStanceNell()) {
             if (p.drawPile.isEmpty())
                 addToBot(new EmptyDeckShuffleAction()); // 触发洗牌
-            addToBot(new WhitePawnAction(this, cardStrings.EXTENDED_DESCRIPTION[0]));
+            addToBot(new TransformDrawPileAction(this, cardStrings.EXTENDED_DESCRIPTION[0]));
         }
     }
 
     @Override
     public void upp() {
-        upgradeBlock(6);
+        upgradeBlock(2);
     }
 }
 // "lingmod:WhitePawn": {

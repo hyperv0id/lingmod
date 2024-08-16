@@ -1,11 +1,8 @@
 package lingmod.cards.attack;
 
-import com.badlogic.gdx.graphics.Color;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.VerticalAuraEffect;
+import lingmod.actions.TransformDrawPileAction;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.util.Wiz;
@@ -33,15 +30,14 @@ public class BlackPawn extends AbstractEasyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < magicNumber; i++) {
             dmg(m, null);
-            this.addToBot(new VFXAction(p, new VerticalAuraEffect(Color.FIREBRICK, p.hb.cX, p.hb.cY), 0.0F));
         }
         if (Wiz.isStanceNell())
-            this.addToBot(new MakeTempCardInDrawPileAction(this.makeStatEquivalentCopy(), 1, true, true));
+            addToBot(new TransformDrawPileAction(this, cardStrings.EXTENDED_DESCRIPTION[0]));
     }
 
     @Override
     public void upp() {
-        upgradeDamage(3);
+        upgradeDamage(2);
     }
 }
 // "${ModID}:BlackPawn": {

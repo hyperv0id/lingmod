@@ -1,18 +1,17 @@
 package lingmod.relics;
 
-import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import lingmod.util.CustomTags;
 import lingmod.util.Wiz;
+
+import java.util.Comparator;
 
 import static lingmod.ModCore.makeID;
 
 /**
- * 打出酒后，所有手牌费用随机化，有特殊机制
+ * 所有手牌费用随机化，不会超过原费用。
  */
-public class Beans_LingRelic extends AbstractEasyRelic {
+public class Beans_LingRelic extends AbstractEasyRelic implements ClickableRelic {
     public static final String ID = makeID(Beans_LingRelic.class.getSimpleName());
 
     public Beans_LingRelic() {
@@ -20,10 +19,31 @@ public class Beans_LingRelic extends AbstractEasyRelic {
     }
 
     @Override
-    public void onPlayCard(AbstractCard c, AbstractMonster m) {
-        if (!c.hasTag(CustomTags.WINE))
-            return;
-        addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-        Wiz.addToBotAbstract(() -> Wiz.shuffleHandCost(true));
+    public void atBattleStart() {
+        super.atBattleStart();
+        this.grayscale = false;
+    }
+
+    @Override
+    public void onRightClick() {
+        if (this.grayscale) return;
+        Wiz.addToBotAbstract(() -> {
+            int maxCost = AbstractDungeon.player.hand.group.stream()
+                    .max(Comparator.comparingInt(a -> a.costForTurn))
+                    .map(card -> card.costForTurn)
+                    .orElse(3);
+            AbstractDungeon.player.hand.group.forEach(card -> {
+                if (card.cost >= 0) {
+                    int newCost = AbstractDungeon.cardRandomRng.random(maxCost);
+                    if (card.cost > newCost) {
+                        card.cost = newCost;
+                        card.costForTurn = card.cost;
+                        card.isCostModified = true;
+                    }
+                    card.freeToPlayOnce = false;
+                }
+            });
+        });
+        this.grayscale = false;
     }
 }

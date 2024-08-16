@@ -252,7 +252,10 @@
   },
   "${ModID}:BlackPawn": {
     "NAME": "黑子",
-    "DESCRIPTION": "造成 !D! 点伤害 !M! 次，次数为黑子数量 NL 梦中：在抽牌堆加入一张此牌的复制"
+    "DESCRIPTION": "造成 !D! 点伤害 !M! 次，次数为黑子数量 NL 梦中：在抽牌堆加入一张此牌的复制",
+    "EXTENDED_DESCRIPTION": [
+      "选择一张牌变化为“黑子”"
+    ]
   },
   "lingmod:WhitePawn": {
     "NAME": "白子",

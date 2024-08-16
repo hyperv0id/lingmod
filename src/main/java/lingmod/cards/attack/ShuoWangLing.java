@@ -14,7 +14,7 @@ import static lingmod.ModCore.makeID;
 /**
  * 朔望：卡牌唯一/满：打50
  */
-@CardConfig(damage = 1, damage2 = 19, block = 3, block2 = 3, magic = 11, magic2 = 2)
+@CardConfig(damage = 1, damage2 = 19, block = 3, block2 = 3, magic = 12, magic2 = 2)
 public class ShuoWangLing extends AbstractEasyCard {
     public final static String ID = makeID(ShuoWangLing.class.getSimpleName());
 

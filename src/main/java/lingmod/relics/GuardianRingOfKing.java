@@ -1,5 +1,6 @@
 package lingmod.relics;
 
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -9,6 +10,7 @@ import static lingmod.ModCore.makeID;
 /**
  * 国王的护戒：格挡可用于下一场战斗
  */
+@AutoAdd.Ignore
 public class GuardianRingOfKing extends KingRelic {
     public static final String ID = makeID(GuardianRingOfKing.class.getSimpleName());
 

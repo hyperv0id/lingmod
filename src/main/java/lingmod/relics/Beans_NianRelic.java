@@ -3,12 +3,14 @@ package lingmod.relics;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
+import lingmod.interfaces.Credit;
 
 import static lingmod.ModCore.makeID;
 
 /**
  * 每回合 3 活力
  */
+@Credit(username = "徵弦OwO", platform = "bilibili", link = "https://www.bilibili.com/video/BV1et4y1f7H1")
 public class Beans_NianRelic extends AbstractEasyRelic {
     public static final String ID = makeID(Beans_NianRelic.class.getSimpleName());
 

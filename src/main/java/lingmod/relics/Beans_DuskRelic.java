@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
+import lingmod.interfaces.Credit;
 
 import java.util.ArrayList;
 
@@ -16,6 +17,7 @@ import static lingmod.ModCore.makeID;
  * 选择 2 张牌变化（概率升级）
  * ref：Astrolabe 星盘
  */
+@Credit(username = "徵弦OwO", platform = "bilibili", link = "https://www.bilibili.com/video/BV1et4y1f7H1")
 public class Beans_DuskRelic extends AbstractEasyRelic {
     public static final String ID = makeID("Beans_DuskRelic");
 

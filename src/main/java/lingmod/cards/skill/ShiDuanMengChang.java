@@ -1,5 +1,7 @@
 package lingmod.cards.skill;
 
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -18,12 +20,12 @@ public class ShiDuanMengChang extends AbstractEasyCard {
 
     public ShiDuanMengChang() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
-        this.baseMagicNumber = 2;
+        CardModifierManager.addModifier(this, new ExhaustMod());
     }
 
     @Override
     public void upp() {
-        upgradeMagicNumber(1);
+        updateCost(-1);
     }
 
     @Override
@@ -31,7 +33,7 @@ public class ShiDuanMengChang extends AbstractEasyCard {
         // 免伤 50%
         addToBot(new ApplyPowerAction(p, m, new PoemIsShort(p, 50)));
         // 转换成缠绕
-        addToBot(new ApplyPowerAction(p, p, new DreamIsEndless(p, magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new DreamIsEndless(p)));
     }
 
 }

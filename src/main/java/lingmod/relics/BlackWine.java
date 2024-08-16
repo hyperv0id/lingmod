@@ -1,9 +1,11 @@
 package lingmod.relics;
 
+import basemod.AutoAdd;
 import lingmod.util.Wiz;
 
 import static lingmod.ModCore.makeID;
 
+@AutoAdd.Ignore
 public class BlackWine extends AbstractEasyRelic {
     public static final String ID = makeID(BlackWine.class.getSimpleName());
     public static final int AMOUNT = 3;

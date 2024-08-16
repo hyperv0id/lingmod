@@ -1,19 +1,20 @@
 package lingmod.relics;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.abstracts.CustomSavable;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import lingmod.interfaces.Credit;
 
-import basemod.abstracts.CustomSavable;
+import static lingmod.ModCore.makeID;
 
 /**
  * 每斩杀5个敌人，战斗开始时获得1力量
  */
+@Credit(username = "徵弦OwO", platform = "bilibili", link = "https://www.bilibili.com/video/BV1et4y1f7H1")
 public class Beans_ShuoRelic extends AbstractEasyRelic implements CustomSavable<Integer> {
     public static final String ID = makeID(Beans_ShuoRelic.class.getSimpleName());
     public int counter2 = 0;

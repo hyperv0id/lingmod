@@ -8,14 +8,14 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
-public class WhitePawnAction extends AbstractGameAction {
+public class TransformDrawPileAction extends AbstractGameAction {
     AbstractPlayer p;
-    AbstractCard whitePawn;
+    AbstractCard srcCard;
     String msg;
 
-    public WhitePawnAction(AbstractCard src, String msg) {
+    public TransformDrawPileAction(AbstractCard src, String msg) {
         p = AbstractDungeon.player;
-        whitePawn = src;
+        srcCard = src;
         this.msg = msg;
         duration = startDuration = DEFAULT_DURATION;
     }
@@ -38,7 +38,7 @@ public class WhitePawnAction extends AbstractGameAction {
         } else if (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
             for (AbstractCard c : AbstractDungeon.gridSelectScreen.selectedCards) {
                 addToTop(new ExhaustSpecificCardAction(c, p.drawPile));
-                addToTop(new MakeTempCardInDrawPileAction(whitePawn.makeCopy(), 1, true, true));
+                addToTop(new MakeTempCardInDrawPileAction(srcCard.makeCopy(), 1, true, true));
             }
             AbstractDungeon.gridSelectScreen.selectedCards.clear();
         }

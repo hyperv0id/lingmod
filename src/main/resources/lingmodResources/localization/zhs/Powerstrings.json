@@ -32,7 +32,7 @@
   "${ModID}:DreamIsEndless": {
     "NAME": "梦长",
     "DESCRIPTIONS": [
-      "损失生命时，获得 #b1/%d 缠绕"
+      "损失生命时，获得等量 缠绕"
     ]
   },
   "${ModID}:IncreaseDamagePower": {
@@ -102,12 +102,6 @@
     "NAME": "醉飞尘",
     "DESCRIPTIONS": [
       "每消耗 #b1 张牌，获得 #b%d #y酒 "
-    ]
-  },
-  "${ModID}:DrinkAlonePower": {
-    "NAME": "独酌",
-    "DESCRIPTIONS": [
-      "下一张牌会消耗全部能量，打出 %d 次，每次获得 %d 酒"
     ]
   },
   "lingmod:HuSongPower": {

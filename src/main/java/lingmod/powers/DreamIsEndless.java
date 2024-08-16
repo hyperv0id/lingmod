@@ -27,14 +27,9 @@ public class DreamIsEndless extends AbstractEasyPower {
     private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.DEBUFF;
     private static final boolean TURN_BASED = false; // 是否回合后消失
 
-    public DreamIsEndless(AbstractCreature owner, int amount) {
-        super(POWER_ID, NAME, TYPE, TURN_BASED, owner, amount);
+    public DreamIsEndless(AbstractCreature owner) {
+        super(POWER_ID, NAME, TYPE, TURN_BASED, owner, 0);
         this.isJustApplied = true;
-    }
-
-    @Override
-    public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[0], amount);
     }
 
     @Override
