@@ -1,19 +1,22 @@
 package lingmod.relics;
 
-import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
-import static lingmod.ModCore.makeID;
+import basemod.abstracts.CustomSavable;
 
 /**
- * 右键获得1力量，战斗胜利增加计数
+ * 每斩杀5个敌人，战斗开始时获得1力量
  */
-public class Beans_ShuoRelic extends AbstractEasyRelic implements ClickableRelic {
+public class Beans_ShuoRelic extends AbstractEasyRelic implements CustomSavable<Integer> {
     public static final String ID = makeID(Beans_ShuoRelic.class.getSimpleName());
+    public int counter2 = 0;
 
     public Beans_ShuoRelic() {
         super(ID, RelicTier.SPECIAL, LandingSound.FLAT);
@@ -21,12 +24,13 @@ public class Beans_ShuoRelic extends AbstractEasyRelic implements ClickableRelic
 
     @Override
     public void onEquip() {
-        this.counter = 3;
+        this.counter = 0;
     }
 
     @Override
     public void atBattleStart() {
-        this.counter++;
+        AbstractPlayer p = AbstractDungeon.player;
+        addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, this.counter)));
     }
 
     @Override
@@ -34,10 +38,23 @@ public class Beans_ShuoRelic extends AbstractEasyRelic implements ClickableRelic
         return new Beans_ShuoRelic();
     }
 
-    @Override
-    public void onRightClick() {
+    public void onMonsterDeath(AbstractMonster m) {
         AbstractPlayer p = AbstractDungeon.player;
-        addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, 1)));
-        this.grayscale = --this.counter <= 0;
+        this.counter2++;
+        if (this.counter2 > 5) {
+            this.counter2 -= 5;
+            this.counter++;
+            addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, 1)));
+        }
+    }
+
+    @Override
+    public void onLoad(Integer arg0) {
+        this.counter2 = arg0;
+    }
+
+    @Override
+    public Integer onSave() {
+        return this.counter2;
     }
 }

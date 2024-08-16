@@ -1,16 +1,18 @@
 package lingmod.cards.skill;
 
-import basemod.BaseMod;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import lingmod.actions.CardTimeTravelAction;
-import lingmod.cards.AbstractEasyCard;
+import static lingmod.ModCore.logger;
+import static lingmod.ModCore.makeID;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static lingmod.ModCore.makeID;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import basemod.BaseMod;
+import lingmod.actions.CardTimeTravelAction;
+import lingmod.cards.AbstractEasyCard;
 
 /**
  * 寻日峰：消耗任意张，抽等量。再次打出：把消耗的放入手牌
@@ -21,7 +23,7 @@ public class XunRiFeng extends AbstractEasyCard {
     public List<AbstractCard> exHaustedCards;
 
     public XunRiFeng() {
-        super(ID, 2, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
+        super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
         exHaustedCards = new ArrayList<>();
     }
 
@@ -43,13 +45,15 @@ public class XunRiFeng extends AbstractEasyCard {
     public void use(AbstractPlayer player, AbstractMonster monster) {
         if (exHaustedCards.isEmpty()) {
             addToBot(new CardTimeTravelAction(this));
+            logger.info(NAME + ": 选择牌消耗");
         } else {
             addToBotAbstract(() -> {
                 exHaustedCards.forEach(c -> {
                     player.exhaustPile.removeCard(c);
                     c.unfadeOut();
                     // 不能超过手牌上限
-                    if (player.hand.size() >= BaseMod.MAX_HAND_SIZE) {
+                    // TODO: 没有特效
+                    if (player.hand.size() < BaseMod.MAX_HAND_SIZE) {
                         player.hand.addToHand(c);
                     } else {
                         player.discardPile.addToTop(c);
@@ -59,6 +63,7 @@ public class XunRiFeng extends AbstractEasyCard {
                 player.hand.refreshHandLayout();
                 exHaustedCards.clear();
             });
+            logger.info(NAME + ": 回到手牌");
         }
     }
 

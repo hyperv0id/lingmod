@@ -3,6 +3,7 @@ package lingmod.cards.skill;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
 import lingmod.ModCore;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
@@ -26,5 +27,6 @@ public class ShanHeYuanKuo extends AbstractEasyCard {
 
     @Override
     public void upp() {
+        updateCost(-1);
     }
 }
