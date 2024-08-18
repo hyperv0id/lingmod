@@ -1,17 +1,13 @@
 package lingmod.cards;
 
-import static lingmod.ModCore.makeImagePath;
-import static lingmod.ModCore.modID;
-import static lingmod.util.Wiz.actionify;
-import static lingmod.util.Wiz.atb;
-import static lingmod.util.Wiz.att;
-import static lingmod.util.Wiz.copyAnnotatedFields;
-
-import java.util.function.Consumer;
-
+import basemod.abstracts.CustomCard;
+import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
+import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText.AbstractCardFlavorFields;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -24,17 +20,22 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.abstracts.CustomCard;
-import basemod.helpers.CardModifierManager;
 import lingmod.cards.mod.NellaFantasiaMod;
 import lingmod.cards.mod.PoemMod;
 import lingmod.cards.mod.WineMod;
 import lingmod.character.Ling;
 import lingmod.interfaces.CardConfig;
+import lingmod.interfaces.Credit;
 import lingmod.interfaces.VoidSupplier;
 import lingmod.util.CardArtRoller;
 import lingmod.util.CustomTags;
+import lingmod.util.ModConfig;
+
+import java.util.function.Consumer;
+
+import static lingmod.ModCore.makeImagePath;
+import static lingmod.ModCore.modID;
+import static lingmod.util.Wiz.*;
 
 /**
  * 卡牌大小：500*380的高分辨率，250*190的低分辨率
@@ -77,6 +78,18 @@ public abstract class AbstractEasyCard extends CustomCard {
         cardStrings = CardCrawlGame.languagePack.getCardStrings(this.cardID);
         rawDescription = cardStrings.DESCRIPTION;
         name = originalName = cardStrings.NAME;
+        Credit credit = this.getClass().getAnnotation(Credit.class);
+        if (ModConfig.showCredit && credit != null) {
+            Color textColor = Color.BLACK.cpy();
+            Color.rgb888ToColor(textColor, 0xdfe4ea);
+            Color boxColor = Color.BLACK.cpy();
+            Color.rgb888ToColor(boxColor, 0x5976ba);
+            AbstractCardFlavorFields.textColor.set(this, textColor);
+            AbstractCardFlavorFields.boxColor.set(this, boxColor);
+            AbstractCardFlavorFields.flavorBoxType.set(this, FlavorText.boxType.WHITE);
+            String creditStr = credit.username() + "@" + credit.platform() + " NL " + credit.link();
+            AbstractCardFlavorFields.flavor.set(this, creditStr);
+        }
         initializeTitle();
         initializeDescription();
 
@@ -237,7 +250,7 @@ public abstract class AbstractEasyCard extends CustomCard {
         this.damage = this.baseDamage;
         this.block = this.baseBlock;
         // AbstractPower wine = AbstractDungeon.player.getPower(WinePower.POWER_ID);
-        
+
         // // 采用费用计算酒的攻击
         // int wineAmount = 0;
         // if (wine != null) {

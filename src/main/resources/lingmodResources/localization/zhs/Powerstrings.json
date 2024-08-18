@@ -26,13 +26,13 @@
   "${ModID}:PoemIsShort": {
     "NAME": "诗短",
     "DESCRIPTIONS": [
-      "获得 #b0.%d 伤害减免"
+      "获得 #b0.%d #b伤害减免"
     ]
   },
   "${ModID}:DreamIsEndless": {
     "NAME": "梦长",
     "DESCRIPTIONS": [
-      "损失生命时，获得等量 缠绕"
+      "失去生命时，获得 #r双倍 #b缠绕"
     ]
   },
   "${ModID}:IncreaseDamagePower": {

@@ -34,7 +34,7 @@ public class DreamIsEndless extends AbstractEasyPower {
         int amt = damageAmount / this.amount;
         if (amt > 0)
             addToBot(new ApplyPowerAction(owner, owner, new ConstrictedPower(owner, owner, amt)));
-        return super.onAttackToChangeDamage(info, damageAmount);
+        return super.onAttackToChangeDamage(info, 2 * damageAmount);
     }
 
     @Override

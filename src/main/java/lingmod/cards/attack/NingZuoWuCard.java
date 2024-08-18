@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
+import lingmod.interfaces.Credit;
 
 import java.util.Collections;
 import java.util.List;
@@ -24,6 +25,7 @@ import static lingmod.ModCore.makeID;
  * 能力数量参与计数
  */
 @CardConfig(poemAmount = 3, magic = 1)
+@Credit(username = "明日方舟", platform = "鹰角网络", link = "https://prts.wiki/w/%E4%BB%A4")
 public class NingZuoWuCard extends AbstractEasyCard {
 
     public static final String ID = makeID(NingZuoWuCard.class.getSimpleName());
