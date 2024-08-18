@@ -8,14 +8,11 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import lingmod.ModCore;
-import org.apache.logging.log4j.Logger;
 
 import static lingmod.ModCore.makeID;
 
 public class ZuiFeiChenPower extends AbstractEasyPower implements PostExhaustSubscriber {
     public static final String POWER_ID = makeID(ZuiFeiChenPower.class.getSimpleName());
-    public static final Logger logger = ModCore.logger;
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;

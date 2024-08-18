@@ -1,7 +1,6 @@
 package lingmod.events;
 
-import org.apache.logging.log4j.Logger;
-
+import basemod.AutoAdd.Ignore;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -10,12 +9,12 @@ import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.events.GenericEventDialog;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-
-import basemod.AutoAdd.Ignore;
 import lingmod.ModCore;
 import lingmod.interfaces.CampfireSleepEvent;
 import lingmod.relics.NianAncientCasting;
 import lingmod.relics.Shu_SeedRelic;
+
+import static lingmod.ModCore.logger;
 
 /**
  * 事件：岁中十二人
@@ -27,7 +26,6 @@ import lingmod.relics.Shu_SeedRelic;
 public class Sui12Event extends AbstractImageEvent {
     public static final String ID = ModCore.makeID("Sui12Event");
     public static final String IMG_PATH = ModCore.makeImagePath("events/Sui12Event.png");
-    public static final Logger logger = ModCore.logger;
     private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(ID);
     private static final String NAME = eventStrings.NAME;
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
@@ -123,11 +121,7 @@ public class Sui12Event extends AbstractImageEvent {
     @SuppressWarnings("unused")
     private void secondScreen(int buttonNo) {
         //        screenNum = 2;
-        switch (buttonNo) {
-            default:
-                exit();
-                break;
-        }
+        exit();
         // TODO: 更多对话
 
         // this.screenNum = 2;

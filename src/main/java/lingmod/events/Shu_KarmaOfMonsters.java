@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.relics.*;
 import lingmod.ModCore;
 import lingmod.ModCore.ResourceType;
 import lingmod.interfaces.CampfireSleepEvent;
-import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 
@@ -27,7 +26,6 @@ public class Shu_KarmaOfMonsters extends PhasedEvent {
 
     public static final String ID = ModCore.makeID(Shu_KarmaOfMonsters.class.getSimpleName());
     public static final String IMG_PATH = ModCore.makeImagePath("events/Sui12Event.png");
-    public static final Logger logger = ModCore.logger;
     private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(ID);
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;

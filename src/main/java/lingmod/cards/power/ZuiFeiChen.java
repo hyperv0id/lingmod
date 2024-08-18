@@ -10,7 +10,7 @@ import lingmod.powers.ZuiFeiChenPower;
 import static lingmod.ModCore.makeID;
 
 /**
- * 每打出/消耗/丢弃 5/4 张牌，获得1酒
+ * 每消耗牌，获得1酒
  */
 @CardConfig(magic = 1)
 public class ZuiFeiChen extends AbstractEasyCard {

@@ -59,7 +59,6 @@
 			"",
 			"    private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.${1|BUFF, DEBUFF|};",
 			"    private static final boolean TURN_BASED = true; //  是否回合后消失",
-			"    public static final Logger logger = ModCore.logger;",
 			"",
 			"    public $TM_FILENAME_BASE(AbstractCreature owner, int amount) {",
 			"        super(POWER_ID, NAME, TYPE, TURN_BASED, owner, amount);",

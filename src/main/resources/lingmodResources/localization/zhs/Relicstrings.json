@@ -97,5 +97,12 @@
     "DESCRIPTIONS": [
       "回合开始时，费用不小于 3 的卡牌可以免费打出 1 次"
     ]
+  },
+  "${ModID}:SuiNu": {
+    "NAME": "岁怒",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "打出牌后，对所有敌人造成 1 点伤害"
+    ]
   }
 }

@@ -27,6 +27,7 @@ import lingmod.interfaces.CopyField;
 import lingmod.interfaces.VoidSupplier;
 import lingmod.powers.PoeticMoodPower;
 import lingmod.stance.NellaFantasiaStance;
+import lingmod.util.audio.ProAudio;
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -243,7 +244,7 @@ public class Wiz {
     }
 
     public static void playAudio(ProAudio a) {
-        CardCrawlGame.sound.play(makeID(a.name()));
+        CardCrawlGame.sound.play(makeID(a.toString()));
     }
 
     /**

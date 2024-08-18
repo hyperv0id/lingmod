@@ -10,7 +10,6 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 import lingmod.ModCore;
 import lingmod.util.TexLoader;
-import org.apache.logging.log4j.Logger;
 
 import static lingmod.ModCore.makeID;
 
@@ -23,7 +22,6 @@ public class XiaoYaoPower extends AbstractEasyPower {
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    public static final Logger logger = ModCore.logger;
     public static final int MAX_CAPA_EX = 5; // 扩容之多为5
     private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.BUFF;
     private static final boolean TURN_BASED = true; // 是否回合后消失

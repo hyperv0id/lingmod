@@ -1,5 +1,6 @@
 package lingmod.cards.power;
 
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -9,6 +10,10 @@ import lingmod.powers.NvErHongPower;
 
 import static lingmod.ModCore.makeID;
 
+/**
+ * 回合结束时，消耗所有酒，提升手牌中攻击牌的攻击力
+ */
+@AutoAdd.Ignore
 @CardConfig(magic = 1)
 public class NvErHong extends AbstractEasyCard {
     public final static String ID = makeID(NvErHong.class.getSimpleName());

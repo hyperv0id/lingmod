@@ -27,11 +27,12 @@ public class DrinkAlone extends AbstractEasyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         String msg = cardStrings.EXTENDED_DESCRIPTION[0];
         if (p.hand.isEmpty()) return;
+        int times = p.hand.size();
         addToBot(new SelectCardsInHandAction(msg, cards -> {
             int siz = p.hand.size();
             addToBot(new ExhaustAllAction());
             for (AbstractCard c : cards) {
-                addToBot(new MakeTempCardInHandAction(c, p.hand.size() + 1));
+                addToBot(new MakeTempCardInHandAction(c, times));
             }
         }));
     }

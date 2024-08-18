@@ -7,8 +7,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import lingmod.ModCore;
-import org.apache.logging.log4j.Logger;
 
 import static lingmod.ModCore.makeID;
 import static lingmod.powers.AbstractEasyPower.I18N.getName;
@@ -21,7 +19,6 @@ public class PoeticMoodPower extends AbstractEasyPower implements PostBattleSubs
 
     public static final String CLASS_NAME = PoeticMoodPower.class.getSimpleName();
     public static final String ID = makeID(CLASS_NAME);
-    public static final Logger logger = ModCore.logger;
     private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.BUFF;
     public static int powerGained = 0;
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(ID);

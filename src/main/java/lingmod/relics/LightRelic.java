@@ -1,7 +1,8 @@
 package lingmod.relics;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.BaseMod;
+import basemod.interfaces.OnStartBattleSubscriber;
+import basemod.interfaces.PostExhaustSubscriber;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -9,14 +10,12 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-
-import basemod.BaseMod;
-import basemod.interfaces.OnStartBattleSubscriber;
-import basemod.interfaces.PostExhaustSubscriber;
 import lingmod.character.Ling;
 import lingmod.character.VoiceMaster;
 import lingmod.powers.PoeticMoodPower;
 import lingmod.powers.WinePower;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 一盏灯：灯挑夜，箭如雨，大漠飞火
@@ -55,12 +54,8 @@ public class LightRelic extends AbstractEasyRelic implements PostExhaustSubscrib
     }
 
     @Override
-    public String getUpdatedDescription() {
-        return DESCRIPTIONS[0];
-    }
-
-    @Override
     public void receiveOnBattleStart(AbstractRoom arg0) {
-        VoiceMaster.getInstance().beginBattle();
+        if (AbstractDungeon.player.relics.contains(this))
+            VoiceMaster.getInstance().beginBattle();
     }
 }

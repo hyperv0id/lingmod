@@ -3,13 +3,13 @@ package lingmod.util;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import lingmod.ModCore;
-import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 
+import static lingmod.ModCore.logger;
+
 public class FileManager {
     public static final String resourceRoot = ModCore.resourceRoot;
-    public static final Logger logger = ModCore.logger;
 
     public String autoLoadImg(Class<?> customClass, int size) {
         String sizeStr = size >= 0 ? String.format("%d", size) : "";

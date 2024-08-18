@@ -1,9 +1,5 @@
 package lingmod.powers;
 
-import static lingmod.ModCore.makeID;
-
-import org.apache.logging.log4j.Logger;
-
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -15,9 +11,9 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-
-import lingmod.ModCore;
 import lingmod.util.Wiz;
+
+import static lingmod.ModCore.makeID;
 
 public class WinePower extends AbstractEasyPower {
     public static final String CLASS_NAME = WinePower.class.getSimpleName();
@@ -25,7 +21,6 @@ public class WinePower extends AbstractEasyPower {
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    public static final Logger logger = ModCore.logger;
     private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.BUFF;
 
     public WinePower(AbstractCreature owner, int amount) {

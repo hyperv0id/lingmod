@@ -1,57 +1,28 @@
 package lingmod;
 
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
+import basemod.*;
+import basemod.abstracts.DynamicVariable;
+import basemod.eventUtil.AddEventParams;
+import basemod.eventUtil.EventUtils.EventType;
+import basemod.eventUtil.util.Condition;
+import basemod.interfaces.*;
+import basemod.patches.com.megacrit.cardcrawl.helpers.TopPanel.TopPanelHelper;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
+import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
-import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.localization.CharacterStrings;
-import com.megacrit.cardcrawl.localization.EventStrings;
-import com.megacrit.cardcrawl.localization.MonsterStrings;
-import com.megacrit.cardcrawl.localization.OrbStrings;
-import com.megacrit.cardcrawl.localization.PotionStrings;
-import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.localization.RelicStrings;
-import com.megacrit.cardcrawl.localization.RunModStrings;
-import com.megacrit.cardcrawl.localization.StanceStrings;
-import com.megacrit.cardcrawl.localization.UIStrings;
+import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
-
-import basemod.AutoAdd;
-import basemod.BaseMod;
-import basemod.ReflectionHacks;
-import basemod.TopPanelGroup;
-import basemod.TopPanelItem;
-import basemod.abstracts.DynamicVariable;
-import basemod.eventUtil.AddEventParams;
-import basemod.eventUtil.EventUtils.EventType;
-import basemod.eventUtil.util.Condition;
-import basemod.interfaces.AddAudioSubscriber;
-import basemod.interfaces.EditCardsSubscriber;
-import basemod.interfaces.EditCharactersSubscriber;
-import basemod.interfaces.EditKeywordsSubscriber;
-import basemod.interfaces.EditRelicsSubscriber;
-import basemod.interfaces.EditStringsSubscriber;
-import basemod.interfaces.OnStartBattleSubscriber;
-import basemod.interfaces.PostDungeonInitializeSubscriber;
-import basemod.interfaces.PostInitializeSubscriber;
-import basemod.interfaces.StartGameSubscriber;
-import basemod.patches.com.megacrit.cardcrawl.helpers.TopPanel.TopPanelHelper;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.cardvars.AbstractEasyDynamicVariable;
 import lingmod.cards.verse.JingYeSiCard;
@@ -60,22 +31,24 @@ import lingmod.events.Beans_Ling;
 import lingmod.events.CampfireEventManager;
 import lingmod.events.NianGuestStar;
 import lingmod.interfaces.CampfireSleepEvent;
-import lingmod.monsters.InnManager;
-import lingmod.monsters.MonsterGroups;
-import lingmod.monsters.MonsterSui_7_Ji;
-import lingmod.monsters.MountainPicker;
-import lingmod.monsters.Wang_MountainGhost;
+import lingmod.monsters.*;
 import lingmod.patch.PlayerFieldsPatch;
 import lingmod.potions.AbstractEasyPotion;
 import lingmod.relics.AbstractEasyRelic;
 import lingmod.ui.VerseTopPanel;
 import lingmod.ui.VerseViewScreen;
-import lingmod.util.ProAudio;
+import lingmod.util.ModConfig;
 import lingmod.util.VerseCardManager;
 import lingmod.util.VerseLoader;
 import lingmod.util.Wiz;
+import lingmod.util.audio.ProAudio;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-@SuppressWarnings({ "unused", "WeakerAccess" })
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+
+@SuppressWarnings({"unused", "WeakerAccess"})
 @SpireInitializer
 public class ModCore implements
         EditCardsSubscriber,
@@ -89,6 +62,7 @@ public class ModCore implements
         AddAudioSubscriber,
         PostDungeonInitializeSubscriber {
 
+    public static SpireConfig modConfig;
     public static final String modID = "lingmod";
     public static final String resourceRoot = modID + "Resources";
     public static final Logger logger = LogManager.getLogger(modID); // Used to output to the console.
@@ -120,6 +94,8 @@ public class ModCore implements
                 ATTACK_S_ART, SKILL_S_ART, POWER_S_ART, CARD_ENERGY_S,
                 ATTACK_ART_L, SKILL_ART_L, POWER_ART_L,
                 CARD_ENERGY_L, TEXT_ENERGY);
+
+        ModConfig.initModSettings();
     }
 
     public static String makeID(String idText) {
@@ -245,11 +221,15 @@ public class ModCore implements
         VerseLoader.init();
     }
 
+    /**
+     * 添加音效
+     */
     @Override
     public void receiveAddAudio() {
-        // 添加音效
-        for (ProAudio a : ProAudio.values())
-            BaseMod.addAudio(makeID(a.name()), makeSFXPath(a.name().toLowerCase() + ".ogg"));
+        // 1. 添加语音
+        for (ProAudio p : ProAudio.getAllVoices()) {
+            BaseMod.addAudio(p.key(), makeVoicePath(p.toString()));
+        }
     }
 
     @Override
@@ -269,6 +249,7 @@ public class ModCore implements
 
     @Override
     public void receivePostInitialize() {
+        ModConfig.initModConfigMenu();
         addEvents();
         addMonster();
         addScreen();
@@ -277,6 +258,7 @@ public class ModCore implements
         BaseMod.addSaveField(VerseTopPanel.ID, new VerseTopPanel());
         BaseMod.addSaveField(CampfireEventManager.class.getName(), new CampfireEventManager());
     }
+
 
     public void addEvents() {
         Condition falseCondition = () -> false;
@@ -340,7 +322,7 @@ public class ModCore implements
         BaseMod.addMonster(Wang_MountainGhost.ID, Wang_MountainGhost::new);
 
         // 挑山人大战行裕掌柜。
-        BaseMod.addMonster(makeID("挑山人大战行裕掌柜"), "挑山人大战行裕掌柜", () -> new MonsterGroup(new AbstractMonster[] {
+        BaseMod.addMonster(makeID("挑山人大战行裕掌柜"), "挑山人大战行裕掌柜", () -> new MonsterGroup(new AbstractMonster[]{
                 new MountainPicker(),
                 new InnManager()
         }));

@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import lingmod.ModCore;
 import lingmod.interfaces.CampfireSleepEvent;
-import org.apache.logging.log4j.Logger;
 
 
 @CampfireSleepEvent
@@ -14,7 +13,6 @@ import org.apache.logging.log4j.Logger;
 public class YuMenNaturalDisastersEvent extends AbstractImageEvent {
     public static final String ID = ModCore.makeID("YuMenNaturalDisastersEvent");
     public static final String IMG_PATH = ModCore.makeImagePath("events/YuMenNaturalDisastersEvent.png");
-    public static final Logger logger = ModCore.logger;
     private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(ID);
     private static final String NAME = eventStrings.NAME;
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
