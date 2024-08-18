@@ -29,6 +29,7 @@ import lingmod.cards.attack.Tranquility;
 import lingmod.cards.skill.Defend;
 import lingmod.relics.LightRelic;
 import lingmod.util.TODO;
+import lingmod.util.VoiceMaster;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -121,7 +122,7 @@ public class Ling extends CustomPlayer {
     public void onVictory() {
         super.onVictory();
         playVictoryAnimation();
-        VoiceMaster.getInstance().victory();
+        VoiceMaster.victory();
     }
 
     private void playVictoryAnimation() {
@@ -149,7 +150,7 @@ public class Ling extends CustomPlayer {
         if (this.atlas != null && this.state != null) {
             this.state.setAnimation(0, "Die", false);
         }
-        VoiceMaster.getInstance().death();
+        VoiceMaster.death();
     }
 
     @Override
@@ -192,7 +193,7 @@ public class Ling extends CustomPlayer {
     public void doCharSelectScreenSelectEffect() {
         CardCrawlGame.music.silenceBGM(); // 沉默BGM
         CardCrawlGame.music.playTempBgmInstantly("寻隐.mp3", true);
-        VoiceMaster.getInstance().select();
+        VoiceMaster.select();
         CardCrawlGame.sound.playA("UNLOCK_PING", MathUtils.random(-0.2F, 0.2F));
         CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT,
                 false);

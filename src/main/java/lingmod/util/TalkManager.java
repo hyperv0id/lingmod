@@ -1,4 +1,4 @@
-package lingmod.character;
+package lingmod.util;
 
 import basemod.BaseMod;
 import basemod.interfaces.PostExhaustSubscriber;

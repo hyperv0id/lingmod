@@ -11,9 +11,9 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import lingmod.character.Ling;
-import lingmod.character.VoiceMaster;
 import lingmod.powers.PoeticMoodPower;
 import lingmod.powers.WinePower;
+import lingmod.util.VoiceMaster;
 
 import static lingmod.ModCore.makeID;
 
@@ -56,6 +56,6 @@ public class LightRelic extends AbstractEasyRelic implements PostExhaustSubscrib
     @Override
     public void receiveOnBattleStart(AbstractRoom arg0) {
         if (AbstractDungeon.player.relics.contains(this))
-            VoiceMaster.getInstance().beginBattle();
+            VoiceMaster.beginBattle();
     }
 }
