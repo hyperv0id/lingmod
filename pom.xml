@@ -7,7 +7,7 @@
     <version>0.0.1</version>
     <name>Ling(明日方舟-令)</name>
     <description>
-        明日方舟-令角色模组。 
+        明日方舟-令角色模组。
     </description>
     <!-- Change the above for mod information. -->
 
@@ -19,7 +19,6 @@
       <ModTheSpire.version>3.18.2</ModTheSpire.version>
 
       <!-- CHANGE THIS TO MATCH YOUR MODID FIELD IN THE MAIN TodoMod CLASS FILE -->
-      <!--        <ModID>todomod</ModID>-->
       <ModID>lingmod</ModID>
       <!-- CHANGE THIS TO MATCH YOUR MODID FIELD IN THE MAIN TodoMod CLASS FILE -->
 
@@ -43,7 +42,7 @@
           <MTS.path>${Steam.path}/workshop/content/646570/1605060445/ModTheSpire.jar</MTS.path>
         </properties>
       </profile>
-      
+
       <!-- macOS profile -->
       <profile>
         <id>macos</id>
@@ -59,7 +58,7 @@
           <MTS.path>${Steam.path}/workshop/content/646570/1605060445/ModTheSpire.jar</MTS.path>
         </properties>
       </profile>
-      
+
       <!-- Linux profile -->
       <profile>
         <id>linux</id>
@@ -76,7 +75,7 @@
         </properties>
       </profile>
     </profiles>
-    
+
     <dependencies>
         <dependency>
             <groupId>com.megacrit.cardcrawl</groupId>
@@ -110,8 +109,24 @@
 
 
     <build>
-        <finalName>${project.artifactId}</finalName>
+        <finalName>${project.artifactId}-${git.commit.id.abbrev}</finalName>
         <plugins>
+            <!-- maven-git-commit-id-plugin 配置 -->
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <version>4.0.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <abbrevLength>7</abbrevLength> <!-- 使用前 7 个字符 -->
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
@@ -124,7 +139,10 @@
                         <configuration>
                             <target>
                                 <!-- 定义要删除的jar文件路径 -->
-                                <delete file="${Steam.path}/common/SlayTheSpire/mods/${project.artifactId}.jar" />
+                                <delete>
+                                    <fileset dir="${Steam.path}/common/SlayTheSpire/mods/"
+                                             includes="${project.artifactId}-*.jar"/>
+                                </delete>
                             </target>
                         </configuration>
                         <goals>
@@ -135,8 +153,8 @@
                         <phase>package</phase>
                         <configuration>
                             <target>
-                                <copy file="target/${project.artifactId}.jar"
-                                      tofile="${Steam.path}/common/SlayTheSpire/mods/${project.artifactId}.jar"/>
+                                <copy file="target/${project.artifactId}-${git.commit.id.abbrev}.jar"
+                                      tofile="${Steam.path}/common/SlayTheSpire/mods/${project.artifactId}-${git.commit.id.abbrev}.jar"/>
                             </target>
                         </configuration>
                         <goals>
