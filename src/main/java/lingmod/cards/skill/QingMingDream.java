@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.stances.NeutralStance;
 import lingmod.cards.AbstractEasyCard;
-import lingmod.cards.mod.NellaFantasiaMod;
 import lingmod.stance.NellaFantasiaStance;
 import lingmod.util.CustomTags;
 
@@ -28,7 +27,7 @@ public class QingMingDream extends AbstractEasyCard {
     public QingMingDream() {
         super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
         tags.add(CustomTags.DREAM);
-        CardModifierManager.addModifier(this, new NellaFantasiaMod());
+        //        CardModifierManager.addModifier(this, new NellaFantasiaMod());
         CardModifierManager.addModifier(this, new ExhaustMod());
         cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
     }
@@ -45,9 +44,6 @@ public class QingMingDream extends AbstractEasyCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        // this.addToBot(new VFXAction(new WhirlwindEffect(new Color(1.0F, 0.9F, 0.4F,
-        // 1.0F), true)));
-        // this.addToBot(new SkipEnemiesTurnAction());
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[1], 2F, 2F));
         int amount = 0;
         if (p.stance.ID.equals(NellaFantasiaStance.STANCE_ID)) {

@@ -1,10 +1,10 @@
 package lingmod.cards.power;
 
-import basemod.cardmods.ExhaustMod;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
+import lingmod.cards.mod.TempExhaustMod;
 
 import static lingmod.ModCore.makeID;
 
@@ -26,7 +26,7 @@ public class ChunFengBuZhi extends AbstractEasyCard {
             c.isCostModifiedForTurn = true;
             c.isCostModified = true;
             if (!c.exhaust)
-                CardModifierManager.addModifier(c, new ExhaustMod());
+                CardModifierManager.addModifier(c, new TempExhaustMod()); // 临时消耗
         });
     }
 

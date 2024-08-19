@@ -419,4 +419,14 @@ public class Wiz {
         card.isCostModifiedForTurn = true;
     }
 
+    public static int weightedRandSelect(List<Integer> lis) {
+        long total = lis.stream().mapToInt(i -> i).sum();
+        long r = AbstractDungeon.miscRng.random(total);
+        for (int i = 0; i < lis.size(); i++) {
+            r -= lis.get(i);
+            if (r <= 0) return i;
+        }
+        return 0;
+    }
+
 }

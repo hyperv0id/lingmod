@@ -34,8 +34,9 @@ public class HuangLiang extends AbstractEasyCard {
 
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
-        AbstractDungeon.effectList
-                .add(new GainPennyEffect(current_x, current_y));
+        for (int i = 0; i < magicNumber; i++) {
+            AbstractDungeon.effectList.add(new GainPennyEffect(current_x, current_y));
+        }
         AbstractDungeon.player.gainGold(magicNumber);
     }
 }

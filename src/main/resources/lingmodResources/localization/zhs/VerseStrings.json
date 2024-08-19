@@ -1,27 +1,35 @@
 {
-    "lingmod:JingYeSiCard": {
-        "NAME": "“静夜思”",
-        "CONTENT": [
-            "床前明月光",
-            "疑是地上霜",
-            "举头望明月",
-            "低头思故乡"
-        ],
-        "TONE_PATTERN": [
-            "平平仄仄平",
-            "平仄仄平平",
-            "仄平平仄平",
-            "平仄平仄平"
-        ],
-        "DESCRIPTION": "效果：获得5格挡",
-        "UPGRADE_DESCRIPTION": "升级效果",
-        "EXTENDED_DESCRIPTION": ["打出平仄减少消耗"]
-    },
-    "lingmod:AbstractVerseCard": {
-        "NAME": "词牌牌",
-        "DESCRIPTION": "AbstractVerseCard词牌抽象类",
-        "EXTENDED_DESCRIPTION": [
-            "诗兴不足，无法作诗"
-        ]
-    }
+  "lingmod:JingYeSiCard": {
+    "NAME": "“静夜思”",
+    "CONTENT": [
+      "床前明月光",
+      "疑是地上霜",
+      "举头望明月",
+      "低头思故乡"
+    ],
+    "TONE_PATTERN": [
+      "平平仄仄平",
+      "平仄仄平平",
+      "仄平平仄平",
+      "平仄平仄平"
+    ],
+    "DESCRIPTION": "效果：获得5格挡",
+    "UPGRADE_DESCRIPTION": "升级效果",
+    "EXTENDED_DESCRIPTION": [
+      "打出平仄减少消耗"
+    ]
+  },
+  "lingmod:AbstractVerseCard": {
+    "NAME": "词牌牌",
+    "DESCRIPTION": "AbstractVerseCard词牌抽象类",
+    "EXTENDED_DESCRIPTION": [
+      "诗兴不足，无法作诗"
+    ]
+  },
+  "lingmod:FeiHuaLingCard": {
+    "NAME": "飞花令",
+    "DESCRIPTION": "被动：打出卡牌后，如果和上次打出的类型不同，那么对所有人造成 总 ${ModID}:诗兴 层数的伤害，然后失去一半 ${ModID}:诗兴 ",
+    "EXTENDED_DESCRIPTION": [
+    ]
+  }
 }

@@ -1,7 +1,9 @@
 package lingmod.cards.mod;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.ReflectionHacks;
+import basemod.abstracts.AbstractCardModifier;
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
@@ -12,11 +14,10 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
-
-import basemod.abstracts.AbstractCardModifier;
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
 import lingmod.powers.WinePower;
+
+import static lingmod.ModCore.logger;
+import static lingmod.ModCore.makeID;
 
 /**
  * 重进酒：打出卡牌时，此牌消耗，变为那张牌的复制
@@ -27,9 +28,15 @@ public class MirrorMod extends AbsLingCardModifier {
     public static final UIStrings uis = CardCrawlGame.languagePack.getUIString(ID);
 
     public boolean exhaust;
+    public int wineAmt = 2;
 
     public MirrorMod(boolean exhaust) {
         this.exhaust = exhaust;
+    }
+
+    public MirrorMod(boolean exhaust, int wineAmt) {
+        this.exhaust = exhaust;
+        this.wineAmt = wineAmt;
     }
 
     @Override
@@ -43,8 +50,18 @@ public class MirrorMod extends AbsLingCardModifier {
         addToBot(new ExhaustSpecificCardAction(card, group));
         // 2. 创建复制
         AbstractCard cp = otherCard.makeStatEquivalentCopy();
+        if (exhaust) {
+            try {
+                cp.name += "*";
+                ReflectionHacks.RMethod method = ReflectionHacks.privateMethod(AbstractCard.class,
+                        "initializeTitle");
+                method.invoke(cp);
+            } catch (Exception e) {
+                logger.info("Failed to Rename MirrorCard: " + card.name);
+            }
+        }
         addToBot(new MakeTempCardInHandAction(cp, 1));
-        addToBot(new ApplyPowerAction(p, p, new WinePower(p, 1)));
+        addToBot(new ApplyPowerAction(p, p, new WinePower(p, wineAmt)));
         // 3. 添加Mod
         CardModifierManager.addModifier(cp, this.makeCopy());
         // 如果自己消耗，那么复制体也应该消耗
