@@ -16,14 +16,6 @@
     "DESCRIPTION": "打出时获得 #b耗能 点诗兴"
   },
   {
-    "PROPER_NAME": "融合",
-    "NAMES": [
-      "合成",
-      "融合"
-    ],
-    "DESCRIPTION": "消耗一张牌，根据卡牌耗能发挥效果"
-  },
-  {
     "PROPER_NAME": "酒|卡牌",
     "NAMES": [
       "酒牌",
