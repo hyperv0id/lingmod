@@ -29,7 +29,7 @@
       "酒牌",
       "WineCard"
     ],
-    "DESCRIPTION": "打出时获得 酒，每层酒可以增加一定百分比的伤害"
+    "DESCRIPTION": "打出后获得一定 #b酒 NL 拥有 #b酒 时，你的 #r活力 不会减少"
   },
   {
     "PROPER_NAME": "酒|能力",
@@ -37,7 +37,8 @@
       "酒",
       "Wine"
     ],
-    "DESCRIPTION": "每层使造成的伤害增加 10%，打出攻击牌时，值减少1"
+    "DESCRIPTION": "拥有 #b酒 时，你的 #r活力 不会减少"
+
   },
   {
     "PROPER_NAME": "逍遥",
@@ -75,7 +76,7 @@
       "缠绕",
       "Constricted"
     ],
-    "DESCRIPTION": "能力，在你的回合结束时，受到 X 点伤害。可被格挡"
+    "DESCRIPTION": "在各自回合结束时，受到 X 点伤害。可被格挡"
   },
   {
     "PROPER_NAME": "伤害增加",
@@ -91,14 +92,6 @@
       "词牌",
       "Verse"
     ],
-    "DESCRIPTION": "无法被抽取和打出。规定了整场战斗的格调，按照进度获得不同的卡牌"
-  },
-  {
-    "PROPER_NAME": "化物",
-    "NAMES": [
-      "化物",
-      "derivant"
-    ],
-    "DESCRIPTION": "在梦中有特殊效果的卡牌，离开梦境时会消耗手牌中的化物"
+    "DESCRIPTION": "无法被抽取和打出。规定了整场战斗的格调，按照进度获得不同的效果"
   }
 ]

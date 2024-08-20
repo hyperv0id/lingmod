@@ -71,7 +71,7 @@ public class Thunderer extends AbstractEasyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < magicNumber; i++) {
-            dmgRandom(null);
+            dmg(m, null);
         }
         addToBotAbstract(() -> {
             // 弦惊 合成

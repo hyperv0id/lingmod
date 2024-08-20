@@ -7,10 +7,10 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.WineMod;
 import lingmod.interfaces.CardConfig;
-import lingmod.powers.WinePower;
 import lingmod.util.CustomTags;
 
 import static lingmod.ModCore.makeID;
@@ -28,9 +28,9 @@ public class JiangXiangNaTie extends AbstractEasyCard {
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
-        AbstractPower wine = AbstractDungeon.player.getPower(WinePower.POWER_ID);
-        if (wine != null) {
-            int amt = wine.amount;
+        AbstractPower vigor = AbstractDungeon.player.getPower(VigorPower.POWER_ID);
+        if (vigor != null) {
+            int amt = vigor.amount;
             int realDamage = baseDamage;
             this.baseDamage += amt;
             super.calculateCardDamage(mo);

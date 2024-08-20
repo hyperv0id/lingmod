@@ -154,7 +154,7 @@
                         <configuration>
                             <target>
                                 <copy file="target/${project.artifactId}-${git.commit.id.abbrev}.jar"
-                                      tofile="${Steam.path}/common/SlayTheSpire/mods/${project.artifactId}-${git.commit.id.abbrev}.jar"/>
+                                      tofile="${Steam.path}/common/SlayTheSpire/mods/${project.artifactId}.jar"/>
                             </target>
                         </configuration>
                         <goals>

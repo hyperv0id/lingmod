@@ -4,19 +4,20 @@ import com.megacrit.cardcrawl.actions.unique.RandomCardFromDiscardPileToHandActi
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.actions.GuiXingAction;
-import lingmod.cards.AbstractWineCard;
+import lingmod.cards.AbstractEasyCard;
+import lingmod.interfaces.CardConfig;
 
 import static lingmod.ModCore.makeID;
 
 /**
  * 弃牌堆一张酒放入手牌
  */
-public class GuiXingWineCard extends AbstractWineCard {
+@CardConfig(wineAmount = 1, damage = 3)
+public class GuiXingWineCard extends AbstractEasyCard {
     public static final String ID = makeID(GuiXingWineCard.class.getSimpleName());
 
     public GuiXingWineCard() {
-        super(ID, 0, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY, 2);
-        baseDamage = 3;
+        super(ID, 0, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
     }
 
     @Override

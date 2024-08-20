@@ -14,7 +14,7 @@ import static lingmod.ModCore.makeID;
 /**
  * 杯莫停：如果是攻击，梦，否则 酒
  */
-@CardConfig(magic = 4)
+@CardConfig(magic = 2)
 public class BeiMoTing extends AbstractEasyCard {
     public final static String ID = makeID(BeiMoTing.class.getSimpleName());
 

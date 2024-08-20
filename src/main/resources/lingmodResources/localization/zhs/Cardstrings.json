@@ -10,7 +10,8 @@
   },
   "${ModID}:ChongJinJiuCard": {
     "NAME": "重进酒",
-    "DESCRIPTION": "总是变化为打出的上一张牌，变化时额外获得 1 ${ModID}:酒"
+    "DESCRIPTION": "总是变化为打出的上一张牌的 临时复制，变化时额外获得 1 活力",
+    "UPGRADE_DESCRIPTION": "总是变化为打出的上一张牌，变化时额外获得 1 活力"
   },
   "${ModID}:Defend": {
     "NAME": "防御",
@@ -93,7 +94,7 @@
   },
   "${ModID}:ZhiZhan": {
     "NAME": "掷盏",
-    "DESCRIPTION": "造成 !D! 点伤害。 NL ${ModID}:酒 在此牌上发挥 !M! 倍效果。",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 活力 在此牌上发挥 !M! 倍效果。",
     "EXTENDED_DESCRIPTION": [
       "当年掷盏飞残暮，今宵抔酒对高城。"
     ]
@@ -128,7 +129,7 @@
   },
   "${ModID}:Thunderer": {
     "NAME": "“弦惊”",
-    "DESCRIPTION": "随机造成 !D! 点伤害 !M! 次  ${ModID}:合成 所有弦惊 NL 保留时手牌加入一张 弦惊 NL  ${ModID}:合成 ： 攻击次数增加1 "
+    "DESCRIPTION": "造成 !D! 点伤害 !M! 次  ${ModID}:合成 所有弦惊 NL 保留时手牌加入一张 弦惊 NL  ${ModID}:合成 ： 攻击次数增加1 "
   },
   "${ModID}:Thunderer_SummonCard": {
     "NAME": "弦惊",
@@ -222,7 +223,7 @@
   },
   "${ModID}:LieDaoZiWineCard": {
     "NAME": "烈刀子酒",
-    "DESCRIPTION": "翻倍你的 ${ModID}:酒 "
+    "DESCRIPTION": "翻倍你的 活力 "
   },
   "${ModID}:HuSongWineCard": {
     "NAME": "湖松酒",
@@ -328,7 +329,7 @@
   },
   "lingmod:JiangXiangNaTie": {
     "NAME": "酱香拿铁",
-    "DESCRIPTION": "造成 !D! 点伤害，每层 ${ModID}:酒 额外 造成1点"
+    "DESCRIPTION": "造成 !D! 点伤害，每层 活力 额外 造成1点"
   },
   "lingmod:GuLeiXinLiu": {
     "NAME": "故垒新柳",

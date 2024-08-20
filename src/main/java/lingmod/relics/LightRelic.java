@@ -9,10 +9,10 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import lingmod.character.Ling;
 import lingmod.powers.PoeticMoodPower;
-import lingmod.powers.WinePower;
 import lingmod.util.VoiceMaster;
 
 import static lingmod.ModCore.makeID;
@@ -46,7 +46,7 @@ public class LightRelic extends AbstractEasyRelic implements PostExhaustSubscrib
         AbstractPlayer p = AbstractDungeon.player;
         if (AbstractDungeon.player.relics.contains(this)) {
             addToBot(new RelicAboveCreatureAction(p, this));
-            addToBot(new ApplyPowerAction(p, p, new WinePower(p, 1)));
+            addToBot(new ApplyPowerAction(p, p, new VigorPower(p, 1)));
         } else {
             // 可能是多次实例化导致的错误
             BaseMod.unsubscribeLater(this);

@@ -14,7 +14,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
-import lingmod.powers.WinePower;
+import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
 import static lingmod.ModCore.logger;
 import static lingmod.ModCore.makeID;
@@ -27,16 +27,16 @@ public class MirrorMod extends AbsLingCardModifier {
     public static final String ID = makeID(MirrorMod.class.getSimpleName());
     public static final UIStrings uis = CardCrawlGame.languagePack.getUIString(ID);
 
-    public boolean exhaust;
-    public int wineAmt = 2;
+    public boolean isTempCard;
+    public int vigorAmt = 1;
 
-    public MirrorMod(boolean exhaust) {
-        this.exhaust = exhaust;
+    public MirrorMod(boolean isTempCard) {
+        this.isTempCard = isTempCard;
     }
 
-    public MirrorMod(boolean exhaust, int wineAmt) {
-        this.exhaust = exhaust;
-        this.wineAmt = wineAmt;
+    public MirrorMod(boolean isTempCard, int vigorAmt) {
+        this.isTempCard = isTempCard;
+        this.vigorAmt = vigorAmt;
     }
 
     @Override
@@ -50,7 +50,7 @@ public class MirrorMod extends AbsLingCardModifier {
         addToBot(new ExhaustSpecificCardAction(card, group));
         // 2. 创建复制
         AbstractCard cp = otherCard.makeStatEquivalentCopy();
-        if (exhaust) {
+        if (isTempCard) {
             try {
                 cp.name += "*";
                 ReflectionHacks.RMethod method = ReflectionHacks.privateMethod(AbstractCard.class,
@@ -61,11 +61,11 @@ public class MirrorMod extends AbsLingCardModifier {
             }
         }
         addToBot(new MakeTempCardInHandAction(cp, 1));
-        addToBot(new ApplyPowerAction(p, p, new WinePower(p, wineAmt)));
+        addToBot(new ApplyPowerAction(p, p, new VigorPower(p, vigorAmt)));
         // 3. 添加Mod
         CardModifierManager.addModifier(cp, this.makeCopy());
         // 如果自己消耗，那么复制体也应该消耗
-        if (!cp.exhaust && this.exhaust) {
+        if (!cp.exhaust && this.isTempCard) {
             CardModifierManager.addModifier(cp, new ExhaustMod());
         }
     }
@@ -77,6 +77,6 @@ public class MirrorMod extends AbsLingCardModifier {
 
     @Override
     public AbstractCardModifier makeCopy() {
-        return new MirrorMod(exhaust);
+        return new MirrorMod(isTempCard);
     }
 }

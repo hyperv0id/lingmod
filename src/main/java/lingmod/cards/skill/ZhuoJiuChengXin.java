@@ -8,7 +8,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
-import lingmod.cards.AbstractWineCard;
+import lingmod.cards.AbstractEasyCard;
+import lingmod.interfaces.CardConfig;
 import lingmod.util.CustomTags;
 
 import static lingmod.ModCore.makeID;
@@ -16,12 +17,12 @@ import static lingmod.ModCore.makeID;
 /**
  * 获得人工制品，升级后获得手牌中 酒牌 数量的人工制品
  */
-public class ZhuoJiuChengXin extends AbstractWineCard {
+@CardConfig(wineAmount = 2, magic = 1)
+public class ZhuoJiuChengXin extends AbstractEasyCard {
     public static final String ID = makeID(ZhuoJiuChengXin.class.getSimpleName());
 
     public ZhuoJiuChengXin() {
         super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
-        baseMagicNumber = 1; // 获得 1层人工制品
         CardModifierManager.addModifier(this, new ExhaustMod());
     }
 
@@ -36,8 +37,7 @@ public class ZhuoJiuChengXin extends AbstractWineCard {
                     new ArtifactPower(abstractPlayer, magicNumber)));
         else {
             for (AbstractCard c : AbstractDungeon.player.hand.group) {
-                if (AbstractWineCard.class.isAssignableFrom(c.getClass()) ||
-                        c.hasTag(CustomTags.WINE)) {
+                if (c.hasTag(CustomTags.WINE)) {
                     addToBot(new ApplyPowerAction(abstractPlayer, abstractMonster,
                             new ArtifactPower(abstractPlayer, magicNumber)));
                 }

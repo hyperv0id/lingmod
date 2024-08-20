@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
-import lingmod.cards.AbstractWineCard;
+import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.util.MonsterHelper;
 
@@ -24,12 +24,12 @@ import static lingmod.ModCore.makeID;
  * 否则给予虚弱
  */
 @CardConfig(magic = 30, magic2 = 1)
-public class HuSongWineCard extends AbstractWineCard implements OnPlayerDamagedSubscriber {
+public class HuSongWineCard extends AbstractEasyCard implements OnPlayerDamagedSubscriber {
     public static final String ID = makeID(HuSongWineCard.class.getSimpleName());
     public static HashMap<AbstractCreature, Integer> timesLost = new HashMap<>(); // 敌人失去了多少攻击计数
 
     public HuSongWineCard() {
-        super(ID, 0, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY, 3);
+        super(ID, 0, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ALL_ENEMY);
     }
 
     @Override
