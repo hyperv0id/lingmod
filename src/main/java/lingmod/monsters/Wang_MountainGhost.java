@@ -65,6 +65,18 @@ public class Wang_MountainGhost extends CustomMonster {
             this.damage.add(new DamageInfo(this, 10));
             this.damage.add(new DamageInfo(this, 7));
         }
+        // Change HP By Act
+    }
+
+    void modifyDiff_ByAct() {
+        float percent = (AbstractDungeon.actNum + 1) / 4.0F;
+        setHp((int) (percent * this.maxHealth));
+        for (int i = 0; i < damage.size(); i++) {
+            DamageInfo info = damage.get(i);
+            info.base = (int) (percent * info.base);
+            info.base = Math.max(info.base, 1);
+            damage.set(i, info);
+        }
     }
 
     @Override
@@ -97,7 +109,7 @@ public class Wang_MountainGhost extends CustomMonster {
     protected void getMove(int moveID) {
         moveID /= (int) (100.0 / 8); // rool from rand [0-99]
         if (this.hasPower(Go_Endgame.ID)) // 收官后一直进攻
-            moveID = 0;
+            moveID /= 25;
         switch (moveID) {
             case 0:
             case 1:
@@ -114,7 +126,7 @@ public class Wang_MountainGhost extends CustomMonster {
                 setMove((byte) 7, Intent.DEFEND_BUFF); // add block and apply GO_Thron
                 break;
         }
-        if (this.currentHealth < this.maxHealth * 0.25) {
+        if (this.currentHealth < this.maxHealth * 0.25 && !hasPower(Go_Endgame.ID)) {
             this.setMove((byte) 22, Intent.MAGIC); // 收官之时
         }
     }
@@ -158,7 +170,7 @@ public class Wang_MountainGhost extends CustomMonster {
             case 5:
             case 6: {
                 int r = AbstractDungeon.aiRng.random(2);
-                AbstractPower[] ps = new AbstractPower[] {
+                AbstractPower[] ps = new AbstractPower[]{
                         new Go_CornerApproach(this, 3), // Skill -> 虚弱
                         new Go_LibertyPressure(this, 3), // Attack -> 易伤
                         new Go_ReadAhead(this, 2), // 无效出牌

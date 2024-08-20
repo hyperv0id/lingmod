@@ -326,7 +326,6 @@ public class ModCore implements
                 new MountainPicker(),
                 new InnManager()
         }));
-
         // 和年一起欺夕
         BaseMod.addMonster(NianGuestStar.ID, NianGuestStar.NAME, () -> MonsterGroups.NIAN_GUEST_STAR);
     }

@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
+import lingmod.character.Ling;
 import lingmod.interfaces.CardConfig;
 
 import java.util.List;
@@ -30,7 +31,12 @@ public class Thunderer extends AbstractEasyCard {
     public int bgid = 0;
 
     public Thunderer() {
-        super(ID, 1, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
+        this(ID, 1, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
+    }
+
+    public Thunderer(final String cardID, final int cost, final CardType type, final CardRarity rarity,
+                     final CardTarget target) {
+        super(cardID, cost, type, rarity, target, Ling.Enums.LING_COLOR);
         CardModifierManager.addModifier(this, new RetainMod());
     }
 

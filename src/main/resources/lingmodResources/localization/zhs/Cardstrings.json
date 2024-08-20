@@ -130,6 +130,10 @@
     "NAME": "“弦惊”",
     "DESCRIPTION": "随机造成 !D! 点伤害 !M! 次  ${ModID}:合成 所有弦惊 NL 保留时手牌加入一张 弦惊 NL  ${ModID}:合成 ： 攻击次数增加1 "
   },
+  "${ModID}:Thunderer_SummonCard": {
+    "NAME": "弦惊",
+    "DESCRIPTION": "召唤一个弦惊（至多召唤 !M! 个）"
+  },
   "${ModID}:Whoami_Shuo": {
     "NAME": "我无",
     "DESCRIPTION": "打出攻击牌 !M! 次后，下一张攻击牌将打出两次"
@@ -239,8 +243,10 @@
   },
   "${ModID}:DrinkAlone": {
     "NAME": "独酌",
-    "DESCRIPTION": "获得 X 酒 NL 下一张牌将消耗全部能量，额外打出 X 次",
-    "UPGRADE_DESCRIPTION": "每次获得 X 酒 NL 下一张牌将消耗全部能量，额外打出 X+1 次"
+    "DESCRIPTION": "选择一张牌，将所有手牌变化为此牌",
+    "EXTENDED_DESCRIPTION": [
+      "选择一张牌独饮"
+    ]
   },
   "${ModID}:YunLiaoWineCard": {
     "NAME": "云辽酒",

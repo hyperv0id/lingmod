@@ -65,5 +65,8 @@
   },
   "${ModID}:Ling_WineTaoist": {
     "NAME": "酒道士"
+  },
+  "${ModID}:Thunderer_Summon": {
+    "NAME": "弦惊"
   }
 }

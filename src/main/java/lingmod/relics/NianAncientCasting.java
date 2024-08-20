@@ -15,11 +15,9 @@ public class NianAncientCasting extends AbstractEasyRelic implements StartActSub
     public static final String ID = makeID("NianAncientCasting");
     public static final int BUFFER_NUM = 3; // 获得几层缓冲
     public static final int BLOCK_NUM = 9; // 获得几层格挡
-    public int actNum; // 地图在哪里
 
     public NianAncientCasting() {
         super(ID, RelicTier.SPECIAL, LandingSound.FLAT);
-        this.actNum = AbstractDungeon.actNum;
         this.counter = BUFFER_NUM;
     }
 
@@ -37,10 +35,6 @@ public class NianAncientCasting extends AbstractEasyRelic implements StartActSub
         super.atBattleStart();
         this.flash();
         addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-        if (this.actNum != AbstractDungeon.actNum) {
-            this.counter = BUFFER_NUM;
-        }
-        this.actNum = AbstractDungeon.actNum;
         addToBot(new GainBlockAction(AbstractDungeon.player, BLOCK_NUM));
     }
 
