@@ -12,68 +12,69 @@
     <!-- Change the above for mod information. -->
 
     <properties>
-      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <maven.compiler.source>1.8</maven.compiler.source>
-      <maven.compiler.target>1.8</maven.compiler.target>
-      <SlayTheSpire.version>12-22-2020</SlayTheSpire.version>
-      <ModTheSpire.version>3.18.2</ModTheSpire.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <SlayTheSpire.version>12-22-2020</SlayTheSpire.version>
+        <ModTheSpire.version>3.18.2</ModTheSpire.version>
 
-      <!-- CHANGE THIS TO MATCH YOUR MODID FIELD IN THE MAIN TodoMod CLASS FILE -->
-      <ModID>lingmod</ModID>
-      <!-- CHANGE THIS TO MATCH YOUR MODID FIELD IN THE MAIN TodoMod CLASS FILE -->
+        <!-- CHANGE THIS TO MATCH YOUR MODID FIELD IN THE MAIN TodoMod CLASS FILE -->
+        <!--        <ModID>todomod</ModID>-->
+        <ModID>lingmod</ModID>
+        <!-- CHANGE THIS TO MATCH YOUR MODID FIELD IN THE MAIN TodoMod CLASS FILE -->
 
-      <!--CHANGE THIS TO YOUR STEAM INSTALLATION-->
+        <!--CHANGE THIS TO YOUR STEAM INSTALLATION-->
     </properties>
 
 
     <profiles>
-      <!-- Windows profile -->
-      <profile>
-        <id>windows</id>
-        <activation>
-          <os>
-            <family>windows</family>
-          </os>
-        </activation>
-        <properties>
-          <Steam.path>D:/apps/Steam/steamapps/</Steam.path>
-          <STS.path>${Steam.path}/common/SlayTheSpire/</STS.path>
-          <JAVA.path>${Steam.path}/common/SlayTheSpire/jre/bin/java.exe</JAVA.path>
-          <MTS.path>${Steam.path}/workshop/content/646570/1605060445/ModTheSpire.jar</MTS.path>
-        </properties>
-      </profile>
+        <!-- Windows profile -->
+        <profile>
+            <id>windows</id>
+            <activation>
+                <os>
+                    <family>windows</family>
+                </os>
+            </activation>
+            <properties>
+                <Steam.path>D:/apps/Steam/steamapps/</Steam.path>
+                <STS.path>${Steam.path}/common/SlayTheSpire/</STS.path>
+                <JAVA.path>${Steam.path}/common/SlayTheSpire/jre/bin/java.exe</JAVA.path>
+                <MTS.path>${Steam.path}/workshop/content/646570/1605060445/ModTheSpire.jar</MTS.path>
+            </properties>
+        </profile>
 
-      <!-- macOS profile -->
-      <profile>
-        <id>macos</id>
-        <activation>
-          <os>
-            <family>mac</family>
-          </os>
-        </activation>
-        <properties>
-          <Steam.path>${HOME}/Library/Application Support/Steam/steamapps/</Steam.path>
-          <STS.path>${Steam.path}/common/SlayTheSpire/</STS.path>
-          <JAVA.path>${Steam.path}/common/SlayTheSpire/jre/bin/java</JAVA.path>
-          <MTS.path>${Steam.path}/workshop/content/646570/1605060445/ModTheSpire.jar</MTS.path>
-        </properties>
-      </profile>
+        <!-- macOS profile -->
+        <profile>
+            <id>macos</id>
+            <activation>
+                <os>
+                    <family>mac</family>
+                </os>
+            </activation>
+            <properties>
+                <Steam.path>${HOME}/Library/Application Support/Steam/steamapps/</Steam.path>
+                <STS.path>${Steam.path}/common/SlayTheSpire/</STS.path>
+                <JAVA.path>${Steam.path}/common/SlayTheSpire/jre/bin/java</JAVA.path>
+                <MTS.path>${Steam.path}/workshop/content/646570/1605060445/ModTheSpire.jar</MTS.path>
+            </properties>
+        </profile>
 
-      <!-- Linux profile -->
-      <profile>
-        <id>linux</id>
-        <activation>
-          <os>
-            <family>unix</family>
-          </os>
-        </activation>
-        <properties>
-          <Steam.path>${HOME}/.steam/steam/steamapps/</Steam.path>
-          <STS.path>${Steam.path}/common/SlayTheSpire/</STS.path>
-          <JAVA.path>${STS.path}/jre/bin/java</JAVA.path>
-          <MTS.path>${Steam.path}/workshop/content/646570/1605060445/ModTheSpire.jar</MTS.path>
-        </properties>
-      </profile>
+        <!-- Linux profile -->
+        <profile>
+            <id>linux</id>
+            <activation>
+                <os>
+                    <family>unix</family>
+                </os>
+            </activation>
+            <properties>
+                <Steam.path>${HOME}/.steam/steam/steamapps/</Steam.path>
+                <STS.path>${Steam.path}/common/SlayTheSpire/</STS.path>
+                <JAVA.path>${STS.path}/jre/bin/java</JAVA.path>
+                <MTS.path>${Steam.path}/workshop/content/646570/1605060445/ModTheSpire.jar</MTS.path>
+            </properties>
+        </profile>
     </profiles>
 
     <dependencies>
@@ -109,24 +110,8 @@
 
 
     <build>
-        <finalName>${project.artifactId}-${git.commit.id.abbrev}</finalName>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
-            <!-- maven-git-commit-id-plugin 配置 -->
-            <plugin>
-                <groupId>pl.project13.maven</groupId>
-                <artifactId>git-commit-id-plugin</artifactId>
-                <version>4.0.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>revision</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <abbrevLength>7</abbrevLength> <!-- 使用前 7 个字符 -->
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
@@ -139,10 +124,7 @@
                         <configuration>
                             <target>
                                 <!-- 定义要删除的jar文件路径 -->
-                                <delete>
-                                    <fileset dir="${Steam.path}/common/SlayTheSpire/mods/"
-                                             includes="${project.artifactId}-*.jar"/>
-                                </delete>
+                                <delete file="${Steam.path}/common/SlayTheSpire/mods/${project.artifactId}.jar"/>
                             </target>
                         </configuration>
                         <goals>
@@ -153,7 +135,7 @@
                         <phase>package</phase>
                         <configuration>
                             <target>
-                                <copy file="target/${project.artifactId}-${git.commit.id.abbrev}.jar"
+                                <copy file="target/${project.artifactId}.jar"
                                       tofile="${Steam.path}/common/SlayTheSpire/mods/${project.artifactId}.jar"/>
                             </target>
                         </configuration>
@@ -162,27 +144,27 @@
                         </goals>
                     </execution>
                     <execution>
-                      <id>run-mts-launcher</id>
-                      <phase>install</phase> <!-- 选择在 install 阶段之后执行 -->
-                      <configuration>
-                          <target>
-                            <!-- <property name="mts.launcher.dir" location="${STS.path}" /> -->
-                            <!-- <echo message="Changing directory to ${mts.launcher.dir}" /> -->
-                            <!-- 使用 exec 任务来运行你的命令 -->
-                            <!-- <exec dir="${mts.launcher.dir}" executable="${JAVA.path}" failonerror="true"> -->
+                        <id>run-mts-launcher</id>
+                        <phase>install</phase> <!-- 选择在 install 阶段之后执行 -->
+                        <configuration>
+                            <target>
+                                <!-- <property name="mts.launcher.dir" location="${STS.path}" /> -->
+                                <!-- <echo message="Changing directory to ${mts.launcher.dir}" /> -->
+                                <!-- 使用 exec 任务来运行你的命令 -->
+                                <!-- <exec dir="${mts.launcher.dir}" executable="${JAVA.path}" failonerror="true"> -->
                                 <!-- <arg line="-jar mts-launcher.jar"/> -->
-                            <!-- </exec> -->
-                            <property name="mts.launcher.dir" location="${STS.path}" />
-                            <echo message="Changing directory to ${mts.launcher.dir}" />
-                            <!-- 使用 exec 任务来运行你的命令 -->
-                            <exec dir="${mts.launcher.dir}" executable="${JAVA.path}" failonerror="true">
-                                <arg line="-jar ${MTS.path} --skip-intro --mods basemod,stslib,quickrestart,loadout,${ModID}"/>
-                            </exec>
-                          </target>
-                      </configuration>
-                      <goals>
-                          <goal>run</goal>
-                      </goals>
+                                <!-- </exec> -->
+                                <property name="mts.launcher.dir" location="${STS.path}"/>
+                                <echo message="Changing directory to ${mts.launcher.dir}"/>
+                                <!-- 使用 exec 任务来运行你的命令 -->
+                                <exec dir="${mts.launcher.dir}" executable="${JAVA.path}" failonerror="true">
+                                    <arg line="-jar ${MTS.path} --skip-intro --mods basemod,stslib,quickrestart,loadout,${ModID}"/>
+                                </exec>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>

@@ -64,9 +64,9 @@
   },
   "${ModID}:Tranquility": {
     "NAME": "“清平”",
-    "DESCRIPTION": " 消耗 一张牌，造成 !D! 点伤害 NL 消耗卡牌后，基础攻击增加 !M! ",
+    "DESCRIPTION": "${ModID}:召唤 NL 造成 !D! 点伤害 NL 变化一张卡牌为 清平 ，并放入抽牌堆随机位置",
     "EXTENDED_DESCRIPTION": [
-      "选择一张牌消耗"
+      "选择一张牌变化为清平"
     ]
   },
   "${ModID}:GuoJiaXianMei": {
@@ -129,7 +129,7 @@
   },
   "${ModID}:Thunderer": {
     "NAME": "“弦惊”",
-    "DESCRIPTION": "造成 !D! 点伤害 !M! 次  消耗所有弦惊，攻击次数增加 NL 保留时手牌加入一张 弦惊 "
+    "DESCRIPTION": "造成 !D! 点伤害 !M! 次，消耗所有弦惊，攻击次数增加 NL 保留时手牌加入一张 弦惊 "
   },
   "${ModID}:Thunderer_SummonCard": {
     "NAME": "弦惊",
@@ -370,5 +370,10 @@
   "lingmod:Ling_Grieve": {
     "NAME": "伤怀",
     "DESCRIPTION": "其他卡牌被消耗时，向手牌中加入一张伤怀。"
+  },
+  "lingmod:TaoMeiWanNiang": {
+    "NAME": "桃梅晚酿",
+    "DESCRIPTION": "失去所有 活力，将其转化为酒",
+    "UPGRADE_DESCRIPTION": "获得当前活力等值的酒"
   }
 }

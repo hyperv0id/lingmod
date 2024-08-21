@@ -23,7 +23,7 @@ import static lingmod.ModCore.makeID;
  * 敌人多段攻击，攻击次数减少 20%
  * 否则给予虚弱
  */
-@CardConfig(magic = 30, magic2 = 1)
+@CardConfig(magic = 30, magic2 = 1, wineAmount = 2)
 public class HuSongWineCard extends AbstractEasyCard implements OnPlayerDamagedSubscriber {
     public static final String ID = makeID(HuSongWineCard.class.getSimpleName());
     public static HashMap<AbstractCreature, Integer> timesLost = new HashMap<>(); // 敌人失去了多少攻击计数

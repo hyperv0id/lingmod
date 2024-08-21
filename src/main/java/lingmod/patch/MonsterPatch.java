@@ -5,10 +5,14 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.status.Burn;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.PoisonPower;
@@ -86,6 +90,23 @@ public class MonsterPatch {
             }
         }
 
+        /**
+         * 闪退服了
+         */
+        @SpirePatch(
+                clz = Burn.class,
+                method = "use"
+        )
+        public static class BurnPatch {
+            public static void Prefix(Burn _inst, AbstractPlayer p, AbstractMonster m) {
+                if (!Wiz.isPlayerLing()) return; // 其他角色无效
+                if (_inst.dontTriggerOnUseCard) {
+                    AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player,
+                            new DamageInfo((AbstractCreature) null, _inst.magicNumber, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
+                }
+            }
+        }
+
         @SpirePatch(clz = MonsterGroup.class, method = "areMonstersDead")
         public static class EndBattleCheckPatch {
             @SpirePostfixPatch
@@ -102,9 +123,12 @@ public class MonsterPatch {
         public static class ChangeDamageTarget {
             public static void Postfix(AbstractGameAction _inst, AbstractCreature target, DamageInfo info) {
                 if (!Wiz.isPlayerLing()) return; // 其他角色无效
+                if (info == null) return;
                 // 取消友伤
-                if (target != null && info != null && info.owner.isPlayer && target.isPlayer) {
-                    _inst.target = MonsterTakeDamagePatch.summonTarget;
+                if (target != null && info.owner != null && info.owner.isPlayer && target.isPlayer) {
+                    // _inst.target = MonsterHelper.getMoNotSummon(true, null);
+                    _inst.isDone = true; // 取消这个
+                    logger.info("友伤取消: " + info.owner + " " + target);
                 }
                 if (target != null && info.type != DamageInfo.DamageType.HP_LOSS && (info.owner == null || !info.owner.isPlayer) && target == AbstractDungeon.player && MonsterTakeDamagePatch.gotSummon()) {
                     _inst.target = MonsterTakeDamagePatch.summonTarget;

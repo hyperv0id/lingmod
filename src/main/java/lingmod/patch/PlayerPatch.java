@@ -20,7 +20,8 @@ public class PlayerPatch {
             public static void Postfix(AbstractGameAction _inst, AbstractCreature target, DamageInfo info) {
                 if (!Wiz.isPlayerLing()) return; // 其他角色无效
                 // 取消友伤
-                if (target != null && info != null && info.owner.isPlayer && target.isPlayer) {
+                if (target == null || info == null || info.owner == null) return;
+                if (info.owner.isPlayer && target.isPlayer) {
                     AbstractMonster targetMonster = MonsterHelper.getMoNotSummon(true, null);
                     if (targetMonster != null)
                         _inst.target = targetMonster;

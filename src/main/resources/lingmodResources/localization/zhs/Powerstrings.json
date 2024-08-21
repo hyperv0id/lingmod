@@ -141,12 +141,6 @@
       "本回合你每打出一张牌，就抽一张牌"
     ]
   },
-  "lingmod:BeiChangMengPower": {
-    "NAME": "悲长梦",
-    "DESCRIPTIONS": [
-      "离开梦境时，触发 #b能力 、 #b遗物 、#b 手牌 的 #b回合结束 效果"
-    ]
-  },
   "lingmod:Go_ReadAhead": {
     "NAME": "读棋",
     "DESCRIPTIONS": [

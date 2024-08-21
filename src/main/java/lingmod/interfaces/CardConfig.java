@@ -25,4 +25,6 @@ public @interface CardConfig {
     int poemAmount() default -1;
 
     boolean isDream() default false;
+
+    boolean isSummon() default false;
 }

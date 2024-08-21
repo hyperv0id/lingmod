@@ -12,4 +12,6 @@ public class CustomTags {
     public static AbstractCard.CardTags WINE; // 此卡是 酒 🍷
     @SpireEnum
     public static AbstractCard.CardTags VERSE; // 此卡是 词牌
+    @SpireEnum
+    public static AbstractCard.CardTags SUMMON; // 此卡是 召唤卡
 }

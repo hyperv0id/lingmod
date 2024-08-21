@@ -4,7 +4,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import lingmod.interfaces.Credit;
@@ -42,13 +41,12 @@ public class Beans_DuskRelic extends AbstractEasyRelic {
             if (tmp.group.size() <= TRANSFORM_NUM) {
                 this.giveCards(tmp.group);
             } else if (!AbstractDungeon.isScreenUp) {
-                AbstractDungeon.gridSelectScreen.open(tmp, TRANSFORM_NUM,
-                        this.DESCRIPTIONS[1] + this.name + LocalizedStrings.PERIOD, false, false, false, false);
+                AbstractDungeon.gridSelectScreen.open(tmp, TRANSFORM_NUM, this.DESCRIPTIONS[1], false, false, false, false);
             } else {
                 AbstractDungeon.dynamicBanner.hide();
                 AbstractDungeon.previousScreen = AbstractDungeon.screen;
-                AbstractDungeon.gridSelectScreen.open(tmp, TRANSFORM_NUM,
-                        this.DESCRIPTIONS[1] + this.name + LocalizedStrings.PERIOD, false, false, false, false);
+                AbstractDungeon.gridSelectScreen.open(tmp, TRANSFORM_NUM, this.DESCRIPTIONS[1], false, false, false,
+                        false);
             }
         }
     }

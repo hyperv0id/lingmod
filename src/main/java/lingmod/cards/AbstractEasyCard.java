@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -30,6 +31,7 @@ import lingmod.interfaces.VoidSupplier;
 import lingmod.util.CardArtRoller;
 import lingmod.util.CustomTags;
 import lingmod.util.ModConfig;
+import lingmod.util.MonsterHelper;
 
 import java.util.function.Consumer;
 
@@ -192,7 +194,22 @@ public abstract class AbstractEasyCard extends CustomCard {
                 this.tags.add(CustomTags.DREAM);
                 CardModifierManager.addModifier(this, new NellaFantasiaMod());
             }
+            if (config.isSummon()) {
+                this.tags.add(CustomTags.SUMMON);
+            }
         }
+    }
+
+    @Override
+    public void triggerOnEndOfTurnForPlayingCard() {
+        super.triggerOnEndOfTurnForPlayingCard();
+        if (!tags.contains(CustomTags.SUMMON)) return;
+        AbstractMonster target = MonsterHelper.getMoNotSummon(true, AbstractDungeon.cardRandomRng);
+        calculateCardDamage(target);
+        this.dontTriggerOnUseCard = true;
+        CardQueueItem item = new CardQueueItem(this, true);
+        item.monster = target;
+        AbstractDungeon.actionManager.cardQueue.add(item);
     }
 
     @Override
@@ -251,12 +268,6 @@ public abstract class AbstractEasyCard extends CustomCard {
         this.block = this.baseBlock;
         // AbstractPower wine = AbstractDungeon.player.getPower(WinePower.POWER_ID);
 
-        // // 采用费用计算酒的攻击
-        // int wineAmount = 0;
-        // if (wine != null) {
-        //     wineAmount = wine.amount;
-        //     wine.amount *= 1 + Math.max(0, this.costForTurn - 1);
-        // }
         if (baseSecondDamage > -1) {
             secondDamage = baseSecondDamage;
 
@@ -273,9 +284,6 @@ public abstract class AbstractEasyCard extends CustomCard {
             isSecondDamageModified = (secondDamage != baseSecondDamage);
         } else
             super.calculateCardDamage(mo);
-        // if (wine != null) {
-        //     wine.amount = wineAmount;
-        // }
     }
 
     public void resetAttributes() {

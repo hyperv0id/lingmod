@@ -46,6 +46,7 @@ public class Thunderer extends AbstractEasyCard {
     }
 
     public void upbg() {
+        bgid++;
         if (bgid <= 4) {
             // 只有5张图
             String img = getCardTextureString(NAME + "_" + bgid, this.type);
@@ -55,7 +56,6 @@ public class Thunderer extends AbstractEasyCard {
             }
         }
         this.name = this.cardStrings.NAME + "+" + bgid;
-        bgid++;
         initializeTitle();
     }
 

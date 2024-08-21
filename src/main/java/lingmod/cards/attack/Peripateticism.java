@@ -18,7 +18,7 @@ import static lingmod.ModCore.makeID;
 /**
  * “逍遥”：消耗所有技能牌，每张给予 8 缠绕
  */
-@CardConfig(magic = 6)
+@CardConfig(magic = 6, isSummon = true)
 public class Peripateticism extends AbstractEasyCard {
     public static final String ID = makeID(Peripateticism.class.getSimpleName());
 

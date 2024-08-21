@@ -34,7 +34,7 @@ public class WinePower extends AbstractEasyPower {
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
         super.onPlayCard(card, m);
         if (card.type == CardType.ATTACK) {
-            reduce();
+            dampLater();
         }
     }
 
@@ -45,7 +45,7 @@ public class WinePower extends AbstractEasyPower {
                 this));
     }
 
-    public void reduce() {
+    public void dampLater() {
         if (Wiz.isStanceNell()) {
             addToBot(new ReducePowerAction(owner, owner, this, 1));
         } else {
