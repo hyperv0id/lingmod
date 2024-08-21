@@ -1,9 +1,6 @@
 package lingmod.cards.attack;
 
-import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
-import com.megacrit.cardcrawl.actions.common.ExhaustAction;
-import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -21,7 +18,7 @@ public class Tranquility extends AbstractEasyCard {
     public static final String ID = makeID(Tranquility.class.getSimpleName());
 
     public Tranquility() {
-        super(ID, 1, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY);
+        super(ID, 0, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY);
     }
 
     @Override
@@ -32,12 +29,7 @@ public class Tranquility extends AbstractEasyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AttackEffect.NONE);
-        if (!this.dontTriggerOnUseCard) {
-            addToBot(new SelectCardsInHandAction(ExhaustAction.TEXT[0], (cards) -> {
-                addToTop(new MakeTempCardInDrawPileAction(makeStatEquivalentCopy(), 1, true, true));
-                addToTop(new ExhaustSpecificCardAction(cards.get(0), p.hand));
-            }));
-        }
+        addToTop(new MakeTempCardInDrawPileAction(makeStatEquivalentCopy(), 1, true, true));
         addToBotAbstract(() -> this.dontTriggerOnUseCard = false);
     }
 }

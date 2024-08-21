@@ -24,7 +24,7 @@ public class FeiHuaLingCard extends AbstractVerseCard {
     public AbstractCard lastCard;
 
     public FeiHuaLingCard() {
-        super(ID, 1, CardType.SKILL, CardRarity.COMMON);
+        super(ID, CardType.SKILL, CardRarity.COMMON);
     }
 
     @Override

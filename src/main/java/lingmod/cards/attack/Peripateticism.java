@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ConstrictedPower;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
+import lingmod.util.MonsterHelper;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,7 +24,7 @@ public class Peripateticism extends AbstractEasyCard {
     public static final String ID = makeID(Peripateticism.class.getSimpleName());
 
     public Peripateticism() {
-        super(ID, 2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+        super(ID, 2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
     }
 
     @Override
@@ -42,7 +43,7 @@ public class Peripateticism extends AbstractEasyCard {
                 // 消耗
                 addToTop(new ExhaustSpecificCardAction(c, AbstractDungeon.player.hand));
                 // 对怪物施加缠绕效果
-                addToTop(new ApplyPowerAction(m, p, new ConstrictedPower(m, p, magicNumber)));
+                MonsterHelper.allMonsters().forEach(mo -> addToTop(new ApplyPowerAction(mo, p, new ConstrictedPower(mo, p, magicNumber))));
             });
             addToBotAbstract(() -> {
                 for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {

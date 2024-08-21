@@ -13,7 +13,7 @@
       "仄平平仄平",
       "平仄平仄平"
     ],
-    "DESCRIPTION": "效果：获得5格挡",
+    "DESCRIPTION": "造成 !D! 点伤害 NL 获得 !B! 格挡",
     "UPGRADE_DESCRIPTION": "升级效果",
     "EXTENDED_DESCRIPTION": [
       "打出平仄减少消耗"

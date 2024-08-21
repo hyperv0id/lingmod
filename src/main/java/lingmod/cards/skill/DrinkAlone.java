@@ -4,7 +4,6 @@ import basemod.cardmods.ExhaustMod;
 import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.actions.ExhaustAllAction;
@@ -29,11 +28,7 @@ public class DrinkAlone extends AbstractEasyCard {
         if (p.hand.isEmpty()) return;
         addToBot(new SelectCardsInHandAction(msg, cards -> {
             addToBot(new ExhaustAllAction());
-            for (AbstractCard hc : p.hand.group) {
-                for (AbstractCard c : cards) {
-                    addToBot(new MakeTempCardInHandAction(c.makeCopy(), 1));
-                }
-            }
+            addToBot(new MakeTempCardInHandAction(cards.get(0).makeStatEquivalentCopy(), p.hand.size() + 1));
         }));
     }
 

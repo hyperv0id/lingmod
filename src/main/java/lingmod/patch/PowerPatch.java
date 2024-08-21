@@ -25,9 +25,9 @@ public class PowerPatch {
             boolean ok = false;
             WinePower wine = null;
             AbstractPlayer p = AbstractDungeon.player;
-            if (p != null && p.hasPower(WinePower.POWER_ID)) {
+            if (p != null) {
                 wine = (WinePower) p.getPower(WinePower.POWER_ID);
-                ok = wine.amount > 0;
+                ok = wine != null && wine.amount > 0;
             }
             if (ok) wine.dampLater();
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p, p, __inst));

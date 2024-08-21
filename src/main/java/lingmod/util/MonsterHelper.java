@@ -186,4 +186,11 @@ public class MonsterHelper {
                 .filter(mo -> !(mo instanceof SummonedMonster)) // 排除召唤物
                 .allMatch(AbstractCreature::isDeadOrEscaped);
     }
+
+    /**
+     * 获取所有怪物，但是不包含召唤物
+     */
+    public static List<AbstractMonster> allMonsters() {
+        return AbstractDungeon.getMonsters().monsters.stream().filter(mo -> !(mo instanceof SummonedMonster)).collect(Collectors.toList());
+    }
 }

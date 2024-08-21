@@ -57,7 +57,7 @@
   "${ModID}:CantApplyPowerPower": {
     "NAME": "无怖",
     "DESCRIPTIONS": [
-      "你和所有怪物都无法再获得任何能力或异常，你对自己施加异常时移除此效果"
+      "你无法再获得任何新的能力或异常，改为获得能量 NL 你对自己施加异常以移除此效果"
     ]
   },
   "${ModID}:Whoami_NianPower": {

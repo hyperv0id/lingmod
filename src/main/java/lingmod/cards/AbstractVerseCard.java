@@ -25,16 +25,11 @@ public abstract class AbstractVerseCard extends AbstractEasyCard {
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
     public static final String TYPE = uiStrings.TEXT[0]; // 词牌
     public VerseStrings verseStrings;
-    public ToneManager toneManager;
+    protected ToneManager toneManager;
 
-    public int poeticCost = 0; // 打出需要消耗多少诗兴
-    protected boolean isOptionCard = false;
-    protected boolean used = false;
-    protected int[] costs;
 
-    public AbstractVerseCard(String id, int poetCost, CardType cardType, CardRarity cardRarity) {
+    public AbstractVerseCard(String id, CardType cardType, CardRarity cardRarity) {
         super(id, -2, cardType, cardRarity, CardTarget.NONE);
-        this.poeticCost = poetCost;
         tags.add(CustomTags.VERSE);
         tags.add(CardTags.HEALING); // 不能被树枝等检索到
         verseStrings = VerseLoader.getStr(id);
@@ -46,7 +41,7 @@ public abstract class AbstractVerseCard extends AbstractEasyCard {
         TypeOverridePatch.TypeOverrideField.typeOverride.set(this, TYPE); // 更改卡图上的类型描述
         this.cantUseMessage = acs.EXTENDED_DESCRIPTION[0];
         toneManager = new ToneManager(verseStrings);
-
+        cost = toneManager.remainToken();
     }
 
     @Override

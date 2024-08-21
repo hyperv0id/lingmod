@@ -5,7 +5,6 @@ import basemod.interfaces.OnPlayerTurnStartPostDrawSubscriber;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -76,7 +75,6 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerTurnS
         sfxId = CardCrawlGame.sound.playAndLoop("STANCE_LOOP_CALM");
         AbstractDungeon.effectsQueue.add(new BorderFlashEffect(Color.PURPLE, true));
         BaseMod.subscribe(this);
-        AbstractDungeon.actionManager.addToBottom(new DrawCardAction(1));
         updateDescription();
     }
 
@@ -104,7 +102,7 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerTurnS
     }
 
     public void onExitStance() {
-        AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
+        AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(2));
         BaseMod.unsubscribeLater(this);
         AbstractPlayer p = AbstractDungeon.player;
         // EOT

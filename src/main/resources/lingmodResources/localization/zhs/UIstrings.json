@@ -32,7 +32,8 @@
     "${ModID}:VerseTopPanel": {
         "TEXT": [
             "你的词牌",
-            "点击查看你创作的词牌"
+            "点击查看你创作的词牌",
+            "选择一张牌"
         ]
     },
     "${ModID}:VerseViewScreen": {

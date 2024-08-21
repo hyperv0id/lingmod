@@ -64,7 +64,7 @@
   },
   "${ModID}:Tranquility": {
     "NAME": "“清平”",
-    "DESCRIPTION": "${ModID}:召唤 NL 造成 !D! 点伤害 NL 变化一张卡牌为 清平 ，并放入抽牌堆随机位置",
+    "DESCRIPTION": "${ModID}:召唤 NL 造成 !D! 点伤害 NL 抽牌堆随机放入一张清平",
     "EXTENDED_DESCRIPTION": [
       "选择一张牌变化为清平"
     ]
@@ -145,8 +145,8 @@
   },
   "${ModID}:Whoami_Ling": {
     "NAME": "无怖",
-    "DESCRIPTION": "无法再获得任何新能力 NL 自己对自己施加异常时移除此效果",
-    "UPGRADE_DESCRIPTION": "清除所有异常 NL 无法再获得任何新能力 NL 自己对自己施加异常时移除此效果"
+    "DESCRIPTION": "你无法再获得任何新的能力或异常，改为获得能量 NL 你对自己施加异常以移除此效果",
+    "UPGRADE_DESCRIPTION": "清除所有异常 NL 你无法再获得任何新的能力或异常，改为获得能量 NL 你对自己施加异常以移除此效果"
   },
   "${ModID}:Whoami_Nian": {
     "NAME": "无悲",

@@ -2,6 +2,7 @@ package lingmod.powers;
 
 import basemod.BaseMod;
 import basemod.interfaces.PostPowerApplySubscriber;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -15,7 +16,6 @@ import static lingmod.ModCore.makeID;
 /**
  * 你无法再获得任何能力/异常
  */
-// @SpireInitializer
 public class CantApplyPowerPower extends AbstractEasyPower implements PostPowerApplySubscriber {
     public static final String POWER_NAME = CantApplyPowerPower.class.getSimpleName();
     public static final String ID = makeID(POWER_NAME);
@@ -23,6 +23,11 @@ public class CantApplyPowerPower extends AbstractEasyPower implements PostPowerA
 
     public CantApplyPowerPower(AbstractCreature owner) {
         super(ID, powerStrings.NAME, PowerType.DEBUFF, false, owner, 0);
+    }
+
+    @Override
+    public void onInitialApplication() {
+        super.onInitialApplication();
         BaseMod.subscribe(this);
     }
 
@@ -47,6 +52,7 @@ public class CantApplyPowerPower extends AbstractEasyPower implements PostPowerA
         // 自己给自己施加DEBUFF，移除这个能力
         if (target == owner && p2add.type == PowerType.DEBUFF && target == src) {
             addToBot(new RemoveSpecificPowerAction(target, owner, p2add));
+            addToBot(new GainEnergyAction(1));
             addToTop(new RemoveSpecificPowerAction(owner, owner, this));
             return;
         }
@@ -56,6 +62,7 @@ public class CantApplyPowerPower extends AbstractEasyPower implements PostPowerA
             if (owner.powers.stream().map(p -> p.ID).noneMatch(id -> Objects.equals(id, p2add.ID))) {
                 // addToBot(new ReducePowerAction(target, owner, p2add, p2add.amount));
                 addToBot(new RemoveSpecificPowerAction(target, owner, p2add));
+                addToBot(new GainEnergyAction(1));
             }
         }
     }

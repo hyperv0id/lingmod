@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -484,4 +485,10 @@ public abstract class AbstractEasyCard extends CustomCard {
         return null;
     }
 
+    @Override
+    public void triggerOnExhaust() {
+        super.triggerOnExhaust();
+        // 召唤被消耗时获得能量
+        if (this.hasTag(CustomTags.SUMMON)) atb(new GainEnergyAction(1));
+    }
 }

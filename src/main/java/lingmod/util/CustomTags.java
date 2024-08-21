@@ -5,6 +5,8 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 
 public class CustomTags {
     @SpireEnum
+    public static AbstractCard.CardTags ARIA; // 特殊卡牌：词牌
+    @SpireEnum
     public static AbstractCard.CardTags POEM; // 此卡是 诗 📖
     @SpireEnum
     public static AbstractCard.CardTags DREAM; // 此卡是 梦
