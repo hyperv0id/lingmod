@@ -1,71 +1,84 @@
 {
-    "${ModID}:SwapCost" :{
-        "TEXT" :[
-            "交换能量"
-        ]
-    },
-    "${ModID}:Sui7DealAction" :{
-        "TEXT" :[
-            "选择牌交易"
-        ]
-    },
-    "${ModID}:NellaFantasiaMod" :{
-        "TEXT" :[
-            " lingmod:梦 。 NL %s"
-        ]
-    },
-    "${ModID}:PoemMod" :{
-        "TEXT" :[
-            " lingmod:诗兴 %d。 NL %s"
-        ]
-    },
-    "${ModID}:WineMod" :{
-        "TEXT" :[
-            " lingmod:酒 %d。 NL %s"
-        ]
-    },
-    "${ModID}:AbstractPoetryCard": {
-        "TEXT": [
-            "诗词赋曲"
-        ]
-    },
-    "${ModID}:PoetryTopPanel": {
-        "TEXT": [
-            "你的诗词赋曲",
-            "点击查看你创作的诗词赋曲",
-            "选择一张牌"
-        ]
-    },
-    "${ModID}:PoetryViewScreen": {
-        "TEXT": [
-            "你的所有诗词赋曲",
-            "返回"
-        ]
-    },
-    "${ModID}:1ST_EXHAUST_IN_COMBAT": {
-        "TEXT": [
-            "悟已往之不谏，思来者之可追"
-        ]
-    },
-    "${ModID}:Option": {
-        "TEXT": [
-            "模组设置"
-        ]
-    },
-    "${ModID}:VOICE.DIALECT": {
-        "TEXT": [
-            "语音差分"
-        ],
-        "EXTRA_TEXT": [
-            "中文-普通话",
-            "中文-方言",
-            "英语",
-            "日语"
-        ]
-    },
-    "${ModID}:B_SHOW_CREDIT": {
-        "TEXT": [
-            "素材来源展示"
-        ]
-    }
+  "${ModID}:SwapCost": {
+    "TEXT": [
+      "交换能量"
+    ]
+  },
+  "${ModID}:Sui7DealAction": {
+    "TEXT": [
+      "选择牌交易"
+    ]
+  },
+  "${ModID}:NellaFantasiaMod": {
+    "TEXT": [
+      " lingmod:梦 。 NL %s"
+    ]
+  },
+  "${ModID}:PoemMod": {
+    "TEXT": [
+      " lingmod:诗兴 %d。 NL %s"
+    ]
+  },
+  "${ModID}:WineMod": {
+    "TEXT": [
+      " lingmod:酒 %d。 NL %s"
+    ]
+  },
+  "${ModID}:AbstractPoetryCard": {
+    "TEXT": [
+      "诗词赋曲"
+    ]
+  },
+  "${ModID}:PoetryTopPanel": {
+    "TEXT": [
+      "你的诗词赋曲",
+      "点击查看你创作的诗词赋曲",
+      "选择一张牌"
+    ]
+  },
+  "${ModID}:PoetryViewScreen": {
+    "TEXT": [
+      "你的所有诗词赋曲",
+      "返回"
+    ]
+  },
+  "${ModID}:SelectedPoetryViewScreen": {
+    "TEXT": [
+      "当前诗词",
+      "返回"
+    ]
+  },
+  "${ModID}:1ST_EXHAUST_IN_COMBAT": {
+    "TEXT": [
+      "悟已往之不谏，思来者之可追"
+    ]
+  },
+  "${ModID}:Option": {
+    "TEXT": [
+      "模组设置"
+    ]
+  },
+  "${ModID}:VOICE.DIALECT": {
+    "TEXT": [
+      "语音差分"
+    ],
+    "EXTRA_TEXT": [
+      "中文-普通话",
+      "中文-方言",
+      "英语",
+      "日语"
+    ]
+  },
+  "${ModID}:B_SHOW_CREDIT": {
+    "TEXT": [
+      "素材来源展示"
+    ]
+  },
+  "${ModID}:PoetryOrb": {
+    "TEXT": [
+      "诗歌创作栏",
+      "战斗开始时选择诗词创作 NL 左击使用诗兴，将牌纳入手牌 NL 右击查看卡牌效果",
+      "诗词赋"
+    ]
+  }
 }

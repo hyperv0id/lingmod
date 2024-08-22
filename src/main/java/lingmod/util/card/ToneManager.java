@@ -64,7 +64,7 @@ public class ToneManager {
         FontHelper.renderSmartText(sb, FontHelper.tipBodyFont, toSmartText(), x, y, Color.WHITE);
     }
 
-    String toSmartText() {
+    public String toSmartText() {
         if (tipStrCache.isEmpty()) {
             String testText = tokens.get(idx_1);
             StringBuilder sb = new StringBuilder();
@@ -127,9 +127,9 @@ public class ToneManager {
             idx_1++;
             if (idx_1 >= tokens.size()) {
                 idx_1 = 0;
-                owner.finishFull();
+                owner.onFinishFull();
             } else {
-                owner.finishOnce();
+                owner.onFinishOnce();
             }
         }
         tipStrCache = "";
@@ -157,5 +157,16 @@ public class ToneManager {
         } else if (this.peekTone() == Tone.BOTH) {
             this.next();
         }
+    }
+
+    public void skipVerse() {
+        owner.onFinishOnce();
+        idx_1++;
+        idx_2 = 0;
+        if (idx_1 >= tokens.size()) {
+            owner.onFinishFull();
+            idx_1 = 0;
+        }
+        tipStrCache = "";
     }
 }

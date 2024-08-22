@@ -4,7 +4,6 @@ import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.*;
@@ -30,6 +29,7 @@ import lingmod.cards.attack.Strike;
 import lingmod.cards.attack.Tranquility;
 import lingmod.cards.skill.Defend;
 import lingmod.relics.LightRelic;
+import lingmod.ui.PoetryOrb;
 import lingmod.util.TODO;
 import lingmod.util.VoiceMaster;
 
@@ -60,10 +60,8 @@ public class Ling extends CustomPlayer {
             makeCharacterPath("ling/orb/layer4d.png"),
             makeCharacterPath("ling/orb/layer5d.png"),
     };
-    private static final float[] LAYER_SPEED = new float[] { -40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F,
-            -5.0F, 0.0F };
-
-    public AbstractPoetryCard chosenPoetry;
+    private static final float[] LAYER_SPEED = new float[]{-40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F,
+            -5.0F, 0.0F};
 
     public Ling() {
         this(Ling.characterStrings.NAMES[1], Ling.Enums.PLAYER_LING);
@@ -169,7 +167,7 @@ public class Ling extends CustomPlayer {
     @Override
     public CharSelectInfo getLoadout() {
         return new CharSelectInfo(NAMES[0], TEXT[0],
-                74, 74, 0, 99, 5, this, getStartingRelics(),
+                74, 74, 1, 99, 5, this, getStartingRelics(),
                 getStartingDeck(), false);
     }
 
@@ -193,6 +191,11 @@ public class Ling extends CustomPlayer {
         return retVal;
     }
 
+    public AbstractPoetryCard getPoetryCard() {
+        if (orbs.isEmpty()) return null;
+        return ((PoetryOrb) orbs.get(0)).card;
+    }
+
     @Override
     public void doCharSelectScreenSelectEffect() {
         CardCrawlGame.music.silenceBGM(); // 沉默BGM
@@ -201,15 +204,6 @@ public class Ling extends CustomPlayer {
         CardCrawlGame.sound.playA("UNLOCK_PING", MathUtils.random(-0.2F, 0.2F));
         CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT,
                 false);
-    }
-
-    @Override
-    public void render(SpriteBatch sb) {
-        super.render(sb);
-        // 在角色头上额外渲染一个 诗词赋
-        if (chosenPoetry != null) {
-            chosenPoetry.renderPoetryTip(sb);
-        }
     }
 
     @Override
@@ -271,10 +265,10 @@ public class Ling extends CustomPlayer {
 
     @Override
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect() {
-        return new AbstractGameAction.AttackEffect[] {
+        return new AbstractGameAction.AttackEffect[]{
                 AbstractGameAction.AttackEffect.FIRE,
                 AbstractGameAction.AttackEffect.BLUNT_HEAVY,
-                AbstractGameAction.AttackEffect.FIRE };
+                AbstractGameAction.AttackEffect.FIRE};
     }
 
     @Override

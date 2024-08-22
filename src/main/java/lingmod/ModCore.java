@@ -37,6 +37,7 @@ import lingmod.potions.AbstractEasyPotion;
 import lingmod.relics.AbstractEasyRelic;
 import lingmod.ui.PoetryTopPanel;
 import lingmod.ui.PoetryViewScreen;
+import lingmod.ui.SelectedPoetryViewScreen;
 import lingmod.util.ModConfig;
 import lingmod.util.PoetryCardManager;
 import lingmod.util.PoetryLoader;
@@ -279,11 +280,13 @@ public class ModCore implements
 
     public void addScreen() {
         BaseMod.addCustomScreen(new PoetryViewScreen());
+        BaseMod.addCustomScreen(new SelectedPoetryViewScreen());
     }
 
     @Override
     public void receiveOnBattleStart(AbstractRoom r) {
-        PoetryCardManager.onBattleStart(r);
+        if (Wiz.isPlayerLing())
+            PoetryCardManager.onBattleStart(r);
     }
 
     /**

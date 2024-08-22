@@ -24,11 +24,14 @@ public class PoetryViewScreen extends CustomScreen {
     private static final String[] TEXT = uiStrings.TEXT;
     // private static final int CARDS_PER_LINE = 6;
     private static float drawStartX;
-    private static float drawStartY;
-    private static float padX;
+    protected static float drawStartY;
+    protected static float padX;
     private static float padY;
-    private CardGroup targetGroup;
+    protected CardGroup targetGroup;
     private AbstractCard hoveredCard;
+
+
+    protected String selectMsg, exitMsg;
 
     public PoetryViewScreen() {
         drawStartX = (float) Settings.WIDTH;
@@ -38,6 +41,8 @@ public class PoetryViewScreen extends CustomScreen {
         drawStartX += AbstractCard.IMG_WIDTH * 0.75F / 2.0F;
         padX = AbstractCard.IMG_WIDTH * 0.75F + Settings.CARD_VIEW_PAD_X;
         padY = AbstractCard.IMG_HEIGHT * 0.75F + Settings.CARD_VIEW_PAD_Y;
+        selectMsg = TEXT[0];
+        exitMsg = TEXT[1];
     }
 
     @Override
@@ -50,9 +55,7 @@ public class PoetryViewScreen extends CustomScreen {
         this.reopen();
     }
 
-    /**
-     *
-     */
+
     @Override
     public void reopen() {
         this.targetGroup = PlayerFieldsPatch.poetryCardGroup.get(Wiz.adp());
@@ -69,7 +72,7 @@ public class PoetryViewScreen extends CustomScreen {
         AbstractDungeon.overlayMenu.hideCombatPanels();
         AbstractDungeon.overlayMenu.proceedButton.hide();
         this.hideCards();
-        AbstractDungeon.overlayMenu.cancelButton.show(TEXT[1]);
+        AbstractDungeon.overlayMenu.cancelButton.show(exitMsg);
     }
 
     public boolean allowOpenDeck() {
@@ -107,7 +110,7 @@ public class PoetryViewScreen extends CustomScreen {
 
     }
 
-    private void hideCards() {
+    protected void hideCards() {
         int lineNum = 0;
         ArrayList<AbstractCard> cards = this.targetGroup.group;
 
@@ -160,7 +163,7 @@ public class PoetryViewScreen extends CustomScreen {
             this.targetGroup.renderShowBottled(sb);
         }
 
-        FontHelper.renderDeckViewTip(sb, TEXT[0], 96.0F * Settings.scale, Settings.CREAM_COLOR);
+        FontHelper.renderDeckViewTip(sb, selectMsg, 96.0F * Settings.scale, Settings.CREAM_COLOR);
     }
 
     /**
@@ -173,6 +176,8 @@ public class PoetryViewScreen extends CustomScreen {
     public static class Enum {
         @SpireEnum
         public static AbstractDungeon.CurrentScreen POETRY_CARD_VIEW_SCREEN;
+        @SpireEnum
+        public static AbstractDungeon.CurrentScreen SELECTED_POETRY_CARD_VIEW_SCREEN;
 
         public Enum() {
         }

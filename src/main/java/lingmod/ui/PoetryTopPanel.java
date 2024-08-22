@@ -49,7 +49,7 @@ public class PoetryTopPanel extends TopPanelItem implements CustomSavable<List<C
     /**
      * 摘抄自：宝可梦MOD-PokemonTeamButton
      */
-    private static void toggleScreen() {
+    private static void toggleScreen(boolean rightClick) {
         if (AbstractDungeon.screen == PoetryViewScreen.Enum.POETRY_CARD_VIEW_SCREEN) {
             AbstractDungeon.closeCurrentScreen();
         } else {
@@ -100,7 +100,11 @@ public class PoetryTopPanel extends TopPanelItem implements CustomSavable<List<C
             }
 
             if (AbstractDungeon.screen != CurrentScreen.VICTORY) {
-                BaseMod.openCustomScreen(PoetryViewScreen.Enum.POETRY_CARD_VIEW_SCREEN);
+                if (rightClick) {
+                    BaseMod.openCustomScreen(PoetryViewScreen.Enum.SELECTED_POETRY_CARD_VIEW_SCREEN);
+                } else {
+                    BaseMod.openCustomScreen(PoetryViewScreen.Enum.POETRY_CARD_VIEW_SCREEN);
+                }
             }
         }
 
@@ -119,6 +123,10 @@ public class PoetryTopPanel extends TopPanelItem implements CustomSavable<List<C
      */
     public void onRightClick() {
         ModCore.logger.info("Top Panel Poetry Was RightClicked");
+        if (!CardCrawlGame.isPopupOpen) {
+            CardCrawlGame.sound.play("DECK_OPEN");
+            toggleScreen(true);
+        }
     }
 
     /**
@@ -129,7 +137,7 @@ public class PoetryTopPanel extends TopPanelItem implements CustomSavable<List<C
         ModCore.logger.info("Top Panel Poetry Was Clicked");
         if (!CardCrawlGame.isPopupOpen) {
             CardCrawlGame.sound.play("DECK_OPEN");
-            toggleScreen();
+            toggleScreen(false);
         }
     }
 

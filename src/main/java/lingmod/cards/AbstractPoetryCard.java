@@ -1,15 +1,20 @@
 package lingmod.cards;
 
+import basemod.BaseMod;
 import basemod.interfaces.OnCardUseSubscriber;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
+import lingmod.ModCore;
+import lingmod.character.Ling;
 import lingmod.patch.TypeOverridePatch;
 import lingmod.util.CustomTags;
 import lingmod.util.PoetryLoader;
+import lingmod.util.Wiz;
 import lingmod.util.card.ToneManager;
 
 import static lingmod.ModCore.makeID;
@@ -37,9 +42,10 @@ public abstract class AbstractPoetryCard extends AbstractEasyCard implements OnC
         this.isEthereal = true;
 
         CardStrings acs = CardCrawlGame.languagePack.getCardStrings(ID);
-        TypeOverridePatch.TypeOverrideField.typeOverride.set(this, TYPE); // 更改卡图上的类型描述
+        TypeOverridePatch.TypeOverrideField.typeOverride.set(this, TYPE + "-" + getTypeText()); // 更改卡图上的类型描述
         this.cantUseMessage = acs.EXTENDED_DESCRIPTION[0];
         toneManager = new ToneManager(this);
+        BaseMod.subscribe(this);
     }
 
     @Override
@@ -58,20 +64,24 @@ public abstract class AbstractPoetryCard extends AbstractEasyCard implements OnC
         super.initializeDescription();
     }
 
-    /**
-     * 在其他卡牌被打出时，会发生什么?
-     */
+    public String getPoetryTip() {
+        return toneManager.toSmartText();
+    }
+
     @Override
     public void receiveCardUsed(AbstractCard c) {
+        if (!Wiz.isPlayerLing()) {
+            BaseMod.unsubscribeLater(this);
+            return;
+        }
+        Ling p = (Ling) AbstractDungeon.player;
+        if (p.getPoetryCard() != this) {
+            BaseMod.unsubscribeLater(this);
+            return;
+        }
         toneManager.onPlayCard(c);
-        setCostForTurn(toneManager.remainToken());
     }
 
-
-    @Override
-    public void render(SpriteBatch sb) {
-        super.render(sb);
-    }
 
     @Override
     public void renderInLibrary(SpriteBatch sb) {
@@ -79,24 +89,48 @@ public abstract class AbstractPoetryCard extends AbstractEasyCard implements OnC
     }
 
     /**
-     * 在玩家头上可视化诗词赋曲
-     */
-    public void renderPoetryTip(SpriteBatch sb) {
-        toneManager.render(sb);
-    }
-
-
-    /**
      * 整首诗都被打出了
      */
-    public void finishFull() {
-        addToBot(new MakeTempCardInHandAction(makeStatEquivalentCopy()));
+    public void onFinishFull() {
+        ModCore.logger.info(name + " Finished");
     }
 
     /**
      * 打出了一句话
      */
-    public void finishOnce() {
+    public void onFinishOnce() {
         addToBot(new MakeTempCardInHandAction(makeStatEquivalentCopy()));
+    }
+
+    public int remainCost() {
+        return toneManager.remainToken();
+    }
+
+    public void nextVerse() {
+        toneManager.skipVerse();
+    }
+
+    public String getTypeText() {
+        String text;
+        switch (type) {
+            case ATTACK:
+                text = TEXT[0];
+                break;
+            case CURSE:
+                text = TEXT[3];
+                break;
+            case STATUS:
+                text = TEXT[7];
+                break;
+            case SKILL:
+                text = TEXT[1];
+                break;
+            case POWER:
+                text = TEXT[2];
+                break;
+            default:
+                text = TEXT[5];
+        }
+        return text;
     }
 }

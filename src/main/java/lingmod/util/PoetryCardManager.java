@@ -1,14 +1,13 @@
 package lingmod.util;
 
-import basemod.BaseMod;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import lingmod.cards.AbstractPoetryCard;
-import lingmod.character.Ling;
 import lingmod.patch.PlayerFieldsPatch;
+import lingmod.ui.PoetryOrb;
 import lingmod.ui.PoetryTopPanel;
 
 import java.util.ArrayList;
@@ -37,12 +36,6 @@ public class PoetryCardManager {
 
     static void selectCard(List<AbstractCard> cards) {
         AbstractPoetryCard card = (AbstractPoetryCard) cards.get(0).makeStatEquivalentCopy();
-        if (AbstractDungeon.player instanceof Ling) {
-            Ling p = (Ling) AbstractDungeon.player;
-            if (p.chosenPoetry != null)
-                BaseMod.unsubscribeLater(p.chosenPoetry);
-            p.chosenPoetry = card;
-            BaseMod.subscribe(card);
-        }
+        AbstractDungeon.player.channelOrb(new PoetryOrb(card));
     }
 }
