@@ -25,7 +25,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.cardvars.AbstractEasyDynamicVariable;
-import lingmod.cards.verse.JingYeSiCard;
+import lingmod.cards.poetry.JingYeSiCard;
 import lingmod.character.Ling;
 import lingmod.events.Beans_Ling;
 import lingmod.events.CampfireEventManager;
@@ -35,11 +35,11 @@ import lingmod.monsters.*;
 import lingmod.patch.PlayerFieldsPatch;
 import lingmod.potions.AbstractEasyPotion;
 import lingmod.relics.AbstractEasyRelic;
-import lingmod.ui.VerseTopPanel;
-import lingmod.ui.VerseViewScreen;
+import lingmod.ui.PoetryTopPanel;
+import lingmod.ui.PoetryViewScreen;
 import lingmod.util.ModConfig;
-import lingmod.util.VerseCardManager;
-import lingmod.util.VerseLoader;
+import lingmod.util.PoetryCardManager;
+import lingmod.util.PoetryLoader;
 import lingmod.util.Wiz;
 import lingmod.util.audio.ProAudio;
 import org.apache.logging.log4j.LogManager;
@@ -217,8 +217,8 @@ public class ModCore implements
         BaseMod.loadCustomStringsFile(EventStrings.class, getStringPathI18N() + "/Eventstrings.json");
         BaseMod.loadCustomStringsFile(RunModStrings.class, getStringPathI18N() + "/Modstrings.json");
         BaseMod.loadCustomStringsFile(MonsterStrings.class, getStringPathI18N() + "/MonsterStrings.json");
-        // 词牌单独放置
-        VerseLoader.init();
+        // 诗词赋曲单独放置
+        PoetryLoader.init();
     }
 
     /**
@@ -254,8 +254,8 @@ public class ModCore implements
         addMonster();
         addScreen();
         // 添加TopPanel按钮
-        // BaseMod.addTopPanelItem(new VerseTopPanel());
-        BaseMod.addSaveField(VerseTopPanel.ID, new VerseTopPanel());
+        // BaseMod.addTopPanelItem(new PoetryTopPanel());
+        BaseMod.addSaveField(PoetryTopPanel.ID, new PoetryTopPanel());
         BaseMod.addSaveField(CampfireEventManager.class.getName(), new CampfireEventManager());
     }
 
@@ -278,12 +278,12 @@ public class ModCore implements
     }
 
     public void addScreen() {
-        BaseMod.addCustomScreen(new VerseViewScreen());
+        BaseMod.addCustomScreen(new PoetryViewScreen());
     }
 
     @Override
     public void receiveOnBattleStart(AbstractRoom r) {
-        VerseCardManager.onBattleStart(r);
+        PoetryCardManager.onBattleStart(r);
     }
 
     /**
@@ -293,9 +293,9 @@ public class ModCore implements
     public void receivePostDungeonInitialize() {
         if (AbstractDungeon.player.chosenClass != Ling.Enums.PLAYER_LING)
             return;
-        // 给玩家生成初始词牌：静夜思
-        CardGroup verseCards = PlayerFieldsPatch.verseCardGroup.get(Wiz.adp());
-        verseCards.addToTop(new JingYeSiCard());
+        // 给玩家生成初始诗词赋曲：静夜思
+        CardGroup poetryCards = PlayerFieldsPatch.poetryCardGroup.get(Wiz.adp());
+        poetryCards.addToTop(new JingYeSiCard());
         // 生成事件
         CampfireEventManager.sleepEvents.clear(); // 清空
         CampfireEventManager.initSleepEvents();
@@ -308,9 +308,9 @@ public class ModCore implements
     public void receiveStartGame() {
         ArrayList<TopPanelItem> topPanelItems = ReflectionHacks.getPrivate(TopPanelHelper.topPanelGroup,
                 TopPanelGroup.class, "topPanelItems");
-        long cnt = topPanelItems.stream().filter(i -> i instanceof VerseTopPanel).count();
+        long cnt = topPanelItems.stream().filter(i -> i instanceof PoetryTopPanel).count();
         if (cnt <= 0) {
-            BaseMod.addTopPanelItem(new VerseTopPanel());
+            BaseMod.addTopPanelItem(new PoetryTopPanel());
         }
     }
 

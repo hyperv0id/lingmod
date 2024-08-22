@@ -33,4 +33,5 @@ public class PoeticMoodPower extends AbstractEasyPower implements PostBattleSubs
         powerGained = 0; // 清空计数
         BaseMod.unsubscribeLater(this);
     }
+
 }

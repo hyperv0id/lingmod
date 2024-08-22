@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * 新String用于构造诗词
  */
-public class VerseStrings {
+public class PoetryStrings {
     public String NAME; // 词作的名字
     public String[] CONTENT; // 词作内容
     public String[] TONE_PATTERN; // 平仄相关
@@ -15,16 +15,16 @@ public class VerseStrings {
     public String UPGRADE_DESCRIPTION; // 升级效果
     public String[] EXTENDED_DESCRIPTION; // 额外效果
 
-    public VerseStrings() {
+    public PoetryStrings() {
     }
 
 
     /**
-     * 使用LinkedTreeMap初始化VerseStrings对象。
+     * 使用LinkedTreeMap初始化对象。
      *
      * @param map 包含初始化数据的LinkedTreeMap。
      */
-    public VerseStrings(LinkedTreeMap<String, Object> map) {
+    public PoetryStrings(LinkedTreeMap<String, Object> map) {
         // 检查map是否为空
         if (map == null) {
             return;

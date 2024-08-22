@@ -9,34 +9,34 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import lingmod.ModCore;
-import lingmod.cards.AbstractVerseCard;
+import lingmod.cards.AbstractPoetryCard;
 import lingmod.patch.PlayerFieldsPatch;
 
-public class VerseReward extends CustomReward {
-    private static final Texture ICON = TexLoader.getTexture(ModCore.makeImagePath("ui/verse_reward_btn.png"));
+public class PoetryReward extends CustomReward {
+    private static final Texture ICON = TexLoader.getTexture(ModCore.makeImagePath("ui/poetry_reward_btn.png"));
     public AbstractCard card;
 
-    public VerseReward(String cardID) {
-        super(ICON, "词牌", AiraRewardEnum.VERSE_REWARD);
+    public PoetryReward(String cardID) {
+        super(ICON, "诗词赋曲", AiraRewardEnum.POETRY_REWARD);
         this.card = CardLibrary.getCopy(cardID);
         this.text = this.card.name;
     }
 
-    public VerseReward(AbstractVerseCard card) {
-        super(ICON, "词牌", AiraRewardEnum.VERSE_REWARD);
+    public PoetryReward(AbstractPoetryCard card) {
+        super(ICON, "诗词赋曲", AiraRewardEnum.POETRY_REWARD);
         this.card = card;
         this.text = this.card.name;
     }
 
     public boolean claimReward() {
-        CardGroup verseGroup = PlayerFieldsPatch.verseCardGroup.get(Wiz.adp());
-        verseGroup.addToTop(this.card);
+        CardGroup poetryGrp = PlayerFieldsPatch.poetryCardGroup.get(Wiz.adp());
+        poetryGrp.addToTop(this.card);
         UnlockTracker.markCardAsSeen(this.card.cardID);
         return true;
     }
 
     public static class AiraRewardEnum {
         @SpireEnum
-        public static RewardItem.RewardType VERSE_REWARD;
+        public static RewardItem.RewardType POETRY_REWARD;
     }
 }

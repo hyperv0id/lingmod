@@ -1,8 +1,6 @@
 package lingmod.ui;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
+import basemod.abstracts.CustomScreen;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
@@ -14,14 +12,14 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-
-import basemod.abstracts.CustomScreen;
 import lingmod.ModCore;
 import lingmod.patch.PlayerFieldsPatch;
 import lingmod.util.Wiz;
 
-public class VerseViewScreen extends CustomScreen {
-    public static final String ID = ModCore.makeID(VerseViewScreen.class.getSimpleName());
+import java.util.ArrayList;
+
+public class PoetryViewScreen extends CustomScreen {
+    public static final String ID = ModCore.makeID(PoetryViewScreen.class.getSimpleName());
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
     private static final String[] TEXT = uiStrings.TEXT;
     // private static final int CARDS_PER_LINE = 6;
@@ -32,7 +30,7 @@ public class VerseViewScreen extends CustomScreen {
     private CardGroup targetGroup;
     private AbstractCard hoveredCard;
 
-    public VerseViewScreen() {
+    public PoetryViewScreen() {
         drawStartX = (float) Settings.WIDTH;
         drawStartX -= 5.0F * AbstractCard.IMG_WIDTH * 0.75F;
         drawStartX -= 4.0F * Settings.CARD_VIEW_PAD_X;
@@ -44,7 +42,7 @@ public class VerseViewScreen extends CustomScreen {
 
     @Override
     public AbstractDungeon.CurrentScreen curScreen() {
-        return Enum.VERSE_CARD_VIEW_SCREEN;
+        return Enum.POETRY_CARD_VIEW_SCREEN;
     }
 
     @Override
@@ -57,7 +55,7 @@ public class VerseViewScreen extends CustomScreen {
      */
     @Override
     public void reopen() {
-        this.targetGroup = PlayerFieldsPatch.verseCardGroup.get(Wiz.adp());
+        this.targetGroup = PlayerFieldsPatch.poetryCardGroup.get(Wiz.adp());
         if (this.targetGroup.group.size() <= 6) {
             drawStartY = (float) Settings.HEIGHT * 0.5F;
         } else {
@@ -99,10 +97,8 @@ public class VerseViewScreen extends CustomScreen {
             cards.get(i).updateHoverLogic();
             cards.get(i).setAngle(0.0F, true);
             this.hoveredCard = null;
-            Iterator<AbstractCard> var5 = cards.iterator();
 
-            while (var5.hasNext()) {
-                AbstractCard c = var5.next();
+            for (AbstractCard c : cards) {
                 if (c.hb.hovered) {
                     this.hoveredCard = c;
                 }
@@ -176,7 +172,7 @@ public class VerseViewScreen extends CustomScreen {
 
     public static class Enum {
         @SpireEnum
-        public static AbstractDungeon.CurrentScreen VERSE_CARD_VIEW_SCREEN;
+        public static AbstractDungeon.CurrentScreen POETRY_CARD_VIEW_SCREEN;
 
         public Enum() {
         }

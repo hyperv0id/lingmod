@@ -3,14 +3,13 @@ package lingmod.cards.attack;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.ModCore;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.patch.PlayerFieldsPatch;
 import lingmod.util.Wiz;
 
 /**
- * 曲水流觞: 你每有一种词牌，造成7伤害
+ * 曲水流觞: 你每有一种诗词赋曲，造成7伤害
  */
 public class QuShuiLiuShang extends AbstractEasyCard {
     public static final String ID = ModCore.makeID(QuShuiLiuShang.class.getSimpleName());
@@ -23,7 +22,7 @@ public class QuShuiLiuShang extends AbstractEasyCard {
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
-        CardGroup cg = PlayerFieldsPatch.verseCardGroup.get(Wiz.adp());
+        CardGroup cg = PlayerFieldsPatch.poetryCardGroup.get(Wiz.adp());
         this.magicNumber = cg.size();
         super.calculateCardDamage(mo);
     }

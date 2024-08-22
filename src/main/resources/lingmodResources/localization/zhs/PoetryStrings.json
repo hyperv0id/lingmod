@@ -13,15 +13,15 @@
       "仄平平仄平",
       "平仄平仄平"
     ],
-    "DESCRIPTION": "造成 !D! 点伤害 NL 获得 !B! 格挡",
+    "DESCRIPTION": "获得 !B! 格挡",
     "UPGRADE_DESCRIPTION": "升级效果",
     "EXTENDED_DESCRIPTION": [
       "打出平仄减少消耗"
     ]
   },
-  "lingmod:AbstractVerseCard": {
-    "NAME": "词牌牌",
-    "DESCRIPTION": "AbstractVerseCard词牌抽象类",
+  "lingmod:AbstractPoetryCard": {
+    "NAME": "诗词赋曲",
+    "DESCRIPTION": "诗词赋曲抽象类",
     "EXTENDED_DESCRIPTION": [
       "诗兴不足，无法作诗"
     ]

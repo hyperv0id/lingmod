@@ -14,7 +14,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
         method = "<class>"
 )
 public class PlayerFieldsPatch {
-    public static SpireField<CardGroup> verseCardGroup = new SpireField<CardGroup>(() -> {
-        return new CardGroup(CardGroupType.UNSPECIFIED);
-    });
+    public static SpireField<CardGroup> poetryCardGroup = new SpireField<>(() ->
+            new CardGroup(CardGroupType.UNSPECIFIED)
+    );
 }

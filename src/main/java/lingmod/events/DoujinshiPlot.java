@@ -9,10 +9,10 @@ import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.potions.PotionSlot;
 import com.megacrit.cardcrawl.relics.AbstractRelic.RelicTier;
-import lingmod.cards.AbstractVerseCard;
-import lingmod.cards.verse.JingYeSiCard;
+import lingmod.cards.AbstractPoetryCard;
+import lingmod.cards.poetry.JingYeSiCard;
 import lingmod.potions.ForgetPotion;
-import lingmod.util.VerseReward;
+import lingmod.util.PoetryReward;
 
 import static lingmod.ModCore.*;
 
@@ -29,7 +29,7 @@ public class DoujinshiPlot extends PhasedEvent {
     public static DoujinshiPlot __inst;
 
     public static String NAME = eventStrings.NAME;
-    AbstractVerseCard battleReward;
+    AbstractPoetryCard battleReward;
 
     public DoujinshiPlot() {
         super(ID, eventStrings.NAME, makeImagePath("events/DoujinshiPlot_0.png"));
@@ -91,7 +91,7 @@ public class DoujinshiPlot extends PhasedEvent {
                 new TextPhase(DESCRIPTIONS[6]).addOption(OPTIONS[6], (i) -> transitionKey(Phases.BATTLE)));
         // 进入战斗
         registerPhase(Phases.BATTLE, new CombatPhase(MonsterHelper.BLUE_SLAVER_ENC).addRewards(true, (room) -> {
-            room.rewards.add(new VerseReward(battleReward));
+            room.rewards.add(new PoetryReward(battleReward));
             room.addRelicToRewards(RelicTier.COMMON);
             logger.info(battleReward.name);
         }));

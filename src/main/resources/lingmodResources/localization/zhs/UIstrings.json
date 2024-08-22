@@ -24,21 +24,21 @@
             " lingmod:酒 %d。 NL %s"
         ]
     },
-    "${ModID}:AbstractVerseCard": {
+    "${ModID}:AbstractPoetryCard": {
         "TEXT": [
-            "词牌"
+            "诗词赋曲"
         ]
     },
-    "${ModID}:VerseTopPanel": {
+    "${ModID}:PoetryTopPanel": {
         "TEXT": [
-            "你的词牌",
-            "点击查看你创作的词牌",
+            "你的诗词赋曲",
+            "点击查看你创作的诗词赋曲",
             "选择一张牌"
         ]
     },
-    "${ModID}:VerseViewScreen": {
+    "${ModID}:PoetryViewScreen": {
         "TEXT": [
-            "你的所有词牌",
+            "你的所有诗词赋曲",
             "返回"
         ]
     },

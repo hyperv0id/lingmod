@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 
 public class CustomTags {
     @SpireEnum
-    public static AbstractCard.CardTags ARIA; // 特殊卡牌：词牌
+    public static AbstractCard.CardTags ARIA; // 特殊卡牌：诗词赋曲
     @SpireEnum
     public static AbstractCard.CardTags POEM; // 此卡是 诗 📖
     @SpireEnum
@@ -13,7 +13,7 @@ public class CustomTags {
     @SpireEnum
     public static AbstractCard.CardTags WINE; // 此卡是 酒 🍷
     @SpireEnum
-    public static AbstractCard.CardTags VERSE; // 此卡是 词牌
+    public static AbstractCard.CardTags POETRY; // 此卡是 诗词赋曲
     @SpireEnum
     public static AbstractCard.CardTags SUMMON; // 此卡是 召唤卡
 }

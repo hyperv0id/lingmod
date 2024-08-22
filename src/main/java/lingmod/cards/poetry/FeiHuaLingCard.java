@@ -1,13 +1,14 @@
-package lingmod.cards.verse;
+package lingmod.cards.poetry;
 
 import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import lingmod.cards.AbstractVerseCard;
+import lingmod.cards.AbstractPoetryCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.powers.PoeticMoodPower;
 
@@ -18,13 +19,18 @@ import static lingmod.ModCore.makeID;
  */
 @AutoAdd.Ignore
 @CardConfig(poemAmount = 1)
-public class FeiHuaLingCard extends AbstractVerseCard {
+public class FeiHuaLingCard extends AbstractPoetryCard {
     public static final String ID = makeID(FeiHuaLingCard.class.getSimpleName());
     int upgrade = 0;
     public AbstractCard lastCard;
 
     public FeiHuaLingCard() {
         super(ID, CardType.SKILL, CardRarity.COMMON);
+    }
+
+    @Override
+    public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
+
     }
 
     @Override
