@@ -1,25 +1,24 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.AutoAdd.Ignore;
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.AutoAdd.Ignore;
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
 import lingmod.actions.ExhaustToDiscardAction;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 消耗最左边的牌，弃牌堆中加入2张复制
  * 选择
  */
-@CardConfig(damage = 5, magic = 2, poemAmount = 2)
+@CardConfig(damage = 5, magic = 2)
 @Ignore
 public class RuMengLing extends AbstractEasyCard {
     public final static String ID = makeID(RuMengLing.class.getSimpleName());

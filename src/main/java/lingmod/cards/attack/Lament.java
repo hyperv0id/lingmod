@@ -4,7 +4,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower.PowerType;
-
 import lingmod.ModCore;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
@@ -12,7 +11,7 @@ import lingmod.interfaces.CardConfig;
 /**
  * 悲词：统计你和敌人的负面效果，每个获得 !B! 格挡
  */
-@CardConfig(block = 3, poemAmount = 2)
+@CardConfig(block = 3)
 public class Lament extends AbstractEasyCard {
     public static final String ID = ModCore.makeID(Lament.class.getSimpleName());
 

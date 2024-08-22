@@ -73,7 +73,6 @@ public class CampfireEventManager implements CustomSavable<List<String>> {
             } catch (Exception e) {
                 logger.error("Create Campfire Event Failed: " + clzString);
                 logger.error("Create Campfire Event Failed: " + e.getLocalizedMessage());
-                continue;
             }
         }
     }

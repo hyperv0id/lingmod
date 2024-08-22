@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import lingmod.cards.AbstractPoetryCard;
-import lingmod.interfaces.CardConfig;
 import lingmod.powers.PoeticMoodPower;
 
 import static lingmod.ModCore.makeID;
@@ -18,7 +17,6 @@ import static lingmod.ModCore.makeID;
  * 飞花令：如果打出的卡牌和上次不同类，那么造成 诗兴总量AOE，失去一半
  */
 @AutoAdd.Ignore
-@CardConfig(poemAmount = 1)
 public class FeiHuaLingCard extends AbstractPoetryCard {
     public static final String ID = makeID(FeiHuaLingCard.class.getSimpleName());
     int upgrade = 0;

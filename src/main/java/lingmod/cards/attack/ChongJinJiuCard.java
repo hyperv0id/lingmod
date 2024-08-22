@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DuplicationPower;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.MirrorMod;
-import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 
 import static lingmod.ModCore.makeID;
@@ -16,7 +15,6 @@ import static lingmod.ModCore.makeID;
 /**
  * 重进酒：打出卡牌时消耗，并替换为其复制
  */
-@CardConfig(poemAmount = 1)
 @Credit(username = "明日方舟", platform = "鹰角网络", link = "https://prts.wiki/w/%E4%BB%A4")
 public class ChongJinJiuCard extends AbstractEasyCard {
 

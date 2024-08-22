@@ -24,7 +24,7 @@ import static lingmod.ModCore.makeID;
  * 宁作吾：从右往左消耗卡牌来去除debuff，每消耗一张抽一张牌，获得 [E]
  * 能力数量参与计数
  */
-@CardConfig(poemAmount = 3, magic = 1)
+@CardConfig(magic = 1)
 @Credit(username = "明日方舟", platform = "鹰角网络", link = "https://prts.wiki/w/%E4%BB%A4")
 public class NingZuoWuCard extends AbstractEasyCard {
 

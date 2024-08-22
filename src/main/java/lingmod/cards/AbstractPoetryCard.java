@@ -32,7 +32,7 @@ public abstract class AbstractPoetryCard extends AbstractEasyCard implements OnC
 
     public AbstractPoetryCard(String id, CardType cardType, CardRarity cardRarity) {
         super(id, -2, cardType, cardRarity, CardTarget.NONE);
-        tags.add(CustomTags.POETRY);
+        tags.add(CustomTags.POEM);
         tags.add(CardTags.HEALING); // 不能被树枝等检索到
         poetryStrings = PoetryLoader.getStr(id);
         this.name = poetryStrings.NAME;

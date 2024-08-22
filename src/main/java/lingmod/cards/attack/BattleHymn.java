@@ -9,7 +9,7 @@ import lingmod.ModCore;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 
-@CardConfig(damage = 7, magic = 2, magic2 = 1, poemAmount = 2)
+@CardConfig(damage = 7, magic = 2, magic2 = 1)
 public class BattleHymn extends AbstractEasyCard {
     public static final String ID = ModCore.makeID(BattleHymn.class.getSimpleName());
 

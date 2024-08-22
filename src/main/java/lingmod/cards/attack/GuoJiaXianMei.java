@@ -7,7 +7,7 @@ import lingmod.interfaces.CardConfig;
 
 import static lingmod.ModCore.makeID;
 
-@CardConfig(damage = 15, block = 15, poemAmount = 3)
+@CardConfig(damage = 15, block = 15)
 public class GuoJiaXianMei extends AbstractEasyCard {
     public final static String ID = makeID(GuoJiaXianMei.class.getSimpleName());
 

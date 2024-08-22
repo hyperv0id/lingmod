@@ -4,14 +4,12 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
-import lingmod.interfaces.CardConfig;
 
 import static lingmod.ModCore.makeID;
 
 /**
  * 诗对狂沙：每次受到伤害时，获得 1/2 诗兴
  */
-@CardConfig(poemAmount = 3)
 public class PoemVSQuickSand extends AbstractEasyCard {
     public final static String ID = makeID(PoemVSQuickSand.class.getSimpleName());
 

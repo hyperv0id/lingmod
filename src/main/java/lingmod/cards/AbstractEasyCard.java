@@ -23,7 +23,6 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.mod.NellaFantasiaMod;
-import lingmod.cards.mod.PoemMod;
 import lingmod.cards.mod.WineMod;
 import lingmod.character.Ling;
 import lingmod.interfaces.CardConfig;
@@ -182,12 +181,6 @@ public abstract class AbstractEasyCard extends CustomCard {
             if (wineAmt >= 0) {
                 this.tags.add(CustomTags.WINE);
                 CardModifierManager.addModifier(this, new WineMod(wineAmt));
-            }
-            // process poem
-            int poemAmt = config.poemAmount();
-            if (poemAmt >= 0) {
-                this.tags.add(CustomTags.POEM);
-                CardModifierManager.addModifier(this, new PoemMod(poemAmt));
             }
             // process dream
             boolean isDream = config.isDream();
