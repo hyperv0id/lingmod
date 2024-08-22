@@ -13,11 +13,53 @@
       "仄平平仄平",
       "平仄平仄平"
     ],
-    "DESCRIPTION": "获得 !B! 格挡",
-    "UPGRADE_DESCRIPTION": "升级效果",
-    "EXTENDED_DESCRIPTION": [
-      "打出平仄减少消耗"
-    ]
+    "DESCRIPTION": "获得 !B! 格挡"
+  },
+  "lingmod:PoZhenZiCard": {
+    "NAME": "破阵子",
+    "CONTENT": [
+      "马作的卢飞快",
+      "弓如霹雳弦惊",
+      "了却君王天下事",
+      "赢得生前身后名",
+      "可怜白发生"
+    ],
+    "TONE_PATTERN": [
+      "仄仄仄平平仄",
+      "平平仄仄平平",
+      "仄仄平平平仄仄",
+      "平仄平平平仄平",
+      "仄平仄仄平"
+    ],
+    "DESCRIPTION": "计算手牌数量，每张造成 !D! 点伤害 NL 抽 !M! 张牌"
+  },
+  "lingmod:ShiShuoXinYuCard": {
+    "NAME": "世说新语·品藻",
+    "CONTENT": [
+      "我与我周旋久",
+      "宁作我"
+    ],
+    "TONE_PATTERN": [
+      "仄仄仄平平仄",
+      "平仄仄"
+    ],
+    "DESCRIPTION": "清除最后获得的负面效果，获得 [E]"
+  },
+  "lingmod:QingPingYueCard": {
+    "NAME": "清平乐·画堂晨起",
+    "CONTENT": [
+      "盛气光引炉烟",
+      "素草寒生玉佩",
+      "应是天仙狂醉",
+      "乱把白云揉碎"
+    ],
+    "TONE_PATTERN": [
+      "仄仄平平平平",
+      "仄仄平平仄仄",
+      "仄仄平平平仄",
+      "仄仄仄平平仄"
+    ],
+    "DESCRIPTION": "lingmod:梦 。获得差价量 !M! 倍的 临时生命"
   },
   "lingmod:AbstractPoetryCard": {
     "NAME": "诗词赋曲",
@@ -28,8 +70,6 @@
   },
   "lingmod:FeiHuaLingCard": {
     "NAME": "飞花令",
-    "DESCRIPTION": "被动：打出卡牌后，如果和上次打出的类型不同，那么对所有人造成 总 ${ModID}:诗兴 层数的伤害，然后失去一半 ${ModID}:诗兴 ",
-    "EXTENDED_DESCRIPTION": [
-    ]
+    "DESCRIPTION": "被动：打出卡牌后，如果和上次打出的类型不同，那么对所有人造成 总 ${ModID}:诗兴 层数的伤害，然后失去一半 ${ModID}:诗兴 "
   }
 }

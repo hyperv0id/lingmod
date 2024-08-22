@@ -19,16 +19,14 @@ import static lingmod.ModCore.makeID;
 @AutoAdd.Ignore
 public class FeiHuaLingCard extends AbstractPoetryCard {
     public static final String ID = makeID(FeiHuaLingCard.class.getSimpleName());
-    int upgrade = 0;
     public AbstractCard lastCard;
 
     public FeiHuaLingCard() {
-        super(ID, CardType.SKILL, CardRarity.COMMON);
+        super(ID, CardType.SKILL, CardRarity.COMMON, CardTarget.SELF);
     }
 
     @Override
-    public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
-
+    public void use_p(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
     }
 
     @Override
@@ -43,10 +41,5 @@ public class FeiHuaLingCard extends AbstractPoetryCard {
             }
             addToBot(new ReducePowerAction(AbstractDungeon.player, AbstractDungeon.player, PoeticMoodPower.ID, amt / 2));
         }
-    }
-
-    @Override
-    public void upp() {
-        upgrade++;
     }
 }

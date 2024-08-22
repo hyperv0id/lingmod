@@ -26,6 +26,8 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.cardvars.AbstractEasyDynamicVariable;
 import lingmod.cards.poetry.JingYeSiCard;
+import lingmod.cards.poetry.PoZhenZiCard;
+import lingmod.cards.poetry.QingPingYueCard;
 import lingmod.character.Ling;
 import lingmod.events.Beans_Ling;
 import lingmod.events.CampfireEventManager;
@@ -299,6 +301,8 @@ public class ModCore implements
         // 给玩家生成初始诗词赋曲：静夜思
         CardGroup poetryCards = PlayerFieldsPatch.poetryCardGroup.get(Wiz.adp());
         poetryCards.addToTop(new JingYeSiCard());
+        poetryCards.addToTop(new QingPingYueCard());
+        poetryCards.addToTop(new PoZhenZiCard());
         // 生成事件
         CampfireEventManager.sleepEvents.clear(); // 清空
         CampfireEventManager.initSleepEvents();

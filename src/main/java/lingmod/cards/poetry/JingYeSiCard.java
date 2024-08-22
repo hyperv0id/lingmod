@@ -15,15 +15,11 @@ public class JingYeSiCard extends AbstractPoetryCard {
     public static final String ID = makeID(JingYeSiCard.class.getSimpleName());
 
     public JingYeSiCard() {
-        super(ID, CardType.ATTACK, CardRarity.BASIC);
+        super(ID, CardType.ATTACK, CardRarity.BASIC, CardTarget.SELF);
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void use_p(AbstractPlayer p, AbstractMonster m) {
         blck();
-    }
-
-    @Override
-    public void upp() {
     }
 }

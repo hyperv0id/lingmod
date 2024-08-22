@@ -429,4 +429,8 @@ public class Wiz {
         return 0;
     }
 
+    public static boolean isVisibleDebuff(AbstractPower p) {
+        return !(p instanceof InvisiblePower) && p.type == PowerType.DEBUFF;
+    }
+
 }

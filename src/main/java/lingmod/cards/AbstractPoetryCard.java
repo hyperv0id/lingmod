@@ -5,15 +5,18 @@ import basemod.interfaces.OnCardUseSubscriber;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.ModCore;
 import lingmod.character.Ling;
 import lingmod.patch.TypeOverridePatch;
 import lingmod.util.CustomTags;
 import lingmod.util.PoetryLoader;
+import lingmod.util.VoiceMaster;
 import lingmod.util.Wiz;
 import lingmod.util.card.ToneManager;
 
@@ -29,9 +32,13 @@ public abstract class AbstractPoetryCard extends AbstractEasyCard implements OnC
     public PoetryStrings poetryStrings;
     protected ToneManager toneManager;
 
+    protected CardType realType;
 
-    public AbstractPoetryCard(String id, CardType cardType, CardRarity cardRarity) {
-        super(id, -2, cardType, cardRarity, CardTarget.NONE);
+
+    public AbstractPoetryCard(String id, CardType cardType, CardRarity cardRarity, CardTarget target) {
+        super(id, -2, cardType, cardRarity, target);
+
+        realType = cardType;
         tags.add(CustomTags.POEM);
         tags.add(CardTags.HEALING); // 不能被树枝等检索到
         poetryStrings = PoetryLoader.getStr(id);
@@ -48,6 +55,14 @@ public abstract class AbstractPoetryCard extends AbstractEasyCard implements OnC
         BaseMod.subscribe(this);
     }
 
+    public abstract void use_p(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster);
+
+    @Override
+    public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
+        VoiceMaster.attack();
+        use_p(abstractPlayer, abstractMonster);
+    }
+
     @Override
     public void onChoseThisOption() {
         addToBot(new MakeTempCardInHandAction(this, false));
@@ -62,6 +77,10 @@ public abstract class AbstractPoetryCard extends AbstractEasyCard implements OnC
             this.rawDescription = poetryStrings.DESCRIPTION;
         }
         super.initializeDescription();
+    }
+
+    @Override
+    public void upp() {
     }
 
     public String getPoetryTip() {
@@ -112,7 +131,7 @@ public abstract class AbstractPoetryCard extends AbstractEasyCard implements OnC
 
     public String getTypeText() {
         String text;
-        switch (type) {
+        switch (this.realType) {
             case ATTACK:
                 text = TEXT[0];
                 break;
