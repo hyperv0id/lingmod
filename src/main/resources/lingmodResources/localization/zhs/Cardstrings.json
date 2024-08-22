@@ -64,7 +64,7 @@
   },
   "${ModID}:Tranquility": {
     "NAME": "“清平”",
-    "DESCRIPTION": "${ModID}:召唤 NL 造成 !D! 点伤害 NL 抽牌堆随机放入一张清平",
+    "DESCRIPTION": "${ModID}:召唤 NL 造成 !D! 点伤害 NL 抽牌堆放入一张临时复制",
     "EXTENDED_DESCRIPTION": [
       "选择一张牌变化为清平"
     ]
@@ -109,7 +109,7 @@
   },
   "${ModID}:ShiDuanMengChang": {
     "NAME": "诗短梦长",
-    "DESCRIPTION": "本回合受伤减半 NL 本回合损失生命时，其 1/!M!转换为 ${ModID}:缠绕"
+    "DESCRIPTION": "受伤减半 NL 损失生命时，获得双倍 ${ModID}:缠绕"
   },
   "${ModID}:TianZhui": {
     "NAME": "天坠",

@@ -4,6 +4,7 @@ import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.*;
@@ -22,6 +23,7 @@ import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
+import lingmod.cards.AbstractVerseCard;
 import lingmod.cards.attack.ChongJinJiuCard;
 import lingmod.cards.attack.GuoJiaXianMei;
 import lingmod.cards.attack.Strike;
@@ -60,6 +62,8 @@ public class Ling extends CustomPlayer {
     };
     private static final float[] LAYER_SPEED = new float[] { -40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F,
             -5.0F, 0.0F };
+
+    protected AbstractVerseCard chosenVerse;
 
     public Ling() {
         this(Ling.characterStrings.NAMES[1], Ling.Enums.PLAYER_LING);
@@ -197,6 +201,15 @@ public class Ling extends CustomPlayer {
         CardCrawlGame.sound.playA("UNLOCK_PING", MathUtils.random(-0.2F, 0.2F));
         CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT,
                 false);
+    }
+
+    @Override
+    public void render(SpriteBatch sb) {
+        super.render(sb);
+        // 在角色头上额外渲染一个 诗词赋
+        if (chosenVerse != null) {
+            chosenVerse.renderOnPlayer();
+        }
     }
 
     @Override

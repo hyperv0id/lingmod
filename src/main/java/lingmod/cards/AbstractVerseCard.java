@@ -41,7 +41,7 @@ public abstract class AbstractVerseCard extends AbstractEasyCard {
         TypeOverridePatch.TypeOverrideField.typeOverride.set(this, TYPE); // 更改卡图上的类型描述
         this.cantUseMessage = acs.EXTENDED_DESCRIPTION[0];
         toneManager = new ToneManager(verseStrings);
-        cost = toneManager.remainToken();
+        setCostForTurn(toneManager.remainToken());
     }
 
     @Override
@@ -82,9 +82,7 @@ public abstract class AbstractVerseCard extends AbstractEasyCard {
         } else if (toneManager.peekTone() == Tone.BOTH) {
             toneManager.next();
         }
-
-        this.cost = toneManager.remainToken();
-
+        setCostForTurn(toneManager.remainToken());
     }
 
     @Override
@@ -95,6 +93,13 @@ public abstract class AbstractVerseCard extends AbstractEasyCard {
     @Override
     public void renderInLibrary(SpriteBatch sb) {
         super.renderInLibrary(sb);
+    }
+
+    /**
+     * 在玩家头上可视化诗词赋曲
+     */
+    public void renderOnPlayer() {
+
     }
 
     protected enum Tone {

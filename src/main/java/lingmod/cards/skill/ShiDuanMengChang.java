@@ -19,7 +19,7 @@ public class ShiDuanMengChang extends AbstractEasyCard {
     public static final String ID = makeID(ShiDuanMengChang.class.getSimpleName());
 
     public ShiDuanMengChang() {
-        super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
+        super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
         CardModifierManager.addModifier(this, new ExhaustMod());
     }
 
