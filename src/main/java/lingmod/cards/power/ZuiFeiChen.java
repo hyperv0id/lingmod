@@ -1,18 +1,21 @@
 package lingmod.cards.power;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
+import lingmod.interfaces.Credit;
 import lingmod.powers.ZuiFeiChenPower;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 每消耗牌，获得1酒
  */
 @CardConfig(magic = 1)
+@Credit(link = "https://www.pixiv.net/artworks/104592426", username = "Lemtun", platform = "pixiv")
 public class ZuiFeiChen extends AbstractEasyCard {
 
     public static final String NAME = ZuiFeiChen.class.getSimpleName();

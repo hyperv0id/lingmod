@@ -15,8 +15,10 @@ import com.megacrit.cardcrawl.vfx.combat.WeightyImpactEffect;
 
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
+import lingmod.interfaces.Credit;
 
 @CardConfig(damage = 10)
+@Credit(username = "柞木不朽", link = "https://www.bilibili.com/video/BV1xa4y1C7vV", platform = "bilibili")
 public class SurprisingThunder extends AbstractEasyCard {
     public static final String ID = makeID(SurprisingThunder.class.getSimpleName());
 

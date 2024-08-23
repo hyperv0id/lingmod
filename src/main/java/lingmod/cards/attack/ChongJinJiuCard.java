@@ -1,21 +1,22 @@
 package lingmod.cards.attack;
 
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DuplicationPower;
+
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.MirrorMod;
 import lingmod.interfaces.Credit;
 
-import static lingmod.ModCore.makeID;
-
 /**
  * 重进酒：打出卡牌时消耗，并替换为其复制
  */
-@Credit(username = "明日方舟", platform = "鹰角网络", link = "https://prts.wiki/w/%E4%BB%A4")
+@Credit(username = "明日方舟", platform = "鹰角网络", link = "https://prts.wiki/w/令")
 public class ChongJinJiuCard extends AbstractEasyCard {
 
     public final static String ID = makeID(ChongJinJiuCard.class.getSimpleName());

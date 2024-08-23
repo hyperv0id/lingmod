@@ -1,17 +1,20 @@
 package lingmod.cards.skill;
 
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import lingmod.actions.SwapCostAction;
 import lingmod.cards.AbstractEasyCard;
-
-import static lingmod.ModCore.makeID;
+import lingmod.interfaces.Credit;
 
 /**
  * 换盏：交换两张牌的费用，如果是酒，那么先将其费用变为0
  */
+@Credit(username = "枯荷倚梅cc", platform = "lofter", link = "https://anluochen955.lofter.com/post/1f2a08fc_2baf8eeb3")
 public class SwapCup extends AbstractEasyCard {
     public final static String ID = makeID(SwapCup.class.getSimpleName());
 

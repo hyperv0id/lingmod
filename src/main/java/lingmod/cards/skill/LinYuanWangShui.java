@@ -1,21 +1,24 @@
 package lingmod.cards.skill;
 
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.EtheralThisTurnMod;
 import lingmod.interfaces.CardConfig;
-
-import static lingmod.ModCore.makeID;
+import lingmod.interfaces.Credit;
 
 /**
  * 临渊忘水：抽3/4张，回合结束消耗所有
  */
 @CardConfig(magic = 3)
+@Credit(platform = Credit.LOFTER, username = "四非", link="https://sifeizui.lofter.com/post/20401f6e_2b976c441")
 public class LinYuanWangShui extends AbstractEasyCard {
     public static final String ID = makeID(LinYuanWangShui.class.getSimpleName());
 

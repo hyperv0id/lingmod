@@ -1,8 +1,12 @@
 package lingmod.cards.attack;
 
 
-import basemod.cardmods.EtherealMod;
-import basemod.helpers.CardModifierManager;
+import static lingmod.ModCore.makeID;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
@@ -10,22 +14,19 @@ import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+
+import basemod.cardmods.EtherealMod;
+import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 宁作吾：从右往左消耗卡牌来去除debuff，每消耗一张抽一张牌，获得 [E]
  * 能力数量参与计数
  */
 @CardConfig(magic = 1)
-@Credit(username = "明日方舟", platform = "鹰角网络", link = "https://prts.wiki/w/%E4%BB%A4")
+@Credit(username = "明日方舟", platform = "鹰角网络", link = "https://prts.wiki/w/令")
 public class NingZuoWuCard extends AbstractEasyCard {
 
     public static final String ID = makeID(NingZuoWuCard.class.getSimpleName());

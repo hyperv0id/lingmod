@@ -1,5 +1,7 @@
 package lingmod.powers;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -7,11 +9,13 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-import static lingmod.ModCore.makeID;
+import lingmod.interfaces.Credit;
 
 /**
  * 获得格挡时，多获得amount点，然后amount++
  */
+
+@Credit(username = "枯荷倚梅cc", platform = "lofter", link = "https://anluochen955.lofter.com/post/1f2a08fc_2baf8eeb3")
 public class HuSongPower extends AbstractEasyPower {
     public static final String CLASS_NAME = HuSongPower.class.getSimpleName();
     public static final String POWER_ID = makeID(CLASS_NAME);

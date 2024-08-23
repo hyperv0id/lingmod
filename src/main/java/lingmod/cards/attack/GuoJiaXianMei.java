@@ -1,13 +1,16 @@
 package lingmod.cards.attack;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import lingmod.cards.AbstractEasyCard;
-import lingmod.interfaces.CardConfig;
-
 import static lingmod.ModCore.makeID;
 
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import lingmod.cards.AbstractEasyCard;
+import lingmod.interfaces.CardConfig;
+import lingmod.interfaces.Credit;
+
 @CardConfig(damage = 15, block = 15)
+@Credit(username = "八雲奥", platform = "lofter", link = "https://yakumoau.lofter.com/post/320b60e2_2b7e5df27")
 public class GuoJiaXianMei extends AbstractEasyCard {
     public final static String ID = makeID(GuoJiaXianMei.class.getSimpleName());
 

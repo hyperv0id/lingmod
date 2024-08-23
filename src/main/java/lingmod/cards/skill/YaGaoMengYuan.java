@@ -1,26 +1,29 @@
 package lingmod.cards.skill;
 
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-import lingmod.actions.EasyModalChoiceAction;
-import lingmod.cards.AbstractEasyCard;
-import lingmod.character.Ling;
+import static lingmod.ModCore.makeID;
+import static lingmod.util.Wiz.isStanceNell;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static lingmod.ModCore.makeID;
-import static lingmod.util.Wiz.isStanceNell;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
+import lingmod.actions.EasyModalChoiceAction;
+import lingmod.cards.AbstractEasyCard;
+import lingmod.character.Ling;
+import lingmod.interfaces.Credit;
 
 /**
  * 能量翻倍，手牌cost++，梦中：只处理技能牌
  */
+@Credit(username = "困困困困困困困", platform = Credit.LOFTER, link = "https://whoa979142.lofter.com/post/74c6f7af_2bbc3f144")
 public class YaGaoMengYuan extends AbstractEasyCard {
     public final static String ID = makeID(YaGaoMengYuan.class.getSimpleName());
 

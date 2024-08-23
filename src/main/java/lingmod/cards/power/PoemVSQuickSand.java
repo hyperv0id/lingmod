@@ -1,15 +1,18 @@
 package lingmod.cards.power;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import lingmod.cards.AbstractEasyCard;
 
-import static lingmod.ModCore.makeID;
+import lingmod.cards.AbstractEasyCard;
+import lingmod.interfaces.Credit;
 
 /**
  * 诗对狂沙：每次受到伤害时，获得 1/2 诗兴
  */
+@Credit(username = "WHO808", platform = Credit.PIXIV, link = "https://www.pixiv.net/artworks/111160788")
 public class PoemVSQuickSand extends AbstractEasyCard {
     public final static String ID = makeID(PoemVSQuickSand.class.getSimpleName());
 

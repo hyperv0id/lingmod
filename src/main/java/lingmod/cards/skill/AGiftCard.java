@@ -18,9 +18,11 @@ import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.NellaFantasiaMod;
 import lingmod.interfaces.CardConfig;
+import lingmod.interfaces.Credit;
 import lingmod.util.CustomTags;
 
 @CardConfig(magic = 3, magic2 = 2)
+@Credit(platform = Credit.PIXIV, username = "JANGO", link = "https://www.pixiv.net/artworks/105995954")
 public class AGiftCard extends AbstractEasyCard {
 
     public static final String ID = makeID(AGiftCard.class.getSimpleName());

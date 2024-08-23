@@ -1,17 +1,20 @@
 package lingmod.cards.skill;
 
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import lingmod.actions.GuLeiXinLiuAction;
 import lingmod.cards.AbstractEasyCard;
-
-import static lingmod.ModCore.makeID;
+import lingmod.interfaces.Credit;
 
 /**
  * 发掘一张牌，然后其不再消耗
  */
+@Credit(username = "-莫熠榆-", platform = Credit.BILI, link = "https://www.bilibili.com/video/BV1nw4m1Q7wp")
 public class GuLeiXinLiu extends AbstractEasyCard {
     public final static String ID = makeID(GuLeiXinLiu.class.getSimpleName());
 

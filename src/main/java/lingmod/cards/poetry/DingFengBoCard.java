@@ -1,5 +1,7 @@
 package lingmod.cards.poetry;
 
+import static lingmod.ModCore.makeID;
+
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
@@ -8,15 +10,16 @@ import com.megacrit.cardcrawl.actions.watcher.SkipEnemiesTurnAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.WhirlwindEffect;
+
 import lingmod.cards.AbstractPoetryCard;
+import lingmod.interfaces.Credit;
 import lingmod.util.PoetryLoader;
 import lingmod.util.card.ToneManager;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 定风波：每完成半阙诗后，结束你的回合，获得额外回合
  */
+@Credit(username = "明日方舟", platform = "bilibili", link = "https://www.bilibili.com/video/BV1MR4y1a7KX")
 public class DingFengBoCard extends AbstractPoetryCard {
     public static final String ID = makeID(DingFengBoCard.class.getSimpleName());
 

@@ -1,22 +1,23 @@
 package lingmod.cards.attack;
 
-import basemod.cardmods.RetainMod;
-import basemod.helpers.CardModifierManager;
+import static java.lang.Math.max;
+import static lingmod.ModCore.makeID;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import basemod.cardmods.RetainMod;
+import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.character.Ling;
 import lingmod.interfaces.CardConfig;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static java.lang.Math.max;
-import static lingmod.ModCore.makeID;
 
 /**
  * 1费打9
@@ -35,7 +36,7 @@ public class Thunderer extends AbstractEasyCard {
     }
 
     public Thunderer(final String cardID, final int cost, final CardType type, final CardRarity rarity,
-                     final CardTarget target) {
+            final CardTarget target) {
         super(cardID, cost, type, rarity, target, Ling.Enums.LING_COLOR);
         CardModifierManager.addModifier(this, new RetainMod());
     }
@@ -75,8 +76,8 @@ public class Thunderer extends AbstractEasyCard {
         }
         addToBotAbstract(() -> {
             // 弦惊 合成
-            List<AbstractCard> cards =
-                    AbstractDungeon.player.hand.group.stream().filter(card -> card != this && card.cardID.equals(Thunderer.ID)).collect(Collectors.toList());
+            List<AbstractCard> cards = AbstractDungeon.player.hand.group.stream()
+                    .filter(card -> card != this && card.cardID.equals(Thunderer.ID)).collect(Collectors.toList());
             int total = cards.stream().mapToInt(c -> max(1, c.costForTurn)).sum();
             this.upgradeMagicNumber(total);
             cards.forEach(card -> addToBot(new ExhaustSpecificCardAction(card, AbstractDungeon.player.hand)));

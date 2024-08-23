@@ -13,10 +13,12 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import basemod.BaseMod;
 import lingmod.actions.CardTimeTravelAction;
 import lingmod.cards.AbstractEasyCard;
+import lingmod.interfaces.Credit;
 
 /**
  * 寻日峰：消耗任意张，抽等量。再次打出：把消耗的放入手牌
  */
+@Credit(platform = Credit.PIXIV, username = "超级甜食", link = "https://www.pixiv.net/artworks/113725572")
 public class XunRiFeng extends AbstractEasyCard {
     public static final String NAME = XunRiFeng.class.getSimpleName();
     public static final String ID = makeID(NAME);

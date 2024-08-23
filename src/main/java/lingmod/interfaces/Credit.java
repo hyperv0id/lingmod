@@ -14,6 +14,11 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface Credit {
+    static final String WEIBO = "微博";
+    static final String BILI = "bilibili";
+    static final String LOFTER = "lofter";
+    static final String PIXIV = "pixiv";
+    
     String platform() default "";
 
     String username() default "";

@@ -1,8 +1,9 @@
 package lingmod.cards.skill;
 
-import basemod.BaseMod;
-import basemod.ReflectionHacks;
-import basemod.interfaces.OnPlayerDamagedSubscriber;
+import static lingmod.ModCore.makeID;
+
+import java.util.HashMap;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -10,13 +11,14 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
+
+import basemod.BaseMod;
+import basemod.ReflectionHacks;
+import basemod.interfaces.OnPlayerDamagedSubscriber;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
+import lingmod.interfaces.Credit;
 import lingmod.util.MonsterHelper;
-
-import java.util.HashMap;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * TODO: 无法修改多段
@@ -24,6 +26,7 @@ import static lingmod.ModCore.makeID;
  * 否则给予虚弱
  */
 @CardConfig(magic = 30, magic2 = 1, wineAmount = 2)
+@Credit(username = "枯荷倚梅cc", platform = "lofter", link = "https://anluochen955.lofter.com/post/1f2a08fc_2baf8eeb3")
 public class HuSongWineCard extends AbstractEasyCard implements OnPlayerDamagedSubscriber {
     public static final String ID = makeID(HuSongWineCard.class.getSimpleName());
     public static HashMap<AbstractCreature, Integer> timesLost = new HashMap<>(); // 敌人失去了多少攻击计数

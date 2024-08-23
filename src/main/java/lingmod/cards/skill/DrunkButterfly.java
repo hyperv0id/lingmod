@@ -13,10 +13,12 @@ import com.megacrit.cardcrawl.vfx.combat.GrandFinalEffect;
 import lingmod.actions.DrunkAction;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
+import lingmod.interfaces.Credit;
 
 /**
  * 醉蝶：斩杀时，无视路线
  */
+@Credit(username = "日昜", platform = Credit.LOFTER, link = "https://xinjinjumin6725568.lofter.com/post/77d3dc9a_2bb5d4c8e")
 @CardConfig(damage = 10)
 public class DrunkButterfly extends AbstractEasyCard {
 

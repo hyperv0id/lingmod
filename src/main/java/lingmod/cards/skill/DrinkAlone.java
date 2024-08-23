@@ -1,19 +1,22 @@
 package lingmod.cards.skill;
 
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
+import static lingmod.ModCore.makeID;
+
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import lingmod.actions.ExhaustAllAction;
 import lingmod.cards.AbstractEasyCard;
-
-import static lingmod.ModCore.makeID;
+import lingmod.interfaces.Credit;
 
 /**
  * 独酌：选择一张牌，变化所有手牌为这张牌
  */
+@Credit(username = "my", platform = "lofter", link = "https://my069672.lofter.com/post/3098e10d_2b466010f")
 public class DrinkAlone extends AbstractEasyCard {
     public final static String ID = makeID(DrinkAlone.class.getSimpleName());
 

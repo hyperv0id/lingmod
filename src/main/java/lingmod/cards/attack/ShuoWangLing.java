@@ -1,19 +1,22 @@
 package lingmod.cards.attack;
 
-import basemod.BaseMod;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import basemod.BaseMod;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
-
-import static lingmod.ModCore.makeID;
+import lingmod.interfaces.Credit;
 
 /**
  * 朔望：卡牌唯一/满：打50
  */
+@Credit(link = "https://chunqiudameng229.lofter.com/post/1fad26eb_2bb4cf926", username = "-有点小桂-", platform = "lofter")
 @CardConfig(damage = 1, damage2 = 19, block = 3, block2 = 3, magic = 12, magic2 = 2)
 public class ShuoWangLing extends AbstractEasyCard {
     public final static String ID = makeID(ShuoWangLing.class.getSimpleName());

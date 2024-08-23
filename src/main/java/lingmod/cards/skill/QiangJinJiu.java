@@ -1,20 +1,23 @@
 package lingmod.cards.skill;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster.Intent;
+
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
+import lingmod.interfaces.Credit;
 import lingmod.powers.WinePower;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 加速敌人的意图，如果有人不再攻击，那么获得 !M! 酒
  */
 @CardConfig(magic = 4)
+@Credit(username = "rab_langdon 兔尘", platform = Credit.PIXIV, link = "https://www.pixiv.net/artworks/97025503")
 public class QiangJinJiu extends AbstractEasyCard {
     public final static String ID = makeID(QiangJinJiu.class.getSimpleName());
 
