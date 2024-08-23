@@ -15,7 +15,6 @@ import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -23,6 +22,7 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.mod.NellaFantasiaMod;
+import lingmod.cards.mod.SummonMod;
 import lingmod.cards.mod.WineMod;
 import lingmod.character.Ling;
 import lingmod.interfaces.CardConfig;
@@ -31,7 +31,6 @@ import lingmod.interfaces.VoidSupplier;
 import lingmod.util.CardArtRoller;
 import lingmod.util.CustomTags;
 import lingmod.util.ModConfig;
-import lingmod.util.MonsterHelper;
 
 import java.util.function.Consumer;
 
@@ -75,7 +74,7 @@ public abstract class AbstractEasyCard extends CustomCard {
 
     public AbstractEasyCard(final String cardID, final int cost, final CardType type, final CardRarity rarity,
                             final CardTarget target, final CardColor color) {
-        super(cardID, "", getCardTextureString(cardID.replace(modID + ":", ""), type),
+        super(cardID, "", getCardTextureString(cardID.replace(modID + ":", ""), type, color),
                 cost, "", type, color, rarity, target);
         cardStrings = CardCrawlGame.languagePack.getCardStrings(this.cardID);
         rawDescription = cardStrings.DESCRIPTION;
@@ -102,6 +101,23 @@ public abstract class AbstractEasyCard extends CustomCard {
                 needsArtRefresh = true;
         }
         initializeCardValues();
+    }
+
+    public static String getCardTextureString(final String cardName, final AbstractCard.CardType cardType, CardColor color) {
+        if (color == Ling.Enums.LING_COLOR) return getCardTextureString(cardName, cardType);
+        String textureString = "";
+        String prefix = "cards/poetry/";
+        textureString = makeImagePath(prefix + cardName + ".png");
+        FileHandle h = Gdx.files.internal(textureString);
+        if (!h.exists()) {
+            // 尝试使用默认图片
+            textureString = makeImagePath(prefix + "default.png");
+            h = Gdx.files.internal(textureString);
+            if (!h.exists()) {
+                textureString = makeImagePath("ui/missing.png");
+            }
+        }
+        return textureString;
     }
 
     public static String getCardTextureString(final String cardName, final AbstractCard.CardType cardType) {
@@ -191,19 +207,10 @@ public abstract class AbstractEasyCard extends CustomCard {
             if (config.isSummon()) {
                 this.tags.add(CustomTags.SUMMON);
             }
+            if (config.isSummon()) {
+                CardModifierManager.addModifier(this, new SummonMod());
+            }
         }
-    }
-
-    @Override
-    public void triggerOnEndOfTurnForPlayingCard() {
-        super.triggerOnEndOfTurnForPlayingCard();
-        if (!tags.contains(CustomTags.SUMMON)) return;
-        AbstractMonster target = MonsterHelper.getMoNotSummon(true, AbstractDungeon.cardRandomRng);
-        calculateCardDamage(target);
-        this.dontTriggerOnUseCard = true;
-        CardQueueItem item = new CardQueueItem(this, true);
-        item.monster = target;
-        AbstractDungeon.actionManager.cardQueue.add(item);
     }
 
     @Override

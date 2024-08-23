@@ -24,7 +24,7 @@ public class Peripateticism extends AbstractEasyCard {
     public static final String ID = makeID(Peripateticism.class.getSimpleName());
 
     public Peripateticism() {
-        super(ID, 2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
+        super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
     }
 
     @Override

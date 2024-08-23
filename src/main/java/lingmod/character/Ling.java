@@ -297,7 +297,11 @@ public class Ling extends CustomPlayer {
         public static AbstractPlayer.PlayerClass PLAYER_LING;
         @SpireEnum(name = "LING_COLOR")
         public static AbstractCard.CardColor LING_COLOR;
+        @SpireEnum(name = "诗词")
+        public static AbstractCard.CardColor LING_POEM_COLOR;
         @SpireEnum(name = "LING_COLOR")
-        public static CardLibrary.LibraryType LIBRARY_COLOR;
+        public static CardLibrary.LibraryType LING_LIBRARY_COLOR;
+        @SpireEnum(name = "诗词")
+        public static CardLibrary.LibraryType LING_POEM_LIB_COLOR;
     }
 }

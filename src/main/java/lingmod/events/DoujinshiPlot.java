@@ -10,7 +10,9 @@ import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.potions.PotionSlot;
 import com.megacrit.cardcrawl.relics.AbstractRelic.RelicTier;
 import lingmod.cards.AbstractPoetryCard;
-import lingmod.cards.poetry.JingYeSiCard;
+import lingmod.cards.poetry.ChiBiFuCard;
+import lingmod.cards.poetry.DingFengBoCard;
+import lingmod.cards.poetry.JianKeCard;
 import lingmod.potions.ForgetPotion;
 import lingmod.util.PoetryReward;
 
@@ -66,20 +68,17 @@ public class DoujinshiPlot extends PhasedEvent {
         registerPhase(Phases.DOUJINSHI, new TextPhase(DESCRIPTIONS[2])
                 // [即兴吟诗] 获得 #g《赤壁赋》
                 .addOption(OPTIONS[3], (i) -> {
-                    battleReward = new JingYeSiCard();
-                    battleReward.name = "《赤壁赋》";
+                    battleReward = new ChiBiFuCard();
                     transitionKey(Phases.REPLY_1);
                 })
                 // [喝酒壮胆] 获得 #g《定风波》
                 .addOption(OPTIONS[4], (i) -> {
-                    battleReward = new JingYeSiCard();
-                    battleReward.name = "《定风波》";
+                    battleReward = new DingFengBoCard();
                     transitionKey(Phases.REPLY_2);
                 })
                 // [握紧佩剑] 获得 #g《剑客》
                 .addOption(OPTIONS[5], (i) -> {
-                    battleReward = new JingYeSiCard();
-                    battleReward.name = "《剑客》";
+                    battleReward = new JianKeCard();
                     transitionKey(Phases.REPLY_3);
                 }));
         // 进入战斗的对话

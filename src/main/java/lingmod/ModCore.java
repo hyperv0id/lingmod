@@ -97,6 +97,11 @@ public class ModCore implements
                 ATTACK_S_ART, SKILL_S_ART, POWER_S_ART, CARD_ENERGY_S,
                 ATTACK_ART_L, SKILL_ART_L, POWER_ART_L,
                 CARD_ENERGY_L, TEXT_ENERGY);
+        BaseMod.addColor(Ling.Enums.LING_POEM_COLOR, characterColor, characterColor, characterColor,
+                characterColor, characterColor, characterColor, characterColor,
+                ATTACK_S_ART, SKILL_S_ART, POWER_S_ART, CARD_ENERGY_S,
+                ATTACK_ART_L, SKILL_ART_L, POWER_ART_L,
+                CARD_ENERGY_L, TEXT_ENERGY);
 
         ModConfig.initModSettings();
     }

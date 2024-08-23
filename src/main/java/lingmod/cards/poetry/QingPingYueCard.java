@@ -15,7 +15,7 @@ public class QingPingYueCard extends AbstractPoetryCard {
     public static final String ID = makeID(QingPingYueCard.class.getSimpleName());
 
     public QingPingYueCard() {
-        super(ID, CardType.ATTACK, CardRarity.BASIC, CardTarget.SELF);
+        super(ID, CardType.SKILL, CardRarity.BASIC, CardTarget.SELF);
     }
 
     @Override

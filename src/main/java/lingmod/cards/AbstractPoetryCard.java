@@ -36,7 +36,7 @@ public abstract class AbstractPoetryCard extends AbstractEasyCard implements OnC
 
 
     public AbstractPoetryCard(String id, CardType cardType, CardRarity cardRarity, CardTarget target) {
-        super(id, -2, cardType, cardRarity, target);
+        super(id, -2, cardType, cardRarity, target, Ling.Enums.LING_POEM_COLOR);
 
         realType = cardType;
         tags.add(CustomTags.POEM);

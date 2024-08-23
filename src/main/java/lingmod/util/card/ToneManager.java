@@ -43,6 +43,16 @@ public class ToneManager {
         loadFont();
     }
 
+    public ToneManager(AbstractPoetryCard card, String[] content, String[] tone) {
+        PoetryStrings vs = card.poetryStrings;
+        this.owner = card;
+        tokens = Arrays.asList(content);
+        toneTokens = Arrays.asList(tone);
+        idx_1 = 0;
+        idx_2 = 0;
+        loadFont();
+    }
+
     static void loadFont() {
         if (font == null) {
             FileHandle fontFile = Gdx.files.internal(FONT_PATH);

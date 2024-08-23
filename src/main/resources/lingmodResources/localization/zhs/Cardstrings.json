@@ -64,10 +64,19 @@
   },
   "${ModID}:Tranquility": {
     "NAME": "“清平”",
-    "DESCRIPTION": "${ModID}:召唤 NL 造成 !D! 点伤害 NL 抽牌堆放入一张临时复制",
-    "EXTENDED_DESCRIPTION": [
-      "选择一张牌变化为清平"
-    ]
+    "DESCRIPTION": "造成 !D! 点伤害"
+  },
+  "${ModID}:Peripateticism": {
+    "NAME": "“逍遥”",
+    "DESCRIPTION": " 消耗 所有非攻击牌，每张给予 !M! 缠绕 NL 立刻结算缠绕效果"
+  },
+  "${ModID}:Thunderer": {
+    "NAME": "“弦惊”",
+    "DESCRIPTION": "造成 !D! 点伤害 !M! 次，消耗所有弦惊，攻击次数增加 NL 保留时手牌加入一张 弦惊 "
+  },
+  "${ModID}:Feature_2_Card": {
+    "NAME": "随付笺咏醉屠苏",
+    "DESCRIPTION": " 保留 。造成 !D! 点伤害 !M! 次。 NL 消耗卡牌时增加1攻击次数，并获得1诗意，攻击次数至多增加5次"
   },
   "${ModID}:GuoJiaXianMei": {
     "NAME": "裹甲衔枚",
@@ -115,21 +124,9 @@
     "NAME": "天坠",
     "DESCRIPTION": "造成 !D! 点伤害，记录突破格挡的伤害，获得等量 ${ModID}:伤害增加"
   },
-  "${ModID}:Peripateticism": {
-    "NAME": "“逍遥”",
-    "DESCRIPTION": " 消耗 所有非攻击牌，每张给予 !M! 缠绕 NL 立刻结算缠绕效果"
-  },
-  "${ModID}:Feature_2_Card": {
-    "NAME": "随付笺咏醉屠苏",
-    "DESCRIPTION": " 保留 。造成 !D! 点伤害 !M! 次。 NL 消耗卡牌时增加1攻击次数，并获得1诗意，攻击次数至多增加5次"
-  },
   "${ModID}:AltGuangHui": {
     "NAME": "光辉ALT",
     "DESCRIPTION": "造成获得过的 ${ModID}:诗兴 总量的伤害 NL (造成 !D! 点伤害)"
-  },
-  "${ModID}:Thunderer": {
-    "NAME": "“弦惊”",
-    "DESCRIPTION": "造成 !D! 点伤害 !M! 次，消耗所有弦惊，攻击次数增加 NL 保留时手牌加入一张 弦惊 "
   },
   "${ModID}:Thunderer_SummonCard": {
     "NAME": "弦惊",

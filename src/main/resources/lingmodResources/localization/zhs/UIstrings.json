@@ -9,6 +9,11 @@
       "选择牌交易"
     ]
   },
+  "${ModID}:SummonMod": {
+    "TEXT": [
+      " lingmod:召唤 。 NL %s"
+    ]
+  },
   "${ModID}:NellaFantasiaMod": {
     "TEXT": [
       " lingmod:梦 。 NL %s"
