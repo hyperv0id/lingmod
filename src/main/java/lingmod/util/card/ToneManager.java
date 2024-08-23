@@ -1,5 +1,13 @@
 package lingmod.util.card;
 
+import static lingmod.ModCore.logger;
+import static lingmod.ModCore.makePath;
+import static lingmod.util.Wiz.addToBotAbstract;
+
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.List;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
@@ -10,15 +18,9 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
+
 import lingmod.cards.AbstractPoetryCard;
 import lingmod.cards.PoetryStrings;
-
-import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.List;
-
-import static lingmod.ModCore.logger;
-import static lingmod.ModCore.makePath;
 
 /**
  * 管理诗歌的韵律
@@ -44,7 +46,6 @@ public class ToneManager {
     }
 
     public ToneManager(AbstractPoetryCard card, String[] content, String[] tone) {
-        PoetryStrings vs = card.poetryStrings;
         this.owner = card;
         tokens = Arrays.asList(content);
         toneTokens = Arrays.asList(tone);
@@ -58,7 +59,8 @@ public class ToneManager {
             FileHandle fontFile = Gdx.files.internal(FONT_PATH);
             FreeTypeFontGenerator g = new FreeTypeFontGenerator(fontFile);
             try {
-                Method f = FontHelper.class.getDeclaredMethod("prepFont", FreeTypeFontGenerator.class, Float.TYPE, Boolean.TYPE);
+                Method f = FontHelper.class.getDeclaredMethod("prepFont", FreeTypeFontGenerator.class, Float.TYPE,
+                        Boolean.TYPE);
                 f.setAccessible(true);
                 font = (BitmapFont) f.invoke(FontHelper.class.getName(), g, FONT_SIZE, true);
             } catch (Exception e) {
@@ -76,7 +78,6 @@ public class ToneManager {
 
     public String toSmartText() {
         if (tipStrCache.isEmpty()) {
-            String testText = tokens.get(idx_1);
             StringBuilder sb = new StringBuilder();
             int now = 0;
             for (; now < idx_2; now++) {
@@ -137,9 +138,11 @@ public class ToneManager {
             idx_1++;
             if (idx_1 >= tokens.size()) {
                 idx_1 = 0;
-                owner.onFinishFull();
+                // 必须延迟添加
+                addToBotAbstract(owner::onFinishFull);
             } else {
-                owner.onFinishOnce();
+                // 必须延迟添加
+                addToBotAbstract(owner::onFinishOnce);
             }
         }
         tipStrCache = "";

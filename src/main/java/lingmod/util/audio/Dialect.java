@@ -5,4 +5,5 @@ public enum Dialect {
     CN_TOPOLECT,
     ENGLISH,
     JAPANESE,
+    NONE,
 }

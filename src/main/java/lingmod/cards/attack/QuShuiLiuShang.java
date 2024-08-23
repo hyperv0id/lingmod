@@ -24,10 +24,10 @@ public class QuShuiLiuShang extends AbstractEasyCard {
     }
 
     @Override
-    public void calculateCardDamage(AbstractMonster mo) {
+    public void applyPowers() {
+        super.applyPowers();
         CardGroup cg = PlayerFieldsPatch.poetryCardGroup.get(Wiz.adp());
-        this.magicNumber = cg.size();
-        super.calculateCardDamage(mo);
+        this.baseMagicNumber = cg.size();
     }
 
     @Override

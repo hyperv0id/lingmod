@@ -1,11 +1,13 @@
 package lingmod.util;
 
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import lingmod.util.audio.ProAudio;
-import lingmod.util.audio.Voices;
-
 import static lingmod.ModCore.logger;
 import static lingmod.util.ModConfig.dialect;
+
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+
+import lingmod.util.audio.Dialect;
+import lingmod.util.audio.ProAudio;
+import lingmod.util.audio.Voices;
 
 /**
  * 用于管理音效
@@ -21,6 +23,10 @@ public class VoiceMaster {
     private static long lastTime = -1;
 
     public static void playSound(ProAudio p) {
+        if(p.dialect == Dialect.NONE) {
+            logger.info("不使用语音");
+            return;
+        }
         long now = System.currentTimeMillis();
         if (now - lastTime < VOICE_GAP) return;
         logger.info("Playing Audio: " + p);

@@ -1,7 +1,14 @@
 package lingmod.cards;
 
-import basemod.abstracts.CustomCard;
-import basemod.helpers.CardModifierManager;
+import static lingmod.ModCore.makeImagePath;
+import static lingmod.ModCore.modID;
+import static lingmod.util.Wiz.actionify;
+import static lingmod.util.Wiz.atb;
+import static lingmod.util.Wiz.att;
+import static lingmod.util.Wiz.copyAnnotatedFields;
+
+import java.util.function.Consumer;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
@@ -21,6 +28,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import basemod.abstracts.CustomCard;
+import basemod.helpers.CardModifierManager;
 import lingmod.cards.mod.NellaFantasiaMod;
 import lingmod.cards.mod.SummonMod;
 import lingmod.cards.mod.WineMod;
@@ -31,12 +41,6 @@ import lingmod.interfaces.VoidSupplier;
 import lingmod.util.CardArtRoller;
 import lingmod.util.CustomTags;
 import lingmod.util.ModConfig;
-
-import java.util.function.Consumer;
-
-import static lingmod.ModCore.makeImagePath;
-import static lingmod.ModCore.modID;
-import static lingmod.util.Wiz.*;
 
 /**
  * 卡牌大小：500*380的高分辨率，250*190的低分辨率
@@ -206,8 +210,6 @@ public abstract class AbstractEasyCard extends CustomCard {
             }
             if (config.isSummon()) {
                 this.tags.add(CustomTags.SUMMON);
-            }
-            if (config.isSummon()) {
                 CardModifierManager.addModifier(this, new SummonMod());
             }
         }

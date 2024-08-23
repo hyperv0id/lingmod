@@ -1,7 +1,7 @@
 package lingmod.cards;
 
-import basemod.BaseMod;
-import basemod.interfaces.OnCardUseSubscriber;
+import static lingmod.ModCore.makeID;
+
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -11,6 +11,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import basemod.BaseMod;
+import basemod.interfaces.OnCardUseSubscriber;
 import lingmod.ModCore;
 import lingmod.character.Ling;
 import lingmod.patch.TypeOverridePatch;
@@ -19,8 +22,6 @@ import lingmod.util.PoetryLoader;
 import lingmod.util.VoiceMaster;
 import lingmod.util.Wiz;
 import lingmod.util.card.ToneManager;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 诗词赋曲：规定了整场战斗的格调，按照格调打出额外效果

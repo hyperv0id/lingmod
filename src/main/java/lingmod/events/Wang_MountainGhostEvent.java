@@ -1,16 +1,19 @@
 package lingmod.events;
 
-import basemod.abstracts.events.PhasedEvent;
-import basemod.abstracts.events.phases.CombatPhase;
-import basemod.abstracts.events.phases.TextPhase;
+import static lingmod.ModCore.makeID;
+import static lingmod.ModCore.makeImagePath;
+
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+
+import basemod.abstracts.events.PhasedEvent;
+import basemod.abstracts.events.phases.CombatPhase;
+import basemod.abstracts.events.phases.TextPhase;
+import lingmod.ModCore.ResourceType;
 import lingmod.interfaces.CampfireSleepEvent;
 import lingmod.monsters.Wang_MountainGhost;
 import lingmod.relics.Beans_LingRelic;
-
-import static lingmod.ModCore.makeID;
 
 @CampfireSleepEvent
 public class Wang_MountainGhostEvent extends PhasedEvent {
@@ -20,9 +23,10 @@ public class Wang_MountainGhostEvent extends PhasedEvent {
     private static final String[] OPTIONS = eventStrings.OPTIONS;
     public static String NAME = eventStrings.NAME;
     protected AbstractRelic relic = new Beans_LingRelic();
+    static final String IMG_PATH = makeImagePath("Wang_MountainGhostEvent.png", ResourceType.EVENTS);
 
     public Wang_MountainGhostEvent() {
-        super(ID, eventStrings.NAME, "");
+        super(ID, eventStrings.NAME, IMG_PATH);
         registerPhase("ENTER", new TextPhase(DESCRIPTIONS[0])
                 .addOption(OPTIONS[1], (i) -> transitionKey("INSIST"))
                 .addOption(OPTIONS[0], (i) -> transitionKey("GIVE_UP")));

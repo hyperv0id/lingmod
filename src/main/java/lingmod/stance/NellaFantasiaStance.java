@@ -1,7 +1,7 @@
 package lingmod.stance;
 
-import basemod.BaseMod;
-import basemod.interfaces.OnPlayerTurnStartPostDrawSubscriber;
+import static lingmod.ModCore.makeID;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
@@ -22,7 +22,8 @@ import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
 import com.megacrit.cardcrawl.vfx.stance.CalmParticleEffect;
 import com.megacrit.cardcrawl.vfx.stance.StanceAuraEffect;
 
-import static lingmod.ModCore.makeID;
+import basemod.BaseMod;
+import basemod.interfaces.OnPlayerTurnStartPostDrawSubscriber;
 
 /**
  * 幻梦/梦境：在出牌时，你和敌人造成的伤害都会减少1
@@ -102,7 +103,7 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerTurnS
     }
 
     public void onExitStance() {
-        AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(2));
+        AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
         BaseMod.unsubscribeLater(this);
         AbstractPlayer p = AbstractDungeon.player;
         // EOT
