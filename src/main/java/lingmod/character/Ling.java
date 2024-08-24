@@ -28,6 +28,7 @@ import lingmod.cards.skill.Defend;
 import lingmod.relics.LightRelic;
 import lingmod.ui.PoetryOrb;
 import lingmod.util.ModConfig;
+import lingmod.util.SkinInfo;
 import lingmod.util.TODO;
 import lingmod.util.VoiceMaster;
 
@@ -76,17 +77,23 @@ public class Ling extends CustomPlayer {
 
         dialogX = (drawX + 0.0F * Settings.scale);
         dialogY = (drawY + 240.0F * Settings.scale);
+        loadSkin();
+    }
+
+    public void loadSkin() {
+        ModConfig.loadSkinInfo();
         // String charID = "char_2015_dusk";
-        if (ModConfig.useStaticCharImg) {
-            String charID = "skin_nian";
-            String imgpath = makeCharacterPath("ling/static/" + charID + ".png");
-            img = ImageMaster.loadImage(imgpath);
+        if (ModConfig.useStaticCharImg || ModConfig.skinInfo == SkinInfo.ZUI_SHAN_HE) {
+            String prefix = makeCharacterPath("ling/static/");
+            String path = prefix + ModConfig.skinInfo.toString().toLowerCase();
+            img = ImageMaster.loadImage(path + ".png");
             hb_w = img.getWidth();
             hb_h = img.getHeight();
         } else {
-            String charID = "char_2023_ling_nian_9";
-            String atlasUrl = makeCharacterPath("ling/" + charID + ".atlas");
-            String skeletonUrl = makeCharacterPath("ling/" + charID + ".json");
+            String prefix = makeCharacterPath("ling/char_2023_ling_");
+            String path = prefix + ModConfig.skinInfo.toString().toLowerCase();
+            String atlasUrl = path + ".atlas";
+            String skeletonUrl = path + ".json";
             super.loadAnimation(atlasUrl, skeletonUrl, 1f);
             // logger.info("Created character " + name);
             AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
