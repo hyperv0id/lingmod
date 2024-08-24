@@ -75,6 +75,11 @@
       "素材来源展示"
     ]
   },
+  "${ModID}:CONF.STATIC_CHAR": {
+    "TEXT": [
+      "静态图"
+    ]
+  },
   "${ModID}:PoetryOrb": {
     "TEXT": [
       "诗歌创作栏",

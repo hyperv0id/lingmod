@@ -16,10 +16,7 @@ import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.cutscenes.CutscenePanel;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.CardLibrary;
-import com.megacrit.cardcrawl.helpers.FontHelper;
-import com.megacrit.cardcrawl.helpers.ModHelper;
-import com.megacrit.cardcrawl.helpers.ScreenShake;
+import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import lingmod.cards.AbstractPoetryCard;
@@ -30,6 +27,7 @@ import lingmod.cards.attack.Tranquility;
 import lingmod.cards.skill.Defend;
 import lingmod.relics.LightRelic;
 import lingmod.ui.PoetryOrb;
+import lingmod.util.ModConfig;
 import lingmod.util.TODO;
 import lingmod.util.VoiceMaster;
 
@@ -79,14 +77,22 @@ public class Ling extends CustomPlayer {
         dialogX = (drawX + 0.0F * Settings.scale);
         dialogY = (drawY + 240.0F * Settings.scale);
         // String charID = "char_2015_dusk";
-        String charID = "char_2023_ling_nian_9";
-        String atlasUrl = makeCharacterPath("ling/" + charID + ".atlas");
-        String skeletonUrl = makeCharacterPath("ling/" + charID + ".json");
-        super.loadAnimation(atlasUrl, skeletonUrl, 1f);
-        // logger.info("Created character " + name);
-        AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
-        e.setTime(e.getEndTime() * MathUtils.random());
-        e.setTimeScale(0.8F);
+        if (ModConfig.useStaticCharImg) {
+            String charID = "skin_nian";
+            String imgpath = makeCharacterPath("ling/static/" + charID + ".png");
+            img = ImageMaster.loadImage(imgpath);
+            hb_w = img.getWidth();
+            hb_h = img.getHeight();
+        } else {
+            String charID = "char_2023_ling_nian_9";
+            String atlasUrl = makeCharacterPath("ling/" + charID + ".atlas");
+            String skeletonUrl = makeCharacterPath("ling/" + charID + ".json");
+            super.loadAnimation(atlasUrl, skeletonUrl, 1f);
+            // logger.info("Created character " + name);
+            AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
+            e.setTime(e.getEndTime() * MathUtils.random());
+            e.setTimeScale(0.8F);
+        }
     }
 
     @Override
