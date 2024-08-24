@@ -1,19 +1,18 @@
 package lingmod.util;
 
-import static lingmod.ModCore.logger;
-import static lingmod.util.ModConfig.dialect;
-
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-
 import lingmod.util.audio.Dialect;
 import lingmod.util.audio.ProAudio;
 import lingmod.util.audio.Voices;
+
+import static lingmod.ModCore.logger;
+import static lingmod.util.ModConfig.dialect;
 
 /**
  * 用于管理音效
  */
 public class VoiceMaster {
-    private static final long VOICE_GAP = 10000;
+    private static final long VOICE_GAP = 5000;
     private static final Voices[] COMBAT_VOICES = new Voices[]{
             Voices.VOICE_COMBAT_1,
             Voices.VOICE_COMBAT_2,

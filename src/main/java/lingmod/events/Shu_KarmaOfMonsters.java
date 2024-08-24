@@ -25,7 +25,7 @@ import static lingmod.ModCore.makeImagePath;
 public class Shu_KarmaOfMonsters extends PhasedEvent {
 
     public static final String ID = ModCore.makeID(Shu_KarmaOfMonsters.class.getSimpleName());
-    public static final String IMG_PATH = ModCore.makeImagePath("events/Sui12Event.png");
+    public static final String IMG_PATH = makeImagePath("Shu_KarmaOfMonsters.png", ResourceType.EVENTS);
     private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(ID);
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
@@ -40,7 +40,7 @@ public class Shu_KarmaOfMonsters extends PhasedEvent {
     public static final int ELITE_AMT = 3;
 
     public Shu_KarmaOfMonsters() {
-        super(ID, eventStrings.NAME, makeImagePath("Shu_KarmaOfMonsters.png", ResourceType.EVENTS));
+        super(ID, eventStrings.NAME, IMG_PATH);
         noCardsInRewards = true; // 没有卡牌奖励
         OPTIONS[3] = String.format(OPTIONS[3], SMALL_AMT);
         OPTIONS[4] = String.format(OPTIONS[4], ELITE_AMT);
