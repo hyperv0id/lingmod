@@ -433,4 +433,61 @@ public class Wiz {
         return !(p instanceof InvisiblePower) && p.type == PowerType.DEBUFF;
     }
 
+    public static List<Integer> redPacketRand(int totalAmount, int peopleCount) {
+        int MIN_AMOUNT = 0, MAX_AMOUNT = 3;
+
+        List<Integer> distribution = new ArrayList<>();
+        int remainingAmount = totalAmount;
+        int remainingPeople = peopleCount;
+
+        for (int i = 0; i < peopleCount - 1; i++) {
+            int maxPossible = Math.min(MAX_AMOUNT, remainingAmount);
+            int minPossible = Math.max(MIN_AMOUNT, remainingAmount - (remainingPeople - 1) * MAX_AMOUNT);
+
+            int amount = AbstractDungeon.cardRng.random(minPossible, maxPossible);
+            distribution.add(amount);
+
+            remainingAmount -= amount;
+            remainingPeople--;
+        }
+
+        distribution.add(remainingAmount);
+
+        return distribution;
+    }
+
+    public static void redistributeCardCosts(List<AbstractCard> cards) {
+        List<AbstractCard> eligibleCards = new ArrayList<>();
+        int total = 0;
+
+        // 单次遍历手牌，计算总成本并收集符合条件的卡牌
+        for (AbstractCard card : cards) {
+            if (card.costForTurn >= 0) {
+                eligibleCards.add(card);
+                total += card.costForTurn;
+            }
+        }
+
+        int people = eligibleCards.size();
+
+        if (people == 0) {
+            return; // 没有符合条件的卡牌，直接返回
+        }
+
+        // 调用红包算法获取新的成本分配
+        List<Integer> newCosts = Wiz.redPacketRand(total, people);
+
+        // 更新符合条件的卡牌的成本
+        for (int i = 0; i < people; i++) {
+            AbstractCard card = eligibleCards.get(i);
+            int newCost = newCosts.get(i);
+            if (card.cost != newCost) {
+                card.cost = newCost;
+                card.costForTurn = newCost;
+                card.isCostModified = true;
+            }
+            card.freeToPlayOnce = false;
+        }
+    }
+
 }

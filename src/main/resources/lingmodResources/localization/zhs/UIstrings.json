@@ -11,7 +11,7 @@
   },
   "${ModID}:SummonMod": {
     "TEXT": [
-      " lingmod:召唤 NL %s"
+      " lingmod:召唤 。 NL %s"
     ]
   },
   "${ModID}:NellaFantasiaMod": {

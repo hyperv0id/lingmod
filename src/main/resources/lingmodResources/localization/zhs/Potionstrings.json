@@ -2,7 +2,7 @@
     "${ModID}:BottledPawn": {
         "NAME": "“黑子”",
         "DESCRIPTIONS": [
-            "失去一个药水栏位，在普通房间所有杀死敌人，精英失去一半生命"
+            "失去一个药水栏位 NL 杀死所有普通敌人 NL 精英失去一半生命"
         ]
     },
     "${ModID}:BottledSword": {

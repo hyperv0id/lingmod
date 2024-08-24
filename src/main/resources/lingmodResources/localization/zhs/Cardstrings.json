@@ -24,11 +24,6 @@
       "一蓑烟雨任平生"
     ]
   },
-  "${ModID}:FeiHuaLingCard": {
-    "NAME": "飞花令",
-    "DESCRIPTION": "是 ${ModID}:诗 . NL 丢弃手牌中所有 ${ModID}:诗 ，再抽等量牌",
-    "UPGRADE_DESCRIPTION": "是 ${ModID}:诗 . NL 丢弃手牌中所有 ${ModID}:诗 ，再抽 量+1 张牌"
-  },
   "${ModID}:NingZuoWuCard": {
     "NAME": "宁作吾",
     "DESCRIPTION": "消耗手牌来去除异常状态，每消耗一张 抽 !M! 张牌，获得 [E]"

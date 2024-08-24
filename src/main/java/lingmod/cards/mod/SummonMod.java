@@ -1,17 +1,16 @@
 package lingmod.cards.mod;
 
-import static lingmod.ModCore.logger;
-import static lingmod.ModCore.makeID;
-
+import basemod.abstracts.AbstractCardModifier;
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.UIStrings;
-
-import basemod.abstracts.AbstractCardModifier;
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
 import lingmod.util.Wiz;
+
+import static lingmod.ModCore.logger;
+import static lingmod.ModCore.makeID;
 
 public class SummonMod extends AbsLingCardModifier {
     public static final String ID = makeID(SummonMod.class.getSimpleName());
@@ -23,12 +22,13 @@ public class SummonMod extends AbsLingCardModifier {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        card.retain = true;
+        logger.info(card.name + " is retain");
+        card.selfRetain = true;
     }
 
     @Override
     public void onRemove(AbstractCard card) {
-        card.retain = false;
+        card.selfRetain = false;
     }
 
     @Override
@@ -39,7 +39,8 @@ public class SummonMod extends AbsLingCardModifier {
     @Override
     public void onRetained(AbstractCard card) {
         super.onRetained(card);
-        AbstractCard cp = card.makeStatEquivalentCopy();
+        AbstractCard cp = card.makeCopy();
+        if (card.upgraded) cp.upgrade();
         logger.info(card.name + " retained");
         CardModifierManager.addModifier(cp, new ExhaustMod());
         Wiz.atb(new MakeTempCardInHandAction(cp, 1));

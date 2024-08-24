@@ -13,7 +13,7 @@ import lingmod.util.Wiz;
 import static lingmod.ModCore.makeImagePath;
 
 public class DeYi {
-    public static final String spinePath = makeImagePath("who_is_real/de_yi/enemy_1126_spslme.json", ModCore.ResourceType.MONSTERS);
+    public static final String spinePath = makeImagePath("who_is_real/de_yi/enemy_1126_spslme", ModCore.ResourceType.MONSTERS);
     public static final String ID = ModCore.makeID(DeYi.class.getSimpleName());
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
 

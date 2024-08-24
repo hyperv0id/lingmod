@@ -30,7 +30,7 @@ public class PowerPatch {
                 ok = wine != null && wine.amount > 0;
             }
             if (ok) wine.dampLater();
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p, p, __inst));
+            else AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(p, p, __inst));
         }
     }
 }

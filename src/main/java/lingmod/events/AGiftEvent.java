@@ -33,7 +33,7 @@ public class AGiftEvent extends PhasedEvent {
         );
         registerPhase("DO_NOTHING", new TextPhase(DESCRIPTIONS[3]).addOption(OPTIONS[1], (i) -> openMap()));
         registerPhase("HELP", new TextPhase(DESCRIPTIONS[2]).addOption(OPTIONS[2], (i) -> transitionKey("BATTLE")));
-        registerPhase("BATTLE", new CombatPhase(ID));
+        registerPhase("BATTLE", new CombatPhase(ID).addRewards(true, (r) -> r.addRelicToRewards(AbstractRelic.RelicTier.COMMON)));
     }
 
     @Override
