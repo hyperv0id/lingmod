@@ -32,7 +32,7 @@ public class MonsterSui_2_Wang extends CustomMonster {
         super(ms.NAME, ID, 200, -5.0F, 0.0F, 260.0F, 265.0F, null, x, y);
         this.img = ImageMaster.loadImage(IMG_PATH);
         this.orbs = new ArrayList[3][3];
-        this.type = EnemyType.ELITE;
+        this.type = EnemyType.BOSS;
         this.dialogX = (this.hb_x - 70.0F) * Settings.scale;
         this.dialogY -= (this.hb_y - 55.0F) * Settings.scale;
     }

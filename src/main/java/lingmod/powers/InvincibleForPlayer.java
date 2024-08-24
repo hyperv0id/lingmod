@@ -5,7 +5,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.InvinciblePower;
 import lingmod.ModCore;
 
@@ -23,17 +22,14 @@ public class InvincibleForPlayer extends InvinciblePower {
 
     @Override
     public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {
-        if (info.type == DamageInfo.DamageType.HP_LOSS) {
+        // 无来源 或者是 特殊类型
+        if (info.type != DamageInfo.DamageType.NORMAL || info.owner == null) {
             return damageAmount;
         }
 
-        if (info.owner instanceof AbstractPlayer) {
+        // 来自玩家
+        if (info.owner instanceof AbstractPlayer || info.owner.isPlayer) {
             damageAmount = 0;
-        }
-        if (info.owner instanceof AbstractMonster) {
-            if (info.owner.isPlayer) {
-                damageAmount = 0;
-            }
         }
         return damageAmount;
     }

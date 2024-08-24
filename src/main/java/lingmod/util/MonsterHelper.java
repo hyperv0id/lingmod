@@ -34,6 +34,9 @@ public class MonsterHelper {
         return false;
     }
 
+    public static int intentMultiAmt(AbstractMonster mo) {
+        return ReflectionHacks.getPrivate(mo, AbstractMonster.class, "intentMultiAmt");
+    }
 
     /**
      * calculate damage for all monsters

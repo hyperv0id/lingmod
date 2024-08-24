@@ -30,13 +30,18 @@
     "MOVES": [
       "攻击挑山人"
     ],
-    "NAME": "行裕掌柜"
+    "NAME": "行裕掌柜",
+    "DIALOG": [
+      "感谢高人出生相救，这是谢礼请收下"
+    ]
   },
   "${ModID}:MountainPicker": {
     "MOVES": [
-      "攻击行裕掌柜"
     ],
-    "NAME": "挑山人"
+    "NAME": "挑山人",
+    "DIALOG": [
+      "哼..."
+    ]
   },
   "${ModID}:AYao": {
     "NAME": "“阿咬”",

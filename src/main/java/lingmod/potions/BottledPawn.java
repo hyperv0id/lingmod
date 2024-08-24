@@ -37,7 +37,7 @@ public class BottledPawn extends AbstractEasyPotion {
         if (AbstractDungeon.getCurrRoom().phase == RoomPhase.COMBAT) {
             addToBot(new LosePotionSlotAction());
             for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                if (AbstractDungeon.getCurrRoom().eliteTrigger) {
+                if (AbstractDungeon.getCurrRoom().eliteTrigger || mo.type == AbstractMonster.EnemyType.ELITE) {
                     Wiz.addToBotAbstract(() -> {
                         mo.currentHealth = (int) ((float) mo.maxHealth * 0.5);
                         mo.healthBarUpdatedEvent();

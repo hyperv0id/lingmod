@@ -170,5 +170,12 @@
     "DESCRIPTIONS": [
       "#g不会死亡 ，保留1点生命"
     ]
+  },
+  "lingmod:ShiftingPower2": {
+    "NAME": "兵斗弭遁",
+    "DESCRIPTIONS": [
+      "每当 ",
+      " 受到伤害，它将在回合结束前失去 #b1 #y力量 。"
+    ]
   }
 }
