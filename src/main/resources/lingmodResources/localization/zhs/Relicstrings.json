@@ -39,7 +39,7 @@
     "NAME": "酒精泡泡",
     "FLAVOR": "一白忘忧再消愁，三碗同天竞风流",
     "DESCRIPTIONS": [
-      "右键随机化手牌费用，使用红包随机算法 NL 每次战斗限1次"
+      "右键随机化手牌费用，总费用不变 NL 每次战斗限1次"
     ]
   },
   "${ModID}:Beans_NianRelic": {
@@ -54,13 +54,6 @@
     "FLAVOR": "令妹，今天晨练又没看到你",
     "DESCRIPTIONS": [
       "每杀死 5 个敌人，战斗开始时获得 1 力量"
-    ]
-  },
-  "${ModID}:GuardianRingOfKing": {
-    "NAME": "国王的护戒",
-    "FLAVOR": "右键将生命值置为1",
-    "DESCRIPTIONS": [
-      "如果生命值为1，,战斗胜利时的格挡可用于下一场战斗，拥有 3 个国王套时，额外获得5格挡"
     ]
   },
   "${ModID}:LightRelic": {

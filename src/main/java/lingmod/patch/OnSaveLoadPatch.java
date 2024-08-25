@@ -14,7 +14,6 @@ import javassist.CtBehavior;
 public class OnSaveLoadPatch {
     public static int saveTimes = 0;
     public static int loadTimes = 0;
-    // TODO: 换房间后重置怪物对话
     public static int saveThisRoom = 0;
     public static int loadThisRoom = 0;
 

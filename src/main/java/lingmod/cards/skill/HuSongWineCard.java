@@ -1,9 +1,8 @@
 package lingmod.cards.skill;
 
-import static lingmod.ModCore.makeID;
-
-import java.util.HashMap;
-
+import basemod.BaseMod;
+import basemod.ReflectionHacks;
+import basemod.interfaces.OnPlayerDamagedSubscriber;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -11,17 +10,16 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
-
-import basemod.BaseMod;
-import basemod.ReflectionHacks;
-import basemod.interfaces.OnPlayerDamagedSubscriber;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.util.MonsterHelper;
 
+import java.util.HashMap;
+
+import static lingmod.ModCore.makeID;
+
 /**
- * TODO: 无法修改多段
  * 敌人多段攻击，攻击次数减少 20%
  * 否则给予虚弱
  */

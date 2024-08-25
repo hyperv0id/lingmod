@@ -8,12 +8,14 @@ import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import lingmod.ModCore;
 import lingmod.interfaces.CampfireSleepEvent;
+import lingmod.interfaces.Credit;
 import lingmod.relics.Beans_DuskRelic;
 
 import static lingmod.ModCore.makeID;
 import static lingmod.ModCore.makeImagePath;
 
 @CampfireSleepEvent
+@Credit(username = "西子木zz", platform = Credit.WEIBO)
 public class AGiftEvent extends PhasedEvent {
     public static final String ID = makeID(AGiftEvent.class.getSimpleName());
 
@@ -21,7 +23,7 @@ public class AGiftEvent extends PhasedEvent {
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
     public static String NAME = eventStrings.NAME;
-    public static String IMG_PATH = makeImagePath("", ModCore.ResourceType.EVENTS);
+    public static String IMG_PATH = makeImagePath("AGiftEvent.png", ModCore.ResourceType.EVENTS);
     protected AbstractRelic relic = new Beans_DuskRelic();
 
     public AGiftEvent() {

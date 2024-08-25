@@ -37,7 +37,7 @@ public class ScreenPatch {
         @SpirePostfixPatch
         public static String Insert(String __result, DeathScreen __inst) {
             if (AbstractDungeon.player.chosenClass == Ling.Enums.PLAYER_LING) {
-                if (Math.random() > 0) { //todo: change this after test
+                if (Math.random() > 0) {
                     return deathTexts[MathUtils.random(0, deathTexts.length - 1)];
                 }
             }

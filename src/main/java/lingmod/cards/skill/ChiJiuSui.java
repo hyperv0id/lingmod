@@ -1,21 +1,20 @@
 package lingmod.cards.skill;
 
-import basemod.AutoAdd;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import lingmod.actions.EasyXCostAction;
 import lingmod.cards.AbstractEasyCard;
+import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
+import lingmod.util.Wiz;
 
 import static lingmod.ModCore.makeID;
 
 /**
- * 辞旧岁：丢弃所有手牌，每张造成 3X 点伤害
+ * 辞旧岁：丢弃所有手牌，每张获得 3/4 格挡
  */
-@AutoAdd.Ignore
+@CardConfig(block = 3)
 @Credit(platform = Credit.PIXIV, username = "Chocolatte", link = "https://www.pixiv.net/artworks/95920468")
 public class ChiJiuSui extends AbstractEasyCard {
     public static final String ID = makeID(ChiJiuSui.class.getSimpleName());
@@ -27,28 +26,21 @@ public class ChiJiuSui extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        upgradeDamage(1);
+        upgradeBlock(1);
     }
 
     @Override
-    public void applyPowers() {
-        super.applyPowers();
-        this.damage *= AbstractDungeon.player.hand.size();
-    }
-
-    @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        damage = baseDamage * AbstractDungeon.player.hand.size();
+    protected void applyPowersToBlock() {
+        int cp = baseBlock;
+        baseBlock *= Wiz.adp().hand.size();
+        super.applyPowersToBlock();
+        baseBlock = cp;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster mo) {
         int amount = p.hand.size();
         addToBot(new DiscardAction(p, p, amount, false));
-        addToBot(new EasyXCostAction(this, (effect, params) -> {
-            for (int i = 0; i < effect + params[0]; i++)
-                dmgTop(mo, AbstractGameAction.AttackEffect.SLASH_DIAGONAL);
-            return true;
-        }, damage));
+        addToBot(new GainBlockAction(p, block));
     }
 }

@@ -24,7 +24,6 @@ public class SummonMod extends AbsLingCardModifier {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        logger.info(card.name + " is retain");
         card.selfRetain = true;
     }
 

@@ -10,9 +10,6 @@ import lingmod.util.Wiz;
 
 import static lingmod.ModCore.makeID;
 
-/**
- * TODO: 没有获得事件
- */
 public class ShiShuoXinYuCard extends AbstractPoetryCard {
     public static final String ID = makeID(ShiShuoXinYuCard.class.getSimpleName());
 

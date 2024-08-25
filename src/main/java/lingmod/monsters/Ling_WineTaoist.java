@@ -1,20 +1,18 @@
 package lingmod.monsters;
 
-import static lingmod.ModCore.logger;
-import static lingmod.ModCore.makeID;
-import static lingmod.ModCore.makeImagePath;
-
+import basemod.AutoAdd.Ignore;
+import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
-
-import basemod.AutoAdd.Ignore;
-import basemod.abstracts.CustomMonster;
 import lingmod.util.Wiz;
+
+import static lingmod.ModCore.*;
 
 /**
  * 二哥，你又在算计哦。陪我喝两小酒好不好
@@ -35,6 +33,7 @@ public class Ling_WineTaoist extends CustomMonster {
         super(NAME, ID, MAX_HP, -10.0F, -30.0F, 476.0F, 410.0F, null,
                 -50.0F, 30.0F);
         this.img = ImageMaster.loadImage(IMG_PATH);
+        this.hb = new Hitbox(img.getWidth(), img.getHeight());
         logger.info("Is IMG NULL?: " + this.img);
         this.type = EnemyType.ELITE;
         this.dialogX = -200.0F * Settings.scale;

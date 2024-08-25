@@ -6,7 +6,9 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.NellaFantasiaMod;
+import lingmod.powers.LanKePower;
 import lingmod.stance.NellaFantasiaStance;
+import lingmod.util.Wiz;
 
 import static lingmod.ModCore.makeID;
 
@@ -24,9 +26,8 @@ public class LankeDream extends AbstractEasyCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBotAbstract(() -> {
-            NellaFantasiaStance.adder++;
-        });
+        Wiz.applyToSelf(new LanKePower(p));
+        addToBotAbstract(() -> NellaFantasiaStance.adder++);
     }
 
     @Override

@@ -19,22 +19,10 @@ import static lingmod.ModCore.makeID;
 public class WineMod extends AbsLingCardModifier {
     public static final String ID = makeID(WineMod.class.getSimpleName());
     public static final UIStrings uis = CardCrawlGame.languagePack.getUIString(ID);
-    public int amount = 0;
+    public int amount;
 
     public WineMod(int wineAmount) {
         this.amount = wineAmount;
-    }
-
-    /**
-     * 如果费用改变了，那么恢复
-     */
-    public void onCardDraw(AbstractCard card) {
-        if (card.isCostModifiedForTurn) {
-            if (card.cost != card.costForTurn) {
-                card.costForTurn = card.cost;
-                card.isCostModified = false;
-            }
-        }
     }
 
     @Override

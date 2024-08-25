@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
+import lingmod.ModCore;
 import lingmod.cards.attack.Whoami_Dusk;
 import lingmod.cards.power.Whoami_Ling;
 import lingmod.cards.power.Whoami_Nian;
@@ -15,6 +16,7 @@ import lingmod.cards.skill.Whoami_Wang;
 import lingmod.interfaces.CampfireSleepEvent;
 
 import static lingmod.ModCore.makeID;
+import static lingmod.ModCore.makeImagePath;
 
 
 @CampfireSleepEvent
@@ -22,7 +24,7 @@ public class WhoamiEvent extends AbstractImageEvent {
     public static final String EVENT_NAME = WhoamiEvent.class.getSimpleName();
     public static final String ID = makeID(EVENT_NAME);
     private static final EventStrings eventStrings = CardCrawlGame.languagePack.getEventString(ID);
-    public static final String MAIN_ING = "images/events/theNest.jpg";
+    public static final String IMG_PATH = makeImagePath("Sui12Event.png", ModCore.ResourceType.EVENTS);
     // public static final String MAIN_ING = makeImagePath("events/Whoami_Main.png");
     private static final String[] DESCRIPTIONS = eventStrings.DESCRIPTIONS;
     private static final String[] OPTIONS = eventStrings.OPTIONS;
@@ -37,7 +39,7 @@ public class WhoamiEvent extends AbstractImageEvent {
     private WhoamiEvent.CurScreen curScreen = CurScreen.CHOICE;
 
     public WhoamiEvent() {
-        super(NAME, DESCRIPTIONS[0], MAIN_ING);
+        super(NAME, DESCRIPTIONS[0], IMG_PATH);
         for (int i = 0; i < cards.length; i++) {
             this.imageEventText.setDialogOption(OPTIONS[i], cards[i]);
         }
@@ -46,7 +48,6 @@ public class WhoamiEvent extends AbstractImageEvent {
 
     @Override
     protected void buttonEffect(int no) {
-        // TODO: 图像没改
         switch (this.curScreen) {
             case CHOICE:
                 choseCard(no);

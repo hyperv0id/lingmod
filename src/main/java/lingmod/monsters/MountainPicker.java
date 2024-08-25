@@ -22,7 +22,6 @@ import static lingmod.ModCore.makeImagePath;
 
 /**
  * 挑山人大战掌柜的
- * TODO: 复制的史莱姆意图
  */
 public class MountainPicker extends CustomMonster {
     public static final String ID = makeID(MountainPicker.class.getSimpleName());
