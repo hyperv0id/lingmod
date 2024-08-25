@@ -82,7 +82,13 @@
   "${ModID}:YuGuoZhuoYingPower": {
     "NAME": "雨过濯缨",
     "DESCRIPTIONS": [
-      "回合结束时统计所有手牌的总耗能，获得 #b%d 倍的格挡 NL 统计时最低耗能为 #b%d"
+      "丢弃或消耗牌时，获得与其耗能等量的格挡"
+    ]
+  },
+  "${ModID}:NingZuoWuPower": {
+    "NAME": "宁作吾",
+    "DESCRIPTIONS": [
+      "你的能力和异常效果不会消失（仍会衰减）"
     ]
   },
   "${ModID}:WinePower": {

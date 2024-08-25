@@ -3,9 +3,9 @@ package lingmod.cards.attack;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.ModCore;
 import lingmod.cards.AbstractEasyCard;
+import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.patch.PlayerFieldsPatch;
 import lingmod.util.Wiz;
@@ -14,20 +14,19 @@ import lingmod.util.Wiz;
  * 曲水流觞: 你每有一种诗词赋曲，造成7伤害
  */
 @Credit(username = "聚变之书", platform = Credit.LOFTER, link = "https://shenzhi041.lofter.com/post/2047e763_2bb5a7e85")
+@CardConfig(damage = 4, magic = 1)
 public class QuShuiLiuShang extends AbstractEasyCard {
     public static final String ID = ModCore.makeID(QuShuiLiuShang.class.getSimpleName());
 
     public QuShuiLiuShang() {
         super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
-        this.baseDamage = 7;
-        this.baseMagicNumber = 1;
     }
 
     @Override
     public void applyPowers() {
-        super.applyPowers();
         CardGroup cg = PlayerFieldsPatch.poetryCardGroup.get(Wiz.adp());
         this.baseMagicNumber = cg.size();
+        super.applyPowers();
     }
 
     @Override

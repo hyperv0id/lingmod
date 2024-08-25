@@ -1,4 +1,4 @@
-package lingmod.patch;
+package lingmod.patch.card;
 
 import basemod.helpers.CardModifierManager;
 import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.CardModifierPatches;

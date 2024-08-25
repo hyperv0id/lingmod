@@ -1,7 +1,7 @@
 package lingmod.cards.skill;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -12,14 +12,13 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
-
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.NellaFantasiaMod;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.util.CustomTags;
+
+import static lingmod.ModCore.makeID;
 
 @CardConfig(magic = 3, magic2 = 2)
 @Credit(platform = Credit.PIXIV, username = "JANGO", link = "https://www.pixiv.net/artworks/105995954")
@@ -51,7 +50,6 @@ public class AGiftCard extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        upgradeMagicNumber(2);
         upgradeSecondMagic(-1);
     }
 }

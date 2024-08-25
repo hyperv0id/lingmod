@@ -22,7 +22,7 @@
   },
   "${ModID}:NingZuoWuCard": {
     "NAME": "宁作吾",
-    "DESCRIPTION": "消耗手牌来去除异常状态，每消耗一张 抽 !M! 张牌，获得 [E]"
+    "DESCRIPTION": "你的能力和异常不会消失"
   },
   "${ModID}:Strike": {
     "NAME": "打击",

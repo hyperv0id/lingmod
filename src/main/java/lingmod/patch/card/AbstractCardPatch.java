@@ -1,4 +1,4 @@
-package lingmod.patch;
+package lingmod.patch.card;
 
 import basemod.ReflectionHacks;
 import basemod.abstracts.CustomCard;
