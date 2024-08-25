@@ -11,12 +11,14 @@ import lingmod.actions.ExhaustAllAction;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.attack.GuoJiaXianMei;
 import lingmod.interfaces.CardConfig;
+import lingmod.interfaces.Credit;
 import lingmod.util.Wiz;
 
 /**
  * 征夫望乡: 消耗手牌所有打击/防御，一张裹甲衔枚牌库
  */
 @CardConfig(magic = 5)
+@Credit(platform = Credit.PIXIV, username = "vier122", link = "https://www.pixiv.net/artworks/104532090")
 public class ZhengFuWangXiang extends AbstractEasyCard {
     public static final String ID = ModCore.makeID(ZhengFuWangXiang.class.getSimpleName());
 

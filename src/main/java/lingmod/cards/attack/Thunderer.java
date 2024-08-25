@@ -1,23 +1,23 @@
 package lingmod.cards.attack;
 
-import static java.lang.Math.max;
-import static lingmod.ModCore.makeID;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
+import basemod.cardmods.RetainMod;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.cardmods.RetainMod;
-import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.character.Ling;
 import lingmod.interfaces.CardConfig;
+import lingmod.interfaces.Credit;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.lang.Math.max;
+import static lingmod.ModCore.makeID;
 
 /**
  * 1费打9
@@ -25,6 +25,7 @@ import lingmod.interfaces.CardConfig;
  * 打出后选择手牌中的弦惊合成
  */
 @CardConfig(damage = 9, magic = 1)
+@Credit(platform = Credit.PIXIV, username = "UIRU", link = "https://www.pixiv.net/artworks/101314899")
 public class Thunderer extends AbstractEasyCard {
     public static final String NAME = Thunderer.class.getSimpleName();
 

@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.actions.ExhaustToDiscardAction;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
+import lingmod.interfaces.Credit;
 
 import static lingmod.ModCore.makeID;
 
@@ -19,6 +20,7 @@ import static lingmod.ModCore.makeID;
  * 选择
  */
 @CardConfig(damage = 5, magic = 2)
+@Credit(platform = Credit.LOFTER, username = "一叶行.帆", link = "https://yiyexingfan.lofter.com/post/31fac472_2b463e1f3")
 @Ignore
 public class RuMengLing extends AbstractEasyCard {
     public final static String ID = makeID(RuMengLing.class.getSimpleName());

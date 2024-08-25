@@ -3,6 +3,7 @@ package lingmod.cards.mod;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.cardmods.ExhaustMod;
 import basemod.helpers.CardModifierManager;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -11,6 +12,7 @@ import lingmod.util.Wiz;
 
 import static lingmod.ModCore.logger;
 import static lingmod.ModCore.makeID;
+import static lingmod.util.Wiz.atb;
 
 public class SummonMod extends AbsLingCardModifier {
     public static final String ID = makeID(SummonMod.class.getSimpleName());
@@ -34,6 +36,12 @@ public class SummonMod extends AbsLingCardModifier {
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
         return String.format(uis.TEXT[0], rawDescription);
+    }
+
+    @Override
+    public void onExhausted(AbstractCard card) {
+        super.onExhausted(card);
+        atb(new GainEnergyAction(1));
     }
 
     @Override

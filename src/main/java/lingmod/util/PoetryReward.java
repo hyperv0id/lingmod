@@ -5,12 +5,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import lingmod.ModCore;
 import lingmod.cards.AbstractPoetryCard;
 import lingmod.patch.PlayerFieldsPatch;
+import lingmod.util.card.PoetryCardLib;
 
 public class PoetryReward extends CustomReward {
     private static final Texture ICON = TexLoader.getTexture(ModCore.makeImagePath("ui/poetry_reward_btn.png"));
@@ -21,6 +23,13 @@ public class PoetryReward extends CustomReward {
         this.card = CardLibrary.getCopy(cardID);
         this.text = this.card.name;
     }
+
+    public PoetryReward() {
+        super(ICON, "诗词赋曲", AiraRewardEnum.POETRY_REWARD);
+        this.card = PoetryCardLib.getCard(AbstractDungeon.cardRandomRng);
+        this.text = this.card.name;
+    }
+
 
     public PoetryReward(AbstractPoetryCard card) {
         super(ICON, "诗词赋曲", AiraRewardEnum.POETRY_REWARD);

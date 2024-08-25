@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.CopyField;
+import lingmod.interfaces.Credit;
 
 import static lingmod.ModCore.makeID;
 
@@ -18,6 +19,7 @@ import static lingmod.ModCore.makeID;
  * 见山问石：如果消耗过牌，抽一，[E]
  */
 @CardConfig(damage = 7, magic = 1)
+@Credit(username = "阿尼鸭Any-a", platform = Credit.LOFTER, link = "https://anyaaaaa.lofter.com/post/1d814764_2b82a4712")
 public class JianShanWenShi extends AbstractEasyCard implements PostExhaustSubscriber {
 
     public final static String ID = makeID(JianShanWenShi.class.getSimpleName());

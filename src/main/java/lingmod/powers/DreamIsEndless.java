@@ -1,7 +1,6 @@
 package lingmod.powers;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -35,13 +34,5 @@ public class DreamIsEndless extends AbstractEasyPower {
         if (amt > 0)
             addToBot(new ApplyPowerAction(owner, owner, new ConstrictedPower(owner, owner, amt)));
         return super.onAttackToChangeDamage(info, 2 * damageAmount);
-    }
-
-    @Override
-    public void atEndOfRound() {
-        super.atEndOfRound();
-
-        this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
-
     }
 }

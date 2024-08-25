@@ -88,7 +88,7 @@
   "${ModID}:WinePower": {
     "NAME": "酒",
     "DESCRIPTIONS": [
-      "拥有此能力时，#r活力 不会消失 NL 打出攻击牌后，减少 #b一半 。如果在梦中，改为减少 #b1"
+      "拥有此能力时， #r活力 不会消失 NL 打出攻击牌后，减少 #b一半 。如果在梦中，改为减少 #b1"
     ]
   },
   "${ModID}:PoemVSQuickSandPower": {

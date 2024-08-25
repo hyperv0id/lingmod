@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.actions.TransformDrawPileAction;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
+import lingmod.interfaces.Credit;
 import lingmod.util.Wiz;
 
 import static lingmod.ModCore.makeID;
@@ -14,6 +15,7 @@ import static lingmod.ModCore.makeID;
  * 在抽牌堆放入一张黑子
  */
 @CardConfig(damage = 6, magic = 1)
+@Credit(username = "阿尼鸭Any-a", platform = Credit.LOFTER, link = "https://anyaaaaa.lofter.com/post/1d814764_2b82a7434")
 public class BlackPawn extends AbstractEasyCard {
     public final static String ID = makeID(BlackPawn.class.getSimpleName());
 

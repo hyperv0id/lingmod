@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
+import lingmod.interfaces.Credit;
 
 import static lingmod.ModCore.makeID;
 
@@ -12,6 +13,7 @@ import static lingmod.ModCore.makeID;
  * 统计敌人数量，造成 !D! X 次
  */
 @CardConfig(damage = 7, magic = 1)
+@Credit(username = "明日方舟", link = "https://www.bilibili.com/video/BV1mm4y1D7JJ")
 public class ShiFangTuNa extends AbstractEasyCard {
     public static final String ID = makeID(ShiFangTuNa.class.getSimpleName());
 

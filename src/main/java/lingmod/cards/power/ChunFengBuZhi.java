@@ -5,12 +5,14 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.TempExhaustMod;
+import lingmod.interfaces.Credit;
 
 import static lingmod.ModCore.makeID;
 
 /**
  * 本回合所有手牌耗能0，打出后消耗
  */
+@Credit(platform = "qq群", username = "不知道QAQ")
 public class ChunFengBuZhi extends AbstractEasyCard {
     public final static String ID = makeID(ChunFengBuZhi.class.getSimpleName());
 

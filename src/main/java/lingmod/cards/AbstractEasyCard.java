@@ -1,14 +1,7 @@
 package lingmod.cards;
 
-import static lingmod.ModCore.makeImagePath;
-import static lingmod.ModCore.modID;
-import static lingmod.util.Wiz.actionify;
-import static lingmod.util.Wiz.atb;
-import static lingmod.util.Wiz.att;
-import static lingmod.util.Wiz.copyAnnotatedFields;
-
-import java.util.function.Consumer;
-
+import basemod.abstracts.CustomCard;
+import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
@@ -20,7 +13,6 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -28,9 +20,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.abstracts.CustomCard;
-import basemod.helpers.CardModifierManager;
 import lingmod.cards.mod.NellaFantasiaMod;
 import lingmod.cards.mod.SummonMod;
 import lingmod.cards.mod.WineMod;
@@ -41,6 +30,12 @@ import lingmod.interfaces.VoidSupplier;
 import lingmod.util.CardArtRoller;
 import lingmod.util.CustomTags;
 import lingmod.util.ModConfig;
+
+import java.util.function.Consumer;
+
+import static lingmod.ModCore.makeImagePath;
+import static lingmod.ModCore.modID;
+import static lingmod.util.Wiz.*;
 
 /**
  * 卡牌大小：500*380的高分辨率，250*190的低分辨率
@@ -109,7 +104,7 @@ public abstract class AbstractEasyCard extends CustomCard {
 
     public static String getCardTextureString(final String cardName, final AbstractCard.CardType cardType, CardColor color) {
         if (color == Ling.Enums.LING_COLOR) return getCardTextureString(cardName, cardType);
-        String textureString = "";
+        String textureString;
         String prefix = "cards/poetry/";
         textureString = makeImagePath(prefix + cardName + ".png");
         FileHandle h = Gdx.files.internal(textureString);
@@ -485,12 +480,5 @@ public abstract class AbstractEasyCard extends CustomCard {
 
     public CardArtRoller.ReskinInfo reskinInfo(String ID) {
         return null;
-    }
-
-    @Override
-    public void triggerOnExhaust() {
-        super.triggerOnExhaust();
-        // 召唤被消耗时获得能量
-        if (this.hasTag(CustomTags.SUMMON)) atb(new GainEnergyAction(1));
     }
 }

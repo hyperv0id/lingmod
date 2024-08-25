@@ -3,18 +3,20 @@ package lingmod.events;
 import basemod.abstracts.events.PhasedEvent;
 import basemod.abstracts.events.phases.CombatPhase;
 import basemod.abstracts.events.phases.TextPhase;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.potions.PotionSlot;
 import com.megacrit.cardcrawl.relics.AbstractRelic.RelicTier;
-import lingmod.cards.AbstractPoetryCard;
 import lingmod.cards.poetry.ChiBiFuCard;
 import lingmod.cards.poetry.DingFengBoCard;
 import lingmod.cards.poetry.JianKeCard;
+import lingmod.patch.PlayerFieldsPatch;
 import lingmod.potions.ForgetPotion;
 import lingmod.util.PoetryReward;
+import lingmod.util.Wiz;
 
 import static lingmod.ModCore.*;
 
@@ -31,7 +33,6 @@ public class DoujinshiPlot extends PhasedEvent {
     public static DoujinshiPlot __inst;
 
     public static String NAME = eventStrings.NAME;
-    AbstractPoetryCard battleReward;
 
     public DoujinshiPlot() {
         super(ID, eventStrings.NAME, makeImagePath("events/DoujinshiPlot_0.png"));
@@ -43,6 +44,7 @@ public class DoujinshiPlot extends PhasedEvent {
     @Override
     public void onEnterRoom() {
         super.onEnterRoom();
+        CardGroup cg = PlayerFieldsPatch.poetryCardGroup.get(Wiz.adp());
         // 售卖药水
         registerPhase(Phases.SALE,
                 new TextPhase(DESCRIPTIONS[0])
@@ -68,17 +70,17 @@ public class DoujinshiPlot extends PhasedEvent {
         registerPhase(Phases.DOUJINSHI, new TextPhase(DESCRIPTIONS[2])
                 // [即兴吟诗] 获得 #g《赤壁赋》
                 .addOption(OPTIONS[3], (i) -> {
-                    battleReward = new ChiBiFuCard();
+                    cg.addToTop(new ChiBiFuCard());
                     transitionKey(Phases.REPLY_1);
                 })
                 // [喝酒壮胆] 获得 #g《定风波》
                 .addOption(OPTIONS[4], (i) -> {
-                    battleReward = new DingFengBoCard();
+                    cg.addToTop(new DingFengBoCard());
                     transitionKey(Phases.REPLY_2);
                 })
                 // [握紧佩剑] 获得 #g《剑客》
                 .addOption(OPTIONS[5], (i) -> {
-                    battleReward = new JianKeCard();
+                    cg.addToTop(new JianKeCard());
                     transitionKey(Phases.REPLY_3);
                 }));
         // 进入战斗的对话
@@ -90,9 +92,8 @@ public class DoujinshiPlot extends PhasedEvent {
                 new TextPhase(DESCRIPTIONS[6]).addOption(OPTIONS[6], (i) -> transitionKey(Phases.BATTLE)));
         // 进入战斗
         registerPhase(Phases.BATTLE, new CombatPhase(MonsterHelper.BLUE_SLAVER_ENC).addRewards(true, (room) -> {
-            room.rewards.add(new PoetryReward(battleReward));
+            room.rewards.add(new PoetryReward());
             room.addRelicToRewards(RelicTier.COMMON);
-            logger.info(battleReward.name);
         }));
 
         // 进入事件

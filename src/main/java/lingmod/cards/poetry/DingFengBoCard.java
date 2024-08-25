@@ -1,20 +1,20 @@
 package lingmod.cards.poetry;
 
-import static lingmod.ModCore.makeID;
-
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.watcher.PressEndTurnButtonAction;
 import com.megacrit.cardcrawl.actions.watcher.SkipEnemiesTurnAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.WhirlwindEffect;
-
 import lingmod.cards.AbstractPoetryCard;
 import lingmod.interfaces.Credit;
 import lingmod.util.PoetryLoader;
 import lingmod.util.card.ToneManager;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 定风波：每完成半阙诗后，结束你的回合，获得额外回合
@@ -53,5 +53,13 @@ public class DingFengBoCard extends AbstractPoetryCard {
             poetryStrings = PoetryLoader.getStr(ID);
         }
         toneManager = new ToneManager(this);
+    }
+
+    @Override
+    public AbstractCard makeCopy() {
+        DingFengBoCard cp = new DingFengBoCard();
+        cp.skipTurn = this.skipTurn;
+        cp.isSecondHalf = this.isSecondHalf;
+        return cp;
     }
 }

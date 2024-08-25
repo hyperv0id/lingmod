@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.WineMod;
+import lingmod.interfaces.Credit;
 import lingmod.powers.PoeticMoodPower;
 import lingmod.util.CustomTags;
 
@@ -18,6 +19,7 @@ import static lingmod.ModCore.makeID;
 /**
  * 随付笺咏醉屠苏: 召唤物被击倒/吸收/回收时令额外获得4(+1)点技力、攻击力+3%（攻击力加成最多叠加5层）
  */
+@Credit(link = "https://www.pixiv.net/artworks/116639419", platform = Credit.PIXIV, username = "-Flaxencat-")
 public class Feature_2_Card extends AbstractEasyCard implements PostExhaustSubscriber {
     public static final String ID = makeID(Feature_2_Card.class.getSimpleName());
 
