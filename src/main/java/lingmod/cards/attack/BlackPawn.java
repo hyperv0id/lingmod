@@ -14,7 +14,7 @@ import static lingmod.ModCore.makeID;
  * 黑子：打6 X 次，次数为黑子数量。
  * 在抽牌堆放入一张黑子
  */
-@CardConfig(damage = 6, magic = 1)
+@CardConfig(damage = 6, magic = 3)
 @Credit(username = "阿尼鸭Any-a", platform = Credit.LOFTER, link = "https://anyaaaaa.lofter.com/post/1d814764_2b82a7434")
 public class BlackPawn extends AbstractEasyCard {
     public final static String ID = makeID(BlackPawn.class.getSimpleName());
@@ -24,9 +24,13 @@ public class BlackPawn extends AbstractEasyCard {
     }
 
     @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        this.baseMagicNumber = (int) Wiz.allCardsInBattle(false).stream().filter(c -> c.cardID.equals(BlackPawn.ID)).count();
-        super.calculateCardDamage(mo);
+    public void applyPowers() {
+        int tmp =
+                (int) Wiz.allCardsInBattle(false).stream().filter(c -> c.cardID.equals(BlackPawn.ID)).count();
+        int backup = baseDamage;
+        baseDamage += tmp * baseMagicNumber;
+        super.applyPowers();
+        baseDamage = backup;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {

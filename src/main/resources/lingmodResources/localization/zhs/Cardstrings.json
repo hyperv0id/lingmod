@@ -67,7 +67,7 @@
   },
   "${ModID}:Feature_2_Card": {
     "NAME": "随付笺咏醉屠苏",
-    "DESCRIPTION": " 保留 。造成 !D! 点伤害 !M! 次。 NL 消耗卡牌时增加1攻击次数，并获得1诗意，攻击次数至多增加5次"
+    "DESCRIPTION": "造成 !D! 点伤害 !M! 次。 NL 消耗卡牌时增加1攻击次数，耗能减少1，至多5次"
   },
   "${ModID}:GuoJiaXianMei": {
     "NAME": "裹甲衔枚",
@@ -109,7 +109,7 @@
   },
   "${ModID}:ShiDuanMengChang": {
     "NAME": "诗短梦长",
-    "DESCRIPTION": "受伤减半 NL 损失生命时，获得双倍 ${ModID}:缠绕"
+    "DESCRIPTION": "获得25%伤害减免 NL 损失生命时，获得双倍 ${ModID}:缠绕"
   },
   "${ModID}:AltGuangHui": {
     "NAME": "光辉ALT",
@@ -160,8 +160,7 @@
   },
   "${ModID}:YuGuoZhuoYing": {
     "NAME": "雨过濯缨",
-    "DESCRIPTION": "回合结束时，统计手牌耗能，获得等量格挡",
-    "UPGRADE_DESCRIPTION": "回合结束时，统计手牌耗能，获得等量格挡 NL 统计时最低耗能为1"
+    "DESCRIPTION": "每当卡牌进入弃牌堆或消耗堆时，获得其耗能等量的格挡"
   },
   "${ModID}:SurprisingThunder": {
     "NAME": "远山惊雷",
@@ -243,7 +242,7 @@
   },
   "${ModID}:BlackPawn": {
     "NAME": "黑子",
-    "DESCRIPTION": "造成 !D! 点伤害 !M! 次，次数为黑子数量 NL 梦中：在抽牌堆加入一张此牌的复制",
+    "DESCRIPTION": "造成 !D! 点伤害，每张黑子使伤害增加 !M! NL 梦中：在抽牌堆加入一张此牌的复制",
     "EXTENDED_DESCRIPTION": [
       "选择一张牌变化为“黑子”"
     ]

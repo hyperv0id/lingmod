@@ -20,6 +20,7 @@ public class EventMaster {
 
         RoomEventDialog.optionList.clear();
         MapRoomNode cur = AbstractDungeon.currMapNode;
+        cur.taken = true;
         MapRoomNode mapRoomNode2 = new MapRoomNode(cur.x, cur.y);
         CustomEventRoom cer = new CustomEventRoom();
         mapRoomNode2.room = cer;

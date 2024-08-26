@@ -1,15 +1,14 @@
 package lingmod.cards.power;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.powers.YuGuoZhuoYingPower;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 回合结束时，获得手牌总耗能的格挡
@@ -20,7 +19,7 @@ public class YuGuoZhuoYing extends AbstractEasyCard {
     public static final String ID = makeID(YuGuoZhuoYing.class.getSimpleName());
 
     public YuGuoZhuoYing() {
-        super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
+        super(ID, 1, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
     }
 
     @Override

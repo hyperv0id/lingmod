@@ -91,6 +91,12 @@
       "你的能力和异常效果不会消失（仍会衰减）"
     ]
   },
+  "${ModID}:BeiChangMengPower": {
+    "NAME": "悲长梦",
+    "DESCRIPTIONS": [
+      "离开梦境时触发 能力、遗物、手牌 的回合结束效果"
+    ]
+  },
   "${ModID}:WinePower": {
     "NAME": "酒",
     "DESCRIPTIONS": [

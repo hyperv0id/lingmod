@@ -12,7 +12,7 @@ import static lingmod.ModCore.makeID;
 /**
  * 本回合所有手牌耗能0，打出后消耗
  */
-@Credit(platform = "qq群", username = "不知道QAQ")
+@Credit(platform = "qq群", username = "不知道")
 public class ChunFengBuZhi extends AbstractEasyCard {
     public final static String ID = makeID(ChunFengBuZhi.class.getSimpleName());
 

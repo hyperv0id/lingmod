@@ -1,7 +1,6 @@
 package lingmod.cards.attack;
 
 import basemod.BaseMod;
-import basemod.helpers.CardModifierManager;
 import basemod.interfaces.PostExhaustSubscriber;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -9,34 +8,23 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
-import lingmod.cards.mod.WineMod;
+import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.powers.PoeticMoodPower;
-import lingmod.util.CustomTags;
 
 import static lingmod.ModCore.makeID;
 
 /**
  * 随付笺咏醉屠苏: 召唤物被击倒/吸收/回收时令额外获得4(+1)点技力、攻击力+3%（攻击力加成最多叠加5层）
  */
+@CardConfig(damage = 8, magic = 1, magic2 = 5)
 @Credit(link = "https://www.pixiv.net/artworks/116639419", platform = Credit.PIXIV, username = "-Flaxencat-")
 public class Feature_2_Card extends AbstractEasyCard implements PostExhaustSubscriber {
     public static final String ID = makeID(Feature_2_Card.class.getSimpleName());
 
     public Feature_2_Card() {
         super(ID, 5, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
-        this.tags.add(CustomTags.WINE);
-        CardModifierManager.addModifier(this, new WineMod(1));
-        this.selfRetain = true;
-        baseDamage = 8;
-        baseMagicNumber = 1;
-        baseSecondMagic = 5;
         BaseMod.subscribe(this);
-    }
-
-    @Override
-    public boolean canUpgrade() {
-        return timesUpgraded < secondMagic;
     }
 
     @Override

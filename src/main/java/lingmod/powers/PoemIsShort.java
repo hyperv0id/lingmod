@@ -33,7 +33,7 @@ public class PoemIsShort extends AbstractEasyPower {
     @Override
     public float atDamageFinalReceive(float damage, DamageInfo.DamageType type) {
         super.atDamageFinalReceive(damage, type);
-        damage *= (float) immunityRate / 100F; // 伤害减免
+        damage -= damage * (float) immunityRate / 100F; // 伤害减免
         return damage;
     }
 }

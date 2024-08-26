@@ -13,7 +13,7 @@ import static lingmod.ModCore.makeID;
 /**
  * 免伤50%，转换为1/M缠绕
  */
-@Credit(username = "枯荷倚梅cc", platform = "lofter", link = "https://anluochen955.lofter.com/post/1f2a08fc_2baf8eeb3")
+@Credit(username = "明日方舟", platform = "鹰角网络", link = "https://prts.wiki/w/令")
 public class ShiDuanMengChang extends AbstractEasyCard {
 
     public static final String ID = makeID(ShiDuanMengChang.class.getSimpleName());
@@ -29,8 +29,8 @@ public class ShiDuanMengChang extends AbstractEasyCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        // 免伤 50%
-        addToBot(new ApplyPowerAction(p, m, new PoemIsShort(p, 50)));
+        // 免伤
+        addToBot(new ApplyPowerAction(p, m, new PoemIsShort(p, 25)));
         // 转换成缠绕
         addToBot(new ApplyPowerAction(p, p, new DreamIsEndless(p)));
     }
