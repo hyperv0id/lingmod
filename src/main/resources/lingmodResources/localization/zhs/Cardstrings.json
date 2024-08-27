@@ -134,7 +134,7 @@
   },
   "${ModID}:Whoami_Nian": {
     "NAME": "无悲",
-    "DESCRIPTION": "获得 !M! 缓冲，每打出一张攻击牌，失去 1 缓冲",
+    "DESCRIPTION": "获得 !M! 缓冲，每打出一张攻击牌，失去 1 生命",
     "EXTENDED_DESCRIPTION": [
       "一把设计古朴的匕首。据说只要用来从事谋杀之类的事业，匕首的锋刃就会消失。"
     ]

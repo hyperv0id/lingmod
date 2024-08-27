@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
@@ -23,6 +24,7 @@ public class PoetryOrb extends AbstractOrb {
     public static final UIStrings uis = CardCrawlGame.languagePack.getUIString(ID);
 
     public AbstractPoetryCard card;
+    private static final int FONT_SIZE = 22;
 
     public PoetryOrb(AbstractPoetryCard card) {
         super();
@@ -70,8 +72,17 @@ public class PoetryOrb extends AbstractOrb {
     @Override
     public void render(SpriteBatch sb) {
         hb.render(sb);
-        if (card != null)
-            FontHelper.renderSmartText(sb, FontHelper.tipBodyFont, card.getPoetryTip(), cX - 48, cY - 24, Color.WHITE);
+        if (card != null) {
+            AbstractPlayer p = AbstractDungeon.player;
+            float x = p.drawX - p.hb_w / 2;
+            float y = p.drawY + p.hb_h;
+            String text = card.getPoetryTip();
+
+            FontHelper.renderSmartText(sb, FontHelper.tipBodyFont, text, cX - 48, cY, Color.WHITE);
+            //            FontHelper.renderSmartText(sb, FontHelper.tipBodyFont, text, x, y, Color.WHITE);
+        }
+        // FontHelper.renderSmartText(sb, FontHelper.tipBodyFont, card.getPoetryTip(), cX - 48, cY - 24, Color
+        // .WHITE);
     }
 
     @Override

@@ -1,26 +1,21 @@
 package lingmod.util.card;
 
-import static lingmod.ModCore.logger;
-import static lingmod.ModCore.makePath;
-import static lingmod.util.Wiz.addToBotAbstract;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.helpers.FontHelper;
+import lingmod.cards.AbstractPoetryCard;
+import lingmod.cards.PoetryStrings;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.FontHelper;
-
-import lingmod.cards.AbstractPoetryCard;
-import lingmod.cards.PoetryStrings;
+import static lingmod.ModCore.logger;
+import static lingmod.ModCore.makePath;
+import static lingmod.util.Wiz.addToBotAbstract;
 
 /**
  * 管理诗歌的韵律
@@ -69,13 +64,6 @@ public class ToneManager {
         }
     }
 
-    public void render(SpriteBatch sb) {
-        AbstractPlayer p = AbstractDungeon.player;
-        float x = p.drawX - p.hb_w / 2;
-        float y = p.drawY + p.hb_h;
-        FontHelper.renderSmartText(sb, FontHelper.tipBodyFont, toSmartText(), x, y, Color.WHITE);
-    }
-
     public String toSmartText() {
         if (tipStrCache.isEmpty()) {
             StringBuilder sb = new StringBuilder();
@@ -95,7 +83,7 @@ public class ToneManager {
                     case OBLIQUE:
                         sb.append("#r");
                         break;
-                    case BOTH:
+                    case OTHER:
                         break;
                 }
                 sb.append(ch);
@@ -127,7 +115,7 @@ public class ToneManager {
         } else if (tk == '仄') {
             return Tone.OBLIQUE;
         }
-        return Tone.BOTH;
+        return Tone.OTHER;
     }
 
     private void next() {
@@ -146,6 +134,8 @@ public class ToneManager {
             }
         }
         tipStrCache = "";
+        if (peekTone() != Tone.LEVEL && peekTone() != Tone.OBLIQUE)
+            next();
     }
 
     public Tone nextTone() {
@@ -167,7 +157,7 @@ public class ToneManager {
         } else if (c.type != AbstractCard.CardType.ATTACK && c.type != AbstractCard.CardType.SKILL) {
             // 其他牌，BOTH
             this.next();
-        } else if (this.peekTone() == Tone.BOTH) {
+        } else if (this.peekTone() == Tone.OTHER) {
             this.next();
         }
     }

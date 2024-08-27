@@ -20,18 +20,10 @@ public class PoetryCardManager {
      * 开局时选择一个诗词赋曲来规定整场战斗的格调
      */
     public static void onBattleStart(AbstractRoom r) {
-
         // 选择一个诗词赋曲
         CardGroup cg = PlayerFieldsPatch.poetryCardGroup.get(Wiz.adp());
-
         ArrayList<AbstractCard> stanceChoices = cg.group;
-
-        //        AbstractCard chosenCard = null;
-        //        if (stanceChoices.size() == 1) {
-        //            selectCard(stanceChoices);
-        //        } else {
         Wiz.atb(new SelectCardsAction(stanceChoices, PoetryTopPanel.TEXT[2], PoetryCardManager::selectCard));
-        //        }
     }
 
     static void selectCard(List<AbstractCard> cards) {

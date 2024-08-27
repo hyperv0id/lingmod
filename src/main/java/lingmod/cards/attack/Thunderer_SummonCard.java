@@ -1,6 +1,5 @@
 package lingmod.cards.attack;
 
-import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -16,7 +15,7 @@ import static lingmod.ModCore.makeID;
  * 特殊情况: summon Thunderer
  */
 @CardConfig(magic = 1, damage = 5)
-@AutoAdd.Ignore
+//@AutoAdd.Ignore
 public class Thunderer_SummonCard extends AbstractEasyCard {
     public static final String NAME = Thunderer_SummonCard.class.getSimpleName();
 

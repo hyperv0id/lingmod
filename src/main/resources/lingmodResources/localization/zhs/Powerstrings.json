@@ -63,7 +63,7 @@
   "${ModID}:Whoami_NianPower": {
     "NAME": "无悲",
     "DESCRIPTIONS": [
-      "打出攻击牌时，失去缓冲"
+      "打出攻击牌时，失去 1 生命"
     ]
   },
   "${ModID}:Whoami_ShuoPower": {
