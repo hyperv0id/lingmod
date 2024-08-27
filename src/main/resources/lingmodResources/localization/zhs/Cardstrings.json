@@ -185,7 +185,7 @@
   },
   "${ModID}:XunRiFeng": {
     "NAME": "“寻日峰”",
-    "DESCRIPTION": "选择任意张牌消耗，抽等量牌 NL 再次打出会将这些消耗的牌放入手牌"
+    "DESCRIPTION": "选择任意张牌消耗 NL 再次打出会将这些消耗的牌放入手牌"
   },
   "${ModID}:JiaoLu": {
     "NAME": "蕉鹿梦",

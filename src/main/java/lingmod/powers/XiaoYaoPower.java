@@ -1,15 +1,12 @@
 package lingmod.powers;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
-import lingmod.ModCore;
-import lingmod.util.TexLoader;
 
 import static lingmod.ModCore.makeID;
 
@@ -25,38 +22,19 @@ public class XiaoYaoPower extends AbstractEasyPower {
     public static final int MAX_CAPA_EX = 5; // 扩容之多为5
     private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.BUFF;
     private static final boolean TURN_BASED = true; // 是否回合后消失
-    private static int id_postfix = 0;
+    private int capaExpand;
 
-    public XiaoYaoPower(AbstractCreature owner) {
-        super(POWER_ID + id_postfix++, NAME, TYPE, TURN_BASED, owner, 0);
-        reloadTexture(POWER_ID);
+    public XiaoYaoPower(AbstractCreature owner, int amount) {
+        super(POWER_ID, NAME, TYPE, TURN_BASED, owner, amount);
         // 覆盖卡图
         this.updateDescription();
-    }
-
-    /**
-     * 不可叠加的能力，需要重找卡图
-     */
-    public void reloadTexture(String ID) {
-        Texture normalTexture = TexLoader.getTexture(
-                ModCore.modID + "Resources/images/powers/" + ID.replaceAll(ModCore.modID + ":", "") + "32.png");
-        Texture hiDefImage = TexLoader.getTexture(
-                ModCore.modID + "Resources/images/powers/" + ID.replaceAll(ModCore.modID + ":", "") + "84.png");
-        if (hiDefImage != null) {
-            region128 = new TextureAtlas.AtlasRegion(hiDefImage, 0, 0, hiDefImage.getWidth(), hiDefImage.getHeight());
-            if (normalTexture != null)
-                region48 = new TextureAtlas.AtlasRegion(normalTexture, 0, 0, normalTexture.getWidth(),
-                        normalTexture.getHeight());
-        } else if (normalTexture != null) {
-            this.img = normalTexture;
-            region48 = new TextureAtlas.AtlasRegion(normalTexture, 0, 0, normalTexture.getWidth(),
-                    normalTexture.getHeight());
-        }
     }
 
     @Override
     public void atEndOfTurn(boolean isPlayer) {
         super.atEndOfTurn(isPlayer);
+        BaseMod.MAX_HAND_SIZE++;
+        capaExpand++;
         if (owner != null) {
             amount++;
             addToBot(new ApplyPowerAction(owner, owner,
@@ -65,6 +43,13 @@ public class XiaoYaoPower extends AbstractEasyPower {
                     new CapacityExpansionPower(owner, Math.max(amount, MAX_CAPA_EX))));
             updateDescription();
         }
+    }
+
+    @Override
+    public void onRemove() {
+        super.onRemove();
+        BaseMod.MAX_HAND_SIZE -= capaExpand;
+        capaExpand = 0;
     }
 
     @Override

@@ -1,9 +1,6 @@
 package lingmod.actions;
 
-import java.util.Iterator;
-
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.unique.GamblingChipAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -11,7 +8,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
-
 import lingmod.cards.skill.XunRiFeng;
 
 /**
@@ -23,7 +19,7 @@ public class CardTimeTravelAction extends AbstractGameAction {
     private AbstractPlayer p;
     private static final UIStrings uiStrings;
     public static final String[] TEXT;
-    private boolean notchip;
+    private final boolean notchip;
 
     GamblingChipAction reference;
 
@@ -47,12 +43,10 @@ public class CardTimeTravelAction extends AbstractGameAction {
         } else {
             if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
                 if (!AbstractDungeon.handCardSelectScreen.selectedCards.group.isEmpty()) {
-                    this.addToTop(new DrawCardAction(this.p,
-                            AbstractDungeon.handCardSelectScreen.selectedCards.group.size()));
-                    Iterator<AbstractCard> var1 = AbstractDungeon.handCardSelectScreen.selectedCards.group.iterator();
+                    //                    this.addToTop(new DrawCardAction(this.p,
+                    //                            AbstractDungeon.handCardSelectScreen.selectedCards.group.size()));
 
-                    while (var1.hasNext()) {
-                        AbstractCard c = (AbstractCard) var1.next();
+                    for (AbstractCard c : AbstractDungeon.handCardSelectScreen.selectedCards.group) {
                         AbstractDungeon.player.hand.moveToExhaustPile(c);
                         sourceCard.addCard(c);
                     }
