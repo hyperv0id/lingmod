@@ -3,14 +3,25 @@ package lingmod.powers;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import com.megacrit.cardcrawl.powers.ShiftingPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import lingmod.ModCore;
 
 public class ShiftingPower2 extends ShiftingPower {
+    public static final String ID = ModCore.makeID(ShiftingPower2.class.getSimpleName());
+    public static final PowerStrings ps = CardCrawlGame.languagePack.getPowerStrings(ID);
     public ShiftingPower2(AbstractCreature owner) {
         super(owner);
         updateDescription();
+    }
+
+    @Override
+    public void updateDescription() {
+        this.description = ps.DESCRIPTIONS[0];
+        super.updateDescription();
     }
 
     @Override
