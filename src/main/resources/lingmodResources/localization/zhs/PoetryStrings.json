@@ -79,7 +79,7 @@
       "平仄平平平仄平",
       "仄平仄仄平"
     ],
-    "DESCRIPTION": "计算手牌数量，每张造成 !D! 点伤害 NL 抽 !M! 张牌"
+    "DESCRIPTION": "丢弃所有非保留牌 。 抽 !M! 张牌"
   },
   "lingmod:ShiShuoXinYuCard": {
     "NAME": "世说新语·品藻",

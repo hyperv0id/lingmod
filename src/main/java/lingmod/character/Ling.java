@@ -1,12 +1,17 @@
 package lingmod.character;
 
-import basemod.abstracts.CustomPlayer;
-import com.badlogic.gdx.Gdx;
+import static lingmod.ModCore.characterColor;
+import static lingmod.ModCore.makeCharacterPath;
+import static lingmod.ModCore.makeImagePath;
+import static lingmod.character.Ling.Enums.LING_COLOR;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
-import com.esotericsoftware.spine.*;
+import com.esotericsoftware.spine.AnimationState;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -15,10 +20,15 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.cutscenes.CutscenePanel;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.*;
+import com.megacrit.cardcrawl.helpers.CardLibrary;
+import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.Hitbox;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
+
+import basemod.abstracts.CustomPlayer;
 import lingmod.cards.AbstractPoetryCard;
 import lingmod.cards.attack.ChongJinJiuCard;
 import lingmod.cards.attack.GuoJiaXianMei;
@@ -31,12 +41,6 @@ import lingmod.util.ModConfig;
 import lingmod.util.SkinInfo;
 import lingmod.util.TODO;
 import lingmod.util.VoiceMaster;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static lingmod.ModCore.*;
-import static lingmod.character.Ling.Enums.LING_COLOR;
 
 public class Ling extends CustomPlayer {
 
@@ -73,7 +77,7 @@ public class Ling extends CustomPlayer {
                 SHOULDER1,
                 SHOULDER1,
                 CORPSE,
-                getLoadout(), 20.0F, -10.0F, 166.0F, 327.0F, new EnergyManager(3));
+                getLoadout(), 0F, 0F, 166.0F, 327.0F, new EnergyManager(3));
 
         dialogX = (drawX + 0.0F * Settings.scale);
         dialogY = (drawY + 240.0F * Settings.scale);
@@ -87,8 +91,9 @@ public class Ling extends CustomPlayer {
             String prefix = makeCharacterPath("ling/static/");
             String path = prefix + ModConfig.skinInfo.toString().toLowerCase();
             img = ImageMaster.loadImage(path + ".png");
-            hb_w = img.getWidth();
-            hb_h = img.getHeight();
+            this.hb = new Hitbox(img.getWidth(), img.getHeight());
+            hb_w = hb.width;
+            hb_h = hb.height;
         } else {
             String prefix = makeCharacterPath("ling/char_2023_ling_");
             String path = prefix + ModConfig.skinInfo.toString().toLowerCase();
@@ -100,34 +105,6 @@ public class Ling extends CustomPlayer {
             e.setTime(e.getEndTime() * MathUtils.random());
             e.setTimeScale(0.8F);
         }
-    }
-
-    @Override
-    protected void loadAnimation(String atlasUrl, String skeletonUrl, float scale) {
-        // load animation from .skel rather than .json
-        logger.info("Loading animation");
-
-        this.atlas = new TextureAtlas(Gdx.files.internal(atlasUrl));
-        // SkeletonJson json = new SkeletonJson(this.atlas);
-        if (CardCrawlGame.dungeon != null && AbstractDungeon.player != null) {
-            if (AbstractDungeon.player.hasRelic("PreservedInsect") && !this.isPlayer
-                    && AbstractDungeon.getCurrRoom().eliteTrigger) {
-                scale += 0.3F;
-            }
-
-            if (ModHelper.isModEnabled("MonsterHunter") && !this.isPlayer) {
-                scale -= 0.3F;
-            }
-        }
-
-        // json.setScale(Settings.renderScale / scale);
-        SkeletonBinary skel = new SkeletonBinary(this.atlas);
-        skel.setScale(Settings.renderScale / scale);
-        SkeletonData skeletonData = skel.readSkeletonData(Gdx.files.internal(skeletonUrl));
-        this.skeleton = new Skeleton(skeletonData);
-        this.skeleton.setColor(Color.WHITE);
-        this.stateData = new AnimationStateData(skeletonData);
-        this.state = new AnimationState(this.stateData);
     }
 
     /**

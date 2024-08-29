@@ -1,0 +1,40 @@
+package lingmod.cards.power;
+
+import static lingmod.ModCore.makeID;
+
+import com.megacrit.cardcrawl.actions.unique.ApotheosisAction;
+import com.megacrit.cardcrawl.actions.unique.ArmamentsAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import basemod.AutoAdd.Ignore;
+import lingmod.cards.AbstractEasyCard;
+import lingmod.interfaces.CardConfig;
+
+/**
+ * 升级所有牌，下次离开梦境时，降级所有手牌
+ */
+@Ignore
+@CardConfig(isDream = true)
+public class ZhuYeZhouCard extends AbstractEasyCard {
+    public final static String ID = makeID(ZhuYeZhouCard.class.getSimpleName());
+
+    public ZhuYeZhouCard() {
+        super(ID, 1, CardType.POWER, CardRarity.UNCOMMON, CardTarget.SELF);
+    }
+
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        if (upgraded)
+            addToBot(new ApotheosisAction());
+        else
+            addToBot(new ArmamentsAction(true));
+    }
+
+    @Override
+    public void upp() {
+    }
+}
+// "lingmod:ZhuYeZhouCard": {
+// "NAME": "ZhuYeZhouCard",
+// "DESCRIPTION": ""
+// }

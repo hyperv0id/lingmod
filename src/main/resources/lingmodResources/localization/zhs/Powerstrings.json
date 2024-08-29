@@ -2,7 +2,7 @@
   "${ModID}:PoeticMoodPower": {
     "NAME": "诗兴",
     "DESCRIPTIONS": [
-      "每叠满 12 层 获得 1能量 以及 1 缓冲"
+      "是打出诗词的资源，每打出一张牌就能获得 #b1 #b诗兴"
     ]
   },
   "${ModID}:NellaFantasiaPower": {

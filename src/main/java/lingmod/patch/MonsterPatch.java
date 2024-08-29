@@ -1,6 +1,10 @@
 package lingmod.patch;
 
-import basemod.ReflectionHacks;
+import static lingmod.ModCore.logger;
+
+import java.util.ArrayList;
+import java.util.Objects;
+
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -18,14 +22,11 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.PoisonPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
+
+import basemod.ReflectionHacks;
 import lingmod.interfaces.SummonedMonster;
 import lingmod.util.MonsterHelper;
 import lingmod.util.Wiz;
-
-import java.util.ArrayList;
-import java.util.Objects;
-
-import static lingmod.ModCore.logger;
 
 public class MonsterPatch {
     /**
@@ -125,7 +126,7 @@ public class MonsterPatch {
                 if (!Wiz.isPlayerLing()) return; // 其他角色无效
                 if (info == null) return;
                 // 取消友伤
-                if (target != null && info.owner != null && info.owner.isPlayer && target.isPlayer) {
+                if (target != null && info.owner != null && info.owner.isPlayer && target.isPlayer && info.owner != target) {
                     // _inst.target = MonsterHelper.getMoNotSummon(true, null);
                     _inst.isDone = true; // 取消这个
                     logger.info("友伤取消: " + info.owner + " " + target);
