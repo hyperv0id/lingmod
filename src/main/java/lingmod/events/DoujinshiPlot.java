@@ -1,15 +1,21 @@
 package lingmod.events;
 
-import basemod.abstracts.events.PhasedEvent;
-import basemod.abstracts.events.phases.CombatPhase;
-import basemod.abstracts.events.phases.TextPhase;
+import static lingmod.ModCore.logger;
+import static lingmod.ModCore.makeID;
+import static lingmod.ModCore.makeImagePath;
+
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
+import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.potions.PotionSlot;
 import com.megacrit.cardcrawl.relics.AbstractRelic.RelicTier;
+
+import basemod.abstracts.events.PhasedEvent;
+import basemod.abstracts.events.phases.CombatPhase;
+import basemod.abstracts.events.phases.TextPhase;
 import lingmod.cards.poetry.ChiBiFuCard;
 import lingmod.cards.poetry.DingFengBoCard;
 import lingmod.cards.poetry.JianKeCard;
@@ -17,8 +23,6 @@ import lingmod.patch.PlayerFieldsPatch;
 import lingmod.potions.ForgetPotion;
 import lingmod.util.PoetryReward;
 import lingmod.util.Wiz;
-
-import static lingmod.ModCore.*;
 
 /**
  * 本子情节，但是永远潇洒的令姐
@@ -63,6 +67,9 @@ public class DoujinshiPlot extends PhasedEvent {
         registerPhase(Phases.DRINK, new TextPhase(DESCRIPTIONS[1])
                 .addOption(OPTIONS[9], (i) -> exit())
                 .addOption(OPTIONS[10], (i) -> {
+                    AbstractPotion potion = Wiz.adp().potions.stream().filter(pot -> pot instanceof ForgetPotion).findFirst().orElse(null);
+                    int idx = Wiz.adp().potions.indexOf(potion);
+                    Wiz.adp().potions.set(idx, new PotionSlot(idx));
                     transitionKey(Phases.DOUJINSHI);
                     imageEventText.loadImage(makeImagePath("events/DoujinshiPlot_1.png"));
                 }));
