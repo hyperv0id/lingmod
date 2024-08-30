@@ -4,10 +4,10 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.unique.GamblingChipAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
+
 import lingmod.cards.skill.XunRiFeng;
 
 /**
@@ -16,7 +16,6 @@ import lingmod.cards.skill.XunRiFeng;
 public class CardTimeTravelAction extends AbstractGameAction {
 
     public XunRiFeng sourceCard;
-    private AbstractPlayer p;
     private static final UIStrings uiStrings;
     public static final String[] TEXT;
     private final boolean notchip;

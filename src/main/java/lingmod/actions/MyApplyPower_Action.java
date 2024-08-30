@@ -3,7 +3,6 @@ package lingmod.actions;
 import java.util.Collections;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
@@ -14,7 +13,6 @@ public class MyApplyPower_Action extends AbstractGameAction {
         this.setValues(target, source, amount);
         this.power = power;
         this.amount = amount;
-        ApplyPowerAction ref;
     }
 
     public MyApplyPower_Action(AbstractCreature target, AbstractCreature source, AbstractPower power) {
