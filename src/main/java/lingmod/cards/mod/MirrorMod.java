@@ -1,11 +1,9 @@
 package lingmod.cards.mod;
 
-import basemod.ReflectionHacks;
-import basemod.abstracts.AbstractCardModifier;
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
+import static lingmod.ModCore.logger;
+import static lingmod.ModCore.makeID;
+
 import com.badlogic.gdx.graphics.Color;
-import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -14,8 +12,11 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 
-import static lingmod.ModCore.logger;
-import static lingmod.ModCore.makeID;
+import basemod.ReflectionHacks;
+import basemod.abstracts.AbstractCardModifier;
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
+import lingmod.actions.FastExhaustAction;
 
 /**
  * 重进酒：打出卡牌时，此牌消耗，变为那张牌的复制
@@ -45,7 +46,7 @@ public class MirrorMod extends AbsLingCardModifier {
         if (!(group == AbstractDungeon.player.hand))
             return;
         // 1. 消耗自己
-        addToBot(new ExhaustSpecificCardAction(card, group));
+        addToBot(new FastExhaustAction(card, group));
         // 2. 创建复制
         AbstractCard cp = otherCard.makeStatEquivalentCopy();
         if (isTempCard) {
