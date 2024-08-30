@@ -1,11 +1,12 @@
 package lingmod.cards.skill;
 
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import lingmod.ModCore;
 import lingmod.actions.ExhaustAllAction;
 import lingmod.cards.AbstractEasyCard;
@@ -34,24 +35,31 @@ public class ZhengFuWangXiang extends AbstractEasyCard {
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void applyPowers() {
+        AbstractPlayer p = Wiz.adp();
         long cnt = p.hand.size();
         // 消耗手牌所有打防
         if (upgraded) {
             cnt += p.discardPile.group.stream().filter(Wiz::isStart_SD).count();
+            cnt += p.drawPile.group.stream().filter(Wiz::isStart_SD).count();
+        }
+        cardsToPreview.baseDamage = cardsToPreview.baseBlock = this.magicNumber * (int) cnt;
+        cardsToPreview.cost = Math.min((int) cnt, new GuoJiaXianMei().cost);
+
+    }
+
+    @Override
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        // 消耗手牌所有打防
+        if (upgraded) {
             p.drawPile.group.stream().filter(Wiz::isStart_SD).forEach(c -> addToBot(new ExhaustSpecificCardAction(c,
                     p.drawPile)));
-            cnt += p.drawPile.group.stream().filter(Wiz::isStart_SD).count();
             p.drawPile.group.stream().filter(Wiz::isStart_SD).forEach(c -> addToBot(new ExhaustSpecificCardAction(c,
                     p.drawPile)));
         }
         addToBot(new ExhaustAllAction(p.hand));
 
-        GuoJiaXianMei gjxm = new GuoJiaXianMei();
-        gjxm.baseDamage = gjxm.baseBlock = this.magicNumber * (int) cnt;
-        gjxm.cost = Math.min((int) cnt, gjxm.cost);
-        gjxm.setCostForTurn(gjxm.cost);
-        addToBot(new MakeTempCardInHandAction(gjxm));
+        addToBot(new MakeTempCardInHandAction(this.cardsToPreview));
     }
 
 }

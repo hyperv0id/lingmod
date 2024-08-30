@@ -3,7 +3,7 @@ package lingmod.relics;
 import static lingmod.ModCore.makeID;
 
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import lingmod.actions.MyApplyPower_Action;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.RegenPower;
@@ -30,7 +30,7 @@ public class Shu_SeedRelic extends AbstractEasyRelic implements ClickableRelic, 
         if (AbstractDungeon.getCurrMapNode().getRoom() instanceof MonsterRoom) {
             this.flash();
             addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-            addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
+            addToBot(new MyApplyPower_Action(AbstractDungeon.player, AbstractDungeon.player,
                     new RegenPower(AbstractDungeon.player, this.counter)));
             this.grayscale = true;
             this.counter = 0;

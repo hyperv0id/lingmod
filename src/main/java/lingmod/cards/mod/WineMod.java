@@ -1,7 +1,7 @@
 package lingmod.cards.mod;
 
-import basemod.abstracts.AbstractCardModifier;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -9,9 +9,10 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
-import lingmod.powers.WinePower;
 
-import static lingmod.ModCore.makeID;
+import basemod.abstracts.AbstractCardModifier;
+import lingmod.actions.MyApplyPower_Action;
+import lingmod.powers.WinePower;
 
 /**
  * 此牌是酒
@@ -37,7 +38,7 @@ public class WineMod extends AbsLingCardModifier {
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
         super.onUse(card, target, action);
         AbstractPlayer p = AbstractDungeon.player;
-        addToTop(new ApplyPowerAction(p, p, new WinePower(p, amount)));
+        addToTop(new MyApplyPower_Action(p, p, new WinePower(p, amount)));
     }
 
     @Override

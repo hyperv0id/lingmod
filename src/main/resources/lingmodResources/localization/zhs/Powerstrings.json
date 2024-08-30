@@ -48,12 +48,6 @@
       " #y力量"
     ]
   },
-  "${ModID}:CapacityExpansionPower": {
-    "NAME": "扩容",
-    "DESCRIPTIONS": [
-      "在本回合，手牌上限提高 !M! 张。"
-    ]
-  },
   "${ModID}:CantApplyPowerPower": {
     "NAME": "无怖",
     "DESCRIPTIONS": [

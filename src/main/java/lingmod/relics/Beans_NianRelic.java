@@ -1,6 +1,6 @@
 package lingmod.relics;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import lingmod.actions.MyApplyPower_Action;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import lingmod.interfaces.Credit;
@@ -23,6 +23,6 @@ public class Beans_NianRelic extends AbstractEasyRelic {
     public void atTurnStart() {
         super.atTurnStart();
         this.flash();
-        addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new VigorPower(AbstractDungeon.player, 3)));
+        addToBot(new MyApplyPower_Action(AbstractDungeon.player, AbstractDungeon.player, new VigorPower(AbstractDungeon.player, 3)));
     }
 }

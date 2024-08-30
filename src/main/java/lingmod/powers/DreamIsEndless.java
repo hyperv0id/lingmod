@@ -2,12 +2,13 @@ package lingmod.powers;
 
 import static lingmod.ModCore.makeID;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.ConstrictedPower;
+
+import lingmod.actions.MyApplyPower_Action;
 
 /**
  * 梦长，损失生命时部分 转换成缠绕
@@ -30,7 +31,7 @@ public class DreamIsEndless extends AbstractEasyPower {
     @Override
     public int onLoseHp(int damageAmount) {
         if (damageAmount > 0)
-            addToBot(new ApplyPowerAction(owner, owner, new ConstrictedPower(owner, owner, damageAmount)));
+            addToBot(new MyApplyPower_Action(owner, owner, new ConstrictedPower(owner, owner, damageAmount)));
         return super.onLoseHp(damageAmount);
     }
 }

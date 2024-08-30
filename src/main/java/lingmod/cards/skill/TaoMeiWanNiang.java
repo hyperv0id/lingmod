@@ -1,17 +1,18 @@
 package lingmod.cards.skill;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
+
+import lingmod.actions.MyApplyPower_Action;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.powers.WinePower;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 活力变成酒
@@ -31,7 +32,7 @@ public class TaoMeiWanNiang extends AbstractEasyCard {
         if (vigor != null) {
             if (!upgraded)
                 addToBot(new RemoveSpecificPowerAction(p, p, vigor));
-            addToBot(new ApplyPowerAction(p, p, new WinePower(p, vigor.amount)));
+            addToBot(new MyApplyPower_Action(p, p, new WinePower(p, vigor.amount)));
         }
     }
 

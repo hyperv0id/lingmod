@@ -3,7 +3,7 @@ package lingmod.cards.skill;
 import static lingmod.ModCore.makeID;
 
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import lingmod.actions.MyApplyPower_Action;
 import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -54,7 +54,7 @@ public class QingMingDream extends AbstractEasyCard {
         }
         if (amount > 0) {
             for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
-                addToBot(new ApplyPowerAction(mo, p, new StrengthPower(mo, -amount)));
+                addToBot(new MyApplyPower_Action(mo, p, new StrengthPower(mo, -amount)));
             }
         }
         addToBot(new ChangeStanceAction(NeutralStance.STANCE_ID));

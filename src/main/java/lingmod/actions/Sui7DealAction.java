@@ -1,7 +1,7 @@
 package lingmod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import lingmod.actions.MyApplyPower_Action;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
@@ -46,7 +46,7 @@ public class Sui7DealAction extends AbstractGameAction {
                     size++;
                 }
                 // 交易后获得 力量
-                addToTop(new ApplyPowerAction(source, source, new StrengthPower(source, size)));
+                addToTop(new MyApplyPower_Action(source, source, new StrengthPower(source, size)));
                 AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
             }
             this.tickDuration();

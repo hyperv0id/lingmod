@@ -5,7 +5,6 @@ import static lingmod.ModCore.makeImagePath;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -25,6 +24,7 @@ import basemod.BaseMod;
 import basemod.abstracts.CustomMonster;
 import basemod.interfaces.PostBattleSubscriber;
 import basemod.interfaces.PostExhaustSubscriber;
+import lingmod.actions.MyApplyPower_Action;
 import lingmod.character.Ling;
 import lingmod.patch.OnSaveLoadPatch;
 
@@ -60,7 +60,7 @@ public class MonsterSui_7_Ji extends CustomMonster implements PostExhaustSubscri
     BaseMod.subscribe(this);
     super.useUniversalPreBattleAction();
     // AbstractPlayer p = AbstractDungeon.player;
-    // addToTop(new ApplyPowerAction(p, this, new Sui7DealPower(p, this, 1)));
+    // addToTop(new MyApplyPower_Action(p, this, new Sui7DealPower(p, this, 1)));
   }
 
   @Override
@@ -85,7 +85,7 @@ public class MonsterSui_7_Ji extends CustomMonster implements PostExhaustSubscri
       case 1:
         addToBot(new TalkAction(this, DIALOGS[2], 0.5F, 2.0F));
         addToBot(new DamageAction(p, info, AttackEffect.FIRE));
-        addToBot(new ApplyPowerAction(
+        addToBot(new MyApplyPower_Action(
                 p, this, new ConstrictedPower(p, this, info.output)));
         break;
       default:
@@ -96,7 +96,7 @@ public class MonsterSui_7_Ji extends CustomMonster implements PostExhaustSubscri
 
   @Override
   public void receivePostExhaust(AbstractCard arg0) {
-    addToBot(new ApplyPowerAction(this, this, new StrengthPower(this, STRENGTH_GROW)));
+    addToBot(new MyApplyPower_Action(this, this, new StrengthPower(this, STRENGTH_GROW)));
   }
 
   @Override

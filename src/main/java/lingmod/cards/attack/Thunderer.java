@@ -1,30 +1,30 @@
 package lingmod.cards.attack;
 
-import basemod.cardmods.RetainMod;
-import basemod.helpers.CardModifierManager;
-import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import lingmod.cards.AbstractEasyCard;
-import lingmod.character.Ling;
-import lingmod.interfaces.CardConfig;
-import lingmod.interfaces.Credit;
+import static java.lang.Math.max;
+import static lingmod.ModCore.makeID;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static java.lang.Math.max;
-import static lingmod.ModCore.makeID;
+import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import basemod.cardmods.RetainMod;
+import basemod.helpers.CardModifierManager;
+import lingmod.cards.AbstractEasyCard;
+import lingmod.character.Ling;
+import lingmod.interfaces.CardConfig;
+import lingmod.interfaces.Credit;
 
 /**
  * 1费打9
  * 回合结束时创建本牌的复制
  * 打出后选择手牌中的弦惊合成
  */
-@CardConfig(damage = 9, magic = 1)
+@CardConfig(damage = 9, magic = 1, isSummon = true)
 @Credit(platform = Credit.PIXIV, username = "UIRU", link = "https://www.pixiv.net/artworks/101314899")
 public class Thunderer extends AbstractEasyCard {
     public static final String NAME = Thunderer.class.getSimpleName();
@@ -61,14 +61,14 @@ public class Thunderer extends AbstractEasyCard {
         initializeTitle();
     }
 
-    @Override
-    public void onRetained() {
-        super.onRetained();
-        // 手牌中添加一张 弦惊
-        // if (!this.canUpgrade()) return; // 最高等级了，不再生成
-        AbstractCard cp = makeStatEquivalentCopy();
-        addToBot(new MakeTempCardInHandAction(cp));
-    }
+    // @Override
+    // public void onRetained() {
+    //     super.onRetained();
+    //     // 手牌中添加一张 弦惊
+    //     // if (!this.canUpgrade()) return; // 最高等级了，不再生成
+    //     AbstractCard cp = makeStatEquivalentCopy();
+    //     addToBot(new MakeTempCardInHandAction(cp));
+    // }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {

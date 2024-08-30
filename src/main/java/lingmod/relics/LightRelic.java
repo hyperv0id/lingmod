@@ -1,9 +1,8 @@
 package lingmod.relics;
 
-import basemod.BaseMod;
-import basemod.interfaces.OnStartBattleSubscriber;
-import basemod.interfaces.PostExhaustSubscriber;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import static lingmod.ModCore.makeID;
+
+import lingmod.actions.MyApplyPower_Action;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -12,11 +11,13 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+
+import basemod.BaseMod;
+import basemod.interfaces.OnStartBattleSubscriber;
+import basemod.interfaces.PostExhaustSubscriber;
 import lingmod.character.Ling;
 import lingmod.powers.PoeticMoodPower;
 import lingmod.util.VoiceMaster;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 一盏灯：灯挑夜，箭如雨，大漠飞火
@@ -33,7 +34,7 @@ public class LightRelic extends AbstractEasyRelic implements PostExhaustSubscrib
     public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction) {
         super.onUseCard(targetCard, useCardAction);
         AbstractPlayer p = AbstractDungeon.player;
-        addToBot(new ApplyPowerAction(p, p, new PoeticMoodPower(p, 1)));
+        addToBot(new MyApplyPower_Action(p, p, new PoeticMoodPower(p, 1)));
     }
 
     @Override
@@ -44,10 +45,11 @@ public class LightRelic extends AbstractEasyRelic implements PostExhaustSubscrib
 
     @Override
     public void receivePostExhaust(AbstractCard card) {
+        if(card.dontTriggerOnUseCard) return;
         AbstractPlayer p = AbstractDungeon.player;
         if (AbstractDungeon.player.relics.contains(this)) {
             addToBot(new RelicAboveCreatureAction(p, this));
-            addToBot(new ApplyPowerAction(p, p, new VigorPower(p, 1)));
+            addToBot(new MyApplyPower_Action(p, p, new VigorPower(p, 1)));
         } else {
             // 可能是多次实例化导致的错误
             BaseMod.unsubscribeLater(this);

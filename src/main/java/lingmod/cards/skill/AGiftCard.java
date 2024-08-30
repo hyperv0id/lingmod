@@ -39,12 +39,12 @@ public class AGiftCard extends AbstractEasyCard {
                 new ShockWaveEffect(p.hb.cX, p.hb.cY, Settings.BLUE_TEXT_COLOR, ShockWaveEffect.ShockWaveType.ADDITIVE),
                 0.5F));
         for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
-            // this.addToBot(new ApplyPowerAction(mo, p, new VulnerablePower(mo, this.magicNumber, false),
+            // this.addToBot(new MyApplyPower_Action(mo, p, new VulnerablePower(mo, this.magicNumber, false),
                     // this.magicNumber, true, AttackEffect.NONE));
             this.addToBot(new ApplyPowerAction(mo, p, new WeakPower(mo, this.magicNumber, false), this.magicNumber,
                     true, AttackEffect.NONE));
         }
-        // addToBot(new ApplyPowerAction(p, p, new VulnerablePower(p, secondMagic, false)));
+        // addToBot(new MyApplyPower_Action(p, p, new VulnerablePower(p, secondMagic, false)));
         addToBot(new ApplyPowerAction(p, p, new WeakPower(p, secondMagic, false)));
     }
 

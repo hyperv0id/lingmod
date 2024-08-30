@@ -14,7 +14,7 @@ import lingmod.interfaces.Credit;
 /**
  * 0费打8抽2,打出后耗能+1
  */
-@CardConfig(damage = 8, magic = 3)
+@CardConfig(damage = 6, magic = 2)
 @Credit(username = "花冢なし", platform = Credit.LOFTER, link = "https://buliqiaoqiaodibuliduo606.lofter.com/post/30bac242_2b8b36986")
 public class FengQiTanJian extends AbstractEasyCard {
     public final static String ID = makeID(FengQiTanJian.class.getSimpleName());

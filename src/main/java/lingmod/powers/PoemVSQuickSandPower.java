@@ -1,13 +1,14 @@
 package lingmod.powers;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-import static lingmod.ModCore.makeID;
+import lingmod.actions.MyApplyPower_Action;
 
 public class PoemVSQuickSandPower extends AbstractEasyPower {
     public static final String CLASS_NAME = PoemVSQuickSandPower.class.getSimpleName();
@@ -42,7 +43,7 @@ public class PoemVSQuickSandPower extends AbstractEasyPower {
         if (allowLoseHP) {
             if (info.owner != null && info.owner != this.owner) {
                 this.flash();
-                addToBot(new ApplyPowerAction(owner, owner, new PoeticMoodPower(owner, this.amount)));
+                addToBot(new MyApplyPower_Action(owner, owner, new PoeticMoodPower(owner, this.amount)));
             }
         }
     }
@@ -51,7 +52,7 @@ public class PoemVSQuickSandPower extends AbstractEasyPower {
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (info.owner != null && info.owner != this.owner) {
             this.flash();
-            addToBot(new ApplyPowerAction(owner, owner, new PoeticMoodPower(owner, this.amount)));
+            addToBot(new MyApplyPower_Action(owner, owner, new PoeticMoodPower(owner, this.amount)));
         }
         return damageAmount;
     }

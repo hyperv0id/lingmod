@@ -1,6 +1,6 @@
 package lingmod.powers;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import lingmod.actions.MyApplyPower_Action;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -33,7 +33,7 @@ public class Whoami_ShuoPower extends AbstractEasyPower {
             this.amount++;
             if (this.amount >= counter) {
                 this.amount = 0;
-                addToBot(new ApplyPowerAction(owner, owner, new DoubleTapPower(owner, 1)));
+                addToBot(new MyApplyPower_Action(owner, owner, new DoubleTapPower(owner, 1)));
             }
         }
     }

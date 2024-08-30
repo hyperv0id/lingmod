@@ -63,8 +63,8 @@ public class Ling extends CustomPlayer {
             makeCharacterPath("ling/orb/layer4d.png"),
             makeCharacterPath("ling/orb/layer5d.png"),
     };
-    private static final float[] LAYER_SPEED = new float[]{-40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F,
-            -5.0F, 0.0F};
+    private static final float[] LAYER_SPEED = new float[] { -40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F,
+            -5.0F, 0.0F };
 
     public Ling() {
         this(Ling.characterStrings.NAMES[1], Ling.Enums.PLAYER_LING);
@@ -122,8 +122,11 @@ public class Ling extends CustomPlayer {
         // String charID = "char_2023_ling";
         // super.loadAnimation(atlasUrl, skeletonUrl, 1f);
         if (this.atlas != null && this.state != null) {
-            this.state.setAnimation(0, "Skill_02", false);
-            this.state.addAnimation(0, "Idle", true, 0.0F);
+            try {
+                this.state.setAnimation(0, "Skill_02", false);
+                this.state.addAnimation(0, "Idle", true, 0.0F);
+            } catch (Exception ignore) {
+            }
         }
     }
 
@@ -131,8 +134,11 @@ public class Ling extends CustomPlayer {
     public void useFastAttackAnimation() {
         super.useFastAttackAnimation();
         if (this.atlas != null && this.state != null) {
-            this.state.setAnimation(0, "Skill_02", false);
-            this.state.addAnimation(0, "Idle", true, 0.0F);
+            try {
+                this.state.setAnimation(0, "Skill_02", false);
+                this.state.addAnimation(0, "Idle", true, 0.0F);
+            } catch (Exception ignore) {
+            }
         }
     }
 
@@ -140,7 +146,10 @@ public class Ling extends CustomPlayer {
     public void playDeathAnimation() {
         super.playDeathAnimation();
         if (this.atlas != null && this.state != null) {
-            this.state.setAnimation(0, "Die", false);
+            try {
+                this.state.setAnimation(0, "Die", false);
+            } catch (Exception ignore) {
+            }
         }
         VoiceMaster.death();
     }
@@ -149,8 +158,11 @@ public class Ling extends CustomPlayer {
     public void useSlowAttackAnimation() {
         super.useSlowAttackAnimation();
         if (this.atlas != null && this.state != null) {
-            this.state.setAnimation(0, "Skill_03_Loop", false);
-            this.state.addAnimation(0, "Idle", true, 0.0F);
+            try {
+                this.state.setAnimation(0, "Skill_02", false);
+                this.state.addAnimation(0, "Idle", true, 0.0F);
+            } catch (Exception ignore) {
+            }
         }
     }
 
@@ -182,7 +194,8 @@ public class Ling extends CustomPlayer {
     }
 
     public AbstractPoetryCard getPoetryCard() {
-        if (orbs.isEmpty()) return null;
+        if (orbs.isEmpty())
+            return null;
         return ((PoetryOrb) orbs.get(0)).card;
     }
 
@@ -255,10 +268,10 @@ public class Ling extends CustomPlayer {
 
     @Override
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect() {
-        return new AbstractGameAction.AttackEffect[]{
+        return new AbstractGameAction.AttackEffect[] {
                 AbstractGameAction.AttackEffect.FIRE,
                 AbstractGameAction.AttackEffect.BLUNT_HEAVY,
-                AbstractGameAction.AttackEffect.FIRE};
+                AbstractGameAction.AttackEffect.FIRE };
     }
 
     @Override

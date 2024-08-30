@@ -1,6 +1,6 @@
 package lingmod.cards.power;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import lingmod.actions.MyApplyPower_Action;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
@@ -21,7 +21,7 @@ public class BeiChangMeng extends AbstractEasyCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new BeiChangMengPower(p)));
+        addToBot(new MyApplyPower_Action(p, p, new BeiChangMengPower(p)));
     }
 
     @Override

@@ -2,7 +2,7 @@ package lingmod.cards.power;
 
 import static lingmod.ModCore.makeID;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import lingmod.actions.MyApplyPower_Action;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -35,6 +35,6 @@ public class Whoami_Shuo extends AbstractEasyCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new Whoami_ShuoPower(p, magicNumber)));
+        addToBot(new MyApplyPower_Action(p, p, new Whoami_ShuoPower(p, magicNumber)));
     }
 }

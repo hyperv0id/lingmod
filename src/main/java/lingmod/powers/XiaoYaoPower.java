@@ -1,14 +1,15 @@
 package lingmod.powers;
 
-import basemod.BaseMod;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import static lingmod.ModCore.makeID;
+
+import lingmod.actions.MyApplyPower_Action;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 
-import static lingmod.ModCore.makeID;
+import basemod.BaseMod;
 
 /**
  * 逍遥：回合结束后抽牌++
@@ -19,7 +20,6 @@ public class XiaoYaoPower extends AbstractEasyPower {
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    public static final int MAX_CAPA_EX = 5; // 扩容之多为5
     private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.BUFF;
     private static final boolean TURN_BASED = true; // 是否回合后消失
     private int capaExpand;
@@ -37,10 +37,8 @@ public class XiaoYaoPower extends AbstractEasyPower {
         capaExpand++;
         if (owner != null) {
             amount++;
-            addToBot(new ApplyPowerAction(owner, owner,
+            addToBot(new MyApplyPower_Action(owner, owner,
                     new DrawCardNextTurnPower(owner, amount)));
-            addToBot(new ApplyPowerAction(owner, owner,
-                    new CapacityExpansionPower(owner, Math.max(amount, MAX_CAPA_EX))));
             updateDescription();
         }
     }

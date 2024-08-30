@@ -2,10 +2,8 @@ package lingmod.cards.attack;
 
 import static lingmod.ModCore.makeID;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.DuplicationPower;
 
 import basemod.cardmods.ExhaustMod;
 import basemod.helpers.CardModifierManager;
@@ -29,17 +27,8 @@ public class ChongJinJiuCard extends AbstractEasyCard {
         this.initializeDescription();
     }
 
-    // @Override
-    // public void onPlayCard(AbstractCard c, AbstractMonster m) {
-    //     super.onPlayCard(c, m);
-
-    //     this.cardsToPreview = AbstractDungeon.actionManager.lastCard;
-    //     lastCard = AbstractDungeon.actionManager.lastCard;
-    // }
-
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, m, new DuplicationPower(p, 1)));
     }
 
     @Override

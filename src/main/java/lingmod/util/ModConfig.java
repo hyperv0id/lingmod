@@ -1,8 +1,15 @@
 package lingmod.util;
 
-import basemod.BaseMod;
-import basemod.ModLabeledToggleButton;
-import basemod.ModPanel;
+import static lingmod.ModCore.logger;
+import static lingmod.ModCore.makeID;
+import static lingmod.ModCore.makeImagePath;
+import static lingmod.ModCore.modID;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Properties;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -10,15 +17,12 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.UIStrings;
+
+import basemod.BaseMod;
+import basemod.ModLabeledToggleButton;
+import basemod.ModPanel;
 import lingmod.ui.ModLabeledDropdown;
 import lingmod.util.audio.Dialect;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Properties;
-
-import static lingmod.ModCore.*;
 
 public class ModConfig {
     private static final String DIALECT_OPT_KEY = makeID("VOICE.DIALECT");
@@ -30,13 +34,13 @@ public class ModConfig {
     private static ModPanel settingsPanel;
 
     public static Dialect dialect = Dialect.CN_TOPOLECT;
-    public static SkinInfo skinInfo = SkinInfo.DEFAULT;
+    public static SkinInfo skinInfo = SkinInfo.NCG;
     public static boolean showCredit = true;
     public static boolean useStaticCharImg = false;
 
     public static void initModSettings() {
         defaultSetting.setProperty(DIALECT_OPT_KEY, Dialect.CN_TOPOLECT.toString());
-        defaultSetting.setProperty(SKIN_OPT_KEY, SkinInfo.DEFAULT.toString());
+        defaultSetting.setProperty(SKIN_OPT_KEY, SkinInfo.NCG.toString());
         defaultSetting.setProperty(SHOW_CREDIT_KEY, String.valueOf(true));
         defaultSetting.setProperty(STATIC_CHAR_KEY, String.valueOf(false));
         try {
@@ -106,7 +110,7 @@ public class ModConfig {
                 }
             }
         }
-        if (skinInfo == null) skinInfo = SkinInfo.DEFAULT;
+        if (skinInfo == null) skinInfo = SkinInfo.NCG;
     }
 
     public static void saveSkinInfo() {

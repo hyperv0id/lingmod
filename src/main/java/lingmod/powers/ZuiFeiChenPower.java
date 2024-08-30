@@ -2,7 +2,7 @@ package lingmod.powers;
 
 import basemod.BaseMod;
 import basemod.interfaces.PostExhaustSubscriber;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import lingmod.actions.MyApplyPower_Action;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -32,7 +32,7 @@ public class ZuiFeiChenPower extends AbstractEasyPower implements PostExhaustSub
     @Override
     public void receivePostExhaust(AbstractCard abstractCard) {
         this.flash();
-        addToBot(new ApplyPowerAction(owner, owner, new WinePower(owner, amount)));
+        addToBot(new MyApplyPower_Action(owner, owner, new WinePower(owner, amount)));
     }
 
     @Override

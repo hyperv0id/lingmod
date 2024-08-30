@@ -1,11 +1,9 @@
 package lingmod.monsters.whoisreal;
 
-import basemod.abstracts.CustomMonster;
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.AnimateSlowAttackAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.EscapeAction;
 import com.megacrit.cardcrawl.actions.common.SetMoveAction;
@@ -17,7 +15,10 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.powers.AngryPower;
 import com.megacrit.cardcrawl.vfx.SpeechBubble;
+
+import basemod.abstracts.CustomMonster;
 import lingmod.ModCore;
+import lingmod.actions.MyApplyPower_Action;
 
 /**
  * 阿咬，你猜猜它为什么叫阿咬？
@@ -76,9 +77,9 @@ public class AYao extends CustomMonster {
 
     public void usePreBattleAction() {
         if (AbstractDungeon.ascensionLevel >= 17) {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new AngryPower(this, 2)));
+            AbstractDungeon.actionManager.addToBottom(new MyApplyPower_Action(this, this, new AngryPower(this, 2)));
         } else {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this, this, new AngryPower(this, 1)));
+            AbstractDungeon.actionManager.addToBottom(new MyApplyPower_Action(this, this, new AngryPower(this, 1)));
         }
 
     }

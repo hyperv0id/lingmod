@@ -78,7 +78,7 @@
 	"ApplyPower": {
 		"prefix": "appaction",
 		"body": [
-			"addToBot(new ApplyPowerAction(${1}, ${2}, new ${3}));",
+			"addToBot(new MyApplyPower_Action(${1}, ${2}, new ${3}));",
 		],
 		"description": "apply power action"
 	},

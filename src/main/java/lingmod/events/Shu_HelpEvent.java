@@ -1,18 +1,20 @@
 package lingmod.events;
 
-import basemod.abstracts.events.PhasedEvent;
-import basemod.abstracts.events.phases.CombatPhase;
-import basemod.abstracts.events.phases.TextPhase;
+import static lingmod.ModCore.makeID;
+import static lingmod.ModCore.makeImagePath;
+
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.relics.AbstractRelic.RelicTier;
+
+import basemod.abstracts.events.PhasedEvent;
+import basemod.abstracts.events.phases.CombatPhase;
+import basemod.abstracts.events.phases.TextPhase;
 import lingmod.ModCore;
 import lingmod.interfaces.CampfireSleepEvent;
 import lingmod.monsters.MonsterSui_7_Ji;
 import lingmod.relics.Beans_DuskRelic;
-
-import static lingmod.ModCore.makeID;
-import static lingmod.ModCore.makeImagePath;
 
 @CampfireSleepEvent
 public class Shu_HelpEvent extends PhasedEvent {
@@ -34,16 +36,21 @@ public class Shu_HelpEvent extends PhasedEvent {
         super.onEnterRoom();
         registerPhase(Phases.PRE, new TextPhase(DESCRIPTIONS[0]).addOption(OPTIONS[0], (i) -> {
             registerPhase(Phases.ASK, new TextPhase(DESCRIPTIONS[1]).addOption(OPTIONS[1], (ii) -> {
-                if (Math.random() * 100 < prob) transitionKey(Phases.PRE_COMBAT);
-                else transitionKey(Phases.FAILED);
+                if (Math.random() * 100 < prob)
+                    transitionKey(Phases.PRE_COMBAT);
+                else
+                    transitionKey(Phases.FAILED);
             }));
             transitionKey(Phases.ASK);
         }));
 
         registerPhase(Phases.FAILED, new TextPhase(DESCRIPTIONS[2]).addOption(OPTIONS[2], (i) -> openMap()));
 
-        registerPhase(Phases.PRE_COMBAT, new TextPhase(DESCRIPTIONS[3]).addOption(OPTIONS[3], (i) -> transitionKey(Phases.COMBAT)));
-        registerPhase(Phases.COMBAT, new CombatPhase(MonsterSui_7_Ji.ID));
+        registerPhase(Phases.PRE_COMBAT,
+                new TextPhase(DESCRIPTIONS[3]).addOption(OPTIONS[3], (i) -> transitionKey(Phases.COMBAT)));
+        registerPhase(Phases.COMBAT, new CombatPhase(MonsterSui_7_Ji.ID).addRewards(true, (r) -> {
+            r.addRelicToRewards(RelicTier.COMMON);
+        }));
 
         transitionKey(Phases.PRE);
     }

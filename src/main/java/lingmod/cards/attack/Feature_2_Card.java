@@ -2,7 +2,6 @@ package lingmod.cards.attack;
 
 import static lingmod.ModCore.makeID;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -10,6 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import basemod.BaseMod;
 import basemod.interfaces.PostExhaustSubscriber;
+import lingmod.actions.MyApplyPower_Action;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
@@ -54,7 +54,7 @@ public class Feature_2_Card extends AbstractEasyCard implements PostExhaustSubsc
         AbstractPlayer p = AbstractDungeon.player;
         if (p != null && p.hand != null && p.hand.contains(this)) {
             this.upgrade();
-            addToBot(new ApplyPowerAction(p, p,
+            addToBot(new MyApplyPower_Action(p, p,
                     new PoeticMoodPower(p, 1)));
         } else if (card.isEthereal) // 虚无牌会在回合后消耗，但是不会触发上面的逻辑
             this.upgrade();

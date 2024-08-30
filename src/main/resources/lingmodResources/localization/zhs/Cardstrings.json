@@ -40,7 +40,7 @@
   },
   "${ModID}:XiaoYaoYou": {
     "NAME": "逍遥游",
-    "DESCRIPTION": "是 ${ModID}:诗 . NL 获得 ${ModID}:逍遥",
+    "DESCRIPTION": "你的抽牌数和手牌上限每回合增加1",
     "EXTENDED_DESCRIPTION": [
       "长河远上,埋骸其下,吾自逍遥"
     ]
@@ -109,7 +109,7 @@
   },
   "${ModID}:ShiDuanMengChang": {
     "NAME": "诗短梦长",
-    "DESCRIPTION": "获得25%伤害减免 NL 损失生命时，获得等量 ${ModID}:缠绕 NL （包括缠绕造成的伤害）"
+    "DESCRIPTION": "获得25%伤害减免 NL 损失生命时，获得等量 ${ModID}:缠绕 NL （缠绕造成的伤害也会被计入）"
   },
   "${ModID}:AltGuangHui": {
     "NAME": "光辉ALT",
@@ -134,14 +134,14 @@
   },
   "${ModID}:Whoami_Nian": {
     "NAME": "无悲",
-    "DESCRIPTION": "获得 !M! 缓冲，每打出一张攻击牌，失去 1 生命",
+    "DESCRIPTION": "获得 !M! 缓冲，每打出一张攻击牌，失去 !M! 点 生命",
     "EXTENDED_DESCRIPTION": [
       "一把设计古朴的匕首。据说只要用来从事谋杀之类的事业，匕首的锋刃就会消失。"
     ]
   },
   "${ModID}:Whoami_Dusk": {
     "NAME": "无喜",
-    "DESCRIPTION": "选择一个非领袖敌人，使其失去 50%生命，并生成一个 墨魉",
+    "DESCRIPTION": "选择一个非领袖敌人，使其失去 50%生命，并生成一个 相同怪物",
     "EXTENDED_DESCRIPTION": [
       "一支看似无奇的毛笔。夕的笔，可生万物，也可生笔，用的时候要留神一点。"
     ]
@@ -320,8 +320,8 @@
   },
   "lingmod:ShuoWangLing": {
     "NAME": "朔望",
-    "DESCRIPTION": "抽1张牌。统计手牌数 NL 将空: 打 !D! 点 !M! 次 NL 已满: 打 !${ModID}:sd! 点 !${ModID}:m2! 次",
-    "UPGRADE_DESCRIPTION": "抽1张牌。统计手牌数 NL 将空: 打 !D! 点 11 次 NL 已满: 打 !${ModID}:sd! 点 !${ModID}:m2! 次 NL 为三: !B! 格挡 !${ModID}:sb! 次",
+    "DESCRIPTION": "抽1张牌。统计手牌数量 NL 为一: 造成 !D! 点伤害 !M! 次 NL 已满: 造成 !${ModID}:sd! 点伤害 !${ModID}:m2! 次",
+    "UPGRADE_DESCRIPTION": "抽1张牌。统计手牌数量 NL 为一: 造成 !D! 点伤害 !M! 次 NL 已满: 造成 !${ModID}:sd! 点伤害 !${ModID}:m2! 次 NL 为三: 获得 !B! 格挡 !${ModID}:sb! 次",
     "EXTENDED_DESCRIPTION": [
       "令"
     ]

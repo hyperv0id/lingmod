@@ -1,12 +1,12 @@
 package lingmod.cards.attack;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 
 import lingmod.ModCore;
+import lingmod.actions.MyApplyPower_Action;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
@@ -26,7 +26,7 @@ public class BattleHymn extends AbstractEasyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, null);
-        addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false)));
+        addToBot(new MyApplyPower_Action(m, p, new VulnerablePower(m, magicNumber, false)));
         if (m.hasPower(VulnerablePower.POWER_ID))
             addToBot(new DrawCardAction(secondMagic));
     }

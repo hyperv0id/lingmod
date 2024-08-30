@@ -20,15 +20,15 @@ public class Whoami_NianPower extends AbstractEasyPower {
     public static final String ID = makeID(POWER_NAME);
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(ID);
 
-    public Whoami_NianPower(AbstractCreature owner) {
-        super(ID, powerStrings.NAME, PowerType.DEBUFF, false, owner, 0);
+    public Whoami_NianPower(AbstractCreature owner, int amount) {
+        super(ID, powerStrings.NAME, PowerType.DEBUFF, false, owner, amount);
     }
 
     @Override
     public void onAfterUseCard(AbstractCard card, UseCardAction action) {
         if (card.type == CardType.ATTACK) {
             AbstractPlayer p = Wiz.adp();
-            addToBot(new DamageAction(p, new DamageInfo(p, 1, DamageType.HP_LOSS)));
+            addToBot(new DamageAction(p, new DamageInfo(p, amount, DamageType.HP_LOSS)));
         }
         super.onAfterUseCard(card, action);
     }

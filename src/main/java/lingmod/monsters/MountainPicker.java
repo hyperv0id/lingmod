@@ -1,8 +1,14 @@
 package lingmod.monsters;
 
-import basemod.abstracts.CustomMonster;
+import static lingmod.ModCore.makeID;
+import static lingmod.ModCore.makeImagePath;
+
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
-import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.EscapeAction;
+import com.megacrit.cardcrawl.actions.common.RemoveAllBlockAction;
+import com.megacrit.cardcrawl.actions.common.RollMoveAction;
+import com.megacrit.cardcrawl.actions.common.SetMoveAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -11,14 +17,14 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+
+import basemod.abstracts.CustomMonster;
+import lingmod.actions.MyApplyPower_Action;
 import lingmod.powers.GiveGoldAsHP;
 import lingmod.powers.InvincibleForPlayer;
 import lingmod.powers.ShiftingPower2;
 import lingmod.util.MonsterHelper;
 import lingmod.util.Wiz;
-
-import static lingmod.ModCore.makeID;
-import static lingmod.ModCore.makeImagePath;
 
 /**
  * 挑山人大战掌柜的
@@ -45,9 +51,9 @@ public class MountainPicker extends CustomMonster {
     @Override
     public void usePreBattleAction() {
         super.useUniversalPreBattleAction();
-        addToBot(new ApplyPowerAction(this, this, new InvincibleForPlayer(this)));
-        addToBot(new ApplyPowerAction(this, this, new GiveGoldAsHP(this, 1)));
-        addToBot(new ApplyPowerAction(this, this, new ShiftingPower2(this)));
+        addToBot(new MyApplyPower_Action(this, this, new InvincibleForPlayer(this)));
+        addToBot(new MyApplyPower_Action(this, this, new GiveGoldAsHP(this, 1)));
+        addToBot(new MyApplyPower_Action(this, this, new ShiftingPower2(this)));
     }
 
     public AbstractCreature getTarget() {
@@ -66,12 +72,12 @@ public class MountainPicker extends CustomMonster {
                 break;
             case 2:
                 turn_atkb1();
-                addToBot(new ApplyPowerAction(this, this, new StrengthPower(this, 2)));
+                addToBot(new MyApplyPower_Action(this, this, new StrengthPower(this, 2)));
                 setMove((byte) 3, Intent.ATTACK_BUFF, damage.get(1).base);
                 break;
             case 3:
                 turn_atkb2();
-                addToBot(new ApplyPowerAction(this, this, new StrengthPower(this, 2)));
+                addToBot(new MyApplyPower_Action(this, this, new StrengthPower(this, 2)));
                 setMove((byte) 4, Intent.ATTACK_DEBUFF);
                 break;
             case 4:
@@ -98,7 +104,7 @@ public class MountainPicker extends CustomMonster {
     }
 
     public void turn_buff() {
-        addToBot(new ApplyPowerAction(this, this, new StrengthPower(this, 5)));
+        addToBot(new MyApplyPower_Action(this, this, new StrengthPower(this, 5)));
     }
 
     private void turn_atkb1() {

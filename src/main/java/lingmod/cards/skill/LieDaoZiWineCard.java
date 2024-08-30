@@ -2,12 +2,12 @@ package lingmod.cards.skill;
 
 import static lingmod.ModCore.makeID;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
+import lingmod.actions.MyApplyPower_Action;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
@@ -40,6 +40,6 @@ public class LieDaoZiWineCard extends AbstractEasyCard {
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
         AbstractPower vp = abstractPlayer.getPower(VigorPower.POWER_ID);
         int vigorAmt = vp == null ? 0 : vp.amount;
-        addToBot(new ApplyPowerAction(abstractPlayer, abstractPlayer, new VigorPower(abstractPlayer, vigorAmt)));
+        addToBot(new MyApplyPower_Action(abstractPlayer, abstractPlayer, new VigorPower(abstractPlayer, vigorAmt)));
     }
 }

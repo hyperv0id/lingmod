@@ -2,7 +2,6 @@ package lingmod.cards.skill;
 
 import static lingmod.ModCore.makeID;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -11,6 +10,7 @@ import com.megacrit.cardcrawl.powers.ArtifactPower;
 
 import basemod.cardmods.ExhaustMod;
 import basemod.helpers.CardModifierManager;
+import lingmod.actions.MyApplyPower_Action;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
@@ -36,12 +36,12 @@ public class ZhuoJiuChengXin extends AbstractEasyCard {
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
         if (!upgraded)
-            addToBot(new ApplyPowerAction(abstractPlayer, abstractMonster,
+            addToBot(new MyApplyPower_Action(abstractPlayer, abstractMonster,
                     new ArtifactPower(abstractPlayer, magicNumber)));
         else {
             for (AbstractCard c : AbstractDungeon.player.hand.group) {
                 if (c.hasTag(CustomTags.WINE)) {
-                    addToBot(new ApplyPowerAction(abstractPlayer, abstractMonster,
+                    addToBot(new MyApplyPower_Action(abstractPlayer, abstractMonster,
                             new ArtifactPower(abstractPlayer, magicNumber)));
                 }
             }
