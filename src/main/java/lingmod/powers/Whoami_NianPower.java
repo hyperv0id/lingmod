@@ -1,16 +1,19 @@
 package lingmod.powers;
 
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
+import static lingmod.ModCore.makeID;
+
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import lingmod.util.Wiz;
 
-import static lingmod.ModCore.makeID;
+import lingmod.util.Wiz;
 
 public class Whoami_NianPower extends AbstractEasyPower {
     public static final String POWER_NAME = Whoami_NianPower.class.getSimpleName();
@@ -22,11 +25,11 @@ public class Whoami_NianPower extends AbstractEasyPower {
     }
 
     @Override
-    public void onPlayCard(AbstractCard card, AbstractMonster m) {
-        super.onPlayCard(card, m);
+    public void onAfterUseCard(AbstractCard card, UseCardAction action) {
         if (card.type == CardType.ATTACK) {
             AbstractPlayer p = Wiz.adp();
-            addToBot(new LoseHPAction(p, p, 1));
+            addToBot(new DamageAction(p, new DamageInfo(p, 1, DamageType.HP_LOSS)));
         }
+        super.onAfterUseCard(card, action);
     }
 }

@@ -83,6 +83,8 @@ public class Morph {
         if (!(morphee instanceof AbstractPlayer))
             morphee.name = morphTarget.name;
         morphee.hb.resize(morphTarget.hb.width, morphTarget.hb.height);
+        morphee.hb_w = morphee.hb.width;
+        morphee.hb_h = morphee.hb.height;
         morphee.hb.move(morphee.drawX, morphee.drawY);
 
         AnimationStateData stateData = ReflectionHacks.getPrivate(morphee, AbstractCreature.class, "stateData");

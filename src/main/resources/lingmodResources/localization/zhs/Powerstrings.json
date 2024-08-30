@@ -32,7 +32,7 @@
   "${ModID}:DreamIsEndless": {
     "NAME": "梦长",
     "DESCRIPTIONS": [
-      "失去生命时，获得 #r双倍 #b缠绕"
+      "失去生命时，获得等量 #b缠绕 ，缠绕造成的生命损失包括在内"
     ]
   },
   "${ModID}:IncreaseDamagePower": {

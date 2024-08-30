@@ -1,24 +1,25 @@
 package lingmod.monsters.whoisreal;
 
-import basemod.ReflectionHacks;
+import static lingmod.ModCore.makeImagePath;
+
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.exordium.GremlinFat;
+
+import basemod.ReflectionHacks;
 import lingmod.ModCore;
 import lingmod.util.Wiz;
 
-import static lingmod.ModCore.makeImagePath;
-
-public class TouXian {
-    public static final String spinePath = makeImagePath("who_is_real/bi_xian/enemy_1124_spbow", ModCore.ResourceType.MONSTERS);
-    public static final String ID = ModCore.makeID(TouXian.class.getSimpleName());
+public class Du {
+    public static final String spinePath = makeImagePath("who_is_real/du/enemy_1128_spmage", ModCore.ResourceType.MONSTERS);
+    public static final String ID = ModCore.makeID(Du.class.getSimpleName());
     public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
 
     @SpirePatch(clz = GremlinFat.class, method = SpirePatch.CONSTRUCTOR)
-    public static class TouXian_InitPatch {
+    public static class Du_InitPatch {
         @SpirePostfixPatch
         public static void init(GremlinFat __inst) {
             if (!Wiz.isPlayerLing()) return;
@@ -34,7 +35,7 @@ public class TouXian {
     }
 
     @SpirePatch(clz = AbstractCreature.class, method = "useSlowAttackAnimation")
-    public static class TouXian_AttackSlowAnimPatch {
+    public static class Du_AttackSlowAnimPatch {
         @SpirePostfixPatch
         public static void postfix(AbstractCreature __inst) {
             if (!Wiz.isPlayerLing()) return;
@@ -46,7 +47,7 @@ public class TouXian {
     }
 
     @SpirePatch(clz = AbstractCreature.class, method = "useFastAttackAnimation")
-    public static class TouXian_AttackFastAnimPatch {
+    public static class Du_AttackFastAnimPatch {
         @SpirePostfixPatch
         public static void postfix(AbstractCreature __inst) {
             if (!Wiz.isPlayerLing()) return;

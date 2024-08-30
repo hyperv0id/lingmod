@@ -1,16 +1,17 @@
 package lingmod.relics;
 
-import basemod.BaseMod;
-import basemod.interfaces.StartActSubscriber;
+import static lingmod.ModCore.makeID;
+
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.RegenPower;
 import com.megacrit.cardcrawl.rooms.MonsterRoom;
-import lingmod.character.Ling;
 
-import static lingmod.ModCore.makeID;
+import basemod.BaseMod;
+import basemod.interfaces.StartActSubscriber;
+import lingmod.character.Ling;
 
 public class Shu_SeedRelic extends AbstractEasyRelic implements ClickableRelic, StartActSubscriber {
 
@@ -20,7 +21,6 @@ public class Shu_SeedRelic extends AbstractEasyRelic implements ClickableRelic, 
         super(ID, RelicTier.SPECIAL, LandingSound.FLAT, Ling.Enums.LING_COLOR);
         this.counter = 6;
         BaseMod.subscribe(this);
-        getUpdatedDescription();
     }
 
     @Override
@@ -35,11 +35,6 @@ public class Shu_SeedRelic extends AbstractEasyRelic implements ClickableRelic, 
             this.grayscale = true;
             this.counter = 0;
         }
-    }
-
-    @Override
-    public String getUpdatedDescription() {
-        return String.format(DESCRIPTIONS[0], this.counter);
     }
 
     @Override

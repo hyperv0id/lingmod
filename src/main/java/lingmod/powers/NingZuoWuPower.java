@@ -1,10 +1,10 @@
 package lingmod.powers;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 你无法再失去任何能力/异常
@@ -16,6 +16,6 @@ public class NingZuoWuPower extends AbstractEasyPower {
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(ID);
 
     public NingZuoWuPower(AbstractCreature owner) {
-        super(ID, powerStrings.NAME, PowerType.DEBUFF, false, owner, 0);
+        super(ID, powerStrings.NAME, null, false, owner, 0);
     }
 }

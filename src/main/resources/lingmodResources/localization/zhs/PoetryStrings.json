@@ -127,7 +127,7 @@
       "仄仄平平平仄",
       "仄仄仄平平仄"
     ],
-    "DESCRIPTION": "随机化手牌耗能。获得差价量 !M! 倍的 临时生命"
+    "DESCRIPTION": "进入 ${ModID}:梦境 。 NL 获得 !M! 活力"
   },
   "lingmod:AbstractPoetryCard": {
     "NAME": "诗词赋曲",

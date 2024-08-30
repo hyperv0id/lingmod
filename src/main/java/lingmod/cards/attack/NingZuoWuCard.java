@@ -1,17 +1,18 @@
 package lingmod.cards.attack;
 
 
-import basemod.cardmods.EtherealMod;
-import basemod.helpers.CardModifierManager;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import basemod.cardmods.EtherealMod;
+import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.powers.NingZuoWuPower;
 import lingmod.util.Wiz;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 你无法再失去任何能力
@@ -24,6 +25,7 @@ public class NingZuoWuCard extends AbstractEasyCard {
 
     public NingZuoWuCard() {
         super(ID, 3, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
+        CardModifierManager.addModifier(this, new EtherealMod());
     }
 
     @Override
@@ -33,6 +35,6 @@ public class NingZuoWuCard extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        CardModifierManager.addModifier(this, new EtherealMod());
+        updateCost(-1);
     }
 }

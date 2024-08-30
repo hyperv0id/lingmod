@@ -1,18 +1,19 @@
 package lingmod.cards.attack;
 
-import basemod.BaseMod;
-import basemod.interfaces.PostExhaustSubscriber;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import basemod.BaseMod;
+import basemod.interfaces.PostExhaustSubscriber;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.powers.PoeticMoodPower;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 随付笺咏醉屠苏: 召唤物被击倒/吸收/回收时令额外获得4(+1)点技力、攻击力+3%（攻击力加成最多叠加5层）
@@ -25,6 +26,11 @@ public class Feature_2_Card extends AbstractEasyCard implements PostExhaustSubsc
     public Feature_2_Card() {
         super(ID, 5, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
         BaseMod.subscribe(this);
+    }
+
+    @Override
+    public boolean canUpgrade() {
+        return this.cost > 0;
     }
 
     @Override
@@ -46,12 +52,13 @@ public class Feature_2_Card extends AbstractEasyCard implements PostExhaustSubsc
     @Override
     public void receivePostExhaust(AbstractCard card) {
         AbstractPlayer p = AbstractDungeon.player;
-        if (p != null && AbstractDungeon.player.hand != null
-                && AbstractDungeon.player.hand.contains(this)) {
+        if (p != null && p.hand != null && p.hand.contains(this)) {
             this.upgrade();
             addToBot(new ApplyPowerAction(p, p,
                     new PoeticMoodPower(p, 1)));
         } else if (card.isEthereal) // 虚无牌会在回合后消耗，但是不会触发上面的逻辑
             this.upgrade();
+        else
+            BaseMod.unsubscribeLater(this);
     }
 }
