@@ -42,9 +42,9 @@
     ]
   },
   "${ModID}:Sui7DealPower": {
-    "NAME": "交易",
+    "NAME": "裁虚为实",
     "DESCRIPTIONS": [
-      "消耗牌时，绩获得 #r",
+      "卡牌被消耗时，绩获得 #r",
       " #y力量"
     ]
   },
@@ -188,6 +188,12 @@
     "NAME": "烂柯",
     "DESCRIPTIONS": [
       "梦境中的攻击力降低效果增加 1"
+    ]
+  },
+  "lingmod:Ji_NeedlePower": {
+    "NAME": "裁虚为实",
+    "DESCRIPTIONS": [
+      "当卡牌被消耗时，获得 #b1 #r力量"
     ]
   }
 }
