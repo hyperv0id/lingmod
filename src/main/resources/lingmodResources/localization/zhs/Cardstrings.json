@@ -148,7 +148,7 @@
   },
   "${ModID}:BattleHymn": {
     "NAME": "战歌",
-    "DESCRIPTION": "造成 !D! 点伤害，给予 !M! 层易伤。 NL 如果存在易伤，那么抽 !${ModID}:m2! 张牌"
+    "DESCRIPTION": "造成 !D! 点伤害，给予 !M! 层易伤。"
   },
   "${ModID}:Lament": {
     "NAME": "悲词",
@@ -160,7 +160,8 @@
   },
   "${ModID}:YuGuoZhuoYing": {
     "NAME": "雨过濯缨",
-    "DESCRIPTION": "每当卡牌进入弃牌堆或消耗堆时，获得其耗能等量的格挡"
+    "DESCRIPTION": "每当卡牌进入弃牌堆时，获得其耗能等量的格挡",
+    "UPGRADE_DESCRIPTION": "每当卡牌进入弃牌堆或消耗堆时，获得其耗能等量的格挡"
   },
   "${ModID}:SurprisingThunder": {
     "NAME": "远山惊雷",
@@ -316,7 +317,7 @@
   },
   "lingmod:GuLeiXinLiu": {
     "NAME": "故垒新柳",
-    "DESCRIPTION": "发掘 一张牌，并使其 自身不再 消耗"
+    "DESCRIPTION": "选择一张已 消耗 的牌，将其放入你的手牌。"
   },
   "lingmod:ShuoWangLing": {
     "NAME": "朔望",

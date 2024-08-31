@@ -2,17 +2,17 @@ package lingmod.cards.skill;
 
 import static lingmod.ModCore.makeID;
 
+import com.megacrit.cardcrawl.actions.unique.ExhumeAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import basemod.cardmods.ExhaustMod;
 import basemod.helpers.CardModifierManager;
-import lingmod.actions.GuLeiXinLiuAction;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.Credit;
 
 /**
- * 发掘一张牌，然后其不再消耗
+ * 发掘一张牌
  */
 @Credit(username = "-莫熠榆-", platform = Credit.BILI, link = "https://www.bilibili.com/video/BV1nw4m1Q7wp")
 public class GuLeiXinLiu extends AbstractEasyCard {
@@ -24,7 +24,7 @@ public class GuLeiXinLiu extends AbstractEasyCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new GuLeiXinLiuAction());
+        addToBot(new ExhumeAction(false));
     }
 
     @Override

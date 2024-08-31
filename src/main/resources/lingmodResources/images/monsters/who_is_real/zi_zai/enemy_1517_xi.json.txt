@@ -1,7 +1,0 @@
-DragonBones may not support transform constraint
----------------Details---------------
-transform constraint:
-	C_Eye_A_01
-	C_Head_A_06
-	C_Horn_A_01
-	C_Horn_A_02

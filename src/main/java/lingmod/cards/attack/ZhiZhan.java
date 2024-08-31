@@ -15,11 +15,13 @@ import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import com.megacrit.cardcrawl.vfx.combat.VerticalImpactEffect;
 
 import lingmod.cards.AbstractEasyCard;
+import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 
 /**
  * img from: pixiv_106560931_0
  */
+@CardConfig(damage = 14, magic = 3)
 @Credit(platform = "pixiv", link = "https://www.pixiv.net/artworks/106560931", username = "Maiz")
 public class ZhiZhan extends AbstractEasyCard {
 
@@ -27,17 +29,18 @@ public class ZhiZhan extends AbstractEasyCard {
 
     public ZhiZhan() {
         super(ID, 2, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
-        this.baseMagicNumber = 3;
-        this.baseDamage = 14;
     }
 
     public void applyPowers() {
         AbstractPower vigor = AbstractDungeon.player.getPower(VigorPower.POWER_ID);
-        if (vigor != null)
+        if(vigor == null) {
+            super.applyPowers();
+            return;
+        }
+        int cache = vigor.amount;
             vigor.amount *= magicNumber;
         super.applyPowers();
-        if (vigor != null)
-            vigor.amount /= magicNumber;
+        vigor.amount = cache;
     }
 
     public void calculateCardDamage(AbstractMonster mo) {

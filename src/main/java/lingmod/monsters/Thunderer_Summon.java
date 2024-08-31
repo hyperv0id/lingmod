@@ -1,7 +1,9 @@
 package lingmod.monsters;
 
-import basemod.ReflectionHacks;
-import basemod.abstracts.CustomMonster;
+import static lingmod.ModCore.logger;
+import static lingmod.ModCore.makeID;
+import static lingmod.ModCore.makeImagePath;
+
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -12,10 +14,12 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.EnemyMoveInfo;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+
+import basemod.ReflectionHacks;
+import basemod.abstracts.CustomMonster;
+import lingmod.ModCore.ResourceType;
 import lingmod.interfaces.SummonedMonster;
 import lingmod.util.MonsterHelper;
-
-import static lingmod.ModCore.*;
 
 /**
  * 弦惊召唤物
@@ -26,7 +30,7 @@ import static lingmod.ModCore.*;
 public class Thunderer_Summon extends CustomMonster implements SummonedMonster {
 
     public static final String ID = makeID(Thunderer_Summon.class.getSimpleName());
-    protected static final String IMG_PATH = makeImagePath("Thunderer_Summon.png", ResourceType.MONSTERS);
+    protected static final String IMG_PATH = makeImagePath("summon/Thunderer.png", ResourceType.MONSTERS);
     private static final MonsterStrings STRINGS;
     private static final String NAME;
     private static final String[] MOVES;

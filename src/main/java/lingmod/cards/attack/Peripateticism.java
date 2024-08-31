@@ -21,13 +21,13 @@ import lingmod.util.MonsterHelper;
 /**
  * “逍遥”：消耗所有技能牌，每张给予 8 缠绕
  */
-@CardConfig(magic = 4, isSummon = true)
+@CardConfig(magic = 6, isSummon = true)
 @Credit(username = "没有名字", platform = Credit.LOFTER, link = "https://gohanduck.lofter.com/post/1f3831ee_2b8230298")
 public class Peripateticism extends AbstractEasyCard {
     public static final String ID = makeID(Peripateticism.class.getSimpleName());
 
     public Peripateticism() {
-        super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
+        super(ID, 2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
     }
 
     @Override
