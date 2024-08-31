@@ -11,6 +11,7 @@ import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
+import lingmod.patch.PowerPatch;
 import lingmod.powers.NingZuoWuPower;
 import lingmod.util.Wiz;
 
@@ -22,6 +23,7 @@ import lingmod.util.Wiz;
 public class NingZuoWuCard extends AbstractEasyCard {
 
     public static final String ID = makeID(NingZuoWuCard.class.getSimpleName());
+    PowerPatch.OnRemovePowerPatch ref;
 
     public NingZuoWuCard() {
         super(ID, 3, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
@@ -35,6 +37,6 @@ public class NingZuoWuCard extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        updateCost(-1);
+        CardModifierManager.removeModifiersById(this, EtherealMod.ID, false);
     }
 }

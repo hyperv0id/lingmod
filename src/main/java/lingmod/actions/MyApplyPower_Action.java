@@ -6,6 +6,8 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
+import basemod.BaseMod;
+
 public class MyApplyPower_Action extends AbstractGameAction {
     private AbstractPower power;
 
@@ -30,6 +32,7 @@ public class MyApplyPower_Action extends AbstractGameAction {
             Collections.sort(this.target.powers);
             this.power.onInitialApplication();
         }
+        BaseMod.publishPostPowerApply(power, target, source);
         this.isDone = true;
     }
 }

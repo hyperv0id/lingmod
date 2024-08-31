@@ -22,7 +22,7 @@
   },
   "${ModID}:NingZuoWuCard": {
     "NAME": "宁作吾",
-    "DESCRIPTION": "你的能力和异常不会消失"
+    "DESCRIPTION": "你的能力和异常不会被移除 NL 但如果此能力影响了受伤时伤害结算，此能力仍然会消失"
   },
   "${ModID}:Strike": {
     "NAME": "打击",
