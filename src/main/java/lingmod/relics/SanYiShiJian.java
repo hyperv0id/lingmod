@@ -3,6 +3,8 @@ package lingmod.relics;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+
+import basemod.AutoAdd.Ignore;
 import lingmod.ModCore;
 import lingmod.cards.attack.Thunderer;
 import lingmod.cards.attack.Thunderer_SummonCard;
@@ -10,6 +12,7 @@ import lingmod.cards.attack.Thunderer_SummonCard;
 /**
  * 你的三个技能效果改为生成召唤物
  */
+@Ignore
 public class SanYiShiJian extends AbstractEasyRelic {
     public static final String ID = ModCore.makeID(SanYiShiJian.class.getSimpleName());
 

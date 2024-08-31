@@ -5,12 +5,14 @@ import static lingmod.ModCore.makeID;
 import static lingmod.ModCore.makeImagePath;
 
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.potions.PotionSlot;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.AbstractRelic.RelicTier;
 
 import basemod.abstracts.events.PhasedEvent;
@@ -67,9 +69,13 @@ public class DoujinshiPlot extends PhasedEvent {
         registerPhase(Phases.DRINK, new TextPhase(DESCRIPTIONS[1])
                 .addOption(OPTIONS[9], (i) -> exit())
                 .addOption(OPTIONS[10], (i) -> {
-                    AbstractPotion potion = Wiz.adp().potions.stream().filter(pot -> pot instanceof ForgetPotion).findFirst().orElse(null);
-                    int idx = Wiz.adp().potions.indexOf(potion);
-                    Wiz.adp().potions.set(idx, new PotionSlot(idx));
+                    AbstractPlayer p = Wiz.adp();
+                    AbstractPotion potion = p.potions.stream().filter(pot -> pot instanceof ForgetPotion)
+                            .findFirst().orElse(null);
+                    potion.use(null);
+                    p.relics.forEach(AbstractRelic::onUsePotion);
+                    int idx = p.potions.indexOf(potion);
+                    AbstractDungeon.topPanel.destroyPotion(idx);
                     transitionKey(Phases.DOUJINSHI);
                     imageEventText.loadImage(makeImagePath("events/DoujinshiPlot_1.png"));
                 }));

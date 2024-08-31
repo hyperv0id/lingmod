@@ -14,7 +14,7 @@
     "${ModID}:ForgetPotion": {
         "NAME": "忘忧水",
         "DESCRIPTIONS": [
-            "也许能忘记烦心事，饮用请遵医嘱"
+            "从你的卡组中移除 1 张牌"
         ]
     }
 }
