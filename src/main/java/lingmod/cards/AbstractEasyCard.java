@@ -1,5 +1,6 @@
 package lingmod.cards;
 
+import basemod.ReflectionHacks;
 import basemod.abstracts.CustomCard;
 import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.Gdx;
@@ -27,9 +28,11 @@ import lingmod.character.Ling;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.interfaces.VoidSupplier;
+import lingmod.relics.SanYiShiJian;
 import lingmod.util.CardArtRoller;
 import lingmod.util.CustomTags;
 import lingmod.util.ModConfig;
+import lingmod.util.Wiz;
 
 import java.util.function.Consumer;
 
@@ -205,7 +208,14 @@ public abstract class AbstractEasyCard extends CustomCard {
             }
             if (config.isSummon()) {
                 this.tags.add(CustomTags.SUMMON);
-                CardModifierManager.addModifier(this, new SummonMod());
+                if (Wiz.adp() != null && Wiz.adp().hasRelic(SanYiShiJian.ID)) {
+                    this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[0];
+                    this.type = CardType.SKILL;
+                    this.target = CardTarget.SELF;
+                    ReflectionHacks.privateMethod(AbstractCard.class, "createCardImage");
+                } else {
+                    CardModifierManager.addModifier(this, new SummonMod());
+                }
             }
         }
     }

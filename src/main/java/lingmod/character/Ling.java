@@ -1,13 +1,6 @@
 package lingmod.character;
 
-import static lingmod.ModCore.characterColor;
-import static lingmod.ModCore.makeCharacterPath;
-import static lingmod.ModCore.makeImagePath;
-import static lingmod.character.Ling.Enums.LING_COLOR;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
@@ -20,15 +13,9 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.cutscenes.CutscenePanel;
-import com.megacrit.cardcrawl.helpers.CardLibrary;
-import com.megacrit.cardcrawl.helpers.FontHelper;
-import com.megacrit.cardcrawl.helpers.Hitbox;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.helpers.ScreenShake;
+import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
-
-import basemod.abstracts.CustomPlayer;
 import lingmod.cards.AbstractPoetryCard;
 import lingmod.cards.attack.ChongJinJiuCard;
 import lingmod.cards.attack.GuoJiaXianMei;
@@ -41,6 +28,12 @@ import lingmod.util.ModConfig;
 import lingmod.util.SkinInfo;
 import lingmod.util.TODO;
 import lingmod.util.VoiceMaster;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static lingmod.ModCore.*;
+import static lingmod.character.Ling.Enums.LING_COLOR;
 
 public class Ling extends CustomPlayer {
 

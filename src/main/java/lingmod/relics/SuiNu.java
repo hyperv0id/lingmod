@@ -1,19 +1,18 @@
 package lingmod.relics;
 
-import static lingmod.ModCore.logger;
-import static lingmod.ModCore.makeID;
-
-import java.util.ArrayList;
-import java.util.stream.Collectors;
-
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-
 import lingmod.util.Wiz;
+
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+
+import static lingmod.ModCore.logger;
+import static lingmod.ModCore.makeID;
 
 /**
  * 打出牌后对随机单位造成 1-12点伤害，生命值越高越容易受到伤害。玩家受到的伤害减半

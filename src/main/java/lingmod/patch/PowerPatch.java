@@ -1,7 +1,7 @@
 package lingmod.patch;
 
-import static lingmod.ModCore.logger;
-
+import basemod.ReflectionHacks;
+import basemod.interfaces.OnPlayerDamagedSubscriber;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -14,11 +14,10 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.InvinciblePower;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
-
-import basemod.ReflectionHacks;
-import basemod.interfaces.OnPlayerDamagedSubscriber;
 import lingmod.powers.NingZuoWuPower;
 import lingmod.powers.WinePower;
+
+import static lingmod.ModCore.logger;
 
 public class PowerPatch {
     /**

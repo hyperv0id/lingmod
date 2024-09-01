@@ -1,15 +1,14 @@
 package lingmod.cards.skill;
 
-import static lingmod.ModCore.makeID;
-
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import basemod.cardmods.ExhaustMod;
 import basemod.helpers.CardModifierManager;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.actions.SwapCostAction;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.Credit;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 换盏：交换两张牌的费用，如果是酒，那么先将其费用变为0

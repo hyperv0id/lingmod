@@ -4,7 +4,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower.PowerType;
-
 import lingmod.ModCore;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;

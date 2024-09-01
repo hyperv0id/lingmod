@@ -1,10 +1,10 @@
 package lingmod.cards;
 
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import static lingmod.ModCore.makeID;
 
 public abstract class AbstractWineCard extends AbstractEasyCard {
     public final static String ID = makeID(AbstractWineCard.class.getSimpleName());

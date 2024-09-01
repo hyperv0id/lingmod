@@ -5,7 +5,6 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import lingmod.ModCore.*;
 import lingmod.util.MonsterHelper;
 
 import static lingmod.ModCore.*;
@@ -15,10 +14,10 @@ import static lingmod.ModCore.*;
  * TODO: 召唤物会行动两次
  * TODO: 召唤物的格挡会在回合结束时失去
  */
-public class Thunderer_SummonMonster extends AbsSummonMonster  {
+public class Tranquility_SummonMonster extends AbsSummonMonster  {
 
-    public static final String ID = makeID(Thunderer_SummonMonster.class.getSimpleName());
-    protected static final String IMG_PATH = makeImagePath("summon/Thunderer.png", ResourceType.MONSTERS);
+    public static final String ID = makeID(Tranquility_SummonMonster.class.getSimpleName());
+    protected static final String IMG_PATH = makeImagePath("summon/Tranquility.png", ResourceType.MONSTERS);
     private static final MonsterStrings STRINGS;
     private static final String NAME;
 
@@ -29,7 +28,7 @@ public class Thunderer_SummonMonster extends AbsSummonMonster  {
         DIALOG = STRINGS.DIALOG;
     }
 
-    public Thunderer_SummonMonster() {
+    public Tranquility_SummonMonster() {
         super(NAME, ID, 18, 0.0F, 0.0F, 200.0F, 250.0F, IMG_PATH);
         this.damage.add(new DamageInfo(this, 1));
         // this.img = ImageMaster.loadImage(IMG_PATH);

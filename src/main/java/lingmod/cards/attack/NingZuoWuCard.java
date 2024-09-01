@@ -1,19 +1,18 @@
 package lingmod.cards.attack;
 
 
-import static lingmod.ModCore.makeID;
-
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import basemod.cardmods.EtherealMod;
 import basemod.helpers.CardModifierManager;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.patch.PowerPatch;
 import lingmod.powers.NingZuoWuPower;
 import lingmod.util.Wiz;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 你无法再失去任何能力

@@ -1,8 +1,8 @@
 package lingmod.relics;
 
-import lingmod.actions.MyApplyPower_Action;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import lingmod.actions.MyApplyPower_Action;
 import lingmod.powers.PoeticMoodPower;
 
 import static lingmod.ModCore.makeID;

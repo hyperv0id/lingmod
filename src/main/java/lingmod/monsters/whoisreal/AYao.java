@@ -1,5 +1,6 @@
 package lingmod.monsters.whoisreal;
 
+import basemod.abstracts.CustomMonster;
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -15,8 +16,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.powers.AngryPower;
 import com.megacrit.cardcrawl.vfx.SpeechBubble;
-
-import basemod.abstracts.CustomMonster;
 import lingmod.ModCore;
 import lingmod.actions.MyApplyPower_Action;
 

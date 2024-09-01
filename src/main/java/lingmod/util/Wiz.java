@@ -1,18 +1,5 @@
 package lingmod.util;
 
-import static lingmod.ModCore.logger;
-import static lingmod.ModCore.makeID;
-
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -36,7 +23,6 @@ import com.megacrit.cardcrawl.powers.AbstractPower.PowerType;
 import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
-
 import lingmod.actions.MyApplyPower_Action;
 import lingmod.actions.TimedVFXAction;
 import lingmod.cards.AbstractEasyCard;
@@ -46,6 +32,15 @@ import lingmod.interfaces.VoidSupplier;
 import lingmod.powers.PoeticMoodPower;
 import lingmod.stance.NellaFantasiaStance;
 import lingmod.util.audio.ProAudio;
+
+import java.lang.reflect.Field;
+import java.util.*;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+import static lingmod.ModCore.logger;
+import static lingmod.ModCore.makeID;
 
 public class Wiz {
     // The wonderful Wizard of Oz allows access to most easy compilations of data,

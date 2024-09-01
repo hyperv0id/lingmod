@@ -1,19 +1,18 @@
 package lingmod.events;
 
-import static lingmod.ModCore.makeID;
-import static lingmod.ModCore.makeImagePath;
-
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.localization.EventStrings;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
-
 import basemod.abstracts.events.PhasedEvent;
 import basemod.abstracts.events.phases.CombatPhase;
 import basemod.abstracts.events.phases.TextPhase;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.EventStrings;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import lingmod.ModCore.ResourceType;
 import lingmod.interfaces.CampfireSleepEvent;
 import lingmod.monsters.Wang_MountainGhost;
 import lingmod.relics.Beans_LingRelic;
+
+import static lingmod.ModCore.makeID;
+import static lingmod.ModCore.makeImagePath;
 
 @CampfireSleepEvent
 public class Wang_MountainGhostEvent extends PhasedEvent {

@@ -1,30 +1,30 @@
 package lingmod.cards.attack;
 
-import static java.lang.Math.max;
-import static lingmod.ModCore.makeID;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.cardmods.RetainMod;
-import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
-import lingmod.character.Ling;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
+import lingmod.monsters.Thunderer_SummonMonster;
+import lingmod.relics.SanYiShiJian;
+import lingmod.util.MonsterHelper;
+import lingmod.util.Wiz;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.lang.Math.max;
+import static lingmod.ModCore.makeID;
 
 /**
  * 1费打9
  * 回合结束时创建本牌的复制
  * 打出后选择手牌中的弦惊合成
  */
-@CardConfig(damage = 9, magic = 1, isSummon = true)
+@CardConfig(damage = 9, magic = 1, isSummon = true, summonClz = Thunderer_SummonMonster.class)
 @Credit(platform = Credit.PIXIV, username = "UIRU", link = "https://www.pixiv.net/artworks/101314899")
 public class Thunderer extends AbstractEasyCard {
     public static final String NAME = Thunderer.class.getSimpleName();
@@ -33,13 +33,7 @@ public class Thunderer extends AbstractEasyCard {
     public int bgid = 0;
 
     public Thunderer() {
-        this(ID, 1, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
-    }
-
-    public Thunderer(final String cardID, final int cost, final CardType type, final CardRarity rarity,
-            final CardTarget target) {
-        super(cardID, cost, type, rarity, target, Ling.Enums.LING_COLOR);
-        CardModifierManager.addModifier(this, new RetainMod());
+        super(ID, 1, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
     }
 
     @Override
@@ -61,17 +55,14 @@ public class Thunderer extends AbstractEasyCard {
         initializeTitle();
     }
 
-    // @Override
-    // public void onRetained() {
-    //     super.onRetained();
-    //     // 手牌中添加一张 弦惊
-    //     // if (!this.canUpgrade()) return; // 最高等级了，不再生成
-    //     AbstractCard cp = makeStatEquivalentCopy();
-    //     addToBot(new MakeTempCardInHandAction(cp));
-    // }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        if (Wiz.adp().hasRelic(SanYiShiJian.ID)) {
+            CardConfig cc = this.getClass().getAnnotation(CardConfig.class);
+            MonsterHelper.summonMonster(cc.summonClz());
+            return;
+        }
         for (int i = 0; i < magicNumber; i++) {
             dmg(m, null);
         }

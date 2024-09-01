@@ -1,15 +1,14 @@
 package lingmod.cards.power;
 
-import static lingmod.ModCore.makeID;
-
-import lingmod.actions.MyApplyPower_Action;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
+import lingmod.actions.MyApplyPower_Action;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.powers.ZuiFeiChenPower;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 每消耗牌，获得1酒

@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import com.megacrit.cardcrawl.powers.ShiftingPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-
 import lingmod.ModCore;
 import lingmod.actions.MyApplyPower_Action;
 

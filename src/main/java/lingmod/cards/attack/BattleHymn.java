@@ -3,7 +3,6 @@ package lingmod.cards.attack;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
-
 import lingmod.ModCore;
 import lingmod.actions.MyApplyPower_Action;
 import lingmod.cards.AbstractEasyCard;

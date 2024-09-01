@@ -1,7 +1,7 @@
 package lingmod.patch.card;
 
-import static lingmod.ModCore.logger;
-
+import basemod.helpers.CardModifierManager;
+import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.CardModifierPatches;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
@@ -9,10 +9,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-
-import basemod.helpers.CardModifierManager;
-import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.CardModifierPatches;
 import javassist.CannotCompileException;
 import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
@@ -20,6 +18,8 @@ import lingmod.actions.MyApplyPower_Action;
 import lingmod.monsters.AbsSummonMonster;
 import lingmod.powers.Go_ReadAhead;
 import lingmod.util.Wiz;
+
+import static lingmod.ModCore.logger;
 
 /**
  * from Pokemon Regions(MagicGuardPatch)
@@ -51,6 +51,7 @@ public class PlayCardPatch {
             return;
         if (card.type == CardType.ATTACK) {
             Wiz.atb(new MyApplyPower_Action(monster, monster, new StrengthPower(monster, card.damage)));
+            Wiz.atb(new MyApplyPower_Action(monster, monster, new LoseStrengthPower(monster, card.damage)));
             Wiz.addToBotAbstract(()->{
                 monster.applyPowers();
             });

@@ -1,8 +1,6 @@
 package lingmod.monsters;
 
-import static lingmod.ModCore.makeID;
-import static lingmod.ModCore.makeImagePath;
-
+import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -18,14 +16,15 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.powers.ConstrictedPower;
-
-import basemod.abstracts.CustomMonster;
 import lingmod.actions.MyApplyPower_Action;
 import lingmod.cards.status.Sui_7DealCard;
 import lingmod.character.Ling;
 import lingmod.patch.OnSaveLoadPatch;
 import lingmod.powers.Sui7DealPower;
 import lingmod.util.Wiz;
+
+import static lingmod.ModCore.makeID;
+import static lingmod.ModCore.makeImagePath;
 
 /**
  * 绩老七：

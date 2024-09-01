@@ -1,9 +1,7 @@
 package lingmod.monsters;
 
-import static lingmod.ModCore.logger;
-import static lingmod.ModCore.makeID;
-import static lingmod.ModCore.makeImagePath;
-
+import basemod.ReflectionHacks;
+import basemod.abstracts.CustomMonster;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -18,18 +16,13 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.MalleablePower;
 import com.megacrit.cardcrawl.vfx.SpeechBubble;
-
-import basemod.ReflectionHacks;
-import basemod.abstracts.CustomMonster;
 import lingmod.actions.MyApplyPower_Action;
 import lingmod.character.Ling;
-import lingmod.powers.Go_CornerApproach;
-import lingmod.powers.Go_Endgame;
-import lingmod.powers.Go_LibertyPressure;
-import lingmod.powers.Go_ReadAhead;
-import lingmod.powers.HP_Lock_Power;
+import lingmod.powers.*;
 import lingmod.util.Morph;
 import lingmod.util.Wiz;
+
+import static lingmod.ModCore.*;
 
 /**
  * 二哥，你又在算计哦。陪我喝两小酒好不好

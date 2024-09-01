@@ -1,7 +1,5 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.makeID;
-
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -12,10 +10,11 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.GiantTextEffect;
 import com.megacrit.cardcrawl.vfx.combat.WeightyImpactEffect;
-
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
+
+import static lingmod.ModCore.makeID;
 
 @CardConfig(damage = 10)
 @Credit(username = "柞木不朽", link = "https://www.bilibili.com/video/BV1xa4y1C7vV", platform = "bilibili")

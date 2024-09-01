@@ -1,22 +1,21 @@
 package lingmod.cards.skill;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
-import lingmod.actions.MyApplyPower_Action;
 import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.stances.NeutralStance;
-
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
+import lingmod.actions.MyApplyPower_Action;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.Credit;
 import lingmod.stance.NellaFantasiaStance;
 import lingmod.util.CustomTags;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 清明梦：只能在梦中打出，敌人减少的力量变为永久

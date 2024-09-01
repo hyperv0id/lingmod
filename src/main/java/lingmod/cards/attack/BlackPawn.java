@@ -1,15 +1,14 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.actions.TransformDrawPileAction;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.util.Wiz;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 黑子：打6 X 次，次数为黑子数量。

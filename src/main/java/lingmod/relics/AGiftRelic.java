@@ -1,11 +1,11 @@
 package lingmod.relics;
 
 import basemod.AutoAdd;
-import lingmod.actions.MyApplyPower_Action;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import lingmod.actions.MyApplyPower_Action;
 
 import static lingmod.ModCore.makeID;
 

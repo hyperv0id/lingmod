@@ -1,10 +1,9 @@
 package lingmod.cards.cardvars;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.cards.AbstractCard;
-
 import lingmod.cards.AbstractEasyCard;
+
+import static lingmod.ModCore.makeID;
 
 public class ThirdMagicNumber extends AbstractEasyDynamicVariable {
 

@@ -1,17 +1,16 @@
 package lingmod.cards.skill;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.actions.MyApplyPower_Action;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.powers.WinePower;
 import lingmod.stance.NellaFantasiaStance;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 杯莫停：如果是攻击，梦，否则 酒

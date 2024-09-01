@@ -1,12 +1,11 @@
 package lingmod.actions;
 
-import java.util.Collections;
-
+import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-import basemod.BaseMod;
+import java.util.Collections;
 
 public class MyApplyPower_Action extends AbstractGameAction {
     private AbstractPower power;

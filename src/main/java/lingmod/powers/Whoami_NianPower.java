@@ -1,7 +1,5 @@
 package lingmod.powers;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -12,8 +10,9 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-
 import lingmod.util.Wiz;
+
+import static lingmod.ModCore.makeID;
 
 public class Whoami_NianPower extends AbstractEasyPower {
     public static final String POWER_NAME = Whoami_NianPower.class.getSimpleName();

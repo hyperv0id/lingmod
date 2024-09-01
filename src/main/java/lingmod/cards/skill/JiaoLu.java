@@ -1,20 +1,19 @@
 package lingmod.cards.skill;
 
-import static lingmod.ModCore.logger;
-import static lingmod.ModCore.makeID;
-
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.LoseDexterityPower;
 import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-
-import basemod.helpers.CardModifierManager;
 import lingmod.actions.MyApplyPower_Action;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.NellaFantasiaMod;
 import lingmod.util.CustomTags;
+
+import static lingmod.ModCore.logger;
+import static lingmod.ModCore.makeID;
 
 /**
  * 蕉鹿梦：临时3/4力敏

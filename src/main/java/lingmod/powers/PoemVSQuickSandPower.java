@@ -1,14 +1,13 @@
 package lingmod.powers;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-
 import lingmod.actions.MyApplyPower_Action;
+
+import static lingmod.ModCore.makeID;
 
 public class PoemVSQuickSandPower extends AbstractEasyPower {
     public static final String CLASS_NAME = PoemVSQuickSandPower.class.getSimpleName();

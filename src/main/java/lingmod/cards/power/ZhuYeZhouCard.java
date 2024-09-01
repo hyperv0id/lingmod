@@ -1,15 +1,14 @@
 package lingmod.cards.power;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.AutoAdd.Ignore;
 import com.megacrit.cardcrawl.actions.unique.ApotheosisAction;
 import com.megacrit.cardcrawl.actions.unique.ArmamentsAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.AutoAdd.Ignore;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 升级所有牌，下次离开梦境时，降级所有手牌

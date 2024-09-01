@@ -1,8 +1,5 @@
 package lingmod.ui;
 
-import static lingmod.ModCore.logger;
-import static lingmod.ModCore.makeID;
-
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
@@ -15,10 +12,12 @@ import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-
 import lingmod.cards.AbstractPoetryCard;
 import lingmod.powers.PoeticMoodPower;
 import lingmod.util.Wiz;
+
+import static lingmod.ModCore.logger;
+import static lingmod.ModCore.makeID;
 
 public class PoetryOrb extends AbstractOrb {
     public static final String ID = makeID(PoetryOrb.class.getSimpleName());

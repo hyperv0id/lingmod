@@ -1,8 +1,9 @@
 package lingmod.cards.mod;
 
-import static lingmod.ModCore.logger;
-import static lingmod.ModCore.makeID;
-
+import basemod.ReflectionHacks;
+import basemod.abstracts.AbstractCardModifier;
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -11,12 +12,10 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
-
-import basemod.ReflectionHacks;
-import basemod.abstracts.AbstractCardModifier;
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
 import lingmod.actions.FastExhaustAction;
+
+import static lingmod.ModCore.logger;
+import static lingmod.ModCore.makeID;
 
 /**
  * 重进酒：打出卡牌时，此牌消耗，变为那张牌的复制

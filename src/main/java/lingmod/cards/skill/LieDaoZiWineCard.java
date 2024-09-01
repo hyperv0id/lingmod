@@ -1,16 +1,15 @@
 package lingmod.cards.skill;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
-
 import lingmod.actions.MyApplyPower_Action;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 列刀子：翻倍你的活力

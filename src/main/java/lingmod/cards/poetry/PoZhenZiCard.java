@@ -1,16 +1,15 @@
 package lingmod.cards.poetry;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.cards.AbstractPoetryCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.util.Wiz;
+
+import static lingmod.ModCore.makeID;
 
 @CardConfig(magic = 2)
 @Credit(link = "https://zuodaoxing.lofter.com/post/30b9c9c3_2b48ec499", platform = Credit.LOFTER, username = "左刀行")

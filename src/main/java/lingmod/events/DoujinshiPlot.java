@@ -1,9 +1,8 @@
 package lingmod.events;
 
-import static lingmod.ModCore.logger;
-import static lingmod.ModCore.makeID;
-import static lingmod.ModCore.makeImagePath;
-
+import basemod.abstracts.events.PhasedEvent;
+import basemod.abstracts.events.phases.CombatPhase;
+import basemod.abstracts.events.phases.TextPhase;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -14,10 +13,6 @@ import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.potions.PotionSlot;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.AbstractRelic.RelicTier;
-
-import basemod.abstracts.events.PhasedEvent;
-import basemod.abstracts.events.phases.CombatPhase;
-import basemod.abstracts.events.phases.TextPhase;
 import lingmod.cards.poetry.ChiBiFuCard;
 import lingmod.cards.poetry.DingFengBoCard;
 import lingmod.cards.poetry.JianKeCard;
@@ -25,6 +20,8 @@ import lingmod.patch.PlayerFieldsPatch;
 import lingmod.potions.ForgetPotion;
 import lingmod.util.PoetryReward;
 import lingmod.util.Wiz;
+
+import static lingmod.ModCore.*;
 
 /**
  * 本子情节，但是永远潇洒的令姐

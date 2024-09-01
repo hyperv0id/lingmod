@@ -1,15 +1,14 @@
 package lingmod.cards.power;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.actions.MyApplyPower_Action;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.powers.YuGuoZhuoYingPower;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 回合结束时，获得手牌总耗能的格挡

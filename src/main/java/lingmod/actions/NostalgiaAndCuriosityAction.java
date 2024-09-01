@@ -1,10 +1,5 @@
 package lingmod.actions;
 
-import static lingmod.ModCore.logger;
-
-import java.util.ArrayList;
-import java.util.stream.Collectors;
-
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
@@ -12,6 +7,11 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.screens.CardRewardScreen;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToDiscardEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
+
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+
+import static lingmod.ModCore.logger;
 
 public class NostalgiaAndCuriosityAction extends AbstractGameAction {
 

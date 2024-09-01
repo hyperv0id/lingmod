@@ -1,15 +1,14 @@
 package lingmod.cards.skill;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.actions.MyApplyPower_Action;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.Credit;
 import lingmod.powers.DreamIsEndless;
 import lingmod.powers.PoemIsShort;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 免伤50%，转换为1/M缠绕

@@ -1,17 +1,16 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.unique.SummonGremlinAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.Credit;
 import lingmod.monsters.whoisreal.AYao;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 我是谁？

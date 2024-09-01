@@ -1,5 +1,7 @@
 package lingmod.interfaces;
 
+import lingmod.monsters.AbsSummonMonster;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -25,4 +27,6 @@ public @interface CardConfig {
     boolean isDream() default false;
 
     boolean isSummon() default false;
+
+    Class<? extends AbsSummonMonster> summonClz() default AbsSummonMonster.class;
 }

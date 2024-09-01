@@ -1,10 +1,10 @@
 package lingmod.powers;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 你无法再失去任何能力/异常

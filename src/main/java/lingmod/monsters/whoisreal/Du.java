@@ -1,17 +1,16 @@
 package lingmod.monsters.whoisreal;
 
-import static lingmod.ModCore.makeImagePath;
-
+import basemod.ReflectionHacks;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.exordium.GremlinFat;
-
-import basemod.ReflectionHacks;
 import lingmod.ModCore;
 import lingmod.util.Wiz;
+
+import static lingmod.ModCore.makeImagePath;
 
 public class Du {
     public static final String spinePath = makeImagePath("who_is_real/du/enemy_1128_spmage", ModCore.ResourceType.MONSTERS);

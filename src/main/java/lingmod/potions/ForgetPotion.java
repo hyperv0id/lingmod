@@ -1,8 +1,8 @@
 package lingmod.potions;
 
-import static lingmod.ModCore.makeID;
-import static lingmod.ModCore.makeImagePath;
-
+import basemod.AutoAdd.Ignore;
+import basemod.BaseMod;
+import basemod.interfaces.PostUpdateSubscriber;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -12,13 +12,12 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.AbstractEvent;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
-
-import basemod.AutoAdd.Ignore;
-import basemod.BaseMod;
-import basemod.interfaces.PostUpdateSubscriber;
 import lingmod.ModCore;
 import lingmod.character.Ling;
 import lingmod.events.DoujinshiPlot;
+
+import static lingmod.ModCore.makeID;
+import static lingmod.ModCore.makeImagePath;
 
 @Ignore
 public class ForgetPotion extends AbstractEasyPotion implements PostUpdateSubscriber {

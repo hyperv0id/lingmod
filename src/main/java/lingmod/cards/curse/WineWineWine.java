@@ -1,17 +1,16 @@
 package lingmod.cards.curse;
 
-import static lingmod.ModCore.makeID;
-import static lingmod.util.Wiz.isInHand;
-
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.WineMod;
 import lingmod.interfaces.Credit;
 import lingmod.util.CustomTags;
+
+import static lingmod.ModCore.makeID;
+import static lingmod.util.Wiz.isInHand;
 
 @Credit(username = "会说话的粉红DJ熊", platform = Credit.LOFTER, link = "https://songpujuli.lofter.com/post/1f06186c_2bb25fa09")
 public class WineWineWine extends AbstractEasyCard {

@@ -1,17 +1,16 @@
 package lingmod.cards.poetry;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
-
 import lingmod.cards.AbstractPoetryCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.stance.NellaFantasiaStance;
 import lingmod.util.Wiz;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 进入梦。获得 4 活力

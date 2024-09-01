@@ -1,11 +1,7 @@
 package lingmod.util;
 
-import static lingmod.ModCore.logger;
-
-import java.lang.reflect.Constructor;
-import java.util.List;
-import java.util.stream.Collectors;
-
+import basemod.ReflectionHacks;
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -17,9 +13,14 @@ import com.megacrit.cardcrawl.monsters.exordium.ApologySlime;
 import com.megacrit.cardcrawl.monsters.exordium.Cultist;
 import com.megacrit.cardcrawl.monsters.exordium.SpikeSlime_S;
 import com.megacrit.cardcrawl.random.Random;
-
-import basemod.ReflectionHacks;
+import lingmod.ModCore;
 import lingmod.monsters.AbsSummonMonster;
+
+import java.lang.reflect.Constructor;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static lingmod.ModCore.logger;
 
 public class MonsterHelper {
     public static boolean isAttackIntent(AbstractMonster m) {
@@ -189,6 +190,12 @@ public class MonsterHelper {
                 .filter(mo -> mo instanceof AbsSummonMonster).count();
     }
 
+    public static AbsSummonMonster getFirstSummon() {
+        return (AbsSummonMonster) AbstractDungeon.getMonsters().monsters.stream()
+                .filter(mo -> !mo.isDeadOrEscaped())
+                .filter(mo -> mo instanceof AbsSummonMonster).findFirst().orElse(null);
+    }
+
     public static boolean areMonstersDead() {
         return AbstractDungeon.getMonsters().monsters.stream()
                 .filter(mo -> !(mo instanceof AbsSummonMonster)) // 排除召唤物
@@ -211,6 +218,39 @@ public class MonsterHelper {
         m.hb.move(m.drawX + m.hb_x, m.drawY + m.hb_y + m.hb_h / 2.0F);
         m.healthHb.move(m.hb.cX, m.hb.cY - m.hb_h / 2.0F - m.healthHb.height / 2.0F);
         m.refreshIntentHbLocation();
+    }
+
+    public static void summonMonster(Class<? extends AbsSummonMonster> summonClz) {
+        // 不能是抽象类
+        if (summonClz.equals(AbsSummonMonster.class)) {
+            ModCore.logger.info("Cannot Summon Abstract Class");
+            return;
+        }
+        AbsSummonMonster summonMonster = MonsterHelper.getFirstSummon();
+        // 没有召唤物，直接生成
+        if (summonMonster == null) {
+            Wiz.addToBotAbstract(() -> {
+                AbsSummonMonster mo = (AbsSummonMonster) MonsterHelper
+                        .spawnMonster(summonClz);
+                // mo.animX = 1200F * Settings.xScale;
+                mo.setDamage(3);
+                mo.init();
+                mo.applyPowers();
+                mo.useUniversalPreBattleAction();
+                mo.showHealthBar();
+                mo.createIntent();
+
+                mo.usePreBattleAction();
+
+                // AbstractDungeon.getCurrRoom().monsters.addMonster(0, mo);
+            });
+        } else if (summonMonster.getClass().equals(summonClz)) {
+            // TODO: 调用合成逻辑
+            summonMonster.combine();
+        }
+        else {
+            Wiz.atb(new TalkAction(true, "我不能召唤多种召唤物", 2.0F, 2.0F));
+        }
     }
 
 }

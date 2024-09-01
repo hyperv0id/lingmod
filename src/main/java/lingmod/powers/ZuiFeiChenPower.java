@@ -2,12 +2,12 @@ package lingmod.powers;
 
 import basemod.BaseMod;
 import basemod.interfaces.PostExhaustSubscriber;
-import lingmod.actions.MyApplyPower_Action;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import lingmod.actions.MyApplyPower_Action;
 
 import static lingmod.ModCore.makeID;
 

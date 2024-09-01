@@ -1,17 +1,16 @@
 package lingmod.relics;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.BaseMod;
+import basemod.interfaces.StartActSubscriber;
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
-import lingmod.actions.MyApplyPower_Action;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.RegenPower;
 import com.megacrit.cardcrawl.rooms.MonsterRoom;
-
-import basemod.BaseMod;
-import basemod.interfaces.StartActSubscriber;
+import lingmod.actions.MyApplyPower_Action;
 import lingmod.character.Ling;
+
+import static lingmod.ModCore.makeID;
 
 public class Shu_SeedRelic extends AbstractEasyRelic implements ClickableRelic, StartActSubscriber {
 

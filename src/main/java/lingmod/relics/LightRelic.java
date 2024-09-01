@@ -1,8 +1,8 @@
 package lingmod.relics;
 
-import static lingmod.ModCore.makeID;
-
-import lingmod.actions.MyApplyPower_Action;
+import basemod.BaseMod;
+import basemod.interfaces.OnStartBattleSubscriber;
+import basemod.interfaces.PostExhaustSubscriber;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -11,13 +11,12 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-
-import basemod.BaseMod;
-import basemod.interfaces.OnStartBattleSubscriber;
-import basemod.interfaces.PostExhaustSubscriber;
+import lingmod.actions.MyApplyPower_Action;
 import lingmod.character.Ling;
 import lingmod.powers.PoeticMoodPower;
 import lingmod.util.VoiceMaster;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 一盏灯：灯挑夜，箭如雨，大漠飞火

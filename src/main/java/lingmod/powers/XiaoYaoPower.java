@@ -1,15 +1,14 @@
 package lingmod.powers;
 
-import static lingmod.ModCore.makeID;
-
-import lingmod.actions.MyApplyPower_Action;
+import basemod.BaseMod;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
+import lingmod.actions.MyApplyPower_Action;
 
-import basemod.BaseMod;
+import static lingmod.ModCore.makeID;
 
 /**
  * 逍遥：回合结束后抽牌++

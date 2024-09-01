@@ -1,7 +1,5 @@
 package lingmod.cards.skill;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -9,11 +7,12 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.IntangiblePower;
 import com.megacrit.cardcrawl.vfx.combat.OfferingEffect;
-
 import lingmod.actions.MyApplyPower_Action;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 失去6生命，获得 1 无实体

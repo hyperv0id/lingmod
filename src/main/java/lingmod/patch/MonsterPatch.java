@@ -1,10 +1,6 @@
 package lingmod.patch;
 
-import static lingmod.ModCore.logger;
-
-import java.util.ArrayList;
-import java.util.Objects;
-
+import basemod.ReflectionHacks;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -20,11 +16,14 @@ import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.powers.PoisonPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
-
-import basemod.ReflectionHacks;
 import lingmod.monsters.AbsSummonMonster;
 import lingmod.util.MonsterHelper;
 import lingmod.util.Wiz;
+
+import java.util.ArrayList;
+import java.util.Objects;
+
+import static lingmod.ModCore.logger;
 
 public class MonsterPatch {
     /**
@@ -152,10 +151,7 @@ public class MonsterPatch {
                         && MonsterTakeDamagePatch.gotSummon()) {
                     _inst.target = MonsterTakeDamagePatch.summonTarget;
                     logger.info("承伤改变" + MonsterTakeDamagePatch.summonTarget);
-                } else {
-                    logger.info("角色承受伤害");
                 }
-
             }
         }
     }
