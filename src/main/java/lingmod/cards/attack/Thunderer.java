@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
+import lingmod.cards.skill.Thunderer_Summon;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.monsters.Thunderer_SummonMonster;
@@ -24,7 +25,7 @@ import static lingmod.ModCore.makeID;
  * 回合结束时创建本牌的复制
  * 打出后选择手牌中的弦惊合成
  */
-@CardConfig(damage = 9, magic = 1, isSummon = true, summonClz = Thunderer_SummonMonster.class)
+@CardConfig(damage = 9, magic = 1, summonClz = Thunderer_SummonMonster.class)
 @Credit(platform = Credit.PIXIV, username = "UIRU", link = "https://www.pixiv.net/artworks/101314899")
 public class Thunderer extends AbstractEasyCard {
     public static final String NAME = Thunderer.class.getSimpleName();
@@ -34,6 +35,14 @@ public class Thunderer extends AbstractEasyCard {
 
     public Thunderer() {
         super(ID, 1, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
+    }
+
+    @Override
+    public AbstractCard makeCopy() {
+        if (Wiz.adp() != null && Wiz.adp().hasRelic(SanYiShiJian.ID)) {
+            return new Thunderer_Summon();
+        }
+        return super.makeCopy();
     }
 
     @Override

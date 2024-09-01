@@ -205,7 +205,7 @@ public class MonsterHelper {
     /**
      * 获取所有怪物，但是不包含召唤物
      */
-    public static List<AbstractMonster> allMonsters() {
+    public static List<AbstractMonster> allMonstersNotSummon() {
         return AbstractDungeon.getMonsters().monsters.stream().filter(mo -> !(mo instanceof AbsSummonMonster))
                 .collect(Collectors.toList());
     }
@@ -245,11 +245,10 @@ public class MonsterHelper {
                 // AbstractDungeon.getCurrRoom().monsters.addMonster(0, mo);
             });
         } else if (summonMonster.getClass().equals(summonClz)) {
-            // TODO: 调用合成逻辑
             summonMonster.combine();
         }
         else {
-            Wiz.atb(new TalkAction(true, "我不能召唤多种召唤物", 2.0F, 2.0F));
+            Wiz.atb(new TalkAction(true, "我不能同时召唤多种召唤物", 2.0F, 2.0F));
         }
     }
 

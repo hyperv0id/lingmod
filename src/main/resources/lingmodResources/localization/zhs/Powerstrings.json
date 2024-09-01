@@ -196,5 +196,23 @@
     "DESCRIPTIONS": [
       "当卡牌被消耗时，获得 #b1 #r力量"
     ]
+  },
+  "lingmod:TranquilityPower": {
+    "NAME": "清平合成效果",
+    "DESCRIPTIONS": [
+      "清平将行动两次"
+    ]
+  },
+  "lingmod:PeripateticismPower": {
+    "NAME": "逍遥合成效果",
+    "DESCRIPTIONS": [
+      "逍遥在攻击时额外给予等量缠绕"
+    ]
+  },
+  "lingmod:ThundererPower": {
+    "NAME": "弦惊合成效果",
+    "DESCRIPTIONS": [
+      "弦惊将攻击所有敌人"
+    ]
   }
 }

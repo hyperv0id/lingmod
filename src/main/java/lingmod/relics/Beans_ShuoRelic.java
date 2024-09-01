@@ -1,12 +1,12 @@
 package lingmod.relics;
 
 import basemod.abstracts.CustomSavable;
-import lingmod.actions.MyApplyPower_Action;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import lingmod.actions.MyApplyPower_Action;
 import lingmod.interfaces.Credit;
 
 import static lingmod.ModCore.makeID;

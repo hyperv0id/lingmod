@@ -1,8 +1,8 @@
 package lingmod.relics;
 
-import lingmod.actions.MyApplyPower_Action;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.watcher.VigorPower;
+import lingmod.actions.MyApplyPower_Action;
 import lingmod.interfaces.Credit;
 
 import static lingmod.ModCore.makeID;

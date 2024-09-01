@@ -1,23 +1,26 @@
 package lingmod.monsters;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.ConstrictedPower;
+import lingmod.powers.PeripateticismPower;
 import lingmod.util.MonsterHelper;
 
 import static lingmod.ModCore.*;
 
 /**
  * 弦惊召唤物
- * TODO: 召唤物会行动两次
- * TODO: 召唤物的格挡会在回合结束时失去
  */
-public class Peripateticism_SummonMonster extends AbsSummonMonster  {
+public class Peripateticism_SummonMonster extends AbsSummonMonster {
 
     public static final String ID = makeID(Peripateticism_SummonMonster.class.getSimpleName());
     protected static final String IMG_PATH = makeImagePath("summon/Peripateticism.png", ResourceType.MONSTERS);
+    protected static final String IMG_PATH_2 = makeImagePath("summon/Peripateticism_p.png", ResourceType.MONSTERS);
     private static final MonsterStrings STRINGS;
     private static final String NAME;
 
@@ -29,7 +32,7 @@ public class Peripateticism_SummonMonster extends AbsSummonMonster  {
     }
 
     public Peripateticism_SummonMonster() {
-        super(NAME, ID, 18, 0.0F, 0.0F, 200.0F, 250.0F, IMG_PATH);
+        super(NAME, ID, 9, 0.0F, 0.0F, 200.0F, 250.0F, IMG_PATH, IMG_PATH_2);
         this.damage.add(new DamageInfo(this, 1));
         // this.img = ImageMaster.loadImage(IMG_PATH);
     }
@@ -40,11 +43,24 @@ public class Peripateticism_SummonMonster extends AbsSummonMonster  {
         AbstractMonster target = MonsterHelper.getMoNotSummon(true, null);
         logger.info(this + "Summon Take Turn " + damage.get(0).base + " " + damage.get(0).output);
         addToBot(new DamageAction(target, damage.get(0)));
+        if (this.hasPower(PeripateticismPower.ID)) {
+            int amt = damage.get(0).output;
+            addToBot(new ApplyPowerAction(this, target, new ConstrictedPower(target, this, amt)));
+        }
     }
 
     @Override
     protected void getMove(int i) {
-        setMove((byte) 0, Intent.ATTACK, this.damage.get(0).base);
+        if (this.hasPower(PeripateticismPower.ID)) {
+            setMove((byte) 0, Intent.ATTACK_DEBUFF, this.damage.get(0).base);
+        } else {
+            setMove((byte) 0, Intent.ATTACK, this.damage.get(0).base);
+        }
+    }
+
+    @Override
+    protected AbstractPower addCombinePower() {
+        return new PeripateticismPower(this);
     }
 
     // @SpireOverride

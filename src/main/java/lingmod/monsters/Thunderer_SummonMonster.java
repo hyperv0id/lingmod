@@ -5,7 +5,8 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import lingmod.ModCore.*;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import lingmod.powers.ThundererPower;
 import lingmod.util.MonsterHelper;
 
 import static lingmod.ModCore.*;
@@ -15,10 +16,11 @@ import static lingmod.ModCore.*;
  * TODO: 召唤物会行动两次
  * TODO: 召唤物的格挡会在回合结束时失去
  */
-public class Thunderer_SummonMonster extends AbsSummonMonster  {
+public class Thunderer_SummonMonster extends AbsSummonMonster {
 
     public static final String ID = makeID(Thunderer_SummonMonster.class.getSimpleName());
     protected static final String IMG_PATH = makeImagePath("summon/Thunderer.png", ResourceType.MONSTERS);
+    protected static final String IMG_PATH_2 = makeImagePath("summon/Thunderer_p.png", ResourceType.MONSTERS);
     private static final MonsterStrings STRINGS;
     private static final String NAME;
 
@@ -30,7 +32,7 @@ public class Thunderer_SummonMonster extends AbsSummonMonster  {
     }
 
     public Thunderer_SummonMonster() {
-        super(NAME, ID, 18, 0.0F, 0.0F, 200.0F, 250.0F, IMG_PATH);
+        super(NAME, ID, 18, 0.0F, 0.0F, 200.0F, 250.0F, IMG_PATH, IMG_PATH_2);
         this.damage.add(new DamageInfo(this, 1));
         // this.img = ImageMaster.loadImage(IMG_PATH);
     }
@@ -40,12 +42,21 @@ public class Thunderer_SummonMonster extends AbsSummonMonster  {
     public void takeTurn() {
         AbstractMonster target = MonsterHelper.getMoNotSummon(true, null);
         logger.info(this + "Summon Take Turn " + damage.get(0).base + " " + damage.get(0).output);
-        addToBot(new DamageAction(target, damage.get(0)));
+        if (this.hasPower(ThundererPower.ID)) {
+            MonsterHelper.allMonstersNotSummon().forEach(mo -> addToBot(new DamageAction(mo, damage.get(0))));
+        } else {
+            addToBot(new DamageAction(target, damage.get(0)));
+        }
     }
 
     @Override
     protected void getMove(int i) {
         setMove((byte) 0, Intent.ATTACK, this.damage.get(0).base);
+    }
+
+    @Override
+    protected AbstractPower addCombinePower() {
+        return new ThundererPower(this);
     }
 
     // @SpireOverride

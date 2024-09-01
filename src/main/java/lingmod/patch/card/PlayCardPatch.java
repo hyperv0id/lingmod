@@ -41,20 +41,16 @@ public class PlayCardPatch {
         return false;
     }
 
-    public static void usecardOnSummon(AbstractCard card, AbstractMonster monster) {
+    public static void useCardOnSummon(AbstractCard card, AbstractMonster monster) {
         logger.info("use card on summon");
-        // TODO: 1. 消耗卡牌
         card.exhaust = true;
         card.exhaustOnUseOnce = true;
-        // TODO: 2. 为召唤物增加属性
+
         if (!(monster instanceof AbsSummonMonster))
             return;
         if (card.type == CardType.ATTACK) {
             Wiz.atb(new MyApplyPower_Action(monster, monster, new StrengthPower(monster, card.damage)));
-            Wiz.atb(new MyApplyPower_Action(monster, monster, new LoseStrengthPower(monster, card.damage)));
-            Wiz.addToBotAbstract(()->{
-                monster.applyPowers();
-            });
+            Wiz.addToBotAbstract(monster::applyPowers);
         }
     }
 
@@ -84,8 +80,8 @@ public class PlayCardPatch {
         }
     }
 
-    @SpirePatch(clz = AbstractPlayer.class, method = "useCard", paramtypez = { AbstractCard.class,
-            AbstractMonster.class, int.class })
+    @SpirePatch(clz = AbstractPlayer.class, method = "useCard", paramtypez = {AbstractCard.class,
+            AbstractMonster.class, int.class})
     public static class NegateUseCard {
         public NegateUseCard() {
         }
@@ -95,13 +91,13 @@ public class PlayCardPatch {
                 public void edit(MethodCall m) throws CannotCompileException {
                     if (m.getClassName().equals(AbstractCard.class.getName()) && m.getMethodName().equals("use")) {
                         String expr1 = PlayCardPatch.class.getName() + ".NegateCardPlay()";
-                        expr1 = "!(" + expr1 + ")";
                         String expr2 = PlayCardPatch.class.getName() + ".checkSummon($2)";
-                        String expr3 = PlayCardPatch.class.getName() + ".usecardOnSummon($0, $2)";
+                        String expr3 = PlayCardPatch.class.getName() + ".useCardOnSummon($0, $2)";
                         // String expr_full = "if(%s && %s) {$proceed($$);}";
                         String expr_full = "if(%s && %s) {$proceed($$);} else if(%s){%s;}";
-                        logger.info("expr: " + String.format(expr_full, expr1, "!(" + expr2 + ")", expr2, expr3));
-                        m.replace(String.format(expr_full, expr1, "!(" + expr2 + ")", expr2, expr3));
+                        String format = String.format(expr_full, "!(" + expr1 + ")", "!(" + expr2 + ")", expr2, expr3);
+                        logger.info("expr: " + format);
+                        m.replace(format);
                         // m.replace(String.format(expr_full, expr1, "!("+expr2+")"));
                     }
                 }

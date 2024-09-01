@@ -55,24 +55,30 @@
   },
   "${ModID}:Tranquility": {
     "NAME": "“清平”",
-    "DESCRIPTION": "造成 !D! 点伤害",
-    "EXTENDED_DESCRIPTION": [
-      "召唤一个 ${ModID}:清平 "
-    ]
+    "DESCRIPTION": "${ModID}:召唤 。 NL 造成 !D! 点伤害"
+  },
+  "${ModID}:Tranquility_Summon": {
+    "NAME": "“清平”",
+    "DESCRIPTION": "召唤一个 ${ModID}:“清平” "
   },
   "${ModID}:Peripateticism": {
     "NAME": "“逍遥”",
-    "DESCRIPTION": " 消耗 所有非攻击牌，每张给予 !M! 缠绕 NL 立刻结算缠绕效果",
+    "DESCRIPTION": "${ModID}:召唤 。 NL  消耗 所有非攻击牌，每张给予 !M! 缠绕 NL 立刻结算缠绕效果",
     "EXTENDED_DESCRIPTION": [
-      "召唤一个 ${ModID}:逍遥 "
+      "召唤一个 ${ModID}:“逍遥” "
     ]
+  },
+  "${ModID}:Peripateticism_Summon": {
+    "NAME": "“逍遥”",
+    "DESCRIPTION": "召唤一个 ${ModID}:“逍遥” "
   },
   "${ModID}:Thunderer": {
     "NAME": "“弦惊”",
-    "DESCRIPTION": "造成 !D! 点伤害 !M! 次，消耗所有弦惊，攻击次数增加 NL 保留时手牌加入一张 弦惊 ",
-    "EXTENDED_DESCRIPTION": [
-      "召唤一个 ${ModID}:弦惊 "
-    ]
+    "DESCRIPTION": "${ModID}:召唤 。 NL 造成 !D! 点伤害 !M! 次，消耗所有弦惊，攻击次数增加 NL 保留时手牌加入一张 弦惊 "
+  },
+  "${ModID}:Thunderer_Summon": {
+    "NAME": "“弦惊”",
+    "DESCRIPTION": "召唤一个 ${ModID}:“弦惊” "
   },
   "${ModID}:Feature_2_Card": {
     "NAME": "随付笺咏醉屠苏",

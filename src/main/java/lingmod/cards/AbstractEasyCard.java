@@ -1,6 +1,5 @@
 package lingmod.cards;
 
-import basemod.ReflectionHacks;
 import basemod.abstracts.CustomCard;
 import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.Gdx;
@@ -22,17 +21,14 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.mod.NellaFantasiaMod;
-import lingmod.cards.mod.SummonMod;
 import lingmod.cards.mod.WineMod;
 import lingmod.character.Ling;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.interfaces.VoidSupplier;
-import lingmod.relics.SanYiShiJian;
 import lingmod.util.CardArtRoller;
 import lingmod.util.CustomTags;
 import lingmod.util.ModConfig;
-import lingmod.util.Wiz;
 
 import java.util.function.Consumer;
 
@@ -205,17 +201,6 @@ public abstract class AbstractEasyCard extends CustomCard {
             if (isDream) {
                 this.tags.add(CustomTags.DREAM);
                 CardModifierManager.addModifier(this, new NellaFantasiaMod());
-            }
-            if (config.isSummon()) {
-                this.tags.add(CustomTags.SUMMON);
-                if (Wiz.adp() != null && Wiz.adp().hasRelic(SanYiShiJian.ID)) {
-                    this.rawDescription = cardStrings.EXTENDED_DESCRIPTION[0];
-                    this.type = CardType.SKILL;
-                    this.target = CardTarget.SELF;
-                    ReflectionHacks.privateMethod(AbstractCard.class, "createCardImage");
-                } else {
-                    CardModifierManager.addModifier(this, new SummonMod());
-                }
             }
         }
     }

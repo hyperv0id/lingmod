@@ -26,7 +26,5 @@ public @interface CardConfig {
 
     boolean isDream() default false;
 
-    boolean isSummon() default false;
-
     Class<? extends AbsSummonMonster> summonClz() default AbsSummonMonster.class;
 }

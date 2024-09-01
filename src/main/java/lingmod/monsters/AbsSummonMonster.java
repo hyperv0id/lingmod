@@ -1,19 +1,26 @@
 package lingmod.monsters;
 
 import basemod.abstracts.CustomMonster;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import lingmod.util.MonsterHelper;
 import lingmod.util.Wiz;
 
 public abstract class AbsSummonMonster extends CustomMonster {
+    public String img_up;
+    protected int baseMaxHP;
 
     public AbsSummonMonster(String name, String id, int maxHealth, float hb_x, float hb_y, float hb_w, float hb_h,
-            String imgUrl) {
+                            String imgUrl, String img_up) {
         super(name, id, maxHealth, hb_x, hb_y, hb_w, hb_h, imgUrl);
-         isPlayer = true;
+        this.baseMaxHP = maxHealth;
+        isPlayer = true;
+        this.img_up = img_up;
     }
 
     @Override
@@ -47,10 +54,19 @@ public abstract class AbsSummonMonster extends CustomMonster {
     /**
      * 合成召唤物
      */
-    public void  combine() {
-        this.increaseMaxHp(this.maxHealth, true);
-        // TODO: 换用合成后模型
+    public void combine() {
+        this.increaseMaxHp(this.baseMaxHP, true);
+        this.img = ImageMaster.loadImage(img_up);
+        AbstractPower po = addCombinePower();
+        addToBot(new ApplyPowerAction(this, this, po));
+        Wiz.addToBotAbstract(() -> {
+            this.getMove(0);
+            this.createIntent();
+        });
+
     }
+
+    protected abstract AbstractPower addCombinePower();
 
     public void die_summon() {
         Wiz.atb(new GainEnergyAction(1));

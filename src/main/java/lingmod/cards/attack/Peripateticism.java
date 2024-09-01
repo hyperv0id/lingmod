@@ -1,6 +1,5 @@
 package lingmod.cards.attack;
 
-import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -8,12 +7,11 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ConstrictedPower;
 import lingmod.actions.MyApplyPower_Action;
-import lingmod.cards.AbstractEasyCard;
+import lingmod.cards.AbsSummonCard;
+import lingmod.cards.skill.Peripateticism_Summon;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
-import lingmod.monsters.AbsSummonMonster;
 import lingmod.monsters.Peripateticism_SummonMonster;
-import lingmod.monsters.Thunderer_SummonMonster;
 import lingmod.relics.SanYiShiJian;
 import lingmod.util.MonsterHelper;
 import lingmod.util.Wiz;
@@ -26,13 +24,28 @@ import static lingmod.ModCore.makeID;
 /**
  * “逍遥”：消耗所有技能牌，每张给予 8 缠绕
  */
-@CardConfig(magic = 6, isSummon = true, summonClz = Peripateticism_SummonMonster.class)
+@CardConfig(magic = 6, summonClz = Peripateticism_SummonMonster.class)
 @Credit(username = "没有名字", platform = Credit.LOFTER, link = "https://gohanduck.lofter.com/post/1f3831ee_2b8230298")
-public class Peripateticism extends AbstractEasyCard {
+public class Peripateticism extends AbsSummonCard {
     public static final String ID = makeID(Peripateticism.class.getSimpleName());
 
     public Peripateticism() {
         super(ID, 2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
+    }
+
+    /**
+     * 获得诗简后，卡牌使用会有不同
+     */
+    public Peripateticism(final CardType type, final CardTarget target) {
+        super(ID, 1, type, CardRarity.BASIC, target);
+    }
+
+    @Override
+    public AbstractCard makeCopy() {
+        if (Wiz.adp() != null && Wiz.adp().hasRelic(SanYiShiJian.ID)) {
+            return new Peripateticism_Summon();
+        }
+        return super.makeCopy();
     }
 
     @Override
@@ -56,7 +69,7 @@ public class Peripateticism extends AbstractEasyCard {
                 // 消耗
                 addToTop(new ExhaustSpecificCardAction(c, AbstractDungeon.player.hand));
                 // 对怪物施加缠绕效果
-                MonsterHelper.allMonsters().forEach(mo -> addToTop(new MyApplyPower_Action(mo, p, new ConstrictedPower(mo, p, magicNumber))));
+                MonsterHelper.allMonstersNotSummon().forEach(mo -> addToTop(new MyApplyPower_Action(mo, p, new ConstrictedPower(mo, p, magicNumber))));
             });
             addToBotAbstract(() -> {
                 for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
@@ -66,30 +79,6 @@ public class Peripateticism extends AbstractEasyCard {
                     }
                 }
             });
-        });
-    }
-
-
-    public void summon_use(AbstractPlayer p, AbstractMonster monster) {
-        int cnt = MonsterHelper.cntSummons();
-        if (cnt >= magicNumber) {
-            String msg = String.format("我不能召唤超过 %d 个召唤物", magicNumber);
-            addToBot(new TalkAction(true, msg, 2.0F, 2.0F));
-        }
-        addToBotAbstract(() -> {
-            AbsSummonMonster mo = (AbsSummonMonster) MonsterHelper
-                    .spawnMonster(Thunderer_SummonMonster.class);
-            // mo.animX = 1200F * Settings.xScale;
-            mo.setDamage(3);
-            mo.init();
-            mo.applyPowers();
-            mo.useUniversalPreBattleAction();
-            mo.showHealthBar();
-            mo.createIntent();
-
-            mo.usePreBattleAction();
-
-            // AbstractDungeon.getCurrRoom().monsters.addMonster(0, mo);
         });
     }
 }
