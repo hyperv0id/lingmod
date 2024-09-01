@@ -109,7 +109,7 @@
   },
   "${ModID}:ShiDuanMengChang": {
     "NAME": "诗短梦长",
-    "DESCRIPTION": "获得25%伤害减免 NL 损失生命时，获得等量 ${ModID}:缠绕 NL （缠绕造成的伤害也会被计入）"
+    "DESCRIPTION": "获得25%伤害减免 NL 损失生命时，获得等量 ${ModID}:缠绕 NL （因缠绕损失的生命也会被计入）"
   },
   "${ModID}:AltGuangHui": {
     "NAME": "光辉ALT",

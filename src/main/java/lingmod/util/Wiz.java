@@ -384,7 +384,8 @@ public class Wiz {
         if (AbstractDungeon.player != null) {
             if (AbstractDungeon.player.chosenClass == Ling.Enums.PLAYER_LING) {
                 return true;
-            } else return AbstractDungeon.player instanceof Ling;
+            } else
+                return AbstractDungeon.player instanceof Ling;
         }
         return false;
     }
@@ -399,7 +400,8 @@ public class Wiz {
                 .map(card -> card.costForTurn)
                 .orElse(3); // Replace with a default value if no card is found
         AbstractDungeon.player.hand.group.forEach(card -> {
-            if (noWine && card.hasTag(CustomTags.WINE)) return;
+            if (noWine && card.hasTag(CustomTags.WINE))
+                return;
             if (card.cost >= 0) {
                 int newCost = AbstractDungeon.cardRandomRng.random(maxCost);
                 if (card.cost != newCost) {
@@ -433,7 +435,8 @@ public class Wiz {
         long r = AbstractDungeon.miscRng.random(total);
         for (int i = 0; i < lis.size(); i++) {
             r -= lis.get(i);
-            if (r <= 0) return i;
+            if (r <= 0)
+                return i;
         }
         return 0;
     }
@@ -498,5 +501,6 @@ public class Wiz {
             card.freeToPlayOnce = false;
         }
     }
+
 
 }

@@ -87,7 +87,13 @@
   "${ModID}:Ling_WineTaoist": {
     "NAME": "酒道士"
   },
-  "${ModID}:Thunderer_Summon": {
+  "${ModID}:Thunderer_SummonMonster": {
     "NAME": "弦惊"
+  },
+  "${ModID}:Peripateticism_SummonMonster": {
+    "NAME": "逍遥"
+  },
+  "${ModID}:Tranquility_SummonMonster": {
+    "NAME": "清平"
   }
 }

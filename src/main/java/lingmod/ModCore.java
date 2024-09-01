@@ -67,6 +67,7 @@ import lingmod.monsters.InnManager;
 import lingmod.monsters.MonsterGroups;
 import lingmod.monsters.MonsterSui_7_Ji;
 import lingmod.monsters.MountainPicker;
+import lingmod.monsters.Thunderer_SummonMonster;
 import lingmod.monsters.Wang_MountainGhost;
 import lingmod.patch.PlayerFieldsPatch;
 import lingmod.potions.AbstractEasyPotion;
@@ -366,6 +367,8 @@ public class ModCore implements
         }));
         // 和年一起欺夕
         BaseMod.addMonster(NianGuestStar.ID, NianGuestStar.NAME, () -> MonsterGroups.NIAN_GUEST_STAR);
+        // 召唤物
+        BaseMod.addMonster(Thunderer_SummonMonster.ID, Thunderer_SummonMonster::new);
     }
 
     public enum ResourceType {

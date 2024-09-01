@@ -1,15 +1,16 @@
 package lingmod.cards.attack;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
-import lingmod.monsters.Thunderer_Summon;
+import lingmod.monsters.Thunderer_SummonMonster;
 import lingmod.util.MonsterHelper;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 特殊情况: summon Thunderer
@@ -33,24 +34,13 @@ public class Thunderer_SummonCard extends AbstractEasyCard {
             addToBot(new TalkAction(true, msg, 2.0F, 2.0F));
         }
         addToBotAbstract(() -> {
-            Thunderer_Summon mo = (Thunderer_Summon) MonsterHelper.spawnMonster(Thunderer_Summon.class);
+            Thunderer_SummonMonster mo = (Thunderer_SummonMonster) MonsterHelper.spawnMonster(Thunderer_SummonMonster.class);
             // mo.animX = 1200F * Settings.xScale;
             mo.init();
             mo.applyPowers();
             mo.setDamage(damage);
             AbstractDungeon.getCurrRoom().monsters.addMonster(0, mo);
         });
-    }
-
-    private int getSmartPosition(AbstractMonster m) {
-        int position = 0;
-        for (AbstractMonster mo :
-                AbstractDungeon.getCurrRoom().monsters.monsters) {
-            if (!(m.drawX > mo.drawX))
-                break;
-            ++position;
-        }
-        return position;
     }
 
     @Override

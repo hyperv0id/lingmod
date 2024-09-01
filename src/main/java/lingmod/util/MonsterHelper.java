@@ -1,6 +1,11 @@
 package lingmod.util;
 
-import basemod.ReflectionHacks;
+import static lingmod.ModCore.logger;
+
+import java.lang.reflect.Constructor;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -12,13 +17,9 @@ import com.megacrit.cardcrawl.monsters.exordium.ApologySlime;
 import com.megacrit.cardcrawl.monsters.exordium.Cultist;
 import com.megacrit.cardcrawl.monsters.exordium.SpikeSlime_S;
 import com.megacrit.cardcrawl.random.Random;
-import lingmod.interfaces.SummonedMonster;
 
-import java.lang.reflect.Constructor;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static lingmod.ModCore.logger;
+import basemod.ReflectionHacks;
+import lingmod.monsters.AbsSummonMonster;
 
 public class MonsterHelper {
     public static boolean isAttackIntent(AbstractMonster m) {
@@ -29,7 +30,8 @@ public class MonsterHelper {
                 AbstractMonster.Intent.ATTACK_DEFEND
         };
         for (AbstractMonster.Intent intent : atk_intents) {
-            if (m.intent == intent) return true;
+            if (m.intent == intent)
+                return true;
         }
         return false;
     }
@@ -51,7 +53,6 @@ public class MonsterHelper {
         return total;
     }
 
-
     /**
      * calculate damage for specific monsters
      *
@@ -62,9 +63,11 @@ public class MonsterHelper {
         int total = 0;
         if (!mo.isDeadOrEscaped()) {
             mo.createIntent();
-            if (!MonsterHelper.isAttackIntent(mo)) return 0;
+            if (!MonsterHelper.isAttackIntent(mo))
+                return 0;
             int moDamage = basemod.ReflectionHacks.getPrivate(mo, AbstractMonster.class, "intentDmg");
-            if (moDamage <= 0) return 0;
+            if (moDamage <= 0)
+                return 0;
             if ((boolean) basemod.ReflectionHacks.getPrivate(mo, AbstractMonster.class, "isMultiDmg")) {
                 moDamage *= (Integer) ReflectionHacks.getPrivate(mo, AbstractMonster.class, "intentMultiAmt");
             }
@@ -75,11 +78,13 @@ public class MonsterHelper {
 
     /**
      * create a monster by its class
-     * <a href="https://github.com/qw2341/Loadout-Mod/blob/master/src/main/java/loadout/screens/MonsterSelectScreen.java">from loadout mod<a>
+     * <a href=
+     * "https://github.com/qw2341/Loadout-Mod/blob/master/src/main/java/loadout/screens/MonsterSelectScreen.java">from
+     * loadout mod<a>
      */
     public static AbstractMonster createMonster(Class<? extends AbstractMonster> clz) {
         AbstractMonster res = new ApologySlime();
-        //Exceptions
+        // Exceptions
         if (clz.equals(AcidSlime_S.class)) {
             return new AcidSlime_S(0, 0, 0);
         } else if (clz.equals(SpikeSlime_S.class)) {
@@ -111,7 +116,7 @@ public class MonsterHelper {
                 return (AbstractMonster) c.newInstance(paramz);
             } catch (Exception e) {
                 logger.info("Error occurred while trying to instantiate class: " + c.getName());
-                //e.printStackTrace();
+                // e.printStackTrace();
                 return res;
             }
         }
@@ -164,12 +169,12 @@ public class MonsterHelper {
      * @return 怪物
      */
     public static AbstractMonster getMoNotSummon(boolean aliveOnly, Random rng) {
-        List<AbstractMonster> mos =
-                AbstractDungeon.getMonsters().monsters.stream()
-                        .filter(mo -> !(mo instanceof SummonedMonster))
-                        .filter(mo -> !aliveOnly || !mo.isDeadOrEscaped())
-                        .collect(Collectors.toList());
-        if (mos.isEmpty()) return null;
+        List<AbstractMonster> mos = AbstractDungeon.getMonsters().monsters.stream()
+                .filter(mo -> !(mo instanceof AbsSummonMonster))
+                .filter(mo -> !aliveOnly || !mo.isDeadOrEscaped())
+                .collect(Collectors.toList());
+        if (mos.isEmpty())
+            return null;
         AbstractMonster res = mos.get(0);
         if (rng != null) {
             int idx = rng.random(mos.size() - 1);
@@ -181,12 +186,12 @@ public class MonsterHelper {
     public static int cntSummons() {
         return (int) AbstractDungeon.getMonsters().monsters.stream()
                 .filter(mo -> !mo.isDeadOrEscaped())
-                .filter(mo -> mo instanceof SummonedMonster).count();
+                .filter(mo -> mo instanceof AbsSummonMonster).count();
     }
 
     public static boolean areMonstersDead() {
         return AbstractDungeon.getMonsters().monsters.stream()
-                .filter(mo -> !(mo instanceof SummonedMonster)) // 排除召唤物
+                .filter(mo -> !(mo instanceof AbsSummonMonster)) // 排除召唤物
                 .allMatch(AbstractCreature::isDeadOrEscaped);
     }
 
@@ -194,6 +199,18 @@ public class MonsterHelper {
      * 获取所有怪物，但是不包含召唤物
      */
     public static List<AbstractMonster> allMonsters() {
-        return AbstractDungeon.getMonsters().monsters.stream().filter(mo -> !(mo instanceof SummonedMonster)).collect(Collectors.toList());
+        return AbstractDungeon.getMonsters().monsters.stream().filter(mo -> !(mo instanceof AbsSummonMonster))
+                .collect(Collectors.toList());
     }
+
+    public static void MoveMonster(AbstractMonster m, float x, float y) {
+        m.drawX = x;
+        m.drawY = y;
+        m.animX = 0.0F;
+        m.animY = 0.0F;
+        m.hb.move(m.drawX + m.hb_x, m.drawY + m.hb_y + m.hb_h / 2.0F);
+        m.healthHb.move(m.hb.cX, m.hb.cY - m.hb_h / 2.0F - m.healthHb.height / 2.0F);
+        m.refreshIntentHbLocation();
+    }
+
 }

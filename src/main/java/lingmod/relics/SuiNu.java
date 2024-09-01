@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
-import lingmod.interfaces.SummonedMonster;
 import lingmod.util.Wiz;
 
 /**
@@ -31,7 +30,6 @@ public class SuiNu extends AbstractEasyRelic {
         super.onUseCard(targetCard, useCardAction);
         // ArrayList<AbstractCreature> creatures = new ArrayList<>();
         ArrayList<AbstractCreature> creatures = AbstractDungeon.getMonsters().monsters.stream()
-                .filter(mo -> !(mo instanceof SummonedMonster))
                 .filter(mo -> !mo.isDeadOrEscaped()).collect(Collectors.toCollection(ArrayList::new));
         creatures.add(Wiz.adp());
         ArrayList<Integer> integers =

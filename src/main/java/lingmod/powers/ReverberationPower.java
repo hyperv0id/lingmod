@@ -1,5 +1,7 @@
 package lingmod.powers;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -8,12 +10,13 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import static lingmod.ModCore.makeID;
+import basemod.AutoAdd.Ignore;
 
 /**
  * 回合结束，打出之前打出的最后一张牌
  * TODO: 没有联动
  */
+@Ignore
 public class ReverberationPower extends AbstractEasyPower {
     public static final String POWER_NAME = ReverberationPower.class.getSimpleName();
     public static final String ID = makeID(POWER_NAME);
