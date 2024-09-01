@@ -1,4 +1,4 @@
-package lingmod.cards.skill;
+package lingmod.cards.attack;
 
 import basemod.AutoAdd;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -17,7 +17,7 @@ public class Thunderer_Summon extends AbstractEasyCard {
     public static final String ID = makeID(Thunderer_Summon.class.getSimpleName());
 
     public Thunderer_Summon() {
-        super(ID, 1, CardType.SKILL, CardRarity.BASIC, CardTarget.SELF);
+        super(ID, 1, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
     }
 
     @Override
