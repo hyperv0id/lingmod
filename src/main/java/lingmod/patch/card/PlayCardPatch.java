@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import javassist.CannotCompileException;
 import javassist.expr.ExprEditor;
@@ -51,6 +50,10 @@ public class PlayCardPatch {
         if (card.type == CardType.ATTACK) {
             Wiz.atb(new MyApplyPower_Action(monster, monster, new StrengthPower(monster, card.damage)));
             Wiz.addToBotAbstract(monster::applyPowers);
+        } else if (card.type == CardType.SKILL) {
+            Wiz.addToBotAbstract(() -> {
+                monster.increaseMaxHp(card.block, true);
+            });
         }
     }
 

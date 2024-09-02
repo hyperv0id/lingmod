@@ -1,15 +1,22 @@
 package lingmod.monsters;
 
+import basemod.ReflectionHacks;
 import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import lingmod.util.MonsterHelper;
 import lingmod.util.Wiz;
+
+import java.util.HashMap;
+
+import static lingmod.ModCore.logger;
 
 public abstract class AbsSummonMonster extends CustomMonster {
     public String img_up;
@@ -35,6 +42,41 @@ public abstract class AbsSummonMonster extends CustomMonster {
     @Override
     protected void getMove(int arg0) {
         setMove((byte) 0, Intent.ATTACK, damage.get(0).base);
+    }
+
+
+    private final HashMap<AbstractCard, AbstractCard.CardTarget> cardTargetCache = new HashMap<>();
+
+    @Override
+    public void update() {
+        super.update();
+
+        if (hb.hovered || intentHb.hovered || healthHb.hovered) hover();
+    }
+
+    public void hover() {
+        AbstractPlayer p = Wiz.adp();
+        if (ReflectionHacks.privateMethod(AbstractPlayer.class, "clickAndDragCards").invoke(p)) {
+            AbstractCard card = p.hoveredCard;
+            if (card.type == AbstractCard.CardType.ATTACK || card.type == AbstractCard.CardType.SKILL) {
+                cardTargetCache.put(card, card.target);
+                card.target = AbstractCard.CardTarget.ENEMY;
+                logger.info("Set Target: " + card.name + " ENEMY");
+            }
+        }
+    }
+
+
+    @Override
+    public void unhover() {
+        super.unhover();
+        AbstractPlayer p = Wiz.adp();
+        if (ReflectionHacks.privateMethod(AbstractPlayer.class, "clickAndDragCards").invoke(p)) {
+            AbstractCard card = p.hoveredCard;
+            AbstractCard.CardTarget oldTarget = cardTargetCache.get(card);
+            if (oldTarget != null) card.target = oldTarget;
+            logger.info("Reset Target: " + card.name + " ENEMY");
+        }
     }
 
 

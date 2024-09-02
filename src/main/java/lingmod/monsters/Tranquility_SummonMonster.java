@@ -32,7 +32,7 @@ public class Tranquility_SummonMonster extends AbsSummonMonster {
     }
 
     public Tranquility_SummonMonster() {
-        super(NAME, ID, 12, 0.0F, 0.0F, 200.0F, 250.0F, IMG_PATH, IMG_PATH_2);
+        super(NAME, ID, 18, 0.0F, 0.0F, 200.0F, 250.0F, IMG_PATH, IMG_PATH_2);
         this.damage.add(new DamageInfo(this, 1));
         // this.img = ImageMaster.loadImage(IMG_PATH);
     }

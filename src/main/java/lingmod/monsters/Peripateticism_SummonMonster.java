@@ -32,7 +32,7 @@ public class Peripateticism_SummonMonster extends AbsSummonMonster {
     }
 
     public Peripateticism_SummonMonster() {
-        super(NAME, ID, 9, 0.0F, 0.0F, 200.0F, 250.0F, IMG_PATH, IMG_PATH_2);
+        super(NAME, ID, 18, 0.0F, 0.0F, 200.0F, 250.0F, IMG_PATH, IMG_PATH_2);
         this.damage.add(new DamageInfo(this, 1));
         // this.img = ImageMaster.loadImage(IMG_PATH);
     }
@@ -45,7 +45,7 @@ public class Peripateticism_SummonMonster extends AbsSummonMonster {
         addToBot(new DamageAction(target, damage.get(0)));
         if (this.hasPower(PeripateticismPower.ID)) {
             int amt = damage.get(0).output;
-            addToBot(new ApplyPowerAction(this, target, new ConstrictedPower(target, this, amt)));
+            addToBot(new ApplyPowerAction(this, target, new ConstrictedPower(target, target, amt)));
         }
     }
 
