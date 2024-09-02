@@ -5,14 +5,17 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
+import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsAction;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.cutscenes.CutscenePanel;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
@@ -22,12 +25,11 @@ import lingmod.cards.attack.GuoJiaXianMei;
 import lingmod.cards.attack.Strike;
 import lingmod.cards.attack.Tranquility;
 import lingmod.cards.skill.Defend;
+import lingmod.patch.PlayerFieldsPatch;
 import lingmod.relics.LightRelic;
 import lingmod.ui.PoetryOrb;
-import lingmod.util.ModConfig;
-import lingmod.util.SkinInfo;
-import lingmod.util.TODO;
-import lingmod.util.VoiceMaster;
+import lingmod.ui.PoetryTopPanel;
+import lingmod.util.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,8 +58,8 @@ public class Ling extends CustomPlayer {
             makeCharacterPath("ling/orb/layer4d.png"),
             makeCharacterPath("ling/orb/layer5d.png"),
     };
-    private static final float[] LAYER_SPEED = new float[] { -40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F,
-            -5.0F, 0.0F };
+    private static final float[] LAYER_SPEED = new float[]{-40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F,
+            -5.0F, 0.0F};
 
     public Ling() {
         this(Ling.characterStrings.NAMES[1], Ling.Enums.PLAYER_LING);
@@ -98,6 +100,21 @@ public class Ling extends CustomPlayer {
             e.setTime(e.getEndTime() * MathUtils.random());
             e.setTimeScale(0.8F);
         }
+    }
+
+    /**
+     * 开局时选择一个诗词赋曲来规定整场战斗的格调
+     */
+    @Override
+    public void applyStartOfCombatLogic() {
+        super.applyStartOfCombatLogic();
+
+        CardGroup cg = PlayerFieldsPatch.poetryCardGroup.get(Wiz.adp());
+        ArrayList<AbstractCard> stanceChoices = cg.group;
+        Wiz.atb(new SelectCardsAction(stanceChoices, PoetryTopPanel.TEXT[2], cards -> {
+            AbstractPoetryCard card = (AbstractPoetryCard) cards.get(0).makeCopy();
+            AbstractDungeon.player.channelOrb(new PoetryOrb(card));
+        }));
     }
 
     /**
@@ -261,10 +278,10 @@ public class Ling extends CustomPlayer {
 
     @Override
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect() {
-        return new AbstractGameAction.AttackEffect[] {
+        return new AbstractGameAction.AttackEffect[]{
                 AbstractGameAction.AttackEffect.FIRE,
                 AbstractGameAction.AttackEffect.BLUNT_HEAVY,
-                AbstractGameAction.AttackEffect.FIRE };
+                AbstractGameAction.AttackEffect.FIRE};
     }
 
     @Override

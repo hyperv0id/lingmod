@@ -30,14 +30,7 @@ public class Peripateticism extends AbsSummonCard {
     public static final String ID = makeID(Peripateticism.class.getSimpleName());
 
     public Peripateticism() {
-        super(ID, 2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
-    }
-
-    /**
-     * 获得诗简后，卡牌使用会有不同
-     */
-    public Peripateticism(final CardType type, final CardTarget target) {
-        super(ID, 1, type, CardRarity.BASIC, target);
+        super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
     }
 
     @Override

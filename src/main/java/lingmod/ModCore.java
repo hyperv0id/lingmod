@@ -21,7 +21,6 @@ import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.cardvars.AbstractEasyDynamicVariable;
@@ -42,7 +41,6 @@ import lingmod.ui.PoetryTopPanel;
 import lingmod.ui.PoetryViewScreen;
 import lingmod.ui.SelectedPoetryViewScreen;
 import lingmod.util.ModConfig;
-import lingmod.util.PoetryCardManager;
 import lingmod.util.PoetryLoader;
 import lingmod.util.Wiz;
 import lingmod.util.audio.ProAudio;
@@ -61,7 +59,6 @@ public class ModCore implements
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
         PostInitializeSubscriber,
-        OnStartBattleSubscriber,
         StartGameSubscriber,
         AddAudioSubscriber,
         PostDungeonInitializeSubscriber {
@@ -284,12 +281,6 @@ public class ModCore implements
     public void addScreen() {
         BaseMod.addCustomScreen(new PoetryViewScreen());
         BaseMod.addCustomScreen(new SelectedPoetryViewScreen());
-    }
-
-    @Override
-    public void receiveOnBattleStart(AbstractRoom r) {
-        if (Wiz.isPlayerLing())
-            PoetryCardManager.onBattleStart(r);
     }
 
     /**
