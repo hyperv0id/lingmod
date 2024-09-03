@@ -22,7 +22,7 @@
   },
   "${ModID}:NingZuoWuCard": {
     "NAME": "宁作吾",
-    "DESCRIPTION": "你的能力和异常不会被移除 NL 但如果此能力影响了受伤时伤害结算，此能力仍然会消失"
+    "DESCRIPTION": "你的能力和异常不会被移除 NL 无实体、荆棘等拥有受伤逻辑的能力仍然会被移除"
   },
   "${ModID}:Strike": {
     "NAME": "打击",
@@ -35,8 +35,7 @@
   },
   "${ModID}:XiaoMingSeCard": {
     "NAME": "笑鸣瑟",
-    "DESCRIPTION": "每有一个 异常状态，每有一个敌人，获得2点 ${ModID}:诗兴 NL 可获得 !M! 点",
-    "UPGRADE_DESCRIPTION": "每有一个 敌人/异常/状态牌/诅咒牌，获得 2 点 ${ModID}:诗兴 NL 共 !M! 点"
+    "DESCRIPTION": "每有一个 异常状态，每有一个敌人，获得2点 ${ModID}:诗兴 NL 可获得 !M! 点"
   },
   "${ModID}:XiaoYaoYou": {
     "NAME": "逍遥游",
@@ -124,7 +123,7 @@
   },
   "${ModID}:ShiDuanMengChang": {
     "NAME": "诗短梦长",
-    "DESCRIPTION": "获得25%伤害减免 NL 损失生命时，获得等量 ${ModID}:缠绕 NL （因缠绕损失的生命也会被计入）"
+    "DESCRIPTION": "获得 !M!% 伤害减免 NL 损失生命时，获得等量 ${ModID}:缠绕 NL （因缠绕损失的生命也会被计入）"
   },
   "${ModID}:AltGuangHui": {
     "NAME": "光辉ALT",
@@ -214,7 +213,7 @@
   },
   "${ModID}:Sui_7DealCard": {
     "NAME": "“交易”",
-    "DESCRIPTION": "抽到时再抽一张牌 NL ^_^"
+    "DESCRIPTION": "抽到时立刻再抽一张牌 NL ^_^"
   },
   "${ModID}:LieDaoZiWineCard": {
     "NAME": "烈刀子酒",
@@ -226,8 +225,7 @@
   },
   "${ModID}:GuiXingWineCard": {
     "NAME": "归行酒",
-    "DESCRIPTION": "造成 !D! 点伤害。弃牌堆一张随机牌加入手牌",
-    "UPGRADE_DESCRIPTION": "造成 !D! 点伤害。弃牌堆选择一张牌加入手牌"
+    "DESCRIPTION": "打出弃牌堆随机一张牌，将其 消耗"
   },
   "${ModID}:ChiJiuSui": {
     "NAME": "辞旧岁",
@@ -239,7 +237,7 @@
   },
   "${ModID}:DrinkAlone": {
     "NAME": "独酌",
-    "DESCRIPTION": "选择一张牌，将所有手牌变化为此牌",
+    "DESCRIPTION": "选择一张牌，消耗所有手牌，在手牌中加入其 X 张复制",
     "EXTENDED_DESCRIPTION": [
       "选择一张牌独饮"
     ]
@@ -291,8 +289,7 @@
   },
   "lingmod:ZhengFuWangXiang": {
     "NAME": "征夫望乡",
-    "DESCRIPTION": "消耗所有手牌 NL 手牌中加入一张 特殊的裹甲衔枚",
-    "UPGRADE_DESCRIPTION": "消耗所有手牌、打击、防御 NL 手牌中加入一张 特殊的裹甲衔枚"
+    "DESCRIPTION": "消耗所有手牌 NL 手牌中加入一张 特殊的裹甲衔枚"
   },
   "${ModID}:QuShuiLiuShang": {
     "NAME": "曲水流觞",
@@ -360,8 +357,8 @@
   },
   "lingmod:NostalgiaAndCuriosity": {
     "NAME": "怀恋与好奇",
-    "DESCRIPTION": "从拿牌记录中随机抽3张牌 NL 选择其中一张加入手牌。",
-    "UPGRADE_DESCRIPTION": "从拿牌记录中随机抽3张牌 NL 选一张加入手牌并使其本回合耗能为0"
+    "DESCRIPTION": "从随机3张牌中选一张加入手牌 NL 这些牌是你之前爬塔时拿过的牌",
+    "UPGRADE_DESCRIPTION": "从随机3张牌中选一张加入手牌，并使其本回合耗能为 0 NL 这些牌是你之前爬塔时拿过的牌"
   },
   "lingmod:Ling_Grieve": {
     "NAME": "伤怀",
@@ -371,5 +368,9 @@
     "NAME": "桃梅晚酿",
     "DESCRIPTION": "失去所有 活力，将其转化为酒",
     "UPGRADE_DESCRIPTION": "获得当前活力等值的酒"
+  },
+  "lingmod:TheNumberIs3": {
+    "NAME": "其数为3",
+    "DESCRIPTION": "你造成的伤害一定为3的整数倍（上取整）"
   }
 }

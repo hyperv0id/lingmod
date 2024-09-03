@@ -1,5 +1,6 @@
 package lingmod.cards.curse;
 
+import basemod.AutoAdd;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -12,6 +13,7 @@ import lingmod.util.CustomTags;
 import static lingmod.ModCore.makeID;
 import static lingmod.util.Wiz.isInHand;
 
+@AutoAdd.Ignore
 @Credit(username = "会说话的粉红DJ熊", platform = Credit.LOFTER, link = "https://songpujuli.lofter.com/post/1f06186c_2bb25fa09")
 public class WineWineWine extends AbstractEasyCard {
     public final static String ID = makeID(WineWineWine.class.getSimpleName());

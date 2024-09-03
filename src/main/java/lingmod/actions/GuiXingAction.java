@@ -9,12 +9,10 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import lingmod.cards.attack.GuiXingWineCard;
-import lingmod.interfaces.Credit;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@Credit(username = "枯荷倚梅cc", platform = "lofter", link = "https://anluochen955.lofter.com/post/1f2a08fc_2baf8eeb3")
 public class GuiXingAction extends AbstractGameAction {
     public static final String[] TEXT;
     private static final UIStrings uiStrings;

@@ -2,7 +2,6 @@ package lingmod.cards.skill;
 
 import basemod.cardmods.ExhaustMod;
 import basemod.helpers.CardModifierManager;
-import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -36,28 +35,14 @@ public class ZhengFuWangXiang extends AbstractEasyCard {
     @Override
     public void applyPowers() {
         AbstractPlayer p = Wiz.adp();
-        long cnt = p.hand.size();
-        // 消耗手牌所有打防
-        if (upgraded) {
-            cnt += p.discardPile.group.stream().filter(Wiz::isStart_SD).count();
-            cnt += p.drawPile.group.stream().filter(Wiz::isStart_SD).count();
-        }
-        cardsToPreview.baseDamage = cardsToPreview.baseBlock = this.magicNumber * (int) cnt;
+        int cnt = p.hand.size();
+        cardsToPreview.baseDamage = cardsToPreview.baseBlock = this.magicNumber * cnt;
         cardsToPreview.cost = Math.min((int) cnt, new GuoJiaXianMei().cost);
-
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        // 消耗手牌所有打防
-        if (upgraded) {
-            p.drawPile.group.stream().filter(Wiz::isStart_SD).forEach(c -> addToBot(new ExhaustSpecificCardAction(c,
-                    p.drawPile)));
-            p.drawPile.group.stream().filter(Wiz::isStart_SD).forEach(c -> addToBot(new ExhaustSpecificCardAction(c,
-                    p.drawPile)));
-        }
         addToBot(new ExhaustAllAction(p.hand));
-
         addToBot(new MakeTempCardInHandAction(this.cardsToPreview));
     }
 

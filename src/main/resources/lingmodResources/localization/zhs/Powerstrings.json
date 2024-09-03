@@ -214,5 +214,11 @@
     "DESCRIPTIONS": [
       "弦惊将攻击所有敌人"
     ]
+  },
+  "lingmod:NI3Power": {
+    "NAME": "其数为三",
+    "DESCRIPTIONS": [
+      "你造成的伤害为 3 的整数倍，上取整"
+    ]
   }
 }

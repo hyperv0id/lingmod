@@ -23,7 +23,7 @@ import static lingmod.ModCore.makeID;
  * 敌人多段攻击，攻击次数减少 20%
  * 否则给予虚弱
  */
-@CardConfig(magic = 30, magic2 = 1, wineAmount = 2)
+@CardConfig(magic = 20, magic2 = 1, wineAmount = 2)
 @Credit(username = "枯荷倚梅cc", platform = "lofter", link = "https://anluochen955.lofter.com/post/1f2a08fc_2baf8eeb3")
 public class HuSongWineCard extends AbstractEasyCard implements OnPlayerDamagedSubscriber {
     public static final String ID = makeID(HuSongWineCard.class.getSimpleName());

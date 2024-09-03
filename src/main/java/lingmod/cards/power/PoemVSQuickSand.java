@@ -1,5 +1,6 @@
 package lingmod.cards.power;
 
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.actions.MyApplyPower_Action;
@@ -11,6 +12,7 @@ import static lingmod.ModCore.makeID;
 /**
  * 诗对狂沙：每次受到伤害时，获得 1/2 诗兴
  */
+@AutoAdd.Ignore
 @Credit(username = "WHO808", platform = Credit.PIXIV, link = "https://www.pixiv.net/artworks/111160788")
 public class PoemVSQuickSand extends AbstractEasyCard {
     public final static String ID = makeID(PoemVSQuickSand.class.getSimpleName());

@@ -6,6 +6,7 @@ import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandActio
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import lingmod.actions.EasyXCostAction;
 import lingmod.actions.ExhaustAllAction;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.Credit;
@@ -20,7 +21,7 @@ public class DrinkAlone extends AbstractEasyCard {
     public final static String ID = makeID(DrinkAlone.class.getSimpleName());
 
     public DrinkAlone() {
-        super(ID, 2, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
+        super(ID, -1, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
         CardModifierManager.addModifier(this, new ExhaustMod());
     }
 
@@ -30,7 +31,10 @@ public class DrinkAlone extends AbstractEasyCard {
         if (p.hand.isEmpty()) return;
         addToBot(new SelectCardsInHandAction(msg, cards -> {
             addToBot(new ExhaustAllAction());
-            addToBot(new MakeTempCardInHandAction(cards.get(0).makeStatEquivalentCopy(), p.hand.size() + 1));
+            addToBot(new EasyXCostAction(this, (effect, param) -> {
+                addToTop(new MakeTempCardInHandAction(param, effect));
+                return true;
+            }, cards.get(0).makeStatEquivalentCopy()));
         }));
     }
 

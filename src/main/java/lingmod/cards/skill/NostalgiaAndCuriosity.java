@@ -34,7 +34,7 @@ public class NostalgiaAndCuriosity extends AbstractEasyCard {
     private static final ArrayList<RunData> Runs = new ArrayList<>();
 
     private static final Gson gson = new Gson();
-    public static final AbstractCard defaultCard = new Strike();
+    public static final AbstractCard DEFAULT_CARD = new Strike();
 
     private static final ArrayList<String> cardsSelected = new ArrayList<>();
 
@@ -58,7 +58,7 @@ public class NostalgiaAndCuriosity extends AbstractEasyCard {
     }
 
     public static AbstractCard getRandCard() {
-        AbstractCard result = defaultCard.makeCopy();
+        AbstractCard result = DEFAULT_CARD.makeCopy();
         String key = cardsSelected.get(AbstractDungeon.cardRng.random(cardsSelected.size() - 1));
         key = key.split("\\+")[0];
         logger.info("Try 1: " + CardLibrary.getCard(key));

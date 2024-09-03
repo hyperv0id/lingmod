@@ -27,6 +27,11 @@ public class ChongJinJiuCard extends AbstractEasyCard {
     }
 
     @Override
+    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
+        return false;
+    }
+
+    @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
     }
 

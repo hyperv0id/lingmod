@@ -9,6 +9,8 @@ import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import java.util.function.BiFunction;
 
 public class EasyXCostAction extends AbstractGameAction {
+    private AbstractCard targetCard;
+    private BiFunction<Integer, AbstractCard, Boolean> xActionUpdate_Card;
     public BiFunction<Integer, int[], Boolean> xActionUpdate;
     public int[] params;
     protected int baseValue;
@@ -29,6 +31,13 @@ public class EasyXCostAction extends AbstractGameAction {
         this.params = params;
     }
 
+    public EasyXCostAction(AbstractCard card, BiFunction<Integer, AbstractCard, Boolean> xActionUpdate, AbstractCard targetCard) {
+        this.baseValue = card.energyOnUse;
+        this.freeToPlayOnce = card.freeToPlayOnce;
+        this.xActionUpdate_Card = xActionUpdate;
+        this.targetCard = targetCard;
+    }
+
     @Override
     public void update() {
         if (firstUpdate) {
@@ -41,8 +50,9 @@ public class EasyXCostAction extends AbstractGameAction {
                 effect += ChemicalX.BOOST;
                 AbstractDungeon.player.getRelic(ChemicalX.ID).flash();
             }
-
-            isDone = xActionUpdate.apply(effect, params) || duration < 0.0f;
+            if (xActionUpdate != null && xActionUpdate.apply(effect, params)) isDone = true;
+            if (xActionUpdate_Card != null && xActionUpdate_Card.apply(effect, targetCard)) isDone = true;
+            isDone = isDone || duration < 0.0f;
             firstUpdate = false;
 
             if (!this.freeToPlayOnce) {
