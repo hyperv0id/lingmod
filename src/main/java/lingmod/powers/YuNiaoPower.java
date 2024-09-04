@@ -1,5 +1,6 @@
 package lingmod.powers;
 
+import basemod.ReflectionHacks;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -48,19 +49,17 @@ public class YuNiaoPower extends AbstractEasyPower {
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (info.owner == null || info.type == DamageType.THORNS || info.owner == owner)
             return damageAmount;
-
+        AbstractCreature src = info.owner;
+        int dmg = ReflectionHacks.getPrivate(src, AbstractMonster.class, "intentDmg");
         this.flash();
         for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
             // 判断死亡
             if (mo.isDeadOrEscaped())
                 continue;
-            // TODO: 应该是最新的数据，而不是最高的数据
-            int amt = Math.max(info.output, info.base);
-            amt = Math.max(amt, damageAmount);
             // 判断同名
             if (mo.name.equals(target.name) || mo.id.equals(target.id)) {
                 this.addToTop(new DamageAction(mo,
-                        new DamageInfo(this.owner, amt, DamageInfo.DamageType.THORNS),
+                        new DamageInfo(this.owner, dmg, DamageInfo.DamageType.THORNS),
                         AbstractGameAction.AttackEffect.FIRE));
             }
         }

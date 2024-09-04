@@ -1,9 +1,4 @@
 {
-  "${ModID}:AbstractWineCard": {
-    "NAME": "[ERROR]",
-    "DESCRIPTION": "[ERROR]",
-    "UPGRADE_DESCRIPTION": "[ERROR]"
-  },
   "${ModID}:ChongJinJiuCard": {
     "NAME": "重进酒",
     "DESCRIPTION": "总是变化为打出的上一张牌的 临时复制",
@@ -12,13 +7,6 @@
   "${ModID}:Defend": {
     "NAME": "防御",
     "DESCRIPTION": "获得 !B! 格挡."
-  },
-  "${ModID}:DingFengBoCard": {
-    "NAME": "定风波",
-    "DESCRIPTION": "获得 !B! 格挡",
-    "EXTENDED_DESCRIPTION": [
-      "一蓑烟雨任平生"
-    ]
   },
   "${ModID}:NingZuoWuCard": {
     "NAME": "宁作吾",
@@ -372,5 +360,10 @@
   "lingmod:TheNumberIs3": {
     "NAME": "其数为3",
     "DESCRIPTION": "你造成的伤害一定为3的整数倍（上取整）"
+  },
+  "lingmod:ZhuYeZhouCard": {
+    "NAME": "竹叶舟",
+    "DESCRIPTION": "升级所有手牌，下次离开梦境时，变化所有卡牌为未升级的",
+    "UPGRADE_DESCRIPTION": "升级所有牌，下次离开梦境时，变化所有卡牌为未升级的"
   }
 }

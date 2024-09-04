@@ -218,7 +218,13 @@
   "lingmod:NI3Power": {
     "NAME": "其数为三",
     "DESCRIPTIONS": [
-      "你造成的伤害为 3 的整数倍，上取整"
+      "你造成的伤害为 %d 的整数倍，上取整"
+    ]
+  },
+  "lingmod:ZhuYeZhouPower": {
+    "NAME": "竹叶舟",
+    "DESCRIPTIONS": [
+      "下次离开梦境时，变化所有手牌为未升级的"
     ]
   }
 }

@@ -20,8 +20,7 @@ public class DaMoFeiHuo extends AbstractEasyCard {
     public final static String ID = makeID(DaMoFeiHuo.class.getSimpleName());
 
     public DaMoFeiHuo() {
-        super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
-
+        super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
     }
 
     @Override
