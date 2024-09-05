@@ -50,7 +50,7 @@
   },
   "${ModID}:Peripateticism": {
     "NAME": "“逍遥”",
-    "DESCRIPTION": "${ModID}:召唤 。 NL  消耗 所有非攻击牌，每张给予 !M! 缠绕 NL 立刻结算缠绕效果",
+    "DESCRIPTION": "${ModID}:召唤 。 NL 消耗 所有非攻击牌，每张给予 !M! 缠绕 NL 立刻结算缠绕效果",
     "EXTENDED_DESCRIPTION": [
       "召唤一个 ${ModID}:“逍遥” "
     ]
@@ -96,7 +96,7 @@
   },
   "${ModID}:ZhiZhan": {
     "NAME": "掷盏",
-    "DESCRIPTION": "造成 !D! 点伤害。 NL 活力 在此牌上发挥 !M! 倍效果。",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL ${ModID}:酒 在此牌上发挥 !M! 倍效果。",
     "EXTENDED_DESCRIPTION": [
       "当年掷盏飞残暮，今宵抔酒对高城。"
     ]
@@ -167,7 +167,7 @@
   },
   "${ModID}:AGiftCard": {
     "NAME": "“礼物”",
-    "DESCRIPTION": "给予所有敌人 !M! 层 虚弱 NL 给予自己 !${ModID:m2}! 层 虚弱 "
+    "DESCRIPTION": "给予所有敌人 !M! 层 虚弱 NL 给予自己 !${ModID}:m2! 层 虚弱 "
   },
   "${ModID}:ZuiFeiChen": {
     "NAME": "醉飞尘",
@@ -191,7 +191,7 @@
   },
   "${ModID}:BeiMoTing": {
     "NAME": "杯莫停",
-    "DESCRIPTION": "如果目标意图是攻击 ，进入 ${ModID}:梦  ， 否则获得 !M! ${ModID}:酒 "
+    "DESCRIPTION": "如果目标意图是攻击 ，进入 ${ModID}:梦 ， 否则获得 !M! ${ModID}:酒 "
   },
   "${ModID}:PoemVSQuickSand": {
     "NAME": "诗对狂沙",
@@ -204,7 +204,7 @@
   },
   "${ModID}:LieDaoZiWineCard": {
     "NAME": "烈刀子酒",
-    "DESCRIPTION": "翻倍你的 活力 "
+    "DESCRIPTION": "翻倍你的 ${ModID}:酒 "
   },
   "${ModID}:HuSongWineCard": {
     "NAME": "湖松酒",
@@ -231,7 +231,7 @@
   },
   "${ModID}:YunLiaoWineCard": {
     "NAME": "云辽酒",
-    "DESCRIPTION": "获得 !M! 活力 "
+    "DESCRIPTION": "获得 !M! ${ModID}:酒 "
   },
   "${ModID}:GuanShanYuan": {
     "NAME": "关山远",
@@ -354,8 +354,8 @@
   },
   "lingmod:TaoMeiWanNiang": {
     "NAME": "桃梅晚酿",
-    "DESCRIPTION": "失去所有 活力，将其转化为酒",
-    "UPGRADE_DESCRIPTION": "获得当前活力等值的酒"
+    "DESCRIPTION": "失去所有 ${ModID}:酒 ，将其转化为酒",
+    "UPGRADE_DESCRIPTION": "获得当前 ${ModID}:酒 等值的酒"
   },
   "lingmod:TheNumberIs3": {
     "NAME": "其数为3",

@@ -92,8 +92,8 @@ public class PoetryOrb extends AbstractOrb {
         }
     }
 
-    static BitmapFont loadFont(String fontPath) {
-        BitmapFont font = null;
+    public static BitmapFont loadFont(String fontPath) {
+        BitmapFont font;
         FileHandle fontFile = Gdx.files.internal(fontPath);
         FreeTypeFontGenerator g = new FreeTypeFontGenerator(fontFile);
         try {

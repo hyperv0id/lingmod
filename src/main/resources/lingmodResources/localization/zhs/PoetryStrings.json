@@ -127,7 +127,7 @@
       "仄仄平平平仄",
       "仄仄仄平平仄"
     ],
-    "DESCRIPTION": "进入 ${ModID}:梦境 。 NL 获得 !M! 活力"
+    "DESCRIPTION": "进入 ${ModID}:梦境 。 NL 获得 !M! ${ModID}:酒 "
   },
   "lingmod:AbstractPoetryCard": {
     "NAME": "诗词",

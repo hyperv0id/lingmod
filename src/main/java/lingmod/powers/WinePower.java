@@ -1,19 +1,19 @@
 package lingmod.powers;
 
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import lingmod.util.Wiz;
 
 import static lingmod.ModCore.makeID;
 
-/**
- * remove vigor only when wine >= 0
- */
 public class WinePower extends AbstractEasyPower {
     public static final String CLASS_NAME = WinePower.class.getSimpleName();
     public static final String POWER_ID = makeID(CLASS_NAME);
@@ -27,18 +27,26 @@ public class WinePower extends AbstractEasyPower {
         this.amount = amount;
     }
 
+    public void updateDescription() {
+        this.description = String.format(powerStrings.DESCRIPTIONS[0], this.amount);
+    }
+
     @Override
     public void reducePower(int reduceAmount) {
         super.reducePower(reduceAmount);
-        if (this.amount <= 0) addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player, AbstractDungeon.player,
-                this));
+        if (this.amount <= 0)
+            addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player, AbstractDungeon.player,
+                    this));
     }
 
-    public void dampLater() {
-        if (Wiz.isStanceNell()) {
-            addToBot(new ReducePowerAction(owner, owner, this, 1));
-        } else {
-            addToBot(new ReducePowerAction(owner, owner, this, (this.amount + 1) / 2));
+    public float atDamageGive(float damage, DamageInfo.DamageType type) {
+        return type == DamageType.NORMAL ? damage + (float) this.amount : damage;
+    }
+
+    public void onUseCard(AbstractCard card, UseCardAction action) {
+        if (card.type == CardType.ATTACK) {
+            this.flash();
+            this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
         }
     }
 }

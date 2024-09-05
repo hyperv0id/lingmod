@@ -2,11 +2,11 @@ package lingmod.cards.skill;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import lingmod.actions.MyApplyPower_Action;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
+import lingmod.powers.WinePower;
 
 import static lingmod.ModCore.makeID;
 
@@ -28,6 +28,6 @@ public class YunLiaoWineCard extends AbstractEasyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         //        addToBot(new MyApplyPower_Action(abstractPlayer, abstractPlayer, new WinePower(abstractPlayer, magicNumber)));
-        addToBot(new MyApplyPower_Action(p, p, new VigorPower(p, magicNumber)));
+        addToBot(new MyApplyPower_Action(p, p, new WinePower(p, magicNumber)));
     }
 }

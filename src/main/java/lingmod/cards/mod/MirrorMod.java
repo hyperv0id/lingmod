@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
@@ -26,20 +25,14 @@ public class MirrorMod extends AbsLingCardModifier {
     public static final UIStrings uis = CardCrawlGame.languagePack.getUIString(ID);
 
     public boolean isTempCard;
-    public int vigorAmt = 1;
+    public int wineAmt = 1;
 
     public MirrorMod(boolean isTempCard) {
         this.isTempCard = isTempCard;
     }
 
-    public MirrorMod(boolean isTempCard, int vigorAmt) {
-        this.isTempCard = isTempCard;
-        this.vigorAmt = vigorAmt;
-    }
-
     @Override
     public void onOtherCardPlayed(AbstractCard card, AbstractCard otherCard, CardGroup group) {
-        AbstractPlayer p = AbstractDungeon.player;
         super.onOtherCardPlayed(card, otherCard, group);
         // 0. 需要在手牌才能打出
         if (!(group == AbstractDungeon.player.hand))

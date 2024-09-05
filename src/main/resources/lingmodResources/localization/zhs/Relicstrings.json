@@ -60,7 +60,7 @@
     "NAME": "一盏灯",
     "FLAVOR": "灯挑夜，箭如雨，大漠飞火",
     "DESCRIPTIONS": [
-      "打出牌时获得 1 诗兴 NL 消耗牌时获得 1 活力"
+      "打出牌时获得 1 诗兴 NL 消耗牌时获得 1 #b酒 (类似活力)"
     ]
   },
   "${ModID}:NianAncientCasting": {

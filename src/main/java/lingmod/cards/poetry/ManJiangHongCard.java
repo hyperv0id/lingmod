@@ -3,14 +3,14 @@ package lingmod.cards.poetry;
 import com.megacrit.cardcrawl.actions.common.RemoveAllBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import lingmod.ModCore;
 import lingmod.cards.AbstractPoetryCard;
 import lingmod.interfaces.CardConfig;
+import lingmod.powers.WinePower;
 import lingmod.util.Wiz;
 
 /**
- * 将格挡转化为活力 比例 5:1
+ * 将格挡转化为酒 比例 5:1
  */
 @CardConfig(magic = 5)
 public class ManJiangHongCard extends AbstractPoetryCard {
@@ -25,7 +25,7 @@ public class ManJiangHongCard extends AbstractPoetryCard {
         addToBotAbstract(() -> {
             int blck = p.currentBlock;
             addToBot(new RemoveAllBlockAction(p, p));
-            Wiz.applyToSelf(new VigorPower(p, blck / magicNumber));
+            Wiz.applyToSelf(new WinePower(p, blck / magicNumber));
         });
     }
 }

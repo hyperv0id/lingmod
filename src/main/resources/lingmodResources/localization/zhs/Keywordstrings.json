@@ -49,7 +49,7 @@
       "酒牌",
       "WineCard"
     ],
-    "DESCRIPTION": "打出后获得一定 #b酒 NL 拥有 #b酒 时，你的 #r活力 不会减少"
+    "DESCRIPTION": "你的下一张攻击牌将造成 X 点伤害。"
   },
   {
     "PROPER_NAME": "酒|能力",
@@ -57,7 +57,7 @@
       "酒",
       "Wine"
     ],
-    "DESCRIPTION": "拥有 #b酒 时，你的 #r活力 不会减少"
+    "DESCRIPTION": "你的下一张攻击牌将造成 X 点伤害。"
   },
   {
     "PROPER_NAME": "逍遥",

@@ -25,9 +25,7 @@ public class JiangXiangNaTie extends AbstractEasyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AbstractGameAction.AttackEffect.BLUNT_LIGHT);
         if (m instanceof AbsSummonMonster) {
-            addToBotAbstract(() -> {
-                m.increaseMaxHp(this.damage, true);
-            });
+            addToBotAbstract(() -> m.increaseMaxHp(this.damage, true));
         }
     }
 

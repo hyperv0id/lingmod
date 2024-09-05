@@ -9,11 +9,11 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import com.megacrit.cardcrawl.vfx.combat.VerticalImpactEffect;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
+import lingmod.powers.WinePower;
 
 import static lingmod.ModCore.makeID;
 
@@ -31,24 +31,15 @@ public class ZhiZhan extends AbstractEasyCard {
     }
 
     public void applyPowers() {
-        AbstractPower vigor = AbstractDungeon.player.getPower(VigorPower.POWER_ID);
-        if(vigor == null) {
+        AbstractPower wine = AbstractDungeon.player.getPower(WinePower.POWER_ID);
+        if (wine == null) {
             super.applyPowers();
             return;
         }
-        int cache = vigor.amount;
-        vigor.amount *= baseMagicNumber;
+        int cache = wine.amount;
+        wine.amount *= baseMagicNumber;
         super.applyPowers();
-        vigor.amount = cache;
-    }
-
-    public void calculateCardDamage(AbstractMonster mo) {
-        AbstractPower vigor = AbstractDungeon.player.getPower(VigorPower.POWER_ID);
-        if (vigor != null)
-            vigor.amount *= magicNumber;
-        super.calculateCardDamage(mo);
-        if (vigor != null)
-            vigor.amount /= magicNumber;
+        wine.amount = cache;
     }
 
     @Override
