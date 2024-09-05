@@ -112,5 +112,19 @@
       "Poetry"
     ],
     "DESCRIPTION": "无法被抽取和打出。规定了整场战斗的格调，按照进度获得不同的效果"
+  },
+  {
+    "PROPER_NAME": "将空",
+    "NAMES": [
+      "将空"
+    ],
+    "DESCRIPTION": "这张牌是手牌中唯一一张牌"
+  },
+  {
+    "PROPER_NAME": "已满",
+    "NAMES": [
+      "已满"
+    ],
+    "DESCRIPTION": "手牌已满，或抽牌堆和弃牌堆都为空"
   }
 ]

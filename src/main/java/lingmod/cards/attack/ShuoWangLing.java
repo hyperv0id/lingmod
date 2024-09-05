@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
+import lingmod.util.Wiz;
 
 import static lingmod.ModCore.makeID;
 
@@ -28,11 +29,15 @@ public class ShuoWangLing extends AbstractEasyCard {
     public void triggerOnGlowCheck() {
         AbstractPlayer p = AbstractDungeon.player;
         int siz = p.hand.size();
-        if (siz == 1 || siz == BaseMod.MAX_HAND_SIZE || siz == 10) {
+        if (siz == 1 || checkWang()) {
             this.glowColor = GOLD_BORDER_GLOW_COLOR;
         } else if (upgraded && siz == 3) {
             this.glowColor = GOLD_BORDER_GLOW_COLOR;
         }
+    }
+
+    boolean checkWang() {
+        return Wiz.adp().hand.size() >= BaseMod.MAX_HAND_SIZE || (Wiz.adp().discardPile.isEmpty() && Wiz.adp().drawPile.isEmpty());
     }
 
     @Override

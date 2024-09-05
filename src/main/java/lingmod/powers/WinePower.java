@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import lingmod.util.Wiz;
 
 import static lingmod.ModCore.makeID;
 
@@ -46,7 +47,11 @@ public class WinePower extends AbstractEasyPower {
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (card.type == CardType.ATTACK) {
             this.flash();
-            this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+            if (Wiz.isStanceNell()) {
+                addToBotAbstract(() -> reducePower(amount - (amount / 2)));
+            } else {
+                addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+            }
         }
     }
 }

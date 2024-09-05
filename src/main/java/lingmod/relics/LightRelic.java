@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import lingmod.actions.MyApplyPower_Action;
 import lingmod.character.Ling;
@@ -53,11 +52,6 @@ public class LightRelic extends AbstractEasyRelic implements PostExhaustSubscrib
             // 可能是多次实例化导致的错误
             BaseMod.unsubscribeLater(this);
         }
-    }
-
-    @Override
-    public void onPlayCard(AbstractCard c, AbstractMonster m) {
-        super.onPlayCard(c, m);
     }
 
     @Override

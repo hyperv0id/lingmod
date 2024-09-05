@@ -21,7 +21,7 @@
   },
   "${ModID}:WineMod": {
     "TEXT": [
-      " lingmod:酒 %d。 NL %s"
+      "获得 %d 层 lingmod:酒 。NL %s"
     ]
   },
   "${ModID}:AbstractPoetryCard": {

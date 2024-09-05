@@ -132,7 +132,7 @@
   },
   "${ModID}:Whoami_Nian": {
     "NAME": "无悲",
-    "DESCRIPTION": "获得 !M! 缓冲，每打出一张攻击牌，失去 !M! 点 生命",
+    "DESCRIPTION": "获得 !M! 缓冲 ，每打出一张攻击牌，失去 !M! 点 生命",
     "EXTENDED_DESCRIPTION": [
       "一把设计古朴的匕首。据说只要用来从事谋杀之类的事业，匕首的锋刃就会消失。"
     ]
@@ -308,7 +308,7 @@
   },
   "lingmod:JiangXiangNaTie": {
     "NAME": "酱香拿铁",
-    "DESCRIPTION": "造成 !D! 点伤害 NL 如果目标是召唤物，增加伤害时增加等量最大生命"
+    "DESCRIPTION": "造成 !D! 点伤害 NL 如果目标是召唤物，为其增加伤害的同时，增加等量最大生命"
   },
   "lingmod:GuLeiXinLiu": {
     "NAME": "故垒新柳",
@@ -317,8 +317,8 @@
   },
   "lingmod:ShuoWangLing": {
     "NAME": "朔望",
-    "DESCRIPTION": "抽1张牌。统计手牌数量 NL 为一: 造成 !D! 点伤害 !M! 次 NL 已满: 造成 !${ModID}:sd! 点伤害 !${ModID}:m2! 次",
-    "UPGRADE_DESCRIPTION": "抽1张牌。统计手牌数量 NL 为一: 造成 !D! 点伤害 !M! 次 NL 已满: 造成 !${ModID}:sd! 点伤害 !${ModID}:m2! 次 NL 为三: 获得 !B! 格挡 !${ModID}:sb! 次",
+    "DESCRIPTION": "抽1张牌。统计手牌数量 NL ${ModID}:将空 : 造成 !D! 点伤害 !M! 次 NL ${ModID}:已满 : 造成 !${ModID}:sd! 点伤害 !${ModID}:m2! 次",
+    "UPGRADE_DESCRIPTION": "抽1张牌。统计手牌数量 NL ${ModID}:将空 : 造成 !D! 点伤害 !M! 次 NL ${ModID}:已满 : 造成 !${ModID}:sd! 点伤害 !${ModID}:m2! 次 NL 为三: 获得 !B! 格挡 !${ModID}:sb! 次",
     "EXTENDED_DESCRIPTION": [
       "令"
     ]
