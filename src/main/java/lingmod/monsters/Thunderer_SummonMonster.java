@@ -13,8 +13,6 @@ import static lingmod.ModCore.*;
 
 /**
  * 弦惊召唤物
- * TODO: 召唤物会行动两次
- * TODO: 召唤物的格挡会在回合结束时失去
  */
 public class Thunderer_SummonMonster extends AbsSummonMonster {
 

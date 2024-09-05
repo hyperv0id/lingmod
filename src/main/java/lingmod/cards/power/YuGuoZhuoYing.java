@@ -1,7 +1,5 @@
 package lingmod.cards.power;
 
-import basemod.cardmods.InnateMod;
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.actions.MyApplyPower_Action;
@@ -26,7 +24,7 @@ public class YuGuoZhuoYing extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        CardModifierManager.addModifier(this, new InnateMod());
+        updateCost(-1);
     }
 
     @Override

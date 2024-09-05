@@ -30,11 +30,6 @@ public class NI3Power extends AbstractEasyPower {
         this.description = String.format(description, amount);
     }
 
-    //    @Override
-//    public int onAttackToChangeDamage(DamageInfo info, int damageAmount) {
-//        damageAmount = damageAmount / amount * amount + (damageAmount % amount != 0 ? amount : 0);
-//        return damageAmount;
-//    }
     @SpirePatch2(clz = AbstractMonster.class, method = "damage")
     public static class QSWS_Patch {
         @SpireInsertPatch(locator = Locator.class, localvars = {"damageAmount",})

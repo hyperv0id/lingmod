@@ -14,6 +14,7 @@ import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.Credit;
 import lingmod.stance.NellaFantasiaStance;
 import lingmod.util.CustomTags;
+import lingmod.util.Wiz;
 
 import static lingmod.ModCore.makeID;
 
@@ -45,15 +46,20 @@ public class QingMingDream extends AbstractEasyCard {
     }
 
     @Override
+    public void applyPowers() {
+        super.applyPowers();
+
+        if (Wiz.adp() != null && Wiz.adp().stance.ID.equals(NellaFantasiaStance.STANCE_ID)) {
+            magicNumber = NellaFantasiaStance.dmgModi;
+        }
+    }
+
+    @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[1], 2F, 2F));
-        int amount = 0;
-        if (p.stance.ID.equals(NellaFantasiaStance.STANCE_ID)) {
-            amount = NellaFantasiaStance.dmgModi;
-        }
-        if (amount > 0) {
+        if (magicNumber > 0) {
             for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
-                addToBot(new MyApplyPower_Action(mo, p, new StrengthPower(mo, -amount)));
+                addToBot(new MyApplyPower_Action(mo, p, new StrengthPower(mo, -magicNumber)));
             }
         }
         addToBot(new ChangeStanceAction(NeutralStance.STANCE_ID));

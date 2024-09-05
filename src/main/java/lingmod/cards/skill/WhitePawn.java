@@ -14,7 +14,7 @@ import static lingmod.ModCore.makeID;
  * 白子：防6
  */
 @Credit(username = "DaylightAllure", platform = Credit.PIXIV, link = "https://www.pixiv.net/artworks/105018495")
-@CardConfig(block = 4, magic = 1)
+@CardConfig(block = 3)
 public class WhitePawn extends AbstractEasyCard {
     public final static String ID = makeID(WhitePawn.class.getSimpleName());
 
@@ -23,18 +23,17 @@ public class WhitePawn extends AbstractEasyCard {
     }
 
     @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        this.baseMagicNumber = (int) Wiz.allCardsInBattle(false).stream().filter(c -> c.cardID.equals(ID)).count();
-        super.calculateCardDamage(mo);
+    public void applyPowers() {
+        this.baseMagicNumber = Wiz.countCards(card -> card instanceof WhitePawn);
+        super.applyPowers();
     }
+
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < magicNumber; i++) {
             blck();
         }
         if (Wiz.isStanceNell()) {
-            //            if (p.drawPile.isEmpty())
-            //                addToBot(new EmptyDeckShuffleAction()); // 触发洗牌
             addToBot(new TransformDrawPileAction(this, cardStrings.EXTENDED_DESCRIPTION[0]));
         }
     }

@@ -4,19 +4,17 @@ import basemod.AutoAdd;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.WineMod;
 import lingmod.interfaces.CardConfig;
+import lingmod.monsters.AbsSummonMonster;
 import lingmod.util.CustomTags;
 
 import static lingmod.ModCore.makeID;
 
-@CardConfig(damage = 16)
 @AutoAdd.Ignore
+@CardConfig(damage = 16)
 public class JiangXiangNaTie extends AbstractEasyCard {
     public final static String ID = makeID(JiangXiangNaTie.class.getSimpleName());
 
@@ -26,20 +24,13 @@ public class JiangXiangNaTie extends AbstractEasyCard {
         tags.add(CustomTags.WINE);
     }
 
-    @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        AbstractPower vigor = AbstractDungeon.player.getPower(VigorPower.POWER_ID);
-        if (vigor != null) {
-            int amt = vigor.amount;
-            int realDamage = baseDamage;
-            this.baseDamage += amt;
-            super.calculateCardDamage(mo);
-            baseDamage = realDamage;
-        }
-    }
-
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AbstractGameAction.AttackEffect.BLUNT_LIGHT);
+        if (m instanceof AbsSummonMonster) {
+            addToBotAbstract(() -> {
+                m.increaseMaxHp(this.damage, true);
+            });
+        }
     }
 
     @Override

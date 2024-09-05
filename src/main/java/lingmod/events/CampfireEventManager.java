@@ -41,6 +41,8 @@ public class CampfireEventManager implements CustomSavable<List<String>> {
 
     public static void initSleepEvents() {
         new AutoAdd(modID).packageFilter(Sui12Event.class).any(AbstractEvent.class, (info, event) -> {
+            if (event.getClass().getAnnotation(AutoAdd.Ignore.class) != null)
+                return;
             if (event.getClass().getAnnotation(CampfireSleepEvent.class) == null)
                 return;
             String name = "";
@@ -64,7 +66,7 @@ public class CampfireEventManager implements CustomSavable<List<String>> {
     public void onLoad(List<String> strings) {
         sleepEvents.clear();
         if (AbstractDungeon.player != null && AbstractDungeon.player.chosenClass != Ling.Enums.PLAYER_LING) return;
-        if (strings == null ||strings.isEmpty()) {
+        if (strings == null || strings.isEmpty()) {
             initSleepEvents();
             return;
         }

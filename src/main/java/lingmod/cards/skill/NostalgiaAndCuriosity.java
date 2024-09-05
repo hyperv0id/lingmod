@@ -25,7 +25,6 @@ import static lingmod.ModCore.makeID;
 
 /**
  * 从之前获得过的牌中 3 选 1
- * TODO: 没有事件联动，无法获得
  */
 @CardConfig(magic = 3)
 public class NostalgiaAndCuriosity extends AbstractEasyCard {

@@ -36,6 +36,7 @@ import lingmod.util.audio.ProAudio;
 import java.lang.reflect.Field;
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -495,6 +496,35 @@ public class Wiz {
             }
             card.freeToPlayOnce = false;
         }
+    }
+
+    /**
+     * 遍历手牌、弃牌堆、抽牌堆。计算有多少满足条件的
+     */
+    public static int countCards(Function<AbstractCard, Boolean> cardChecker) {
+        int count = 0;
+
+        // 遍历手牌
+        for (AbstractCard c : AbstractDungeon.player.hand.group) {
+            if (cardChecker.apply(c)) {
+                ++count;
+            }
+        }
+
+        // 遍历抽牌堆
+        for (AbstractCard c : AbstractDungeon.player.drawPile.group) {
+            if (cardChecker.apply(c)) {
+                ++count;
+            }
+        }
+
+        // 遍历弃牌堆
+        for (AbstractCard c : AbstractDungeon.player.discardPile.group) {
+            if (cardChecker.apply(c)) {
+                ++count;
+            }
+        }
+        return count;
     }
 
 

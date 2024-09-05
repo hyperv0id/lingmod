@@ -12,7 +12,7 @@ import lingmod.actions.MyApplyPower_Action;
 
 public class ShiftingPower2 extends ShiftingPower {
     public static final String ID = ModCore.makeID(ShiftingPower2.class.getSimpleName());
-    public static final PowerStrings ps = CardCrawlGame.languagePack.getPowerStrings(ID);
+    public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(ID);
     public ShiftingPower2(AbstractCreature owner) {
         super(owner);
         updateDescription();
@@ -20,7 +20,7 @@ public class ShiftingPower2 extends ShiftingPower {
 
     @Override
     public void updateDescription() {
-        this.description = ps.DESCRIPTIONS[0];
+        this.description = powerStrings.DESCRIPTIONS[0];
         super.updateDescription();
     }
 

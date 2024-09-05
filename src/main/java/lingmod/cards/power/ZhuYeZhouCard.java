@@ -1,7 +1,6 @@
 package lingmod.cards.power;
 
 import com.megacrit.cardcrawl.actions.unique.ApotheosisAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
@@ -26,7 +25,9 @@ public class ZhuYeZhouCard extends AbstractEasyCard {
         if (upgraded)
             addToBot(new ApotheosisAction());
         else
-            addToBotAbstract(() -> p.hand.group.forEach(AbstractCard::upgrade));
+            addToBotAbstract(() -> p.hand.group.forEach(c -> {
+                if (c.canUpgrade()) c.upgrade();
+            }));
         Wiz.applyToSelf(new ZhuYeZhouPower(Wiz.adp()));
     }
 

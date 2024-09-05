@@ -55,7 +55,7 @@ public class NianGuestStar extends PhasedEvent {
                                 }));
         registerPhase("PRE_BATTLE",
                 new TextPhase(DESCRIPTIONS[2]).addOption(OPTIONS[1], (i) -> transitionKey("BATTLE")));
-        // TODO: 替换为夕的画中生灵
+
         registerPhase("BATTLE", new CombatPhase(MonsterHelper.GREMLIN_GANG_ENC)
                 .addRewards(true, AbstractRoom::addPotionToRewards));
         transitionKey("Nian_Ask");

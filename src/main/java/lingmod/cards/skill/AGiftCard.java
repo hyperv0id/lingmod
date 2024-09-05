@@ -19,7 +19,7 @@ import lingmod.util.CustomTags;
 
 import static lingmod.ModCore.makeID;
 
-@CardConfig(magic = 99, magic2 = 1)
+@CardConfig(magic = 33, magic2 = 3)
 @Credit(platform = Credit.PIXIV, username = "JANGO", link = "https://www.pixiv.net/artworks/105995954")
 public class AGiftCard extends AbstractEasyCard {
 
