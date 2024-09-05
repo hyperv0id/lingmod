@@ -1,7 +1,11 @@
 package lingmod.ui;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -16,15 +20,19 @@ import lingmod.cards.AbstractPoetryCard;
 import lingmod.powers.PoeticMoodPower;
 import lingmod.util.Wiz;
 
-import static lingmod.ModCore.logger;
-import static lingmod.ModCore.makeID;
+import java.lang.reflect.Method;
+
+import static lingmod.ModCore.*;
 
 public class PoetryOrb extends AbstractOrb {
     public static final String ID = makeID(PoetryOrb.class.getSimpleName());
     public static final UIStrings uis = CardCrawlGame.languagePack.getUIString(ID);
+    public static final String FONT_PATH = makePath("华文行楷.ttf");
+    private static final BitmapFont PORTEY_FONT = loadFont(FONT_PATH);
+
 
     public AbstractPoetryCard card;
-    private static final int FONT_SIZE = 22;
+    private static final int FONT_SIZE = 28;
 
     public PoetryOrb(AbstractPoetryCard card) {
         super();
@@ -80,13 +88,23 @@ public class PoetryOrb extends AbstractOrb {
             float y = p.drawY + p.hb_h + FONT_SIZE * 1.5F;
             String text = card.getPoetryTip();
 
-            FontHelper.renderSmartText(sb, FontHelper.tipBodyFont, text, cX - 48, cY + FONT_SIZE, Color.WHITE);
-            // FontHelper.renderSmartText(sb, FontHelper.tipBodyFont, text, x, y,
-            // Color.WHITE);
+            FontHelper.renderSmartText(sb, PORTEY_FONT, text, cX - 48, cY + FONT_SIZE, Color.WHITE);
         }
-        // FontHelper.renderSmartText(sb, FontHelper.tipBodyFont, card.getPoetryTip(),
-        // cX - 48, cY - 24, Color
-        // .WHITE);
+    }
+
+    static BitmapFont loadFont(String fontPath) {
+        BitmapFont font = null;
+        FileHandle fontFile = Gdx.files.internal(fontPath);
+        FreeTypeFontGenerator g = new FreeTypeFontGenerator(fontFile);
+        try {
+            Method f = FontHelper.class.getDeclaredMethod("prepFont", FreeTypeFontGenerator.class, Float.TYPE,
+                    Boolean.TYPE);
+            f.setAccessible(true);
+            font = (BitmapFont) f.invoke(FontHelper.class.getName(), g, FONT_SIZE, true);
+        } catch (Exception e) {
+            font = FontHelper.tipBodyFont;
+        }
+        return font;
     }
 
     @Override

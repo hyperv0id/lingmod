@@ -280,7 +280,7 @@
   },
   "${ModID}:QuShuiLiuShang": {
     "NAME": "曲水流觞",
-    "DESCRIPTION": "你每有一种诗词赋曲，造成 !D! 伤害 NL （造成 !M! 次）"
+    "DESCRIPTION": "你每有一种诗词，造成 !D! 伤害 NL （造成 !M! 次）"
   },
   "${ModID}:ChangFengChe": {
     "NAME": "长风彻",

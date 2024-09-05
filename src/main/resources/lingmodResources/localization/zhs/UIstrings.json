@@ -26,19 +26,19 @@
   },
   "${ModID}:AbstractPoetryCard": {
     "TEXT": [
-      "诗词赋曲"
+      "诗词"
     ]
   },
   "${ModID}:PoetryTopPanel": {
     "TEXT": [
-      "你的诗词赋曲",
-      "点击查看你创作的诗词赋曲",
+      "你的诗词",
+      "点击查看你创作的诗词",
       "选择一张诗词作为本次战斗的格调"
     ]
   },
   "${ModID}:PoetryViewScreen": {
     "TEXT": [
-      "你的所有诗词赋曲",
+      "你的所有诗词",
       "返回"
     ]
   },

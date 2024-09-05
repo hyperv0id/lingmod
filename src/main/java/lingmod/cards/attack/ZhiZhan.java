@@ -37,7 +37,7 @@ public class ZhiZhan extends AbstractEasyCard {
             return;
         }
         int cache = vigor.amount;
-            vigor.amount *= magicNumber;
+        vigor.amount *= baseMagicNumber;
         super.applyPowers();
         vigor.amount = cache;
     }

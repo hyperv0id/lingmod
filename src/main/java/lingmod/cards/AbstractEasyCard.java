@@ -373,6 +373,16 @@ public abstract class AbstractEasyCard extends CustomCard {
         return result;
     }
 
+    @Override
+    public void triggerOnGlowCheck() {
+        super.triggerOnGlowCheck();
+        this.glowColor = this.shouldGlow_Gold() ? AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy() : AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
+    }
+
+    protected boolean shouldGlow_Gold() {
+        return false;
+    }
+
     // These shortcuts are specifically for cards. All other shortcuts that aren't
     // specifically for cards can go in Wiz.
     protected void dmg(AbstractMonster m, AbstractGameAction.AttackEffect fx) {

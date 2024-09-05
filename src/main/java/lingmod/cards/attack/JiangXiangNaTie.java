@@ -1,6 +1,5 @@
 package lingmod.cards.attack;
 
-import basemod.AutoAdd;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -13,7 +12,6 @@ import lingmod.util.CustomTags;
 
 import static lingmod.ModCore.makeID;
 
-@AutoAdd.Ignore
 @CardConfig(damage = 16)
 public class JiangXiangNaTie extends AbstractEasyCard {
     public final static String ID = makeID(JiangXiangNaTie.class.getSimpleName());

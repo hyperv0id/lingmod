@@ -1,5 +1,6 @@
 package lingmod.cards.skill;
 
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -13,6 +14,7 @@ import static lingmod.ModCore.makeID;
 /**
  * 辞旧岁：丢弃所有手牌，每张获得 3/4 格挡
  */
+@AutoAdd.Ignore
 @Credit(platform = Credit.PIXIV, username = "Chocolatte", link = "https://www.pixiv.net/artworks/95920468")
 public class ChiJiuSui extends AbstractEasyCard {
     public static final String ID = makeID(ChiJiuSui.class.getSimpleName());

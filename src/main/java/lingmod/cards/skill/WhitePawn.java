@@ -14,7 +14,7 @@ import static lingmod.ModCore.makeID;
  * 白子：防6
  */
 @Credit(username = "DaylightAllure", platform = Credit.PIXIV, link = "https://www.pixiv.net/artworks/105018495")
-@CardConfig(block = 3)
+@CardConfig(block = 3, magic = 1)
 public class WhitePawn extends AbstractEasyCard {
     public final static String ID = makeID(WhitePawn.class.getSimpleName());
 

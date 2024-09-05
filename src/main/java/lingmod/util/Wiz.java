@@ -3,10 +3,7 @@ package lingmod.util;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DiscardAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -527,5 +524,16 @@ public class Wiz {
         return count;
     }
 
+    public static void applyPower(AbstractCreature src, AbstractCreature tar, AbstractPower inst) {
+        HashMap<String, Object> tabel = new HashMap<>();
+        if (tar instanceof AbstractMonster) {
+            // isSourceMonster
+            tabel.put("justApplied", true); // WeakPower
+            tabel.put(AbstractCreature.class.getName() + "\n" + "owner", tar);
+        }
+        AbstractPower p2a = PowerUtils.copyPower(inst, tabel);
+        if (p2a != null)
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(src, tar, p2a));
+    }
 
 }

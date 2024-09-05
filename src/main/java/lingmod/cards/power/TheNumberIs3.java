@@ -1,6 +1,5 @@
 package lingmod.cards.power;
 
-import basemod.AutoAdd;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
@@ -9,7 +8,6 @@ import lingmod.util.Wiz;
 
 import static lingmod.ModCore.makeID;
 
-@AutoAdd.Ignore
 public class TheNumberIs3 extends AbstractEasyCard {
 
     public final static String ID = makeID(TheNumberIs3.class.getSimpleName());

@@ -1,6 +1,7 @@
 package lingmod.cards.attack;
 
 import basemod.BaseMod;
+import basemod.interfaces.PostBattleSubscriber;
 import basemod.interfaces.PostExhaustSubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
@@ -8,9 +9,9 @@ import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
-import lingmod.interfaces.CopyField;
 import lingmod.interfaces.Credit;
 
 import static lingmod.ModCore.makeID;
@@ -20,12 +21,11 @@ import static lingmod.ModCore.makeID;
  */
 @CardConfig(damage = 7, magic = 1)
 @Credit(username = "阿尼鸭Any-a", platform = Credit.LOFTER, link = "https://anyaaaaa.lofter.com/post/1d814764_2b82a4712")
-public class JianShanWenShi extends AbstractEasyCard implements PostExhaustSubscriber {
+public class JianShanWenShi extends AbstractEasyCard implements PostExhaustSubscriber, PostBattleSubscriber {
 
     public final static String ID = makeID(JianShanWenShi.class.getSimpleName());
 
-    @CopyField
-    public boolean exhaustedThisTurn = false; // 本回合是否消耗过牌
+    public static boolean exhaustedThisTurn = false; // 本回合是否消耗过牌
 
     public JianShanWenShi() {
         super(ID, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
@@ -47,13 +47,23 @@ public class JianShanWenShi extends AbstractEasyCard implements PostExhaustSubsc
 
     @Override
     public void receivePostExhaust(AbstractCard arg0) {
-        this.exhaustedThisTurn = true;
+        exhaustedThisTurn = true;
     }
 
     @Override
-    public void atTurnStartPreDraw() {
-        super.atTurnStartPreDraw();
-        this.exhaustedThisTurn = false;
+    public boolean shouldGlow_Gold() {
+        return exhaustedThisTurn;
+    }
+
+    @Override
+    public void triggerOnEndOfPlayerTurn() {
+        super.triggerOnEndOfPlayerTurn();
+        exhaustedThisTurn = false;
+    }
+
+    @Override
+    public void receivePostBattle(AbstractRoom abstractRoom) {
+        BaseMod.unsubscribeLater(this);
     }
 }
 // "lingmod:JianShanWenShi": {

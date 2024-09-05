@@ -14,7 +14,7 @@ import static lingmod.ModCore.makeID;
  * 黑子：打6 X 次，次数为黑子数量。
  * 在抽牌堆放入一张黑子
  */
-@CardConfig(damage = 2)
+@CardConfig(damage = 2, magic = 1)
 @Credit(username = "阿尼鸭Any-a", platform = Credit.LOFTER, link = "https://anyaaaaa.lofter.com/post/1d814764_2b82a7434")
 public class BlackPawn extends AbstractEasyCard {
     public final static String ID = makeID(BlackPawn.class.getSimpleName());

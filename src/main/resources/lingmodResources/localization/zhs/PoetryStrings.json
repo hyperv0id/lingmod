@@ -130,8 +130,8 @@
     "DESCRIPTION": "进入 ${ModID}:梦境 。 NL 获得 !M! 活力"
   },
   "lingmod:AbstractPoetryCard": {
-    "NAME": "诗词赋曲",
-    "DESCRIPTION": "诗词赋曲抽象类",
+    "NAME": "诗词",
+    "DESCRIPTION": "诗词抽象类",
     "EXTENDED_DESCRIPTION": [
       "诗兴不足，无法作诗"
     ]
