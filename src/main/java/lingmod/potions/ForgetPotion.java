@@ -48,10 +48,10 @@ public class ForgetPotion extends AbstractEasyPotion implements PostUpdateSubscr
                 potionStrings.DESCRIPTIONS[0], false);
         BaseMod.subscribe(this);
 
-        if (DoujinshiPlot.__inst == null)
-            return;
-        DoujinshiPlot.__inst.transitionKey(DoujinshiPlot.Phases.DOUJINSHI);
-        DoujinshiPlot.__inst.imageEventText.loadImage(makeImagePath("events/DoujinshiPlot_1.png"));
+        if (DoujinshiPlot.__inst != null) {
+            DoujinshiPlot.__inst.transitionKey(DoujinshiPlot.Phases.DOUJINSHI);
+            DoujinshiPlot.__inst.imageEventText.loadImage(makeImagePath("events/DoujinshiPlot_1.png"));
+        }
     }
 
     @Override
@@ -67,7 +67,7 @@ public class ForgetPotion extends AbstractEasyPotion implements PostUpdateSubscr
     @Override
     public void receivePostUpdate() {
         if (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
-            AbstractCard c = (AbstractCard) AbstractDungeon.gridSelectScreen.selectedCards.get(0);
+            AbstractCard c = AbstractDungeon.gridSelectScreen.selectedCards.get(0);
             AbstractDungeon.effectList.add(new PurgeCardEffect(c));
             AbstractEvent.logMetricCardRemoval(ID, "Elegance", c);
             AbstractDungeon.player.masterDeck.removeCard(c);

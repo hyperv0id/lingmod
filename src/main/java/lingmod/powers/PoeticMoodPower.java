@@ -25,7 +25,15 @@ public class PoeticMoodPower extends AbstractEasyPower implements PostBattleSubs
 
     public PoeticMoodPower(AbstractCreature owner, int amount) {
         super(ID, getName(ID), TYPE, false, owner, amount);
+        if (powerGained == 0)
+            powerGained = amount;
         BaseMod.subscribe(this);
+    }
+
+    @Override
+    public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
+        powerGained += stackAmount;
     }
 
     @Override

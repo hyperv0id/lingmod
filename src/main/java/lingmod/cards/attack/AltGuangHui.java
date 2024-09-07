@@ -21,10 +21,11 @@ public class AltGuangHui extends AbstractEasyCard {
         updateCost(-1);
     }
 
+
     @Override
-    public void calculateCardDamage(AbstractMonster mo) {
+    public void applyPowers() {
         this.baseDamage = PoeticMoodPower.powerGained;
-        super.calculateCardDamage(mo);
+        super.applyPowers();
     }
 
     @Override
