@@ -254,7 +254,7 @@
   "lingmod:YaGaoMengYuan": {
     "NAME": "崖高梦远",
     "DESCRIPTION": "当前能量翻倍，手牌耗能临时+1 NL 梦中：只改变技能牌",
-    "UPGRADE_DESCRIPTION": "选择：能量临时翻倍，卡牌费用临时+1； NL 能量上限+1，卡牌费用永久翻倍",
+    "UPGRADE_DESCRIPTION": "选择：能量临时翻倍，卡牌费用临时+1； NL 能量上限+1，卡牌费用永久翻倍 NL 梦中：只改变技能牌",
     "EXTENDED_DESCRIPTION": [
       "崖高？ 梦远？"
     ]
@@ -363,8 +363,8 @@
   },
   "lingmod:ZhuYeZhouCard": {
     "NAME": "竹叶舟",
-    "DESCRIPTION": "升级所有手牌，下次离开梦境时，变化所有卡牌为未升级的",
-    "UPGRADE_DESCRIPTION": "升级所有牌，下次离开梦境时，变化所有卡牌为未升级的"
+    "DESCRIPTION": "升级所有手牌，下次离开梦境时，变化所有手牌为未升级的",
+    "UPGRADE_DESCRIPTION": "升级所有牌，下次离开梦境时，变化所有手牌为未升级的"
   },
   "lingmod:DaMoFeiHuo": {
     "NAME": "大漠飞火",

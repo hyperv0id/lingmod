@@ -26,6 +26,7 @@ public class DrunkButterfly extends AbstractEasyCard {
 
     public DrunkButterfly() {
         super(ID, 1, CardType.ATTACK, CardRarity.RARE, CardTarget.ALL_ENEMY);
+        isMultiDamage = true;
     }
 
     @Override
@@ -46,8 +47,8 @@ public class DrunkButterfly extends AbstractEasyCard {
         } else {
             this.addToBot(new VFXAction(new GrandFinalEffect(), 0.5F));
         }
-        for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
-            addToBot(new DrunkAction(p, mo, new DamageInfo(p, damage)));
+        for (int i = 0; i < AbstractDungeon.getMonsters().monsters.size(); i++) {
+            addToBot(new DrunkAction(p, AbstractDungeon.getMonsters().monsters.get(i), new DamageInfo(p, multiDamage[i])));
         }
     }
 }

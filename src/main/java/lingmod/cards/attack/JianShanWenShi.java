@@ -1,6 +1,7 @@
 package lingmod.cards.attack;
 
 import basemod.BaseMod;
+import basemod.interfaces.OnPlayerTurnStartSubscriber;
 import basemod.interfaces.PostBattleSubscriber;
 import basemod.interfaces.PostExhaustSubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -13,6 +14,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
+import lingmod.util.Wiz;
 
 import static lingmod.ModCore.makeID;
 
@@ -21,7 +23,7 @@ import static lingmod.ModCore.makeID;
  */
 @CardConfig(damage = 7, magic = 1)
 @Credit(username = "阿尼鸭Any-a", platform = Credit.LOFTER, link = "https://anyaaaaa.lofter.com/post/1d814764_2b82a4712")
-public class JianShanWenShi extends AbstractEasyCard implements PostExhaustSubscriber, PostBattleSubscriber {
+public class JianShanWenShi extends AbstractEasyCard implements PostExhaustSubscriber, PostBattleSubscriber, OnPlayerTurnStartSubscriber {
 
     public final static String ID = makeID(JianShanWenShi.class.getSimpleName());
 
@@ -46,8 +48,13 @@ public class JianShanWenShi extends AbstractEasyCard implements PostExhaustSubsc
     }
 
     @Override
-    public void receivePostExhaust(AbstractCard arg0) {
+    public void receivePostExhaust(AbstractCard card) {
+        if (card.dontTriggerOnUseCard) return;
         exhaustedThisTurn = true;
+        AbstractPlayer p = Wiz.adp();
+        if (!p.hand.contains(this) && !p.discardPile.contains(this) && !p.drawPile.contains(this) && !p.limbo.contains(this)) {
+            BaseMod.unsubscribeLater(this);
+        }
     }
 
     @Override
@@ -56,14 +63,13 @@ public class JianShanWenShi extends AbstractEasyCard implements PostExhaustSubsc
     }
 
     @Override
-    public void triggerOnEndOfPlayerTurn() {
-        super.triggerOnEndOfPlayerTurn();
-        exhaustedThisTurn = false;
+    public void receivePostBattle(AbstractRoom abstractRoom) {
+        BaseMod.unsubscribeLater(this);
     }
 
     @Override
-    public void receivePostBattle(AbstractRoom abstractRoom) {
-        BaseMod.unsubscribeLater(this);
+    public void receiveOnPlayerTurnStart() {
+        exhaustedThisTurn = false;
     }
 }
 // "lingmod:JianShanWenShi": {

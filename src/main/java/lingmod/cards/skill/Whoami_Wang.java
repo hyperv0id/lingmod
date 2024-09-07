@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.IntangiblePower;
+import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
 import com.megacrit.cardcrawl.vfx.combat.OfferingEffect;
 import lingmod.actions.MyApplyPower_Action;
 import lingmod.cards.AbstractEasyCard;
@@ -40,6 +40,6 @@ public class Whoami_Wang extends AbstractEasyCard {
             this.addToBot(new VFXAction(new OfferingEffect(), 0.5F));
         }
         this.addToBot(new LoseHPAction(p, p, baseMagicNumber));
-        this.addToBot(new MyApplyPower_Action(p, p, new IntangiblePower(p, 1)));
+        this.addToBot(new MyApplyPower_Action(p, p, new IntangiblePlayerPower(p, 1)));
     }
 }

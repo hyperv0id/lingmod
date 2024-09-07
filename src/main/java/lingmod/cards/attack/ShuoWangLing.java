@@ -1,6 +1,7 @@
 package lingmod.cards.attack;
 
 import basemod.BaseMod;
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -29,10 +30,14 @@ public class ShuoWangLing extends AbstractEasyCard {
     public void triggerOnGlowCheck() {
         AbstractPlayer p = AbstractDungeon.player;
         int siz = p.hand.size();
-        if (siz == 1 || checkWang()) {
-            this.glowColor = GOLD_BORDER_GLOW_COLOR;
+        if (siz == 1) {
+            this.glowColor = Color.BLACK.cpy();
+        } else if (checkWang()) {
+            this.glowColor = Color.WHITE.cpy();
         } else if (upgraded && siz == 3) {
-            this.glowColor = GOLD_BORDER_GLOW_COLOR;
+            this.glowColor = Color.BLUE.cpy();
+        } else {
+            this.glowColor = BLUE_BORDER_GLOW_COLOR.cpy();
         }
     }
 
@@ -52,7 +57,7 @@ public class ShuoWangLing extends AbstractEasyCard {
             for (int i = 0; i < magicNumber; i++) {
                 dmg(m, null);
             }
-        } else if (p.hand.size() == 10 || p.hand.size() == BaseMod.MAX_HAND_SIZE) {
+        } else if (checkWang()) {
             for (int i = 0; i < 2; i++) {
                 altDmg(m, AbstractGameAction.AttackEffect.BLUNT_LIGHT);
             }

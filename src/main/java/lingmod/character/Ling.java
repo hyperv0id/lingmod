@@ -206,7 +206,7 @@ public class Ling extends CustomPlayer {
     public AbstractPoetryCard getPoetryCard() {
         if (orbs.isEmpty())
             return null;
-        if (orbs.get(0).ID.equals(PoetryOrb.ID))
+        if (orbs.get(0).ID.equals(PoetryOrb.PID))
             return ((PoetryOrb) orbs.get(0)).card;
         return null;
     }

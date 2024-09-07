@@ -25,8 +25,8 @@ import java.lang.reflect.Method;
 import static lingmod.ModCore.*;
 
 public class PoetryOrb extends AbstractOrb {
-    public static final String ID = makeID(PoetryOrb.class.getSimpleName());
-    public static final UIStrings uis = CardCrawlGame.languagePack.getUIString(ID);
+    public static final String PID = makeID(PoetryOrb.class.getSimpleName());
+    public static final UIStrings uis = CardCrawlGame.languagePack.getUIString(PID);
     public static final String FONT_PATH = makePath("华文行楷.ttf");
     private static final BitmapFont PORTEY_FONT = loadFont(FONT_PATH);
 
@@ -36,6 +36,7 @@ public class PoetryOrb extends AbstractOrb {
 
     public PoetryOrb(AbstractPoetryCard card) {
         super();
+        this.ID = PoetryOrb.PID;
         name = uis.TEXT[0];
         description = uis.TEXT[1];
         this.card = card;

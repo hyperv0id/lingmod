@@ -39,7 +39,7 @@ public class LinYuanWangShui extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        upgradeMagicNumber(1);
+        updateCost(-1);
     }
 
 }
