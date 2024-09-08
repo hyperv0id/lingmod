@@ -3,6 +3,7 @@ package lingmod.patch;
 import basemod.ReflectionHacks;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -23,7 +24,7 @@ import java.util.Objects;
 
 import static lingmod.ModCore.logger;
 
-public class MonsterPatch {
+public class SummonMonsterPatch {
     /**
      * from <a href=
      * "https://steamcommunity.com/sharedfiles/filedetails/?id=2672531653">KaltsitMod</a>
@@ -51,6 +52,18 @@ public class MonsterPatch {
             }
         }
 
+        @SpirePatch(clz = AbstractMonster.class, method = "damage")
+        public static class DamagePatch {
+            @SpirePrefixPatch
+            public static SpireReturn<Void> Prefix(AbstractMonster __inst, DamageInfo info) {
+                if (__inst instanceof AbsSummonMonster && (info == null || info.owner == null)) {
+                    logger.info("取消指向召唤物的无来源伤害");
+                    return SpireReturn.Return(null);
+                }
+                return SpireReturn.Continue();
+            }
+        }
+
         /**
          * 获得格挡效果转移到怪物上
          */
@@ -70,9 +83,6 @@ public class MonsterPatch {
             }
         }
 
-        /**
-         * 闪退服了
-         */
         @SpirePatch(clz = Burn.class, method = "use")
         public static class BurnPatch {
             public static SpireReturn<Void> Prefix(Burn _inst, AbstractPlayer p, AbstractMonster m) {
