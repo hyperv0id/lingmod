@@ -1,11 +1,9 @@
 package lingmod.patch;
 
 import basemod.ReflectionHacks;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
+import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -20,6 +18,7 @@ import lingmod.monsters.AbsSummonMonster;
 import lingmod.util.MonsterHelper;
 import lingmod.util.Wiz;
 
+import java.util.HashSet;
 import java.util.Objects;
 
 import static lingmod.ModCore.logger;
@@ -30,7 +29,7 @@ public class SummonMonsterPatch {
      * "https://steamcommunity.com/sharedfiles/filedetails/?id=2672531653">KaltsitMod</a>
      */
     public static class MonsterTakeDamagePatch {
-        protected static AbstractCreature summonTarget;
+        protected static AbsSummonMonster summonTarget;
 
         /**
          * 获得召唤物，在角色被攻击时，角色替代受到伤害
@@ -43,7 +42,7 @@ public class SummonMonsterPatch {
                     .filter(mo -> !mo.isDeadOrEscaped()).findFirst()
                     .orElse(null);
             if (c != null && !c.isDeadOrEscaped()) {
-                summonTarget = c;
+                summonTarget = (AbsSummonMonster) c;
                 logger.info(summonTarget.name + "将替代承受伤害");
                 return true;
             } else {
@@ -64,59 +63,6 @@ public class SummonMonsterPatch {
             }
         }
 
-        /**
-         * 获得格挡效果转移到怪物上
-         */
-        @SpirePatch(clz = GainBlockAction.class, method = "update")
-        public static class GainBlockPatch {
-            public static void Prefix(GainBlockAction _inst) {
-                if (!Wiz.isPlayerLing())
-                    return; // 其他角色无效
-                if (_inst.target == AbstractDungeon.player && Objects.equals(
-                        ReflectionHacks.getPrivate(_inst, AbstractGameAction.class, "duration"),
-                        ReflectionHacks.getPrivate(_inst, AbstractGameAction.class,
-                                "startDuration"))
-                        && MonsterTakeDamagePatch.gotSummon()) {
-                    _inst.target = MonsterTakeDamagePatch.summonTarget;
-                    logger.info("Block Target Changed To: " + _inst.target.name);
-                }
-            }
-        }
-
-        @SpirePatch(clz = Burn.class, method = "use")
-        public static class BurnPatch {
-            public static SpireReturn<Void> Prefix(Burn _inst, AbstractPlayer p, AbstractMonster m) {
-                if (_inst.dontTriggerOnUseCard) {
-                    AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player,
-                            new DamageInfo(null, _inst.magicNumber, DamageInfo.DamageType.THORNS),
-                            AbstractGameAction.AttackEffect.FIRE));
-                }
-                return SpireReturn.Return(null);
-            }
-        }
-
-        @SpirePatch(
-                clz = HandDrill.class,
-                method = "onBlockBroken"
-        )
-        public static class HandDrillPatch {
-            public HandDrillPatch() {
-            }
-
-            public static SpireReturn<Void> Prefix(HandDrill _inst, AbstractCreature c) {
-                return c instanceof AbsSummonMonster ? SpireReturn.Return(null) : SpireReturn.Continue();
-            }
-        }
-
-
-        @SpirePatch(clz = MonsterGroup.class, method = "areMonstersDead")
-        public static class EndBattleCheckPatch {
-            @SpirePostfixPatch
-            public static boolean Postfix(boolean __result, MonsterGroup __inst) {
-                return MonsterHelper.areMonstersDead();
-            }
-        }
-
         @SpirePatch(clz = AbstractGameAction.class, method = "setValues", paramtypez = {AbstractCreature.class,
                 DamageInfo.class})
         public static class ChangeDamageTarget {
@@ -131,6 +77,115 @@ public class SummonMonsterPatch {
                     logger.info("承伤改变" + MonsterTakeDamagePatch.summonTarget);
                 }
             }
+        }
+    }
+
+
+    @SpirePatch(
+            clz = GameActionManager.class,
+            method = "getNextAction"
+    )
+    public static class StartOfTurnPatch {
+        public StartOfTurnPatch() {
+        }
+
+        @SpireInsertPatch(
+                rloc = 240
+        )
+        public static void Insert(GameActionManager _inst) {
+            if (!MonsterTakeDamagePatch.gotSummon()) {
+                return;
+            }
+            AbsSummonMonster m = MonsterTakeDamagePatch.summonTarget;
+            if (m != null) {
+                if (!m.hasPower("Barricade") && !m.hasPower("Blur")) {
+                    if (!AbstractDungeon.player.hasRelic("Calipers")) {
+                        m.loseBlock();
+                    } else {
+                        m.loseBlock(15);
+                    }
+                }
+
+                m.applyStartOfTurnPowers();
+                m.applyStartOfTurnPostDrawPowers();
+                Wiz.addToBotAbstract(m::applyPowers);
+            }
+        }
+    }
+
+
+    /**
+     * 获得格挡效果转移到怪物上
+     */
+    @SpirePatch(clz = GainBlockAction.class, method = "update")
+    public static class GainBlockPatch {
+        public static void Prefix(GainBlockAction _inst) {
+            if (!Wiz.isPlayerLing())
+                return; // 其他角色无效
+            if (_inst.target == AbstractDungeon.player && Objects.equals(
+                    ReflectionHacks.getPrivate(_inst, AbstractGameAction.class, "duration"),
+                    ReflectionHacks.getPrivate(_inst, AbstractGameAction.class,
+                            "startDuration"))
+                    && MonsterTakeDamagePatch.gotSummon()) {
+                _inst.target = MonsterTakeDamagePatch.summonTarget;
+                logger.info("Block Target Changed To: " + _inst.target.name);
+            }
+        }
+    }
+
+    @SpirePatch(clz = Burn.class, method = "use")
+    public static class BurnPatch {
+        public static SpireReturn<Void> Prefix(Burn _inst, AbstractPlayer p, AbstractMonster m) {
+            if (_inst.dontTriggerOnUseCard) {
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player,
+                        new DamageInfo(null, _inst.magicNumber, DamageInfo.DamageType.THORNS),
+                        AbstractGameAction.AttackEffect.FIRE));
+            }
+            return SpireReturn.Return(null);
+        }
+    }
+
+    @SpirePatch(
+            clz = HandDrill.class,
+            method = "onBlockBroken"
+    )
+    public static class HandDrillPatch {
+        public HandDrillPatch() {
+        }
+
+        public static SpireReturn<Void> Prefix(HandDrill _inst, AbstractCreature c) {
+            return c instanceof AbsSummonMonster ? SpireReturn.Return(null) : SpireReturn.Continue();
+        }
+    }
+
+
+    @SpirePatch(clz = MonsterGroup.class, method = "areMonstersDead")
+    public static class EndBattleCheckPatch {
+        @SpirePostfixPatch
+        public static boolean Postfix(boolean __result, MonsterGroup __inst) {
+            return MonsterHelper.areMonstersDead();
+        }
+    }
+
+    @SpirePatch(clz = MonsterGroup.class, method = "applyPreTurnLogic")
+    public static class SummonPreTurnPatch {
+        static final HashSet<AbstractMonster> escapedMonsters = new HashSet<>();
+
+        @SpirePrefixPatch
+        public static void Prefix(MonsterGroup __inst) {
+            escapedMonsters.clear();
+            __inst.monsters.forEach(mo -> {
+                if (mo instanceof AbsSummonMonster && !mo.isDeadOrEscaped()) {
+                    escapedMonsters.add(mo);
+                    mo.isEscaping = true;
+                }
+            });
+        }
+
+        @SpirePostfixPatch
+        public static void Postfix(MonsterGroup __inst) {
+            escapedMonsters.forEach(mo -> mo.isEscaping = false);
+            escapedMonsters.clear();
         }
     }
 
