@@ -18,7 +18,7 @@ public class ZhuYeZhouCard extends AbstractEasyCard {
     public final static String ID = makeID(ZhuYeZhouCard.class.getSimpleName());
 
     public ZhuYeZhouCard() {
-        super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
+        super(ID, 0, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
@@ -32,7 +32,13 @@ public class ZhuYeZhouCard extends AbstractEasyCard {
     }
 
     @Override
+    public boolean canUpgrade() {
+        return false;
+    }
+
+    @Override
     public void upp() {
+
     }
 }
 // "lingmod:ZhuYeZhouCard": {

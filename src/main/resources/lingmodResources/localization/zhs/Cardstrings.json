@@ -369,5 +369,9 @@
   "lingmod:DaMoFeiHuo": {
     "NAME": "大漠飞火",
     "DESCRIPTION": "你的消耗堆每有两张牌，造成 1 点伤害。 NL （造成 !D! 点伤害）"
+  },
+  "lingmod:ZuiTiaoDeng": {
+    "NAME": "醉挑灯",
+    "DESCRIPTION": "获得 !B! 点格挡 NL 被 消耗 时，获得 [E] [E] [E] NL 被 消耗 时有 ${ModID}:酒 ：触发 ${ModID}:酒 的衰减效果，在弃牌堆中放入一张复制"
   }
 }

@@ -40,18 +40,25 @@ public class WinePower extends AbstractEasyPower {
                     this));
     }
 
+    /**
+     * 酒能力时衰减效果，梦中只会减少一半
+     */
+    public void damp() {
+        this.flash();
+        if (Wiz.isStanceNell()) {
+            addToBotAbstract(() -> reducePower(amount - (amount / 2)));
+        } else {
+            addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+        }
+    }
+
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
         return type == DamageType.NORMAL ? damage + (float) this.amount : damage;
     }
 
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (card.type == CardType.ATTACK) {
-            this.flash();
-            if (Wiz.isStanceNell()) {
-                addToBotAbstract(() -> reducePower(amount - (amount / 2)));
-            } else {
-                addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
-            }
+            damp();
         }
     }
 }
