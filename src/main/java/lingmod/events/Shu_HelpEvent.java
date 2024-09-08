@@ -47,9 +47,7 @@ public class Shu_HelpEvent extends PhasedEvent {
 
         registerPhase(Phases.PRE_COMBAT,
                 new TextPhase(DESCRIPTIONS[3]).addOption(OPTIONS[3], (i) -> transitionKey(Phases.COMBAT)));
-        registerPhase(Phases.COMBAT, new CombatPhase(MonsterSui_7_Ji.ID).addRewards(true, (r) -> {
-            r.addRelicToRewards(RelicTier.COMMON);
-        }));
+        registerPhase(Phases.COMBAT, new CombatPhase(MonsterSui_7_Ji.ID).addRewards(true, (r) -> r.addRelicToRewards(RelicTier.COMMON)));
 
         transitionKey(Phases.PRE);
     }

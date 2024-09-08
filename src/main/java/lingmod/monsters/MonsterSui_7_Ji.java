@@ -79,15 +79,11 @@ public class MonsterSui_7_Ji extends CustomMonster {
                 addToBot(new TalkAction(this, es.DESCRIPTIONS[0], 0.5f, 2.0f));
             }
         }
-        switch (this.nextMove) {
-            case 1:
-                addToBot(new TalkAction(this, DIALOGS[2], 0.5F, 2.0F));
-                addToBot(new DamageAction(p, info, AttackEffect.FIRE));
-                addToBot(new FastApplyPower_Action(
-                        p, this, new ConstrictedPower(p, this, info.output)));
-                break;
-            default:
-                break;
+        if (this.nextMove == 1) {
+            addToBot(new TalkAction(this, DIALOGS[2], 0.5F, 2.0F));
+            addToBot(new DamageAction(p, info, AttackEffect.FIRE));
+            addToBot(new FastApplyPower_Action(
+                    p, this, new ConstrictedPower(p, this, info.output)));
         }
         AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
         firstTurn = false;

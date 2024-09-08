@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import lingmod.cards.AbstractEasyCard;
+import lingmod.cards.AbsSummonCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.monsters.Thunderer_SummonMonster;
@@ -26,7 +26,7 @@ import static lingmod.ModCore.makeID;
  */
 @CardConfig(damage = 9, magic = 1, summonClz = Thunderer_SummonMonster.class)
 @Credit(platform = Credit.PIXIV, username = "UIRU", link = "https://www.pixiv.net/artworks/101314899")
-public class Thunderer extends AbstractEasyCard {
+public class Thunderer extends AbsSummonCard {
     public static final String NAME = Thunderer.class.getSimpleName();
 
     public static final String ID = makeID(NAME);
