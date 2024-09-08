@@ -97,5 +97,19 @@
     "DESCRIPTIONS": [
       "打出牌后对 #r随机单位 造成 1-12点伤害 NL 包括玩家自身和召唤物"
     ]
+  },
+  "${ModID}:DaYanChangSang": {
+    "NAME": "大炎的沧桑",
+    "FLAVOR": "岁月如梭，织就大炎锦绣山河。",
+    "DESCRIPTIONS": [
+      "回合开始时，平均化手牌费用"
+    ]
+  },
+  "${ModID}:LaoPuSan": {
+    "NAME": "老蒲扇",
+    "FLAVOR": "云开雾散，雨水退避，天气就此放晴。",
+    "DESCRIPTIONS": [
+      "打出三种不同费用的卡牌后，获得1力量"
+    ]
   }
 }
