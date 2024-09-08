@@ -51,7 +51,7 @@
   "${ModID}:CantApplyPowerPower": {
     "NAME": "无怖",
     "DESCRIPTIONS": [
-      "你无法再获得任何新的能力或异常，改为获得能量 NL 你对自己施加异常以移除此效果"
+      "你无法再获得任何新的能力或异常，改为获得 #b1能量"
     ]
   },
   "${ModID}:Whoami_NianPower": {

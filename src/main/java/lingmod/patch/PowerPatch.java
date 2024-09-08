@@ -6,10 +6,15 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.InvinciblePower;
 import lingmod.powers.NingZuoWuPower;
+
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
 import static lingmod.ModCore.logger;
 
@@ -45,19 +50,32 @@ public class PowerPatch {
             __inst.isDone = true;
         }
 
+        public static HashMap<String, Class<?>[]> methods = new HashMap<>();
+
+        static {
+            methods.put("onAttacked", new Class[]{DamageInfo.class, int.class});
+            methods.put("onAttackToChangeDamage", new Class[]{DamageInfo.class, int.class});
+            methods.put("onLoseHp", new Class[]{int.class});
+            methods.put("wasHPLost", new Class[]{DamageInfo.class, int.class});
+            methods.put("atDamageFinalReceive", new Class[]{float.class, DamageInfo.DamageType.class});
+            methods.put("atDamageReceive", new Class[]{float.class, DamageInfo.DamageType.class});
+        }
+
         public static boolean hasOverrideDmgRecv(AbstractPower child) {
-            String[] methods = { "onAttacked", "onAttackToChangeDamage", "onLoseHp", "wasHPLost","atDamageFinalReceive","atDamageReceive"};
-            for (String method : methods) {
+
+            for (Map.Entry<String, Class<?>[]> entry : methods.entrySet()) {
+                String methodName = entry.getKey();
+                Class<?>[] paramTypes = entry.getValue();
                 try {
-                    Class<?> clz = child.getClass();
-                    if (!clz.getMethod(method).getDeclaringClass().equals(clz)) {
-                        return false;
+                    Method method = child.getClass().getMethod(methodName, paramTypes);
+                    if (method.getDeclaringClass() != AbstractPower.class) {
+                        return true;
                     }
-                } catch (Exception ignored) {
-                    logger.info("No Such Method: " + method);
+                } catch (NoSuchMethodException e) {
+                    logger.info("No Such Method: " + methodName);
                 }
             }
-            return !(child instanceof OnPlayerDamagedSubscriber);
+            return child instanceof OnPlayerDamagedSubscriber;
         }
     }
 }

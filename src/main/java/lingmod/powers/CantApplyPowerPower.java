@@ -47,15 +47,16 @@ public class CantApplyPowerPower extends AbstractEasyPower implements PostPowerA
     public void receivePostPowerApplySubscriber(AbstractPower p2add, AbstractCreature target, AbstractCreature src) {
         if (owner == null || !owner.powers.contains(this)) {
             // 还没加进去😅😅😅
+            BaseMod.unsubscribeLater(this);
             return;
         }
-        // 自己给自己施加DEBUFF，移除这个能力
-        if (target == owner && p2add.type == PowerType.DEBUFF && target == src) {
-            addToBot(new RemoveSpecificPowerAction(target, owner, p2add));
-            addToBot(new GainEnergyAction(1));
-            addToTop(new RemoveSpecificPowerAction(owner, owner, this));
-            return;
-        }
+//        // 自己给自己施加DEBUFF，移除这个能力
+//        if (target == owner && p2add.type == PowerType.DEBUFF && target == src) {
+//            addToBot(new RemoveSpecificPowerAction(target, owner, p2add));
+//            addToBot(new GainEnergyAction(1));
+//            addToTop(new RemoveSpecificPowerAction(owner, owner, this));
+//            return;
+//        }
         if (target == owner && !p2add.ID.equals(CantApplyPowerPower.ID)) {
             // if(src != owner) {
             this.flash();

@@ -23,7 +23,7 @@ public class Shu_HelpEvent extends PhasedEvent {
     private static final String[] OPTIONS = eventStrings.OPTIONS;
     public static String NAME = eventStrings.NAME;
     public static String IMG_PATH = makeImagePath("Shu_HelpHer.png", ModCore.ResourceType.EVENTS);
-    public int prob = 50; // 成功率
+    public int prob = 90; // 成功率
     protected AbstractRelic relic = new Beans_DuskRelic();
 
     public Shu_HelpEvent() {

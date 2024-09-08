@@ -1,15 +1,14 @@
 package lingmod.cards.power;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.unique.RemoveAllPowersAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.Credit;
 import lingmod.powers.CantApplyPowerPower;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 我是谁？
@@ -22,7 +21,7 @@ public class Whoami_Ling extends AbstractEasyCard {
     public static final String ID = makeID(NAME);
 
     public Whoami_Ling() {
-        super(ID, 1, CardType.POWER, CardRarity.SPECIAL, CardTarget.SELF);
+        super(ID, 3, CardType.POWER, CardRarity.SPECIAL, CardTarget.SELF);
     }
 
     @Override

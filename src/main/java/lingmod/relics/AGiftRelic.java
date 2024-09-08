@@ -1,6 +1,5 @@
 package lingmod.relics;
 
-import basemod.AutoAdd;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -12,12 +11,11 @@ import static lingmod.ModCore.makeID;
 /**
  * 金刚杵的Alt：战斗开始时，所有敌人失去 1 力量。二哥在剧情里送的，似乎能止戈
  */
-@AutoAdd.Ignore
 public class AGiftRelic extends AbstractEasyRelic {
     public static final String ID = makeID(AGiftRelic.class.getSimpleName());
 
     public AGiftRelic() {
-        super(ID, RelicTier.SPECIAL, LandingSound.FLAT);
+        super(ID, RelicTier.COMMON, LandingSound.FLAT);
     }
 
     @Override

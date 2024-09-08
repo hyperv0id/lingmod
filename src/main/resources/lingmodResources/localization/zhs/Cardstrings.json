@@ -127,8 +127,8 @@
   },
   "${ModID}:Whoami_Ling": {
     "NAME": "无怖",
-    "DESCRIPTION": "你无法再获得任何新的能力或异常，改为获得 [E] NL 你对自己施加异常以移除此效果",
-    "UPGRADE_DESCRIPTION": "清除所有异常 NL 你无法再获得任何新的能力或异常，改为获得 [E] NL 你对自己施加异常以移除此效果"
+    "DESCRIPTION": "你无法再获得任何新的能力或异常，改为获得 [E]",
+    "UPGRADE_DESCRIPTION": "清除所有异常 NL 你无法再获得任何新的能力或异常，改为获得 [E]"
   },
   "${ModID}:Whoami_Nian": {
     "NAME": "无悲",
