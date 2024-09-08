@@ -1,20 +1,21 @@
 package lingmod.cards.skill;
 
-import basemod.AutoAdd;
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
+import static lingmod.ModCore.makeID;
+
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
-import lingmod.actions.MyApplyPower_Action;
+
+import basemod.AutoAdd;
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.util.CustomTags;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 获得人工制品，升级后获得手牌中 酒牌 数量的人工制品
@@ -37,12 +38,12 @@ public class ZhuoJiuChengXin extends AbstractEasyCard {
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
         if (!upgraded)
-            addToBot(new MyApplyPower_Action(abstractPlayer, abstractMonster,
+            addToBot(new ApplyPowerAction(abstractPlayer, abstractMonster,
                     new ArtifactPower(abstractPlayer, magicNumber)));
         else {
             for (AbstractCard c : AbstractDungeon.player.hand.group) {
                 if (c.hasTag(CustomTags.WINE)) {
-                    addToBot(new MyApplyPower_Action(abstractPlayer, abstractMonster,
+                    addToBot(new ApplyPowerAction(abstractPlayer, abstractMonster,
                             new ArtifactPower(abstractPlayer, magicNumber)));
                 }
             }

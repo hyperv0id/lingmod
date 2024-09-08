@@ -1,16 +1,17 @@
 package lingmod.cards.skill;
 
+import static lingmod.ModCore.makeID;
+
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import lingmod.actions.MyApplyPower_Action;
+
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.powers.PoeticMoodPower;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 笑鸣瑟：每有一种一个敌人或状态牌，获得2点"诗兴"。
@@ -35,7 +36,7 @@ public class XiaoMingSeCard extends AbstractEasyCard {
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
         int times = countPoet(player);
-        addToBot(new MyApplyPower_Action(player, player, new PoeticMoodPower(player,
+        addToBot(new ApplyPowerAction(player, player, new PoeticMoodPower(player,
                 times)));
     }
 

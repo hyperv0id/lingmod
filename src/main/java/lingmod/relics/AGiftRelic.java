@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import lingmod.actions.MyApplyPower_Action;
+import lingmod.actions.FastApplyPower_Action;
 
 import static lingmod.ModCore.makeID;
 
@@ -25,6 +25,6 @@ public class AGiftRelic extends AbstractEasyRelic {
         super.atBattleStart();
         AbstractPlayer player = AbstractDungeon.player;
         for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters)
-            addToBot(new MyApplyPower_Action(mo, player, new StrengthPower(mo, -1)));
+            addToBot(new FastApplyPower_Action(mo, player, new StrengthPower(mo, -1)));
     }
 }

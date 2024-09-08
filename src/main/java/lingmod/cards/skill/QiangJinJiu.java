@@ -1,16 +1,17 @@
 package lingmod.cards.skill;
 
+import static lingmod.ModCore.makeID;
+
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster.Intent;
-import lingmod.actions.MyApplyPower_Action;
+
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.powers.WinePower;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 加速敌人的意图，如果有人不再攻击，那么获得 !M! 酒
@@ -32,7 +33,7 @@ public class QiangJinJiu extends AbstractEasyCard {
             mo.createIntent();
             Intent intent = mo.intent;
             if (!intent.toString().contains("ATTACK")) {
-                addToTop(new MyApplyPower_Action(p, p, new WinePower(p, 1)));
+                addToTop(new ApplyPowerAction(p, p, new WinePower(p, 1)));
             }
         }));
     }

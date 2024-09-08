@@ -1,15 +1,16 @@
 package lingmod.cards.skill;
 
+import static lingmod.ModCore.makeID;
+
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import lingmod.actions.MyApplyPower_Action;
+
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.powers.WinePower;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 列刀子：翻倍你的酒
@@ -39,6 +40,6 @@ public class LieDaoZiWineCard extends AbstractEasyCard {
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
         AbstractPower vp = abstractPlayer.getPower(WinePower.POWER_ID);
         int wineAmt = vp == null ? 0 : vp.amount;
-        addToBot(new MyApplyPower_Action(abstractPlayer, abstractPlayer, new WinePower(abstractPlayer, wineAmt)));
+        addToBot(new ApplyPowerAction(abstractPlayer, abstractPlayer, new WinePower(abstractPlayer, wineAmt)));
     }
 }

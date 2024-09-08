@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import javassist.CannotCompileException;
 import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
-import lingmod.actions.MyApplyPower_Action;
+import lingmod.actions.FastApplyPower_Action;
 import lingmod.monsters.AbsSummonMonster;
 import lingmod.powers.Go_ReadAhead;
 import lingmod.util.Wiz;
@@ -48,7 +48,7 @@ public class PlayCardPatch {
         if (!(monster instanceof AbsSummonMonster))
             return;
         if (card.type == CardType.ATTACK) {
-            Wiz.atb(new MyApplyPower_Action(monster, monster, new StrengthPower(monster, card.damage)));
+            Wiz.atb(new FastApplyPower_Action(monster, monster, new StrengthPower(monster, card.damage)));
             Wiz.addToBotAbstract(monster::applyPowers);
         } else if (card.type == CardType.SKILL) {
             Wiz.addToBotAbstract(() -> {

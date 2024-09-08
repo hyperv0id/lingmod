@@ -7,8 +7,9 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import com.megacrit.cardcrawl.powers.ShiftingPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+
 import lingmod.ModCore;
-import lingmod.actions.MyApplyPower_Action;
+import lingmod.actions.FastApplyPower_Action;
 
 public class ShiftingPower2 extends ShiftingPower {
     public static final String ID = ModCore.makeID(ShiftingPower2.class.getSimpleName());
@@ -26,9 +27,9 @@ public class ShiftingPower2 extends ShiftingPower {
 
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
-        this.addToTop(new MyApplyPower_Action(this.owner, this.owner, new StrengthPower(this.owner, -1), -1));
+        this.addToTop(new FastApplyPower_Action(this.owner, this.owner, new StrengthPower(this.owner, -1), -1));
         if (!this.owner.hasPower("Artifact")) {
-            this.addToTop(new MyApplyPower_Action(this.owner, this.owner, new GainStrengthPower(this.owner, 1), 1));
+            this.addToTop(new FastApplyPower_Action(this.owner, this.owner, new GainStrengthPower(this.owner, 1), 1));
         }
 
         this.flash();

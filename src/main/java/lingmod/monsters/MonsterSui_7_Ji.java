@@ -16,7 +16,7 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.powers.ConstrictedPower;
-import lingmod.actions.MyApplyPower_Action;
+import lingmod.actions.FastApplyPower_Action;
 import lingmod.cards.status.Sui_7DealCard;
 import lingmod.character.Ling;
 import lingmod.patch.OnSaveLoadPatch;
@@ -84,7 +84,7 @@ public class MonsterSui_7_Ji extends CustomMonster {
       case 1:
         addToBot(new TalkAction(this, DIALOGS[2], 0.5F, 2.0F));
         addToBot(new DamageAction(p, info, AttackEffect.FIRE));
-        addToBot(new MyApplyPower_Action(
+        addToBot(new FastApplyPower_Action(
             p, this, new ConstrictedPower(p, this, info.output)));
         break;
       default:

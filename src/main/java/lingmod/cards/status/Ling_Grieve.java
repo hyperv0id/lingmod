@@ -1,17 +1,18 @@
 package lingmod.cards.status;
 
+import static lingmod.ModCore.makeID;
+
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import lingmod.actions.MyApplyPower_Action;
+
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.Credit;
 import lingmod.powers.AbstractEasyPower;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 伤怀：其他卡牌被消耗时在手牌中加入1张伤怀，消耗伤怀时不触发此效果
@@ -29,7 +30,7 @@ public class Ling_Grieve extends AbstractEasyCard {
     public void triggerWhenDrawn() {
         super.triggerWhenDrawn();
         AbstractPlayer p = AbstractDungeon.player;
-        addToBot(new MyApplyPower_Action(p, p, new Ling_GrievePower(p)));
+        addToBot(new ApplyPowerAction(p, p, new Ling_GrievePower(p)));
     }
 
     @Override

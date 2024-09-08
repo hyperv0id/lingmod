@@ -1,15 +1,16 @@
 package lingmod.powers;
 
-import basemod.BaseMod;
-import basemod.interfaces.PostExhaustSubscriber;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import lingmod.actions.MyApplyPower_Action;
 
-import static lingmod.ModCore.makeID;
+import basemod.BaseMod;
+import basemod.interfaces.PostExhaustSubscriber;
+import lingmod.actions.FastApplyPower_Action;
 
 public class ZuiFeiChenPower extends AbstractEasyPower implements PostExhaustSubscriber {
     public static final String POWER_ID = makeID(ZuiFeiChenPower.class.getSimpleName());
@@ -32,7 +33,7 @@ public class ZuiFeiChenPower extends AbstractEasyPower implements PostExhaustSub
     @Override
     public void receivePostExhaust(AbstractCard abstractCard) {
         this.flash();
-        addToBot(new MyApplyPower_Action(owner, owner, new WinePower(owner, amount)));
+        addToBot(new FastApplyPower_Action(owner, owner, new WinePower(owner, amount)));
     }
 
     @Override

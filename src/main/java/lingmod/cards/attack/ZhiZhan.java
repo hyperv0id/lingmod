@@ -1,5 +1,7 @@
 package lingmod.cards.attack;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -10,12 +12,11 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.VerticalImpactEffect;
+
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.powers.WinePower;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * img from: pixiv_106560931_0
@@ -39,6 +40,20 @@ public class ZhiZhan extends AbstractEasyCard {
         int cache = wine.amount;
         wine.amount *= baseMagicNumber;
         super.applyPowers();
+        wine.amount = cache;
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        
+        AbstractPower wine = AbstractDungeon.player.getPower(WinePower.POWER_ID);
+        if (wine == null) {
+            super.calculateCardDamage(mo);;
+            return;
+        }
+        int cache = wine.amount;
+        wine.amount *= baseMagicNumber;
+        super.calculateCardDamage(mo);
         wine.amount = cache;
     }
 

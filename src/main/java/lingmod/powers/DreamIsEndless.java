@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.ConstrictedPower;
-import lingmod.actions.MyApplyPower_Action;
+import lingmod.actions.FastApplyPower_Action;
 
 import static lingmod.ModCore.makeID;
 
@@ -30,7 +30,7 @@ public class DreamIsEndless extends AbstractEasyPower {
     @Override
     public int onLoseHp(int damageAmount) {
         if (damageAmount > 0)
-            addToBot(new MyApplyPower_Action(owner, owner, new ConstrictedPower(owner, owner, damageAmount)));
+            addToBot(new FastApplyPower_Action(owner, owner, new ConstrictedPower(owner, owner, damageAmount)));
         return super.onLoseHp(damageAmount);
     }
 }

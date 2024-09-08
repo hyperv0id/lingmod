@@ -1,16 +1,17 @@
 package lingmod.relics;
 
-import basemod.BaseMod;
-import basemod.interfaces.StartActSubscriber;
+import static lingmod.ModCore.makeID;
+
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.RegenPower;
 import com.megacrit.cardcrawl.rooms.MonsterRoom;
-import lingmod.actions.MyApplyPower_Action;
-import lingmod.character.Ling;
 
-import static lingmod.ModCore.makeID;
+import basemod.BaseMod;
+import basemod.interfaces.StartActSubscriber;
+import lingmod.actions.FastApplyPower_Action;
+import lingmod.character.Ling;
 
 public class Shu_SeedRelic extends AbstractEasyRelic implements ClickableRelic, StartActSubscriber {
 
@@ -18,7 +19,7 @@ public class Shu_SeedRelic extends AbstractEasyRelic implements ClickableRelic, 
 
     public Shu_SeedRelic() {
         super(ID, RelicTier.SPECIAL, LandingSound.FLAT, Ling.Enums.LING_COLOR);
-        this.counter = 6;
+        this.counter = 4;
         BaseMod.subscribe(this);
     }
 
@@ -29,7 +30,7 @@ public class Shu_SeedRelic extends AbstractEasyRelic implements ClickableRelic, 
         if (AbstractDungeon.getCurrMapNode().getRoom() instanceof MonsterRoom) {
             this.flash();
             addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-            addToBot(new MyApplyPower_Action(AbstractDungeon.player, AbstractDungeon.player,
+            addToBot(new FastApplyPower_Action(AbstractDungeon.player, AbstractDungeon.player,
                     new RegenPower(AbstractDungeon.player, this.counter)));
             this.grayscale = true;
             this.counter = 0;

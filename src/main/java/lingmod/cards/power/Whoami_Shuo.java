@@ -1,13 +1,14 @@
 package lingmod.cards.power;
 
+import static lingmod.ModCore.makeID;
+
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import lingmod.actions.MyApplyPower_Action;
+
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.Credit;
 import lingmod.powers.Whoami_ShuoPower;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 打出5次牌后获得双发
@@ -34,6 +35,6 @@ public class Whoami_Shuo extends AbstractEasyCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new MyApplyPower_Action(p, p, new Whoami_ShuoPower(p, magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new Whoami_ShuoPower(p, magicNumber)));
     }
 }

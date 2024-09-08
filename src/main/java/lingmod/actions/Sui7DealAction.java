@@ -1,5 +1,7 @@
 package lingmod.actions;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
@@ -10,8 +12,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-
-import static lingmod.ModCore.makeID;
 
 public class Sui7DealAction extends AbstractGameAction {
     public static final String ID = makeID(Sui7DealAction.class.getSimpleName());
@@ -45,7 +45,7 @@ public class Sui7DealAction extends AbstractGameAction {
                     size++;
                 }
                 // 交易后获得 力量
-                addToTop(new MyApplyPower_Action(source, source, new StrengthPower(source, size)));
+                addToTop(new FastApplyPower_Action(source, source, new StrengthPower(source, size)));
                 AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
             }
             this.tickDuration();

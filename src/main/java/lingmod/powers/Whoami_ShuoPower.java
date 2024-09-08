@@ -1,5 +1,7 @@
 package lingmod.powers;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -7,9 +9,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DoubleTapPower;
-import lingmod.actions.MyApplyPower_Action;
 
-import static lingmod.ModCore.makeID;
+import lingmod.actions.FastApplyPower_Action;
 
 public class Whoami_ShuoPower extends AbstractEasyPower {
     public static final String ID = makeID(Whoami_ShuoPower.class.getSimpleName());
@@ -33,7 +34,7 @@ public class Whoami_ShuoPower extends AbstractEasyPower {
             this.amount++;
             if (this.amount >= counter) {
                 this.amount = 0;
-                addToBot(new MyApplyPower_Action(owner, owner, new DoubleTapPower(owner, 1)));
+                addToBot(new FastApplyPower_Action(owner, owner, new DoubleTapPower(owner, 1)));
             }
         }
     }

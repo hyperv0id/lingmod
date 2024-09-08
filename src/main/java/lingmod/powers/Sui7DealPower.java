@@ -1,5 +1,7 @@
 package lingmod.powers;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -8,11 +10,10 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AngryPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import lingmod.actions.MyApplyPower_Action;
+
+import lingmod.actions.FastApplyPower_Action;
 import lingmod.actions.Sui7DealAction;
 import lingmod.monsters.MonsterSui_7_Ji;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 回合开始时选择牌交易，消耗牌时，绩获得1力量
@@ -54,7 +55,7 @@ public class Sui7DealPower extends AngryPower {
 
     @Override
     public void onExhaust(AbstractCard card) {
-        addToBot(new MyApplyPower_Action(provider, provider, new StrengthPower(owner, this.amount)));
+        addToBot(new FastApplyPower_Action(provider, provider, new StrengthPower(owner, this.amount)));
     }
 
     @Override

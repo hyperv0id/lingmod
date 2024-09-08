@@ -1,7 +1,9 @@
 package lingmod.monsters;
 
-import basemod.ReflectionHacks;
-import basemod.abstracts.CustomMonster;
+import static lingmod.ModCore.logger;
+import static lingmod.ModCore.makeID;
+import static lingmod.ModCore.makeImagePath;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -16,13 +18,18 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.MalleablePower;
 import com.megacrit.cardcrawl.vfx.SpeechBubble;
-import lingmod.actions.MyApplyPower_Action;
+
+import basemod.ReflectionHacks;
+import basemod.abstracts.CustomMonster;
+import lingmod.actions.FastApplyPower_Action;
 import lingmod.character.Ling;
-import lingmod.powers.*;
+import lingmod.powers.Go_CornerApproach;
+import lingmod.powers.Go_Endgame;
+import lingmod.powers.Go_LibertyPressure;
+import lingmod.powers.Go_ReadAhead;
+import lingmod.powers.HP_Lock_Power;
 import lingmod.util.Morph;
 import lingmod.util.Wiz;
-
-import static lingmod.ModCore.*;
 
 /**
  * 二哥，你又在算计哦。陪我喝两小酒好不好
@@ -92,7 +99,7 @@ public class Wang_MountainGhost extends CustomMonster {
         });
         // addToBot(new MyApplyPower_Action(this, this, new ReactivePower(this)));
         // 事件怪物，玩家锁血
-        addToBot(new MyApplyPower_Action(AbstractDungeon.player, this, new HP_Lock_Power(AbstractDungeon.player)));
+        addToBot(new FastApplyPower_Action(AbstractDungeon.player, this, new HP_Lock_Power(AbstractDungeon.player)));
     }
 
     public void die() {
@@ -175,15 +182,15 @@ public class Wang_MountainGhost extends CustomMonster {
                         new Go_LibertyPressure(this, 3), // Attack -> 易伤
                         new Go_ReadAhead(this, 2), // 无效出牌
                 };
-                addToBot(new MyApplyPower_Action(this, this, ps[r]));
+                addToBot(new FastApplyPower_Action(this, this, ps[r]));
                 break;
             }
             case 7:
-                addToBot(new MyApplyPower_Action(this, this, new MalleablePower(this, 2)));
+                addToBot(new FastApplyPower_Action(this, this, new MalleablePower(this, 2)));
                 break;
             case 22:
                 // 收关
-                addToBot(new MyApplyPower_Action(this, this, new Go_Endgame(this)));
+                addToBot(new FastApplyPower_Action(this, this, new Go_Endgame(this)));
                 break;
             default:
                 addToBot(new GainBlockAction(this, 20));

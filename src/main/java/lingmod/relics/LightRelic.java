@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import lingmod.actions.MyApplyPower_Action;
+import lingmod.actions.FastApplyPower_Action;
 import lingmod.character.Ling;
 import lingmod.powers.PoeticMoodPower;
 import lingmod.powers.WinePower;
@@ -32,7 +32,7 @@ public class LightRelic extends AbstractEasyRelic implements PostExhaustSubscrib
     public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction) {
         super.onUseCard(targetCard, useCardAction);
         AbstractPlayer p = AbstractDungeon.player;
-        addToBot(new MyApplyPower_Action(p, p, new PoeticMoodPower(p, 1)));
+        addToBot(new FastApplyPower_Action(p, p, new PoeticMoodPower(p, 1)));
     }
 
     @Override
@@ -47,7 +47,7 @@ public class LightRelic extends AbstractEasyRelic implements PostExhaustSubscrib
         AbstractPlayer p = AbstractDungeon.player;
         if (AbstractDungeon.player.relics.contains(this)) {
             addToBot(new RelicAboveCreatureAction(p, this));
-            addToBot(new MyApplyPower_Action(p, p, new WinePower(p, 1)));
+            addToBot(new FastApplyPower_Action(p, p, new WinePower(p, 1)));
         } else {
             // 可能是多次实例化导致的错误
             BaseMod.unsubscribeLater(this);

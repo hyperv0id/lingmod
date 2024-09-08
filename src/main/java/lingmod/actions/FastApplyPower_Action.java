@@ -1,22 +1,23 @@
 package lingmod.actions;
 
-import basemod.BaseMod;
+import java.util.Collections;
+
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-import java.util.Collections;
+import basemod.BaseMod;
 
-public class MyApplyPower_Action extends AbstractGameAction {
+public class FastApplyPower_Action extends AbstractGameAction {
     private AbstractPower power;
 
-    public MyApplyPower_Action(AbstractCreature target, AbstractCreature source, AbstractPower power, int amount) {
+    public FastApplyPower_Action(AbstractCreature target, AbstractCreature source, AbstractPower power, int amount) {
         this.setValues(target, source, amount);
         this.power = power;
         this.amount = amount;
     }
 
-    public MyApplyPower_Action(AbstractCreature target, AbstractCreature source, AbstractPower power) {
+    public FastApplyPower_Action(AbstractCreature target, AbstractCreature source, AbstractPower power) {
         this(target, source, power, power.amount);
     }
 
