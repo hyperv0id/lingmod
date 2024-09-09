@@ -19,7 +19,7 @@ public class LaoPuSan extends AbstractEasyRelic {
     public static HashSet<Integer> ccs = new HashSet<>();
 
     public LaoPuSan() {
-        super(ID, RelicTier.UNCOMMON, null);
+        super(ID, RelicTier.UNCOMMON, LandingSound.FLAT);
 
     }
 

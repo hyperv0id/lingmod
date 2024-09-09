@@ -1,18 +1,19 @@
 package lingmod.cards.skill;
 
-import basemod.BaseMod;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import lingmod.actions.CardTimeTravelAction;
-import lingmod.cards.AbstractEasyCard;
-import lingmod.interfaces.Credit;
+import static lingmod.ModCore.logger;
+import static lingmod.ModCore.makeID;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static lingmod.ModCore.logger;
-import static lingmod.ModCore.makeID;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import basemod.BaseMod;
+import lingmod.actions.CardTimeTravelAction;
+import lingmod.cards.AbstractEasyCard;
+import lingmod.interfaces.Credit;
 
 /**
  * 寻日峰：消耗任意张。再次打出：把消耗的放入手牌
@@ -45,7 +46,9 @@ public class XunRiFeng extends AbstractEasyCard {
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster) {
         if (exhaustedCards.isEmpty()) {
-            addToBot(new CardTimeTravelAction(this));
+            addToBotAbstract(() -> {
+                addToBot(new CardTimeTravelAction(this));
+            });
             logger.info(NAME + ": 选择牌消耗");
         } else {
             addToBotAbstract(() -> {

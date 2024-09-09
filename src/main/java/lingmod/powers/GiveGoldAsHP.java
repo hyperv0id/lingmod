@@ -1,14 +1,15 @@
 package lingmod.powers;
 
-import basemod.BaseMod;
-import basemod.interfaces.PostBattleSubscriber;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
-import static lingmod.ModCore.makeID;
+import basemod.BaseMod;
+import basemod.interfaces.PostBattleSubscriber;
 
 public class GiveGoldAsHP extends AbstractEasyPower implements PostBattleSubscriber {
     public static final String CLASS_NAME = GiveGoldAsHP.class.getSimpleName();
@@ -43,5 +44,6 @@ public class GiveGoldAsHP extends AbstractEasyPower implements PostBattleSubscri
     @Override
     public void receivePostBattle(AbstractRoom abstractRoom) {
         abstractRoom.addGoldToRewards(this.owner.currentHealth * amount);
+        BaseMod.unsubscribeLater(this);
     }
 }

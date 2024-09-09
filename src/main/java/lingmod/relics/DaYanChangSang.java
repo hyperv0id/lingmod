@@ -13,7 +13,7 @@ public class DaYanChangSang extends AbstractEasyRelic {
     public static final String ID = makeID(DaYanChangSang.class.getSimpleName());
 
     public DaYanChangSang() {
-        super(ID, RelicTier.COMMON, null);
+        super(ID, RelicTier.COMMON, LandingSound.FLAT);
     }
 
     @Override

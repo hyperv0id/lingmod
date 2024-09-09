@@ -1,7 +1,9 @@
 package lingmod.monsters;
 
-import basemod.ReflectionHacks;
-import basemod.abstracts.CustomMonster;
+import static lingmod.ModCore.logger;
+
+import java.util.HashMap;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -11,19 +13,18 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+
+import basemod.ReflectionHacks;
+import basemod.abstracts.CustomMonster;
 import lingmod.util.MonsterHelper;
 import lingmod.util.Wiz;
-
-import java.util.HashMap;
-
-import static lingmod.ModCore.logger;
 
 public abstract class AbsSummonMonster extends CustomMonster {
     public String img_up;
     protected int baseMaxHP;
 
     public AbsSummonMonster(String name, String id, int maxHealth, float hb_x, float hb_y, float hb_w, float hb_h,
-                            String imgUrl, String img_up) {
+            String imgUrl, String img_up) {
         super(name, id, maxHealth, hb_x, hb_y, hb_w, hb_h, imgUrl);
         this.baseMaxHP = maxHealth;
         isPlayer = true;
@@ -44,19 +45,19 @@ public abstract class AbsSummonMonster extends CustomMonster {
         setMove((byte) 0, Intent.ATTACK, damage.get(0).base);
     }
 
-
     private final HashMap<AbstractCard, AbstractCard.CardTarget> cardTargetCache = new HashMap<>();
 
     @Override
     public void update() {
         super.update();
 
-        if (hb.hovered || intentHb.hovered || healthHb.hovered) hover();
+        if (hb.hovered || intentHb.hovered || healthHb.hovered)
+            hover();
     }
 
     public void hover() {
         AbstractPlayer p = Wiz.adp();
-        if (ReflectionHacks.privateMethod(AbstractPlayer.class, "clickAndDragCards").invoke(p)) {
+        if ((boolean) ReflectionHacks.privateMethod(AbstractPlayer.class, "clickAndDragCards").invoke(p)) {
             AbstractCard card = p.hoveredCard;
             if (card.type == AbstractCard.CardType.ATTACK || card.type == AbstractCard.CardType.SKILL) {
                 cardTargetCache.put(card, card.target);
@@ -66,19 +67,18 @@ public abstract class AbsSummonMonster extends CustomMonster {
         }
     }
 
-
     @Override
     public void unhover() {
         super.unhover();
         AbstractPlayer p = Wiz.adp();
-        if (ReflectionHacks.privateMethod(AbstractPlayer.class, "clickAndDragCards").invoke(p)) {
+        if ((boolean) ReflectionHacks.privateMethod(AbstractPlayer.class, "clickAndDragCards").invoke(p)) {
             AbstractCard card = p.hoveredCard;
             AbstractCard.CardTarget oldTarget = cardTargetCache.get(card);
-            if (oldTarget != null) card.target = oldTarget;
+            if (oldTarget != null)
+                card.target = oldTarget;
             logger.info("Reset Target: " + card.name + " ENEMY");
         }
     }
-
 
     public void setDamage(int amt) {
         DamageInfo info = damage.get(0);

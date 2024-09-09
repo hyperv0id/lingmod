@@ -18,12 +18,12 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.BarricadePower;
+import com.megacrit.cardcrawl.powers.IntangiblePower;
 import com.megacrit.cardcrawl.powers.PlatedArmorPower;
 
 import basemod.abstracts.CustomMonster;
 import lingmod.actions.FastApplyPower_Action;
 import lingmod.powers.GiveGoldAsHP;
-import lingmod.powers.InvincibleForPlayer;
 import lingmod.powers.ShiftingPower2;
 import lingmod.util.MonsterHelper;
 import lingmod.util.Wiz;
@@ -58,7 +58,7 @@ public class InnManager extends CustomMonster {
     @Override
     public void usePreBattleAction() {
         super.useUniversalPreBattleAction();
-        addToBot(new FastApplyPower_Action(this, this, new InvincibleForPlayer(this)));
+        addToBot(new FastApplyPower_Action(this, this, new IntangiblePower(this, 99)));
         addToBot(new FastApplyPower_Action(this, this, new GiveGoldAsHP(this, 2)));
         addToBot(new FastApplyPower_Action(this, this, new ShiftingPower2(this)));
     }
