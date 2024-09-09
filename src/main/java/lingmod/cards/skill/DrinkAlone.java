@@ -1,17 +1,18 @@
 package lingmod.cards.skill;
 
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
+import static lingmod.ModCore.makeID;
+
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import lingmod.actions.EasyXCostAction;
 import lingmod.actions.ExhaustAllAction;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.Credit;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 独酌：选择一张牌，变化所有手牌为这张牌
@@ -28,11 +29,12 @@ public class DrinkAlone extends AbstractEasyCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         String msg = cardStrings.EXTENDED_DESCRIPTION[0];
-        if (p.hand.isEmpty()) return;
+        if (p.hand.isEmpty())
+            return;
         addToBot(new SelectCardsInHandAction(msg, cards -> {
             addToBot(new ExhaustAllAction());
             addToBot(new EasyXCostAction(this, (effect, param) -> {
-                addToTop(new MakeTempCardInHandAction(param, effect));
+                addToTop(new MakeTempCardInHandAction(param, effect + (upgraded ? 1 : 0)));
                 return true;
             }, cards.get(0).makeStatEquivalentCopy()));
         }));
@@ -40,6 +42,5 @@ public class DrinkAlone extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        updateCost(-1);
     }
 }

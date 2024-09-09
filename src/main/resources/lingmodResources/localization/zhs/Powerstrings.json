@@ -218,7 +218,7 @@
   "lingmod:NI3Power": {
     "NAME": "其数为三",
     "DESCRIPTIONS": [
-      "你造成的伤害为 %d 的整数倍，上取整"
+      "你造成的伤害的个位数一定为 3 。 自动将伤害变为最接近的数字"
     ]
   },
   "lingmod:ZhuYeZhouPower": {

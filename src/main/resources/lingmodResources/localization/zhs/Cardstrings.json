@@ -175,7 +175,8 @@
   },
   "${ModID}:QingMingDream": {
     "NAME": "清明梦",
-    "DESCRIPTION": "离开 lingmod:梦境 ，敌人减少的力量变为永久",
+    "DESCRIPTION": "离开 lingmod:梦境 ，敌人减少的力量变为永久 NL （减少 !M! 点力量）",
+    "UPGRADE_DESCRIPTION": "离开 lingmod:梦境 ，敌人减少的力量变为永久，减少双倍力量 NL （减少 !M! 点力量）",
     "EXTENDED_DESCRIPTION": [
       "这不是梦",
       "梦是真实的"
@@ -225,6 +226,7 @@
   "${ModID}:DrinkAlone": {
     "NAME": "独酌",
     "DESCRIPTION": "选择一张牌，消耗所有手牌，在手牌中加入其 X 张复制",
+    "UPGRADE_DESCRIPTION": "选择一张牌，消耗所有手牌，在手牌中加入其 X+1 张复制",
     "EXTENDED_DESCRIPTION": [
       "选择一张牌独饮"
     ]
