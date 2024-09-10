@@ -46,7 +46,7 @@
   },
   "${ModID}:Tranquility_Summon": {
     "NAME": "“清平”",
-    "DESCRIPTION": "召唤一个 ${ModID}:“清平” "
+    "DESCRIPTION": "召唤一个 ${ModID}:“清平” 血量为 !M! ，基础攻击力为 !${ModID}:m2!"
   },
   "${ModID}:Peripateticism": {
     "NAME": "“逍遥”",
@@ -57,7 +57,7 @@
   },
   "${ModID}:Peripateticism_Summon": {
     "NAME": "“逍遥”",
-    "DESCRIPTION": "召唤一个 ${ModID}:“逍遥” "
+    "DESCRIPTION": "召唤一个 ${ModID}:“逍遥”  血量为 !M! ，基础攻击力为 !${ModID}:m2!"
   },
   "${ModID}:Thunderer": {
     "NAME": "“弦惊”",
@@ -65,7 +65,7 @@
   },
   "${ModID}:Thunderer_Summon": {
     "NAME": "“弦惊”",
-    "DESCRIPTION": "召唤一个 ${ModID}:“弦惊” "
+    "DESCRIPTION": "召唤一个 ${ModID}:“弦惊”  血量为 !M! ，基础攻击力为 !${ModID}:m2!"
   },
   "${ModID}:Feature_2_Card": {
     "NAME": "随付笺咏醉屠苏",
@@ -310,7 +310,7 @@
   },
   "lingmod:JiangXiangNaTie": {
     "NAME": "酱香拿铁",
-    "DESCRIPTION": "造成 !D! 点伤害 NL 如果目标是召唤物，为其增加伤害的同时，增加等量最大生命"
+    "DESCRIPTION": "造成 !D! 点伤害，活力加成为 !M! 倍 NL 如果目标是召唤物，增加伤害的同时，增加等量最大生命"
   },
   "lingmod:GuLeiXinLiu": {
     "NAME": "故垒新柳",
@@ -335,7 +335,7 @@
   },
   "lingmod:QiangJinJiu": {
     "NAME": "将进酒",
-    "DESCRIPTION": "随机化敌人的意图 NL 如果有敌人的意图不是攻击，那么获得 !M! ${ModID}:酒 "
+    "DESCRIPTION": "随机化敌人的意图 NL 如果有敌人的意图不是攻击，那么获得 !M! ${ModID}:酒 NL 部分敌人的意图无法改变"
   },
   "lingmod:ShiFangTuNa": {
     "NAME": "十方吐纳",
@@ -361,7 +361,7 @@
   },
   "lingmod:TheNumberIs3": {
     "NAME": "其数为3",
-    "DESCRIPTION": "你造成的伤害一定为3的整数倍（上取整）"
+    "DESCRIPTION": "你造成的伤害的个位数一定为3，自动寻找最接近的那个数"
   },
   "lingmod:ZhuYeZhouCard": {
     "NAME": "竹叶舟",

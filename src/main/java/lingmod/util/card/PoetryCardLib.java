@@ -1,20 +1,20 @@
 package lingmod.util.card;
 
-import basemod.AutoAdd;
-import com.megacrit.cardcrawl.cards.AbstractCard;
+import java.util.ArrayList;
+
 import com.megacrit.cardcrawl.random.Random;
+
+import basemod.AutoAdd;
 import lingmod.ModCore;
 import lingmod.cards.AbstractPoetryCard;
 
-import java.util.ArrayList;
-
 public class PoetryCardLib {
-    public static ArrayList<AbstractCard> cardPool = new ArrayList<>();
+    public static ArrayList<AbstractPoetryCard> cardPool = new ArrayList<>();
 
-    public static AbstractCard getCard(Random rng) {
+    public static AbstractPoetryCard getCard(Random rng) {
         if (cardPool.isEmpty()) initCardPool();
         int r = rng.random(cardPool.size() - 1);
-        AbstractCard card = cardPool.get(r).makeCopy();
+        AbstractPoetryCard card = (AbstractPoetryCard) cardPool.get(r).makeCopy();
         cardPool.remove(r);
         return card;
     }

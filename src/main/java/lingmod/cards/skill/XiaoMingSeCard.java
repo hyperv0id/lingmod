@@ -57,5 +57,6 @@ public class XiaoMingSeCard extends AbstractEasyCard {
 
     @Override
     public void upp() {
+        upgradeMagicNumber(2);
     }
 }

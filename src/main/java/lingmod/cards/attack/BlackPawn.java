@@ -1,14 +1,15 @@
 package lingmod.cards.attack;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
 import lingmod.actions.TransformDrawPileAction;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.util.Wiz;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 黑子：打6 X 次，次数为黑子数量。
@@ -32,6 +33,11 @@ public class BlackPawn extends AbstractEasyCard {
     public void applyPowers() {
         this.baseMagicNumber = Wiz.countCards(card -> card instanceof BlackPawn);
         super.applyPowers();
+    }
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        this.baseMagicNumber = Wiz.countCards(card -> card instanceof BlackPawn);
+        super.calculateCardDamage(mo);
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {

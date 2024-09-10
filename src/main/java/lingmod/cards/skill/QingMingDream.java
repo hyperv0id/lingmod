@@ -54,7 +54,6 @@ public class QingMingDream extends AbstractEasyCard {
                 baseMagicNumber *= 2;
         }
         super.applyPowers();
-
     }
 
     @Override

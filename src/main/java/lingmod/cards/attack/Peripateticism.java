@@ -49,11 +49,6 @@ public class Peripateticism extends AbsSummonCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (Wiz.adp().hasRelic(SanYiShiJian.ID)) {
-            CardConfig cc = this.getClass().getAnnotation(CardConfig.class);
-            MonsterHelper.summonMonster(cc.summonClz());
-            return;
-        }
         addToBotAbstract(() -> {
             // 获取所有技能牌
             List<AbstractCard> cardsToExhaust = AbstractDungeon.player.hand.group.stream()

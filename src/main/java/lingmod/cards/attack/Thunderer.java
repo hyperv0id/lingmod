@@ -1,23 +1,22 @@
 package lingmod.cards.attack;
 
+import static lingmod.ModCore.makeID;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
 import lingmod.cards.AbsSummonCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.monsters.Thunderer_SummonMonster;
 import lingmod.relics.SanYiShiJian;
-import lingmod.util.MonsterHelper;
 import lingmod.util.Wiz;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static java.lang.Math.max;
-import static lingmod.ModCore.makeID;
 
 /**
  * 1费打9
@@ -66,11 +65,6 @@ public class Thunderer extends AbsSummonCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (Wiz.adp().hasRelic(SanYiShiJian.ID)) {
-            CardConfig cc = this.getClass().getAnnotation(CardConfig.class);
-            MonsterHelper.summonMonster(cc.summonClz());
-            return;
-        }
         for (int i = 0; i < magicNumber; i++) {
             dmg(m, null);
         }
@@ -78,7 +72,7 @@ public class Thunderer extends AbsSummonCard {
             // 弦惊 合成
             List<AbstractCard> cards = AbstractDungeon.player.hand.group.stream()
                     .filter(card -> card != this && card.cardID.equals(Thunderer.ID)).collect(Collectors.toList());
-            int total = cards.stream().mapToInt(c -> max(1, c.costForTurn)).sum();
+            int total = cards.stream().mapToInt(c -> Math.max(1, c.costForTurn)).sum();
             this.upgradeMagicNumber(total);
             cards.forEach(card -> addToBot(new ExhaustSpecificCardAction(card, AbstractDungeon.player.hand)));
             // 更新背景

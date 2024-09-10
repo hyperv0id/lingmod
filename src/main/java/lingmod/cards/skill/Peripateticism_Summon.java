@@ -1,17 +1,20 @@
 package lingmod.cards.skill;
 
-import basemod.AutoAdd;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import lingmod.cards.AbstractEasyCard;
-import lingmod.interfaces.Credit;
-import lingmod.monsters.Peripateticism_SummonMonster;
-import lingmod.util.MonsterHelper;
 
-import static lingmod.ModCore.makeID;
+import basemod.AutoAdd;
+import lingmod.cards.AbstractEasyCard;
+import lingmod.interfaces.CardConfig;
+import lingmod.interfaces.Credit;
+import lingmod.monsters.Thunderer_SummonMonster;
+import lingmod.util.MonsterHelper;
 
 @AutoAdd.Ignore
 @Credit(link = "https://www.pixiv.net/artworks/106018673", username = "小动物管理员", platform = "pixiv")
+@CardConfig(summonClz = Thunderer_SummonMonster.class, magic = 20, magic2 = 6)
 public class Peripateticism_Summon extends AbstractEasyCard {
 
     public static final String ID = makeID(Peripateticism_Summon.class.getSimpleName());
@@ -22,10 +25,13 @@ public class Peripateticism_Summon extends AbstractEasyCard {
 
     @Override
     public void upp() {
+        upgradeMagicNumber(5);
+        upgradeSecondMagic(3);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        MonsterHelper.summonMonster(Peripateticism_SummonMonster.class);
+        CardConfig cc = this.getClass().getAnnotation(CardConfig.class);
+        MonsterHelper.summonMonster(cc.summonClz(), magicNumber, secondMagic);
     }
 }

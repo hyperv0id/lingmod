@@ -1,18 +1,22 @@
 package lingmod.cards.attack;
 
-import basemod.helpers.CardModifierManager;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+
+import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.WineMod;
 import lingmod.interfaces.CardConfig;
 import lingmod.monsters.AbsSummonMonster;
+import lingmod.powers.WinePower;
 import lingmod.util.CustomTags;
 
-import static lingmod.ModCore.makeID;
-
-@CardConfig(damage = 16)
+@CardConfig(damage = 16, magic = 2)
 public class JiangXiangNaTie extends AbstractEasyCard {
     public final static String ID = makeID(JiangXiangNaTie.class.getSimpleName());
 
@@ -20,6 +24,32 @@ public class JiangXiangNaTie extends AbstractEasyCard {
         super(ID, 2, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
         CardModifierManager.addModifier(this, new WineMod(3));
         tags.add(CustomTags.WINE);
+    }
+
+    public void applyPowers() {
+        AbstractPower wine = AbstractDungeon.player.getPower(WinePower.POWER_ID);
+        if (wine == null) {
+            super.applyPowers();
+            return;
+        }
+        int cache = wine.amount;
+        wine.amount *= baseMagicNumber;
+        super.applyPowers();
+        wine.amount = cache;
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+
+        AbstractPower wine = AbstractDungeon.player.getPower(WinePower.POWER_ID);
+        if (wine == null) {
+            super.calculateCardDamage(mo);
+            return;
+        }
+        int cache = wine.amount;
+        wine.amount *= baseMagicNumber;
+        super.calculateCardDamage(mo);
+        wine.amount = cache;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
@@ -32,6 +62,7 @@ public class JiangXiangNaTie extends AbstractEasyCard {
     @Override
     public void upp() {
         upgradeDamage(4);
+        upgradeMagicNumber(1);
     }
 }
 // "lingmod:JiangXiangNaTie": {

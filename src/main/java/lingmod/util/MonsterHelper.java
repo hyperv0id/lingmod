@@ -1,6 +1,11 @@
 package lingmod.util;
 
-import basemod.ReflectionHacks;
+import static lingmod.ModCore.logger;
+
+import java.lang.reflect.Constructor;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -13,14 +18,10 @@ import com.megacrit.cardcrawl.monsters.exordium.ApologySlime;
 import com.megacrit.cardcrawl.monsters.exordium.Cultist;
 import com.megacrit.cardcrawl.monsters.exordium.SpikeSlime_S;
 import com.megacrit.cardcrawl.random.Random;
+
+import basemod.ReflectionHacks;
 import lingmod.ModCore;
 import lingmod.monsters.AbsSummonMonster;
-
-import java.lang.reflect.Constructor;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static lingmod.ModCore.logger;
 
 public class MonsterHelper {
     public static boolean isAttackIntent(AbstractMonster m) {
@@ -220,7 +221,7 @@ public class MonsterHelper {
         m.refreshIntentHbLocation();
     }
 
-    public static void summonMonster(Class<? extends AbsSummonMonster> summonClz) {
+    public static void summonMonster(Class<? extends AbsSummonMonster> summonClz, int baseHP, int baseDamage) {
         // 不能是抽象类
         if (summonClz.equals(AbsSummonMonster.class)) {
             ModCore.logger.info("Cannot Summon Abstract Class");
@@ -232,8 +233,9 @@ public class MonsterHelper {
             Wiz.addToBotAbstract(() -> {
                 AbsSummonMonster mo = (AbsSummonMonster) MonsterHelper
                         .spawnMonster(summonClz);
+                mo.currentHealth = mo.maxHealth = baseHP;
                 // mo.animX = 1200F * Settings.xScale;
-                mo.setDamage(3);
+                mo.setDamage(baseDamage);
                 mo.init();
                 mo.applyPowers();
                 mo.useUniversalPreBattleAction();

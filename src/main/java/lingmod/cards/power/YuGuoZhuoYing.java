@@ -20,7 +20,7 @@ public class YuGuoZhuoYing extends AbstractEasyCard {
     public static final String ID = makeID(YuGuoZhuoYing.class.getSimpleName());
 
     public YuGuoZhuoYing() {
-        super(ID, 2, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
+        super(ID, 1, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
     }
 
     @Override

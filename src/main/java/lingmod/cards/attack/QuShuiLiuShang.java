@@ -3,6 +3,7 @@ package lingmod.cards.attack;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
 import lingmod.ModCore;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
@@ -25,8 +26,17 @@ public class QuShuiLiuShang extends AbstractEasyCard {
     @Override
     public void applyPowers() {
         CardGroup cg = PlayerFieldsPatch.poetryCardGroup.get(Wiz.adp());
-        this.baseMagicNumber = cg.size();
+        if (cg != null)
+            this.baseMagicNumber = cg.size();
         super.applyPowers();
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        CardGroup cg = PlayerFieldsPatch.poetryCardGroup.get(Wiz.adp());
+        if (cg != null)
+            this.baseMagicNumber = cg.size();
+        super.calculateCardDamage(mo);
     }
 
     @Override
