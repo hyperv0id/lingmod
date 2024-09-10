@@ -327,7 +327,7 @@
   },
   "lingmod:NvErHong": {
     "NAME": "女儿红",
-    "DESCRIPTION": "打出 ${ModID}:酒牌 后，抽 !M! 张牌。"
+    "DESCRIPTION": "将 ${ModID}:酒 附加到卡牌的伤害中 NL 触发 ${ModID}:酒 的衰减效果"
   },
   "lingmod:ChunFengBuZhi": {
     "NAME": "春风不至",
@@ -356,8 +356,7 @@
   },
   "lingmod:TaoMeiWanNiang": {
     "NAME": "桃梅晚酿",
-    "DESCRIPTION": "失去所有 ${ModID}:酒 ，将其转化为酒",
-    "UPGRADE_DESCRIPTION": "获得当前 ${ModID}:酒 等值的酒"
+    "DESCRIPTION": "每消耗 !M! 张牌，获得 !${ModID}:m2! 金属化 "
   },
   "lingmod:TheNumberIs3": {
     "NAME": "其数为3",

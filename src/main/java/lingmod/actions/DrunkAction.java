@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.WingBoots;
 import com.megacrit.cardcrawl.rewards.RewardItem;
+import lingmod.monsters.AbsSummonMonster;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,7 +33,7 @@ public class DrunkAction extends AbstractGameAction {
         if (this.duration == DURATION && this.target != null) {
             boolean alreadyDead = this.target.isDying || this.target.currentHealth <= 0;
             // 如果已经死了，那么不再计算
-            if (!alreadyDead) {
+            if (!alreadyDead && !(target instanceof AbsSummonMonster)) {
                 this.target.damage(this.info);
                 if ((this.target.isDying || this.target.currentHealth <= 0) && !this.target.halfDead
                         && !this.target.hasPower("Minion")) {

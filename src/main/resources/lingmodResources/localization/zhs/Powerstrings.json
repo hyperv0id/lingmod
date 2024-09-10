@@ -226,5 +226,11 @@
     "DESCRIPTIONS": [
       "下次离开梦境时，变化所有手牌为未升级的"
     ]
+  },
+  "lingmod:TaoMeiWanNiangPower": {
+    "NAME": "桃梅晚酿",
+    "DESCRIPTIONS": [
+      "消耗 %d 张卡牌后，获得 %d 金属化"
+    ]
   }
 }
