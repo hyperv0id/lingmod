@@ -1,10 +1,10 @@
 package lingmod.powers;
 
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 弦惊将攻击所有敌人
@@ -16,5 +16,6 @@ public class ThundererPower extends AbstractEasyPower {
 
     public ThundererPower(AbstractMonster owner) {
         super(ID, powerStrings.NAME, null, false, owner, 0);
+        loadTexture("AbsSummon");
     }
 }

@@ -80,6 +80,7 @@ public class Sui7DealPower extends AbstractEasyPower
 
         if (owner == null || owner.isDeadOrEscaped()) {
             BaseMod.unsubscribeLater(this);
+            return;
         }
         logger.info("绩交易");
         addToBot(new TalkAction(provider, MonsterSui_7_Ji.DIALOGS[1], 0.5F, 2.0F));

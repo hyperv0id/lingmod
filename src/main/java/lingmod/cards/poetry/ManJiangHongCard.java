@@ -1,6 +1,5 @@
 package lingmod.cards.poetry;
 
-import com.megacrit.cardcrawl.actions.common.RemoveAllBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -25,7 +24,7 @@ public class ManJiangHongCard extends AbstractPoetryCard {
     public void use_p(AbstractPlayer p, AbstractMonster m) {
         addToBotAbstract(() -> {
             int blck = p.currentBlock;
-            addToBot(new RemoveAllBlockAction(p, p));
+            // addToBot(new RemoveAllBlockAction(p, p));
             Wiz.applyToSelf(new WinePower(p, blck / magicNumber));
         });
     }

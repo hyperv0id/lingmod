@@ -1,6 +1,7 @@
 package lingmod.cards.poetry;
 
-import basemod.AutoAdd;
+import static lingmod.ModCore.makeID;
+
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -8,10 +9,10 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+
+import basemod.AutoAdd;
 import lingmod.cards.AbstractPoetryCard;
 import lingmod.powers.PoeticMoodPower;
-
-import static lingmod.ModCore.makeID;
 
 /**
  * 飞花令：如果打出的卡牌和上次不同类，那么造成 诗兴总量AOE，失去一半
