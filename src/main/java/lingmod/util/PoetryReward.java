@@ -30,7 +30,6 @@ public class PoetryReward extends CustomReward {
         this.text = this.card.name;
     }
 
-
     public PoetryReward(AbstractPoetryCard card) {
         super(ICON, "诗词赋曲", AiraRewardEnum.POETRY_REWARD);
         this.card = card;
@@ -39,6 +38,10 @@ public class PoetryReward extends CustomReward {
 
     public boolean claimReward() {
         CardGroup poetryGrp = PlayerFieldsPatch.poetryCardGroup.get(Wiz.adp());
+        // 手动去重
+        if (poetryGrp.group.stream().anyMatch(c -> c.cardID.equals(this.card.cardID))) {
+            return true;
+        }
         poetryGrp.addToTop(this.card);
         UnlockTracker.markCardAsSeen(this.card.cardID);
         return true;

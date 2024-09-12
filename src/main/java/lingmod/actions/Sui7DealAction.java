@@ -1,7 +1,5 @@
 package lingmod.actions;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
@@ -12,6 +10,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+
+import static lingmod.ModCore.makeID;
 
 public class Sui7DealAction extends AbstractGameAction {
     public static final String ID = makeID(Sui7DealAction.class.getSimpleName());
@@ -26,7 +26,7 @@ public class Sui7DealAction extends AbstractGameAction {
 
     public void update() {
         if (this.duration == 0.5F) {
-            if (AbstractDungeon.player.hand.group.size() >= 1)
+            if (!AbstractDungeon.player.hand.group.isEmpty())
                 AbstractDungeon.handCardSelectScreen.open(TEXT[0], 99, true, true);
             else
                 this.isDone = true;
@@ -37,7 +37,7 @@ public class Sui7DealAction extends AbstractGameAction {
                 int size = 0;
                 for (AbstractCard c : AbstractDungeon.handCardSelectScreen.selectedCards.group) {
                     // 消耗
-                    this.addToTop(new ExhaustSpecificCardAction(c, AbstractDungeon.player.hand));
+                    this.addToTop(new ExhaustSpecificCardAction(c, AbstractDungeon.handCardSelectScreen.selectedCards));
                     // 随机卡
                     AbstractCard nc = AbstractDungeon.returnTrulyRandomCardInCombat().makeCopy();
                     if (c.upgraded) nc.upgrade(); // 好心地升级

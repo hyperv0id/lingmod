@@ -1,13 +1,11 @@
 package lingmod.relics;
 
-import static lingmod.ModCore.makeID;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.util.Wiz;
+
+import static lingmod.ModCore.makeID;
 
 public class DaYanChangSang extends AbstractEasyRelic {
     public static final String ID = makeID(DaYanChangSang.class.getSimpleName());
@@ -17,21 +15,9 @@ public class DaYanChangSang extends AbstractEasyRelic {
     }
 
     @Override
-    public void atTurnStartPostDraw() {
-        super.atTurnStartPostDraw();
-        this.flash();
-        Wiz.addToBotAbstract(() -> {
-            List<AbstractCard> cards = Wiz.adp().hand.group.stream().filter(c -> c.costForTurn >= 0)
-                    .collect(Collectors.toList());
-            int sum = 0;
-            for (AbstractCard c : cards) {
-                sum += c.costForTurn;
-            }
-            for (int i = 0; i < cards.size(); i++) {
-                int avg = sum / (cards.size() - i);
-                sum -= avg;
-                cards.get(i).costForTurn = avg;
-            }
-        });
+    public void onPlayCard(AbstractCard c, AbstractMonster m) {
+        super.onPlayCard(c, m);
+        if (!c.freeToPlay() && c.costForTurn >= 3 || (c.cost < 0 && Wiz.adp().energy.energy >= 3))
+            addToBot(new GainEnergyAction(1));
     }
 }

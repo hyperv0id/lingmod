@@ -1,21 +1,21 @@
 package lingmod.powers;
 
-import static lingmod.ModCore.logger;
-import static lingmod.ModCore.makeID;
-
+import basemod.BaseMod;
+import basemod.interfaces.OnPlayerTurnStartPostDrawSubscriber;
+import basemod.interfaces.PostExhaustSubscriber;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-
-import basemod.BaseMod;
-import basemod.interfaces.OnPlayerTurnStartPostDrawSubscriber;
-import basemod.interfaces.PostExhaustSubscriber;
 import lingmod.actions.Sui7DealAction;
 import lingmod.monsters.MonsterSui_7_Ji;
+
+import static lingmod.ModCore.logger;
+import static lingmod.ModCore.makeID;
 
 /**
  * 回合开始时选择牌交易，消耗牌时，绩获得1力量
@@ -32,7 +32,6 @@ public class Sui7DealPower extends AbstractEasyPower
         powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
         NAME = powerStrings.NAME;
         DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-
     }
 
     public AbstractCreature provider;
@@ -77,13 +76,16 @@ public class Sui7DealPower extends AbstractEasyPower
 
     @Override
     public void receiveOnPlayerTurnStartPostDraw() {
-
         if (owner == null || owner.isDeadOrEscaped()) {
             BaseMod.unsubscribeLater(this);
             return;
         }
         logger.info("绩交易");
-        addToBot(new TalkAction(provider, MonsterSui_7_Ji.DIALOGS[1], 0.5F, 2.0F));
+
+        addToBot(new TalkAction(provider, MonsterSui_7_Ji.DIALOGS[1], 1F, 2.0F));
         addToBot(new Sui7DealAction(provider));
     }
+
+    public static final String ACTION_ID = makeID(Sui7DealAction.class.getSimpleName());
+    private static final UIStrings actionUiStrings = CardCrawlGame.languagePack.getUIString(ACTION_ID);
 }

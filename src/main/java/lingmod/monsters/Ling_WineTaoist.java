@@ -34,6 +34,8 @@ public class Ling_WineTaoist extends CustomMonster {
                 -50.0F, 30.0F);
         this.img = ImageMaster.loadImage(IMG_PATH);
         this.hb = new Hitbox(img.getWidth(), img.getHeight());
+        this.hb_h = hb.height;
+        this.hb_w = hb.width;
         logger.info("Is IMG NULL?: " + this.img);
         this.type = EnemyType.ELITE;
         this.dialogX = -200.0F * Settings.scale;

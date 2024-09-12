@@ -1,12 +1,12 @@
 package lingmod.monsters;
 
+import basemod.BaseMod;
 import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
-import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -59,17 +59,25 @@ public class MonsterSui_7_Ji extends CustomMonster {
         if (Wiz.isPlayerLing()) {
             addToBot(new TalkAction(this, DIALOGS[0], 0.5F, 2.0F));
         }
-        getMove(2);
+        setMove((byte) 99, Intent.DEBUFF);
     }
 
     @Override
     protected void getMove(int moveID) {
-        if (moveID == 1) {
+        if (lastMove((byte) 1)) {
             this.setMove((byte) 2, Intent.ATTACK_DEBUFF, this.baseDamage);
         } else {
             this.setMove((byte) 1, Intent.ATTACK, this.baseDamage);
         }
         // this.setMove((byte) 1, Intent.MAGIC);
+    }
+
+    @Override
+    public void die() {
+        super.die();
+        Sui7DealPower power = (Sui7DealPower) getPower(Sui7DealPower.POWER_ID);
+        if (power != null)
+            BaseMod.unsubscribeLater(power);
     }
 
     @Override
@@ -84,19 +92,20 @@ public class MonsterSui_7_Ji extends CustomMonster {
                 EventStrings es = CardCrawlGame.languagePack.getEventString(makeID("SL_Monster_Talk"));
                 addToBot(new TalkAction(this, es.DESCRIPTIONS[0], 0.5f, 2.0f));
             }
+            this.setMove((byte) 1, Intent.ATTACK, this.baseDamage);
         } else {
             if (this.nextMove == 1) {
                 addToBot(new TalkAction(this, DIALOGS[2], 0.5F, 2.0F));
                 addToBot(new DamageAction(p, info, AttackEffect.FIRE));
-                addToBot(new ApplyPowerAction(
-                        p, this, new ConstrictedPower(p, this, info.output)));
+                this.setMove((byte) 2, Intent.ATTACK_DEBUFF, this.baseDamage);
             } else if (nextMove == 2) {
                 addToBot(new TalkAction(this, DIALOGS[2], 0.5F, 2.0F));
                 addToBot(new DamageAction(p, info, AttackEffect.FIRE));
+                addToBot(new ApplyPowerAction(p, this, new ConstrictedPower(p, this, info.output)));
+                this.setMove((byte) 1, Intent.ATTACK, this.baseDamage);
             }
         }
 
-        AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
         firstTurn = false;
     }
 }

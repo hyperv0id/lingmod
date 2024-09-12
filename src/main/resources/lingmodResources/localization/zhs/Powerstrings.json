@@ -95,7 +95,7 @@
   "${ModID}:WinePower": {
     "NAME": "酒",
     "DESCRIPTIONS": [
-      "你的下一张攻击牌所造成的伤害增加 %d NL #b在梦中: 仅失去一半酒"
+      "你的下一张攻击牌所造成的伤害增加 %d ，然后失去一半的酒 NL #b在梦中: 仅失去1"
     ]
   },
   "${ModID}:PoemVSQuickSandPower": {

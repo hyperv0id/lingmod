@@ -1,19 +1,16 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.makeID;
-
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import basemod.BaseMod;
+import basemod.interfaces.PostExhaustSubscriber;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.BaseMod;
-import basemod.interfaces.PostExhaustSubscriber;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
-import lingmod.powers.PoeticMoodPower;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 随付笺咏醉屠苏: 召唤物被击倒/吸收/回收时令额外获得4(+1)点技力、攻击力+3%（攻击力加成最多叠加5层）
@@ -30,10 +27,10 @@ public class Feature_2_Card extends AbstractEasyCard implements PostExhaustSubsc
 
     @Override
     public void upp() {
-        gain();
+        reduce();
     }
 
-    protected void gain() {
+    protected void reduce() {
         if (this.cost > 0)
             updateCost(-1);
         upgradeMagicNumber(1);
@@ -52,10 +49,8 @@ public class Feature_2_Card extends AbstractEasyCard implements PostExhaustSubsc
     @Override
     public void receivePostExhaust(AbstractCard card) {
         AbstractPlayer p = AbstractDungeon.player;
-        if (p != null && p.hand != null && p.hand.contains(this) || p.limbo.contains(this)) {
-            this.gain();
-            addToBot(new ApplyPowerAction(p, p,
-                    new PoeticMoodPower(p, 1)));
+        if (p != null && (p.hand.contains(this) || p.limbo.contains(this))) {
+            this.reduce();
         }
     }
 }

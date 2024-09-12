@@ -16,7 +16,7 @@ public class GuiXingWineCard extends AbstractEasyCard {
     public static final String ID = makeID(GuiXingWineCard.class.getSimpleName());
 
     public GuiXingWineCard() {
-        super(ID, 1, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
+        super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
     }
 
     @Override

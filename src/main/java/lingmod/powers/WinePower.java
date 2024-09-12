@@ -1,5 +1,6 @@
 package lingmod.powers;
 
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -45,10 +46,10 @@ public class WinePower extends AbstractEasyPower {
      */
     public void damp() {
         this.flash();
-        if (Wiz.isStanceNell()) {
-            addToBotAbstract(() -> reducePower(amount - (amount / 2)));
+        if (!Wiz.isStanceNell()) {
+            addToBot(new ReducePowerAction(owner, owner, this, amount - (amount / 2)));
         } else {
-            addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+            addToBot(new ReducePowerAction(owner, owner, this, 1));
         }
     }
 

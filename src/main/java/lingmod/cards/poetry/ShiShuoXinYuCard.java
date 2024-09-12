@@ -14,7 +14,7 @@ public class ShiShuoXinYuCard extends AbstractPoetryCard {
     public static final String ID = makeID(ShiShuoXinYuCard.class.getSimpleName());
 
     public ShiShuoXinYuCard() {
-        super(ID, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
+        super(ID, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
     }
 
     @Override

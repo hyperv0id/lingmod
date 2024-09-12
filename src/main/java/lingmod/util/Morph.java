@@ -163,6 +163,9 @@ public class Morph {
         // other
         p.hb.resize(hbWBackup, hbHBackup);
         p.hb.move(p.drawX, p.drawY);
+
+        p.hb_w = p.hb.width;
+        p.hb_h = p.hb.height;
         p.flipHorizontal = false;
         currentMorph = "";
     }

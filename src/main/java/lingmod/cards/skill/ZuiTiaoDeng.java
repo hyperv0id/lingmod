@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
-import lingmod.powers.WinePower;
 import lingmod.util.Wiz;
 
 import static lingmod.ModCore.makeID;
@@ -31,11 +30,12 @@ public class ZuiTiaoDeng extends AbstractEasyCard {
     public void triggerOnExhaust() {
         super.triggerOnExhaust();
         addToBot(new GainEnergyAction(3));
-        WinePower wine = (WinePower) Wiz.adp().getPower(WinePower.POWER_ID);
-        if (wine != null) {
-            addToBot(new MakeTempCardInDiscardAction(makeStatEquivalentCopy(), 1));
-            addToBotAbstract(wine::damp);
-        }
+    }
+
+    @Override
+    public void triggerWhenDrawn() {
+        super.triggerWhenDrawn();
+        addToBot(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(), 1));
     }
 
     @Override

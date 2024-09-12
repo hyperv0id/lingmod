@@ -205,7 +205,8 @@
   },
   "${ModID}:LieDaoZiWineCard": {
     "NAME": "烈刀子酒",
-    "DESCRIPTION": "翻倍你的 ${ModID}:酒 "
+    "DESCRIPTION": "翻倍你的 ${ModID}:酒 ",
+    "UPGRADE_DESCRIPTION": "获得你的 ${ModID}:酒 层数 2 倍的 ${ModID}:酒 "
   },
   "${ModID}:HuSongWineCard": {
     "NAME": "湖松酒",
@@ -278,7 +279,7 @@
   },
   "lingmod:ZhengFuWangXiang": {
     "NAME": "征夫望乡",
-    "DESCRIPTION": "消耗所有手牌 NL 手牌中加入一张 特殊的裹甲衔枚"
+    "DESCRIPTION": "消耗所有手牌 NL 手牌中加入一张 特殊的裹甲衔枚 NL 其基础数值为 !M!"
   },
   "${ModID}:QuShuiLiuShang": {
     "NAME": "曲水流觞",
@@ -294,8 +295,8 @@
   },
   "lingmod:RuMengLing": {
     "NAME": "如梦令",
-    "DESCRIPTION": "选择一张牌消耗，在 弃牌堆/抽牌堆 中加入其一张复制",
-    "UPGRADE_DESCRIPTION": "选择一张牌消耗，在 弃牌堆/抽牌堆/手牌 中加入其一张复制"
+    "DESCRIPTION": "选择一张牌消耗，在 弃牌堆和抽牌堆 中加入其一张复制",
+    "UPGRADE_DESCRIPTION": "选择一张牌消耗，在 弃牌堆、抽牌堆、手牌 中加入其一张复制"
   },
   "lingmod:NoNamed_0620": {
     "NAME": "未命名",
@@ -327,7 +328,7 @@
   },
   "lingmod:NvErHong": {
     "NAME": "女儿红",
-    "DESCRIPTION": "将 ${ModID}:酒 附加到卡牌的伤害中 NL 触发 ${ModID}:酒 的衰减效果"
+    "DESCRIPTION": "将 ${ModID}:酒 平均附加到卡牌的伤害中 NL 并触发 ${ModID}:酒 的衰减效果"
   },
   "lingmod:ChunFengBuZhi": {
     "NAME": "春风不至",
@@ -373,6 +374,6 @@
   },
   "lingmod:ZuiTiaoDeng": {
     "NAME": "醉挑灯",
-    "DESCRIPTION": "获得 !B! 点格挡 NL 被 消耗 时，获得 [E] [E] [E] NL 被 消耗 时有 ${ModID}:酒 ：触发 ${ModID}:酒 的衰减效果，在弃牌堆中放入一张复制"
+    "DESCRIPTION": "获得 !B! 点格挡 NL 被 消耗 时，获得 [E] [E] [E] NL 抽到时，在弃牌堆中放入一张复制"
   }
 }

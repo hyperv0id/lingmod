@@ -1,20 +1,15 @@
 package lingmod.powers;
 
-import com.evacipated.cardcrawl.modthespire.lib.ByRef;
-import com.evacipated.cardcrawl.modthespire.lib.LineFinder;
-import com.evacipated.cardcrawl.modthespire.lib.Matcher;
-import com.evacipated.cardcrawl.modthespire.lib.SpireInsertLocator;
-import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePatch2;
+import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-
 import javassist.CtBehavior;
 import lingmod.ModCore;
 import lingmod.util.Wiz;
+
+import static lingmod.ModCore.logger;
 
 public class NI3Power extends AbstractEasyPower {
 
@@ -23,28 +18,30 @@ public class NI3Power extends AbstractEasyPower {
 
     public NI3Power(AbstractCreature owner) {
         super(ID, powerStrings.NAME, PowerType.BUFF, false, owner, 3);
+        this.priority = 99;
     }
 
-    @Override
-    public void onInitialApplication() {
-        super.onInitialApplication();
+    public float atDamageFinalGive(float damage) {
+        float small = damage / 10 * 10 + 3;
+        float big = small + 10;
+        float val = big;
+        if (Math.abs(damage - small) < Math.abs(damage - big)) {
+            val = small;
+        }
+        return val;
     }
 
     @SpirePatch2(clz = AbstractMonster.class, method = "damage")
-    public static class QSWS_Patch {
-        @SpireInsertPatch(locator = Locator.class, localvars = { "damageAmount", })
+    public static class QSWS_Damage_Patch {
+        @SpireInsertPatch(locator = Locator.class, localvars = {"damageAmount",})
         public static void Insert(AbstractMonster __instance, @ByRef int[] damageAmount) {
             if (Wiz.adp() == null)
                 return;
-            AbstractPower qsws = Wiz.adp().getPower(NI3Power.ID);
+            NI3Power qsws = (NI3Power) Wiz.adp().getPower(NI3Power.ID);
             if (qsws != null) {
-                int small = damageAmount[0] / 10 * 10 + 3;
-                int big = small + 10;
-                int val = big;
-                if (Math.abs(damageAmount[0] - small) < Math.abs(damageAmount[0] - big)) {
-                    val = small;
-                }
-                __instance.lastDamageTaken = Math.min(val, __instance.currentHealth);
+                damageAmount[0] = (int) qsws.atDamageFinalGive(damageAmount[0]);
+                __instance.lastDamageTaken = Math.min(damageAmount[0], __instance.currentHealth);
+                logger.info("NI3: 伤害变为" + __instance.lastDamageTaken);
             }
 
         }
@@ -58,4 +55,19 @@ public class NI3Power extends AbstractEasyPower {
             }
         }
     }
+
+    @SpirePatch2(clz = AbstractMonster.class, method = "calculateDamage")
+    public static class QSWS_Calc_Patch {
+        @SpirePostfixPatch
+        public static SpireReturn<Integer> Postfix(AbstractMonster __instance, int dmg) {
+            if (Wiz.adp() == null)
+                return SpireReturn.Continue();
+            NI3Power qsws = (NI3Power) Wiz.adp().getPower(NI3Power.ID);
+            if (qsws != null) {
+                return SpireReturn.Return((int) qsws.atDamageFinalGive(dmg));
+            }
+            return SpireReturn.Continue();
+        }
+    }
+
 }

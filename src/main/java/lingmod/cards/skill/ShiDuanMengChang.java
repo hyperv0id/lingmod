@@ -1,21 +1,20 @@
 package lingmod.cards.skill;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.powers.DreamIsEndless;
 import lingmod.powers.PoemIsShort;
 
+import static lingmod.ModCore.makeID;
+
 /**
  * 免伤20%，转换为1/M缠绕
  */
-@CardConfig(magic = 20)
+@CardConfig(magic = 25)
 @Credit(username = "明日方舟", platform = "鹰角网络", link = "https://prts.wiki/w/令")
 public class ShiDuanMengChang extends AbstractEasyCard {
 

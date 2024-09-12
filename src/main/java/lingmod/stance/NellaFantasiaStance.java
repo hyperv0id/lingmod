@@ -66,6 +66,7 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerTurnS
     }
 
     public void onEnterStance() {
+        AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
         if (sfxId != -1L) {
             this.stopIdleSfx();
         }
