@@ -106,7 +106,10 @@ public class ModConfig {
                 }
             }
         }
+
         if (skinInfo == null) skinInfo = SkinInfo.NCG;
+        // TODO: NCG效果最好，先强制换成NCG
+        skinInfo = SkinInfo.NCG;
     }
 
     public static void saveSkinInfo() {

@@ -1,8 +1,8 @@
 {
   "${ModID}:ChongJinJiuCard": {
     "NAME": "重进酒",
-    "DESCRIPTION": "总是变化为打出的上一张牌的 临时复制",
-    "UPGRADE_DESCRIPTION": "总是变化为打出的上一张牌"
+    "DESCRIPTION": "总是 ${ModID}:变化 为打出的上一张牌的 临时复制",
+    "UPGRADE_DESCRIPTION": "总是 ${ModID}:变化 为打出的上一张牌"
   },
   "${ModID}:Defend": {
     "NAME": "防御",
@@ -10,7 +10,7 @@
   },
   "${ModID}:NingZuoWuCard": {
     "NAME": "宁作吾",
-    "DESCRIPTION": "你的能力和异常不会被移除 NL 无实体、荆棘等拥有受伤逻辑的能力仍然会被移除"
+    "DESCRIPTION": "你的能力和异常不会被移除 NL 无实体 、 荆棘 等拥有受伤逻辑的能力仍然会被移除"
   },
   "${ModID}:Strike": {
     "NAME": "打击",
@@ -50,7 +50,7 @@
   },
   "${ModID}:Peripateticism": {
     "NAME": "“逍遥”",
-    "DESCRIPTION": "${ModID}:召唤 。 NL 消耗 所有非攻击牌，每张给予 !M! 缠绕 NL 立刻结算缠绕效果",
+    "DESCRIPTION": "${ModID}:召唤 。 NL 消耗 所有非攻击牌，每张给予 !M! 缠绕 NL 立刻结算 缠绕 效果",
     "EXTENDED_DESCRIPTION": [
       "召唤一个 ${ModID}:“逍遥” "
     ]
@@ -111,7 +111,7 @@
   },
   "${ModID}:ShiDuanMengChang": {
     "NAME": "诗短梦长",
-    "DESCRIPTION": "获得 !M!% 伤害减免 NL 损失生命时，获得等量 ${ModID}:缠绕 NL （因缠绕损失的生命也会被计入）"
+    "DESCRIPTION": "获得 !M!% 伤害减免 NL 损失生命时，获得等量 ${ModID}:缠绕 NL （因 缠绕 损失的生命也会被计入）"
   },
   "${ModID}:AltGuangHui": {
     "NAME": "光辉ALT",
@@ -175,8 +175,8 @@
   },
   "${ModID}:QingMingDream": {
     "NAME": "清明梦",
-    "DESCRIPTION": "离开 lingmod:梦境 ，敌人减少的力量变为永久 NL （减少 !M! 点力量）",
-    "UPGRADE_DESCRIPTION": "离开 lingmod:梦境 ，敌人减少的力量变为永久，减少双倍力量 NL （减少 !M! 点力量）",
+    "DESCRIPTION": "离开 lingmod:梦境 ，统计敌人因梦境减少的攻击力，其减少 !M! 点 力量 ",
+    "UPGRADE_DESCRIPTION": "离开 lingmod:梦境 ，统计敌人因梦境减少的攻击力，其减少双倍 力量 NL （减少 !M! 点力量）",
     "EXTENDED_DESCRIPTION": [
       "这不是梦",
       "梦是真实的"
@@ -188,7 +188,7 @@
   },
   "${ModID}:JiaoLu": {
     "NAME": "蕉鹿梦",
-    "DESCRIPTION": "获得 !M! 力量和敏捷，回合结束后失去"
+    "DESCRIPTION": "获得 !M! 力量 和 敏捷 ，回合结束后失去"
   },
   "${ModID}:BeiMoTing": {
     "NAME": "杯莫停",
@@ -214,11 +214,11 @@
   },
   "${ModID}:GuiXingWineCard": {
     "NAME": "归行酒",
-    "DESCRIPTION": "打出弃牌堆随机一张牌，将其 消耗"
+    "DESCRIPTION": "打出弃牌堆的随机一张牌，将其 消耗"
   },
   "${ModID}:ChiJiuSui": {
     "NAME": "辞旧岁",
-    "DESCRIPTION": "丢弃所有手牌，造成 !D!*张数 点伤害 X 次"
+    "DESCRIPTION": "丢弃所有手牌，每张可获得 !M! 格挡，共 !B! 点格挡 NL 获得格挡 X 次"
   },
   "${ModID}:FengQiTanJian": {
     "NAME": "风起弹剑",
@@ -234,7 +234,10 @@
   },
   "${ModID}:YunLiaoWineCard": {
     "NAME": "云辽酒",
-    "DESCRIPTION": "获得 !M! ${ModID}:酒 "
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [
+      "modifier修改了描述"
+    ]
   },
   "${ModID}:GuanShanYuan": {
     "NAME": "关山远",
@@ -242,14 +245,14 @@
   },
   "${ModID}:BlackPawn": {
     "NAME": "黑子",
-    "DESCRIPTION": "造成 !D! 点伤害 !M! 次，每张黑子使伤害次数 1 NL 梦中：在抽牌堆加入一张此牌的复制",
+    "DESCRIPTION": "造成 !D! 点伤害 !M! 次，每张黑子使伤害次数 1 NL 梦中：选择抽牌堆一张牌 ${ModID}:变化 为此牌",
     "EXTENDED_DESCRIPTION": [
-      "选择一张牌变化为“黑子”"
+      "选择一张牌 ${ModID}:变化 为“黑子”"
     ]
   },
   "lingmod:WhitePawn": {
     "NAME": "白子",
-    "DESCRIPTION": "获得 !B! 点格挡 !M! 次，次数为白子数量 NL 梦中：选择抽牌堆一张牌变化为此牌",
+    "DESCRIPTION": "获得 !B! 点格挡 !M! 次，次数为白子数量 NL 梦中：选择抽牌堆一张牌 ${ModID}:变化 为此牌",
     "EXTENDED_DESCRIPTION": [
       "选择一张牌变化为“白子”"
     ]
@@ -311,7 +314,7 @@
   },
   "lingmod:JiangXiangNaTie": {
     "NAME": "酱香拿铁",
-    "DESCRIPTION": "造成 !D! 点伤害，活力加成为 !M! 倍 NL 如果目标是召唤物，增加伤害的同时，增加等量最大生命"
+    "DESCRIPTION": "造成 !D! 点伤害，活力加成为 !M! 倍 NL 如果目标是 lingmod:召唤物 ，增加伤害的同时，增加等量最大生命"
   },
   "lingmod:GuLeiXinLiu": {
     "NAME": "故垒新柳",
@@ -328,7 +331,7 @@
   },
   "lingmod:NvErHong": {
     "NAME": "女儿红",
-    "DESCRIPTION": "将 ${ModID}:酒 平均附加到卡牌的伤害中 NL 并触发 ${ModID}:酒 的衰减效果"
+    "DESCRIPTION": "将 ${ModID}:酒 平均附加到卡牌的基础伤害中。触发 ${ModID}:酒 的衰减效果 NL 平均附加 !M! 点"
   },
   "lingmod:ChunFengBuZhi": {
     "NAME": "春风不至",
@@ -365,8 +368,8 @@
   },
   "lingmod:ZhuYeZhouCard": {
     "NAME": "竹叶舟",
-    "DESCRIPTION": "升级所有手牌，下次离开梦境时，变化所有手牌为未升级的",
-    "UPGRADE_DESCRIPTION": "升级所有牌，下次离开梦境时，变化所有手牌为未升级的"
+    "DESCRIPTION": "升级所有手牌，下次离开梦境时， ${ModID}:变化 所有手牌为未升级的",
+    "UPGRADE_DESCRIPTION": "升级所有牌，下次离开梦境时， ${ModID}:变化 所有手牌为未升级的"
   },
   "lingmod:DaMoFeiHuo": {
     "NAME": "大漠飞火",

@@ -1,14 +1,13 @@
 package lingmod.cards.power;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
-import lingmod.cards.mod.TempExhaustMod;
 import lingmod.interfaces.Credit;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 本回合所有手牌耗能0，打出后消耗
@@ -29,7 +28,7 @@ public class ChunFengBuZhi extends AbstractEasyCard {
             c.isCostModifiedForTurn = true;
             c.isCostModified = true;
             if (!c.exhaust)
-                CardModifierManager.addModifier(c, new TempExhaustMod()); // 临时消耗
+                CardModifierManager.addModifier(c, new ExhaustMod()); // 临时消耗
         });
     }
 

@@ -29,10 +29,10 @@
       "仄仄平平平仄仄",
       "平仄？仄平平仄仄平平"
     ],
-    "DESCRIPTION": "获得 [E] NL 每完成半阙，改为获得额外回合"
+    "DESCRIPTION": "获得 [E] NL 每完成半 lingmod:阙 ，改为获得额外回合"
   },
-  "lingmod:DingFengBoCard_1": {
-    "NAME": "定风波TEST",
+  "lingmod:DingFengBoCard_P1": {
+    "NAME": "定风波",
     "CONTENT": [
       "料峭春风吹酒醒",
       "微冷，山头斜照却相迎",
@@ -45,7 +45,23 @@
       "平仄仄平平仄仄",
       "平仄，仄平平仄仄平平"
     ],
-    "DESCRIPTION": "获得 [E] NL 每完成半阙，改为获得额外回合"
+    "DESCRIPTION": "获得 [E] "
+  },
+  "lingmod:DingFengBoCard_P2": {
+    "NAME": "定风波",
+    "CONTENT": [
+      "料峭春风吹酒醒",
+      "微冷，山头斜照却相迎",
+      "回首向来萧瑟处",
+      "归去，也无风雨也无晴"
+    ],
+    "TONE_PATTERN": [
+      "仄仄平平平仄仄",
+      "平仄，平平平仄仄平平",
+      "平仄仄平平仄仄",
+      "平仄，仄平平仄仄平平"
+    ],
+    "DESCRIPTION": "获得额外回合"
   },
   "lingmod:JianKeCard": {
     "NAME": "剑客",
@@ -79,7 +95,7 @@
       "平仄平平平仄平",
       "仄平仄仄平"
     ],
-    "DESCRIPTION": "丢弃所有非保留牌 。 抽 !M! 张牌"
+    "DESCRIPTION": "造成 !D! 点伤害 NL （伤害为此诗词的剩余进度）"
   },
   "lingmod:ShiShuoXinYuCard": {
     "NAME": "世说新语·品藻",

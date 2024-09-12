@@ -1,13 +1,12 @@
 package lingmod.cards.poetry;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.cards.AbstractPoetryCard;
 import lingmod.interfaces.Credit;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 剑客: 造成你当前格挡值2倍的伤害，失去一半的格挡
@@ -29,6 +28,7 @@ public class JianKeCard extends AbstractPoetryCard {
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
         baseDamage = AbstractDungeon.player.currentBlock * 2;
+
         super.calculateCardDamage(mo);
     }
 

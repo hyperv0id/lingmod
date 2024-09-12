@@ -1,5 +1,6 @@
 package lingmod.cards.skill;
 
+import basemod.AutoAdd;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -16,6 +17,7 @@ import static lingmod.util.Wiz.isStanceNell;
  * 自在：如果你/目标存在至少3种负面效果，那么获得E
  * 真自在者不知何为自在
  */
+@AutoAdd.Ignore
 @CardConfig(magic = 3)
 public class ZiZai extends AbstractEasyCard {
     public final static String ID = makeID(ZiZai.class.getSimpleName());

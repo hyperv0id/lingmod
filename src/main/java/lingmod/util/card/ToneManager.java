@@ -69,6 +69,9 @@ public class ToneManager {
             StringBuilder sb = new StringBuilder();
             int now = 0;
             for (; now < idx_2; now++) {
+                if (isLastVerse()) {
+                    sb.append(" #y");
+                }
                 sb.append(tokens.get(idx_1).charAt(now));
                 sb.append(" ");
             }
@@ -95,13 +98,24 @@ public class ToneManager {
         return tipStrCache;
     }
 
+    private boolean isLastVerse() {
+        return idx_1 == tokens.size() - 1;
+    }
+
     public int remainToken() {
         return tokens.get(idx_1).length() - idx_2;
     }
 
+    public int remainProgress() {
+        int ret = tokens.get(idx_1).length() - idx_2;
+        for (int i1 = idx_1; i1 < tokens.size(); i1++) {
+            ret += tokens.get(i1).length();
+        }
+        return ret;
+    }
+
     public char peek() {
-        char c = tokens.get(idx_1).charAt(idx_2);
-        return c;
+        return tokens.get(idx_1).charAt(idx_2);
     }
 
     public Tone peekTone() {
@@ -118,7 +132,7 @@ public class ToneManager {
         return Tone.OTHER;
     }
 
-    private void next() {
+    public void next() {
         idx_2++;
         if (idx_2 >= tokens.get(idx_1).length()) {
             idx_2 = 0;

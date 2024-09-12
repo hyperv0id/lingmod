@@ -1,14 +1,8 @@
 package lingmod.monsters;
 
-import static lingmod.ModCore.makeID;
-import static lingmod.ModCore.makeImagePath;
-
+import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.EscapeAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.RollMoveAction;
-import com.megacrit.cardcrawl.actions.common.SetMoveAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -18,22 +12,22 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.BarricadePower;
-import com.megacrit.cardcrawl.powers.IntangiblePower;
 import com.megacrit.cardcrawl.powers.PlatedArmorPower;
-
-import basemod.abstracts.CustomMonster;
-import lingmod.actions.FastApplyPower_Action;
 import lingmod.powers.GiveGoldAsHP;
+import lingmod.powers.InvincibleForPlayer;
 import lingmod.powers.ShiftingPower2;
 import lingmod.util.MonsterHelper;
 import lingmod.util.Wiz;
+
+import static lingmod.ModCore.makeID;
+import static lingmod.ModCore.makeImagePath;
 
 /**
  * 挑山人大战掌柜的
  */
 public class InnManager extends CustomMonster {
     public static final String ID = makeID(InnManager.class.getSimpleName());
-    public static final int MAX_HP = 100;
+    public static final int MAX_HP = 90;
     protected static final MonsterStrings ms = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = ms.NAME;
     public static final String[] MOVES = ms.MOVES;
@@ -58,9 +52,10 @@ public class InnManager extends CustomMonster {
     @Override
     public void usePreBattleAction() {
         super.useUniversalPreBattleAction();
-        addToBot(new FastApplyPower_Action(this, this, new IntangiblePower(this, 99)));
-        addToBot(new FastApplyPower_Action(this, this, new GiveGoldAsHP(this, 2)));
-        addToBot(new FastApplyPower_Action(this, this, new ShiftingPower2(this)));
+        addToBot(new ApplyPowerAction(this, this, new InvincibleForPlayer(this)));
+//        addToBot(new ApplyPowerAction(this, this, new IntangiblePower(this, 99)));
+        addToBot(new ApplyPowerAction(this, this, new GiveGoldAsHP(this, 2)));
+        addToBot(new ApplyPowerAction(this, this, new ShiftingPower2(this)));
     }
 
 
@@ -112,8 +107,8 @@ public class InnManager extends CustomMonster {
     }
 
     public void turn_buff() {
-        addToBot(new FastApplyPower_Action(this, this, new PlatedArmorPower(this, 16)));
-        addToBot(new FastApplyPower_Action(this, this, new BarricadePower(this)));
+        addToBot(new ApplyPowerAction(this, this, new PlatedArmorPower(this, 16)));
+        addToBot(new ApplyPowerAction(this, this, new BarricadePower(this)));
     }
 
     private void turn_attack() {

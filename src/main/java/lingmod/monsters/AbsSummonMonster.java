@@ -1,9 +1,7 @@
 package lingmod.monsters;
 
-import static lingmod.ModCore.logger;
-
-import java.util.HashMap;
-
+import basemod.ReflectionHacks;
+import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -13,11 +11,13 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-
-import basemod.ReflectionHacks;
-import basemod.abstracts.CustomMonster;
+import lingmod.powers.AbstractSummonDescPower;
 import lingmod.util.MonsterHelper;
 import lingmod.util.Wiz;
+
+import java.util.HashMap;
+
+import static lingmod.ModCore.logger;
 
 public abstract class AbsSummonMonster extends CustomMonster {
     public String img_up;
@@ -34,6 +34,7 @@ public abstract class AbsSummonMonster extends CustomMonster {
     @Override
     public void usePreBattleAction() {
         super.usePreBattleAction();
+        addToBot(new ApplyPowerAction(this, this, new AbstractSummonDescPower(this)));
         showHealthBar();
         createIntent();
         MonsterHelper.MoveMonster(this, AbstractDungeon.player.drawX + 200.0F * Settings.scale,

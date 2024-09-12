@@ -1,11 +1,10 @@
 package lingmod.cards.skill;
 
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
 import lingmod.ModCore;
 import lingmod.actions.ExhaustAllAction;
 import lingmod.cards.AbstractEasyCard;
@@ -26,11 +25,13 @@ public class ZhengFuWangXiang extends AbstractEasyCard {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         CardModifierManager.addModifier(this, new ExhaustMod());
         this.cardsToPreview = new GuoJiaXianMei();
+        this.cardsToPreview.damage = this.cardsToPreview.block = magicNumber;
     }
 
     @Override
     public void upp() {
         upgradeMagicNumber(3);
+        this.cardsToPreview.damage = this.cardsToPreview.block = magicNumber;
     }
 
     @Override

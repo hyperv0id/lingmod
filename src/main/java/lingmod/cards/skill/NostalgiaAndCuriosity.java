@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.screens.stats.RunData;
 import lingmod.actions.NostalgiaAndCuriosityAction;
 import lingmod.cards.AbstractEasyCard;
+import lingmod.cards.attack.GuoJiaXianMei;
 import lingmod.cards.attack.Strike;
 import lingmod.character.Ling;
 import lingmod.interfaces.CardConfig;
@@ -72,6 +73,9 @@ public class NostalgiaAndCuriosity extends AbstractEasyCard {
 
     public static void loadRunData() {
         FileHandle[] folder = Gdx.files.local("runs/PLAYER_LING").list();
+        if (folder == null) {
+            folder = Gdx.files.local("runs/2_PLAYER_LING").list();
+        }
         // int amt = folder.length;
         for (FileHandle file : folder) {
             try {
@@ -119,6 +123,11 @@ public class NostalgiaAndCuriosity extends AbstractEasyCard {
                         .filter(pic -> !pic.equals("SKIP"))
                         .forEach(cardsSelected::add));
         logger.info("Cards Selected: " + cardsSelected);
+        if (cardsSelected.isEmpty()) {
+            cardsSelected.add(new GuoJiaXianMei().cardID);
+            cardsSelected.add(new GuoJiaXianMei().cardID);
+            cardsSelected.add(new GuoJiaXianMei().cardID);
+        }
     }
 
     @Override

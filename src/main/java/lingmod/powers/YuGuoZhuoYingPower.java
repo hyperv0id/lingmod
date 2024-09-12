@@ -20,7 +20,7 @@ public class YuGuoZhuoYingPower extends AbstractEasyPower {
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.BUFF;
     private static final boolean TURN_BASED = true; // 是否回合后消失
-    private boolean checkExhaustPile;
+    private final boolean checkExhaustPile;
 
     public YuGuoZhuoYingPower(AbstractCreature owner, int amount, boolean checkExhaustPile) {
         super(POWER_ID, NAME, TYPE, TURN_BASED, owner, amount);
@@ -35,7 +35,7 @@ public class YuGuoZhuoYingPower extends AbstractEasyPower {
         flash();
         int blck = c.freeToPlayOnce ? 0 : c.costForTurn;
         blck *= this.amount;
-        if (blck >= 0) {
+        if (blck > 0) {
             Wiz.atb(new GainBlockAction(Wiz.adp(), blck));
         }
     }

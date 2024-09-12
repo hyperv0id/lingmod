@@ -147,6 +147,11 @@ public abstract class AbstractEasyCard extends CustomCard {
             textureString = makeImagePath(prefix + cardName + ".png");
         FileHandle h = Gdx.files.internal(textureString);
         if (!h.exists()) {
+            prefix = "cards/poetry/";
+            textureString = makeImagePath(prefix + cardName + ".png");
+            h = Gdx.files.internal(textureString);
+        }
+        if (!h.exists()) {
             // 尝试使用默认图片
             textureString = makeImagePath(prefix + "default.png");
             h = Gdx.files.internal(textureString);

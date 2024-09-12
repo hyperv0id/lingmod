@@ -12,7 +12,7 @@ import static lingmod.ModCore.makeID;
 
 /**
  * 我是谁？
- * 不能获得新能力，被自己DEBUFF时失去此能力
+ * 不能获得新能力
  * 清除所有异常
  */
 @Credit(username = "柞木不朽", link = "https://www.bilibili.com/video/BV1xa4y1C7vV", platform = "bilibili")
@@ -21,7 +21,7 @@ public class Whoami_Ling extends AbstractEasyCard {
     public static final String ID = makeID(NAME);
 
     public Whoami_Ling() {
-        super(ID, 3, CardType.POWER, CardRarity.SPECIAL, CardTarget.SELF);
+        super(ID, 2, CardType.POWER, CardRarity.SPECIAL, CardTarget.SELF);
     }
 
     @Override

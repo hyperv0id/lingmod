@@ -1,14 +1,8 @@
 package lingmod.monsters;
 
-import static lingmod.ModCore.makeID;
-import static lingmod.ModCore.makeImagePath;
-
+import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.EscapeAction;
-import com.megacrit.cardcrawl.actions.common.RemoveAllBlockAction;
-import com.megacrit.cardcrawl.actions.common.RollMoveAction;
-import com.megacrit.cardcrawl.actions.common.SetMoveAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -16,22 +10,22 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.IntangiblePower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-
-import basemod.abstracts.CustomMonster;
-import lingmod.actions.FastApplyPower_Action;
 import lingmod.powers.GiveGoldAsHP;
+import lingmod.powers.InvincibleForPlayer;
 import lingmod.powers.ShiftingPower2;
 import lingmod.util.MonsterHelper;
 import lingmod.util.Wiz;
+
+import static lingmod.ModCore.makeID;
+import static lingmod.ModCore.makeImagePath;
 
 /**
  * 挑山人大战掌柜的
  */
 public class MountainPicker extends CustomMonster {
     public static final String ID = makeID(MountainPicker.class.getSimpleName());
-    public static final int MAX_HP = 100;
+    public static final int MAX_HP = 60;
     protected static final MonsterStrings ms = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = ms.NAME;
     protected static final String IMG_PATH = makeImagePath("monsters/Avg_avg_npc_302.png");
@@ -41,6 +35,8 @@ public class MountainPicker extends CustomMonster {
     public MountainPicker() {
         super(NAME, ID, MAX_HP, -10.0F, -30.0F, 476.0F, 410.0F, IMG_PATH,
                 -250.0F, 30.0F);
+        this.hb_w = hb.width;
+        this.hb_h = hb.height;
         this.type = EnemyType.NORMAL;
         this.dialogX = -200.0F * Settings.scale;
         this.dialogY = 10.0F * Settings.scale;
@@ -51,9 +47,10 @@ public class MountainPicker extends CustomMonster {
     @Override
     public void usePreBattleAction() {
         super.useUniversalPreBattleAction();
-        addToBot(new FastApplyPower_Action(this, this, new IntangiblePower(this, 99)));
-        addToBot(new FastApplyPower_Action(this, this, new GiveGoldAsHP(this, 1)));
-        addToBot(new FastApplyPower_Action(this, this, new ShiftingPower2(this)));
+//        addToBot(new ApplyPowerAction(this, this, new IntangiblePower(this, 99)));
+        addToBot(new ApplyPowerAction(this, this, new InvincibleForPlayer(this)));
+        addToBot(new ApplyPowerAction(this, this, new GiveGoldAsHP(this, 1)));
+        addToBot(new ApplyPowerAction(this, this, new ShiftingPower2(this)));
     }
 
     public AbstractCreature getTarget() {
@@ -72,12 +69,12 @@ public class MountainPicker extends CustomMonster {
                 break;
             case 2:
                 turn_atkb1();
-                addToBot(new FastApplyPower_Action(this, this, new StrengthPower(this, 2)));
+                addToBot(new ApplyPowerAction(this, this, new StrengthPower(this, 2)));
                 setMove((byte) 3, Intent.ATTACK_BUFF, damage.get(1).base);
                 break;
             case 3:
                 turn_atkb2();
-                addToBot(new FastApplyPower_Action(this, this, new StrengthPower(this, 2)));
+                addToBot(new ApplyPowerAction(this, this, new StrengthPower(this, 2)));
                 setMove((byte) 4, Intent.ATTACK_DEBUFF);
                 break;
             case 4:
@@ -104,7 +101,7 @@ public class MountainPicker extends CustomMonster {
     }
 
     public void turn_buff() {
-        addToBot(new FastApplyPower_Action(this, this, new StrengthPower(this, 5)));
+        addToBot(new ApplyPowerAction(this, this, new StrengthPower(this, 5)));
     }
 
     private void turn_atkb1() {

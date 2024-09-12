@@ -28,8 +28,12 @@ public class Whoami_Wang extends AbstractEasyCard {
     }
 
     @Override
+    public boolean canUpgrade() {
+        return false;
+    }
+
+    @Override
     public void upp() {
-        upgradeMagicNumber(-2);
     }
 
     @Override

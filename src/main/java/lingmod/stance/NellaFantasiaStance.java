@@ -32,7 +32,7 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerTurnS
 
     private static final StanceStrings stanceString = CardCrawlGame.languagePack.getStanceString(STANCE_ID);
     public static int dmgModi = 0;
-    public static int adder = 1; // 打出牌时增加的否定值
+    public static int adder = 2; // 打出牌时增加的否定值
     public static int remainTurn = 1;
     private static long sfxId = -1L;
     public static boolean exitOnStartTurn = true;
@@ -66,7 +66,7 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerTurnS
     }
 
     public void onEnterStance() {
-        AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
+        AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(2));
         if (sfxId != -1L) {
             this.stopIdleSfx();
         }
@@ -107,7 +107,6 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerTurnS
     }
 
     public void onExitStance() {
-        AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
         BaseMod.unsubscribeLater(this);
         this.stopIdleSfx();
     }

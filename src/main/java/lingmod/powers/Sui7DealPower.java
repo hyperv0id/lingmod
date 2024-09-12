@@ -76,7 +76,7 @@ public class Sui7DealPower extends AbstractEasyPower
 
     @Override
     public void receiveOnPlayerTurnStartPostDraw() {
-        if (owner == null || owner.isDeadOrEscaped()) {
+        if (owner == null || owner.isDeadOrEscaped() || !(owner instanceof MonsterSui_7_Ji)) {
             BaseMod.unsubscribeLater(this);
             return;
         }

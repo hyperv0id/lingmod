@@ -2,7 +2,7 @@
   "${ModID}:PoeticMoodPower": {
     "NAME": "诗兴",
     "DESCRIPTIONS": [
-      "是打出诗词的资源，每打出一张牌就能获得 #b1 #b诗兴"
+      "左键点击 #y诗词栏 ，会花费诗兴加速念诗"
     ]
   },
   "${ModID}:NellaFantasiaPower": {
@@ -39,6 +39,12 @@
     "NAME": "伤害增加",
     "DESCRIPTIONS": [
       "本回合普通攻击造成的伤害增加 X 点"
+    ]
+  },
+  "${ModID}:AbstractSummonDescPower": {
+    "NAME": "召唤物",
+    "DESCRIPTIONS": [
+      "代替角色受到伤害，代替玩家获得格挡，对其使用卡牌会被消耗。 NL 攻击牌将会增加攻击力，数值为基础攻击力。技能牌将会增加最大生命。"
     ]
   },
   "${ModID}:Sui7DealPower": {
@@ -95,7 +101,7 @@
   "${ModID}:WinePower": {
     "NAME": "酒",
     "DESCRIPTIONS": [
-      "你的下一张攻击牌所造成的伤害增加 %d ，然后失去一半的酒 NL #b在梦中: 仅失去1"
+      "你的下一张攻击牌所造成的伤害增加 %d ，然后失去一半的酒 NL #b在梦中: 不会失去"
     ]
   },
   "${ModID}:PoemVSQuickSandPower": {
@@ -131,9 +137,9 @@
     ]
   },
   "lingmod:InvincibleForPlayer": {
-    "NAME": "无法干扰",
+    "NAME": "不是敌人",
     "DESCRIPTIONS": [
-      "玩家方无法对其造成伤害"
+      "玩家方对其造成的所有伤害降低到1"
     ]
   },
   "lingmod:GiveGoldAsHP": {

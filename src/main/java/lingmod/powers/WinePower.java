@@ -48,8 +48,6 @@ public class WinePower extends AbstractEasyPower {
         this.flash();
         if (!Wiz.isStanceNell()) {
             addToBot(new ReducePowerAction(owner, owner, this, amount - (amount / 2)));
-        } else {
-            addToBot(new ReducePowerAction(owner, owner, this, 1));
         }
     }
 

@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.input.InputAction;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
@@ -29,6 +30,7 @@ public class PoetryOrb extends AbstractOrb {
     public static final UIStrings uis = CardCrawlGame.languagePack.getUIString(PID);
     public static final String FONT_PATH = makePath("华文行楷.ttf");
     private static final BitmapFont PORTEY_FONT = loadFont(FONT_PATH);
+    private final InputAction ctrlKey;
 
 
     public AbstractPoetryCard card;
@@ -40,6 +42,7 @@ public class PoetryOrb extends AbstractOrb {
         name = uis.TEXT[0];
         description = uis.TEXT[1];
         this.card = card;
+        this.ctrlKey = new InputAction(129);
     }
 
     @Override
@@ -58,14 +61,24 @@ public class PoetryOrb extends AbstractOrb {
             logger.info("PoetryOrb Left Clicked");
             Wiz.addToBotAbstract(() -> {
                 AbstractPower poet = AbstractDungeon.player.getPower(PoeticMoodPower.ID);
-                int pc = card.remainCost();
-                if (poet != null && poet.amount >= pc) {
-                    Wiz.att(new ReducePowerAction(AbstractDungeon.player, AbstractDungeon.player, PoeticMoodPower.ID,
-                            pc));
-                    card.nextVerse();
-                    logger.info("Succeed poetry");
-                } else
-                    logger.info("Failed Poetry");
+                if (this.ctrlKey.isPressed()) {
+                    int pc = card.remainCost();
+                    if (poet != null && poet.amount >= pc) {
+                        Wiz.att(new ReducePowerAction(AbstractDungeon.player, AbstractDungeon.player, PoeticMoodPower.ID,
+                                pc));
+                        card.nextVerse();
+                        logger.info("Succeed poetry");
+                    } else
+                        logger.info("Failed Poetry");
+                } else {
+                    if (poet != null && poet.amount >= 1) {
+                        Wiz.att(new ReducePowerAction(AbstractDungeon.player, AbstractDungeon.player, PoeticMoodPower.ID,
+                                1));
+                        card.skipOnce();
+                        logger.info("Succeed poetry");
+                    } else
+                        logger.info("Failed Poetry");
+                }
             });
         } else if (hb.hovered && InputHelper.justClickedRight) {
             logger.info("PoetryOrb Right Clicked");
@@ -83,7 +96,6 @@ public class PoetryOrb extends AbstractOrb {
     @Override
     public void updateAnimation() {
         super.updateAnimation();
-
         AbstractPlayer p = AbstractDungeon.player;
         cX = p.drawX;
         cY = p.drawY + p.hb_h + FONT_SIZE * 5.5F;

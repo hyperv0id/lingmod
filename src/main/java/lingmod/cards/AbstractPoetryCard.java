@@ -2,7 +2,8 @@ package lingmod.cards;
 
 import basemod.BaseMod;
 import basemod.interfaces.OnCardUseSubscriber;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.Color;
+import com.evacipated.cardcrawl.mod.stslib.patches.FlavorText;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -53,6 +54,22 @@ public abstract class AbstractPoetryCard extends AbstractEasyCard implements OnC
         this.cantUseMessage = acs.EXTENDED_DESCRIPTION[0];
         toneManager = new ToneManager(this);
         BaseMod.subscribe(this);
+        addPoetryTip();
+    }
+
+    public void addPoetryTip() {
+        // 改成展示诗词：
+        if (poetryStrings.CONTENT != null && poetryStrings.CONTENT.length != 0) {
+            Color textColor = Color.BLACK.cpy();
+            Color.rgb888ToColor(textColor, 0xdfe4ea);
+            Color boxColor = Color.BLACK.cpy();
+            Color.rgb888ToColor(boxColor, 0x5976ba);
+            FlavorText.AbstractCardFlavorFields.textColor.set(this, textColor);
+            FlavorText.AbstractCardFlavorFields.boxColor.set(this, boxColor);
+            FlavorText.AbstractCardFlavorFields.flavorBoxType.set(this, FlavorText.boxType.WHITE);
+            String poetryString = String.join(" NL ", poetryStrings.CONTENT);
+            FlavorText.AbstractCardFlavorFields.flavor.set(this, poetryString);
+        }
     }
 
     @Override
@@ -106,16 +123,11 @@ public abstract class AbstractPoetryCard extends AbstractEasyCard implements OnC
         toneManager.onPlayCard(c);
     }
 
-
-    @Override
-    public void renderInLibrary(SpriteBatch sb) {
-        super.renderInLibrary(sb);
-    }
-
     /**
      * 整首诗都被打出了
      */
     public void onFinishFull() {
+        addToBot(new MakeTempCardInHandAction(makeStatEquivalentCopy()));
         ModCore.logger.info(name + " Finished");
     }
 
@@ -132,6 +144,10 @@ public abstract class AbstractPoetryCard extends AbstractEasyCard implements OnC
 
     public void nextVerse() {
         toneManager.skipVerse();
+    }
+
+    public void skipOnce() {
+        toneManager.next();
     }
 
     public String getTypeText() {
@@ -157,4 +173,5 @@ public abstract class AbstractPoetryCard extends AbstractEasyCard implements OnC
         }
         return text;
     }
+
 }

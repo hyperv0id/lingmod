@@ -8,20 +8,38 @@ import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.NvErHongMod;
 import lingmod.interfaces.CardConfig;
 import lingmod.powers.WinePower;
+import lingmod.util.Wiz;
 
 import static lingmod.ModCore.makeID;
 
 /**
  * 回合结束时，消耗所有酒，提升手牌中攻击牌的攻击力
  */
-
-@CardConfig(magic = 1, wineAmount = 3)
+@CardConfig(magic = 1, wineAmount = 0)
 public class NvErHong extends AbstractEasyCard {
     public final static String ID = makeID(NvErHong.class.getSimpleName());
 
     public NvErHong() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         CardModifierManager.addModifier(this, new ExhaustMod());
+    }
+
+    @Override
+    public void applyPowers() {
+        WinePower wine = (WinePower) Wiz.adp().getPower(WinePower.POWER_ID);
+        if (wine != null) {
+            magicNumber = wine.amount / (Wiz.adp().hand.size() - 1);
+        }
+        super.applyPowers();
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        WinePower wine = (WinePower) Wiz.adp().getPower(WinePower.POWER_ID);
+        if (wine != null) {
+            magicNumber = wine.amount / Wiz.adp().hand.size();
+        }
+        super.calculateCardDamage(mo);
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {

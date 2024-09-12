@@ -16,7 +16,7 @@
   },
   "${ModID}:NellaFantasiaMod": {
     "TEXT": [
-      " lingmod:梦 。 NL %s"
+      "进入 lingmod:梦境 。 NL %s"
     ]
   },
   "${ModID}:WineMod": {
@@ -94,7 +94,7 @@
   "${ModID}:PoetryOrb": {
     "TEXT": [
       "诗歌创作栏",
-      "战斗开始时选择诗词创作 NL 左击使用诗兴，将牌纳入手牌 NL 右击查看卡牌效果",
+      "战斗开始时选择诗词创作，诗词进度满后将诗词加入手牌 NL #b左击 使用1诗兴，加速1诗词进度。同时按下ctrl加速整句 NL #b右击 查看卡牌效果",
       "诗词赋"
     ]
   }
