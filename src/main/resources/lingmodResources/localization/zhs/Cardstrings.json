@@ -23,7 +23,7 @@
   },
   "${ModID}:XiaoMingSeCard": {
     "NAME": "笑鸣瑟",
-    "DESCRIPTION": "每有一个 异常状态，每有一个敌人，获得2点 ${ModID}:诗兴 NL 可获得 !M! 点"
+    "DESCRIPTION": "每有一个 异常状态，每有一个敌人，获得 !M! 点 ${ModID}:诗兴 NL （可获得 !${ModID}:m2! 点）"
   },
   "${ModID}:XiaoYaoYou": {
     "NAME": "逍遥游",
@@ -210,7 +210,7 @@
   },
   "${ModID}:HuSongWineCard": {
     "NAME": "湖松酒",
-    "DESCRIPTION": "敌人的多段攻击次数减少 !M!% NL 给予 !${ModID}:m2! 虚弱 "
+    "DESCRIPTION": "敌人的多段攻击在本回合次数减少 !M!% NL 给予 !${ModID}:m2! 虚弱 "
   },
   "${ModID}:GuiXingWineCard": {
     "NAME": "归行酒",

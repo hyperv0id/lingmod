@@ -14,6 +14,7 @@ import static lingmod.ModCore.makeID;
 
 /**
  * 黄粱一梦：获得 20 金币
+ * TODO: credit
  */
 public class HuangLiang extends AbstractEasyCard {
 

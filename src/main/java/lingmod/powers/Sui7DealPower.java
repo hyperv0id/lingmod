@@ -58,6 +58,7 @@ public class Sui7DealPower extends AbstractEasyPower
             return;
         if (owner == null || owner.isDeadOrEscaped()) {
             BaseMod.unsubscribeLater(this);
+            return;
         }
         addToBot(new ApplyPowerAction(provider, provider, new StrengthPower(owner, this.amount)));
     }
@@ -76,7 +77,7 @@ public class Sui7DealPower extends AbstractEasyPower
 
     @Override
     public void receiveOnPlayerTurnStartPostDraw() {
-        if (owner == null || owner.isDeadOrEscaped() || !(owner instanceof MonsterSui_7_Ji)) {
+        if (owner == null || owner.isDeadOrEscaped()) {
             BaseMod.unsubscribeLater(this);
             return;
         }

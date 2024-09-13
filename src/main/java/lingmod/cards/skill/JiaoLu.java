@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.NellaFantasiaMod;
+import lingmod.interfaces.Credit;
 import lingmod.util.CustomTags;
 
 import static lingmod.ModCore.logger;
@@ -18,6 +19,7 @@ import static lingmod.ModCore.makeID;
 /**
  * 蕉鹿梦：临时3/4力敏
  */
+@Credit(username = "yuki二十代", platform = Credit.BILI, link = "BV1v24y1Y7FR")
 public class JiaoLu extends AbstractEasyCard {
 
     public static final String NAME = JiaoLu.class.getSimpleName();

@@ -1,16 +1,17 @@
 package lingmod.relics;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.abstracts.CustomSavable;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.LoseStrengthPower;
+import com.megacrit.cardcrawl.powers.MinionPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-
-import basemod.abstracts.CustomSavable;
 import lingmod.actions.FastApplyPower_Action;
 import lingmod.interfaces.Credit;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 每斩杀5个敌人，战斗开始时获得1力量
@@ -33,6 +34,7 @@ public class Beans_ShuoRelic extends AbstractEasyRelic implements CustomSavable<
     public void atBattleStart() {
         AbstractPlayer p = AbstractDungeon.player;
         addToBot(new FastApplyPower_Action(p, p, new StrengthPower(p, this.counter)));
+        addToBot(new FastApplyPower_Action(p, p, new LoseStrengthPower(p, this.counter)));
     }
 
     @Override
@@ -41,6 +43,7 @@ public class Beans_ShuoRelic extends AbstractEasyRelic implements CustomSavable<
     }
 
     public void onMonsterDeath(AbstractMonster m) {
+        if (m.halfDead || m.hasPower(MinionPower.POWER_ID)) return;
         AbstractPlayer p = AbstractDungeon.player;
         this.counter2++;
         if (this.counter2 > 5) {

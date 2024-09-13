@@ -1,22 +1,21 @@
 package lingmod.cards.skill;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.powers.PoeticMoodPower;
 
+import static lingmod.ModCore.makeID;
+
 /**
  * 笑鸣瑟：每有一种一个敌人或状态牌，获得2点"诗兴"。
  */
-@CardConfig(magic = 2)
+@CardConfig(magic = 2, magic2 = 0)
 @Credit(username = "明日方舟", platform = "鹰角网络", link = "https://prts.wiki/w/令")
 public class XiaoMingSeCard extends AbstractEasyCard {
 
@@ -28,9 +27,16 @@ public class XiaoMingSeCard extends AbstractEasyCard {
 
     @Override
     public void applyPowers() {
-        super.applyPowers();
+        this.baseSecondMagic = countPoet(AbstractDungeon.player) * baseMagicNumber;
         this.isMagicNumberModified = true;
-        this.magicNumber = countPoet(AbstractDungeon.player);
+        super.applyPowers();
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        this.baseSecondMagic = countPoet(AbstractDungeon.player) * baseMagicNumber;
+        this.isMagicNumberModified = true;
+        super.calculateCardDamage(mo);
     }
 
     @Override
@@ -52,11 +58,11 @@ public class XiaoMingSeCard extends AbstractEasyCard {
             times += player.hand.group.stream().filter(c -> c.type == CardType.CURSE || c.type == CardType.STATUS)
                     .count();
         }
-        return (int) times * baseMagicNumber;
+        return (int) times;
     }
 
     @Override
     public void upp() {
-        upgradeMagicNumber(2);
+        upgradeMagicNumber(1);
     }
 }

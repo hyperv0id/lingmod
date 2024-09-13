@@ -18,6 +18,7 @@ import lingmod.cards.attack.GuoJiaXianMei;
 import lingmod.cards.attack.Strike;
 import lingmod.character.Ling;
 import lingmod.interfaces.CardConfig;
+import lingmod.interfaces.Credit;
 
 import java.util.ArrayList;
 
@@ -27,6 +28,7 @@ import static lingmod.ModCore.makeID;
 /**
  * 从之前获得过的牌中 3 选 1
  */
+@Credit(username = "杨颜同学", platform = Credit.BILI, link = "BV1H14y1M7tj")
 @CardConfig(magic = 3)
 public class NostalgiaAndCuriosity extends AbstractEasyCard {
     public final static String ID = makeID(NostalgiaAndCuriosity.class.getSimpleName());

@@ -17,7 +17,7 @@ public class PoetryRewardPatch {
 
         @SpireInsertPatch(locator = Locator.class)
         public static void Insert(AbstractRoom __instance) {
-            if (AbstractDungeon.cardRng.random() >= 0.2) {
+            if (AbstractDungeon.cardRng.random() <= 0.2) {
                 AbstractPoetryCard pc = (AbstractPoetryCard) PoetryCardLib.getCard(AbstractDungeon.cardRng).makeCopy();
                 logger.info("添加诗词奖励：" + pc.name);
                 __instance.rewards.add(new PoetryReward(pc));

@@ -55,7 +55,7 @@ public class MonsterSui_7_Ji extends CustomMonster {
     public void usePreBattleAction() {
         super.useUniversalPreBattleAction();
         AbstractPlayer p = AbstractDungeon.player;
-        addToBot(new ApplyPowerAction(this, this, new Sui7DealPower(p, this, 1)));
+        addToBot(new ApplyPowerAction(this, this, new Sui7DealPower(this, this, 1)));
         if (Wiz.isPlayerLing()) {
             addToBot(new TalkAction(this, DIALOGS[0], 0.5F, 2.0F));
         }

@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.NvErHongMod;
 import lingmod.interfaces.CardConfig;
+import lingmod.interfaces.Credit;
 import lingmod.powers.WinePower;
 import lingmod.util.Wiz;
 
@@ -15,6 +16,7 @@ import static lingmod.ModCore.makeID;
 /**
  * 回合结束时，消耗所有酒，提升手牌中攻击牌的攻击力
  */
+@Credit(link = "https://dianzhi1234.lofter.com/post/317cabb7_2bb505ad6", platform = Credit.LOFTER, username = "四戒懒癌")
 @CardConfig(magic = 1, wineAmount = 0)
 public class NvErHong extends AbstractEasyCard {
     public final static String ID = makeID(NvErHong.class.getSimpleName());

@@ -7,14 +7,17 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
+import lingmod.interfaces.Credit;
 import lingmod.util.Wiz;
 
 import static lingmod.ModCore.makeID;
 
 /**
  * 增强版哨位：获得5/8格挡。被消耗时获得 3E
+ * TODO: credit
  */
 @CardConfig(block = 5)
+@Credit
 public class ZuiTiaoDeng extends AbstractEasyCard {
     public final static String ID = makeID(ZuiTiaoDeng.class.getSimpleName());
 

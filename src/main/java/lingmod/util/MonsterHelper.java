@@ -1,11 +1,6 @@
 package lingmod.util;
 
-import static lingmod.ModCore.logger;
-
-import java.lang.reflect.Constructor;
-import java.util.List;
-import java.util.stream.Collectors;
-
+import basemod.ReflectionHacks;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -18,10 +13,14 @@ import com.megacrit.cardcrawl.monsters.exordium.ApologySlime;
 import com.megacrit.cardcrawl.monsters.exordium.Cultist;
 import com.megacrit.cardcrawl.monsters.exordium.SpikeSlime_S;
 import com.megacrit.cardcrawl.random.Random;
-
-import basemod.ReflectionHacks;
 import lingmod.ModCore;
 import lingmod.monsters.AbsSummonMonster;
+
+import java.lang.reflect.Constructor;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static lingmod.ModCore.logger;
 
 public class MonsterHelper {
     public static boolean isAttackIntent(AbstractMonster m) {
@@ -200,6 +199,7 @@ public class MonsterHelper {
     public static boolean areMonstersDead() {
         return AbstractDungeon.getMonsters().monsters.stream()
                 .filter(mo -> !(mo instanceof AbsSummonMonster)) // 排除召唤物
+                .filter(mo -> mo.isPlayer)
                 .allMatch(AbstractCreature::isDeadOrEscaped);
     }
 

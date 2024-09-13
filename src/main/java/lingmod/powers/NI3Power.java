@@ -31,6 +31,9 @@ public class NI3Power extends AbstractEasyPower {
         return val;
     }
 
+    /**
+     * 其数为三：所有伤害的个位数必定为3
+     */
     @SpirePatch2(clz = AbstractMonster.class, method = "damage")
     public static class QSWS_Damage_Patch {
         @SpireInsertPatch(locator = Locator.class, localvars = {"damageAmount",})

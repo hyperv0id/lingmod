@@ -12,6 +12,9 @@ import lingmod.util.Wiz;
 import static lingmod.ModCore.logger;
 
 public class CardGroupPatch {
+    /**
+     * 卡牌进入 #b抽牌堆 时，获得与其耗能等量的格挡
+     */
     @SpirePatch(clz = CardGroup.class, method = "moveToDiscardPile")
     public static class MoveToDiscardPilePatch {
         public static boolean hasYuGuoZhuoYing() {
@@ -25,7 +28,7 @@ public class CardGroupPatch {
             if (pp == null) return;
             YuGuoZhuoYingPower po = (YuGuoZhuoYingPower) pp;
             logger.info("雨过濯缨 丢弃" + c.name);
-            po.accept(c);
+            po.accept(c); // 丢弃处理逻辑
         }
     }
 }

@@ -1,18 +1,19 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
+import lingmod.interfaces.Credit;
 import lingmod.util.Wiz;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 伤害 = 消耗堆/2
  */
 @CardConfig(damage = 9, magic = 10)
+@Credit(link = "https://www.pixiv.net/artworks/111160788", platform = Credit.PIXIV, username = "WHO808")
 public class DaMoFeiHuo extends AbstractEasyCard {
     public final static String ID = makeID(DaMoFeiHuo.class.getSimpleName());
 

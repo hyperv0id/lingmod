@@ -5,11 +5,14 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.ModCore;
 import lingmod.cards.AbstractEasyCard;
+import lingmod.interfaces.Credit;
 import lingmod.util.CardHelper;
 
 /**
  * 长风彻: 0费打6，只有打防：抽3
+ * TODO: credit
  */
+@Credit(username = "TODO")
 public class ChangFengChe extends AbstractEasyCard {
     public static final String ID = ModCore.makeID(ChangFengChe.class.getSimpleName());
 
