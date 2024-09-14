@@ -13,22 +13,20 @@ import static lingmod.ModCore.*;
 
 /**
  * 弦惊召唤物
- * TODO: 召唤物会行动两次
- * TODO: 召唤物的格挡会在回合结束时失去
  */
 public class Tranquility_SummonMonster extends AbsSummonMonster {
 
     public static final String ID = makeID(Tranquility_SummonMonster.class.getSimpleName());
     protected static final String IMG_PATH = makeImagePath("summon/Tranquility.png", ResourceType.MONSTERS);
     protected static final String IMG_PATH_2 = makeImagePath("summon/Tranquility_p.png", ResourceType.MONSTERS);
-    private static final MonsterStrings STRINGS;
+    private static final MonsterStrings monsterStrings;
     private static final String NAME;
 
     static {
-        STRINGS = CardCrawlGame.languagePack.getMonsterStrings(ID);
-        NAME = STRINGS.NAME;
-        MOVES = STRINGS.MOVES;
-        DIALOG = STRINGS.DIALOG;
+        monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
+        NAME = monsterStrings.NAME;
+        MOVES = monsterStrings.MOVES;
+        DIALOG = monsterStrings.DIALOG;
     }
 
     public Tranquility_SummonMonster() {

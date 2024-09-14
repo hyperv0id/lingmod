@@ -21,14 +21,14 @@ public class Peripateticism_SummonMonster extends AbsSummonMonster {
     public static final String ID = makeID(Peripateticism_SummonMonster.class.getSimpleName());
     protected static final String IMG_PATH = makeImagePath("summon/Peripateticism.png", ResourceType.MONSTERS);
     protected static final String IMG_PATH_2 = makeImagePath("summon/Peripateticism_p.png", ResourceType.MONSTERS);
-    private static final MonsterStrings STRINGS;
+    private static final MonsterStrings monsterStrings;
     private static final String NAME;
 
     static {
-        STRINGS = CardCrawlGame.languagePack.getMonsterStrings(ID);
-        NAME = STRINGS.NAME;
-        MOVES = STRINGS.MOVES;
-        DIALOG = STRINGS.DIALOG;
+        monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
+        NAME = monsterStrings.NAME;
+        MOVES = monsterStrings.MOVES;
+        DIALOG = monsterStrings.DIALOG;
     }
 
     public Peripateticism_SummonMonster() {

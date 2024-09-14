@@ -17,7 +17,7 @@ import static lingmod.ModCore.makeImagePath;
  */
 public class MonsterSui_2_Wang extends CustomMonster {
     public static final String ID = ModCore.makeID(MonsterSui_2_Wang.class.getSimpleName());
-    public static final MonsterStrings ms = CardCrawlGame.languagePack.getMonsterStrings(ID);
+    public static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final float orbOffset = 225.0F; // 棋盘宽高
     protected final static String IMG_PATH = makeImagePath("MonsterSui_2_Wang.png", ResourceType.MONSTERS);
     @SuppressWarnings("rawtypes")
@@ -29,7 +29,7 @@ public class MonsterSui_2_Wang extends CustomMonster {
     }
 
     public MonsterSui_2_Wang(float x, float y) {
-        super(ms.NAME, ID, 200, -5.0F, 0.0F, 260.0F, 265.0F, null, x, y);
+        super(monsterStrings.NAME, ID, 200, -5.0F, 0.0F, 260.0F, 265.0F, null, x, y);
         this.img = ImageMaster.loadImage(IMG_PATH);
         this.orbs = new ArrayList[3][3];
         this.type = EnemyType.BOSS;

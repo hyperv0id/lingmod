@@ -1,4 +1,4 @@
-package lingmod.monsters;
+package lingmod.monsters.family;
 
 import basemod.BaseMod;
 import basemod.abstracts.CustomMonster;
@@ -29,8 +29,8 @@ import static lingmod.ModCore.makeImagePath;
  * 1. 攻击时给予等量缠绕
  * 2. 选择1-n张牌消耗，然后替换成随机卡牌，每交易一张，绩获得1力量
  */
-public class MonsterSui_7_Ji extends CustomMonster {
-    public static final String ID = makeID(MonsterSui_7_Ji.class.getSimpleName());
+public class Sui_7_Ji extends CustomMonster {
+    public static final String ID = makeID(Sui_7_Ji.class.getSimpleName());
     public static final int MAX_HP = 200;
     protected static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
@@ -41,7 +41,7 @@ public class MonsterSui_7_Ji extends CustomMonster {
     protected boolean firstTurn = true;
     protected int baseDamage = 5;
 
-    public MonsterSui_7_Ji() {
+    public Sui_7_Ji() {
         super(NAME, ID, MAX_HP, 0F, 0F, 200.0F, 200.0F, null,
                 0F, 0F);
         this.img = ImageMaster.loadImage(IMG_PATH);

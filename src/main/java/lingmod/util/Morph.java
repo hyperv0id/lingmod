@@ -168,5 +168,6 @@ public class Morph {
         p.hb_h = p.hb.height;
         p.flipHorizontal = false;
         currentMorph = "";
+        ReflectionHacks.privateMethod(AbstractCreature.class, "healthBarUpdatedEvent").invoke(p);
     }
 }

@@ -34,6 +34,7 @@ import lingmod.events.CampfireEventManager;
 import lingmod.events.NianGuestStar;
 import lingmod.interfaces.CampfireSleepEvent;
 import lingmod.monsters.*;
+import lingmod.monsters.family.Sui_9_Nian;
 import lingmod.patch.PlayerFieldsPatch;
 import lingmod.potions.AbstractEasyPotion;
 import lingmod.relics.AbstractEasyRelic;
@@ -330,7 +331,11 @@ public class ModCore implements
         // 和年一起欺夕
         BaseMod.addMonster(NianGuestStar.ID, NianGuestStar.NAME, () -> MonsterGroups.NIAN_GUEST_STAR);
         // 召唤物
-        BaseMod.addMonster(Thunderer_SummonMonster.ID, Thunderer_SummonMonster::new);
+//        BaseMod.addMonster(Thunderer_SummonMonster.ID, Thunderer_SummonMonster::new);
+//        BaseMod.addMonster(Tranquility_SummonMonster.ID, Tranquility_SummonMonster::new);
+//        BaseMod.addMonster(Peripateticism_SummonMonster.ID, Peripateticism_SummonMonster::new);
+        // 岁家的家庭战争
+        BaseMod.addMonster(Sui_9_Nian.ID, Sui_9_Nian::new);
     }
 
     public enum ResourceType {

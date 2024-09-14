@@ -82,8 +82,8 @@
   "${ModID}:YuGuoZhuoYingPower": {
     "NAME": "雨过濯缨",
     "DESCRIPTIONS": [
-      "卡牌进入 #b抽牌堆 时，获得与其耗能等量的格挡",
-      "卡牌进入 #b抽牌堆 或 #b消耗堆  时，获得与其耗能等量的格挡"
+      "卡牌进入 #b抽牌堆 时，获得 %d 格挡",
+      "卡牌进入 #b抽牌堆 或 #b消耗堆  时，获得 %d 格挡"
     ]
   },
   "${ModID}:NingZuoWuPower": {
@@ -101,7 +101,7 @@
   "${ModID}:WinePower": {
     "NAME": "酒",
     "DESCRIPTIONS": [
-      "你的下一张攻击牌所造成的伤害增加 %d ，然后失去一半的酒 NL #b在梦中: 不会失去"
+      "你的下一张攻击牌所造成的伤害增加 %d ，然后失去一半的酒 NL #b在梦中: 不会失去也不能获得酒"
     ]
   },
   "${ModID}:PoemVSQuickSandPower": {

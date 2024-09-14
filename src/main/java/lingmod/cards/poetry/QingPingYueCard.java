@@ -26,7 +26,7 @@ public class QingPingYueCard extends AbstractPoetryCard {
 
     @Override
     public void use_p(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ChangeStanceAction(new NellaFantasiaStance()));
         Wiz.applyToSelf(new WinePower(p, magicNumber));
+        addToBot(new ChangeStanceAction(new NellaFantasiaStance()));
     }
 }

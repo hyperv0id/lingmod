@@ -49,6 +49,8 @@ public class MonsterHelper {
     public static int calcIntentDmg() {
         int total = 0;
         for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
+            // 不计算召唤物
+            if (mo instanceof AbsSummonMonster) continue;
             total += calcIntentDmg(mo);
         }
         return total;
@@ -199,7 +201,7 @@ public class MonsterHelper {
     public static boolean areMonstersDead() {
         return AbstractDungeon.getMonsters().monsters.stream()
                 .filter(mo -> !(mo instanceof AbsSummonMonster)) // 排除召唤物
-                .filter(mo -> mo.isPlayer)
+                .filter(mo -> !mo.isPlayer)
                 .allMatch(AbstractCreature::isDeadOrEscaped);
     }
 
@@ -248,8 +250,7 @@ public class MonsterHelper {
             });
         } else if (summonMonster.getClass().equals(summonClz)) {
             summonMonster.combine();
-        }
-        else {
+        } else {
             Wiz.atb(new TalkAction(true, "我不能同时召唤多种召唤物", 2.0F, 2.0F));
         }
     }

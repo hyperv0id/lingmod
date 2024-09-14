@@ -33,11 +33,7 @@ public class YuGuoZhuoYingPower extends AbstractEasyPower {
      */
     public void accept(AbstractCard c) {
         flash();
-        int blck = c.freeToPlayOnce ? 0 : c.costForTurn;
-        blck *= this.amount;
-        if (blck > 0) {
-            Wiz.atb(new GainBlockAction(Wiz.adp(), blck));
-        }
+        Wiz.atb(new GainBlockAction(Wiz.adp(), amount));
     }
 
     @Override
@@ -53,6 +49,7 @@ public class YuGuoZhuoYingPower extends AbstractEasyPower {
     public void updateDescription() {
         super.updateDescription();
         this.description = DESCRIPTIONS[checkExhaustPile ? 1 : 0];
+        this.description = String.format(this.description, amount);
     }
 
     @Override

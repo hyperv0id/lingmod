@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import lingmod.ModCore;
 import lingmod.util.Wiz;
 
 import static lingmod.ModCore.makeID;
@@ -31,6 +32,15 @@ public class WinePower extends AbstractEasyPower {
 
     public void updateDescription() {
         this.description = String.format(powerStrings.DESCRIPTIONS[0], this.amount);
+    }
+
+    @Override
+    public void stackPower(int stackAmount) {
+        if (Wiz.isStanceNell()) {
+            ModCore.logger.info("梦中酒不会增加");
+            return;
+        }
+        super.stackPower(stackAmount);
     }
 
     @Override

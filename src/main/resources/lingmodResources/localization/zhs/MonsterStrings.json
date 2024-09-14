@@ -95,5 +95,26 @@
   },
   "${ModID}:Tranquility_SummonMonster": {
     "NAME": "清平"
+  },
+  "${ModID}:Sui_9_Nian": {
+    "NAME": "年",
+    "DIALOG": [
+      "太好了",
+      "你怎么会......"
+    ]
+  },
+  "${ModID}:Sui_11_Dusk": {
+    "NAME": "夕",
+    "DIALOG": [
+      "哼",
+      "别开玩笑......"
+    ]
+  },
+  "${ModID}:Sui_6_Shu": {
+    "NAME": "黍",
+    "DIALOG": [
+      "种瓜得瓜种豆得豆",
+      "你也要逆行因果吗"
+    ]
   }
 }

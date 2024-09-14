@@ -61,7 +61,7 @@ public class PoetryOrb extends AbstractOrb {
             logger.info("PoetryOrb Left Clicked");
             Wiz.addToBotAbstract(() -> {
                 AbstractPower poet = AbstractDungeon.player.getPower(PoeticMoodPower.ID);
-                if (this.ctrlKey.isPressed()) {
+                if (!this.ctrlKey.isPressed()) {
                     int pc = card.remainCost();
                     if (poet != null && poet.amount >= pc) {
                         Wiz.att(new ReducePowerAction(AbstractDungeon.player, AbstractDungeon.player, PoeticMoodPower.ID,

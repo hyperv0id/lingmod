@@ -15,7 +15,8 @@ public class PoZhenZiCard extends AbstractPoetryCard {
     public static final String ID = makeID(PoZhenZiCard.class.getSimpleName());
 
     public PoZhenZiCard() {
-        super(ID, CardType.ATTACK, CardRarity.RARE, CardTarget.SELF);
+        super(ID, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY);
+        this.baseDamage = toneManager.remainProgress();
     }
 
     /**

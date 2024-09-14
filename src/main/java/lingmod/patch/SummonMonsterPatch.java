@@ -1,15 +1,7 @@
 package lingmod.patch;
 
-import static lingmod.ModCore.logger;
-
-import java.util.HashSet;
-import java.util.Objects;
-
-import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
+import basemod.ReflectionHacks;
+import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -22,11 +14,14 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.relics.HandDrill;
-
-import basemod.ReflectionHacks;
 import lingmod.monsters.AbsSummonMonster;
 import lingmod.util.MonsterHelper;
 import lingmod.util.Wiz;
+
+import java.util.HashSet;
+import java.util.Objects;
+
+import static lingmod.ModCore.logger;
 
 public class SummonMonsterPatch {
     /**
@@ -75,12 +70,11 @@ public class SummonMonsterPatch {
                 if (info == null)
                     return;
                 // 取消友伤
-                if(info.owner == AbstractDungeon.player && target instanceof AbsSummonMonster) 
-                {
+                if (info.owner == AbstractDungeon.player && target instanceof AbsSummonMonster) {
                     info = null;
                     logger.info("友伤取消");
                 }
-                if (target != null && info.type != DamageInfo.DamageType.HP_LOSS
+                if (target != null && info != null && info.type != DamageInfo.DamageType.HP_LOSS
                         && (info.owner == null || !info.owner.isPlayer) && target == AbstractDungeon.player
                         && MonsterTakeDamagePatch.gotSummon()) {
                     _inst.target = MonsterTakeDamagePatch.summonTarget;
@@ -170,7 +164,15 @@ public class SummonMonsterPatch {
 
 
     @SpirePatch(clz = MonsterGroup.class, method = "areMonstersDead")
-    public static class EndBattleCheckPatch {
+    public static class EndBattleCheck_DeadPatch {
+        @SpirePostfixPatch
+        public static boolean Postfix(boolean __result, MonsterGroup __inst) {
+            return MonsterHelper.areMonstersDead();
+        }
+    }
+
+    @SpirePatch(clz = MonsterGroup.class, method = "areMonstersBasicallyDead")
+    public static class EndBattleCheck_BasicallyDeadPatch {
         @SpirePostfixPatch
         public static boolean Postfix(boolean __result, MonsterGroup __inst) {
             return MonsterHelper.areMonstersDead();

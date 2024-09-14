@@ -158,8 +158,8 @@
   },
   "${ModID}:YuGuoZhuoYing": {
     "NAME": "雨过濯缨",
-    "DESCRIPTION": "每当卡牌进入弃牌堆时，获得其耗能等量的格挡",
-    "UPGRADE_DESCRIPTION": "每当卡牌进入弃牌堆或消耗堆时，获得其耗能等量的格挡"
+    "DESCRIPTION": "每当卡牌进入弃牌堆时，获得 !M! 格挡",
+    "UPGRADE_DESCRIPTION": "每当卡牌进入弃牌堆或消耗堆时，获得 !M! 格挡"
   },
   "${ModID}:SurprisingThunder": {
     "NAME": "远山惊雷",
