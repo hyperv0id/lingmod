@@ -22,7 +22,7 @@ public class VoiceMaster {
     private static long lastTime = -1;
 
     public static void playSound(ProAudio p) {
-        if(p.dialect == Dialect.NONE) {
+        if (p.dialect == Dialect.NONE) {
             logger.info("不使用语音");
             return;
         }
@@ -48,11 +48,11 @@ public class VoiceMaster {
     }
 
     public static void death() {
-        CardCrawlGame.sound.play(new ProAudio(dialect, Voices.VOICE_ACTION_FAIL).key(), true);
+        playSound(new ProAudio(dialect, Voices.VOICE_ACTION_FAIL));
     }
 
     public static void victory() {
-        CardCrawlGame.sound.play(new ProAudio(dialect, Voices.VOICE_3_STAR_END).key(), true);
+        playSound(new ProAudio(dialect, Voices.VOICE_3_STAR_END));
     }
 
     public static void attack() {

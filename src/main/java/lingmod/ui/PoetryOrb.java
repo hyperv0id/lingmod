@@ -82,6 +82,10 @@ public class PoetryOrb extends AbstractOrb {
             });
         } else if (hb.hovered && InputHelper.justClickedRight) {
             logger.info("PoetryOrb Right Clicked");
+            try {
+                card.applyPowers();
+            } catch (Exception ignore) {
+            }
             CardGroup grp = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
             grp.addToTop(card);
             AbstractDungeon.gridSelectScreen.open(grp, 0, uis.TEXT[2], true);

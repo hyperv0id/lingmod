@@ -1,16 +1,15 @@
 package lingmod.relics;
 
-import static lingmod.ModCore.makeID;
-
-import java.util.HashSet;
-
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-
 import lingmod.util.Wiz;
+
+import java.util.HashSet;
+
+import static lingmod.ModCore.makeID;
 
 public class LaoPuSan extends AbstractEasyRelic {
 
@@ -34,7 +33,7 @@ public class LaoPuSan extends AbstractEasyRelic {
             cost = 0;
         }
         ccs.add(cost);
-        if (ccs.size() >= 3) {
+        if (ccs.size() == 3) {
             addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
             Wiz.applyToSelf(new StrengthPower(Wiz.adp(), 1));
         }

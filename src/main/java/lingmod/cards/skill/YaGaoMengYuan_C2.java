@@ -2,14 +2,10 @@ package lingmod.cards.skill;
 
 import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 import static lingmod.ModCore.makeID;
 import static lingmod.util.Wiz.isStanceNell;
@@ -37,13 +33,15 @@ public class YaGaoMengYuan_C2 extends YaGaoMengYuan {
         addToBotAbstract(() -> p.energy.energy++);
         addToBot(new GainEnergyAction(1));
         boolean nellStance = isStanceNell();
-        List<AbstractCard> cards =
-                p.hand.group.stream()
-                        .filter(c -> c.cost >= 0) // 排除X牌，大部分状态诅咒
-                        .filter(c -> c.type != CardType.CURSE)
-                        .filter(c -> c.type != CardType.STATUS)
-                        .filter(c -> !nellStance || c.type == CardType.SKILL) // 梦中只判断技能牌
-                        .collect(Collectors.toList());
-        addToBotAbstract(() -> cards.forEach(c -> c.costForTurn <<= 1));
+
+        p.hand.group.stream()
+                .filter(c -> c.cost >= 0) // 排除X牌，大部分状态诅咒
+                .filter(c -> c.type != CardType.CURSE)
+                .filter(c -> c.type != CardType.STATUS)
+                .filter(c -> !nellStance || c.type == CardType.SKILL) // 梦中只判断技能牌
+                .forEach(c -> {
+                    c.cost <<= 1;
+                    c.costForTurn = c.cost;
+                });
     }
 }

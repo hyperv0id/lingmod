@@ -77,6 +77,19 @@ public abstract class AbstractEasyCard extends CustomCard {
         cardStrings = CardCrawlGame.languagePack.getCardStrings(this.cardID);
         rawDescription = cardStrings.DESCRIPTION;
         name = originalName = cardStrings.NAME;
+        if (textureImg.contains("ui/missing.png")) {
+            if (CardLibrary.cards != null && !CardLibrary.cards.isEmpty()) {
+                CardArtRoller.computeCard(this);
+            } else
+                needsArtRefresh = true;
+        }
+        initCreditTip();
+        initializeCardValues();
+        initializeTitle();
+        initializeDescription();
+    }
+
+    public void initCreditTip() {
         Credit credit = this.getClass().getAnnotation(Credit.class);
         if (ModConfig.showCredit && credit != null) {
             Color textColor = Color.BLACK.cpy();
@@ -89,16 +102,6 @@ public abstract class AbstractEasyCard extends CustomCard {
             String creditStr = credit.username() + "@" + credit.platform() + " NL " + credit.link();
             AbstractCardFlavorFields.flavor.set(this, creditStr);
         }
-        initializeTitle();
-        initializeDescription();
-
-        if (textureImg.contains("ui/missing.png")) {
-            if (CardLibrary.cards != null && !CardLibrary.cards.isEmpty()) {
-                CardArtRoller.computeCard(this);
-            } else
-                needsArtRefresh = true;
-        }
-        initializeCardValues();
     }
 
     public static String getCardTextureString(final String cardName, final AbstractCard.CardType cardType, CardColor color) {

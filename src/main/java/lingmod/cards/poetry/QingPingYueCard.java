@@ -13,9 +13,9 @@ import lingmod.util.Wiz;
 import static lingmod.ModCore.makeID;
 
 /**
- * 进入梦。获得 4 酒
+ * 进入梦。获得 3 酒
  */
-@CardConfig(magic = 4)
+@CardConfig(magic = 3)
 @Credit(link = "https://taixingxtidao.lofter.com/post/310580e0_2b5986362", platform = Credit.LOFTER, username = "刀削刀")
 public class QingPingYueCard extends AbstractPoetryCard {
     public static final String ID = makeID(QingPingYueCard.class.getSimpleName());

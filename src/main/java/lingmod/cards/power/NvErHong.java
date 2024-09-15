@@ -2,6 +2,7 @@ package lingmod.cards.power;
 
 import basemod.cardmods.ExhaustMod;
 import basemod.helpers.CardModifierManager;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
@@ -17,7 +18,7 @@ import static lingmod.ModCore.makeID;
  * 回合结束时，消耗所有酒，提升手牌中攻击牌的攻击力
  */
 @Credit(link = "https://dianzhi1234.lofter.com/post/317cabb7_2bb505ad6", platform = Credit.LOFTER, username = "四戒懒癌")
-@CardConfig(magic = 1, wineAmount = 0)
+@CardConfig(magic = 0, wineAmount = 0)
 public class NvErHong extends AbstractEasyCard {
     public final static String ID = makeID(NvErHong.class.getSimpleName());
 
@@ -29,8 +30,8 @@ public class NvErHong extends AbstractEasyCard {
     @Override
     public void applyPowers() {
         WinePower wine = (WinePower) Wiz.adp().getPower(WinePower.POWER_ID);
-        if (wine != null) {
-            magicNumber = wine.amount / (Wiz.adp().hand.size() - 1);
+        if (wine != null && !Wiz.adp().hand.isEmpty()) {
+            baseMagicNumber = wine.amount / Wiz.adp().hand.size();
         }
         super.applyPowers();
     }
@@ -38,8 +39,8 @@ public class NvErHong extends AbstractEasyCard {
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
         WinePower wine = (WinePower) Wiz.adp().getPower(WinePower.POWER_ID);
-        if (wine != null) {
-            magicNumber = wine.amount / Wiz.adp().hand.size();
+        if (wine != null && !Wiz.adp().hand.isEmpty()) {
+            baseMagicNumber = wine.amount / Wiz.adp().hand.size();
         }
         super.calculateCardDamage(mo);
     }
@@ -50,7 +51,7 @@ public class NvErHong extends AbstractEasyCard {
             addToBotAbstract(() -> {
                 int avg = (int) (wine.amount / p.hand.group.stream().filter(c -> c.type == CardType.ATTACK).count());
                 p.hand.group.stream().filter(c -> c.type == CardType.ATTACK).forEach(c -> CardModifierManager.addModifier(c, new NvErHongMod(avg)));
-                addToTopAbstract(wine::damp);
+                addToBot(new RemoveSpecificPowerAction(p, p, wine));
             });
         }
     }

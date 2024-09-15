@@ -15,7 +15,7 @@ import static lingmod.ModCore.makeID;
 /**
  * 清平：造成 !D! 点伤害，将一张牌变为清平。 保留时：对随机敌人打出
  */
-@CardConfig(damage = 9)
+@CardConfig(damage = 9, magic = 18, magic2 = 3)
 @Credit(link = "https://www.pixiv.net/artworks/106018673", username = "小动物管理员", platform = "pixiv")
 public class Tranquility extends AbsSummonCard {
 
@@ -31,6 +31,17 @@ public class Tranquility extends AbsSummonCard {
             return new Tranquility_Summon();
         }
         return super.makeCopy();
+    }
+
+    @Override
+    public AbstractCard makeStatEquivalentCopy() {
+        if (Wiz.adp() != null && Wiz.adp().hasRelic(SanYiShiJian.ID)) {
+            Tranquility_Summon ps = new Tranquility_Summon();
+            for (int i = 0; i < timesUpgraded; i++) {
+                ps.upgrade();
+            }
+        }
+        return super.makeStatEquivalentCopy();
     }
 
     @Override

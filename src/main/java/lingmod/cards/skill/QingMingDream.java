@@ -4,10 +4,12 @@ import basemod.cardmods.ExhaustMod;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.stances.NeutralStance;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
@@ -57,7 +59,6 @@ public class QingMingDream extends AbstractEasyCard {
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
-
         if (Wiz.adp() != null && Wiz.adp().stance.ID.equals(NellaFantasiaStance.STANCE_ID)) {
             baseMagicNumber = NellaFantasiaStance.dmgModi;
             if (upgraded)
@@ -71,8 +72,11 @@ public class QingMingDream extends AbstractEasyCard {
         addToBot(new TalkAction(true, cardStrings.EXTENDED_DESCRIPTION[1], 2F, 2F));
         if (magicNumber > 0) {
             for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
+                if (mo.isPlayer) continue;
                 addToBot(new ApplyPowerAction(mo, p, new StrengthPower(mo, -magicNumber)));
             }
         }
+        addToBot(new ChangeStanceAction(NeutralStance.STANCE_ID));
+
     }
 }

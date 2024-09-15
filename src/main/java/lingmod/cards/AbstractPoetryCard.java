@@ -77,6 +77,9 @@ public abstract class AbstractPoetryCard extends AbstractEasyCard implements OnC
         return false;
     }
 
+    /**
+     * 诗词专用use方法
+     */
     public abstract void use_p(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster);
 
     @Override

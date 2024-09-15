@@ -8,9 +8,9 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 public class FastExhaustAction extends AbstractGameAction {
-    private AbstractCard targetCard;
-    private CardGroup group;
-    private float startingDuration;
+    private final AbstractCard targetCard;
+    private final CardGroup group;
+    private final float startingDuration;
 
     public FastExhaustAction(AbstractCard targetCard, CardGroup group, boolean isFast) {
         this.targetCard = targetCard;
@@ -31,8 +31,7 @@ public class FastExhaustAction extends AbstractGameAction {
             CardCrawlGame.dungeon.checkForPactAchievement();
             this.targetCard.exhaustOnUseOnce = false;
             this.targetCard.freeToPlayOnce = false;
-            this.isDone = true;
         }
-
+        this.isDone = true;
     }
 }

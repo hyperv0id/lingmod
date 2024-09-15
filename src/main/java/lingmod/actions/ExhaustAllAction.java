@@ -40,6 +40,7 @@ public class ExhaustAllAction extends AbstractGameAction {
                 this.addToTop(new ExhaustSpecificCardAction(c, AbstractDungeon.player.hand));
             }
         }
+        this.isDone = true;
         this.tickDuration();
     }
 }

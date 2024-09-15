@@ -31,9 +31,10 @@ public class Feature_2_Card extends AbstractEasyCard implements PostExhaustSubsc
     }
 
     protected void reduce() {
-        if (this.cost > 0)
+        if (this.cost > 0) {
             updateCost(-1);
-        upgradeMagicNumber(1);
+            upgradeMagicNumber(1);
+        }
     }
 
     @Override
@@ -48,6 +49,7 @@ public class Feature_2_Card extends AbstractEasyCard implements PostExhaustSubsc
      */
     @Override
     public void receivePostExhaust(AbstractCard card) {
+        if (card.dontTriggerOnUseCard) return;
         AbstractPlayer p = AbstractDungeon.player;
         if (p != null && (p.hand.contains(this) || p.limbo.contains(this))) {
             this.reduce();

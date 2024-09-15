@@ -1,10 +1,5 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.makeID;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -12,7 +7,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ConstrictedPower;
-
 import lingmod.cards.AbsSummonCard;
 import lingmod.cards.skill.Peripateticism_Summon;
 import lingmod.interfaces.CardConfig;
@@ -21,6 +15,11 @@ import lingmod.monsters.Peripateticism_SummonMonster;
 import lingmod.relics.SanYiShiJian;
 import lingmod.util.MonsterHelper;
 import lingmod.util.Wiz;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * “逍遥”：消耗所有技能牌，每张给予 8 缠绕
@@ -40,6 +39,17 @@ public class Peripateticism extends AbsSummonCard {
             return new Peripateticism_Summon();
         }
         return super.makeCopy();
+    }
+
+    @Override
+    public AbstractCard makeStatEquivalentCopy() {
+        if (Wiz.adp() != null && Wiz.adp().hasRelic(SanYiShiJian.ID)) {
+            Peripateticism_Summon ps = new Peripateticism_Summon();
+            for (int i = 0; i < timesUpgraded; i++) {
+                ps.upgrade();
+            }
+        }
+        return super.makeStatEquivalentCopy();
     }
 
     @Override

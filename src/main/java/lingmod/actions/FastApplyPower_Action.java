@@ -1,15 +1,14 @@
 package lingmod.actions;
 
-import java.util.Collections;
-
+import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-import basemod.BaseMod;
+import java.util.Collections;
 
 public class FastApplyPower_Action extends AbstractGameAction {
-    private AbstractPower power;
+    private final AbstractPower power;
 
     public FastApplyPower_Action(AbstractCreature target, AbstractCreature source, AbstractPower power, int amount) {
         this.setValues(target, source, amount);
@@ -32,7 +31,8 @@ public class FastApplyPower_Action extends AbstractGameAction {
             Collections.sort(this.target.powers);
             this.power.onInitialApplication();
         }
-        BaseMod.publishPostPowerApply(power, target, source);
         this.isDone = true;
+        tickDuration();
+        BaseMod.publishPostPowerApply(power, target, source);
     }
 }

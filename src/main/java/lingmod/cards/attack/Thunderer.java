@@ -1,22 +1,21 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.makeID;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.cards.AbsSummonCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.monsters.Thunderer_SummonMonster;
 import lingmod.relics.SanYiShiJian;
 import lingmod.util.Wiz;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 1费打9
@@ -41,6 +40,17 @@ public class Thunderer extends AbsSummonCard {
             return new Thunderer_Summon();
         }
         return super.makeCopy();
+    }
+
+    @Override
+    public AbstractCard makeStatEquivalentCopy() {
+        if (Wiz.adp() != null && Wiz.adp().hasRelic(SanYiShiJian.ID)) {
+            Thunderer_Summon ps = new Thunderer_Summon();
+            for (int i = 0; i < timesUpgraded; i++) {
+                ps.upgrade();
+            }
+        }
+        return super.makeStatEquivalentCopy();
     }
 
     @Override

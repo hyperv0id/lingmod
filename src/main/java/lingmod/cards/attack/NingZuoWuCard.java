@@ -3,6 +3,7 @@ package lingmod.cards.attack;
 
 import basemod.cardmods.EtherealMod;
 import basemod.helpers.CardModifierManager;
+import com.megacrit.cardcrawl.actions.unique.RemoveAllPowersAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
@@ -31,11 +32,11 @@ public class NingZuoWuCard extends AbstractEasyCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        if (upgraded) addToBot(new RemoveAllPowersAction(p, true));
         Wiz.applyToSelf(new NingZuoWuPower(p));
     }
 
     @Override
     public void upp() {
-        CardModifierManager.removeModifiersById(this, EtherealMod.ID, false);
     }
 }

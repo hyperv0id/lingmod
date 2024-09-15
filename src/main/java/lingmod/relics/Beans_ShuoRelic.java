@@ -33,8 +33,10 @@ public class Beans_ShuoRelic extends AbstractEasyRelic implements CustomSavable<
     @Override
     public void atBattleStart() {
         AbstractPlayer p = AbstractDungeon.player;
-        addToBot(new FastApplyPower_Action(p, p, new StrengthPower(p, this.counter)));
-        addToBot(new FastApplyPower_Action(p, p, new LoseStrengthPower(p, this.counter)));
+        if (counter > 0) {
+            addToBot(new FastApplyPower_Action(p, p, new StrengthPower(p, this.counter)));
+            addToBot(new FastApplyPower_Action(p, p, new LoseStrengthPower(p, this.counter)));
+        }
     }
 
     @Override

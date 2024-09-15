@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.InvinciblePower;
 import lingmod.cards.AbstractPoetryCard;
+import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.util.PowerUtils;
 import lingmod.util.Wiz;
@@ -17,6 +18,7 @@ import static lingmod.ModCore.makeID;
 /**
  * 赤壁赋: 将你拥有的部分负面效果同步给敌方
  */
+@CardConfig(magic = 1)
 @Credit(platform = Credit.LOFTER, link = "https://glksier.lofter.com/post/31e1d6b0_2b7cdd958", username = "狗粮扩散一点点")
 public class ChiBiFuCard extends AbstractPoetryCard {
     public static final String ID = makeID(ChiBiFuCard.class.getSimpleName());
@@ -33,7 +35,8 @@ public class ChiBiFuCard extends AbstractPoetryCard {
         for (AbstractPower po : debuff) {
             AbstractPower p2a = PowerUtils.forkPower(po, m);
             if (p2a != null) {
-                p2a.amount = Math.max(p2a.amount, 1);
+                if (p2a.amount > 0)
+                    p2a.amount = Math.max(p2a.amount, magicNumber);
                 Wiz.applyToEnemy(m, p2a);
             }
         }
