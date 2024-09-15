@@ -8,7 +8,7 @@ import lingmod.interfaces.Credit;
 
 import static lingmod.ModCore.makeID;
 
-@CardConfig(damage = 15, block = 19)
+@CardConfig(damage = 14, block = 19)
 @Credit(username = "八雲奥", platform = "lofter", link = "https://yakumoau.lofter.com/post/320b60e2_2b7e5df27")
 public class GuoJiaXianMei extends AbstractEasyCard {
     public final static String ID = makeID(GuoJiaXianMei.class.getSimpleName());

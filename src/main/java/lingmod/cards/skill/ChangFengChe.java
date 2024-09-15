@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.ModCore;
 import lingmod.cards.AbstractEasyCard;
+import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.util.CardHelper;
 
@@ -13,13 +14,12 @@ import lingmod.util.CardHelper;
  * TODO: credit
  */
 @Credit(username = "TODO")
+@CardConfig(damage = 6, magic = 3)
 public class ChangFengChe extends AbstractEasyCard {
     public static final String ID = ModCore.makeID(ChangFengChe.class.getSimpleName());
 
     public ChangFengChe() {
         super(ID, 0, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
-        baseDamage = 6;
-        baseMagicNumber = 3;
     }
 
     @Override

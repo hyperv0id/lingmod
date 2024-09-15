@@ -32,7 +32,7 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerTurnS
 
     private static final StanceStrings stanceString = CardCrawlGame.languagePack.getStanceString(STANCE_ID);
     public static int dmgModi = 0;
-    public static int adder = 1; // 打出牌时增加的否定值
+    public static final int adder = 1; // 打出牌时增加的否定值
     public static int remainTurn = 1;
     private static long sfxId = -1L;
     public static boolean exitOnStartTurn = true;

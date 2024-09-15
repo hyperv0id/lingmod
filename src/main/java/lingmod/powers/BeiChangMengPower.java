@@ -1,15 +1,16 @@
 package lingmod.powers;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.stances.AbstractStance;
 import lingmod.stance.NellaFantasiaStance;
+import lingmod.util.MonsterHelper;
+import lingmod.util.Wiz;
 
 import static lingmod.ModCore.makeID;
 
@@ -21,8 +22,13 @@ public class BeiChangMengPower extends AbstractEasyPower {
     public static final String ID = makeID(POWER_NAME);
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(ID);
 
-    public BeiChangMengPower(AbstractCreature owner) {
-        super(ID, powerStrings.NAME, PowerType.DEBUFF, false, owner, 0);
+    public BeiChangMengPower(AbstractCreature owner, int amount) {
+        super(ID, powerStrings.NAME, PowerType.DEBUFF, false, owner, amount);
+    }
+
+    @Override
+    public void updateDescription() {
+        this.description = String.format(DESCRIPTIONS[0], amount);
     }
 
     @Override
@@ -30,19 +36,9 @@ public class BeiChangMengPower extends AbstractEasyPower {
         super.onChangeStance(oldStance, newStance);
         AbstractPlayer p = AbstractDungeon.player;
         if (oldStance.ID.equals(NellaFantasiaStance.STANCE_ID)) {
-            // EOT
-            p.powers.forEach(po -> po.atEndOfTurnPreEndTurnCards(true));
-            p.powers.forEach(po -> po.atEndOfTurn(true));
-            p.powers.forEach(AbstractPower::atEndOfRound);
-            p.relics.forEach(AbstractRelic::onPlayerEndTurn);
-            p.hand.group.forEach(AbstractCard::triggerOnEndOfPlayerTurn); // 卡牌回合结束
-            p.hand.group.forEach(AbstractCard::onRetained); // 特判保留
-            // SOT
-            p.powers.forEach(AbstractPower::atStartOfTurn);
-            p.powers.forEach(AbstractPower::atStartOfTurnPostDraw);
-            p.relics.forEach(AbstractRelic::atTurnStart);
-            p.relics.forEach(AbstractRelic::atTurnStartPostDraw);
-            p.hand.group.forEach(AbstractCard::atTurnStart);
+            for (AbstractMonster abstractMonster : MonsterHelper.allMonstersNotSummon()) {
+                Wiz.applyToEnemy(abstractMonster, new WeakPower(abstractMonster, amount, false));
+            }
         }
     }
 }

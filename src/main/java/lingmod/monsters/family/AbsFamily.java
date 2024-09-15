@@ -1,7 +1,7 @@
 package lingmod.monsters.family;
 
 import basemod.abstracts.CustomMonster;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import lingmod.actions.FastApplyPower_Action;
 import lingmod.powers.FamilyAdjudicationPower;
 import lingmod.util.Wiz;
 
@@ -28,7 +28,7 @@ public abstract class AbsFamily extends CustomMonster {
     @Override
     public void useUniversalPreBattleAction() {
         super.useUniversalPreBattleAction();
-        addToBot(new ApplyPowerAction(Wiz.adp(), this, new FamilyAdjudicationPower(Wiz.adp())));
+        addToBot(new FastApplyPower_Action(Wiz.adp(), this, new FamilyAdjudicationPower(Wiz.adp())));
     }
 
     @Override
@@ -48,7 +48,7 @@ public abstract class AbsFamily extends CustomMonster {
     public void transRole(FamilyRole role) {
         this.role = role;
         if (role != FamilyRole.ENEMY) {
-            currentHealth = 0;
+            halfDead = true;
             healthBarUpdatedEvent();
         }
     }

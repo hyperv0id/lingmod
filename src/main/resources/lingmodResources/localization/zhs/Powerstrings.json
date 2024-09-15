@@ -95,7 +95,7 @@
   "${ModID}:BeiChangMengPower": {
     "NAME": "悲长梦",
     "DESCRIPTIONS": [
-      "离开梦境时触发 能力、遗物、手牌 的回合结束效果"
+      "离开梦境时，对所有敌人施加 %d 虚弱"
     ]
   },
   "${ModID}:WinePower": {

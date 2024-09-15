@@ -1,6 +1,5 @@
 package lingmod.monsters;
 
-import basemod.AutoAdd.Ignore;
 import basemod.abstracts.CustomMonster;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -17,7 +16,6 @@ import static lingmod.ModCore.*;
 /**
  * 二哥，你又在算计哦。陪我喝两小酒好不好
  */
-@Ignore
 public class Ling_WineTaoist extends CustomMonster {
 
     public static final String ID = makeID(Ling_WineTaoist.class.getSimpleName());

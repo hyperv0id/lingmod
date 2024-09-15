@@ -3,12 +3,13 @@ package lingmod.util;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import lingmod.ModCore;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.HashMap;
+
+import static lingmod.ModCore.logger;
 
 public class PowerUtils {
     /**
@@ -57,7 +58,7 @@ public class PowerUtils {
         // 创建新实例
         AbstractPower copy = createNewInstance(original);
         if (copy == null) {
-            ModCore.logger.info("复制能力失败TAT");
+            logger.info("复制能力失败TAT");
             return null;
         }
         // 复制字段
@@ -75,8 +76,8 @@ public class PowerUtils {
             constructor.setAccessible(true);
             return constructor.newInstance();
         } catch (Exception e) {
-            ModCore.logger.error("???AbstractPower存在无参构造呀");
-            ModCore.logger.error(e.getMessage());
+            logger.error("???AbstractPower存在无参构造呀");
+            logger.error(e.getMessage());
             return null;
         }
     }
@@ -89,7 +90,7 @@ public class PowerUtils {
                     field.setAccessible(true);
                     field.set(copy, field.get(original));
                 } catch (IllegalAccessException e) {
-                    ModCore.logger.warn("Failed to copy field: {} {}", field.getName(), e);
+                    logger.warn("Failed to copy field: {} {}", field.getName(), e);
                 }
             }
             currentClass = currentClass.getSuperclass();
@@ -127,7 +128,7 @@ public class PowerUtils {
                 // 设置新值
                 field.set(copy, value);
             } catch (Exception e) {
-                ModCore.logger.warn("Failed to set field: {}{}", fieldName, e.getMessage());
+                logger.warn("Failed to set field: {}{}", fieldName, e.getMessage());
             }
         });
     }

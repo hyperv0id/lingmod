@@ -1,34 +1,32 @@
 package lingmod.cards.skill;
 
-import static lingmod.ModCore.makeID;
-
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ArtifactPower;
-
-import basemod.AutoAdd;
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
+import lingmod.actions.FastApplyPower_Action;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
+import lingmod.interfaces.CopyField;
 import lingmod.interfaces.Credit;
-import lingmod.util.CustomTags;
+import lingmod.powers.WinePower;
+import lingmod.util.Wiz;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 获得人工制品，升级后获得手牌中 酒牌 数量的人工制品
  */
-@AutoAdd.Ignore
 @Credit(username = "阿尼鸭👀Any-a", platform = Credit.LOFTER, link = "https://anyaaaaa.lofter.com/post/1d814764_2b82a4328")
-@CardConfig(wineAmount = 2, magic = 1)
+@CardConfig(wineAmount = 0, magic = 2)
 public class ZhuoJiuChengXin extends AbstractEasyCard {
     public static final String ID = makeID(ZhuoJiuChengXin.class.getSimpleName());
+    @CopyField
+    public float baseProb = magicNumber / 100.0F;
+    @CopyField
+    public float prob = baseProb;
 
     public ZhuoJiuChengXin() {
         super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
-        CardModifierManager.addModifier(this, new ExhaustMod());
     }
 
     @Override
@@ -36,15 +34,31 @@ public class ZhuoJiuChengXin extends AbstractEasyCard {
     }
 
     @Override
-    public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
-        if (!upgraded)
-            addToBot(new ApplyPowerAction(abstractPlayer, abstractMonster,
-                    new ArtifactPower(abstractPlayer, magicNumber)));
-        else {
-            for (AbstractCard c : AbstractDungeon.player.hand.group) {
-                if (c.hasTag(CustomTags.WINE)) {
-                    addToBot(new ApplyPowerAction(abstractPlayer, abstractMonster,
-                            new ArtifactPower(abstractPlayer, magicNumber)));
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        WinePower wp = (WinePower) Wiz.adp().getPower(WinePower.POWER_ID);
+        if (wp == null) return;
+        // 数量太大直接获得9
+        if (wp.amount >= 300) {
+            addToBot(new FastApplyPower_Action(p, p, new ArtifactPower(p, 9)));
+            return;
+        }
+        if (upgraded) {
+            int cnt = 0;
+            for (int i = 0; i < wp.amount; i++) {
+                if (Math.random() <= prob) {
+                    addToBot(new FastApplyPower_Action(p, p, new ArtifactPower(p, 1)));
+                    prob = baseProb;
+                    cnt = 0;
+                } else {
+                    if (++cnt > 50) {
+                        prob += baseProb;
+                    }
+                }
+            }
+        } else {
+            for (int i = 0; i < wp.amount; i++) {
+                if (Math.random() <= baseProb) {
+                    addToBot(new FastApplyPower_Action(p, p, new ArtifactPower(p, 1)));
                 }
             }
         }

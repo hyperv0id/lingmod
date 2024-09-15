@@ -1,10 +1,13 @@
 package lingmod.powers;
 
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import lingmod.stance.NellaFantasiaStance;
+import lingmod.util.Wiz;
 
 import static lingmod.ModCore.makeID;
 
@@ -22,21 +25,13 @@ public class LanKePower extends AbstractEasyPower {
         this.isJustApplied = true;
     }
 
-    @Override
-    public void onInitialApplication() {
-        super.onInitialApplication();
-        NellaFantasiaStance.adder++;
-    }
 
     @Override
-    public void onRemove() {
-        super.onRemove();
-        NellaFantasiaStance.adder--;
-    }
-
-    @Override
-    public void onVictory() {
-        super.onVictory();
-        NellaFantasiaStance.adder--;
+    public void onPlayCard(AbstractCard card, AbstractMonster m) {
+        super.onPlayCard(card, m);
+        if (Wiz.isStanceNell()) {
+            NellaFantasiaStance stance = (NellaFantasiaStance) Wiz.adp().stance;
+            stance.onPlayCard(card);
+        }
     }
 }

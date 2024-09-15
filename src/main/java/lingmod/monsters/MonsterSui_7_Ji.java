@@ -36,7 +36,7 @@ public class MonsterSui_7_Ji extends CustomMonster {
     public static final String NAME = monsterStrings.NAME;
     public static final String[] MOVES = monsterStrings.MOVES;
     public static final String[] DIALOGS = monsterStrings.DIALOG;
-    protected static final String IMG_PATH = makeImagePath("monsters/Sui_7_Ji.png");
+    protected static final String IMG_PATH = makeImagePath("monsters/MonsterSui_7_Ji.png");
     public static int STRENGTH_GROW = 1;
     protected boolean firstTurn = true;
     protected int baseDamage = 5;

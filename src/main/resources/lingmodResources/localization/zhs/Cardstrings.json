@@ -87,8 +87,8 @@
   },
   "${ModID}:ZhuoJiuChengXin": {
     "NAME": "浊酒澄心",
-    "DESCRIPTION": "是 ${ModID}:酒牌 NL 获得 !M! 人工制品",
-    "UPGRADE_DESCRIPTION": "是 ${ModID}:酒牌 NL 手牌中每有一张 ${ModID}:酒牌 ，获得 !M! 人工制品 "
+    "DESCRIPTION": "每有 1 层 ${ModID}:酒 有 !M! % 概率获得 1 人工制品",
+    "UPGRADE_DESCRIPTION": "按照 ${ModID}:酒 层数 ${ModID}:模拟抽卡 ，以 !M! %的基础概率获得 1 人工制品"
   },
   "${ModID}:SwapCup": {
     "NAME": "换盏",
@@ -140,7 +140,7 @@
   },
   "${ModID}:Whoami_Dusk": {
     "NAME": "无喜",
-    "DESCRIPTION": "选择一个非领袖敌人，使其失去 50%生命，并生成一个 相同怪物",
+    "DESCRIPTION": "选择一个非领袖敌人，使其失去 11%最大生命，并生成 2 个 敌对的墨魉",
     "EXTENDED_DESCRIPTION": [
       "一支看似无奇的毛笔。夕的笔，可生万物，也可生笔，用的时候要留神一点。"
     ]
@@ -176,8 +176,8 @@
   },
   "${ModID}:QingMingDream": {
     "NAME": "清明梦",
-    "DESCRIPTION": "离开 lingmod:梦境 ，统计敌人因梦境减少的攻击力，其减少 !M! 点 力量 ",
-    "UPGRADE_DESCRIPTION": "离开 lingmod:梦境 ，统计敌人因梦境减少的攻击力，其减少双倍 力量 NL （减少 !M! 点力量）",
+    "DESCRIPTION": "只能在梦中打出。 NL 离开 lingmod:梦境 ，统计敌人因梦境减少的攻击力，其减少 !M! 点 力量 ",
+    "UPGRADE_DESCRIPTION": "只能在梦中打出。 NL 离开 lingmod:梦境 ，统计敌人因梦境减少的攻击力，其减少双倍 力量 NL （减少 !M! 点力量）",
     "EXTENDED_DESCRIPTION": [
       "这不是梦",
       "梦是真实的"
@@ -211,7 +211,7 @@
   },
   "${ModID}:HuSongWineCard": {
     "NAME": "湖松酒",
-    "DESCRIPTION": "敌人的多段攻击在本回合次数减少 !M!% NL 给予 !${ModID}:m2! 虚弱 "
+    "DESCRIPTION": "如果敌人将攻击多次，那么其多段攻击在本回合次数减少 !M!% NL 否则给予 !${ModID}:m2! 虚弱 "
   },
   "${ModID}:GuiXingWineCard": {
     "NAME": "归行酒",
@@ -246,14 +246,14 @@
   },
   "${ModID}:BlackPawn": {
     "NAME": "黑子",
-    "DESCRIPTION": "造成 !D! 点伤害 !M! 次，每张黑子使伤害次数 1 NL 梦中：选择抽牌堆一张牌 ${ModID}:变化 为此牌",
+    "DESCRIPTION": "造成 !D! 点伤害 NL 梦中：选择抽牌堆一张牌 ${ModID}:变化 为此牌",
     "EXTENDED_DESCRIPTION": [
       "选择一张牌 ${ModID}:变化 为“黑子”"
     ]
   },
   "lingmod:WhitePawn": {
     "NAME": "白子",
-    "DESCRIPTION": "获得 !B! 点格挡 !M! 次，次数为白子数量 NL 梦中：选择抽牌堆一张牌 ${ModID}:变化 为此牌",
+    "DESCRIPTION": "获得 !B! 点格挡 NL 梦中：选择抽牌堆一张牌 ${ModID}:变化 为此牌",
     "EXTENDED_DESCRIPTION": [
       "选择一张牌变化为“白子”"
     ]
@@ -340,7 +340,7 @@
   },
   "lingmod:QiangJinJiu": {
     "NAME": "将进酒",
-    "DESCRIPTION": "随机化敌人的意图 NL 如果有敌人的意图不是攻击，那么获得 !M! ${ModID}:酒 NL 部分敌人的意图无法改变"
+    "DESCRIPTION": "随机化敌人的意图 NL 如果有敌人的意图不是攻击，那么获得 !M! ${ModID}:酒"
   },
   "lingmod:ShiFangTuNa": {
     "NAME": "十方吐纳",
@@ -348,7 +348,7 @@
   },
   "lingmod:BeiChangMeng": {
     "NAME": "悲长梦",
-    "DESCRIPTION": "离开梦境时，触发 手牌、能力、遗物 的回合结束效果"
+    "DESCRIPTION": "离开梦境时，对所有敌人施加 !M! 虚弱"
   },
   "lingmod:NostalgiaAndCuriosity": {
     "NAME": "怀恋与好奇",
@@ -379,5 +379,13 @@
   "lingmod:ZuiTiaoDeng": {
     "NAME": "醉挑灯",
     "DESCRIPTION": "获得 !B! 点格挡 NL 被 消耗 时，获得 [E] [E] [E] NL 抽到时，在弃牌堆中放入一张复制"
+  },
+  "lingmod:TianZhuiCard": {
+    "NAME": "天坠",
+    "DESCRIPTION": "造成 !D! 点伤害 NL 如果手牌中每一张牌都是攻击牌，那么对敌人施加 2 以手拒之 "
+  },
+  "lingmod:LankeDream": {
+    "NAME": "烂柯梦",
+    "DESCRIPTION": "在梦中打出卡牌后，攻击力额外降低 !M! 点"
   }
 }

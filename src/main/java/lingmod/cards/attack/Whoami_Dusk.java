@@ -1,17 +1,16 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.unique.SummonGremlinAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.Credit;
 import lingmod.monsters.whoisreal.AYao;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 我是谁？
@@ -45,13 +44,12 @@ public class Whoami_Dusk extends AbstractEasyCard {
                     new AYao()
             };
         }
+        int amt = (int) (m.currentHealth * 0.11);
         for (AbstractMonster mo : monsters) {
-            mo.currentHealth = m.maxHealth / 2;
-            mo.maxHealth = m.maxHealth / 2;
+            mo.currentHealth = mo.maxHealth = amt;
         }
-        int amt = m.currentHealth / 2;
         addToBot(new DamageAction(m, new DamageInfo(p, amt, DamageInfo.DamageType.HP_LOSS)));
-        // addToBot(new ApplyPowerAction(p, p, new NoDebuffFromOther(p)));
+        AbstractDungeon.actionManager.addToBottom(new SummonGremlinAction(this.monsters));
         AbstractDungeon.actionManager.addToBottom(new SummonGremlinAction(this.monsters));
     }
 }

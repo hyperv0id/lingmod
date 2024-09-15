@@ -1,21 +1,20 @@
 package lingmod.cards.power;
 
-import basemod.AutoAdd.Ignore;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.NellaFantasiaMod;
+import lingmod.interfaces.CardConfig;
 import lingmod.powers.LanKePower;
-import lingmod.stance.NellaFantasiaStance;
 import lingmod.util.Wiz;
 
 import static lingmod.ModCore.makeID;
 
 /**
- * 在梦中打出牌 额外 减少 1 力量
+ * 在梦中打牌减少的攻击力增加1
  */
-@Ignore
+@CardConfig(magic = 1)
 public class LankeDream extends AbstractEasyCard {
     public final static String ID = makeID(LankeDream.class.getSimpleName());
 
@@ -27,7 +26,6 @@ public class LankeDream extends AbstractEasyCard {
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         Wiz.applyToSelf(new LanKePower(p));
-        addToBotAbstract(() -> NellaFantasiaStance.adder++);
     }
 
     @Override

@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.powers.StrengthPower;
@@ -42,8 +43,12 @@ public class Sui7DealPower extends AbstractEasyPower
         this.provider = provider;
         this.ID = POWER_ID;
         this.name = NAME;
-        this.type = null; // 不是负面
         this.updateDescription();
+    }
+
+    @Override
+    public void onInitialApplication() {
+        super.onInitialApplication();
         BaseMod.subscribe(this);
     }
 
@@ -70,6 +75,12 @@ public class Sui7DealPower extends AbstractEasyPower
     }
 
     @Override
+    public void onRemove() {
+        super.onRemove();
+        BaseMod.unsubscribeLater(this);
+    }
+
+    @Override
     public void onDeath() {
         super.onDeath();
         BaseMod.unsubscribeLater(this);
@@ -77,7 +88,7 @@ public class Sui7DealPower extends AbstractEasyPower
 
     @Override
     public void receiveOnPlayerTurnStartPostDraw() {
-        if (owner == null || owner.isDeadOrEscaped()) {
+        if (owner == null || owner.isDeadOrEscaped() || AbstractDungeon.getCurrRoom().monsters.getMonster(owner.id) == null) {
             BaseMod.unsubscribeLater(this);
             return;
         }

@@ -210,6 +210,7 @@ public class MonsterHelper {
      */
     public static List<AbstractMonster> allMonstersNotSummon() {
         return AbstractDungeon.getMonsters().monsters.stream().filter(mo -> !(mo instanceof AbsSummonMonster))
+                .filter(mo -> !mo.isDeadOrEscaped())
                 .collect(Collectors.toList());
     }
 
