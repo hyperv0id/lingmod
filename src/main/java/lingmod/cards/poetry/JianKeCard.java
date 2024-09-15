@@ -16,7 +16,7 @@ public class JianKeCard extends AbstractPoetryCard {
     public static final String ID = makeID(JianKeCard.class.getSimpleName());
 
     public JianKeCard() {
-        super(ID, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY);
+        super(ID, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY);
     }
 
     @Override

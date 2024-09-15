@@ -8,14 +8,16 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.GainPennyEffect;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.cards.mod.NellaFantasiaMod;
+import lingmod.interfaces.Credit;
 import lingmod.util.CustomTags;
 
 import static lingmod.ModCore.makeID;
 
 /**
  * 黄粱一梦：获得 20 金币
- * TODO: credit
+ *
  */
+@Credit(link = "TODO")
 public class HuangLiang extends AbstractEasyCard {
 
     public static final String ID = makeID(HuangLiang.class.getSimpleName());

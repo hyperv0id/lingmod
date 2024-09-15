@@ -1,5 +1,6 @@
 package lingmod.cards.skill;
 
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -12,6 +13,7 @@ import lingmod.powers.ShanHeYuanKuoPower;
 /**
  * 本回合你每打出一张牌就抽一张牌
  */
+@AutoAdd.Ignore
 @CardConfig(magic = 1)
 @Credit(username = "下野宏铭", platform = Credit.WEIBO)
 public class ShanHeYuanKuo extends AbstractEasyCard {

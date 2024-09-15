@@ -14,5 +14,6 @@ public class AbstractSummonDescPower extends AbstractEasyPower {
 
     public AbstractSummonDescPower(AbstractCreature owner) {
         super(ID, powerStrings.NAME, null, false, owner, 0);
+        loadRegion("");
     }
 }

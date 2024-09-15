@@ -14,10 +14,9 @@ import static lingmod.ModCore.makeID;
 
 /**
  * 增强版哨位：获得5/8格挡。被消耗时获得 3E
- * TODO: credit
  */
 @CardConfig(block = 5)
-@Credit
+@Credit(link = "TODO")
 public class ZuiTiaoDeng extends AbstractEasyCard {
     public final static String ID = makeID(ZuiTiaoDeng.class.getSimpleName());
 

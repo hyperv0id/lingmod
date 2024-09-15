@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
+import lingmod.interfaces.Credit;
 import lingmod.powers.ZhuYeZhouPower;
 import lingmod.util.Wiz;
 
@@ -14,6 +15,7 @@ import static lingmod.ModCore.makeID;
  * 升级所有牌，下次离开梦境时，降级所有手牌
  */
 @CardConfig(isDream = true)
+@Credit(link = "https://hoffm.lofter.com/post/4cd93afb_2b8d70b90", username = "阿尔肥泰", platform = Credit.LOFTER)
 public class ZhuYeZhouCard extends AbstractEasyCard {
     public final static String ID = makeID(ZhuYeZhouCard.class.getSimpleName());
 

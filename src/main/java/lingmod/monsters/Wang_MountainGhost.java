@@ -4,6 +4,7 @@ import basemod.ReflectionHacks;
 import basemod.abstracts.CustomMonster;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -30,7 +31,7 @@ import static lingmod.ModCore.*;
 public class Wang_MountainGhost extends CustomMonster {
 
     public static final String ID = makeID(Wang_MountainGhost.class.getSimpleName());
-    public static final int MAX_HP = 200;
+    public static final int MAX_HP = 256;
     protected static final MonsterStrings ms = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = ms.NAME;
     public static final String[] MOVES = ms.MOVES;
@@ -39,20 +40,12 @@ public class Wang_MountainGhost extends CustomMonster {
     protected static final String LING_IMG_PATH = makeImagePath("monsters/Ling_WineTaoist.png");
 
     public Wang_MountainGhost() {
-        super(NAME, ID, MAX_HP, -10.0F, -30.0F, 476.0F, 410.0F, null,
+        super(NAME, ID, MAX_HP, -10.0F, -30.0F, 276.0F, 310.0F, null,
                 -50.0F, 30.0F);
         this.img = ImageMaster.loadImage(IMG_PATH);
         this.type = EnemyType.ELITE;
         this.dialogX = -200.0F * Settings.scale;
         this.dialogY = 10.0F * Settings.scale;
-
-        if (AbstractDungeon.ascensionLevel >= 19) {
-            this.setHp(256);
-        } else if (AbstractDungeon.ascensionLevel >= 9) {
-            this.setHp(250);
-        } else {
-            this.setHp(240);
-        }
 
         if (AbstractDungeon.ascensionLevel >= 17) {
             this.damage.add(new DamageInfo(this, 38)); // 38*1
@@ -126,7 +119,7 @@ public class Wang_MountainGhost extends CustomMonster {
                 setMove((byte) 7, Intent.DEFEND_BUFF); // add block and apply GO_Thron
                 break;
         }
-        if (this.currentHealth < this.maxHealth * 0.25 && !hasPower(Go_Endgame.ID)) {
+        if (this.currentHealth < this.maxHealth * 0.3 && !hasPower(Go_Endgame.ID)) {
             this.setMove((byte) 22, Intent.MAGIC); // 收官之时
         }
     }
@@ -175,15 +168,15 @@ public class Wang_MountainGhost extends CustomMonster {
                         new Go_LibertyPressure(this, 3), // Attack -> 易伤
                         new Go_ReadAhead(this, 2), // 无效出牌
                 };
-                addToBot(new FastApplyPower_Action(this, this, ps[r]));
+                addToBot(new ApplyPowerAction(this, this, ps[r]));
                 break;
             }
             case 7:
-                addToBot(new FastApplyPower_Action(this, this, new MalleablePower(this, 2)));
+                addToBot(new ApplyPowerAction(this, this, new MalleablePower(this, 2)));
                 break;
             case 22:
                 // 收关
-                addToBot(new FastApplyPower_Action(this, this, new Go_Endgame(this)));
+                addToBot(new ApplyPowerAction(this, this, new Go_Endgame(this)));
                 break;
             default:
                 addToBot(new GainBlockAction(this, 20));

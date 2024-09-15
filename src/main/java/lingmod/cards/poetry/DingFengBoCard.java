@@ -23,7 +23,7 @@ public class DingFengBoCard extends AbstractPoetryCard {
     public boolean isSecondHalf = false;
 
     public DingFengBoCard() {
-        super(ID, CardType.SKILL, CardRarity.BASIC, CardTarget.SELF);
+        super(ID, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
     }
 
     public DingFengBoCard(String id) {

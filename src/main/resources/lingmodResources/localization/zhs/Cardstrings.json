@@ -39,7 +39,7 @@
   },
   "${ModID}:HuangLiang": {
     "NAME": "黄粱梦",
-    "DESCRIPTION": "获得 !M! 金币"
+    "DESCRIPTION": "获得 !M ! 金币"
   },
   "${ModID}:Tranquility": {
     "NAME": "“清平”",
@@ -115,7 +115,7 @@
     "DESCRIPTION": "获得 !M!% 伤害减免 NL 损失生命时，获得等量 ${ModID}:缠绕 NL （因 缠绕 损失的生命也会被计入）"
   },
   "${ModID}:AltGuangHui": {
-    "NAME": "光辉ALT",
+    "NAME": "光辉",
     "DESCRIPTION": "造成获得过的 ${ModID}:诗兴 总量的伤害 NL (造成 !D! 点伤害)"
   },
   "${ModID}:Whoami_Shuo": {

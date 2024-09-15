@@ -24,7 +24,7 @@ public class ChiBiFuCard extends AbstractPoetryCard {
     public static final String ID = makeID(ChiBiFuCard.class.getSimpleName());
 
     public ChiBiFuCard() {
-        super(ID, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
+        super(ID, CardType.SKILL, CardRarity.COMMON, CardTarget.ENEMY);
     }
 
     @Override

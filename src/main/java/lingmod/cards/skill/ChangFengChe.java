@@ -11,7 +11,6 @@ import lingmod.util.CardHelper;
 
 /**
  * 长风彻: 0费打6，只有打防：抽3
- * TODO: credit
  */
 @Credit(username = "TODO")
 @CardConfig(damage = 6, magic = 3)

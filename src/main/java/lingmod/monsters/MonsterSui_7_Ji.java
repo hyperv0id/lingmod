@@ -31,7 +31,7 @@ import static lingmod.ModCore.makeImagePath;
  */
 public class MonsterSui_7_Ji extends CustomMonster {
     public static final String ID = makeID(MonsterSui_7_Ji.class.getSimpleName());
-    public static final int MAX_HP = 200;
+    public static final int MAX_HP = 245;
     protected static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = monsterStrings.NAME;
     public static final String[] MOVES = monsterStrings.MOVES;
@@ -42,7 +42,7 @@ public class MonsterSui_7_Ji extends CustomMonster {
     protected int baseDamage = 5;
 
     public MonsterSui_7_Ji() {
-        super(NAME, ID, MAX_HP, 0F, 0F, 200.0F, 200.0F, null,
+        super(NAME, ID, MAX_HP, 0F, 0F, 200.0F, 250.0F, null,
                 0F, 0F);
         this.img = ImageMaster.loadImage(IMG_PATH);
         this.type = EnemyType.ELITE;
