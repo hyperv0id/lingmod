@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -42,6 +43,9 @@ public class InnManager extends CustomMonster {
         super(NAME, ID, MAX_HP, -10.0F, -30.0F, 476.0F, 410.0F, IMG_PATH,
                 150.0F, 30.0F);
         this.img = ImageMaster.loadImage(IMG_PATH);
+        this.hb = new Hitbox(img.getWidth() * Settings.scale, img.getHeight() * Settings.scale);
+        this.hb_h = hb.height;
+        this.hb_w = hb.width;
         this.type = EnemyType.NORMAL;
         this.dialogX = -200.0F * Settings.scale;
         this.dialogY = 10.0F * Settings.scale;
@@ -107,7 +111,7 @@ public class InnManager extends CustomMonster {
     }
 
     public void turn_buff() {
-        addToBot(new ApplyPowerAction(this, this, new PlatedArmorPower(this, 16)));
+        addToBot(new ApplyPowerAction(this, this, new PlatedArmorPower(this, 6)));
         addToBot(new ApplyPowerAction(this, this, new BarricadePower(this)));
     }
 

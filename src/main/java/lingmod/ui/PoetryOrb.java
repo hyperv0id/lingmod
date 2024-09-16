@@ -90,6 +90,13 @@ public class PoetryOrb extends AbstractOrb {
             grp.addToTop(card);
             AbstractDungeon.gridSelectScreen.open(grp, 0, uis.TEXT[2], true);
         }
+
+        AbstractPlayer p = AbstractDungeon.player;
+
+        tX = cX = cX + (p.drawX - cX) / 30;
+        tY = cY = cY + (p.drawY + p.hb_h - cY + FONT_SIZE * 1.5F) / 30;
+        hb.cX = cX;
+        hb.cY = cY;
     }
 
     @Override
@@ -100,9 +107,6 @@ public class PoetryOrb extends AbstractOrb {
     @Override
     public void updateAnimation() {
         super.updateAnimation();
-        AbstractPlayer p = AbstractDungeon.player;
-        cX = p.drawX;
-        cY = p.drawY + p.hb_h + FONT_SIZE * 5.5F;
     }
 
     @Override
@@ -113,7 +117,7 @@ public class PoetryOrb extends AbstractOrb {
             // float x = p.drawX - p.hb_w;
             // float y = p.drawY + p.hb_h + FONT_SIZE * 5.5F;
             String text = card.getPoetryTip();
-
+            hb.width = FONT_SIZE * text.length() / 3F;
             FontHelper.renderSmartText(sb, PORTEY_FONT, text, cX - 48, cY, Color.WHITE);
         }
     }

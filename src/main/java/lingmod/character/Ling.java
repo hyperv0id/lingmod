@@ -72,7 +72,7 @@ public class Ling extends CustomPlayer {
                 SHOULDER1,
                 SHOULDER1,
                 CORPSE,
-                getLoadout(), 0F, 0F, 166.0F, 327.0F, new EnergyManager(3));
+                getLoadout(), 0F, 0F, 166.0F, 227.0F, new EnergyManager(3));
 
         dialogX = (drawX + 0.0F * Settings.scale);
         dialogY = (drawY + 240.0F * Settings.scale);
@@ -86,9 +86,9 @@ public class Ling extends CustomPlayer {
             String prefix = makeCharacterPath("ling/static/");
             String path = prefix + ModConfig.skinInfo.toString().toLowerCase();
             img = ImageMaster.loadImage(path + ".png");
-            this.hb = new Hitbox(img.getWidth(), img.getHeight());
-            hb_w = hb.width;
-            hb_h = hb.height;
+            this.hb = new Hitbox(img.getWidth() * Settings.scale, img.getHeight() * Settings.scale);
+            this.hb_h = hb.height;
+            this.hb_w = hb.width;
         } else {
             String prefix = makeCharacterPath("ling/char_2023_ling_");
             String path = prefix + ModConfig.skinInfo.toString().toLowerCase();

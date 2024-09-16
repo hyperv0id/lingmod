@@ -108,7 +108,6 @@ public class ModConfig {
         }
 
         if (skinInfo == null) skinInfo = SkinInfo.NIAN;
-        skinInfo = SkinInfo.NIAN;
     }
 
     public static void saveSkinInfo() {

@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
@@ -45,6 +46,10 @@ public class MonsterSui_7_Ji extends CustomMonster {
         super(NAME, ID, MAX_HP, 0F, 0F, 200.0F, 250.0F, null,
                 0F, 0F);
         this.img = ImageMaster.loadImage(IMG_PATH);
+        this.hb = new Hitbox(img.getWidth() * Settings.scale, img.getHeight() * Settings.scale);
+        this.hb_h = hb.height;
+        this.hb_w = hb.width;
+
         this.type = EnemyType.ELITE;
         this.dialogX = -200.0F * Settings.scale;
         this.dialogY = 10.0F * Settings.scale;

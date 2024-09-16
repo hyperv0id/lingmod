@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -43,6 +44,10 @@ public class Wang_MountainGhost extends CustomMonster {
         super(NAME, ID, MAX_HP, -10.0F, -30.0F, 276.0F, 310.0F, null,
                 -50.0F, 30.0F);
         this.img = ImageMaster.loadImage(IMG_PATH);
+        this.hb = new Hitbox(img.getWidth() * Settings.scale, img.getHeight() * Settings.scale);
+        this.hb_h = hb.height;
+        this.hb_w = hb.width;
+
         this.type = EnemyType.ELITE;
         this.dialogX = -200.0F * Settings.scale;
         this.dialogY = 10.0F * Settings.scale;
