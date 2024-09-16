@@ -236,7 +236,7 @@
   "lingmod:TaoMeiWanNiangPower": {
     "NAME": "桃梅晚酿",
     "DESCRIPTIONS": [
-      "消耗 %d 张卡牌后，获得 %d 金属化"
+      "消耗 %d 张卡牌后，获得 %d 多层护甲"
     ]
   }
 }

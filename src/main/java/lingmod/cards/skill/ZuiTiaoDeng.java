@@ -31,17 +31,12 @@ public class ZuiTiaoDeng extends AbstractEasyCard {
     @Override
     public void triggerOnExhaust() {
         super.triggerOnExhaust();
-        addToBot(new GainEnergyAction(3));
-    }
-
-    @Override
-    public void triggerWhenDrawn() {
-        super.triggerWhenDrawn();
-        addToBot(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(), 1));
+        addToBot(new GainEnergyAction(2));
     }
 
     @Override
     public void upp() {
+        addToBot(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(), 1));
         upgradeBlock(3);
     }
 }

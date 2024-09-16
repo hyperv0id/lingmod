@@ -361,7 +361,7 @@
   },
   "lingmod:TaoMeiWanNiang": {
     "NAME": "桃梅晚酿",
-    "DESCRIPTION": "每消耗 !M! 张牌，获得 !${ModID}:m2! 金属化 "
+    "DESCRIPTION": "每消耗 !M! 张牌，获得 !${ModID}:m2! 多层护甲 "
   },
   "lingmod:TheNumberIs3": {
     "NAME": "其数为3",
@@ -378,7 +378,7 @@
   },
   "lingmod:ZuiTiaoDeng": {
     "NAME": "醉挑灯",
-    "DESCRIPTION": "获得 !B! 点格挡 NL 被 消耗 时，获得 [E] [E] [E] NL 抽到时，在弃牌堆中放入一张复制"
+    "DESCRIPTION": "获得 !B! 点格挡，在弃牌堆中放入一张复制 NL 被 消耗 时，获得 [E] [E] "
   },
   "lingmod:TianZhuiCard": {
     "NAME": "天坠",

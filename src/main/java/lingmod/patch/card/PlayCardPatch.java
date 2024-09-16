@@ -3,6 +3,7 @@ package lingmod.patch.card;
 import basemod.helpers.CardModifierManager;
 import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.CardModifierPatches;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -13,7 +14,7 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import javassist.CannotCompileException;
 import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
-import lingmod.actions.FastApplyPower_Action;
+import lingmod.cards.attack.JiangXiangNaTie;
 import lingmod.monsters.AbsSummonMonster;
 import lingmod.powers.Go_ReadAhead;
 import lingmod.util.Wiz;
@@ -48,12 +49,10 @@ public class PlayCardPatch {
         if (!(monster instanceof AbsSummonMonster))
             return;
         if (card.type == CardType.ATTACK) {
-            Wiz.atb(new FastApplyPower_Action(monster, monster, new StrengthPower(monster, card.damage)));
+            Wiz.atb(new ApplyPowerAction(monster, monster, new StrengthPower(monster, card.damage)));
             Wiz.addToBotAbstract(monster::applyPowers);
-        } else if (card.type == CardType.SKILL) {
-            Wiz.addToBotAbstract(() -> {
-                monster.increaseMaxHp(card.block, true);
-            });
+        } else if (card.type == CardType.SKILL || card.cardID.equals(JiangXiangNaTie.ID)) {
+            Wiz.addToBotAbstract(() -> monster.increaseMaxHp(card.block, true));
         }
     }
 
