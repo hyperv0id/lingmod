@@ -24,7 +24,7 @@ public abstract class AbsSummonMonster extends CustomMonster {
     protected int baseMaxHP;
 
     public AbsSummonMonster(String name, String id, int maxHealth, float hb_x, float hb_y, float hb_w, float hb_h,
-            String imgUrl, String img_up) {
+                            String imgUrl, String img_up) {
         super(name, id, maxHealth, hb_x, hb_y, hb_w, hb_h, imgUrl);
         this.baseMaxHP = maxHealth;
         isPlayer = true;
@@ -54,13 +54,14 @@ public abstract class AbsSummonMonster extends CustomMonster {
 
         if (hb.hovered || intentHb.hovered || healthHb.hovered)
             hover();
+        else unhover();
     }
 
     public void hover() {
         AbstractPlayer p = Wiz.adp();
         if ((boolean) ReflectionHacks.privateMethod(AbstractPlayer.class, "clickAndDragCards").invoke(p)) {
             AbstractCard card = p.hoveredCard;
-            if (card.type == AbstractCard.CardType.ATTACK || card.type == AbstractCard.CardType.SKILL) {
+            if (card != null && (card.type == AbstractCard.CardType.ATTACK || card.type == AbstractCard.CardType.SKILL)) {
                 cardTargetCache.put(card, card.target);
                 card.target = AbstractCard.CardTarget.ENEMY;
                 logger.info("Set Target: " + card.name + " ENEMY");
@@ -74,10 +75,12 @@ public abstract class AbsSummonMonster extends CustomMonster {
         AbstractPlayer p = Wiz.adp();
         if ((boolean) ReflectionHacks.privateMethod(AbstractPlayer.class, "clickAndDragCards").invoke(p)) {
             AbstractCard card = p.hoveredCard;
-            AbstractCard.CardTarget oldTarget = cardTargetCache.get(card);
-            if (oldTarget != null)
-                card.target = oldTarget;
-            logger.info("Reset Target: " + card.name + " ENEMY");
+            if (card != null) {
+                AbstractCard.CardTarget oldTarget = cardTargetCache.get(card);
+                if (oldTarget != null)
+                    card.target = oldTarget;
+                logger.info("Reset Target: " + card.name + " ENEMY");
+            }
         }
     }
 
