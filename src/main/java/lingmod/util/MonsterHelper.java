@@ -19,6 +19,7 @@ import lingmod.monsters.AbsSummonMonster;
 import java.lang.reflect.Constructor;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static lingmod.ModCore.logger;
 
@@ -198,11 +199,18 @@ public class MonsterHelper {
                 .filter(mo -> mo instanceof AbsSummonMonster).findFirst().orElse(null);
     }
 
-    public static boolean areMonstersDead() {
+    public static Stream<AbstractMonster> getSummons() {
         return AbstractDungeon.getMonsters().monsters.stream()
-                .filter(mo -> !(mo instanceof AbsSummonMonster)) // 排除召唤物
-                .filter(mo -> !mo.isPlayer)
-                .allMatch(AbstractCreature::isDeadOrEscaped);
+                .filter(mo -> !mo.isDeadOrEscaped())
+                .filter(mo -> mo instanceof AbsSummonMonster);
+    }
+
+    public static boolean areMonstersDead() {
+        return allMonstersNotSummonStream().allMatch(m -> m.isDead || m.escaped);
+    }
+
+    public static boolean areMonstersBasicallyDead() {
+        return allMonstersNotSummonStream().allMatch(m -> m.isDying || m.isEscaping);
     }
 
     /**
@@ -212,6 +220,14 @@ public class MonsterHelper {
         return AbstractDungeon.getMonsters().monsters.stream().filter(mo -> !(mo instanceof AbsSummonMonster))
                 .filter(mo -> !mo.isDeadOrEscaped())
                 .collect(Collectors.toList());
+    }
+
+    /**
+     * 获取所有怪物，但是不包含召唤物
+     */
+    public static Stream<AbstractMonster> allMonstersNotSummonStream() {
+        return AbstractDungeon.getMonsters().monsters.stream().filter(mo -> !(mo instanceof AbsSummonMonster))
+                .filter(mo -> !mo.isDeadOrEscaped());
     }
 
     public static void MoveMonster(AbstractMonster m, float x, float y) {

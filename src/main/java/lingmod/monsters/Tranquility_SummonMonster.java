@@ -43,7 +43,7 @@ public class Tranquility_SummonMonster extends AbsSummonMonster {
     @Override
     public void takeTurn() {
         AbstractMonster target = MonsterHelper.getMoNotSummon(true, null);
-        logger.info(this + "Summon Take Turn " + damage.get(0).base + " " + damage.get(0).output);
+        logger.info("{}_Summon Take Turn {} {}", this, damage.get(0).base, damage.get(0).output);
         addToBot(new DamageAction(target, damage.get(0)));
         if (this.hasPower(TranquilityPower.ID)) {
             addToBot(new DamageAction(target, damage.get(0)));
