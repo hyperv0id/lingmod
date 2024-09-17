@@ -227,8 +227,8 @@
   },
   "${ModID}:DrinkAlone": {
     "NAME": "独酌",
-    "DESCRIPTION": "选择一张牌，消耗所有手牌，在手牌中加入其 X 张复制",
-    "UPGRADE_DESCRIPTION": "选择一张牌，消耗所有手牌，在手牌中加入其 X+1 张复制",
+    "DESCRIPTION": "消耗所有能量，选择一张牌，消耗所有手牌 NL 在手牌中加入其 X 张复制",
+    "UPGRADE_DESCRIPTION": "消耗所有能量，选择一张牌，消耗所有手牌 NL 在手牌中加入其 X+1 张复制",
     "EXTENDED_DESCRIPTION": [
       "选择一张牌独饮"
     ]
@@ -382,7 +382,7 @@
   },
   "lingmod:TianZhuiCard": {
     "NAME": "天坠",
-    "DESCRIPTION": "造成 !D! 点伤害 NL 如果手牌中每一张牌都是攻击牌，那么对敌人施加 2 以手拒之 "
+    "DESCRIPTION": "造成 !D! 点伤害 NL 如果手牌中每一张牌都是攻击牌，那么对敌人施加 2 格挡返还 "
   },
   "lingmod:LankeDream": {
     "NAME": "烂柯梦",

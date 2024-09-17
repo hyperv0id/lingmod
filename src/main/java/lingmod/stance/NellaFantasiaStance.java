@@ -17,8 +17,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.stances.AbstractStance;
 import com.megacrit.cardcrawl.stances.NeutralStance;
 import com.megacrit.cardcrawl.vfx.BorderFlashEffect;
-import com.megacrit.cardcrawl.vfx.stance.CalmParticleEffect;
-import com.megacrit.cardcrawl.vfx.stance.StanceAuraEffect;
+import lingmod.ui.vfx.NellaFantasiaStanceAuraEffect;
+import lingmod.ui.vfx.NellaFantasiaStanceEffect;
 import lingmod.util.Wiz;
 
 import static lingmod.ModCore.makeID;
@@ -54,14 +54,15 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerTurnS
             this.particleTimer -= Gdx.graphics.getDeltaTime();
             if (this.particleTimer < 0.0F) {
                 this.particleTimer = 0.04F;
-                AbstractDungeon.effectsQueue.add(new CalmParticleEffect());
+                AbstractDungeon.effectsQueue.add(new NellaFantasiaStanceEffect());
             }
         }
 
         this.particleTimer2 -= Gdx.graphics.getDeltaTime();
         if (this.particleTimer2 < 0.0F) {
             this.particleTimer2 = MathUtils.random(0.45F, 0.55F);
-            AbstractDungeon.effectsQueue.add(new StanceAuraEffect("Calm"));
+//            AbstractDungeon.effectsQueue.add(new StanceAuraEffect("Calm"));
+            AbstractDungeon.effectsQueue.add(new NellaFantasiaStanceAuraEffect());
         }
     }
 

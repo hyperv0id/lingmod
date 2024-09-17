@@ -3,7 +3,6 @@ package lingmod.cards.skill;
 import basemod.cardmods.ExhaustMod;
 import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -35,7 +34,7 @@ public class DrinkAlone extends AbstractEasyCard {
             addToBot(new ExhaustAllAction());
             addToBot(new EasyXCostAction(this, (effect, param) -> {
                 addToTop(new MakeTempCardInHandAction(param, effect + (upgraded ? 1 : 0)));
-                addToBot(new GainEnergyAction(effect + (upgraded ? 1 : 0)));
+                // addToBot(new GainEnergyAction(effect + (upgraded ? 1 : 0)));
                 return true;
             }, cards.get(0).makeStatEquivalentCopy()));
         }));
