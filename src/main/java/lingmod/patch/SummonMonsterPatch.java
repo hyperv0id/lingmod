@@ -168,9 +168,9 @@ public class SummonMonsterPatch {
         @SpirePrefixPatch
         public static void Prefix() {
             if (MonsterHelper.areMonstersDead()) {
-                MonsterHelper.getSummons().forEach(sm -> sm.halfDead = true);
+                MonsterHelper.getSummons().forEach(sm -> sm.isDying = true);
             } else {
-                MonsterHelper.getSummons().forEach(sm -> sm.halfDead = false);
+                MonsterHelper.getSummons().forEach(sm -> sm.isDying = false);
             }
         }
     }

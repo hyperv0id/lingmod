@@ -48,10 +48,11 @@ public class PlayCardPatch {
 
         if (!(monster instanceof AbsSummonMonster))
             return;
-        if (card.type == CardType.ATTACK) {
+        if (card.type == CardType.ATTACK || card.cardID.equals(JiangXiangNaTie.ID)) {
             Wiz.atb(new ApplyPowerAction(monster, monster, new StrengthPower(monster, card.damage)));
             Wiz.addToBotAbstract(monster::applyPowers);
-        } else if (card.type == CardType.SKILL || card.cardID.equals(JiangXiangNaTie.ID)) {
+        }
+        if (card.type == CardType.SKILL || card.cardID.equals(JiangXiangNaTie.ID)) {
             Wiz.addToBotAbstract(() -> monster.increaseMaxHp(card.block, true));
         }
     }
