@@ -107,8 +107,9 @@ public class ToneManager {
     }
 
     public int remainProgress() {
+        if (idx_1 >= tokens.size()) return 0;
         int ret = tokens.get(idx_1).length() - idx_2;
-        for (int i1 = idx_1; i1 < tokens.size(); i1++) {
+        for (int i1 = idx_1 + 1; i1 < tokens.size(); i1++) {
             ret += tokens.get(i1).length();
         }
         return ret;
@@ -141,9 +142,11 @@ public class ToneManager {
             if (idx_1 >= tokens.size()) {
                 idx_1 = 0;
                 // 必须延迟添加
+                owner.applyPowers_poetry();
                 addToBotAbstract(owner::onFinishFull);
             } else {
                 // 必须延迟添加
+                owner.applyPowers_poetry();
                 addToBotAbstract(owner::onFinishOnce);
             }
         }
@@ -177,13 +180,25 @@ public class ToneManager {
     }
 
     public void skipVerse() {
-        owner.onFinishOnce();
-        idx_1++;
-        idx_2 = 0;
-        if (idx_1 >= tokens.size()) {
-            owner.onFinishFull();
-            idx_1 = 0;
+        if (tokens.size() == 1) {
+            boolean i20 = idx_2 == 0;
+            while (idx_2 != 0 || i20) {
+                next();
+                i20 = false;
+            }
+        } else {
+            int i1 = idx_1;
+            while (idx_1 == i1) {
+                next();
+            }
         }
-        tipStrCache = "";
+//        idx_1++;
+//        owner.onFinishOnce();
+//        idx_2 = 0;
+//        if (idx_1 >= tokens.size()) {
+//            owner.onFinishFull();
+//            idx_1 = 0;
+//        }
+//        tipStrCache = "";
     }
 }

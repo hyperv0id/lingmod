@@ -14,7 +14,6 @@ public class CoreDumpPatch {
 
     @SpireInsertPatch(locator = Locator.class)
     public static void Insert() {
-        ModCore.logger.info("Normal Exit, No OPEN BROWSER");
         open_browser();
     }
 

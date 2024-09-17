@@ -57,6 +57,10 @@ public abstract class AbstractPoetryCard extends AbstractEasyCard implements OnC
         addPoetryTip();
     }
 
+    public void applyPowers_poetry() {
+        super.applyPowers();
+    }
+
     public void addPoetryTip() {
         // 改成展示诗词：
         if (poetryStrings.CONTENT != null && poetryStrings.CONTENT.length != 0) {
@@ -131,7 +135,7 @@ public abstract class AbstractPoetryCard extends AbstractEasyCard implements OnC
      */
     public void onFinishFull() {
         addToBot(new MakeTempCardInHandAction(makeStatEquivalentCopy()));
-        ModCore.logger.info(name + " Finished");
+        ModCore.logger.info("{} Finished", name);
     }
 
     /**

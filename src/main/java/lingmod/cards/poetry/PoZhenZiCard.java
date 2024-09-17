@@ -22,8 +22,9 @@ public class PoZhenZiCard extends AbstractPoetryCard {
     /**
      * 诗词专用
      */
-    public void applyPowers_p() {
-        this.baseDamage = toneManager.remainProgress();
+    @Override
+    public void applyPowers_poetry() {
+        this.damage = this.baseDamage = toneManager.remainProgress();
         super.applyPowers();
     }
 
@@ -31,7 +32,7 @@ public class PoZhenZiCard extends AbstractPoetryCard {
      * 诗词专用
      */
     public void calculateCardDamage_p(AbstractMonster mo) {
-        this.baseDamage = toneManager.remainProgress();
+        this.damage = this.baseDamage = toneManager.remainProgress();
         super.calculateCardDamage(mo);
     }
 
@@ -43,14 +44,14 @@ public class PoZhenZiCard extends AbstractPoetryCard {
     @Override
     public void receiveCardUsed(AbstractCard c) {
         super.receiveCardUsed(c);
-        applyPowers_p();
+        applyPowers_poetry();
     }
 
     @Override
     public AbstractCard makeStatEquivalentCopy() {
         AbstractPoetryCard cp = (AbstractPoetryCard) super.makeStatEquivalentCopy();
-        applyPowers_p();
-        cp.damage = this.damage;
+//        applyPowers_poetry();
+        cp.baseDamage = this.baseDamage;
         return cp;
     }
 }
