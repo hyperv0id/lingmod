@@ -34,7 +34,6 @@ public class TianZhuiCard extends AbstractEasyCard {
         for (AbstractCard c : p.hand.group) {
             if (c.type != CardType.ATTACK) {
                 allAtk = false;
-                this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
                 break;
             }
         }
