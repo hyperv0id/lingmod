@@ -22,7 +22,7 @@ public class CantApplyPowerPower extends AbstractEasyPower implements PostPowerA
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(ID);
 
     public CantApplyPowerPower(AbstractCreature owner) {
-        super(ID, powerStrings.NAME, PowerType.DEBUFF, false, owner, 0);
+        super(ID, powerStrings.NAME, PowerType.BUFF, false, owner, 0);
     }
 
     @Override

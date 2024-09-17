@@ -168,22 +168,12 @@ public class SummonMonsterPatch {
         @SpirePrefixPatch
         public static void Prefix() {
             if (MonsterHelper.areMonstersDead()) {
-                MonsterHelper.getSummons().forEach(sm -> sm.isEscaping = true);
+                MonsterHelper.getSummons().forEach(sm -> sm.halfDead = true);
             } else {
-                MonsterHelper.getSummons().forEach(sm -> sm.isEscaping = false);
+                MonsterHelper.getSummons().forEach(sm -> sm.halfDead = false);
             }
         }
     }
-
-//    @SpirePatch(clz = MonsterGroup.class, method = "areMonstersBasicallyDead")
-//    public static class EndBattleCheck_BasicallyDeadPatch {
-//        @SpirePrefixPatch
-//        public static void Postfix() {
-//            if(MonsterHelper.areMonstersDead()) {
-//                MonsterHelper.getSummons().forEach(AbstractMonster::die);
-//            }
-//        }
-//    }
 
     @SpirePatch(clz = MonsterGroup.class, method = "applyPreTurnLogic")
     public static class SummonPreTurnPatch {

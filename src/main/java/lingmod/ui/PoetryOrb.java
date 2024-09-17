@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.evacipated.cardcrawl.modthespire.Loader;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -35,6 +36,7 @@ public class PoetryOrb extends AbstractOrb {
 
     public AbstractPoetryCard card;
     private static final int FONT_SIZE = 28;
+    private boolean MINITY_SPIRE_LOADED = false;
 
     public PoetryOrb(AbstractPoetryCard card) {
         super();
@@ -94,9 +96,18 @@ public class PoetryOrb extends AbstractOrb {
         AbstractPlayer p = AbstractDungeon.player;
 
         tX = cX = cX + (p.drawX - cX) / 30;
-        tY = cY = cY + (p.drawY + p.hb_h - cY + FONT_SIZE * 1.5F) / 30;
+        tY = cY = cY + (p.drawY + p.hb_h - cY + getRenderGap()) / 30;
         hb.cX = cX;
         hb.cY = cY;
+    }
+
+    float getRenderGap() {
+        float gap = FONT_SIZE * 1.5F;
+        if (MINITY_SPIRE_LOADED || Loader.isModLoadedOrSideloaded("mintyspire")) {
+            gap *= 2;
+            MINITY_SPIRE_LOADED = true;
+        }
+        return gap;
     }
 
     @Override
