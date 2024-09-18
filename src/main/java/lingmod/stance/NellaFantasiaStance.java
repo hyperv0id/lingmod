@@ -34,7 +34,6 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerTurnS
     public static int dmgModi = 0;
     public static final int adder = 1; // 打出牌时增加的否定值
     public static int remainTurn = 1;
-    private static long sfxId = -1L;
     public static boolean exitOnStartTurn = true;
 
     public NellaFantasiaStance() {
@@ -67,13 +66,8 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerTurnS
     }
 
     public void onEnterStance() {
-        AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(2));
-        if (sfxId != -1L) {
-            this.stopIdleSfx();
-        }
+        AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
         dmgModi = 0;
-        CardCrawlGame.sound.play("STANCE_ENTER_CALM");
-        sfxId = CardCrawlGame.sound.playAndLoop("STANCE_LOOP_CALM");
         AbstractDungeon.effectsQueue.add(new BorderFlashEffect(Color.PURPLE, true));
         BaseMod.subscribe(this);
         updateDescription();
@@ -110,13 +104,6 @@ public class NellaFantasiaStance extends AbstractStance implements OnPlayerTurnS
     public void onExitStance() {
         BaseMod.unsubscribeLater(this);
         this.stopIdleSfx();
-    }
-
-    public void stopIdleSfx() {
-        if (sfxId != -1L) {
-            CardCrawlGame.sound.stop("STANCE_LOOP_CALM", sfxId);
-            sfxId = -1L;
-        }
     }
 
     @Override

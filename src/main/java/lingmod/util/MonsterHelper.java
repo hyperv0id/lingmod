@@ -1,11 +1,14 @@
 package lingmod.util;
 
 import basemod.ReflectionHacks;
+import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.Hitbox;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.monsters.exordium.AcidSlime_S;
@@ -269,6 +272,16 @@ public class MonsterHelper {
             summonMonster.combine();
         } else {
             Wiz.atb(new TalkAction(true, "我不能同时召唤多种召唤物", 2.0F, 2.0F));
+        }
+    }
+
+    public static void loadImage(AbstractCreature target, String imgUrl) {
+        Texture img = ImageMaster.loadImage(imgUrl);
+        if (img != null) {
+            ReflectionHacks.setPrivate(target, AbstractCreature.class, "img", img);
+            target.hb = new Hitbox(img.getWidth() * Settings.scale, img.getHeight() * Settings.scale);
+            target.hb_h = target.hb.height;
+            target.hb_w = target.hb.width;
         }
     }
 

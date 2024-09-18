@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import lingmod.powers.AbstractSummonDescPower;
 import lingmod.util.MonsterHelper;
@@ -22,10 +21,13 @@ import static lingmod.ModCore.logger;
 public abstract class AbsSummonMonster extends CustomMonster {
     public String img_up;
     protected int baseMaxHP;
+    private AbstractCard lastHoveredCard;
 
     public AbsSummonMonster(String name, String id, int maxHealth, float hb_x, float hb_y, float hb_w, float hb_h,
                             String imgUrl, String img_up) {
         super(name, id, maxHealth, hb_x, hb_y, hb_w, hb_h, imgUrl);
+        MonsterHelper.loadImage(this, imgUrl);
+
         this.baseMaxHP = maxHealth;
         isPlayer = true;
         this.img_up = img_up;
@@ -61,10 +63,11 @@ public abstract class AbsSummonMonster extends CustomMonster {
         AbstractPlayer p = Wiz.adp();
         if ((boolean) ReflectionHacks.privateMethod(AbstractPlayer.class, "clickAndDragCards").invoke(p)) {
             AbstractCard card = p.hoveredCard;
+            lastHoveredCard = card;
             if (card != null && (card.type == AbstractCard.CardType.ATTACK || card.type == AbstractCard.CardType.SKILL)) {
                 cardTargetCache.put(card, card.target);
                 card.target = AbstractCard.CardTarget.ENEMY;
-                logger.info("Set Target: " + card.name + " ENEMY");
+                logger.info("Set Target: {} ENEMY", card.name);
             }
         }
     }
@@ -73,13 +76,13 @@ public abstract class AbsSummonMonster extends CustomMonster {
     public void unhover() {
         super.unhover();
         AbstractPlayer p = Wiz.adp();
-        if ((boolean) ReflectionHacks.privateMethod(AbstractPlayer.class, "clickAndDragCards").invoke(p)) {
-            AbstractCard card = p.hoveredCard;
-            if (card != null) {
-                AbstractCard.CardTarget oldTarget = cardTargetCache.get(card);
-                if (oldTarget != null)
-                    card.target = oldTarget;
-                logger.info("Reset Target: " + card.name + " ENEMY");
+        // 切换选牌是修改target
+        if (lastHoveredCard != null && p.hoveredCard != null && p.hoveredCard != lastHoveredCard) {
+            AbstractCard.CardTarget oldTarget = cardTargetCache.get(lastHoveredCard);
+            if (oldTarget != null) {
+                lastHoveredCard.target = oldTarget;
+                logger.info("Reset Target: {} as {}", lastHoveredCard.name, oldTarget);
+                cardTargetCache.remove(lastHoveredCard);
             }
         }
     }
@@ -102,7 +105,8 @@ public abstract class AbsSummonMonster extends CustomMonster {
      */
     public void combine() {
         this.increaseMaxHp(this.baseMaxHP, true);
-        this.img = ImageMaster.loadImage(img_up);
+        MonsterHelper.loadImage(this, img_up);
+
         AbstractPower po = addCombinePower();
         addToBot(new ApplyPowerAction(this, this, po));
         Wiz.addToBotAbstract(() -> {
