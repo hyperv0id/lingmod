@@ -1,16 +1,15 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.AutoAdd;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.monsters.Tranquility_SummonMonster;
 import lingmod.util.MonsterHelper;
+
+import static lingmod.ModCore.makeID;
 
 @AutoAdd.Ignore
 @CardConfig(summonClz = Tranquility_SummonMonster.class, magic = 18, magic2 = 3)
@@ -20,7 +19,7 @@ public class Tranquility_Summon extends AbstractEasyCard {
     public static final String ID = makeID(Tranquility_Summon.class.getSimpleName());
 
     public Tranquility_Summon() {
-        super(ID, 1, CardType.ATTACK, CardRarity.BASIC, CardTarget.SELF);
+        super(ID, 1, CardType.SKILL, CardRarity.BASIC, CardTarget.SELF);
     }
 
     @Override
