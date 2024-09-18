@@ -275,10 +275,10 @@ public class MonsterHelper {
         }
     }
 
-    public static void loadImage(AbstractCreature target, String imgUrl) {
+    public static void loadImage(AbstractMonster target, String imgUrl) {
         Texture img = ImageMaster.loadImage(imgUrl);
         if (img != null) {
-            ReflectionHacks.setPrivate(target, AbstractCreature.class, "img", img);
+            ReflectionHacks.setPrivate(target, AbstractMonster.class, "img", img);
             target.hb = new Hitbox(img.getWidth() * Settings.scale, img.getHeight() * Settings.scale);
             target.hb_h = target.hb.height;
             target.hb_w = target.hb.width;

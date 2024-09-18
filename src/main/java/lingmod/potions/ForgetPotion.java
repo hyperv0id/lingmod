@@ -31,7 +31,7 @@ public class ForgetPotion extends AbstractEasyPotion implements PostUpdateSubscr
 
     @Override
     public boolean canUse() {
-        return true;
+        return !AbstractDungeon.getCurrRoom().combatEvent;
     }
 
     public int getPotency(int ascensionlevel) {
