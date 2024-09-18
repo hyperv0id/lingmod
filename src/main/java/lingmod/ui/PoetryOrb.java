@@ -97,14 +97,13 @@ public class PoetryOrb extends AbstractOrb {
 
         tX = cX = cX + (p.drawX - cX) / 30;
         tY = cY = cY + (p.drawY + p.hb_h - cY + getRenderGap()) / 30;
-        hb.cX = cX;
-        hb.cY = cY;
+        hb.move(cX, cY);
     }
 
     float getRenderGap() {
-        float gap = FONT_SIZE * 1.5F;
+        float gap = FONT_SIZE * 3F;
         if (MINITY_SPIRE_LOADED || Loader.isModLoadedOrSideloaded("mintyspire")) {
-            gap *= 2;
+            gap += FONT_SIZE * 1.5F;
             MINITY_SPIRE_LOADED = true;
         }
         return gap;
@@ -125,11 +124,9 @@ public class PoetryOrb extends AbstractOrb {
         hb.render(sb);
         if (card != null) {
             AbstractPlayer p = AbstractDungeon.player;
-            // float x = p.drawX - p.hb_w;
-            // float y = p.drawY + p.hb_h + FONT_SIZE * 5.5F;
             String text = card.getPoetryTip();
-            hb.width = FONT_SIZE * text.length() / 3F;
-            FontHelper.renderSmartText(sb, PORTEY_FONT, text, cX - 48, cY, Color.WHITE);
+            hb.width = FONT_SIZE * text.length() / 2.8F;
+            FontHelper.renderSmartText(sb, PORTEY_FONT, text, cX - 48, cY - FONT_SIZE / 2F, Color.WHITE);
         }
     }
 

@@ -50,7 +50,7 @@ public class Morph {
             return;
         }
 
-        logger.info("Morphing " + morphee.name + " to " + morphTarget.name);
+        logger.info("Morphing {} to {}", morphee.name, morphTarget.name);
 
         if (morphee instanceof AbstractPlayer && (currentMorph == null || currentMorph.isEmpty())) {
             // if first time
@@ -62,6 +62,11 @@ public class Morph {
             hbWBackup = morphee.hb_w;
             hbHBackup = morphee.hb_h;
         }
+
+        morphee.hb.resize(morphTarget.hb_w, morphTarget.hb_h);
+        morphee.hb_w = morphee.hb.width;
+        morphee.hb_h = morphee.hb.height;
+        morphee.hb.move(morphee.drawX, morphee.drawY);
 
         ReflectionHacks.setPrivate(morphee, AbstractCreature.class, "skeleton",
                 ReflectionHacks.getPrivate(morphTarget, AbstractCreature.class, "skeleton"));
@@ -77,10 +82,7 @@ public class Morph {
         morphee.state = morphTarget.state;
         if (!(morphee instanceof AbstractPlayer))
             morphee.name = morphTarget.name;
-        morphee.hb.resize(morphTarget.hb.width, morphTarget.hb.height);
-        morphee.hb_w = morphee.hb.width;
-        morphee.hb_h = morphee.hb.height;
-        morphee.hb.move(morphee.drawX, morphee.drawY);
+
 
         AnimationStateData stateData = ReflectionHacks.getPrivate(morphee, AbstractCreature.class, "stateData");
         if (stateData != null) {
@@ -135,6 +137,7 @@ public class Morph {
             }
         }
         morphee.flipHorizontal = !morphee.flipHorizontal;
+        morphee.healthBarUpdatedEvent();
     }
 
     public static void restorePlayerMorph() {

@@ -1,6 +1,5 @@
 package lingmod.potions;
 
-import basemod.AutoAdd.Ignore;
 import basemod.BaseMod;
 import basemod.interfaces.PostUpdateSubscriber;
 import com.badlogic.gdx.graphics.Color;
@@ -19,7 +18,6 @@ import lingmod.events.DoujinshiPlot;
 import static lingmod.ModCore.makeID;
 import static lingmod.ModCore.makeImagePath;
 
-@Ignore
 public class ForgetPotion extends AbstractEasyPotion implements PostUpdateSubscriber {
     public static String ID = makeID(ForgetPotion.class.getSimpleName());
     public static final PotionStrings potionStrings = CardCrawlGame.languagePack.getPotionString(ID);
@@ -31,7 +29,7 @@ public class ForgetPotion extends AbstractEasyPotion implements PostUpdateSubscr
 
     @Override
     public boolean canUse() {
-        return !AbstractDungeon.getCurrRoom().combatEvent;
+        return true;
     }
 
     public int getPotency(int ascensionlevel) {
@@ -48,7 +46,7 @@ public class ForgetPotion extends AbstractEasyPotion implements PostUpdateSubscr
                 potionStrings.DESCRIPTIONS[0], false);
         BaseMod.subscribe(this);
 
-        if (DoujinshiPlot.__inst != null) {
+        if (DoujinshiPlot.__inst == AbstractDungeon.getCurrRoom().event) {
             DoujinshiPlot.__inst.transitionKey(DoujinshiPlot.Phases.DOUJINSHI);
             DoujinshiPlot.__inst.imageEventText.loadImage(makeImagePath("events/DoujinshiPlot_1.png"));
         }
