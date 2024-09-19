@@ -12,7 +12,7 @@ import static lingmod.ModCore.makeID;
 /**
  * 伤害 = 消耗堆/2
  */
-@CardConfig(damage = 9, magic = 10)
+@CardConfig(damage = 0, magic = 2)
 @Credit(link = "https://www.pixiv.net/artworks/111160788", platform = Credit.PIXIV, username = "WHO808")
 public class DaMoFeiHuo extends AbstractEasyCard {
     public final static String ID = makeID(DaMoFeiHuo.class.getSimpleName());
@@ -24,12 +24,12 @@ public class DaMoFeiHuo extends AbstractEasyCard {
 
     @Override
     public void applyPowers() {
-        this.baseDamage = Wiz.adp().exhaustPile.size() / 2;
+        this.baseDamage = Wiz.adp().exhaustPile.size() / baseMagicNumber;
         super.applyPowers();
     }
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
-        this.baseDamage = Wiz.adp().exhaustPile.size() / 2;
+        this.baseDamage = Wiz.adp().exhaustPile.size() / baseMagicNumber;
         super.calculateCardDamage(mo);
     }
 
@@ -39,6 +39,7 @@ public class DaMoFeiHuo extends AbstractEasyCard {
 
     @Override
     public void upp() {
+        upgradeMagicNumber(-1);
     }
 }
 // "lingmod:DaMoFeiHuo": {

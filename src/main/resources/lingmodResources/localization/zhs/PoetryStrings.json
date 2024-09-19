@@ -107,7 +107,7 @@
       "仄仄仄平平仄",
       "平仄仄"
     ],
-    "DESCRIPTION": "清除最后获得的负面效果，获得 [E]"
+    "DESCRIPTION": "清除最后获得的负面效果"
   },
   "lingmod:ChiBiFuCard": {
     "NAME": "赤壁赋",

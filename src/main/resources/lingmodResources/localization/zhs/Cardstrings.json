@@ -374,7 +374,7 @@
   },
   "lingmod:DaMoFeiHuo": {
     "NAME": "大漠飞火",
-    "DESCRIPTION": "你的消耗堆每有两张牌，造成 1 点伤害。 NL （造成 !D! 点伤害）"
+    "DESCRIPTION": "你的消耗堆每有 !M! 张牌，造成 1 点伤害。 NL （造成 !D! 点伤害）"
   },
   "lingmod:ZuiTiaoDeng": {
     "NAME": "醉挑灯",
