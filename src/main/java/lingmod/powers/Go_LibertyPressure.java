@@ -1,7 +1,6 @@
 package lingmod.powers;
 
-import static lingmod.ModCore.makeID;
-
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -13,7 +12,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 
-import lingmod.actions.FastApplyPower_Action;
+import static lingmod.ModCore.makeID;
 
 /**
  * Attack --> 易伤
@@ -37,7 +36,7 @@ public class Go_LibertyPressure extends AbstractEasyPower {
     public void onAfterUseCard(AbstractCard card, UseCardAction action) {
         if (card.type != AbstractCard.CardType.ATTACK) return;
         AbstractCreature src = action.source == null ? AbstractDungeon.player : action.source;
-        addToBot(new FastApplyPower_Action(src, owner, new VulnerablePower(src, 1,
+        addToBot(new ApplyPowerAction(src, owner, new VulnerablePower(src, 1,
                 owner.getClass().isAssignableFrom(AbstractMonster.class))));
         addToBot(new ReducePowerAction(owner, owner, this, 1));
     }

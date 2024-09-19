@@ -32,7 +32,7 @@ public class PlayCardPatch {
             for (AbstractMonster monster : AbstractDungeon.getCurrRoom().monsters.monsters) {
                 if (monster.hasPower(Go_ReadAhead.ID)) {
                     AbstractPower power = monster.getPower(Go_ReadAhead.ID);
-                    logger.info("NegateCardPlay: " + power.amount);
+                    logger.info("NegateCardPlay: {}", power.amount);
                     return power.amount >= 1;
                 }
             }
@@ -42,25 +42,28 @@ public class PlayCardPatch {
     }
 
     public static void useCardOnSummon(AbstractCard card, AbstractMonster monster) {
-        logger.info("use card on summon");
+        logger.info("use card on summon: {}", monster.name);
         card.exhaust = true;
         card.exhaustOnUseOnce = true;
 
         if (!(monster instanceof AbsSummonMonster))
             return;
+        card.applyPowers();
         if (card.type == CardType.ATTACK || card.cardID.equals(JiangXiangNaTie.ID)) {
             Wiz.atb(new ApplyPowerAction(monster, monster, new StrengthPower(monster, card.damage)));
             Wiz.addToBotAbstract(monster::applyPowers);
         }
-        if (card.type == CardType.SKILL || card.cardID.equals(JiangXiangNaTie.ID)) {
+        if (card.type == CardType.SKILL) {
             Wiz.addToBotAbstract(() -> monster.increaseMaxHp(card.block, true));
+        } else if (card.cardID.equals(JiangXiangNaTie.ID)) {
+            Wiz.addToBotAbstract(() -> monster.increaseMaxHp(card.damage, true));
         }
     }
 
     public static boolean checkSummon(AbstractMonster mo) {
         if (mo == null)
             return false;
-        logger.info("check summon monster: " + mo.name);
+        logger.info("checked summon monster: {}", mo.name);
 
         return mo instanceof AbsSummonMonster;
     }
@@ -99,9 +102,8 @@ public class PlayCardPatch {
                         // String expr_full = "if(%s && %s) {$proceed($$);}";
                         String expr_full = "if(%s && %s) {$proceed($$);} else if(%s){%s;}";
                         String format = String.format(expr_full, "!(" + expr1 + ")", "!(" + expr2 + ")", expr2, expr3);
-                        logger.info("expr: " + format);
+                        logger.info("Summon UseCard Expr: {}", format);
                         m.replace(format);
-                        // m.replace(String.format(expr_full, expr1, "!("+expr2+")"));
                     }
                 }
             };

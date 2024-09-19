@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import static lingmod.ModCore.makeID;
 
@@ -45,7 +44,7 @@ public class Sui7DealAction extends AbstractGameAction {
                     size++;
                 }
                 // 交易后获得 力量
-                addToTop(new FastApplyPower_Action(source, source, new StrengthPower(source, size)));
+//                addToTop(new FastApplyPower_Action(source, source, new StrengthPower(source, size)));
                 AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
             }
             this.tickDuration();

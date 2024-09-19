@@ -30,7 +30,7 @@ public class ZhengFuWangXiang extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        upgradeMagicNumber(3);
+        upgradeMagicNumber(1);
         this.cardsToPreview.damage = this.cardsToPreview.block = magicNumber;
     }
 
@@ -39,7 +39,7 @@ public class ZhengFuWangXiang extends AbstractEasyCard {
         AbstractPlayer p = Wiz.adp();
         this.cardsToPreview = new GuoJiaXianMei();
         int cnt = p.hand.size();
-        cardsToPreview.baseDamage = cardsToPreview.baseBlock = this.magicNumber * cnt;
+        cardsToPreview.baseDamage = cardsToPreview.baseBlock = this.baseMagicNumber * cnt;
         super.applyPowers();
     }
 

@@ -19,7 +19,7 @@ public class Thunderer_Summon extends AbstractEasyCard {
     public static final String ID = makeID(Thunderer_Summon.class.getSimpleName());
 
     public Thunderer_Summon() {
-        super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.ENEMY);
+        super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
     }
 
     @Override

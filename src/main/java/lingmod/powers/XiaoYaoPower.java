@@ -1,15 +1,14 @@
 package lingmod.powers;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.BaseMod;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
-
-import basemod.BaseMod;
 import lingmod.actions.FastApplyPower_Action;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 逍遥：回合结束后抽牌++
@@ -46,6 +45,13 @@ public class XiaoYaoPower extends AbstractEasyPower {
     @Override
     public void onRemove() {
         super.onRemove();
+        BaseMod.MAX_HAND_SIZE -= capaExpand;
+        capaExpand = 0;
+    }
+
+    @Override
+    public void onVictory() {
+        super.onVictory();
         BaseMod.MAX_HAND_SIZE -= capaExpand;
         capaExpand = 0;
     }

@@ -26,6 +26,7 @@ public class ZuiTiaoDeng extends AbstractEasyCard {
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(Wiz.adp(), block));
+        addToBot(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(), 1));
     }
 
     @Override
@@ -36,7 +37,6 @@ public class ZuiTiaoDeng extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        addToBot(new MakeTempCardInDiscardAction(this.makeStatEquivalentCopy(), 1));
         upgradeBlock(3);
     }
 }

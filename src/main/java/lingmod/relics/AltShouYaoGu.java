@@ -1,8 +1,8 @@
 package lingmod.relics;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import lingmod.actions.FastApplyPower_Action;
 import lingmod.powers.PoeticMoodPower;
 
 import static lingmod.ModCore.makeID;
@@ -23,6 +23,6 @@ public class AltShouYaoGu extends AbstractEasyRelic {
         super.atBattleStart();
         this.flash();
         AbstractPlayer player = AbstractDungeon.player;
-        addToBot(new FastApplyPower_Action(player, player, new PoeticMoodPower(player, NUM)));
+        addToBot(new ApplyPowerAction(player, player, new PoeticMoodPower(player, NUM)));
     }
 }

@@ -77,7 +77,7 @@
       "平仄仄仄平",
       "平仄仄平仄"
     ],
-    "DESCRIPTION": "造成你当前格挡值2倍的伤害，失去一半的格挡 NL （造成 !D! 点伤害）"
+    "DESCRIPTION": "造成你当前格挡值2倍的 !D! 点伤害，失去所有 格挡"
   },
   "lingmod:PoZhenZiCard": {
     "NAME": "破阵子",

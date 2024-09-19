@@ -20,7 +20,7 @@ public class ChiJiuSui extends AbstractEasyCard {
     public static final String ID = makeID(ChiJiuSui.class.getSimpleName());
 
     public ChiJiuSui() {
-        super(ID, -1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY);
+        super(ID, -1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
     }
 
     @Override

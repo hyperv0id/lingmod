@@ -45,7 +45,7 @@ public class Peripateticism_SummonMonster extends AbsSummonMonster {
         addToBot(new DamageAction(target, damage.get(0)));
         if (this.hasPower(PeripateticismPower.ID)) {
             int amt = damage.get(0).output;
-            addToBot(new ApplyPowerAction(this, target, new ConstrictedPower(target, target, amt)));
+            addToBot(new ApplyPowerAction(target, target, new ConstrictedPower(target, target, amt)));
         }
     }
 

@@ -1,6 +1,7 @@
 package lingmod.relics;
 
 import basemod.abstracts.CustomSavable;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -8,7 +9,6 @@ import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import com.megacrit.cardcrawl.powers.MinionPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import lingmod.actions.FastApplyPower_Action;
 import lingmod.interfaces.Credit;
 
 import static lingmod.ModCore.makeID;
@@ -34,8 +34,8 @@ public class Beans_ShuoRelic extends AbstractEasyRelic implements CustomSavable<
     public void atBattleStart() {
         AbstractPlayer p = AbstractDungeon.player;
         if (counter > 0) {
-            addToBot(new FastApplyPower_Action(p, p, new StrengthPower(p, this.counter)));
-            addToBot(new FastApplyPower_Action(p, p, new LoseStrengthPower(p, this.counter)));
+            addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, this.counter)));
+            addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(p, this.counter)));
         }
     }
 
@@ -51,7 +51,6 @@ public class Beans_ShuoRelic extends AbstractEasyRelic implements CustomSavable<
         if (this.counter2 > 5) {
             this.counter2 -= 5;
             this.counter++;
-            addToBot(new FastApplyPower_Action(p, p, new StrengthPower(p, 1)));
         }
     }
 
