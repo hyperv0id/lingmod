@@ -40,7 +40,7 @@ public class MonsterSui_7_Ji extends CustomMonster {
     protected static final String IMG_PATH = makeImagePath("monsters/MonsterSui_7_Ji.png");
     public static int STRENGTH_GROW = 1;
     protected boolean firstTurn = true;
-    protected int baseDamage = 5;
+    protected int baseDamage = 7;
 
     public MonsterSui_7_Ji() {
         super(NAME, ID, MAX_HP, 0F, 0F, 200.0F, 250.0F, null,
@@ -69,10 +69,10 @@ public class MonsterSui_7_Ji extends CustomMonster {
 
     @Override
     protected void getMove(int moveID) {
-        if (lastMove((byte) 1)) {
-            this.setMove((byte) 2, Intent.ATTACK_DEBUFF, this.baseDamage);
-        } else {
+        if (lastMove((byte) 2)) {
             this.setMove((byte) 1, Intent.ATTACK, this.baseDamage);
+        } else {
+            this.setMove((byte) 2, Intent.ATTACK_DEBUFF, this.baseDamage);
         }
         // this.setMove((byte) 1, Intent.MAGIC);
     }
@@ -97,7 +97,7 @@ public class MonsterSui_7_Ji extends CustomMonster {
                 EventStrings es = CardCrawlGame.languagePack.getEventString(makeID("SL_Monster_Talk"));
                 addToBot(new TalkAction(this, es.DESCRIPTIONS[0], 0.5f, 2.0f));
             }
-            this.setMove((byte) 1, Intent.ATTACK, this.baseDamage);
+            this.setMove((byte) 2, Intent.ATTACK_DEBUFF, this.baseDamage);
         } else {
             if (this.nextMove == 1) {
                 addToBot(new TalkAction(this, DIALOGS[2], 0.5F, 2.0F));

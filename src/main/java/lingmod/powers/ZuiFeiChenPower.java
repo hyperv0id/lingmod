@@ -1,18 +1,15 @@
 package lingmod.powers;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-
-import basemod.BaseMod;
-import basemod.interfaces.PostExhaustSubscriber;
 import lingmod.actions.FastApplyPower_Action;
 
-public class ZuiFeiChenPower extends AbstractEasyPower implements PostExhaustSubscriber {
+import static lingmod.ModCore.makeID;
+
+public class ZuiFeiChenPower extends AbstractEasyPower {
     public static final String POWER_ID = makeID(ZuiFeiChenPower.class.getSimpleName());
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -30,21 +27,11 @@ public class ZuiFeiChenPower extends AbstractEasyPower implements PostExhaustSub
         this.description = String.format(powerStrings.DESCRIPTIONS[0], amount);
     }
 
+
     @Override
-    public void receivePostExhaust(AbstractCard abstractCard) {
+    public void onExhaust(AbstractCard card) {
+        super.onExhaust(card);
         this.flash();
         addToBot(new FastApplyPower_Action(owner, owner, new WinePower(owner, amount)));
-    }
-
-    @Override
-    public void onInitialApplication() {
-        super.onInitialApplication();
-        BaseMod.subscribe(this);
-    }
-
-    @Override
-    public void onRemove() {
-        super.onRemove();
-        BaseMod.unsubscribeLater(this);
     }
 }

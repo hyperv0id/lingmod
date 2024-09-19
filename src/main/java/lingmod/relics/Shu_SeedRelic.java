@@ -39,6 +39,6 @@ public class Shu_SeedRelic extends AbstractEasyRelic implements ClickableRelic, 
     @Override
     public void receiveStartAct() {
         this.grayscale = false;
-        this.counter = 6;
+        this.counter = 4;
     }
 }
