@@ -22,7 +22,7 @@ public class FamilyAdjudicationPower extends AbstractEasyPower implements Invisi
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     public FamilyAdjudicationPower(AbstractCreature owner) {
-        super(POWER_ID, NAME, null, false, owner, 0);
+        super(POWER_ID, NAME, PowerType.BUFF, false, owner, 0);
     }
 
     @Override

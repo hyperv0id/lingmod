@@ -13,6 +13,6 @@ public class AbstractSummonDescPower extends AbstractEasyPower {
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(ID);
 
     public AbstractSummonDescPower(AbstractCreature owner) {
-        super(ID, powerStrings.NAME, null, false, owner, 0);
+        super(ID, powerStrings.NAME, PowerType.BUFF, false, owner, 0);
     }
 }

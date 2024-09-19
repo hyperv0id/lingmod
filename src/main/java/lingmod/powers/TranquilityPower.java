@@ -1,10 +1,10 @@
 package lingmod.powers;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 清平将连续攻击两次
@@ -15,7 +15,7 @@ public class TranquilityPower extends AbstractEasyPower {
     public static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(ID);
 
     public TranquilityPower(AbstractMonster owner) {
-        super(ID, powerStrings.NAME, null, false, owner, 0);
+        super(ID, powerStrings.NAME, PowerType.BUFF, false, owner, 0);
         loadTexture("AbsSummon");
     }
 }
