@@ -15,7 +15,7 @@ import static lingmod.ModCore.makeID;
 /**
  * 造成 12 点 伤害，如果手牌中每一张牌都是攻击牌，那么对敌人施加随机 debuff 3 次
  */
-@CardConfig(damage = 12, magic = 3)
+@CardConfig(damage = 9, magic = 3)
 public class TianZhuiCard extends AbstractEasyCard {
     public static final String ID = makeID(TianZhuiCard.class.getSimpleName());
 
@@ -25,7 +25,7 @@ public class TianZhuiCard extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        upgradeMagicNumber(1);
+        upgradeDamage(4);
     }
 
     @Override

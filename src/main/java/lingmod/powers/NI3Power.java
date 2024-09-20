@@ -21,8 +21,8 @@ public class NI3Power extends AbstractEasyPower {
         this.priority = 99;
     }
 
-    public float atDamageFinalGive(float damage) {
-        float small = damage / 10 * 10 + 3;
+    public float changeDamage(float damage) {
+        float small = (damage / 10 * 10) + 3;
         float big = small + 10;
         float val = big;
         if (Math.abs(damage - small) < Math.abs(damage - big)) {
@@ -42,9 +42,9 @@ public class NI3Power extends AbstractEasyPower {
                 return;
             NI3Power qsws = (NI3Power) Wiz.adp().getPower(NI3Power.ID);
             if (qsws != null) {
-                damageAmount[0] = (int) qsws.atDamageFinalGive(damageAmount[0]);
+                damageAmount[0] = (int) qsws.changeDamage(damageAmount[0]);
                 __instance.lastDamageTaken = Math.min(damageAmount[0], __instance.currentHealth);
-                logger.info("NI3: 伤害变为" + __instance.lastDamageTaken);
+                logger.info("NI3Power: damage change to: {}", __instance.lastDamageTaken);
             }
 
         }
@@ -56,20 +56,6 @@ public class NI3Power extends AbstractEasyPower {
                 Matcher.MethodCallMatcher m = new Matcher.MethodCallMatcher(Math.class, "min");
                 return LineFinder.findInOrder(ctBehavior, m);
             }
-        }
-    }
-
-    @SpirePatch2(clz = AbstractMonster.class, method = "calculateDamage")
-    public static class QSWS_Calc_Patch {
-        @SpirePostfixPatch
-        public static SpireReturn<Integer> Postfix(AbstractMonster __instance, int dmg) {
-            if (Wiz.adp() == null)
-                return SpireReturn.Continue();
-            NI3Power qsws = (NI3Power) Wiz.adp().getPower(NI3Power.ID);
-            if (qsws != null) {
-                return SpireReturn.Return((int) qsws.atDamageFinalGive(dmg));
-            }
-            return SpireReturn.Continue();
         }
     }
 

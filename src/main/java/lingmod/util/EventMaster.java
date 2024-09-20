@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class EventMaster {
     public static void triggerEvent(AbstractEvent event) {
-        ModCore.logger.info("触发事件：" + event.getClass().getSimpleName());
+        ModCore.logger.info("Trigger Event：{}", event.getClass().getSimpleName());
         if (AbstractDungeon.currMapNode == null) return;
 
         RoomEventDialog.optionList.clear();
@@ -39,7 +39,7 @@ public class EventMaster {
             cer.event = event;
             cer.event.onEnterRoom();
         } catch (Exception var7) {
-            ModCore.logger.info("Error Occurred while entering");
+            ModCore.logger.info("Error Occurred while entering Event {}", event);
         }
 
         AbstractDungeon.scene.nextRoom(mapRoomNode2.room);

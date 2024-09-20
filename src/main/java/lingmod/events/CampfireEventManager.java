@@ -18,11 +18,11 @@ import static lingmod.ModCore.modID;
 
 public class CampfireEventManager implements CustomSavable<List<String>> {
     public static List<AbstractEvent> sleepEvents = new ArrayList<>(); // 在篝火处睡觉会触发的事件
-    public static final float CE_PROB = 0.8F;
+//    public static final float CE_PROB = 0.8F;
 
     public static AbstractEvent rollEvent() {
         float br = AbstractDungeon.eventRng.random(1.0F);
-        if (sleepEvents.isEmpty() || br > CE_PROB) {
+        if (sleepEvents.isEmpty()) {
             // 如果角色专属事件用光了，那么使用本体事件
             return AbstractDungeon.generateEvent(AbstractDungeon.eventRng);
         }

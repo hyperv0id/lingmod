@@ -48,7 +48,6 @@ public class Shu_KarmaOfMonsters extends PhasedEvent {
 
     @Override
     public void onEnterRoom() {
-        super.onEnterRoom();
         calcFruit();
         calcStrongEnemy();
         calcElite();
@@ -78,6 +77,7 @@ public class Shu_KarmaOfMonsters extends PhasedEvent {
                 .addOption(OPTIONS[0], (i) -> openMap()));
 
         transitionKey("START");
+        super.onEnterRoom();
     }
 
     protected void calcStrongEnemy() {

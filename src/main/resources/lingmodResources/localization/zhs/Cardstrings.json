@@ -382,7 +382,7 @@
   },
   "lingmod:TianZhuiCard": {
     "NAME": "天坠",
-    "DESCRIPTION": "造成 !D! 点伤害 NL 如果手牌中每一张牌都是攻击牌，那么对敌人施加 2 格挡返还 "
+    "DESCRIPTION": "造成 !D! 点伤害 NL 如果手牌中每一张牌都是攻击牌，那么对敌人施加 !M! 格挡返还 "
   },
   "lingmod:LankeDream": {
     "NAME": "烂柯梦",
