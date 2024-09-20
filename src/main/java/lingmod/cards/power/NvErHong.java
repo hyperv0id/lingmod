@@ -29,28 +29,30 @@ public class NvErHong extends AbstractEasyCard {
 
     @Override
     public void applyPowers() {
-        WinePower wine = (WinePower) Wiz.adp().getPower(WinePower.POWER_ID);
-        if (wine != null && !Wiz.adp().hand.isEmpty()) {
-            baseMagicNumber = wine.amount / Wiz.adp().hand.size();
-        }
+        calcMagic();
         super.applyPowers();
     }
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
+        calcMagic();
+        super.calculateCardDamage(mo);
+    }
+
+    public void calcMagic() {
         WinePower wine = (WinePower) Wiz.adp().getPower(WinePower.POWER_ID);
         if (wine != null && !Wiz.adp().hand.isEmpty()) {
-            baseMagicNumber = wine.amount / Wiz.adp().hand.size();
+            int amt = (int) Wiz.adp().hand.group.stream().filter(c -> c.type == CardType.ATTACK).count();
+            if (amt == 0) baseMagicNumber = 0;
+            else baseMagicNumber = wine.amount / amt;
         }
-        super.calculateCardDamage(mo);
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         WinePower wine = (WinePower) p.getPower(WinePower.POWER_ID);
         if (wine != null) {
             addToBotAbstract(() -> {
-                int avg = (int) (wine.amount / p.hand.group.stream().filter(c -> c.type == CardType.ATTACK).count());
-                p.hand.group.stream().filter(c -> c.type == CardType.ATTACK).forEach(c -> CardModifierManager.addModifier(c, new NvErHongMod(avg)));
+                p.hand.group.stream().filter(c -> c.type == CardType.ATTACK).forEach(c -> CardModifierManager.addModifier(c, new NvErHongMod(magicNumber)));
                 addToBot(new RemoveSpecificPowerAction(p, p, wine));
             });
         }
