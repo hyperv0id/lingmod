@@ -17,14 +17,17 @@ import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.AbstractPower.PowerType;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import lingmod.actions.TimedVFXAction;
 import lingmod.cards.AbstractEasyCard;
+import lingmod.cards.attack.JiangXiangNaTie;
 import lingmod.character.Ling;
 import lingmod.interfaces.CopyField;
 import lingmod.interfaces.VoidSupplier;
+import lingmod.monsters.AbsSummonMonster;
 import lingmod.powers.PoeticMoodPower;
 import lingmod.stance.NellaFantasiaStance;
 import lingmod.util.audio.ProAudio;
@@ -533,6 +536,49 @@ public class Wiz {
         AbstractPower p2a = PowerUtils.copyPower(inst, tabel);
         if (p2a != null)
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(src, tar, p2a));
+    }
+
+
+    /**
+     * 对召唤物使用卡牌
+     */
+    public static void useCardOnSummon(AbstractCard card, AbstractMonster monster) {
+        logger.info("use card on summon: {}", monster.name);
+        card.exhaust = true;
+        card.exhaustOnUseOnce = true;
+
+        if (!(monster instanceof AbsSummonMonster))
+            return;
+        int maxNumber = maxNumberInCard(card);
+        if (card.type == CardType.ATTACK || card.cardID.equals(JiangXiangNaTie.ID)) {
+            Wiz.atb(new ApplyPowerAction(monster, monster, new StrengthPower(monster, maxNumber)));
+            Wiz.addToBotAbstract(monster::applyPowers);
+        }
+        if (card.type == CardType.SKILL) {
+            Wiz.addToBotAbstract(() -> monster.increaseMaxHp(maxNumber, true));
+        } else if (card.cardID.equals(JiangXiangNaTie.ID)) {
+            Wiz.addToBotAbstract(() -> monster.increaseMaxHp(card.damage, true));
+        }
+    }
+
+    /**
+     * 求卡牌变量中的最大值
+     */
+    public static int maxNumberInCard(AbstractCard card) {
+        card.applyPowers();
+        int[] numbers = {card.cost, card.costForTurn, card.damage, card.block, card.magicNumber};
+        int ans = 0;
+        for (int number : numbers) {
+            ans = Math.max(ans, number);
+        }
+        if (card instanceof AbstractEasyCard) {
+            AbstractEasyCard aec = (AbstractEasyCard) card;
+            int[] n2 = {aec.secondBlock, aec.secondDamage, aec.secondMagic};
+            for (int number : n2) {
+                ans = Math.max(ans, number);
+            }
+        }
+        return ans;
     }
 
 }

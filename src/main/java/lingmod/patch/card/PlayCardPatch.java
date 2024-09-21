@@ -3,18 +3,14 @@ package lingmod.patch.card;
 import basemod.helpers.CardModifierManager;
 import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.CardModifierPatches;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.AbstractCard.CardType;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 import javassist.CannotCompileException;
 import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
-import lingmod.cards.attack.JiangXiangNaTie;
 import lingmod.monsters.AbsSummonMonster;
 import lingmod.powers.Go_ReadAhead;
 import lingmod.util.Wiz;
@@ -41,27 +37,9 @@ public class PlayCardPatch {
         return false;
     }
 
-    public static void useCardOnSummon(AbstractCard card, AbstractMonster monster) {
-        logger.info("use card on summon: {}", monster.name);
-        card.exhaust = true;
-        card.exhaustOnUseOnce = true;
-
-        if (!(monster instanceof AbsSummonMonster))
-            return;
-        card.applyPowers();
-        if (card.type == CardType.ATTACK || card.cardID.equals(JiangXiangNaTie.ID)) {
-            Wiz.atb(new ApplyPowerAction(monster, monster, new StrengthPower(monster, card.damage)));
-            Wiz.addToBotAbstract(monster::applyPowers);
-        }
-        if (card.type == CardType.SKILL) {
-            Wiz.addToBotAbstract(() -> monster.increaseMaxHp(card.block, true));
-        } else if (card.cardID.equals(JiangXiangNaTie.ID)) {
-            Wiz.addToBotAbstract(() -> monster.increaseMaxHp(card.damage, true));
-        }
-    }
 
     public static boolean checkSummon(AbstractMonster mo) {
-        if (mo == null)
+        if (mo == null || mo.isDeadOrEscaped())
             return false;
         logger.info("checked summon monster: {}", mo.name);
 
@@ -98,7 +76,7 @@ public class PlayCardPatch {
                     if (m.getClassName().equals(AbstractCard.class.getName()) && m.getMethodName().equals("use")) {
                         String expr1 = PlayCardPatch.class.getName() + ".NegateCardPlay()";
                         String expr2 = PlayCardPatch.class.getName() + ".checkSummon($2)";
-                        String expr3 = PlayCardPatch.class.getName() + ".useCardOnSummon($0, $2)";
+                        String expr3 = Wiz.class.getName() + ".useCardOnSummon($0, $2)";
                         // String expr_full = "if(%s && %s) {$proceed($$);}";
                         String expr_full = "if(%s && %s) {$proceed($$);} else if(%s){%s;}";
                         String format = String.format(expr_full, "!(" + expr1 + ")", "!(" + expr2 + ")", expr2, expr3);

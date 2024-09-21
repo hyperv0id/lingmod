@@ -56,10 +56,23 @@ public abstract class AbsSummonMonster extends CustomMonster {
 
         if (hb.hovered || intentHb.hovered || healthHb.hovered)
             hover();
-        else unhover();
+
+        AbstractPlayer p = Wiz.adp();
+        if (!(boolean) ReflectionHacks.privateMethod(AbstractPlayer.class, "clickAndDragCards").invoke(Wiz.adp())) {
+            // 切换选牌是修改target
+            if (lastHoveredCard != null && p.hoveredCard != lastHoveredCard) {
+                AbstractCard.CardTarget oldTarget = cardTargetCache.get(lastHoveredCard);
+                if (oldTarget != null) {
+                    lastHoveredCard.target = oldTarget;
+                    logger.info("Reset Target: {} as {}", lastHoveredCard.name, oldTarget);
+                    cardTargetCache.remove(lastHoveredCard);
+                }
+            }
+        }
     }
 
     public void hover() {
+        if (this.isDeadOrEscaped()) return;
         AbstractPlayer p = Wiz.adp();
         if ((boolean) ReflectionHacks.privateMethod(AbstractPlayer.class, "clickAndDragCards").invoke(p)) {
             AbstractCard card = p.hoveredCard;
@@ -75,16 +88,6 @@ public abstract class AbsSummonMonster extends CustomMonster {
     @Override
     public void unhover() {
         super.unhover();
-        AbstractPlayer p = Wiz.adp();
-        // 切换选牌是修改target
-        if (lastHoveredCard != null && p.hoveredCard != null && p.hoveredCard != lastHoveredCard) {
-            AbstractCard.CardTarget oldTarget = cardTargetCache.get(lastHoveredCard);
-            if (oldTarget != null) {
-                lastHoveredCard.target = oldTarget;
-                logger.info("Reset Target: {} as {}", lastHoveredCard.name, oldTarget);
-                cardTargetCache.remove(lastHoveredCard);
-            }
-        }
     }
 
     public void setDamage(int amt) {
