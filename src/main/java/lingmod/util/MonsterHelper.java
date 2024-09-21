@@ -255,7 +255,7 @@ public class MonsterHelper {
             Wiz.addToBotAbstract(() -> {
                 AbsSummonMonster mo = (AbsSummonMonster) MonsterHelper
                         .spawnMonster(summonClz);
-                mo.currentHealth = mo.maxHealth = baseHP;
+                mo.currentHealth = mo.maxHealth = mo.baseMaxHP = baseHP;
                 // mo.animX = 1200F * Settings.xScale;
                 mo.setDamage(baseDamage);
                 mo.init();

@@ -20,14 +20,13 @@ import static lingmod.ModCore.logger;
 
 public abstract class AbsSummonMonster extends CustomMonster {
     public String img_up;
-    protected int baseMaxHP;
+    public int baseMaxHP;
     private AbstractCard lastHoveredCard;
 
     public AbsSummonMonster(String name, String id, int maxHealth, float hb_x, float hb_y, float hb_w, float hb_h,
                             String imgUrl, String img_up) {
         super(name, id, maxHealth, hb_x, hb_y, hb_w, hb_h, imgUrl);
         MonsterHelper.loadImage(this, imgUrl);
-
         this.baseMaxHP = maxHealth;
         isPlayer = true;
         this.img_up = img_up;

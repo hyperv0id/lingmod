@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import lingmod.ModCore;
-import lingmod.cards.attack.Whoami_Dusk;
 import lingmod.cards.power.Whoami_Ling;
 import lingmod.cards.power.Whoami_Nian;
 import lingmod.cards.power.Whoami_Shuo;
@@ -34,7 +33,7 @@ public class WhoamiEvent extends AbstractImageEvent {
             new Whoami_Wang(),
             new Whoami_Ling(),
             new Whoami_Nian(),
-            new Whoami_Dusk(),
+//            new Whoami_Dusk(),
     };
     private WhoamiEvent.CurScreen curScreen = CurScreen.CHOICE;
 

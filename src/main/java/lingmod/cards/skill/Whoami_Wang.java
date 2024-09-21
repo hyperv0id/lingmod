@@ -3,7 +3,6 @@ package lingmod.cards.skill;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -49,9 +48,8 @@ public class Whoami_Wang extends AbstractEasyCard {
         }
 
         AbstractDungeon.effectList.add(new FlashAtkImgEffect(Wiz.adp().hb.cX, Wiz.adp().hb.cY, AbstractGameAction.AttackEffect.NONE));
-        for (int i = 0; i < baseMagicNumber; i++) {
-            p.damage(new DamageInfo(p, 1, DamageInfo.DamageType.HP_LOSS));
-        }
+        // TODO: 伤害特效
+        p.currentHealth -= magicNumber;
         this.addToBot(new ApplyPowerAction(p, p, new IntangiblePlayerPower(p, 1)));
     }
 }
