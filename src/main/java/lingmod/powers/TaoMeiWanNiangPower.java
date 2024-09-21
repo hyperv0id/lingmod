@@ -26,8 +26,8 @@ public class TaoMeiWanNiangPower extends TwoAmountPower {
         this.ID = POWER_ID;
         this.type = PowerType.BUFF;
         this.name = NAME;
-        this.amount = this.threshold = threshold;
-        this.amount2 = adder;
+        this.amount2 = this.threshold = threshold;
+        this.amount = adder;
         updateDescription();
         this.loadRegion("like_water");
     }
@@ -36,17 +36,17 @@ public class TaoMeiWanNiangPower extends TwoAmountPower {
     public void onExhaust(AbstractCard card) {
         if (card.dontTriggerOnUseCard)
             return;
-        amount++;
-        if (this.amount >= threshold) {
-            addToBot(new ApplyPowerAction(owner, owner, new PlatedArmorPower(owner, amount2)));
-            this.amount -= threshold;
+        amount2++;
+        if (this.amount2 >= threshold) {
+            addToBot(new ApplyPowerAction(owner, owner, new PlatedArmorPower(owner, amount)));
+            this.amount2 -= threshold;
         }
         super.onExhaust(card);
     }
 
     @Override
     public void updateDescription() {
-        this.description = String.format(DESCRIPTIONS[0], amount, amount2);
+        this.description = String.format(DESCRIPTIONS[0], threshold - amount2, amount);
         super.updateDescription();
     }
 

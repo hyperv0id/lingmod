@@ -44,7 +44,7 @@
   "${ModID}:AbstractSummonDescPower": {
     "NAME": "召唤物",
     "DESCRIPTIONS": [
-      "代替角色受到伤害，代替玩家获得格挡，对其使用卡牌会被消耗。 NL 攻击牌将会增加攻击力，数值为基础攻击力。技能牌将会增加最大生命。"
+      "代替受伤，代替获得格挡 NL #b卡牌投喂 ：#r攻击牌 将会增加 #r攻击力 ，#b技能牌 将增加最大 #g生命 。 数值为卡牌中的 #b最大数字 "
     ]
   },
   "${ModID}:Sui7DealPower": {
@@ -236,7 +236,7 @@
   "lingmod:TaoMeiWanNiangPower": {
     "NAME": "桃梅晚酿",
     "DESCRIPTIONS": [
-      "消耗 %d 张卡牌后，获得 %d 多层护甲"
+      "每消耗 %d 张卡牌，获得 %d 多层护甲"
     ]
   }
 }
