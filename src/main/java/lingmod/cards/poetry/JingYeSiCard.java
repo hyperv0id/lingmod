@@ -23,5 +23,6 @@ public class JingYeSiCard extends AbstractPoetryCard {
     @Override
     public void use_p(AbstractPlayer p, AbstractMonster m) {
         blck();
+        if (finishFull) blck();
     }
 }

@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.ModCore;
 import lingmod.character.Ling;
+import lingmod.interfaces.CopyField;
 import lingmod.patch.TypeOverridePatch;
 import lingmod.util.CustomTags;
 import lingmod.util.PoetryLoader;
@@ -32,6 +33,8 @@ public abstract class AbstractPoetryCard extends AbstractEasyCard implements OnC
     public static final String TYPE = uiStrings.TEXT[0]; // 诗词赋曲
     public PoetryStrings poetryStrings;
     protected ToneManager toneManager;
+    @CopyField
+    protected boolean finishFull = false;
 
     protected CardType realType;
 
@@ -134,8 +137,16 @@ public abstract class AbstractPoetryCard extends AbstractEasyCard implements OnC
      * 整首诗都被打出了
      */
     public void onFinishFull() {
+        finishFull = true;
         addToBot(new MakeTempCardInHandAction(makeStatEquivalentCopy()));
+        finishFull = false;
         ModCore.logger.info("{} Finished", name);
+    }
+
+    @Override
+    public void triggerOnGlowCheck() {
+        if (finishFull) this.glowColor = GOLD_BORDER_GLOW_COLOR.cpy();
+        else this.glowColor = BLUE_BORDER_GLOW_COLOR.cpy();
     }
 
     /**

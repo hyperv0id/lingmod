@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.monsters.exordium.SpikeSlime_S;
 import com.megacrit.cardcrawl.random.Random;
 import lingmod.ModCore;
 import lingmod.monsters.AbsSummonMonster;
+import lingmod.patch.PlayerPatch;
 
 import java.lang.reflect.Constructor;
 import java.util.List;
@@ -135,6 +136,17 @@ public class MonsterHelper {
     }
 
     public static AbstractMonster spawnMonster(Class<? extends AbstractMonster> monsterClass) {
+        return spawnMonster(monsterClass, false);
+    }
+
+    /**
+     * 生成怪物
+     *
+     * @param monsterClass 怪物类
+     * @param a2mg         是否加入到怪物组
+     * @return 生成的怪物
+     */
+    public static AbstractMonster spawnMonster(Class<? extends AbstractMonster> monsterClass, boolean a2mg) {
         AbstractMonster m = createMonster(monsterClass);
         MonsterGroup mg = AbstractDungeon.getMonsters();
         float monsterDX = (float) Settings.WIDTH / 2.0F;
@@ -165,7 +177,8 @@ public class MonsterHelper {
             abstractRelic.onSpawnMonster(m);
         }
 
-        mg.monsters.add(m);
+        if (a2mg)
+            mg.monsters.add(m);
         return m;
     }
 
@@ -243,18 +256,25 @@ public class MonsterHelper {
         m.refreshIntentHbLocation();
     }
 
+    /**
+     * 召唤 一个 召唤物
+     *
+     * @param summonClz  召唤物类别
+     * @param baseHP     基础血量
+     * @param baseDamage 基础攻击力
+     */
     public static void summonMonster(Class<? extends AbsSummonMonster> summonClz, int baseHP, int baseDamage) {
         // 不能是抽象类
         if (summonClz.equals(AbsSummonMonster.class)) {
             ModCore.logger.info("Cannot Summon Abstract Class");
             return;
         }
-        AbsSummonMonster summonMonster = MonsterHelper.getFirstSummon();
+        AbsSummonMonster summonMonster = PlayerPatch.getSummonMonster();
         // 没有召唤物，直接生成
-        if (summonMonster == null) {
+        if (summonMonster == null || summonMonster.isDeadOrEscaped()) {
             Wiz.addToBotAbstract(() -> {
                 AbsSummonMonster mo = (AbsSummonMonster) MonsterHelper
-                        .spawnMonster(summonClz);
+                        .spawnMonster(summonClz, false);
                 mo.currentHealth = mo.maxHealth = mo.baseMaxHP = baseHP;
                 // mo.animX = 1200F * Settings.xScale;
                 mo.setDamage(baseDamage);

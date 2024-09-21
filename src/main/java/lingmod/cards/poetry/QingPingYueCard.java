@@ -15,7 +15,7 @@ import static lingmod.ModCore.makeID;
 /**
  * 进入梦。获得 3 酒
  */
-@CardConfig(magic = 3)
+@CardConfig(magic = 5)
 @Credit(link = "https://taixingxtidao.lofter.com/post/310580e0_2b5986362", platform = Credit.LOFTER, username = "刀削刀")
 public class QingPingYueCard extends AbstractPoetryCard {
     public static final String ID = makeID(QingPingYueCard.class.getSimpleName());
@@ -26,7 +26,13 @@ public class QingPingYueCard extends AbstractPoetryCard {
 
     @Override
     public void use_p(AbstractPlayer p, AbstractMonster m) {
-        Wiz.applyToSelf(new WinePower(p, magicNumber));
+        if (finishFull)
+            Wiz.applyToSelf(new WinePower(p, magicNumber));
         addToBot(new ChangeStanceAction(new NellaFantasiaStance()));
+    }
+
+    @Override
+    public void onFinishFull() {
+        super.onFinishFull();
     }
 }

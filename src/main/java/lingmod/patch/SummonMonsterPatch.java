@@ -29,7 +29,7 @@ public class SummonMonsterPatch {
      * "https://steamcommunity.com/sharedfiles/filedetails/?id=2672531653">KaltsitMod</a>
      */
     public static class MonsterTakeDamagePatch {
-        protected static AbsSummonMonster summonTarget;
+//        protected static AbsSummonMonster summonTarget;
 
         /**
          * 获得召唤物，在角色被攻击时，角色替代受到伤害
@@ -37,18 +37,8 @@ public class SummonMonsterPatch {
          * @return 你的召唤物
          */
         public static boolean gotSummon() {
-            AbstractCreature c = AbstractDungeon.getMonsters().monsters.stream()
-                    .filter(mo -> mo instanceof AbsSummonMonster)
-                    .filter(mo -> !mo.isDeadOrEscaped()).findFirst()
-                    .orElse(null);
-            if (c != null && !c.isDeadOrEscaped()) {
-                summonTarget = (AbsSummonMonster) c;
-                logger.info(summonTarget.name + "将替代承受伤害");
-                return true;
-            } else {
-                summonTarget = null;
-                return false;
-            }
+            AbsSummonMonster summonTarget = PlayerPatch.Fields.summonedMonster.get(Wiz.adp());
+            return summonTarget != null && !summonTarget.isDeadOrEscaped();
         }
 
         @SpirePatch(clz = AbstractMonster.class, method = "damage")
@@ -77,8 +67,8 @@ public class SummonMonsterPatch {
                 if (target != null && info != null && info.type != DamageInfo.DamageType.HP_LOSS
                         && (info.owner == null || !info.owner.isPlayer) && target == AbstractDungeon.player
                         && MonsterTakeDamagePatch.gotSummon()) {
-                    _inst.target = MonsterTakeDamagePatch.summonTarget;
-                    logger.info("承伤改变" + MonsterTakeDamagePatch.summonTarget);
+                    _inst.target = PlayerPatch.getSummonMonster();
+                    logger.info("承伤改变" + PlayerPatch.getSummonMonster());
                 }
             }
         }
@@ -100,7 +90,7 @@ public class SummonMonsterPatch {
             if (!MonsterTakeDamagePatch.gotSummon()) {
                 return;
             }
-            AbsSummonMonster m = MonsterTakeDamagePatch.summonTarget;
+            AbsSummonMonster m = PlayerPatch.getSummonMonster();
             if (m != null) {
                 if (!m.hasPower("Barricade") && !m.hasPower("Blur")) {
                     if (!AbstractDungeon.player.hasRelic("Calipers")) {
@@ -131,7 +121,7 @@ public class SummonMonsterPatch {
                     ReflectionHacks.getPrivate(_inst, AbstractGameAction.class,
                             "startDuration"))
                     && MonsterTakeDamagePatch.gotSummon()) {
-                _inst.target = MonsterTakeDamagePatch.summonTarget;
+                _inst.target = PlayerPatch.getSummonMonster();
                 logger.info("Block Target Changed To: " + _inst.target.name);
             }
         }

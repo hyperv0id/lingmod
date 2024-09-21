@@ -13,7 +13,7 @@ import static lingmod.ModCore.makeID;
  * 剑客: 造成你当前格挡值2倍的伤害，失去一半的格挡
  */
 @Credit(platform = Credit.LOFTER, link = "https://glksier.lofter.com/post/31e1d6b0_2b7cdd958", username = "狗粮扩散一点点")
-@CardConfig(damage = 0)
+@CardConfig(damage = 0, block = 8)
 public class JianKeCard extends AbstractPoetryCard {
     public static final String ID = makeID(JianKeCard.class.getSimpleName());
 
@@ -36,8 +36,12 @@ public class JianKeCard extends AbstractPoetryCard {
 
     @Override
     public void use_p(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, null);
-        addToBotAbstract(p::loseBlock);
+        if (finishFull) {
+            dmg(m, null);
+            addToBotAbstract(p::loseBlock);
+        } else {
+            blck();
+        }
     }
 
 

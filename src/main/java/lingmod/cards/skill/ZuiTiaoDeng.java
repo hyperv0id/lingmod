@@ -15,7 +15,7 @@ import static lingmod.ModCore.makeID;
 /**
  * 增强版哨位：获得5/8格挡。被消耗时获得 3E
  */
-@CardConfig(block = 5)
+@CardConfig(block = 5, magic = 2)
 @Credit(link = "TODO")
 public class ZuiTiaoDeng extends AbstractEasyCard {
     public final static String ID = makeID(ZuiTiaoDeng.class.getSimpleName());
@@ -32,12 +32,13 @@ public class ZuiTiaoDeng extends AbstractEasyCard {
     @Override
     public void triggerOnExhaust() {
         super.triggerOnExhaust();
-        addToBot(new GainEnergyAction(2));
+        addToBot(new GainEnergyAction(magicNumber));
     }
 
     @Override
     public void upp() {
         upgradeBlock(3);
+        upgradeSecondMagic(1);
     }
 }
 // "lingmod:ZuiTiaoDeng": {

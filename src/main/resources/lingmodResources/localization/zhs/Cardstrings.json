@@ -378,7 +378,8 @@
   },
   "lingmod:ZuiTiaoDeng": {
     "NAME": "醉挑灯",
-    "DESCRIPTION": "获得 !B! 点格挡，在弃牌堆中放入一张复制 NL 被 消耗 时，获得 [E] [E] "
+    "DESCRIPTION": "获得 !B! 点格挡，在弃牌堆中放入一张复制 NL 被 消耗 时，获得 [E] [E] ",
+    "UPGRADE_DESCRIPTION": "获得 !B! 点格挡，在弃牌堆中放入一张复制 NL 被 消耗 时，获得 [E] [E] [E] "
   },
   "lingmod:TianZhuiCard": {
     "NAME": "天坠",

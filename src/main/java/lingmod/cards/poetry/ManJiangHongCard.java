@@ -1,7 +1,6 @@
 package lingmod.cards.poetry;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.utility.LoseBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.ModCore;
@@ -23,7 +22,6 @@ public class ManJiangHongCard extends AbstractPoetryCard {
 
     @Override
     public void use_p(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new LoseBlockAction(p, m, p.currentBlock));
         addToBot(new ApplyPowerAction(p, p, new WinePower(p, magicNumber)));
     }
 

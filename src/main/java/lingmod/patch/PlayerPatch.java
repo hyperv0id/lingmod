@@ -1,14 +1,31 @@
 package lingmod.patch;
 
+import com.evacipated.cardcrawl.modthespire.lib.SpireField;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import lingmod.monsters.AbsSummonMonster;
 import lingmod.util.MonsterHelper;
 import lingmod.util.Wiz;
 
 public class PlayerPatch {
+
+    @SpirePatch(
+            clz = AbstractPlayer.class,
+            method = "<class>"
+    )
+    public static class Fields {
+        public static SpireField<AbsSummonMonster> summonedMonster = new SpireField<>(() -> null);
+    }
+
+    public static AbsSummonMonster getSummonMonster() {
+        return PlayerPatch.Fields.summonedMonster.get(Wiz.adp());
+    }
+
+
     public static class PlayerDamagePatch {
 
         @SpirePatch(

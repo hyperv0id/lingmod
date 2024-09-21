@@ -13,7 +13,7 @@
       "仄平平仄平",
       "平仄平仄平"
     ],
-    "DESCRIPTION": "获得 !B! 格挡"
+    "DESCRIPTION": "获得 !B! 格挡 NL 完成 lingmod:阙 ：再获得 !B! 格挡"
   },
   "lingmod:DingFengBoCard": {
     "NAME": "定风波",
@@ -29,7 +29,7 @@
       "仄仄平平平仄仄",
       "平仄？仄平平仄仄平平"
     ],
-    "DESCRIPTION": "获得 [E] NL 每完成半 lingmod:阙 ，改为获得额外回合"
+    "DESCRIPTION": "获得 [E] NL 每完成 lingmod:阙 ，改为获得额外回合"
   },
   "lingmod:DingFengBoCard_P1": {
     "NAME": "定风波",
@@ -66,18 +66,16 @@
   "lingmod:JianKeCard": {
     "NAME": "剑客",
     "CONTENT": [
-      "十年磨一剑",
-      "霜刃未曾试",
+      "十年磨一剑，霜刃未曾试",
       "今日把示君",
       "谁有不平事"
     ],
     "TONE_PATTERN": [
-      "仄平平仄仄",
-      "平仄仄平仄",
+      "仄平平仄仄，平仄仄平仄",
       "平仄仄仄平",
       "平仄仄平仄"
     ],
-    "DESCRIPTION": "造成你当前格挡值2倍的 !D! 点伤害，失去所有 格挡"
+    "DESCRIPTION": "获得 !B! 格挡 NL 完成 lingmod:阙 ：造成你当前格挡值2倍的 !D! 点伤害，失去所有 格挡 "
   },
   "lingmod:PoZhenZiCard": {
     "NAME": "破阵子",
@@ -143,7 +141,7 @@
       "仄仄平平平仄",
       "仄仄仄平平仄"
     ],
-    "DESCRIPTION": "获得 !M! ${ModID}:酒 NL 进入 ${ModID}:梦境 。"
+    "DESCRIPTION": "进入 ${ModID}:梦境 。 NL 完成 lingmod:阙 ：再获得 !M! ${ModID}:酒"
   },
   "lingmod:AbstractPoetryCard": {
     "NAME": "诗词",
@@ -172,6 +170,6 @@
       "仄平仄仄平平仄",
       "仄仄平，仄仄仄平平，平平仄"
     ],
-    "DESCRIPTION": "失去所有 格挡 ，获得与失去生命等值的 !M! 点 ${ModID}:酒 "
+    "DESCRIPTION": "获得与失去生命等值的 !M! 点 ${ModID}:酒 "
   }
 }
