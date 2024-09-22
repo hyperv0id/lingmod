@@ -44,7 +44,7 @@
   "${ModID}:AbstractSummonDescPower": {
     "NAME": "召唤物",
     "DESCRIPTIONS": [
-      "代替受伤，代替获得格挡 NL #b卡牌投喂 ：#r攻击牌 将会增加 #r攻击力 ，#b技能牌 将增加最大 #g生命 。 数值为卡牌中的 #b最大数字 "
+      "代替受伤，代替获得格挡 NL #b卡牌投喂 ： #r攻击牌 将会增加 #r攻击力 ， #b技能牌 将增加最大 #g生命 。 数值为卡牌中的 #b最大数字 "
     ]
   },
   "${ModID}:Sui7DealPower": {

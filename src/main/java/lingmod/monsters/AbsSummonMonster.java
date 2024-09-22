@@ -1,7 +1,9 @@
 package lingmod.monsters;
 
+import basemod.BaseMod;
 import basemod.ReflectionHacks;
 import basemod.abstracts.CustomMonster;
+import basemod.interfaces.PostBattleSubscriber;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -10,6 +12,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import lingmod.powers.AbstractSummonDescPower;
 import lingmod.util.MonsterHelper;
 import lingmod.util.Wiz;
@@ -18,9 +21,10 @@ import java.util.HashMap;
 
 import static lingmod.ModCore.logger;
 
-public abstract class AbsSummonMonster extends CustomMonster {
+public abstract class AbsSummonMonster extends CustomMonster implements PostBattleSubscriber {
     public String img_up;
     public int baseMaxHP;
+    public boolean hovered = false;
     private AbstractCard lastHoveredCard;
 
     public AbsSummonMonster(String name, String id, int maxHealth, float hb_x, float hb_y, float hb_w, float hb_h,
@@ -30,6 +34,7 @@ public abstract class AbsSummonMonster extends CustomMonster {
         this.baseMaxHP = maxHealth;
         isPlayer = true;
         this.img_up = img_up;
+        BaseMod.subscribe(this);
     }
 
     @Override
@@ -53,8 +58,12 @@ public abstract class AbsSummonMonster extends CustomMonster {
     public void update() {
         super.update();
 
-        if (hb.hovered || intentHb.hovered || healthHb.hovered)
+        if (hb.hovered || intentHb.hovered || healthHb.hovered) {
+            hovered = true;
             hover();
+        } else {
+            hovered = false;
+        }
 
         AbstractPlayer p = Wiz.adp();
         if (!(boolean) ReflectionHacks.privateMethod(AbstractPlayer.class, "clickAndDragCards").invoke(Wiz.adp())) {
@@ -83,6 +92,7 @@ public abstract class AbsSummonMonster extends CustomMonster {
             }
         }
     }
+
 
     @Override
     public void unhover() {
@@ -115,12 +125,18 @@ public abstract class AbsSummonMonster extends CustomMonster {
             this.getMove(0);
             this.createIntent();
         });
-
+        this.healthBarUpdatedEvent();
     }
 
     protected abstract AbstractPower addCombinePower();
 
     public void die_summon() {
         Wiz.atb(new GainEnergyAction(1));
+    }
+
+    @Override
+    public void receivePostBattle(AbstractRoom abstractRoom) {
+        die();
+        BaseMod.unsubscribeLater(this);
     }
 }

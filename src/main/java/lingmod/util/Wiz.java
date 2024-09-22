@@ -28,6 +28,7 @@ import lingmod.character.Ling;
 import lingmod.interfaces.CopyField;
 import lingmod.interfaces.VoidSupplier;
 import lingmod.monsters.AbsSummonMonster;
+import lingmod.patch.PlayerPatch;
 import lingmod.powers.PoeticMoodPower;
 import lingmod.stance.NellaFantasiaStance;
 import lingmod.util.audio.ProAudio;
@@ -573,7 +574,7 @@ public class Wiz {
         }
         if (card instanceof AbstractEasyCard) {
             AbstractEasyCard aec = (AbstractEasyCard) card;
-            int[] n2 = {aec.secondBlock, aec.secondDamage, aec.secondMagic};
+            int[] n2 = {aec.baseSecondBlock, aec.baseSecondDamage, aec.baseSecondMagic};
             for (int number : n2) {
                 ans = Math.max(ans, number);
             }
@@ -582,4 +583,7 @@ public class Wiz {
     }
 
 
+    public static AbsSummonMonster getSummon() {
+        return PlayerPatch.Fields.summonedMonster.get(Wiz.adp());
+    }
 }

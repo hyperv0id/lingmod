@@ -67,8 +67,8 @@ public class SummonMonsterPatch {
                 if (target != null && info != null && info.type != DamageInfo.DamageType.HP_LOSS
                         && (info.owner == null || !info.owner.isPlayer) && target == AbstractDungeon.player
                         && MonsterTakeDamagePatch.gotSummon()) {
-                    _inst.target = PlayerPatch.getSummonMonster();
-                    logger.info("承伤改变" + PlayerPatch.getSummonMonster());
+                    _inst.target = PlayerPatch.getSummon();
+                    logger.info("承伤改变" + PlayerPatch.getSummon());
                 }
             }
         }
@@ -90,7 +90,7 @@ public class SummonMonsterPatch {
             if (!MonsterTakeDamagePatch.gotSummon()) {
                 return;
             }
-            AbsSummonMonster m = PlayerPatch.getSummonMonster();
+            AbsSummonMonster m = PlayerPatch.getSummon();
             if (m != null) {
                 if (!m.hasPower("Barricade") && !m.hasPower("Blur")) {
                     if (!AbstractDungeon.player.hasRelic("Calipers")) {
@@ -121,7 +121,7 @@ public class SummonMonsterPatch {
                     ReflectionHacks.getPrivate(_inst, AbstractGameAction.class,
                             "startDuration"))
                     && MonsterTakeDamagePatch.gotSummon()) {
-                _inst.target = PlayerPatch.getSummonMonster();
+                _inst.target = PlayerPatch.getSummon();
                 logger.info("Block Target Changed To: " + _inst.target.name);
             }
         }
@@ -187,4 +187,31 @@ public class SummonMonsterPatch {
         }
     }
 
+
+    @SpirePatch(clz = MonsterGroup.class, method = "update")
+    public static class SummonHBUpdatePatch {
+        @SpirePostfixPatch
+        public static void Postfix(MonsterGroup __inst) {
+            AbsSummonMonster m = Wiz.getSummon();
+            if (m == null) return;
+            if (AbstractDungeon.screen != AbstractDungeon.CurrentScreen.DEATH) {
+                m.hb.update();
+                m.intentHb.update();
+                m.healthHb.update();
+            }
+            if (__inst.hoveredMonster == null && m.hovered) {
+                __inst.hoveredMonster = m;
+            }
+        }
+    }
+
+    @SpirePatch(clz = MonsterGroup.class, method = "updateAnimations")
+    public static class SummonUpdatePatch {
+        @SpirePostfixPatch
+        public static void updatePowers(MonsterGroup __inst) {
+            if (Wiz.getSummon() != null) {
+                Wiz.getSummon().updatePowers();
+            }
+        }
+    }
 }

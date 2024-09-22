@@ -269,12 +269,13 @@ public class MonsterHelper {
             ModCore.logger.info("Cannot Summon Abstract Class");
             return;
         }
-        AbsSummonMonster summonMonster = PlayerPatch.getSummonMonster();
+        AbsSummonMonster summonMonster = PlayerPatch.getSummon();
         // 没有召唤物，直接生成
         if (summonMonster == null || summonMonster.isDeadOrEscaped()) {
             Wiz.addToBotAbstract(() -> {
                 AbsSummonMonster mo = (AbsSummonMonster) MonsterHelper
                         .spawnMonster(summonClz, false);
+                PlayerPatch.Fields.summonedMonster.set(Wiz.adp(), mo); // for render and...
                 mo.currentHealth = mo.maxHealth = mo.baseMaxHP = baseHP;
                 // mo.animX = 1200F * Settings.xScale;
                 mo.setDamage(baseDamage);
