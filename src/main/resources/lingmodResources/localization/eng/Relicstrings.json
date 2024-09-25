@@ -1,0 +1,115 @@
+{
+  "${ModID}:AGiftRelic": {
+    "NAME": "琴",
+    "FLAVOR": "一个礼物，他是这么说的",
+    "DESCRIPTIONS": [
+      "战斗开始时，所有敌人失去 1 力量"
+    ]
+  },
+  "${ModID}:AltDouPengKou": {
+    "NAME": "斗篷扣",
+    "FLAVOR": "黄沙远来三千地，洗罢流年一屈指。",
+    "DESCRIPTIONS": [
+      "回合结束时，获得卡牌总耗能的格挡"
+    ]
+  },
+  "${ModID}:AltShouYaoGu": {
+    "NAME": "手摇鼓",
+    "FLAVOR": "黄沙远来三千地，洗罢流年一屈指。",
+    "DESCRIPTIONS": [
+      "战斗开始时，获得 #r4 诗兴"
+    ]
+  },
+  "${ModID}:AltShunZiBingFa": {
+    "NAME": "兵法",
+    "FLAVOR": "天呀，你又用这样的景色招待我，我也应该再敬你一杯。可惜...",
+    "DESCRIPTIONS": [
+      "如果你本回合未打出过攻击牌，那么下回合的第一张攻击牌免费打出"
+    ]
+  },
+  "${ModID}:Beans_DuskRelic": {
+    "NAME": "墨冰淇淋",
+    "FLAVOR": "潦草写就的涂鸦",
+    "DESCRIPTIONS": [
+      "拾取时变化 2 张牌",
+      "选择 2 张牌变化"
+    ]
+  },
+  "${ModID}:Beans_LingRelic": {
+    "NAME": "酒精泡泡",
+    "FLAVOR": "一白忘忧再消愁，三碗同天竞风流",
+    "DESCRIPTIONS": [
+      "右键随机化手牌费用，总费用不变 NL 每次战斗限1次"
+    ]
+  },
+  "${ModID}:Beans_NianRelic": {
+    "NAME": "辣椒老妈",
+    "FLAVOR": "罗德岛食堂做的是个锤子菜嘛",
+    "DESCRIPTIONS": [
+      "回合开始时，获得 #r3 活力"
+    ]
+  },
+  "${ModID}:Beans_ShuoRelic": {
+    "NAME": "玉门热干面",
+    "FLAVOR": "令妹，今天晨练又没看到你",
+    "DESCRIPTIONS": [
+      "每斩杀 5 个敌人，战斗开始时获得 1 临时力量"
+    ]
+  },
+  "${ModID}:LightRelic": {
+    "NAME": "一盏灯",
+    "FLAVOR": "灯挑夜，箭如雨，大漠飞火",
+    "DESCRIPTIONS": [
+      "打出牌时获得 1 诗兴 NL 消耗牌时获得 1 #b酒 (类似活力)"
+    ]
+  },
+  "${ModID}:NianAncientCasting": {
+    "NAME": "古旧铸物",
+    "FLAVOR": "“天有洪炉，地生五金”......虽然可以用来成就各种事业，却没人知道具体原理。",
+    "DESCRIPTIONS": [
+      "战斗开始时获得 9 格挡，抵消每层的前 3 次生命损失"
+    ]
+  },
+  "${ModID}:SanYiShiJian": {
+    "NAME": "散轶诗简",
+    "FLAVOR": "酣然失千山，万物得其灵。",
+    "DESCRIPTIONS": [
+      "清平、逍遥、弦惊卡牌效果将改为生成召唤随从帮助你战斗"
+    ]
+  },
+  "${ModID}:Shu_SeedRelic": {
+    "NAME": "种子",
+    "FLAVOR": "如果你没有行差踏错，种子会在合适的时候发芽",
+    "DESCRIPTIONS": [
+      "右键获得 4 再生，击败BOSS后可再次使用"
+    ]
+  },
+  "${ModID}:BlackWine": {
+    "NAME": "黑色酒盏",
+    "FLAVOR": "逍遥常驻，有道不孤",
+    "DESCRIPTIONS": [
+      "回合开始时，费用不小于 3 的卡牌可以免费打出 1 次"
+    ]
+  },
+  "${ModID}:SuiNu": {
+    "NAME": "岁怒",
+    "FLAVOR": "什么是真正的战争？",
+    "DESCRIPTIONS": [
+      "打出牌后对 #r随机单位 造成 1-12点伤害 NL 包括玩家自身和召唤物"
+    ]
+  },
+  "${ModID}:DaYanChangSang": {
+    "NAME": "大炎的沧桑",
+    "FLAVOR": "岁月如梭，织就大炎锦绣山河。",
+    "DESCRIPTIONS": [
+      "打出耗能不小于 3 的牌后，获得 1 能量"
+    ]
+  },
+  "${ModID}:LaoPuSan": {
+    "NAME": "老蒲扇",
+    "FLAVOR": "云开雾散，雨水退避，天气就此放晴。",
+    "DESCRIPTIONS": [
+      "打出三种不同费用的卡牌后，获得1力量"
+    ]
+  }
+}

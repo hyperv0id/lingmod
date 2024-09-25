@@ -1,0 +1,242 @@
+{
+  "${ModID}:PoeticMoodPower": {
+    "NAME": "诗兴",
+    "DESCRIPTIONS": [
+      "左键点击 #y诗词栏 ，会花费诗兴加速念诗"
+    ]
+  },
+  "${ModID}:NellaFantasiaPower": {
+    "NAME": "梦境",
+    "DESCRIPTIONS": [
+      "受到伤害时失去 1 临时力量"
+    ]
+  },
+  "${ModID}:XiaoYaoPower": {
+    "NAME": "逍遥",
+    "DESCRIPTIONS": [
+      "回合结束后 抽牌数/手牌上限++，下回合多抽 #b%d 张"
+    ]
+  },
+  "${ModID}:WangShuiPower": {
+    "NAME": "忘水",
+    "DESCRIPTIONS": [
+      "回合结束后 消耗所有手牌"
+    ]
+  },
+  "${ModID}:PoemIsShort": {
+    "NAME": "诗短",
+    "DESCRIPTIONS": [
+      "获得 #b0.%d #b伤害减免"
+    ]
+  },
+  "${ModID}:DreamIsEndless": {
+    "NAME": "梦长",
+    "DESCRIPTIONS": [
+      "失去生命时，获得等量 #b缠绕 ，缠绕造成的生命损失包括在内"
+    ]
+  },
+  "${ModID}:IncreaseDamagePower": {
+    "NAME": "伤害增加",
+    "DESCRIPTIONS": [
+      "本回合普通攻击造成的伤害增加 X 点"
+    ]
+  },
+  "${ModID}:AbstractSummonDescPower": {
+    "NAME": "召唤物",
+    "DESCRIPTIONS": [
+      "代替受伤，代替获得格挡 NL #b卡牌投喂 ： #r攻击牌 将会增加 #r攻击力 ， #b技能牌 将增加最大 #g生命 。 数值为卡牌中的 #b最大数字 "
+    ]
+  },
+  "${ModID}:Sui7DealPower": {
+    "NAME": "裁虚为实",
+    "DESCRIPTIONS": [
+      "卡牌被消耗时，绩获得 #r",
+      " #y力量"
+    ]
+  },
+  "${ModID}:CantApplyPowerPower": {
+    "NAME": "无怖",
+    "DESCRIPTIONS": [
+      "你无法再获得任何新的能力或异常，改为获得 #b1能量"
+    ]
+  },
+  "${ModID}:Whoami_NianPower": {
+    "NAME": "无悲",
+    "DESCRIPTIONS": [
+      "打出攻击牌时，失去 1 生命"
+    ]
+  },
+  "${ModID}:Whoami_ShuoPower": {
+    "NAME": "我无",
+    "DESCRIPTIONS": [
+      "打出 #r",
+      "张攻击牌后获得 双发"
+    ]
+  },
+  "${ModID}:LosePower": {
+    "NAME": "下回合丢弃",
+    "DESCRIPTIONS": [
+      "下回合开始时选择 X 张牌丢弃"
+    ]
+  },
+  "${ModID}:YuGuoZhuoYingPower": {
+    "NAME": "雨过濯缨",
+    "DESCRIPTIONS": [
+      "卡牌进入 #b抽牌堆 时，获得 %d 格挡",
+      "卡牌进入 #b抽牌堆 或 #b消耗堆  时，获得 %d 格挡"
+    ]
+  },
+  "${ModID}:NingZuoWuPower": {
+    "NAME": "宁作吾",
+    "DESCRIPTIONS": [
+      "你的能力和异常不会被移除 NL 但如果此能力影响了受伤时伤害结算，此能力仍然会消失。 例如 #g缓冲 、 #g无实体 、 #r易伤 "
+    ]
+  },
+  "${ModID}:BeiChangMengPower": {
+    "NAME": "悲长梦",
+    "DESCRIPTIONS": [
+      "离开梦境时，对所有敌人施加 %d 虚弱"
+    ]
+  },
+  "${ModID}:WinePower": {
+    "NAME": "酒",
+    "DESCRIPTIONS": [
+      "你的下一张攻击牌所造成的伤害增加 %d ，然后失去所有的酒 NL #b在梦中: 不会失去酒"
+    ]
+  },
+  "${ModID}:PoemVSQuickSandPower": {
+    "NAME": "诗对狂沙",
+    "DESCRIPTIONS": [
+      "每次受到伤害时，获得1诗兴",
+      "每次受到伤害、失去生命时，获得1诗兴"
+    ]
+  },
+  "${ModID}:ZuiFeiChenPower": {
+    "NAME": "醉飞尘",
+    "DESCRIPTIONS": [
+      "每消耗 #b1 张牌，获得 #b%d #y酒 "
+    ]
+  },
+  "lingmod:HuSongPower": {
+    "NAME": "湖松",
+    "DESCRIPTIONS": [
+      "回合结束时获得 %d 格挡 。牌被消耗时，此能力值增加 %d "
+    ]
+  },
+  "lingmod:YuNiaoPower": {
+    "NAME": "鱼鸟",
+    "DESCRIPTIONS": [
+      "你受到伤害时，%s 受到等量伤害。离开梦境时失去此能力",
+      "怪物"
+    ]
+  },
+  "lingmod:NvErHongPower": {
+    "NAME": "女儿红",
+    "DESCRIPTIONS": [
+      "打出 酒牌 后，抽 %d 张牌。"
+    ]
+  },
+  "lingmod:InvincibleForPlayer": {
+    "NAME": "不是敌人",
+    "DESCRIPTIONS": [
+      "玩家方对其造成的所有伤害降低到1"
+    ]
+  },
+  "lingmod:GiveGoldAsHP": {
+    "NAME": "谢礼",
+    "DESCRIPTIONS": [
+      "战斗结束后给予生命值 %d 倍的金币"
+    ]
+  },
+  "lingmod:ShanHeYuanKuoPower": {
+    "NAME": "山河远阔",
+    "DESCRIPTIONS": [
+      "本回合你每打出一张牌，就抽一张牌"
+    ]
+  },
+  "lingmod:Go_ReadAhead": {
+    "NAME": "读棋",
+    "DESCRIPTIONS": [
+      "#y无效 打出的下 #b%d 张牌"
+    ]
+  },
+  "lingmod:Go_LibertyPressure": {
+    "NAME": "逼气",
+    "DESCRIPTIONS": [
+      "玩家打出 #r攻击牌 后，使其获得 #b1 层 #r易伤"
+    ]
+  },
+  "lingmod:Go_CornerApproach": {
+    "NAME": "挂角",
+    "DESCRIPTIONS": [
+      "玩家打出 #r技能牌 后，使其获得 #b1 层 #r虚弱"
+    ]
+  },
+  "lingmod:Go_Endgame": {
+    "NAME": "收官",
+    "DESCRIPTIONS": [
+      "本回合玩家打出 #r非攻击牌 后， 自身获得 #b1 层 #r荆棘"
+    ]
+  },
+  "lingmod:HP_Lock_Power": {
+    "NAME": "事件-锁血",
+    "DESCRIPTIONS": [
+      "#g不会死亡 ，保留1点生命"
+    ]
+  },
+  "lingmod:ShiftingPower2": {
+    "NAME": "兵斗弭遁",
+    "DESCRIPTIONS": [
+      "每当 ",
+      " 受到伤害，它将在回合结束前失去 #b1 #y力量 。"
+    ]
+  },
+  "lingmod:LanKePower": {
+    "NAME": "烂柯",
+    "DESCRIPTIONS": [
+      "梦境中的攻击力降低效果增加 1"
+    ]
+  },
+  "lingmod:Ji_NeedlePower": {
+    "NAME": "裁虚为实",
+    "DESCRIPTIONS": [
+      "当卡牌被消耗时，获得 #b1 #r力量"
+    ]
+  },
+  "lingmod:TranquilityPower": {
+    "NAME": "清平合成效果",
+    "DESCRIPTIONS": [
+      "清平将行动两次"
+    ]
+  },
+  "lingmod:PeripateticismPower": {
+    "NAME": "逍遥合成效果",
+    "DESCRIPTIONS": [
+      "逍遥在攻击时额外给予等量缠绕"
+    ]
+  },
+  "lingmod:ThundererPower": {
+    "NAME": "弦惊合成效果",
+    "DESCRIPTIONS": [
+      "弦惊将攻击所有敌人"
+    ]
+  },
+  "lingmod:NI3Power": {
+    "NAME": "其数为三",
+    "DESCRIPTIONS": [
+      "你造成的伤害的个位数一定为 3 。 自动将伤害变为最接近的数字"
+    ]
+  },
+  "lingmod:ZhuYeZhouPower": {
+    "NAME": "竹叶舟",
+    "DESCRIPTIONS": [
+      "下次离开梦境时，变化所有手牌为未升级的"
+    ]
+  },
+  "lingmod:TaoMeiWanNiangPower": {
+    "NAME": "桃梅晚酿",
+    "DESCRIPTIONS": [
+      "每消耗 %d 张卡牌，获得 %d 多层护甲"
+    ]
+  }
+}

@@ -110,11 +110,11 @@ public class ModCore implements
     }
 
     private static String getLangString() {
-        // for (Settings.GameLanguage lang : SupportedLanguages) {
-        // if (lang.equals(Settings.language)) {
-        // return Settings.language.name().toLowerCase();
-        // }
-        // }
+        for (Settings.GameLanguage lang : SupportedLanguages) {
+            if (lang.equals(Settings.language)) {
+                return Settings.language.name().toLowerCase();
+            }
+        }
         return "zhs";
     }
 

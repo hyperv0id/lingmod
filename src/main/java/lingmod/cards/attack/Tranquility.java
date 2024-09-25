@@ -40,6 +40,7 @@ public class Tranquility extends AbsSummonCard {
             for (int i = 0; i < timesUpgraded; i++) {
                 ps.upgrade();
             }
+            return ps;
         }
         return super.makeStatEquivalentCopy();
     }

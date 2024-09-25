@@ -4,7 +4,6 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import lingmod.ModCore;
-import lingmod.cards.attack.JiangXiangNaTie;
 import lingmod.util.Wiz;
 
 import static lingmod.ModCore.logger;
@@ -22,7 +21,6 @@ public class SanYiShiJian extends AbstractEasyRelic {
     @Override
     public void obtain() {
         super.obtain();
-        AbstractDungeon.uncommonCardPool.addToBottom(new JiangXiangNaTie());
     }
 
     /**

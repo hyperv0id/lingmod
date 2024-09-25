@@ -1,0 +1,392 @@
+{
+  "${ModID}:ChongJinJiuCard": {
+    "NAME": "Second_Cup",
+    "DESCRIPTION": "always ${ModID}:Transform to a temporary copy of the last card played.",
+    "UPGRADE_DESCRIPTION": "always ${ModID}:Transform to a copy of the last card played."
+  },
+  "${ModID}:Defend": {
+    "NAME": "Defend",
+    "DESCRIPTION": "Gain !B! BLock."
+  },
+  "${ModID}:NingZuoWuCard": {
+    "NAME": "Remain_Oneself",
+    "DESCRIPTION": "Your Powers will not be removed. NL Intangible and Thorns that affects damage taken can still be removed.",
+    "UPGRADE_DESCRIPTION": "Removes all debuffs, Your Powers will not be removed. NL Intangible and Thorns that affects damage taken can still be removed."
+  },
+  "${ModID}:Strike": {
+    "NAME": "Strike",
+    "DESCRIPTION": "deal !D! damage."
+  },
+  "${ModID}:TiaoDengWenMengCard": {
+    "NAME": "See_Ones_Dream",
+    "DESCRIPTION": "randomly obtain !M! numbers of ${ModID}:Dream.",
+    "UPGRADE_DESCRIPTION": "randomly obtain !M! numbers of upgraded ${ModID}:Dream."
+  },
+  "${ModID}:XiaoMingSeCard": {
+    "NAME": "Pleasant_Melodies",
+    "DESCRIPTION": "for every debuff，for every enemy，gain !M! points of ${ModID}:Poetic_Inspiration NL （can obtain !${ModID}:m2! points.）"
+  },
+  "${ModID}:XiaoYaoYou": {
+    "NAME": "Peripatetic",
+    "DESCRIPTION": "Your hand size and cards drawn increase by 1 per turn.",
+    "EXTENDED_DESCRIPTION": [
+      "长河远上,埋骸其下,吾自逍遥"
+    ]
+  },
+  "${ModID}:YuNiaoDreamCard": {
+    "NAME": "Ichthyornis_Dream",
+    "DESCRIPTION": "Deal damage equal to Damage you would take this turn NL （!D! damage） NL Shapeshift to this enemy，upon recieving attacks，enemy of the same name also takes that damage"
+  },
+  "${ModID}:HuangLiang": {
+    "NAME": "Pillow_dream",
+    "DESCRIPTION": "Gain !M ! Coins"
+  },
+  "${ModID}:Tranquility": {
+    "NAME": "“Tranquility”",
+    "DESCRIPTION": "${ModID}:Summon 。 NL deal !D! Damage."
+  },
+  "${ModID}:Tranquility_Summon": {
+    "NAME": "“Tranquility”",
+    "DESCRIPTION": "summon a ${ModID}:“Tranquility” NL Hp !M! ，Atk !${ModID}:m2!"
+  },
+  "${ModID}:Peripateticism": {
+    "NAME": "“Peripateticism”",
+    "DESCRIPTION": "${ModID}:Summon 。 NL Exhaust every none attack card，for every card removed casue !M! constriction NL immediatley casue constriction damage once.",
+    "EXTENDED_DESCRIPTION": [
+      "Summon a ${ModID}:“Peripateticism”."
+    ]
+  },
+  "${ModID}:Peripateticism_Summon": {
+    "NAME": "“Peripateticism”",
+    "DESCRIPTION": "Summon a ${ModID}:“Peripateticism” NL Hp !M! ，Atk !${ModID}:m2!"
+  },
+  "${ModID}:Thunderer": {
+    "NAME": "“Thunderer”",
+    "DESCRIPTION": " ${ModID}:Summon 。 NL deal !D! damage !M! times，Exhaust all Thunderer，increase number of attacks NL adds a Thunderer to hand when retained."
+  },
+  "${ModID}:Thunderer_Summon": {
+    "NAME": "“Thunderer”",
+    "DESCRIPTION": "Summon a ${ModID}:“Thunderer” NL Hp !M! ，Atk !${ModID}:m2!"
+  },
+  "${ModID}:Feature_2_Card": {
+    "NAME": "随付笺咏醉屠苏",
+    "DESCRIPTION": "deal !D! damage !M! times。 NL when exhausting cards，if this card's cost isnt 0，deal damage 1 more time，cost -1"
+  },
+  "${ModID}:GuoJiaXianMei": {
+    "NAME": "裹甲衔枚",
+    "DESCRIPTION": "deal !D! damage，gain !B! Block"
+  },
+  "${ModID}:DreamOfButterfly": {
+    "NAME": "梦蝶",
+    "DESCRIPTION": "add  !M! power cards to the draw pile，they cost 1 less.",
+    "UPGRADE_DESCRIPTION": "add  !M! upgraded power cards to the draw pile，they cost 1 less."
+  },
+  "${ModID}:Lonely": {
+    "NAME": "孤独",
+    "DESCRIPTION": "Can be played. If this card is in hand when the turn ends, cards that arent played gain 1 cost."
+  },
+  "${ModID}:ZhuoJiuChengXin": {
+    "NAME": "浊酒澄心",
+    "DESCRIPTION": "for every ${ModID}:Wine theres !M! % chance to obtain 人工制品",
+    "UPGRADE_DESCRIPTION": "for every ${ModID}:Wine stacks ${ModID}:Gacha_Simulate ，has !M! %basic chance to obtain 1 人工制品"
+  },
+  "${ModID}:SwapCup": {
+    "NAME": "换盏",
+    "DESCRIPTION": "choose 2 cards, swap their cost this battle",
+    "UPGRADE_DESCRIPTION": "choose 2 cards, swap their cost this battle NL If a ${ModID}:Winecard is choosen，set its cost to !M! before swapping."
+  },
+  "${ModID}:ZhiZhan": {
+    "NAME": "掷盏",
+    "DESCRIPTION": "deal !D! damage。 NL ${ModID}:Wine does its effect !M! times.",
+    "EXTENDED_DESCRIPTION": [
+      "当年掷盏飞残暮，今宵抔酒对高城。"
+    ]
+  },
+  "${ModID}:LinYuanWangShui": {
+    "NAME": "临渊忘水",
+    "DESCRIPTION": "draw untill hand is full NL all card gain Ethereal"
+  },
+  "${ModID}:DrunkButterfly": {
+    "NAME": "醉蝶",
+    "DESCRIPTION": "deal !D! damage to all enemies NL If fatal，can ignore path once"
+  },
+  "${ModID}:ShiDuanMengChang": {
+    "NAME": "诗短梦长",
+    "DESCRIPTION": "game !M!% damage reduction NL when losing Hp，gain equal amount of ${ModID}:Constricted NL （Includes damage casued by Constricted）"
+  },
+  "${ModID}:AltGuangHui": {
+    "NAME": "光辉",
+    "DESCRIPTION": "deal dmage equal to all ${ModID}:Poetic_Insipration gained NL (Deal !D! damage)"
+  },
+  "${ModID}:Whoami_Shuo": {
+    "NAME": "我无",
+    "DESCRIPTION": "after using attack cards !M! times ，next attack card will be played twice"
+  },
+  "${ModID}:Whoami_Wang": {
+    "NAME": "无我",
+    "DESCRIPTION": "lose !M! hp，gain 1 intangible"
+  },
+  "${ModID}:Whoami_Ling": {
+    "NAME": "无怖",
+    "DESCRIPTION": "you no longer gain any new Power，instead gain [E]",
+    "UPGRADE_DESCRIPTION": "Clears all debuff NL you no longer gain any new Power，instead gain [E]"
+  },
+  "${ModID}:Whoami_Nian": {
+    "NAME": "无悲",
+    "DESCRIPTION": "gain !M! Buffer，for every attack card used，lose !M! Hp",
+    "EXTENDED_DESCRIPTION": [
+      "一把设计古朴的匕首。据说只要用来从事谋杀之类的事业，匕首的锋刃就会消失。"
+    ]
+  },
+  "${ModID}:Whoami_Dusk": {
+    "NAME": "无喜",
+    "DESCRIPTION": "target a none leader enemy，it loses 11% max hp，generate 2 opposing Ink Spirits.",
+    "EXTENDED_DESCRIPTION": [
+      "一支看似无奇的毛笔。夕的笔，可生万物，也可生笔，用的时候要留神一点。"
+    ]
+  },
+  "${ModID}:BattleHymn": {
+    "NAME": "战歌",
+    "DESCRIPTION": "deal !D! damage，apply !M! Vulnerable。"
+  },
+  "${ModID}:Lament": {
+    "NAME": "悲词",
+    "DESCRIPTION": "for every debuff on you and your enemies ，gain !B! block"
+  },
+  "${ModID}:ShanHeYuanKuo": {
+    "NAME": "山河远阔",
+    "DESCRIPTION": "for every card used this turn，draw !M! cards"
+  },
+  "${ModID}:YuGuoZhuoYing": {
+    "NAME": "雨过濯缨",
+    "DESCRIPTION": "when a card is put in discard pile，gain !M! block",
+    "UPGRADE_DESCRIPTION": "when a card is put in discard or exhausted pile，gain !M! block"
+  },
+  "${ModID}:SurprisingThunder": {
+    "NAME": "远山惊雷",
+    "DESCRIPTION": "deal !D! damage to all enemies NL deals double damage to main target"
+  },
+  "${ModID}:AGiftCard": {
+    "NAME": "“礼物”",
+    "DESCRIPTION": "apply !M! weak to enemies NL apply !${ModID}:m2! weak to self "
+  },
+  "${ModID}:ZuiFeiChen": {
+    "NAME": "醉飞尘",
+    "DESCRIPTION": "when cards are exhausted，gain !M! ${ModID}:Wine "
+  },
+  "${ModID}:QingMingDream": {
+    "NAME": "清明梦",
+    "DESCRIPTION": "can only be played during Dream。 NL exit lingmod:Dream_Stance ，according to their atk lost during Dream,they lose,!M! Strength",
+    "UPGRADE_DESCRIPTION": "can only be played during Dream。 NL exit lingmod:Dream_Stance  ，according to their atk lost during Dream,they lose double that amount in Strength NL （lose !M! Strength）",
+    "EXTENDED_DESCRIPTION": [
+      "这不是梦",
+      "梦是真实的"
+    ]
+  },
+  "${ModID}:XunRiFeng": {
+    "NAME": "“寻日峰”",
+    "DESCRIPTION": "Exhaust any number of cards NL retun those exhausted cards back to hand when played"
+  },
+  "${ModID}:JiaoLu": {
+    "NAME": "蕉鹿梦",
+    "DESCRIPTION": "gain !M! Strength and Dexterity ，until end of this turn"
+  },
+  "${ModID}:BeiMoTing": {
+    "NAME": "杯莫停",
+    "DESCRIPTION": "If target's intent is attack ，enter ${ModID}:Dream ， otherwise gain !M! ${ModID}:Wine "
+  },
+  "${ModID}:PoemVSQuickSand": {
+    "NAME": "诗对狂沙",
+    "DESCRIPTION": "upon attacked，gain !M! ${ModID}:Poetic_Insipration",
+    "UPGRADE_DESCRIPTION": "upon attacked，gain !M! ${ModID}:Poetic_Insipration NL when losing hp，obtain !M! more"
+  },
+  "${ModID}:Sui_7DealCard": {
+    "NAME": "“交易”",
+    "DESCRIPTION": "Draw another card when drawn NL ^_^"
+  },
+  "${ModID}:LieDaoZiWineCard": {
+    "NAME": "烈刀子酒",
+    "DESCRIPTION": "double your ${ModID}:Wine ",
+    "UPGRADE_DESCRIPTION": "gain ${ModID}:Wine stacks equal to 2 times ${ModID}:Wine "
+  },
+  "${ModID}:HuSongWineCard": {
+    "NAME": "湖松酒",
+    "DESCRIPTION": "If the enemy would attack multiple times，they lose !M!% times of attacks NL otherwise apply !${ModID}:m2! Weak "
+  },
+  "${ModID}:GuiXingWineCard": {
+    "NAME": "归行酒",
+    "DESCRIPTION": "Play a random card in the discard pile，Exhaust it"
+  },
+  "${ModID}:ChiJiuSui": {
+    "NAME": "辞旧岁",
+    "DESCRIPTION": "discard your hand，for every card discarded gain !M! Block，Total !B! Block NL gain block X times"
+  },
+  "${ModID}:FengQiTanJian": {
+    "NAME": "风起弹剑",
+    "DESCRIPTION": "deal !D! damage，draw !M! card，increase cost by 1 when played"
+  },
+  "${ModID}:DrinkAlone": {
+    "NAME": "独酌",
+    "DESCRIPTION": "lose all energy, choose a card, exhaust your hand, put X copies of it into your hand",
+    "UPGRADE_DESCRIPTION": "lose all energy, choose a card, exhaust your hand NL put X copies of it into your hand",
+    "EXTENDED_DESCRIPTION": [
+      "选择一张牌独饮"
+    ]
+  },
+  "${ModID}:YunLiaoWineCard": {
+    "NAME": "云辽酒",
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [
+      "modifier修改了描述"
+    ]
+  },
+  "${ModID}:GuanShanYuan": {
+    "NAME": "关山远",
+    "DESCRIPTION": "gain !B! Block， Exhaust a card NL gain !M! extra block"
+  },
+  "${ModID}:BlackPawn": {
+    "NAME": "黑子",
+    "DESCRIPTION": "deal !D! damage NL in Dream: choose a card in draw pile, ${ModID}:Transform to this card",
+    "EXTENDED_DESCRIPTION": [
+      "选择一张牌 ${ModID}:变化 为“黑子”"
+    ]
+  },
+  "lingmod:WhitePawn": {
+    "NAME": "白子",
+    "DESCRIPTION": "gain !B! Block NL in Dream: choose a card in draw pile, ${ModID}:Transform to this card",
+    "EXTENDED_DESCRIPTION": [
+      "选择一张牌变化为“白子”"
+    ]
+  },
+  "lingmod:YaGaoMengYuan": {
+    "NAME": "崖高梦远",
+    "DESCRIPTION": "double current energy，card cost +1 NL in Dream: only affects skill cards.",
+    "UPGRADE_DESCRIPTION": "choose: temporarily double energy and increase card cost by 1； NL max energy +1 ,cost of cards doubled permanently NL in Dream: only affects skill cards",
+    "EXTENDED_DESCRIPTION": [
+      "崖高？ 梦远？"
+    ]
+  },
+  "lingmod:YaGaoMengYuan_C1": {
+    "NAME": "崖高",
+    "DESCRIPTION": "double energy and increase card cost by 1 temporarily NL in Dream: only affects skill cards"
+  },
+  "lingmod:YaGaoMengYuan_C2": {
+    "NAME": "梦远",
+    "DESCRIPTION": "max energy +1 ,cost of cards doubled permanently NL in Dream: only affects skill cards"
+  },
+  "lingmod:WineWineWine": {
+    "NAME": "酒！",
+    "DESCRIPTION": "While in hand，you cannot play lingmod:WineCard",
+    "EXTENDED_DESCRIPTION": [
+      "我不能打出酒"
+    ]
+  },
+  "lingmod:ZhengFuWangXiang": {
+    "NAME": "征夫望乡",
+    "DESCRIPTION": "Exhuast hand NL add to hand 特殊的裹甲衔枚 NL its base stats are !M!"
+  },
+  "${ModID}:QuShuiLiuShang": {
+    "NAME": "曲水流觞",
+    "DESCRIPTION": "deal !D! damage，for every poem status you have damage increase by !M! "
+  },
+  "${ModID}:ChangFengChe": {
+    "NAME": "长风彻",
+    "DESCRIPTION": "deal !D! damage，if your hand consist only of Strike and Defend, draw!M! "
+  },
+  "lingmod:JianShanWenShi": {
+    "NAME": "见山问石",
+    "DESCRIPTION": "Deal !D! damage. NL If cards has been Exhausted this turn, gain [E] and draw 1 card"
+  },
+  "lingmod:RuMengLing": {
+    "NAME": "如梦令",
+    "DESCRIPTION": "Exhaust a card，put a copy of it in the discard pile and draw pile.",
+    "UPGRADE_DESCRIPTION": "Exhaust a card，put a copy of it in the discard pile, draw pile and hand"
+  },
+  "lingmod:NoNamed_0620": {
+    "NAME": "未命名",
+    "DESCRIPTION": "deal !D! damage。for every card with higher cost than this card, gain [E]"
+  },
+  "lingmod:ZiZai": {
+    "NAME": "自在",
+    "DESCRIPTION": "if you or the target has at least !M! types of debuffs, gain [E] [E] ",
+    "EXTENDED_DESCRIPTION": [
+      "真自在者不知何为自在"
+    ]
+  },
+  "lingmod:JiangXiangNaTie": {
+    "NAME": "酱香拿铁",
+    "DESCRIPTION": "Deal !D! Damage, Vigor effectiveness increase !M! times NL if target is lingmod:召唤物 ，increases amount of max Hp equal to damage increase"
+  },
+  "lingmod:GuLeiXinLiu": {
+    "NAME": "故垒新柳",
+    "DESCRIPTION": "Choose an Exhausted card, put it into your hand.",
+    "UPGRADE_DESCRIPTION": "Choose an Exhausted card, put it into your hand, it costs 0 this turn."
+  },
+  "lingmod:ShuoWangLing": {
+    "NAME": "朔望",
+    "DESCRIPTION": "Draw 1 card. Gains effect based on cards in hand NL ${ModID}:Last_Card : deal !D! damage !M! times NL ${ModID}:Full_Hand : deal !${ModID}:sd! damage !${ModID}:m2! times",
+    "UPGRADE_DESCRIPTION": "Draw 1 card. Gains effect based on cards in hand NL ${ModID}:Last_Card : deal !D! damage !M! times NL ${ModID}:Full_Hand : deal !${ModID}:sd! damage !${ModID}:m2! times NL 为三: 获得 !B! 格挡 !${ModID}:sb! 次",
+    "EXTENDED_DESCRIPTION": [
+      "令"
+    ]
+  },
+  "lingmod:NvErHong": {
+    "NAME": "女儿红",
+    "DESCRIPTION": "Add ${ModID}:Wine evenly between cards' base damage, lose all ${ModID}:Wine NL （increase by !M! ）"
+  },
+  "lingmod:ChunFengBuZhi": {
+    "NAME": "春风不至",
+    "DESCRIPTION": "cost of current hand becomes 0, they will be Exhausted after being played"
+  },
+  "lingmod:QiangJinJiu": {
+    "NAME": "将进酒",
+    "DESCRIPTION": "Randomzie enemy's Intent NL If any enemy's Intent isnt attack, gain !M! ${ModID}:Wine"
+  },
+  "lingmod:ShiFangTuNa": {
+    "NAME": "十方吐纳",
+    "DESCRIPTION": "for every enemy or Summon，deal !D! damage。 NL （total !M! times）"
+  },
+  "lingmod:BeiChangMeng": {
+    "NAME": "悲长梦",
+    "DESCRIPTION": "when existing dream，apply !M! weak to all enemies"
+  },
+  "lingmod:NostalgiaAndCuriosity": {
+    "NAME": "怀恋与好奇",
+    "DESCRIPTION": "Choose 1 card from a random selection of 3 to add to your hand，NL Cards will be choosen from  NL 这些牌是你之前爬塔时拿过的牌",
+    "UPGRADE_DESCRIPTION": "Choose 1 card from a random selection of 3 to add to your hand, it costs 0 this turn NL Cards will be choosen from NL 这些牌是你之前爬塔时拿过的牌"
+  },
+  "lingmod:Ling_Grieve": {
+    "NAME": "伤怀",
+    "DESCRIPTION": "When other cards are Exhausted, add a 伤怀 to your hand."
+  },
+  "lingmod:TaoMeiWanNiang": {
+    "NAME": "桃梅晚酿",
+    "DESCRIPTION": "For every !M! cards Exhausted，gain !${ModID}:m2! Plated Armor "
+  },
+  "lingmod:TheNumberIs3": {
+    "NAME": "其数为3",
+    "DESCRIPTION": "Damage you deal in the ones digit will be a 3."
+  },
+  "lingmod:ZhuYeZhouCard": {
+    "NAME": "竹叶舟",
+    "DESCRIPTION": "Upgrade your hand,Next time you exit Dream ${ModID}:Transform your hand to un-upgraded",
+    "UPGRADE_DESCRIPTION": "Upgrade every card,Next time you exit Dream ${ModID}:Transform your hand to un-upgraded"
+  },
+  "lingmod:DaMoFeiHuo": {
+    "NAME": "大漠飞火",
+    "DESCRIPTION": "For every !M! card in your Exhausted pile，deal 1 damage。 NL （deal !D! damage）"
+  },
+  "lingmod:ZuiTiaoDeng": {
+    "NAME": "醉挑灯",
+    "DESCRIPTION": "Gain !B! Block，put a copy of this card in the discard pile NL When Exhausted, gain [E] [E] ",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block，put a copy of this card in the discard pile NL When Exhausted, gain [E] [E] [E] "
+  },
+  "lingmod:TianZhuiCard": {
+    "NAME": "天坠",
+    "DESCRIPTION": "Deal !D! damage NL If your hand consist only of attack cards apply !M! 格挡返还 "
+  },
+  "lingmod:LankeDream": {
+    "NAME": "烂柯梦",
+    "DESCRIPTION": "When Cards are played during Dream, lower atk by an additional !M! point"
+  }
+}

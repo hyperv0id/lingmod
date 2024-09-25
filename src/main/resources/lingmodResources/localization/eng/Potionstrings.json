@@ -1,0 +1,20 @@
+{
+  "${ModID}:BottledPawn": {
+    "NAME": "“黑子”",
+    "DESCRIPTIONS": [
+      "失去一个药水栏位 NL 杀死所有普通敌人 NL 精英失去一半生命"
+    ]
+  },
+  "${ModID}:BottledSword": {
+    "NAME": "剑术记忆",
+    "DESCRIPTIONS": [
+      "本次战斗中，所有打击的耗能变为0"
+    ]
+  },
+  "${ModID}:ForgetPotion": {
+    "NAME": "忘忧水",
+    "DESCRIPTIONS": [
+      "从你的卡组中移除 1 张牌"
+    ]
+  }
+}

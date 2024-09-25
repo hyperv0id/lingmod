@@ -12,7 +12,7 @@ import lingmod.util.MonsterHelper;
 import static lingmod.ModCore.makeID;
 
 @AutoAdd.Ignore
-@CardConfig(summonClz = Tranquility_SummonMonster.class, magic = 18, magic2 = 3)
+@CardConfig(summonClz = Tranquility_SummonMonster.class, magic = 10, magic2 = 1)
 @Credit(link = "https://www.pixiv.net/artworks/106018673", username = "小动物管理员", platform = "pixiv")
 public class Tranquility_Summon extends AbstractEasyCard {
 
@@ -24,8 +24,8 @@ public class Tranquility_Summon extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        upgradeMagicNumber(5);
-        upgradeSecondMagic(3);
+        upgradeMagicNumber(2);
+        upgradeSecondMagic(2);
     }
 
     @Override

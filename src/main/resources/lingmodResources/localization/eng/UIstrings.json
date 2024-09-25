@@ -1,0 +1,96 @@
+{
+  "${ModID}:SwapCost": {
+    "TEXT": [
+      "Swap Energy of Cards"
+    ]
+  },
+  "${ModID}:Sui7DealAction": {
+    "TEXT": [
+      "Choose for Trade"
+    ]
+  },
+  "${ModID}:SummonMod": {
+    "TEXT": [
+      " lingmod:Summon 。 NL %s"
+    ]
+  },
+  "${ModID}:NellaFantasiaMod": {
+    "TEXT": [
+      "Enter lingmod:Dream_Stance 。 NL %s"
+    ]
+  },
+  "${ModID}:WineMod": {
+    "TEXT": [
+      "%s NL Gain %d lingmod:Wine 。"
+    ]
+  },
+  "${ModID}:AbstractPoetryCard": {
+    "TEXT": [
+      "Poetry Card"
+    ]
+  },
+  "${ModID}:PoetryTopPanel": {
+    "TEXT": [
+      "Your Poetry",
+      "点击查看你创作的诗词",
+      "选择一张诗词作为本次战斗的格调"
+    ]
+  },
+  "${ModID}:PoetryViewScreen": {
+    "TEXT": [
+      "Your All Poetry",
+      "Return"
+    ]
+  },
+  "${ModID}:SelectedPoetryViewScreen": {
+    "TEXT": [
+      "Current Poetry",
+      "Return"
+    ]
+  },
+  "${ModID}:Option": {
+    "TEXT": [
+      "Mod Setting"
+    ]
+  },
+  "${ModID}:VOICE.DIALECT": {
+    "TEXT": [
+      "Voice Variation"
+    ],
+    "EXTRA_TEXT": [
+      "CN",
+      "CN-Dialect",
+      "English",
+      "Japanese",
+      "NONE"
+    ]
+  },
+  "${ModID}:B_SHOW_CREDIT": {
+    "TEXT": [
+      "Material Source Showcase"
+    ]
+  },
+  "${ModID}:CONF.STATIC_CHAR": {
+    "TEXT": [
+      "Static Player Image"
+    ]
+  },
+  "${ModID}:CONF.CHAR_SKIN": {
+    "TEXT": [
+      "Skin Selection"
+    ],
+    "EXTRA_TEXT": [
+      "Default",
+      "Nian",
+      "NCG",
+      "Second Creation"
+    ]
+  },
+  "${ModID}:PoetryOrb": {
+    "TEXT": [
+      "Poetry Writing Column",
+      "Choose a poem to create at the beginning of the battle, add the poem to your hand when the poem's progress is full NL #b left-click to speed up the progress. ctrl-click to speed up only one character NL #bright-click to see the effect of the card",
+      "Poetry"
+    ]
+  }
+}
