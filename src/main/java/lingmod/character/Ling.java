@@ -206,7 +206,7 @@ public class Ling extends CustomPlayer {
     public AbstractPoetryCard getPoetryCard() {
         if (orbs.isEmpty())
             return null;
-        if (orbs.get(0).ID.equals(PoetryOrb.PID))
+        if (orbs.get(0) instanceof PoetryOrb)
             return ((PoetryOrb) orbs.get(0)).card;
         return null;
     }
@@ -214,6 +214,7 @@ public class Ling extends CustomPlayer {
     @Override
     public void doCharSelectScreenSelectEffect() {
         CardCrawlGame.music.silenceBGM(); // 沉默BGM
+        // CardCrawlGame.music.silenceTempBgmInstantly(); // 沉默BGM
         CardCrawlGame.music.playTempBgmInstantly("寻隐.mp3", true);
         VoiceMaster.select();
         CardCrawlGame.sound.playA("UNLOCK_PING", MathUtils.random(-0.2F, 0.2F));
