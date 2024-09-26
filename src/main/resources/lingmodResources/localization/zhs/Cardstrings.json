@@ -308,7 +308,8 @@
   },
   "lingmod:ZiZai": {
     "NAME": "自在",
-    "DESCRIPTION": "如果你或目标存在至少 !M! 种负面效果，那么获得 [E] [E] ",
+    "DESCRIPTION": "如果你的负面效果数大于手牌中的最大耗能 NL 那么获得 [E] [E] NL 反之抽 !M! 张牌 ",
+    "UPGRADE_DESCRIPTION": "如果你的负面效果数大于手牌中的最大耗能 NL 那么获得 [E] [E] [E] NL 反之抽 !M! 张牌 ",
     "EXTENDED_DESCRIPTION": [
       "真自在者不知何为自在"
     ]

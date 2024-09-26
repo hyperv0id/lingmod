@@ -586,4 +586,11 @@ public class Wiz {
     public static AbsSummonMonster getSummon() {
         return PlayerPatch.Fields.summonedMonster.get(Wiz.adp());
     }
+
+    public static int cardCost(AbstractCard card) {
+        if (card.freeToPlay() || card.freeToPlayOnce) return 0;
+        return card.costForTurn;
+    }
+
+
 }

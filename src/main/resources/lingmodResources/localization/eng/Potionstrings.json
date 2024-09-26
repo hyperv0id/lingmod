@@ -1,20 +1,21 @@
+
 {
   "${ModID}:BottledPawn": {
-    "NAME": "“黑子”",
+    "NAME": "“Black_Pawn”",
     "DESCRIPTIONS": [
-      "失去一个药水栏位 NL 杀死所有普通敌人 NL 精英失去一半生命"
+      "lose a potion slot NL kill all normal enemies NL elite enemies loses half their Hp"
     ]
   },
   "${ModID}:BottledSword": {
-    "NAME": "剑术记忆",
+    "NAME": "Sword_Training_Memory",
     "DESCRIPTIONS": [
-      "本次战斗中，所有打击的耗能变为0"
+      "During this fight, all strike has 0 cost"
     ]
   },
   "${ModID}:ForgetPotion": {
-    "NAME": "忘忧水",
+    "NAME": "Forgetness",
     "DESCRIPTIONS": [
-      "从你的卡组中移除 1 张牌"
+      "remove 1 card from the deck"
     ]
   }
 }

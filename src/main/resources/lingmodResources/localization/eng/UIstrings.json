@@ -92,5 +92,10 @@
       "Choose a poem to create at the beginning of the battle, add the poem to your hand when the poem's progress is full NL #b left-click to speed up the progress. ctrl-click to speed up only one character NL #bright-click to see the effect of the card",
       "Poetry"
     ]
+  },
+  "${ModID}:LingPoetryColor": {
+    "TEXT": [
+      "Poetry"
+    ]
   }
 }

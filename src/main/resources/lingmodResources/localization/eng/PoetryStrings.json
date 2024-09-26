@@ -1,6 +1,6 @@
 {
   "lingmod:JingYeSiCard": {
-    "NAME": "“静夜思”",
+    "NAME": "“Jing Ye Si”",
     "CONTENT": [
       "床前明月光",
       "疑是地上霜",
@@ -13,10 +13,10 @@
       "仄平平仄平",
       "平仄平仄平"
     ],
-    "DESCRIPTION": "获得 !B! 格挡 NL 完成 lingmod:阙 ：再获得 !B! 格挡"
+    "DESCRIPTION": "Gain !B! Block NL Complete lingmod:Last_Line ：additionally gain !B! Block"
   },
   "lingmod:DingFengBoCard": {
-    "NAME": "定风波",
+    "NAME": "Ding Feng Bo",
     "CONTENT": [
       "莫听穿林打叶声",
       "何妨吟啸且徐行",
@@ -29,10 +29,10 @@
       "仄仄平平平仄仄",
       "平仄？仄平平仄仄平平"
     ],
-    "DESCRIPTION": "获得 [E] NL 每完成 lingmod:阙 ，改为获得额外回合"
+    "DESCRIPTION": "Gain [E] NL When completing lingmod:Last_Line ，get an extra turn"
   },
   "lingmod:DingFengBoCard_P1": {
-    "NAME": "定风波",
+    "NAME": "Ding Feng Bo",
     "CONTENT": [
       "料峭春风吹酒醒",
       "微冷，山头斜照却相迎",
@@ -45,10 +45,10 @@
       "平仄仄平平仄仄",
       "平仄，仄平平仄仄平平"
     ],
-    "DESCRIPTION": "获得 [E] "
+    "DESCRIPTION": "Gain [E] "
   },
   "lingmod:DingFengBoCard_P2": {
-    "NAME": "定风波",
+    "NAME": "Ding Feng Bo",
     "CONTENT": [
       "料峭春风吹酒醒",
       "微冷，山头斜照却相迎",
@@ -61,10 +61,10 @@
       "平仄仄平平仄仄",
       "平仄，仄平平仄仄平平"
     ],
-    "DESCRIPTION": "获得额外回合"
+    "DESCRIPTION": "Gain Extra Turn"
   },
   "lingmod:JianKeCard": {
-    "NAME": "剑客",
+    "NAME": "Jian Ke",
     "CONTENT": [
       "十年磨一剑，霜刃未曾试",
       "今日把示君",
@@ -75,10 +75,10 @@
       "平仄仄仄平",
       "平仄仄平仄"
     ],
-    "DESCRIPTION": "获得 !B! 格挡 NL 完成 lingmod:阙 ：造成你当前格挡值2倍的 !D! 点伤害，失去所有 格挡 "
+    "DESCRIPTION": "Gain !B! BLock NL complete lingmod:Last_line ：deal damage equal to twice your Block, total  !D! Damage，lose all Block "
   },
   "lingmod:PoZhenZiCard": {
-    "NAME": "破阵子",
+    "NAME": "Po Zhen Zi",
     "CONTENT": [
       "马作的卢飞快",
       "弓如霹雳弦惊",
@@ -93,10 +93,10 @@
       "平仄平平平仄平",
       "仄平仄仄平"
     ],
-    "DESCRIPTION": "造成 !D! 点伤害 NL （伤害为此诗词的剩余进度）"
+    "DESCRIPTION": "deal !D! damage NL （damage based of poetry progression left）"
   },
   "lingmod:ShiShuoXinYuCard": {
-    "NAME": "世说新语·品藻",
+    "NAME": "Shi Shuo Xin Yu",
     "CONTENT": [
       "我与我周旋久",
       "宁作我"
@@ -105,10 +105,10 @@
       "仄仄仄平平仄",
       "平仄仄"
     ],
-    "DESCRIPTION": "清除最后获得的负面效果"
+    "DESCRIPTION": "clear last debuff recieved"
   },
   "lingmod:ChiBiFuCard": {
-    "NAME": "赤壁赋",
+    "NAME": "Chi Bi Fu",
     "CONTENT": [
       "逝者如斯，而未尝往也",
       "盈虚者如彼，而卒莫消长也",
@@ -125,10 +125,10 @@
       "仄平仄仄仄平平平",
       "仄仄仄仄平平仄仄"
     ],
-    "DESCRIPTION": "将你拥有的所有 负面效果 同步给敌方，仅 !M! 层"
+    "DESCRIPTION": "Apply all your debuffs to enemy，only !M! stacks"
   },
   "lingmod:QingPingYueCard": {
-    "NAME": "清平乐·画堂晨起",
+    "NAME": "Qing Ping Yue",
     "CONTENT": [
       "盛气光引炉烟",
       "素草寒生玉佩",
@@ -141,21 +141,21 @@
       "仄仄平平平仄",
       "仄仄仄平平仄"
     ],
-    "DESCRIPTION": "进入 ${ModID}:梦境 。 NL 完成 lingmod:阙 ：再获得 !M! ${ModID}:酒"
+    "DESCRIPTION": "Enter ${ModID}:Dream_Stance 。 NL Complete lingmod:阙 ：Gain !M! ${ModID}:Wine"
   },
   "lingmod:AbstractPoetryCard": {
-    "NAME": "诗词",
-    "DESCRIPTION": "诗词抽象类",
+    "NAME": "Abstract poetry",
+    "DESCRIPTION": "Abstract poetry",
     "EXTENDED_DESCRIPTION": [
-      "诗兴不足，无法作诗"
+      "Not enough Inspiration for Poems"
     ]
   },
   "lingmod:FeiHuaLingCard": {
-    "NAME": "飞花令",
-    "DESCRIPTION": "被动：打出卡牌后，如果和上次打出的类型不同，那么对所有人造成 总 ${ModID}:诗兴 层数的伤害，然后失去一半 ${ModID}:诗兴 "
+    "NAME": "Fei Hua Ling",
+    "DESCRIPTION": "Passive: Playing a card with a different type than the last card played deals damage equal to ${ModID}:poetry_inspiration statcks, Lose half of ${ModID}:poetry_inspiration "
   },
   "lingmod:ManJiangHongCard": {
-    "NAME": "满江红",
+    "NAME": "Man Jiang Hong",
     "CONTENT": [
       "怒发冲冠，凭栏处，潇潇雨歇",
       "抬望眼，仰天长啸，壮怀激烈",
@@ -170,6 +170,6 @@
       "仄平仄仄平平仄",
       "仄仄平，仄仄仄平平，平平仄"
     ],
-    "DESCRIPTION": "获得与失去生命等值的 !M! 点 ${ModID}:酒 "
+    "DESCRIPTION": "Gain ${ModID}:wine equal to hp lost, !M!  "
   }
 }
