@@ -1,10 +1,10 @@
 {
   "${ModID}:NellaFantasiaStance": {
     "STANCE_ID": "NellaFantasiaStance",
-    "NAME": "梦境",
+    "NAME": "Dream",
     "DESCRIPTION": [
-      "每打出一张牌， #r造成 和 #r受到 的伤害减少1 NL 共减少 #b!X! 点 NL #g进入 时获得1能量",
-      "大概是否认自身存在的效果"
+      "For each card played,  #rDeal and #rRecieve 1 less damage NL Reduced by #b!X!",
+      "An effect that somewhat denies its own existence"
     ]
   }
 }

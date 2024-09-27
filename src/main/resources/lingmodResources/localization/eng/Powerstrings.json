@@ -1,242 +1,243 @@
+
 {
   "${ModID}:PoeticMoodPower": {
-    "NAME": "诗兴",
+    "NAME": "Poetic Inspiration",
     "DESCRIPTIONS": [
-      "左键点击 #y诗词栏 ，会花费诗兴加速念诗"
+      "Left click #yPoetry #yBar , spend Poetry Inspiration to accelerate Poetry progression"
     ]
   },
   "${ModID}:NellaFantasiaPower": {
-    "NAME": "梦境",
+    "NAME": "Dream",
     "DESCRIPTIONS": [
-      "受到伤害时失去 1 临时力量"
+      "When damaged temporarily lose 1 Strength"
     ]
   },
   "${ModID}:XiaoYaoPower": {
-    "NAME": "逍遥",
+    "NAME": " Peripatetic",
     "DESCRIPTIONS": [
-      "回合结束后 抽牌数/手牌上限++，下回合多抽 #b%d 张"
+      "After the turn ends, cards drawn/hand size++, next turn draw #b%d extra cards"
     ]
   },
   "${ModID}:WangShuiPower": {
-    "NAME": "忘水",
+    "NAME": "WangShui",
     "DESCRIPTIONS": [
-      "回合结束后 消耗所有手牌"
+      "When turn ends, Exhaust hand"
     ]
   },
   "${ModID}:PoemIsShort": {
-    "NAME": "诗短",
+    "NAME": "Short Poem",
     "DESCRIPTIONS": [
-      "获得 #b0.%d #b伤害减免"
+      "Gain #b0.%d #bdamage #breduction"
     ]
   },
   "${ModID}:DreamIsEndless": {
-    "NAME": "梦长",
+    "NAME": "Lasting  Dream",
     "DESCRIPTIONS": [
-      "失去生命时，获得等量 #b缠绕 ，缠绕造成的生命损失包括在内"
+      "When you lose hp, gain equal amount of  #bConstricted , including hp lose by the effect of constricetd"
     ]
   },
   "${ModID}:IncreaseDamagePower": {
-    "NAME": "伤害增加",
+    "NAME": "Dagame Increase",
     "DESCRIPTIONS": [
-      "本回合普通攻击造成的伤害增加 X 点"
+      "Attacks deal X more damage this turn"
     ]
   },
   "${ModID}:AbstractSummonDescPower": {
-    "NAME": "召唤物",
+    "NAME": "Summoned Unit",
     "DESCRIPTIONS": [
-      "代替受伤，代替获得格挡 NL #b卡牌投喂 ： #r攻击牌 将会增加 #r攻击力 ， #b技能牌 将增加最大 #g生命 。 数值为卡牌中的 #b最大数字 "
+      "Takes damage instead of the player, gains block instead of the player NL #bFeeding :  #rAttack #rCards will increase #rAttack ,  #bSkill #bCards will increase max #gHp . Stats gained equal to the #bhighest #bnumber on the card "
     ]
   },
   "${ModID}:Sui7DealPower": {
-    "NAME": "裁虚为实",
+    "NAME": "Imaginary to Reality",
     "DESCRIPTIONS": [
-      "卡牌被消耗时，绩获得 #r",
-      " #y力量"
+      "When cards are Exhausted, Ji gains #r",
+      " #yStrength"
     ]
   },
   "${ModID}:CantApplyPowerPower": {
-    "NAME": "无怖",
+    "NAME": "WuBu",
     "DESCRIPTIONS": [
-      "你无法再获得任何新的能力或异常，改为获得 #b1能量"
+      "You no longer gain new Buffs/Debuffs, instead gain #b1 #bEnergy"
     ]
   },
   "${ModID}:Whoami_NianPower": {
-    "NAME": "无悲",
+    "NAME": "Sad-less-ness",
     "DESCRIPTIONS": [
-      "打出攻击牌时，失去 1 生命"
+      "Lose 1 hp when playing Attack Cards"
     ]
   },
   "${ModID}:Whoami_ShuoPower": {
-    "NAME": "我无",
+    "NAME": "Niratman",
     "DESCRIPTIONS": [
-      "打出 #r",
-      "张攻击牌后获得 双发"
+      "After using #r",
+      "Attack Cards, gain Double Tap"
     ]
   },
   "${ModID}:LosePower": {
-    "NAME": "下回合丢弃",
+    "NAME": "Discard Next Turn",
     "DESCRIPTIONS": [
-      "下回合开始时选择 X 张牌丢弃"
+      "Choose X cards to Discard at the start of next turn"
     ]
   },
   "${ModID}:YuGuoZhuoYingPower": {
-    "NAME": "雨过濯缨",
+    "NAME": "Cleansing Rain",
     "DESCRIPTIONS": [
-      "卡牌进入 #b抽牌堆 时，获得 %d 格挡",
-      "卡牌进入 #b抽牌堆 或 #b消耗堆  时，获得 %d 格挡"
+      "When Cards enter #bDraw #bPile , Gain %d Block",
+      " When Cards enter #bDraw #bPile or #bExhaust #bpile, Gain %d Block "
     ]
   },
   "${ModID}:NingZuoWuPower": {
-    "NAME": "宁作吾",
+    "NAME": "Remain One Self",
     "DESCRIPTIONS": [
-      "你的能力和异常不会被移除 NL 但如果此能力影响了受伤时伤害结算，此能力仍然会消失。 例如 #g缓冲 、 #g无实体 、 #r易伤 "
+      "Your Buffs and Debuffs cannot be removed NL Effects that alters damage taken can still be removed. For example #gBuffer 、 #gIntangible 、 #rVulnerable "
     ]
   },
   "${ModID}:BeiChangMengPower": {
-    "NAME": "悲长梦",
+    "NAME": "Sorrow Dream",
     "DESCRIPTIONS": [
-      "离开梦境时，对所有敌人施加 %d 虚弱"
+      "Existing Dream Apply %d Weak to ALL enemies"
     ]
   },
   "${ModID}:WinePower": {
-    "NAME": "酒",
+    "NAME": "Wine",
     "DESCRIPTIONS": [
-      "你的下一张攻击牌所造成的伤害增加 %d ，然后失去所有的酒 NL #b在梦中: 不会失去酒"
+      "Your next card deals %d more damage, lose all wine NL #bIn #bDream: does not lose Wine"
     ]
   },
   "${ModID}:PoemVSQuickSandPower": {
-    "NAME": "诗对狂沙",
+    "NAME": "Poem Against Sand",
     "DESCRIPTIONS": [
-      "每次受到伤害时，获得1诗兴",
-      "每次受到伤害、失去生命时，获得1诗兴"
+      "When damaged, gain 1 Poetic Inspiration",
+      " When damaged losing hp, gain 1 Poetic Inspiration "
     ]
   },
   "${ModID}:ZuiFeiChenPower": {
-    "NAME": "醉飞尘",
+    "NAME": "Reveal in the Real",
     "DESCRIPTIONS": [
-      "每消耗 #b1 张牌，获得 #b%d #y酒 "
+      "For every #b1 cards used, gain #b%d #yWine "
     ]
   },
   "lingmod:HuSongPower": {
-    "NAME": "湖松",
+    "NAME": "HuSong",
     "DESCRIPTIONS": [
-      "回合结束时获得 %d 格挡 。牌被消耗时，此能力值增加 %d "
+      "Gain %d Block when turn ends . When cards are Exhausted, Increase by %d "
     ]
   },
   "lingmod:YuNiaoPower": {
-    "NAME": "鱼鸟",
+    "NAME": "Ichthyornis ",
     "DESCRIPTIONS": [
-      "你受到伤害时，%s 受到等量伤害。离开梦境时失去此能力",
-      "怪物"
+      "when you take damage, %s Takes the same amount. lost upon existing Dream",
+      "Monster"
     ]
   },
   "lingmod:NvErHongPower": {
-    "NAME": "女儿红",
+    "NAME": "NvErHong",
     "DESCRIPTIONS": [
-      "打出 酒牌 后，抽 %d 张牌。"
+      "After playing a  Wine Card, draw %d "
     ]
   },
   "lingmod:InvincibleForPlayer": {
-    "NAME": "不是敌人",
+    "NAME": "Not Enemy",
     "DESCRIPTIONS": [
-      "玩家方对其造成的所有伤害降低到1"
+      "Player only deals 1 damage to this unit"
     ]
   },
   "lingmod:GiveGoldAsHP": {
-    "NAME": "谢礼",
+    "NAME": "Appreciation Gift",
     "DESCRIPTIONS": [
-      "战斗结束后给予生命值 %d 倍的金币"
+      "At the end of battle gain %d times your hp as gold"
     ]
   },
   "lingmod:ShanHeYuanKuoPower": {
-    "NAME": "山河远阔",
+    "NAME": "Mounts and Rivers",
     "DESCRIPTIONS": [
-      "本回合你每打出一张牌，就抽一张牌"
+      "Draw a card for every card used, until end of this turn"
     ]
   },
   "lingmod:Go_ReadAhead": {
-    "NAME": "读棋",
+    "NAME": "Reading Ahead",
     "DESCRIPTIONS": [
-      "#y无效 打出的下 #b%d 张牌"
+      "#yNullify next  #b%d cards"
     ]
   },
   "lingmod:Go_LibertyPressure": {
-    "NAME": "逼气",
+    "NAME": "Pressure",
     "DESCRIPTIONS": [
-      "玩家打出 #r攻击牌 后，使其获得 #b1 层 #r易伤"
+      "after using  #rAttack #rCards, Apply #b1 stacks of  #rVulnerable"
     ]
   },
   "lingmod:Go_CornerApproach": {
-    "NAME": "挂角",
+    "NAME": "Corner Approach",
     "DESCRIPTIONS": [
-      "玩家打出 #r技能牌 后，使其获得 #b1 层 #r虚弱"
+      "After using #rSkill cards, Apply #b1 stacks of  #rWeak"
     ]
   },
   "lingmod:Go_Endgame": {
-    "NAME": "收官",
+    "NAME": "Endgame",
     "DESCRIPTIONS": [
-      "本回合玩家打出 #r非攻击牌 后， 自身获得 #b1 层 #r荆棘"
+      "After using  #rNon-attack cards,  gain #b1 stacks of  #rThorns"
     ]
   },
   "lingmod:HP_Lock_Power": {
-    "NAME": "事件-锁血",
+    "NAME": "Undying",
     "DESCRIPTIONS": [
-      "#g不会死亡 ，保留1点生命"
+      "#gwill not die , remain at 1 hp"
     ]
   },
   "lingmod:ShiftingPower2": {
-    "NAME": "兵斗弭遁",
+    "NAME": "Shifting",
     "DESCRIPTIONS": [
-      "每当 ",
-      " 受到伤害，它将在回合结束前失去 #b1 #y力量 。"
+      "When ",
+      "Recieving damage, loses  #b1 #yStrength until the end of the turn"
     ]
   },
   "lingmod:LanKePower": {
-    "NAME": "烂柯",
+    "NAME": "LanKe",
     "DESCRIPTIONS": [
-      "梦境中的攻击力降低效果增加 1"
+      "Attack lowering effect of Dream lowers attack by 1 more"
     ]
   },
   "lingmod:Ji_NeedlePower": {
-    "NAME": "裁虚为实",
+    "NAME": " Imaginary to Reality",
     "DESCRIPTIONS": [
-      "当卡牌被消耗时，获得 #b1 #r力量"
+      "When cards are Exhausted, gain #b1 #rStrength"
     ]
   },
   "lingmod:TranquilityPower": {
-    "NAME": "清平合成效果",
+    "NAME": " Tranquility Combined",
     "DESCRIPTIONS": [
-      "清平将行动两次"
+      "Tranquility acts twice"
     ]
   },
   "lingmod:PeripateticismPower": {
-    "NAME": "逍遥合成效果",
+    "NAME": " Peripatetic Combined",
     "DESCRIPTIONS": [
-      "逍遥在攻击时额外给予等量缠绕"
+      "Peripateticism’s attack Apply constricted equal to attack"
     ]
   },
   "lingmod:ThundererPower": {
-    "NAME": "弦惊合成效果",
+    "NAME": "Thunderer Combined",
     "DESCRIPTIONS": [
-      "弦惊将攻击所有敌人"
+      "Thunderer will atatck ALL enemies"
     ]
   },
   "lingmod:NI3Power": {
-    "NAME": "其数为三",
+    "NAME": "She Ranks 3",
     "DESCRIPTIONS": [
-      "你造成的伤害的个位数一定为 3 。 自动将伤害变为最接近的数字"
+      "damage you deal in the ones digit will always be 3 "
     ]
   },
   "lingmod:ZhuYeZhouPower": {
-    "NAME": "竹叶舟",
+    "NAME": "Fantasy Dream",
     "DESCRIPTIONS": [
-      "下次离开梦境时，变化所有手牌为未升级的"
+      "Next time you exit Dream, your hand transforms to unupgraded version"
     ]
   },
   "lingmod:TaoMeiWanNiangPower": {
-    "NAME": "桃梅晚酿",
+    "NAME": "TaoMeiWan Brew",
     "DESCRIPTIONS": [
-      "每消耗 %d 张卡牌，获得 %d 多层护甲"
+      "For every %d cards exhausted, gain %d plated armor"
     ]
   }
 }

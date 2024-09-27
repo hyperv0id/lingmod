@@ -12,35 +12,35 @@
     "NAMES": [
       "Poem"
     ],
-    "DESCRIPTION": "gain #b耗能 points of Poetic Inspiration"
+    "DESCRIPTION": "gain #bCost points of Poetic Inspiration"
   },
   {
     "PROPER_NAME": "Thunderer Summon",
     "NAMES": [
       "“Thunderer”"
     ],
-    "DESCRIPTION": "Attacks all enemies once combined，player gain #b1能量 energy when Thunderer is defeated."
+    "DESCRIPTION": "Attacks all enemies once combined, player gain #b1 #benergy when Thunderer is defeated."
   },
   {
     "PROPER_NAME": "Peripateticism Summon",
     "NAMES": [
       "“Peripateticism”"
     ],
-    "DESCRIPTION": "Every attack adds #g缠绕 constriced once combined，player gain #b1能量 energy when Peripateticism is defeated."
+    "DESCRIPTION": "Every attack adds #gconstriced once combined, player gain #b1 #benergy when Peripateticism is defeated."
   },
   {
     "PROPER_NAME": "Tranquility Summon",
     "NAMES": [
       "“Tranquility”"
     ],
-    "DESCRIPTION": "Attacks twice once combined ，player gain #b1能量 energy when Tranquility is defeated."
+    "DESCRIPTION": "Attacks twice once combined , player gain #b1 #benergy when Tranquility is defeated."
   },
   {
     "PROPER_NAME": "Summon Card",
     "NAMES": [
       "summon"
     ],
-    "DESCRIPTION": "Retain.At the end of the turn，if you have less than 3 Summon cards，create copies with cost NL recovers 1 energy when used，if you have Poetry Strips then summon Summons"
+    "DESCRIPTION": "Retain.At the end of the turn, if you have less than 3 Summon cards, create copies with cost NL recovers 1 energy when used, if you have Poetry Strips then summon Summons"
   },
   {
     "PROPER_NAME": "Wine Card",
@@ -70,7 +70,7 @@
     "NAMES": [
       "dream"
     ],
-    "DESCRIPTION": "Enters the Dream Stance。 NL For every card played during Dream Stance，damage dealt/recieved is reduced by 2，resets after leaving Dream Stance."
+    "DESCRIPTION": "Enters the Dream Stance.  NL For every card played during Dream Stance, damage dealt/received is reduced by 1, resets after leaving Dream Stance."
   },
   {
     "PROPER_NAME": "Dream Stance",
@@ -78,7 +78,7 @@
       "dream stance",
       "dream_stance"
     ],
-    "DESCRIPTION": "Stance。For every card played in the Dream Stance damage #r造成 and #r受到 reduced by 1，resets after leaving Dream Stance."
+    "DESCRIPTION": "Stance. For every card played in the Dream Stance damage #rGive and #rReceive reduced by 1, resets after leaving Dream Stance."
   },
   {
     "PROPER_NAME": "Poetic Inspiration",
@@ -93,14 +93,14 @@
     "NAMES": [
       "constricted"
     ],
-    "DESCRIPTION": "At the end of each turn，recieve X damage。can be blocked."
+    "DESCRIPTION": "At the end of each turn, receive X damage. can be blocked."
   },
   {
     "PROPER_NAME": "Increased Damage",
     "NAMES": [
       "increased_damage"
     ],
-    "DESCRIPTION": "Power，every time damage is dealt, take X more damage"
+    "DESCRIPTION": "Power, every time damage is dealt, take X more damage"
   },
   {
     "PROPER_NAME": "Poetry Card",
@@ -108,7 +108,7 @@
       "poetry_card",
       "poetry card"
     ],
-    "DESCRIPTION": "Cannot be drawn or played.Sets the style of the fight,gain effects based on Poetryrogression"
+    "DESCRIPTION": "Cannot be drawn or played.Sets the style of the fight,gain effects based on PoetryProgress"
   },
   {
     "PROPER_NAME": "Last Card",
@@ -124,21 +124,21 @@
       "full_hand",
       "full hand"
     ],
-    "DESCRIPTION": "Hand full，or draw pile and discard pile is empty"
+    "DESCRIPTION": "Hand full, or draw pile and discard pile is empty"
   },
   {
     "PROPER_NAME": "Transform",
     "NAMES": [
       "transform"
     ],
-    "DESCRIPTION": "use one card，changes to another card"
+    "DESCRIPTION": "use one card, changes to another card"
   },
   {
     "PROPER_NAME": "Summons",
     "NAMES": [
       "ling_summons"
     ],
-    "DESCRIPTION": "Takes damage instead of the player,gains block instead of the player，can use cards on it. NL attack cards increases its attack, power cards will increase its hp."
+    "DESCRIPTION": "Takes damage instead of the player,gains block instead of the player, can use cards on it. NL attack cards increases its attack, power cards will increase its hp."
   },
   {
     "PROPER_NAME": "Last Line",
@@ -146,7 +146,7 @@
       "last line",
       "last_line"
     ],
-    "DESCRIPTION": "Last line of the Poetry cards,此时使用黄色而不是白色表示诗词进度"
+    "DESCRIPTION": "Last line of the Poetry cards, use #yYellow rather White to show progress"
   },
   {
     "PROPER_NAME": "Gacha Simulate",
@@ -154,6 +154,6 @@
       "gacha_simulate",
       "gacha simulate"
     ],
-    "DESCRIPTION": "2% chance to receive rewards, if you havent recieved any rewards after 50 consecutive tries, increase chance by 2%."
+    "DESCRIPTION": "2% chance to receive rewards, if you haven't received any rewards after 50 consecutive tries, increase chance by 2%."
   }
 ]

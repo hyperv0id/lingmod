@@ -11,29 +11,29 @@
   },
   "${ModID}:SummonMod": {
     "TEXT": [
-      " lingmod:Summon 。 NL %s"
+      " lingmod:Summon .  NL %s"
     ]
   },
   "${ModID}:NellaFantasiaMod": {
     "TEXT": [
-      "Enter lingmod:Dream_Stance 。 NL %s"
+      "Enter lingmod:Dream_Stance .  NL %s"
     ]
   },
   "${ModID}:WineMod": {
     "TEXT": [
-      "%s NL Gain %d lingmod:Wine 。"
+      "%s NL Gain %d lingmod:Wine . "
     ]
   },
   "${ModID}:AbstractPoetryCard": {
     "TEXT": [
-      "Poetry Card"
+      "Poetry"
     ]
   },
   "${ModID}:PoetryTopPanel": {
     "TEXT": [
       "Your Poetry",
-      "点击查看你创作的诗词",
-      "选择一张诗词作为本次战斗的格调"
+      "Click to view your created poem",
+      "Choose a poem to style this battle"
     ]
   },
   "${ModID}:PoetryViewScreen": {

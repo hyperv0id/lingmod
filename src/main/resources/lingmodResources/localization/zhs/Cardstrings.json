@@ -316,7 +316,7 @@
   },
   "lingmod:JiangXiangNaTie": {
     "NAME": "酱香拿铁",
-    "DESCRIPTION": "造成 !D! 点伤害，活力加成为 !M! 倍 NL 如果目标是 lingmod:召唤物 ，增加伤害的同时，增加等量最大生命"
+    "DESCRIPTION": "造成 !D! 点伤害， ${ModID}:酒 的加成为 !M! 倍 NL 如果目标是 lingmod:召唤物 ，增加伤害的同时，增加等量最大生命"
   },
   "lingmod:GuLeiXinLiu": {
     "NAME": "故垒新柳",

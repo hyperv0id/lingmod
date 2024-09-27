@@ -1,115 +1,116 @@
+
 {
   "${ModID}:AGiftRelic": {
-    "NAME": "琴",
-    "FLAVOR": "一个礼物，他是这么说的",
+    "NAME": "Zither",
+    "FLAVOR": "A gift, he said",
     "DESCRIPTIONS": [
-      "战斗开始时，所有敌人失去 1 力量"
+      "At the beginning of the battle, ALL enemies lose 1 Strength"
     ]
   },
   "${ModID}:AltDouPengKou": {
-    "NAME": "斗篷扣",
-    "FLAVOR": "黄沙远来三千地，洗罢流年一屈指。",
+    "NAME": "Cloak Button",
+    "FLAVOR": "I can settle everywhere, but my friends aren't anywhere ",
     "DESCRIPTIONS": [
-      "回合结束时，获得卡牌总耗能的格挡"
+      "At the end of the turn, gain Block equal to Cost of cards"
     ]
   },
   "${ModID}:AltShouYaoGu": {
-    "NAME": "手摇鼓",
-    "FLAVOR": "黄沙远来三千地，洗罢流年一屈指。",
+    "NAME": "Rattle Drum",
+    "FLAVOR": "I can settle everywhere, but my friends arent anywhere ",
     "DESCRIPTIONS": [
-      "战斗开始时，获得 #r4 诗兴"
+      "At the start of battle, gain #r4 Poetic Inspiration"
     ]
   },
   "${ModID}:AltShunZiBingFa": {
-    "NAME": "兵法",
-    "FLAVOR": "天呀，你又用这样的景色招待我，我也应该再敬你一杯。可惜...",
+    "NAME": "Military Art",
+    "FLAVOR": "oh heaven you greet me with catastrophe a second time, i should rise my cup again, shame...",
     "DESCRIPTIONS": [
-      "如果你本回合未打出过攻击牌，那么下回合的第一张攻击牌免费打出"
+      "If you have not used attack cards this turn, your first attack card next turn costs 0"
     ]
   },
   "${ModID}:Beans_DuskRelic": {
-    "NAME": "墨冰淇淋",
-    "FLAVOR": "潦草写就的涂鸦",
+    "NAME": "Dusk Ice Cream",
+    "FLAVOR": "rough sketchs",
     "DESCRIPTIONS": [
-      "拾取时变化 2 张牌",
-      "选择 2 张牌变化"
+      "Transforms 2 cards when obtained",
+      "Choose 2 cards to transform"
     ]
   },
   "${ModID}:Beans_LingRelic": {
-    "NAME": "酒精泡泡",
-    "FLAVOR": "一白忘忧再消愁，三碗同天竞风流",
+    "NAME": "Alcohol Bean",
+    "FLAVOR": "one sip forgets all your worries, three cups sends you flying to the sky",
     "DESCRIPTIONS": [
-      "右键随机化手牌费用，总费用不变 NL 每次战斗限1次"
+      "Right click to randomize card costs in had, total cost will not change NL limited to once per battle"
     ]
   },
   "${ModID}:Beans_NianRelic": {
-    "NAME": "辣椒老妈",
-    "FLAVOR": "罗德岛食堂做的是个锤子菜嘛",
+    "NAME": "Mama Chilly",
+    "FLAVOR": "Rhodes Island kitchen’s got nothing on this",
     "DESCRIPTIONS": [
-      "回合开始时，获得 #r3 活力"
+      "At the start of the turn, gain #r3 Vigor"
     ]
   },
   "${ModID}:Beans_ShuoRelic": {
-    "NAME": "玉门热干面",
-    "FLAVOR": "令妹，今天晨练又没看到你",
+    "NAME": "YuMen Hot Dry Noodles",
+    "FLAVOR": "Little ling, you missed the morning training again",
     "DESCRIPTIONS": [
-      "每斩杀 5 个敌人，战斗开始时获得 1 临时力量"
+      "For every 5 enemies Fataled, gain 1 temporary Strength at the start of battle"
     ]
   },
   "${ModID}:LightRelic": {
-    "NAME": "一盏灯",
-    "FLAVOR": "灯挑夜，箭如雨，大漠飞火",
+    "NAME": "A Lamp",
+    "FLAVOR": "Lamp in the night, arrows rain falls, fire flies above ",
     "DESCRIPTIONS": [
-      "打出牌时获得 1 诗兴 NL 消耗牌时获得 1 #b酒 (类似活力)"
+      "Gain 1 Poetic Inspiration when playing a card NL Exhausting a card grants 1 #bWine (similar to Vigor)"
     ]
   },
   "${ModID}:NianAncientCasting": {
-    "NAME": "古旧铸物",
-    "FLAVOR": "“天有洪炉，地生五金”......虽然可以用来成就各种事业，却没人知道具体原理。",
+    "NAME": "Antique Casting",
+    "FLAVOR": "“No one know how it works",
     "DESCRIPTIONS": [
-      "战斗开始时获得 9 格挡，抵消每层的前 3 次生命损失"
+      "At the start of battle gain 9 Block, nullifies the first 3 instances of damage on each floor"
     ]
   },
   "${ModID}:SanYiShiJian": {
-    "NAME": "散轶诗简",
-    "FLAVOR": "酣然失千山，万物得其灵。",
+    "NAME": "Timeworn Poetry Strips",
+    "FLAVOR": "Drunk far beyond all mounts that lists the realm, all beings teak on souls as they demand.",
     "DESCRIPTIONS": [
-      "清平、逍遥、弦惊卡牌效果将改为生成召唤随从帮助你战斗"
+      " “tranquility” 、 “peripateticism” 、 “thunderer”  summons Summons instead"
     ]
   },
   "${ModID}:Shu_SeedRelic": {
-    "NAME": "种子",
-    "FLAVOR": "如果你没有行差踏错，种子会在合适的时候发芽",
+    "NAME": "Seed",
+    "FLAVOR": "If you’ve made no mistakes, the seed will sprout at the right time",
     "DESCRIPTIONS": [
-      "右键获得 4 再生，击败BOSS后可再次使用"
+      "Right click to gain 4 Regeneration, can be used again after defeating boss"
     ]
   },
   "${ModID}:BlackWine": {
-    "NAME": "黑色酒盏",
-    "FLAVOR": "逍遥常驻，有道不孤",
+    "NAME": "Black Wine Cup",
+    "FLAVOR": "Even if i travel alone, i do not feel lonely",
     "DESCRIPTIONS": [
-      "回合开始时，费用不小于 3 的卡牌可以免费打出 1 次"
+      "At the start of battle, Cards costing over 3 can be played at 0 cost once"
     ]
   },
   "${ModID}:SuiNu": {
-    "NAME": "岁怒",
-    "FLAVOR": "什么是真正的战争？",
+    "NAME": "Sui’s Wrath",
+    "FLAVOR": "What is a real war?",
     "DESCRIPTIONS": [
-      "打出牌后对 #r随机单位 造成 1-12点伤害 NL 包括玩家自身和召唤物"
+      "Playing a card makes a #rrandom #runit take 1-12 damage NL Including the Player and Summons"
     ]
   },
   "${ModID}:DaYanChangSang": {
-    "NAME": "大炎的沧桑",
-    "FLAVOR": "岁月如梭，织就大炎锦绣山河。",
+    "NAME": "Yan’s Vicissitudes",
+    "FLAVOR": "Yan’s mounts and rivers, sewn by time",
     "DESCRIPTIONS": [
-      "打出耗能不小于 3 的牌后，获得 1 能量"
+      "Gain 1 energy when playing a card that costs over 3"
     ]
   },
   "${ModID}:LaoPuSan": {
-    "NAME": "老蒲扇",
-    "FLAVOR": "云开雾散，雨水退避，天气就此放晴。",
+    "NAME": "Old Fan",
+    "FLAVOR": "Clear the clouds and fog, scatter the rain, /weather clear",
     "DESCRIPTIONS": [
-      "打出三种不同费用的卡牌后，获得1力量"
+      "Gain 1 Strength after playing 3 cards of different cost "
     ]
   }
 }

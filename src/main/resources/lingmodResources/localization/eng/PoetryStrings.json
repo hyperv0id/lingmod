@@ -13,7 +13,7 @@
       "仄平平仄平",
       "平仄平仄平"
     ],
-    "DESCRIPTION": "Gain !B! Block NL Complete lingmod:Last_Line ：additionally gain !B! Block"
+    "DESCRIPTION": "Gain !B! Block NL Complete lingmod:Last_Line : additionally gain !B! Block"
   },
   "lingmod:DingFengBoCard": {
     "NAME": "Ding Feng Bo",
@@ -29,21 +29,21 @@
       "仄仄平平平仄仄",
       "平仄？仄平平仄仄平平"
     ],
-    "DESCRIPTION": "Gain [E] NL When completing lingmod:Last_Line ，get an extra turn"
+    "DESCRIPTION": "Gain [E] NL When completing lingmod:Last_Line , get an extra turn"
   },
   "lingmod:DingFengBoCard_P1": {
     "NAME": "Ding Feng Bo",
     "CONTENT": [
       "料峭春风吹酒醒",
-      "微冷，山头斜照却相迎",
+      "微冷, 山头斜照却相迎",
       "回首向来萧瑟处",
-      "归去，也无风雨也无晴"
+      "归去, 也无风雨也无晴"
     ],
     "TONE_PATTERN": [
       "仄仄平平平仄仄",
-      "平仄，平平平仄仄平平",
+      "平仄, 平平平仄仄平平",
       "平仄仄平平仄仄",
-      "平仄，仄平平仄仄平平"
+      "平仄, 仄平平仄仄平平"
     ],
     "DESCRIPTION": "Gain [E] "
   },
@@ -51,31 +51,31 @@
     "NAME": "Ding Feng Bo",
     "CONTENT": [
       "料峭春风吹酒醒",
-      "微冷，山头斜照却相迎",
+      "微冷, 山头斜照却相迎",
       "回首向来萧瑟处",
-      "归去，也无风雨也无晴"
+      "归去, 也无风雨也无晴"
     ],
     "TONE_PATTERN": [
       "仄仄平平平仄仄",
-      "平仄，平平平仄仄平平",
+      "平仄, 平平平仄仄平平",
       "平仄仄平平仄仄",
-      "平仄，仄平平仄仄平平"
+      "平仄, 仄平平仄仄平平"
     ],
     "DESCRIPTION": "Gain Extra Turn"
   },
   "lingmod:JianKeCard": {
     "NAME": "Jian Ke",
     "CONTENT": [
-      "十年磨一剑，霜刃未曾试",
+      "十年磨一剑, 霜刃未曾试",
       "今日把示君",
       "谁有不平事"
     ],
     "TONE_PATTERN": [
-      "仄平平仄仄，平仄仄平仄",
+      "仄平平仄仄, 平仄仄平仄",
       "平仄仄仄平",
       "平仄仄平仄"
     ],
-    "DESCRIPTION": "Gain !B! BLock NL complete lingmod:Last_line ：deal damage equal to twice your Block, total  !D! Damage，lose all Block "
+    "DESCRIPTION": "Gain !B! BLock NL complete lingmod:Last_line : deal damage equal to twice your Block, total  !D! Damage, lose all Block "
   },
   "lingmod:PoZhenZiCard": {
     "NAME": "Po Zhen Zi",
@@ -110,22 +110,22 @@
   "lingmod:ChiBiFuCard": {
     "NAME": "Chi Bi Fu",
     "CONTENT": [
-      "逝者如斯，而未尝往也",
-      "盈虚者如彼，而卒莫消长也",
+      "逝者如斯, 而未尝往也",
+      "盈虚者如彼, 而卒莫消长也",
       "盖将自其变者而观之",
       "则天地曾不能以一瞬",
       "自其不变者而观之",
       "则物与我皆无尽也"
     ],
     "TONE_PATTERN": [
-      "仄仄平平，平仄平仄仄",
-      "平平仄平平，平仄平仄仄",
+      "仄仄平平, 平仄平仄仄",
+      "平平仄平平, 平仄平仄仄",
       "仄平仄平仄仄平平平",
       "仄平仄仄仄仄仄平仄",
       "仄平仄仄仄平平平",
       "仄仄仄仄平平仄仄"
     ],
-    "DESCRIPTION": "Apply all your debuffs to enemy，only !M! stacks"
+    "DESCRIPTION": "Apply all your debuffs to enemy, only !M! stacks"
   },
   "lingmod:QingPingYueCard": {
     "NAME": "Qing Ping Yue",
@@ -141,7 +141,7 @@
       "仄仄平平平仄",
       "仄仄仄平平仄"
     ],
-    "DESCRIPTION": "Enter ${ModID}:Dream_Stance 。 NL Complete lingmod:阙 ：Gain !M! ${ModID}:Wine"
+    "DESCRIPTION": "Enter ${ModID}:Dream_Stance  NL Complete lingmod:Last_Line: Gain !M! ${ModID}:Wine"
   },
   "lingmod:AbstractPoetryCard": {
     "NAME": "Abstract poetry",
@@ -152,23 +152,23 @@
   },
   "lingmod:FeiHuaLingCard": {
     "NAME": "Fei Hua Ling",
-    "DESCRIPTION": "Passive: Playing a card with a different type than the last card played deals damage equal to ${ModID}:poetry_inspiration statcks, Lose half of ${ModID}:poetry_inspiration "
+    "DESCRIPTION": "Passive: Playing a card with a different type than the last card played deals damage equal to ${ModID}:poetry_inspiration stacks, Lose half of ${ModID}:poetry_inspiration "
   },
   "lingmod:ManJiangHongCard": {
     "NAME": "Man Jiang Hong",
     "CONTENT": [
-      "怒发冲冠，凭栏处，潇潇雨歇",
-      "抬望眼，仰天长啸，壮怀激烈",
+      "怒发冲冠, 凭栏处, 潇潇雨歇",
+      "抬望眼, 仰天长啸, 壮怀激烈",
       "三十功名尘与土",
       "八千里路云和月",
-      "莫等闲，白了少年头，空悲切"
+      "莫等闲, 白了少年头, 空悲切"
     ],
     "TONE_PATTERN": [
-      "仄仄平平，平平仄，平平仄仄",
-      "平仄仄，仄平平仄，仄平仄仄",
+      "仄仄平平, 平平仄, 平平仄仄",
+      "平仄仄, 仄平平仄, 仄平仄仄",
       "平仄平平平仄仄",
       "仄平仄仄平平仄",
-      "仄仄平，仄仄仄平平，平平仄"
+      "仄仄平, 仄仄仄平平, 平平仄"
     ],
     "DESCRIPTION": "Gain ${ModID}:wine equal to hp lost, !M!  "
   }

@@ -1,18 +1,18 @@
 {
   "${ModID}:JiangNan": {
     "NAME": "江南",
-    "DESCRIPTION": "江南水乡，金玉珍器、花草鸣虫，曲水流觞"
+    "DESCRIPTION": "江南水乡, 金玉珍器、花草鸣虫, 曲水流觞"
   },
   "${ModID}:YuMen": {
     "NAME": "玉门",
-    "DESCRIPTION": "你可以从诗中获取力量，但所有怪物初始获得1力量。大漠起长烟，孤城听征鼓。"
+    "DESCRIPTION": "你可以从诗中获取力量, 但所有怪物初始获得1力量. 大漠起长烟, 孤城听征鼓. "
   },
   "${ModID}:ShangShu": {
     "NAME": "尚蜀",
-    "DESCRIPTION": "标准模式。踏上令姐的作诗之旅"
+    "DESCRIPTION": "标准模式. 踏上令姐的作诗之旅"
   },
   "${ModID}:DaHuang": {
     "NAME": "大荒",
-    "DESCRIPTION": "来看看答应的高粱酒酿好没有。"
+    "DESCRIPTION": "来看看答应的高粱酒酿好没有. "
   }
 }

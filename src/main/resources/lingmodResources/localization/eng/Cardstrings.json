@@ -1,3 +1,4 @@
+
 {
   "${ModID}:ChongJinJiuCard": {
     "NAME": "Second Cup",
@@ -24,7 +25,7 @@
   },
   "${ModID}:XiaoMingSeCard": {
     "NAME": "Pleasant Melodies",
-    "DESCRIPTION": "Per debuff，per enemy，gain !M! points of ${ModID}:Poetic_Inspiration NL （can obtain !${ModID}:m2! points.）"
+    "DESCRIPTION": "Per debuff, per enemy, gain !M! points of ${ModID}:Poetic_Inspiration NL （can obtain !${ModID}:m2! points.）"
   },
   "${ModID}:XiaoYaoYou": {
     "NAME": "Peripatetic",
@@ -35,7 +36,7 @@
   },
   "${ModID}:YuNiaoDreamCard": {
     "NAME": "Bird and Fish Dream",
-    "DESCRIPTION": "Deal damage equal to Damage you would take this turn NL （!D! damage） NL Shapeshift to this enemy，upon recieving attacks， enemies of the same name takes equal damage"
+    "DESCRIPTION": "Deal damage equal to Damage you would take this turn NL （!D! damage） NL Morph to this enemy, upon receiving attacks,  enemies of the same name takes equal damage"
   },
   "${ModID}:HuangLiang": {
     "NAME": "Pillow dream",
@@ -47,120 +48,120 @@
   },
   "${ModID}:Tranquility_Summon": {
     "NAME": "“Tranquility”",
-    "DESCRIPTION": "summon a ${ModID}:“Tranquility” NL Hp !M! ，Atk !${ModID}:m2!"
+    "DESCRIPTION": "summon a ${ModID}:“Tranquility” NL Hp !M! , Atk !${ModID}:m2!"
   },
   "${ModID}:Peripateticism": {
     "NAME": "“Peripateticism”",
-    "DESCRIPTION": "${ModID}:Summon 。 NL Exhaust every none attack card，per card removed, Apply !M! Constricted NL Immediatley casue constricted damage once.",
+    "DESCRIPTION": "${ModID}:Summon .  NL Exhaust every none attack card, per card removed, Apply !M! Constricted NL Immediately cause constricted damage once.",
     "EXTENDED_DESCRIPTION": [
       "Summon a ${ModID}:“Peripateticism”."
     ]
   },
   "${ModID}:Peripateticism_Summon": {
     "NAME": "“Peripateticism”",
-    "DESCRIPTION": "Summon a ${ModID}:“Peripateticism” NL Hp !M! ，Atk !${ModID}:m2!"
+    "DESCRIPTION": "Summon a ${ModID}:“Peripateticism” NL Hp !M! , Atk !${ModID}:m2!"
   },
   "${ModID}:Thunderer": {
     "NAME": "“Thunderer”",
-    "DESCRIPTION": " ${ModID}:Summon NL deal !D! damage !M! times，Exhaust all “Thunderer”，increase number of attacks NL Adds a Thunderer to hand when retained."
+    "DESCRIPTION": " ${ModID}:Summon NL deal !D! damage !M! times, Exhaust all “Thunderer”, increase number of attacks NL Adds a Thunderer to hand when retained."
   },
   "${ModID}:Thunderer_Summon": {
     "NAME": "“Thunderer”",
-    "DESCRIPTION": "Summon a ${ModID}:“Thunderer” NL Hp !M! ，Atk !${ModID}:m2!"
+    "DESCRIPTION": "Summon a ${ModID}:“Thunderer” NL Hp !M! , Atk !${ModID}:m2!"
   },
   "${ModID}:Feature_2_Card": {
     "NAME": "Poem Written Drunk",
-    "DESCRIPTION": "deal !D! damage !M! times。 NL when cards are Exhausted，if this card's cost isnt 0，deal damage 1 additional time，cost -1"
+    "DESCRIPTION": "deal !D! damage !M! times.  NL when cards are Exhausted, if this card's cost isnt 0, deal damage 1 additional time, cost -1"
   },
   "${ModID}:GuoJiaXianMei": {
     "NAME": "Light Armor Advance",
-    "DESCRIPTION": "deal !D! damage，gain !B! Block"
+    "DESCRIPTION": "deal !D! damage, gain !B! Block"
   },
   "${ModID}:DreamOfButterfly": {
     "NAME": "Butterfly Dream",
-    "DESCRIPTION": "add  !M! power cards to the draw pile，they cost 1 less.",
-    "UPGRADE_DESCRIPTION": "add  !M! upgraded power cards to the draw pile，they cost 1 less."
+    "DESCRIPTION": "add  !M! power cards to the draw pile, they cost 1 less.",
+    "UPGRADE_DESCRIPTION": "add  !M! upgraded power cards to the draw pile, they cost 1 less."
   },
   "${ModID}:Lonely": {
     "NAME": "Loneliness",
-    "DESCRIPTION": "Can be played. If this card is in hand when the turn ends, unplayed cards gain 1 cost."
+    "DESCRIPTION": "Can be played. If this card is in hand when the turn ends, unplaced cards gain 1 cost."
   },
   "${ModID}:ZhuoJiuChengXin": {
     "NAME": "Unstrained Liquor, Pellucid Heart",
-    "DESCRIPTION": "for every ${ModID}:Wine theres !M! % chance to obtain 1 Artifact",
-    "UPGRADE_DESCRIPTION": "for every ${ModID}:Wine stacks ${ModID}:Gacha_Simulate ，has !M! %basic chance to obtain 1 Artifact"
+    "DESCRIPTION": "for every ${ModID}:Wine theres !M! % chance to obtain an Artifact",
+    "UPGRADE_DESCRIPTION": "for every ${ModID}:Wine stacks ${ModID}:Gacha_Simulate , has !M! %basic chance to obtain 1 Artifact"
   },
   "${ModID}:SwapCup": {
     "NAME": "Swapping Cup",
     "DESCRIPTION": "choose 2 cards, swap their cost this battle",
-    "UPGRADE_DESCRIPTION": "choose 2 cards, swap their cost this battle NL If a ${ModID}:Winecard is choosen，set its cost to !M! before swapping."
+    "UPGRADE_DESCRIPTION": "choose 2 cards, swap their cost this battle NL If a ${ModID}:Wine_Card is chosen, set its cost to !M! before swapping."
   },
   "${ModID}:ZhiZhan": {
     "NAME": "Throw Cup",
-    "DESCRIPTION": "deal !D! damage。 NL ${ModID}:Wine does its effect !M! times.",
+    "DESCRIPTION": "deal !D! damage.  NL ${ModID}:Wine does its effect !M! times.",
     "EXTENDED_DESCRIPTION": [
-      "Twice have I beaten the catasthrophe"
+      "Twice have I beaten the catastrophe"
     ]
   },
   "${ModID}:LinYuanWangShui": {
     "NAME": "Abyssal Poem",
-    "DESCRIPTION": "draw untill hand is full NL ALL cards gain Ethereal"
+    "DESCRIPTION": "draw until hand is full NL ALL cards gain Ethereal"
   },
   "${ModID}:DrunkButterfly": {
     "NAME": "Drunken Butterfly",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies NL If fatal，can ignore path when choosing next room"
+    "DESCRIPTION": "Deal !D! damage to ALL enemies NL If fatal, can ignore path when choosing next room"
   },
   "${ModID}:ShiDuanMengChang": {
     "NAME": "Long Dream Short Poem",
-    "DESCRIPTION": "game !M!% damage reduction NL When losing Hp，gain equal amount of ${ModID}:Constricted NL （Includes damage casued by Constricted）"
+    "DESCRIPTION": "game !M!% damage reduction NL When losing Hp, gain equal amount of ${ModID}:Constricted NL （Includes damage caused by Constricted）"
   },
   "${ModID}:AltGuangHui": {
     "NAME": "Radiance",
-    "DESCRIPTION": "Deal dmage equal to ALL ${ModID}:Poetic_Insipration gained NL (Deal !D! damage)"
+    "DESCRIPTION": "Deal damage equal to ALL ${ModID}:Poetic_Insipration gained NL (Deal !D! damage)"
   },
   "${ModID}:Whoami_Shuo": {
     "NAME": "Niratman",
-    "DESCRIPTION": "After using attack cards !M! times ，next attack card will be played twice"
+    "DESCRIPTION": "After using attack cards !M! times , next attack card will be played twice"
   },
   "${ModID}:Whoami_Wang": {
     "NAME": "Anattā",
-    "DESCRIPTION": "lose !M! hp，gain 1 Intangible"
+    "DESCRIPTION": "lose !M! hp, gain 1 Intangible"
   },
   "${ModID}:Whoami_Ling": {
     "NAME": "Fearlessness",
-    "DESCRIPTION": "you no longer gain any new Buffs or Debuffs，instead gain [E]",
-    "UPGRADE_DESCRIPTION": "Clears all Debuff NL you no longer gain any new Buffs or Debuffs，instead gain [E]"
+    "DESCRIPTION": "you no longer gain any new Buffs or Debuffs, instead gain [E]",
+    "UPGRADE_DESCRIPTION": "Clears all Debuff NL you no longer gain any new Buffs or Debuffs, instead gain [E]"
   },
   "${ModID}:Whoami_Nian": {
     "NAME": "Sad-less-ness",
-    "DESCRIPTION": "Gain !M! Buffer，for every attack card used，lose !M! Hp",
+    "DESCRIPTION": "Gain !M! Buffer, for every attack card used, lose !M! Hp",
     "EXTENDED_DESCRIPTION": [
       "A dagger with an ancient design. Rumours say the blade would dissapear if the user intends to kill"
     ]
   },
   "${ModID}:Whoami_Dusk": {
     "NAME": "Happy-less-ness",
-    "DESCRIPTION": "Target a none leader enemy，it loses 11% max hp，generate 2 opposing Ink Spirits.",
+    "DESCRIPTION": "Target a none leader enemy, it loses 11% max hp, generate 2 opposing Ink Spirits.",
     "EXTENDED_DESCRIPTION": [
       "Seemingly ordinary brush. Dusk's brush, can draw anything, even another brush, be careful with it"
     ]
   },
   "${ModID}:BattleHymn": {
     "NAME": "Battle Song",
-    "DESCRIPTION": "Deal !D! damage，apply !M! Vulnerable。"
+    "DESCRIPTION": "Deal !D! damage, apply !M! Vulnerable. "
   },
   "${ModID}:Lament": {
     "NAME": "Sad Poem",
-    "DESCRIPTION": "Per debuff on you and target enemy ，gain !B! block"
+    "DESCRIPTION": "Per debuff on you and target enemy , gain !B! block"
   },
   "${ModID}:ShanHeYuanKuo": {
     "NAME": "Mounts and Rivers",
-    "DESCRIPTION": "When a card is played this turn，Draw !M! cards"
+    "DESCRIPTION": "When a card is played this turn, Draw !M! cards"
   },
   "${ModID}:YuGuoZhuoYing": {
     "NAME": "Cleansing Rain",
-    "DESCRIPTION": "When a card is put in Discard pile，gain !M! block",
-    "UPGRADE_DESCRIPTION": "When a card is put in Discard or Exhaust pile，gain !M! Block"
+    "DESCRIPTION": "When a card is put in Discard pile, gain !M! block",
+    "UPGRADE_DESCRIPTION": "When a card is put in Discard or Exhaust pile, gain !M! Block"
   },
   "${ModID}:SurprisingThunder": {
     "NAME": "Sudden Thunder",
@@ -172,12 +173,12 @@
   },
   "${ModID}:ZuiFeiChen": {
     "NAME": "Revel in the Real",
-    "DESCRIPTION": "When cards are Exhausted，gain !M! ${ModID}:Wine "
+    "DESCRIPTION": "When cards are Exhausted, gain !M! ${ModID}:Wine "
   },
   "${ModID}:QingMingDream": {
     "NAME": "Lucid Dream",
-    "DESCRIPTION": "Can only be played during Dream。 NL Exiting lingmod:Dream_Stance , enemies lose Strength equal to their atk lost during Dream NL (They lose, !M! Strength)",
-    "UPGRADE_DESCRIPTION": "Can only be played during Dream。 NL Exiting lingmod:Dream_Stance  ，enemies lose Strength equal to twice their atk lost during Dream.  NL （They lose !M! Strength）",
+    "DESCRIPTION": "Can only be played during Dream.  NL Exiting lingmod:Dream_Stance , enemies lose Strength equal to their atk lost during Dream NL (They lose, !M! Strength)",
+    "UPGRADE_DESCRIPTION": "Can only be played during Dream.  NL Exiting lingmod:Dream_Stance  , enemies lose Strength equal to twice their atk lost during Dream.  NL （They lose !M! Strength）",
     "EXTENDED_DESCRIPTION": [
       "This isnt a dream",
       "Dreams are more realistic"
@@ -193,12 +194,12 @@
   },
   "${ModID}:BeiMoTing": {
     "NAME": "Non-Stop Drinking",
-    "DESCRIPTION": "If target intend to attack ，enter ${ModID}:Dream ， otherwise gain !M! ${ModID}:Wine "
+    "DESCRIPTION": "If target intend to attack , enter ${ModID}:Dream ,  otherwise gain !M! ${ModID}:Wine "
   },
   "${ModID}:PoemVSQuickSand": {
-    "NAME": "Sandstorm Poem",
-    "DESCRIPTION": "Whenever you are attacked，gain !M! ${ModID}:Poetic_Insipration",
-    "UPGRADE_DESCRIPTION": "Whenever you are attacked，gain !M! ${ModID}:Poetic_Insipration NL whenever you are losing hp，obtain !M! more"
+    "NAME": "Poem Against Sand",
+    "DESCRIPTION": "Whenever you are attacked, gain !M! ${ModID}:Poetic_Inspiration",
+    "UPGRADE_DESCRIPTION": "Whenever you are attacked, gain !M! ${ModID}:Poetic_Inspiration NL whenever you are losing hp, obtain !M! more"
   },
   "${ModID}:Sui_7DealCard": {
     "NAME": "“Trade”",
@@ -211,19 +212,19 @@
   },
   "${ModID}:HuSongWineCard": {
     "NAME": "HuSong Wine",
-    "DESCRIPTION": "If the enemy would attack multiple times，they lose !M!% times of attacks NL otherwise apply !${ModID}:m2! Weak "
+    "DESCRIPTION": "If the enemy would attack multiple times, they lose !M!% times of attacks NL otherwise apply !${ModID}:m2! Weak "
   },
   "${ModID}:GuiXingWineCard": {
     "NAME": "Returners Wine",
-    "DESCRIPTION": "Play a random card in the discard pile，Exhaust it"
+    "DESCRIPTION": "Play a random card in the discard pile, Exhaust it"
   },
   "${ModID}:ChiJiuSui": {
     "NAME": "Pardon the Past",
-    "DESCRIPTION": "Discard your hand，for each card discarded, gain !M! Block，Total !B! Block NL gain block X times"
+    "DESCRIPTION": "Discard your hand, for each card discarded, gain !M! Block, Total !B! Block NL gain block X times"
   },
   "${ModID}:FengQiTanJian": {
     "NAME": "Sword Play",
-    "DESCRIPTION": "Deal !D! damage，draw !M! Card，this card cost 1 more energy per use"
+    "DESCRIPTION": "Deal !D! damage, draw !M! Card, this card cost 1 more energy per use"
   },
   "${ModID}:DrinkAlone": {
     "NAME": "Drink By Self",
@@ -242,7 +243,7 @@
   },
   "${ModID}:GuanShanYuan": {
     "NAME": "Long Mountain Travel",
-    "DESCRIPTION": "Gain !B! Block， Exhaust a card NL gain !M! extra block"
+    "DESCRIPTION": "Gain !B! Block,  Exhaust a card NL gain !M! extra block"
   },
   "${ModID}:BlackPawn": {
     "NAME": "Black Go Stone",
@@ -260,15 +261,15 @@
   },
   "lingmod:YaGaoMengYuan": {
     "NAME": "High Cliff, Far Dream",
-    "DESCRIPTION": "Double your energy，cards in hand cost 1 more NL in Dream: only affects skill cards.",
-    "UPGRADE_DESCRIPTION": "Choose: temporarily doubles energy and increase cost of cards in hand by1 ； NL Gain 1 max energy , cost of cards doubled permanently NL In Dream: only affects skill cards",
+    "DESCRIPTION": "Double your energy, cards in hand cost 1 more NL in Dream: only affects skill cards.",
+    "UPGRADE_DESCRIPTION": "Choose: temporarily doubles energy and increase cost of cards in hand by1 ;  NL Gain 1 max energy , cost of cards doubled permanently NL In Dream: only affects skill cards",
     "EXTENDED_DESCRIPTION": [
       "High Cliff？or Far Dream？"
     ]
   },
   "lingmod:YaGaoMengYuan_C1": {
     "NAME": "High Cliff",
-    "DESCRIPTION": "Double your enetgy, cards in hand cost 1 more NL In Dream: only affects skill cards"
+    "DESCRIPTION": "Double your energy, cards in hand cost 1 more NL In Dream: only affects skill cards"
   },
   "lingmod:YaGaoMengYuan_C2": {
     "NAME": "Far Dream",
@@ -276,7 +277,7 @@
   },
   "lingmod:WineWineWine": {
     "NAME": "Wine Wine Wine",
-    "DESCRIPTION": "While in hand，you cannot play lingmod:WineCard",
+    "DESCRIPTION": "While in hand, you cannot play lingmod:Wine_Card",
     "EXTENDED_DESCRIPTION": [
       "I dont want to lose wine"
     ]
@@ -287,11 +288,11 @@
   },
   "${ModID}:QuShuiLiuShang": {
     "NAME": "Winding Stream Party",
-    "DESCRIPTION": "Deal !D! damage，for every poem status you have damage increase by !M! "
+    "DESCRIPTION": "Deal !D! damage, for every poem status you have damage increase by !M! "
   },
   "${ModID}:ChangFengChe": {
     "NAME": "Lasting Wind",
-    "DESCRIPTION": "Deal !D! damage，if your hand consist only of Strike and Defend, draw!M! "
+    "DESCRIPTION": "Deal !D! damage, if your hand consist only of Strike and Defend, draw!M! "
   },
   "lingmod:JianShanWenShi": {
     "NAME": "Rock From Mountain",
@@ -299,8 +300,8 @@
   },
   "lingmod:RuMengLing": {
     "NAME": "33 Rhyming Poem",
-    "DESCRIPTION": "Exhaust a card，put a copy of it in the discard pile and draw pile.",
-    "UPGRADE_DESCRIPTION": "Exhaust a card，put a copy of it in the discard pile, draw pile and hand"
+    "DESCRIPTION": "Exhaust a card, put a copy of it in the discard pile and draw pile.",
+    "UPGRADE_DESCRIPTION": "Exhaust a card, put a copy of it in the discard pile, draw pile and hand"
   },
   "lingmod:NoNamed_0620": {
     "NAME": "UnNamed",
@@ -310,12 +311,12 @@
     "NAME": "Free",
     "DESCRIPTION": "If you or the target has at least !M! types of debuffs, gain [E] [E] ",
     "EXTENDED_DESCRIPTION": [
-      "How does one know if theyre free"
+      "How does one know if there free"
     ]
   },
   "lingmod:JiangXiangNaTie": {
     "NAME": "Wine Mixed Latte",
-    "DESCRIPTION": "Deal !D! Damage, Vigor effectiveness increase !M! times NL If target is lingmod:ling_summon ，increases amount of max Hp equal to damage increase"
+    "DESCRIPTION": "Deal !D! Damage,  ${ModID}:Wine effectiveness increase to !M! times NL If target is lingmod:ling_summon , increases amount of max Hp equal to damage increase"
   },
   "lingmod:GuLeiXinLiu": {
     "NAME": "Old Castle New Tree",
@@ -323,9 +324,9 @@
     "UPGRADE_DESCRIPTION": "Choose an Exhausted card, put it into your hand, it costs 0 this turn."
   },
   "lingmod:ShuoWangLing": {
-    "NAME": "Syzygy",
+    "NAME": "Shuo Wang ",
     "DESCRIPTION": "Draw 1 card. Gains effect based on cards in hand NL ${ModID}:Last_vCard : deal !D! damage !M! times NL ${ModID}:Full_Hand : deal !${ModID}:sd! damage !${ModID}:m2! times",
-    "UPGRADE_DESCRIPTION": "Draw 1 card. Gains effect based on cards in hand NL ${ModID}:Last_Card : deal !D! damage !M! times NL ${ModID}:Full_Hand : deal !${ModID}:sd! damage !${ModID}:m2! times NL 为三: 获得 !B! 格挡 !${ModID}:sb! 次",
+    "UPGRADE_DESCRIPTION": "Draw 1 card. Gains effect based on cards in hand NL ${ModID}:Last_Card : deal !D! damage !M! times NL ${ModID}:Full_Hand : deal !${ModID}:sd! damage !${ModID}:m2! times NL If 3: Gain !B! BLock !${ModID}:sb! times",
     "EXTENDED_DESCRIPTION": [
       "Ling"
     ]
@@ -340,20 +341,20 @@
   },
   "lingmod:QiangJinJiu": {
     "NAME": "Qiang Jin Jiu",
-    "DESCRIPTION": "Randomzie enemy's Intent NL If any enemy's Intent isnt attack, gain !M! ${ModID}:Wine"
+    "DESCRIPTION": "Randomize enemy's Intent NL If any enemy's Intent is not attack, gain !M! ${ModID}:Wine"
   },
   "lingmod:ShiFangTuNa": {
     "NAME": "Omni Direction Breath",
-    "DESCRIPTION": "For every enemy or Summon，deal !D! damage。 NL （total !M! times）"
+    "DESCRIPTION": "For every enemy or Summon, deal !D! damage.  NL （total !M! times）"
   },
   "lingmod:BeiChangMeng": {
-    "NAME": "Sorrowful Dream",
-    "DESCRIPTION": "When existing dream，apply !M! Weak to all enemies"
+    "NAME": "Sorrow Dream",
+    "DESCRIPTION": "When existing dream, apply !M! Weak to all enemies"
   },
   "lingmod:NostalgiaAndCuriosity": {
     "NAME": "Nostalgic Curiosity",
-    "DESCRIPTION": "Choose 1 card from a random selection of 3 to add to your hand，NL Cards will be choosen from  这些牌是你之前爬塔时拿过的牌",
-    "UPGRADE_DESCRIPTION": "Choose 1 card from a random selection of 3 to add to your hand, it costs 0 this turn NL Cards will be choosen from 这些牌是你之前爬塔时拿过的牌"
+    "DESCRIPTION": "Choose 1 card from a random selection of 3 to add to your hand, NL Cards will be chosen from cards you have obtained in the past ",
+    "UPGRADE_DESCRIPTION": "Choose 1 card from a random selection of 3 to add to your hand, it costs 0 this turn NL Cards will be chosen from cards you have obtained in the pasting the past"
   },
   "lingmod:Ling_Grieve": {
     "NAME": "Grieve",
@@ -361,7 +362,7 @@
   },
   "lingmod:TaoMeiWanNiang": {
     "NAME": "Peach Plum Brew",
-    "DESCRIPTION": "For every !M! cards Exhausted，gain !${ModID}:m2! Plated Armor "
+    "DESCRIPTION": "For every !M! cards Exhausted, gain !${ModID}:m2! Plated Armor "
   },
   "lingmod:TheNumberIs3": {
     "NAME": "She Ranks 3",
@@ -374,12 +375,12 @@
   },
   "lingmod:DaMoFeiHuo": {
     "NAME": "Flying Fire",
-    "DESCRIPTION": "For every !M! card in your Exhausted pile，deal 1 damage。 NL （deal !D! damage）"
+    "DESCRIPTION": "For every !M! card in your Exhausted pile, deal 1 damage.  NL （deal !D! damage）"
   },
   "lingmod:ZuiTiaoDeng": {
     "NAME": "Warring Dream",
-    "DESCRIPTION": "Gain !B! Block，put a copy of this card in the discard pile NL When Exhausted, gain [E] [E] ",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block，put a copy of this card in the discard pile NL When Exhausted, gain [E] [E] [E] "
+    "DESCRIPTION": "Gain !B! Block, put a copy of this card in the discard pile NL When Exhausted, gain [E] [E] ",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block, put a copy of this card in the discard pile NL When Exhausted, gain [E] [E] [E] "
   },
   "lingmod:TianZhuiCard": {
     "NAME": "Heavens Fall",
