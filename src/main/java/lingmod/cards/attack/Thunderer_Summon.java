@@ -1,6 +1,5 @@
 package lingmod.cards.attack;
 
-import basemod.AutoAdd;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
@@ -11,7 +10,6 @@ import lingmod.util.MonsterHelper;
 
 import static lingmod.ModCore.makeID;
 
-@AutoAdd.Ignore
 @Credit(link = "https://www.pixiv.net/artworks/106018673", username = "小动物管理员", platform = "pixiv")
 @CardConfig(summonClz = Thunderer_SummonMonster.class, magic = 23, magic2 = 3)
 public class Thunderer_Summon extends AbstractEasyCard {
@@ -19,7 +17,11 @@ public class Thunderer_Summon extends AbstractEasyCard {
     public static final String ID = makeID(Thunderer_Summon.class.getSimpleName());
 
     public Thunderer_Summon() {
-        super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
+        this(false);
+    }
+
+    public Thunderer_Summon(boolean hasRelic) {
+        super(ID, 1, CardType.SKILL, hasRelic ? CardRarity.RARE : CardRarity.SPECIAL, CardTarget.SELF);
     }
 
     @Override

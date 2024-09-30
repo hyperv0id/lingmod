@@ -28,7 +28,7 @@ public class Tranquility extends AbsSummonCard {
     @Override
     public AbstractCard makeCopy() {
         if (Wiz.adp() != null && Wiz.adp().hasRelic(SanYiShiJian.ID)) {
-            return new Tranquility_Summon();
+            return new Tranquility_Summon(true);
         }
         return super.makeCopy();
     }
@@ -36,7 +36,7 @@ public class Tranquility extends AbsSummonCard {
     @Override
     public AbstractCard makeStatEquivalentCopy() {
         if (Wiz.adp() != null && Wiz.adp().hasRelic(SanYiShiJian.ID)) {
-            Tranquility_Summon ps = new Tranquility_Summon();
+            Tranquility_Summon ps = new Tranquility_Summon(false);
             for (int i = 0; i < timesUpgraded; i++) {
                 ps.upgrade();
             }

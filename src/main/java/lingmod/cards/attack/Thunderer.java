@@ -37,7 +37,7 @@ public class Thunderer extends AbsSummonCard {
     @Override
     public AbstractCard makeCopy() {
         if (Wiz.adp() != null && Wiz.adp().hasRelic(SanYiShiJian.ID)) {
-            return new Thunderer_Summon();
+            return new Thunderer_Summon(false);
         }
         return super.makeCopy();
     }
@@ -45,7 +45,7 @@ public class Thunderer extends AbsSummonCard {
     @Override
     public AbstractCard makeStatEquivalentCopy() {
         if (Wiz.adp() != null && Wiz.adp().hasRelic(SanYiShiJian.ID)) {
-            Thunderer_Summon ps = new Thunderer_Summon();
+            Thunderer_Summon ps = new Thunderer_Summon(false);
             for (int i = 0; i < timesUpgraded; i++) {
                 ps.upgrade();
             }

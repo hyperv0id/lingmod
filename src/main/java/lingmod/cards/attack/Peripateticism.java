@@ -36,7 +36,7 @@ public class Peripateticism extends AbsSummonCard {
     @Override
     public AbstractCard makeCopy() {
         if (Wiz.adp() != null && Wiz.adp().hasRelic(SanYiShiJian.ID)) {
-            return new Peripateticism_Summon();
+            return new Peripateticism_Summon(false);
         }
         return super.makeCopy();
     }
@@ -44,7 +44,7 @@ public class Peripateticism extends AbsSummonCard {
     @Override
     public AbstractCard makeStatEquivalentCopy() {
         if (Wiz.adp() != null && Wiz.adp().hasRelic(SanYiShiJian.ID)) {
-            Peripateticism_Summon ps = new Peripateticism_Summon();
+            Peripateticism_Summon ps = new Peripateticism_Summon(false);
             for (int i = 0; i < timesUpgraded; i++) {
                 ps.upgrade();
             }
