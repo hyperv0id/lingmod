@@ -23,7 +23,7 @@ public class ForgetPotion extends AbstractEasyPotion implements PostUpdateSubscr
     public static final PotionStrings potionStrings = CardCrawlGame.languagePack.getPotionString(ID);
 
     public ForgetPotion() {
-        super(ID, PotionRarity.COMMON, PotionSize.ANVIL, new Color(0.4f, 0.2f, 0.5f, 1f),
+        super(ID, PotionRarity.UNCOMMON, PotionSize.ANVIL, new Color(0.4f, 0.2f, 0.5f, 1f),
                 new Color(0.2f, 0.2f, 0.4f, 0.5f), null, Ling.Enums.PLAYER_LING, ModCore.characterColor);
     }
 

@@ -1,12 +1,15 @@
 package lingmod.cards.attack;
 
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.monsters.Thunderer_SummonMonster;
+import lingmod.relics.SanYiShiJian;
 import lingmod.util.MonsterHelper;
+import lingmod.util.Wiz;
 
 import static lingmod.ModCore.makeID;
 
@@ -22,6 +25,17 @@ public class Thunderer_Summon extends AbstractEasyCard {
 
     public Thunderer_Summon(boolean hasRelic) {
         super(ID, 1, CardType.SKILL, hasRelic ? CardRarity.RARE : CardRarity.SPECIAL, CardTarget.SELF);
+    }
+
+    @Override
+    public AbstractCard makeCopy() {
+        if (Wiz.isPlayerLing() && Wiz.adp().hasRelic(SanYiShiJian.ID)) {
+            try {
+                return this.getClass().getConstructor(boolean.class).newInstance(false);
+            } catch (Exception ignore) {
+            }
+        }
+        return super.makeCopy();
     }
 
     @Override

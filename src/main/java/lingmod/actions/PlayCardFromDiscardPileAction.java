@@ -11,14 +11,14 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 public class PlayCardFromDiscardPileAction extends AbstractGameAction {
-    private boolean exhaustCards;
+    private final boolean doExhaust;
 
     public PlayCardFromDiscardPileAction(AbstractCreature target, boolean exhausts) {
         this.duration = Settings.ACTION_DUR_FAST;
         this.actionType = ActionType.WAIT;
         this.source = AbstractDungeon.player;
         this.target = target;
-        this.exhaustCards = exhausts;
+        this.doExhaust = exhausts;
     }
 
     public void update() {
@@ -34,7 +34,7 @@ public class PlayCardFromDiscardPileAction extends AbstractGameAction {
                 AbstractCard card = AbstractDungeon.player.discardPile.getRandomCard(AbstractDungeon.cardRng);
                 AbstractDungeon.player.discardPile.group.remove(card);
                 AbstractDungeon.getCurrRoom().souls.remove(card);
-                card.exhaustOnUseOnce = this.exhaustCards;
+                card.exhaustOnUseOnce = this.doExhaust;
                 AbstractDungeon.player.limbo.group.add(card);
                 card.current_y = -200.0F * Settings.scale;
                 card.target_x = (float) Settings.WIDTH / 2.0F + 200.0F * Settings.xScale;

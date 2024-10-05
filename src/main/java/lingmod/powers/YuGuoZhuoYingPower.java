@@ -26,6 +26,7 @@ public class YuGuoZhuoYingPower extends AbstractEasyPower {
         super(POWER_ID, NAME, TYPE, TURN_BASED, owner, amount);
         this.checkExhaustPile = checkExhaustPile;
         updateDescription();
+        if (checkExhaustPile) this.ID += "+";
     }
 
     /**
@@ -33,7 +34,7 @@ public class YuGuoZhuoYingPower extends AbstractEasyPower {
      */
     public void accept(AbstractCard c) {
         flash();
-        Wiz.atb(new GainBlockAction(Wiz.adp(), amount));
+        Wiz.att(new GainBlockAction(Wiz.adp(), amount));
     }
 
     @Override

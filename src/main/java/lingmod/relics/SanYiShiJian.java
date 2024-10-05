@@ -24,15 +24,25 @@ public class SanYiShiJian extends AbstractEasyRelic {
     }
 
     /**
-     * 二层如果还没有获得诗简，那么必出诗简
+     * 二层如果还没有获得诗简，那么至少30%出诗简
      */
     @SpirePatch(clz = AbstractDungeon.class, method = "initializeRelicList")
     public static class BossRelicPatch {
         @SpirePostfixPatch
         public static void Postfix(AbstractDungeon __inst) {
+            // 70%概率维持原遗物，30%概率必出诗简
+            if (Math.random() > 0.3F) return;
             if (Wiz.isPlayerLing() && !Wiz.adp().hasRelic(SanYiShiJian.ID)) {
-                AbstractDungeon.bossRelicPool.set(0, SanYiShiJian.ID);
-                logger.info("BOSS遗物添加诗简");
+                for (int i = 0; i < AbstractDungeon.bossRelicPool.size(); i++) {
+                    if (AbstractDungeon.bossRelicPool.get(i).equals(SanYiShiJian.ID)) {
+                        // 避免出现
+                        String rawID = AbstractDungeon.bossRelicPool.get(0);
+                        AbstractDungeon.bossRelicPool.set(0, SanYiShiJian.ID);
+                        AbstractDungeon.bossRelicPool.set(i, rawID);
+                        logger.info("Add SanYiShiJian to BOSS Relic");
+                        break;
+                    }
+                }
             }
         }
 

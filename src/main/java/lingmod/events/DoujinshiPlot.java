@@ -69,10 +69,12 @@ public class DoujinshiPlot extends PhasedEvent {
                     AbstractPlayer p = Wiz.adp();
                     AbstractPotion potion = p.potions.stream().filter(pot -> pot instanceof ForgetPotion)
                             .findFirst().orElse(null);
-                    potion.use(null);
-                    p.relics.forEach(AbstractRelic::onUsePotion);
-                    int idx = p.potions.indexOf(potion);
-                    AbstractDungeon.topPanel.destroyPotion(idx);
+                    if (potion != null) {
+                        potion.use(null);
+                        p.relics.forEach(AbstractRelic::onUsePotion);
+                        int idx = p.potions.indexOf(potion);
+                        AbstractDungeon.topPanel.destroyPotion(idx);
+                    }
                     transitionKey(Phases.DOUJINSHI);
                     imageEventText.loadImage(makeImagePath("events/DoujinshiPlot_1.png"));
                 }));
@@ -101,7 +103,7 @@ public class DoujinshiPlot extends PhasedEvent {
         registerPhase(Phases.REPLY_3,
                 new TextPhase(DESCRIPTIONS[6]).addOption(OPTIONS[6], (i) -> transitionKey(Phases.BATTLE)));
         // 进入战斗
-        registerPhase(Phases.BATTLE, new CombatPhase(MonsterHelper.BLUE_SLAVER_ENC).addRewards(true, (room) -> {
+        registerPhase(Phases.BATTLE, new CombatPhase(MonsterHelper.TWO_THIEVES_ENC).addRewards(true, (room) -> {
             room.rewards.add(new PoetryReward());
             room.addRelicToRewards(RelicTier.COMMON);
         }));
