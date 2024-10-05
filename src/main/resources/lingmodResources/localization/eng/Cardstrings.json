@@ -36,7 +36,11 @@
   },
   "${ModID}:YuNiaoDreamCard": {
     "NAME": "Bird and Fish Dream",
-    "DESCRIPTION": "Deal damage equal to Damage you would take this turn NL （!D! damage） NL Morph to this enemy, upon receiving attacks,  enemies of the same name takes equal damage"
+    "DESCRIPTION": "Deal damage equal to Damage you would take this turn NL （!D! damage）"
+  },
+  "${ModID}:Metamorphosis": {
+    "NAME": "Metamorphosis Dream",
+    "DESCRIPTION": "Morph to this enemy, upon receiving attacks,  enemies of the same name takes equal damage"
   },
   "${ModID}:HuangLiang": {
     "NAME": "Pillow dream",
@@ -117,7 +121,7 @@
   },
   "${ModID}:AltGuangHui": {
     "NAME": "Radiance",
-    "DESCRIPTION": "Deal damage equal to ALL ${ModID}:Poetic_Insipration gained NL (Deal !D! damage)"
+    "DESCRIPTION": "Deal damage equal to ALL ${ModID}:Poetic_Insipration gained plus Poetry Progress NL (Deal !D! damage)"
   },
   "${ModID}:Whoami_Shuo": {
     "NAME": "Niratman",

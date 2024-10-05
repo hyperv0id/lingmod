@@ -192,4 +192,8 @@ public abstract class AbstractPoetryCard extends AbstractEasyCard implements OnC
         return text;
     }
 
+    public ToneManager getToneManager() {
+        return toneManager;
+    }
+
 }

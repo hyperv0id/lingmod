@@ -8,13 +8,14 @@ import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.powers.WinePower;
+import lingmod.util.Wiz;
 
 import static lingmod.ModCore.makeID;
 
 /**
  * 列刀子：翻倍你的酒
  */
-@CardConfig(wineAmount = 1)
+@CardConfig(wineAmount = 0, magic = 1)
 @Credit(username = "枯荷倚梅cc", platform = "lofter", link = "https://anluochen955.lofter.com/post/1f2a08fc_2baf8eeb3")
 public class LieDaoZiWineCard extends AbstractEasyCard {
 
@@ -27,20 +28,33 @@ public class LieDaoZiWineCard extends AbstractEasyCard {
     }
 
     @Override
-    public boolean canUpgrade() {
-        return false;
+    public void upp() {
+        upgradeMagicNumber(1);
     }
 
     @Override
-    public void upp() {
+    public void applyPowers() {
+        int realMagic = baseMagicNumber;
+        AbstractPower vp = Wiz.adp().getPower(WinePower.POWER_ID);
+        baseMagicNumber = vp == null ? 0 : vp.amount;
+        baseMagicNumber *= realMagic;
+        super.applyPowers();
+        baseMagicNumber = realMagic;
+    }
+
+
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        int realMagic = baseMagicNumber;
+        AbstractPower vp = Wiz.adp().getPower(WinePower.POWER_ID);
+        baseMagicNumber = vp == null ? 0 : vp.amount;
+        baseMagicNumber *= realMagic;
+        super.calculateCardDamage(mo);
+        baseMagicNumber = realMagic;
     }
 
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
-        AbstractPower vp = abstractPlayer.getPower(WinePower.POWER_ID);
-        int wineAmt = vp == null ? 0 : vp.amount;
-        addToBot(new ApplyPowerAction(abstractPlayer, abstractPlayer, new WinePower(abstractPlayer, wineAmt)));
-        if (upgraded)
-            addToBot(new ApplyPowerAction(abstractPlayer, abstractPlayer, new WinePower(abstractPlayer, wineAmt)));
+        addToBot(new ApplyPowerAction(abstractPlayer, abstractPlayer, new WinePower(abstractPlayer, magicNumber)));
     }
 }

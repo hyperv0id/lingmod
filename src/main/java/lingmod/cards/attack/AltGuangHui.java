@@ -3,8 +3,10 @@ package lingmod.cards.attack;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.AbstractEasyCard;
+import lingmod.cards.AbstractPoetryCard;
 import lingmod.interfaces.CardConfig;
 import lingmod.powers.PoeticMoodPower;
+import lingmod.util.Wiz;
 
 import static lingmod.ModCore.makeID;
 
@@ -25,7 +27,21 @@ public class AltGuangHui extends AbstractEasyCard {
     @Override
     public void applyPowers() {
         this.baseDamage = PoeticMoodPower.powerGained;
+        AbstractPoetryCard pc = Wiz.getPoetryCard2P();
+        if (pc != null && pc.getToneManager() != null) {
+            baseDamage += pc.getToneManager().totalProgress;
+        }
         super.applyPowers();
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        this.baseDamage = PoeticMoodPower.powerGained;
+        AbstractPoetryCard pc = Wiz.getPoetryCard2P();
+        if (pc != null && pc.getToneManager() != null) {
+            baseDamage += pc.getToneManager().totalProgress;
+        }
+        super.calculateCardDamage(mo);
     }
 
     @Override

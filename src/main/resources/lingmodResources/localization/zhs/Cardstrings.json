@@ -35,7 +35,11 @@
   },
   "${ModID}:YuNiaoDreamCard": {
     "NAME": "鱼鸟梦",
-    "DESCRIPTION": "计算你会受到的伤害，敌人受到等量伤害 NL （!D! 点伤害） NL 变形成此怪物，受到任何攻击时，同名怪物受到相同伤害"
+    "DESCRIPTION": "计算你会受到的伤害，敌人受到等量伤害 NL （造成 !D! 点伤害）"
+  },
+  "${ModID}:Metamorphosis": {
+    "NAME": "梦为鱼鸟",
+    "DESCRIPTION": "变形成此怪物，受到任何攻击时，同名怪物受到相同伤害"
   },
   "${ModID}:HuangLiang": {
     "NAME": "黄粱梦",
@@ -116,7 +120,7 @@
   },
   "${ModID}:AltGuangHui": {
     "NAME": "光辉",
-    "DESCRIPTION": "造成获得过的 ${ModID}:诗兴 总量的伤害 NL (造成 !D! 点伤害)"
+    "DESCRIPTION": "造成获得过的 ${ModID}:诗兴 总量 及诗词总进度之和的伤害 NL (造成 !D! 点伤害)"
   },
   "${ModID}:Whoami_Shuo": {
     "NAME": "我无",
@@ -206,8 +210,7 @@
   },
   "${ModID}:LieDaoZiWineCard": {
     "NAME": "烈刀子酒",
-    "DESCRIPTION": "翻倍你的 ${ModID}:酒 ",
-    "UPGRADE_DESCRIPTION": "获得你的 ${ModID}:酒 层数 2 倍的 ${ModID}:酒 "
+    "DESCRIPTION": "获得你的 ${ModID}:酒 层数 !M! 倍的 ${ModID}:酒 "
   },
   "${ModID}:HuSongWineCard": {
     "NAME": "湖松酒",

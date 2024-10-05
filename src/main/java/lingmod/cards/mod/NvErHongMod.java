@@ -13,6 +13,11 @@ public class NvErHongMod extends AbsLingCardModifier {
     }
 
     @Override
+    public boolean isInherent(AbstractCard card) {
+        return true;
+    }
+
+    @Override
     public float modifyBaseDamage(float damage, DamageType type, AbstractCard card, AbstractMonster target) {
         return damage + dmg;
     }

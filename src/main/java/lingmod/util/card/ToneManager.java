@@ -28,6 +28,7 @@ public class ToneManager {
     public List<String> tokens; // 诗歌内容
     public List<String> toneTokens; // 平仄内容
     public int idx_1, idx_2;
+    public int totalProgress = 0;
     String tipStrCache = "";
 
     public ToneManager(AbstractPoetryCard card) {
@@ -134,6 +135,7 @@ public class ToneManager {
     }
 
     public void next() {
+        totalProgress++;
         idx_2++;
         if (idx_2 >= tokens.get(idx_1).length()) {
             idx_2 = 0;

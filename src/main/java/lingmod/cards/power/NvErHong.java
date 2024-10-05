@@ -1,6 +1,5 @@
 package lingmod.cards.power;
 
-import basemod.cardmods.ExhaustMod;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -24,7 +23,6 @@ public class NvErHong extends AbstractEasyCard {
 
     public NvErHong() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
-        CardModifierManager.addModifier(this, new ExhaustMod());
     }
 
     @Override
@@ -60,8 +58,7 @@ public class NvErHong extends AbstractEasyCard {
 
     @Override
     public void upp() {
-        upgradeMagicNumber(1);
-        CardModifierManager.removeModifiersById(this, ExhaustMod.ID, true);
+        updateCost(-1);
     }
 }
 // "lingmod:NvErHong": {

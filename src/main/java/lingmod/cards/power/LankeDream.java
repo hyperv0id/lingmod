@@ -32,6 +32,7 @@ public class LankeDream extends AbstractEasyCard {
 
     @Override
     public void upp() {
+        updateCost(-1);
     }
 }
 // "lingmod:LankeDream": {

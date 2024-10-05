@@ -31,9 +31,9 @@ public class ShuoWangLing extends AbstractEasyCard {
         AbstractPlayer p = AbstractDungeon.player;
         int siz = p.hand.size();
         if (siz == 1) {
-            this.glowColor = Color.BLACK.cpy();
+            this.glowColor = GOLD_BORDER_GLOW_COLOR.cpy();
         } else if (checkWang()) {
-            this.glowColor = Color.WHITE.cpy();
+            this.glowColor = GREEN_BORDER_GLOW_COLOR.cpy();
         } else if (upgraded && siz == 3) {
             this.glowColor = Color.BLUE.cpy();
         } else {

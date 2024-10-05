@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.AbstractPower.PowerType;
 import com.megacrit.cardcrawl.powers.StrengthPower;
@@ -23,6 +24,7 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import lingmod.actions.TimedVFXAction;
 import lingmod.cards.AbstractEasyCard;
+import lingmod.cards.AbstractPoetryCard;
 import lingmod.cards.attack.JiangXiangNaTie;
 import lingmod.character.Ling;
 import lingmod.interfaces.CopyField;
@@ -31,6 +33,7 @@ import lingmod.monsters.AbsSummonMonster;
 import lingmod.patch.PlayerPatch;
 import lingmod.powers.PoeticMoodPower;
 import lingmod.stance.NellaFantasiaStance;
+import lingmod.ui.PoetryOrb;
 import lingmod.util.audio.ProAudio;
 
 import java.lang.reflect.Field;
@@ -590,6 +593,15 @@ public class Wiz {
     public static int cardCost(AbstractCard card) {
         if (card.freeToPlay() || card.freeToPlayOnce) return 0;
         return card.costForTurn;
+    }
+
+    public static AbstractPoetryCard getPoetryCard2P() {
+        if (Wiz.adp().orbs.isEmpty()) return null;
+        AbstractOrb orb = Wiz.adp().orbs.get(0);
+        if (orb instanceof PoetryOrb) {
+            return ((PoetryOrb) orb).card;
+        }
+        return null;
     }
 
 
