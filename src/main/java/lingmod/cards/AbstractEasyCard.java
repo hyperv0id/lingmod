@@ -21,7 +21,6 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import lingmod.cards.mod.NellaFantasiaMod;
-import lingmod.cards.mod.NvErHongMod;
 import lingmod.cards.mod.WineMod;
 import lingmod.character.Ling;
 import lingmod.interfaces.CardConfig;
@@ -33,7 +32,8 @@ import lingmod.util.ModConfig;
 
 import java.util.function.Consumer;
 
-import static lingmod.ModCore.*;
+import static lingmod.ModCore.makeImagePath;
+import static lingmod.ModCore.modID;
 import static lingmod.util.Wiz.*;
 
 /**
@@ -366,15 +366,6 @@ public abstract class AbstractEasyCard extends CustomCard {
             CardArtRoller.computeCard(this);
     }
 
-    @Override
-    public AbstractCard makeCopy() {
-        AbstractCard cp = super.makeCopy();
-        if (!CardModifierManager.hasModifier(cp, makeID(NvErHongMod.class.getSimpleName()))) {
-            CardModifierManager.copyModifiers(this, cp, true, false, false);
-        }
-        return cp;
-    }
-
     public AbstractCard makeStatEquivalentCopy() {
         AbstractCard result = super.makeStatEquivalentCopy();
         if (result instanceof AbstractEasyCard) {
@@ -386,9 +377,6 @@ public abstract class AbstractEasyCard extends CustomCard {
         }
         if (result instanceof AbstractEasyCard) {
             copyAnnotatedFields(this, (AbstractEasyCard) result);
-        }
-        if (!CardModifierManager.hasModifier(result, makeID(NvErHongMod.class.getSimpleName()))) {
-            CardModifierManager.copyModifiers(this, result, true, false, false);
         }
         return result;
     }
