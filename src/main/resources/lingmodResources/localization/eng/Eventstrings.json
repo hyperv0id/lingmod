@@ -2,61 +2,36 @@
   "${ModID}:Sui12Event": {
     "NAME": "岁中十二人",
     "DESCRIPTIONS": [
-      "你小心翼翼地走进了这间昏暗的房间. 昏暗的光线从门口照进来, 隐约勾勒出正前方那幅巨大的古画轮廓.  NL 当你走近一看, 画上竟然描绘着十二个人的面孔, 每一张都栩栩如生, 仿佛随时会从画中走出. ",
-      "古画下方摆放着一张石桌, 桌面上布满灰尘, 但中央却空出了 #r12 块区域, 似乎是专门用来摆放贡品的地方.  NL ~献上贡品~ 吧, 一股莫名的力量驱使着你. "
+      "You tiptoed cautiously into the dimly lit room. The faint light from the doorway vaguely outlined the silhouette of a massive ancient painting right in front of you. NL As you approached for a closer look, you realized that the painting depicted the faces of twelve people, each one lifelike as if they could step out of the painting at any moment.",
+      "Beneath the ancient painting, there is a stone table, its surface covered in dust, but with #r12 clear spots in the center, seemingly designated for placing offerings. NL ~Present the offerings~ ,an inexplicable force urges you."
     ],
     "OPTIONS": [
-      "[继续]",
-      "[朔]",
-      "[令] 获得 #g散佚诗简",
-      "[黍] 获得 #g一粒米",
-      "[年] 获得 #g古旧铸币",
-      "[夕] 获得 #g一幅画",
-      "[无视]"
-    ]
-  },
-  "${ModID}:FallingEvent": {
-    "NAME": "坠落",
-    "DESCRIPTIONS": [
-      "你在悬浮在空中的平台上往上跳跃时, 不慎滑了一跤.  NL NL 你开始坠落. ",
-      "在摔下的途中, 你开始考虑自己有什么选择:  NL 用你最好的技术安全落地.  NL 释放能力牌的力量来抵御伤害.  NL 对墙壁猛击, 让自己不再下坠.  ",
-      "你以优雅的姿势落地, 继续前行. ",
-      "你催动自己的力量, 成功在落地时避免了损伤. ",
-      "你成功挂在了墙上, 一个小跳翻上了一个稳固的平台. ",
-      "你有如羽毛一般缓缓降落, 安然无恙地落了地. ",
-      "你直挺挺地跌落, 奄奄一息, 但还是活下来了"
-    ],
-    "OPTIONS": [
-      "[继续]",
-      "[落地] #r失去 ",
-      "[锁定] 需要:  技能牌",
-      "[释放] #r失去 ",
-      "[锁定] 需要:  能力牌",
-      "[猛击] #r失去 ",
-      "[锁定] 需要:  攻击牌",
-      "[离开]",
-      "[落地] ",
-      "[“无所谓”] #r失去 ~一半生命~ , 回到本地图底层",
-      "[回到底层]"
+      "[Continue]",
+      "[Shuo]",
+      "[Ling] Obtain #gTimeworn #gPoetry #gStrips",
+      "[Shu] Gain #gSeed",
+      "[Nian] Gain #gAntique #gCasting",
+      "[Dusk] Gain #gDraw",
+      "[Ignore]"
     ]
   },
   "${ModID}:WhoamiEvent": {
-    "NAME": "我是谁？",
+    "NAME": "Whoami?",
     "DESCRIPTIONS": [
-      "暗无天日. 不知地深几许, 没有半点阳光透进来, 空气也凝重得仿佛能感受到穹顶的重量.  NL 你又梦见了这座陵墓.  NL 如何从这团混沌中分出自我, 你要再次回答那个问题———— ~我是谁~",
-      "一切有为法, 念念生灭皆无常;  NL 一切法无我 NL 寂灭涅槃",
-      "无趣至极, 荒唐至极.  NL 哼, 这个问题 #r@毫无意义@！！！ NL NL  即使身铸云子, 我也不胜不休！！！",
-      "其实, 从太古以来, 经过的时间, 行过的地方, 千年万年, 无非是更大的一场梦.  NL 大梦做罢, 我知我是谁—— NL 既是我的梦, 怎么解由我, 醉也由我, 醒也由我.  NL 我既醒来, 你又焉在？ #b~醒来~ ！",
-      "“明王圣帝, 谁能去兵哉？” NL 反正都是假的, 就不能选一个好些的结局吗",
-      "人死了, 画还在. 我死了, 笔意还在.  NL 但我只有这一夜了. "
+      "It's pitch black. The depth of the earth is unknown, with no sunlight penetrating the darkness, and the air is so heavy it feels as if you can sense the weight of the vaulted ceiling. NL You dream of this tomb again. NL To distinguish yourself from this chaos, you must once again answer that question —— ~Who am I?~",
+      "All conditioned phenomena are impermanent, arising and passing away in every moment; NL All phenomena are devoid of self; NL Nirvana is the ultimate cessation of suffering.",
+      "Boring to the extreme, absurd to the extreme. NL Hmph, this question #r@is utterly meaningless@!!! NL NL Even if I were cast as a cloud child, @I would never yield or rest!!!@",
+      "In truth, since the ancient times, the time passed and the places traveled, thousands and tens of thousands of years, are nothing but a grander dream. NL After the grand dream, I know who I am—— NL It is my dream, so how to interpret it is up to me, to be drunk is up to me, to wake is up to me. NL Now that I have awakened, where are you? #b~Awake~!",
+      "Mighty kings and sages, who can truly abandon warfare? NL Since it's all an illusion, can't we choose a better ending?",
+      "People die, but the painting remains. I die, but my artistic spirit remains. NL But I only have this one Dusk left."
     ],
     "OPTIONS": [
-      "[我是人] 获得 #b我无",
-      "[我们是人] 获得 #b无我",
-      "[宁作我] 获得 #b无怖",
-      "[找点乐子, 留点念想] 获得 #b无悲",
-      "[我见即万象] 获得 #b无喜",
-      "[醒来] "
+      "[Human] Gain #bNiratman",
+      "[People] Gain #bAnattā",
+      "[Myself] Gain #bFearlessness",
+      "[For Fun] Gain #bSad-less-ness",
+      "[Intention] Gain #bHappy-less-ness",
+      "[Wake Up] "
     ]
   },
   "${ModID}:Addict": {
@@ -68,124 +43,124 @@
     ],
     "OPTIONS": [
       "[给他金币] #y",
-      "  #y金币:  #g获得一件遗物. ",
+      "  #y金币:  #gGain一件遗物. ",
       "[锁定] 需要:  ",
       " 金币. ",
-      "[忘付酒钱] #g获得一件遗物.  #r被诅咒——羞耻. ",
+      "[忘付酒钱] #gGain一件遗物.  #r被诅咒——羞耻. ",
       "[离开]",
       "",
       ""
     ]
   },
   "${ModID}:DoujinshiPlot": {
-    "NAME": "永远潇洒的诗人",
+    "NAME": "Poet in Trouble",
     "DESCRIPTIONS": [
-      "卖药水喽, 能够 ~ #r忘却一切 ~ 的 ~药水~ , 走过路过不要错过, 原价99, 现在免费送咯 NL 大声的吆喝吸引了你的注意力, 你走到这位小贩面前开始打量药水",
-      "快喝下吧, 美丽的小姐",
-      "“你这愚蠢的恶兽, 你中计了, 现在你已经 #r失去权柄 , 变成 #r@普通人@ 了, 我现在要狠狠品尝你的美, 哈哈哈哈” NL 见你喝下药水, 小贩露出了他的獠牙",
-      "呼, 哈 NL 真的吗, 就像普通人一般, 像普通的兄弟姐妹一般",
-      "逝者如斯,而未尝往也;  NL 盈虚者如彼,而卒莫消长也.  NL 盖将自其变者而观之,则天地曾不能以一瞬;  NL 自其不变者而观之,则物与我皆无尽也.  NL NL 感谢您的 #b酒水款待 , 如果阁下执意继续您那出格的举动, 我也从稍擅一些 ~拳脚~ ",
-      "你从怀中取出一个酒壶, 仰头饮尽, 然后微笑着说: NL NL 莫听穿林打叶声, 何妨吟啸且徐行.  NL 竹杖芒鞋轻胜马, 谁怕？一蓑烟雨任平生.  NL 料峭春风吹酒醒, 微冷, 山头斜照却相迎.  NL 回首向来萧瑟处, 归去, 也无风雨也无晴. ",
-      "十年磨一剑,霜刃未曾试. 今日把示君,谁有不平事? NL NL 不知何时, 一把剑出现在你手中. 你轻轻摇晃剑身, 仿佛能听到山间溪水的潺潺声, 感受到山风的轻抚. “此剑伴我多年, 它不仅是武器, 也是天灾的封印, 事已至此, 该放你出来了” NL 你拔出剑柄, 没有可怖的寒光, 却是一股酒香.  NL “ ~还没喝过呢, 可惜~ ” NL 你将剑鞘中的酒尽数倒出, 一会儿, 轰隆隆一声巨响, 一柄 #b@冲天石剑@ 拔地而起",
-      "你终于可以用脚步丈量这篇土地, 但新的旅行开始前, 还得先丈量眼前这颗人心"
+      "Selling potions here, potions that can ~ #rmake you forget everything~, don't miss out, originally priced at 99, now given away for free! NL The loud cries caught your attention, and you approached the peddler to examine the potions.",
+      "Quick, drink it, beautiful miss.",
+      "You foolish beast, you've fallen for my trick. Now you have #rlost your power# and become a #r@commoner@, and now I'm going to savor your beauty, hahaha.\" NL Seeing you drink the potion, the peddler revealed his fangs.",
+      "Hu, ha NL Really? Just like an ordinary person, like ordinary brothers and sisters.",
+      "The passing is like this, yet it never truly goes away; NL The waxing and waning is like that, yet ultimately neither diminishes nor grows. NL If one observes from the perspective of change, then even the universe cannot endure a single moment; NL If one observes from the perspective of constancy, then both things and I are eternal. NL NL Thank you for your #bhospitality with drinks#, if you insist on continuing your outrageous behavior, I am also somewhat skilled in ~martial arts~.",
+      "You take out a flask from your bosom, drink it all in one go, and then say with a smile: NL NL \"Do not listen to the sound of the leaves rustling through the forest, why not chant and walk slowly.\" NL \"Bamboo stick and straw sandals are lighter than horses, who is afraid? A straw raincoat is all I need for life.\" NL \"The chilly spring breeze wakes me up from the wine, slightly cold, but the slanting sun on the mountain greets me.\" NL \"Looking back at the desolate place where I came from, I return, there is neither wind nor rain nor shine.",
+      "\"A decade of honing a sword, its frosty edge never tested. Today I show it to you, who has a grievance?\" NL NL Unbeknownst to when, a sword appeared in your hand. You gently sway the blade, as if you could hear the murmur of a mountain stream and feel the caress of the mountain breeze. \"This sword has been with me for many years; it is not only a weapon but also the seal of a disaster. Now that it has come to this, it is time to release you.\" NL You draw the sword from its scabbard, and instead of a terrifying cold light, there is a scent of alcohol. NL \"*I haven't had a drink yet, what a pity*\" NL You pour out all the wine from the scabbard, and after a while, with a loud rumble, a #b@soaring stone sword@ rises from the ground.\n",
+      "You can finally measure this land with your own steps, but before the new journey begins, you must first measure the heart of the person standing before you."
     ],
     "OPTIONS": [
-      "[继续]",
-      "[购买药水] 获得 #r忘忧水",
-      "[喝下药水]",
-      "[吟诗] 获得 #g《赤壁赋》",
-      "[饮酒] 获得 #g《定风波》",
-      "[试剑] 获得 #g《剑客》 ",
-      "[继续] 进入一场 #r艰难的战斗",
-      "[继续] #r立刻杀死敌人, 改变结局, 改变高塔地形",
-      "[无视]",
-      "[离开]",
-      "[喝下药水] 喝下 #r忘忧水"
+      "[Continue]",
+      "[Buy Potion] Gain #rForget #rPotion",
+      "[Drink]",
+      "[Recite Poetry] Gain #gChi #gBi #gFu'",
+      "[Drink Wine] Gain #gDingFengBo",
+      "[Try Sword] Gain #gJianKe",
+      "[Continue] Enter a #rdifficult battle",
+      "[Continue] #rInstantly kill the enemy, change the ending, alter the tower terrain",
+      "[Ignore]",
+      "[Leave]",
+      "[Drink Potion] Drink down #rWorry-Forgetting Water"
     ]
   },
   "${ModID}:NianGuestStar": {
-    "NAME": "“友情出演”",
+    "NAME": "Guest Starring",
     "DESCRIPTIONS": [
-      "#g画中邪灵大军 已临城下, 宗师不在, “ #b酒仙人 ”, 现在一城存亡皆系你身",
-      "帮帮忙嘛令姐, 晚上吃不到我亲手做的 #r微辣火锅 可别后悔！",
-      "令姐你最好啦！ 偷偷告诉你, 夕的画里还有 #r几坛子酒 , 晚上伴着火锅吃怎么样？ NL 令姐我去准备火锅就先走了, 你拿完酒记得来呀！"
+      "#gThe army of evil spirits from the painting has arrived at the city. The master is absent, and now the fate of the city rests on you, the “#bWine Immortal”.",
+      "Help me out, sister, don't regret not being able to eat the #rlightly spicy hot pot I made by yourself tonight!",
+      "You're the best, sister! Let me tell you in secret, there are still #rsome jars of wine in Xi's painting. How about having them with the hot pot tonight? NL I'll go ahead and prepare the hot pot, remember to come after you get the wine!"
     ],
     "OPTIONS": [
-      "[不帮]",
-      "[帮忙] 进入一场 #r特殊 的战斗",
-      "[帮忙]"
+      "[Don't Help]",
+      "[Help] Enter a #rspecial battle",
+      "[Help]"
     ]
   },
   "${ModID}:Shu_KarmaOfMonsters": {
-    "NAME": "“因果”",
+    "NAME": "Causation",
     "DESCRIPTIONS": [
-      "令姐你爬塔爬累了吗, 要不要歇一会我帮你 #b看看手相 ？",
-      "令姐会遇见不少怪物呢, 不知姐想预见哪种呢",
-      "接下来你会遇到这些 #r强力怪物 : ",
-      "接下来你会遇到这些 #r精英怪物 : ",
-      "这儿还有些 #g水果 , 你带在路上吃吧？ 诺,  #b",
-      "慢走哦"
+      "Sister, are you tired from climbing the tower? Would you like to take a break and let me #bexamine your palm# for you?",
+      "Sister, you will encounter many monsters. I wonder which ones you would like to foresee?",
+      "Next, you will encounter these #rpowerful monsters: ",
+      "Next, you will encounter these #relite monsters: ",
+      "Here are some #gfruits# for you to take on your journey. Here, #b",
+      "Farewell"
     ],
     "OPTIONS": [
-      "[离开]",
-      "[看看手相]",
-      "[不看]",
-      "[强力怪物] 预见 #b%d 个 #r强力怪物",
-      "[精英怪物] 预见 #b%d 个 #r精英",
-      "[继续]",
-      "[获得水果] #r"
+      "[Leave]",
+      "[Palm Reading]",
+      "[Don't Look]",
+      "[Powerful Monsters] Foresee #b%d #rpowerful monsters",
+      "[Elite Monsters] Foresee #b%d #relite",
+      "[Continue]",
+      "[Gain Fruit] #r"
     ]
   },
-  "${ModID}:Beans_Ling": {
-    "NAME": "泡泡酒",
+  "Beans_Ling": {
+    "NAME": "Bubble Wine",
     "DESCRIPTIONS": [
-      "你闻到一股酒香, 顺着香气探过去, 果然有一坛子酒 NL 然而当你望向坛子时, 里面却飘着一只睡着了的 #g泡泡 ？",
-      "你拎起这个泡泡, 嫌弃道这酒不能喝了 NL “唔,  #b闻闻味也行 ”, 于是你把它放进手心, 准备离开. ",
-      "“可惜”, 多好的一坛酒呀. 你垂头丧气地离开了酒坛子, 准备继续你的旅行. "
+      "You catch a whiff of wine, and follow the aroma to find a jar of it. NL However, when you look into the jar, there's a #gbubble# asleep inside?",
+      "You pick up the bubble, grumbling that the wine is undrinkable now. NL “Well, #bsmelling it is fine too,” you think, as you place it in your palm, preparing to leave.",
+      "What a pity, such a good jar of wine. With your head hanging low, you leave the wine jar behind, ready to continue your journey."
     ],
     "OPTIONS": [
-      "[继续]",
-      "[带走泡泡] 获得 #b",
-      "[离开]"
+      "[Continue]",
+      "[Take the Bubble] Gain #b",
+      "[Leave]"
     ]
   },
-  "${ModID}:Beans_Dusk": {
-    "NAME": "“画中仙”",
+  "Beans_Dusk": {
+    "NAME": "“Painting Immortal”",
     "DESCRIPTIONS": [
-      "你的冰淇淋不小心掉在了地上, 但是当你地上一瞧, 发现一个 “墨色” 的龙泡泡正在盯着你. 而它的旁边是, ——一幅画？ NL 显然, 它把你当成了上帝, 正在祈求下一次的天降美食",
-      "你觉得这个泡泡很可爱, 于是你用尾巴卷起泡泡, 打算带着它一同爬塔. ",
-      "你无视了泡泡的祈求, 准备继续你的旅行. "
+      "You accidentally drop your ice cream on the ground, but when you look down, you find an “ink-colored” dragon bubble staring at you. Next to it is—a painting? NL Clearly, it thinks of you as a deity, praying for the next heavenly feast.",
+      "You find the bubble quite adorable, so you pick it up with your tail, planning to climb the tower with it.",
+      "You ignore the bubble's plea and prepare to continue your journey."
     ],
     "OPTIONS": [
-      "[继续]",
-      "[带走泡泡] 获得 #b",
-      "[离开]"
+      "[Continue]",
+      "[Take the Bubble] Gain #b",
+      "[Leave]"
     ]
   },
-  "${ModID}:Beans_Nian": {
-    "NAME": "“毁灭泰拉”",
+  "Beans_Nian": {
+    "NAME": "“Destruction of Terra”",
     "DESCRIPTIONS": [
-      "你在偏僻的小屋子里碰见了这个看电视的 #r红色团子 ？《 #r机关人大战喷火巨兽 》, 你一眼就能断定这是你5妹的烂片. 可是这位小泡泡却看得津津有味, 幻想着变成喷火巨龙毁灭泰拉大陆. 但它连着呜呜了好几声, 却不能从嘴巴中喷出火焰来. ",
-      "你从背包中拿出尚蜀名牌-辣椒老妈🌶️, 年泡泡闻见, 一股脑的往你脚边蹭.  NL 你很无赖, 看样子得带着这个小家伙一起旅行了 NL 不过, 虽然有辣椒吃, 但 #r毁灭泰拉 之类的还是以后再说吧",
-      "先解决这座高塔的问题,  #r毁灭泰拉 之类的还是以后再说吧"
+      "You come across this #rred bubble# watching TV in a secluded小屋？“#rMechanoids vs. Fire-Breathing Beasts#”, you can immediately tell it's your fifth sister's bad movie. But this little bubble is watching with great interest, fantasizing about becoming a fire-breathing dragon to destroy the continent of Terra. But it whimpers several times, unable to spout flames from its mouth.",
+      "You take out the Shangshu Famous Brand - Chili Mother🌶️ from your backpack, and the Nian bubble, smelling it, rushes to your feet. NL You're quite helpless; it seems you have to travel with this little guy now. NL However, although there are chili peppers to eat, #rthe destruction of Terra# and such can be discussed later.",
+      "First, solve the problem of this tower, #rthe destruction of Terra# and such can be discussed later."
     ],
     "OPTIONS": [
-      "[无视]",
-      "[带走泡泡] 获得 #b",
-      "[离开]"
+      "[Ignore]",
+      "[Take the Bubble] Gain #b",
+      "[Leave]"
     ]
   },
-  "${ModID}:Beans_Shuo": {
-    "NAME": "“凡泡之躯”",
+  "Beans_Shuo": {
+    "NAME": "“Mortal Bubble”",
     "DESCRIPTIONS": [
-      "你看到了一个正在练武的龙泡泡. 看到了你的到来, 泡泡跃跃欲试, 仿佛想与你 #b比试比试",
-      "你接受了它的邀请, 但当你一把将其抱起时, 它立刻露出了不敢相信的表情:  NL “我这么 #r威猛 , 她居然轻轻松松就把我？”",
-      "你拒绝了它的邀请, 因为你还得继续旅行. "
+      "You see a dragon bubble practicing martial arts. Seeing your arrival, the bubble is eager to try, as if it wants to #bspar# with you.",
+      "You accept its invitation, but when you pick it up, it immediately shows an unbelievable expression: NL “I am so #rimposing#, and she just lifted me so easily?”",
+      "You decline its invitation because you must continue your journey."
     ],
     "OPTIONS": [
-      "[无视]",
-      "[带走泡泡] 获得 #b",
-      "[离开]"
+      "[Ignore]",
+      "[Take the Bubble] Gain #b",
+      "[Leave]"
     ]
   },
   "${ModID}:RealName_Ling": {
@@ -198,53 +173,53 @@
     ],
     "OPTIONS": [
       "[离开] 不愿回答",
-      "[#b小令] 获得 TODO",
-      "[#b酒令] 获得 赤壁赋",
-      "[#b律令] 获得 TODO",
+      "[#b小令] Gain TODO",
+      "[#b酒令] Gain 赤壁赋",
+      "[#b律令] Gain TODO",
       "[离开]"
     ]
   },
-  "${ModID}:Wang_MountainGhostEvent": {
-    "NAME": "甲子的妖怪",
+  "Wang_MountainGhostEvent": {
+    "NAME": "The Demon of Jiazi",
     "DESCRIPTIONS": [
-      "臭棋篓子！ NL 又在算计啥呢, 小年新写了个剧本, 咱们要演一出“ #b道士下山 ”的戏码.  NL 我演为了一壶酒降妖除魔的 #g道士 , 你呀, 演那个 #r妖怪 , 每隔一甲子就出来吃人哦！ NL 哦对了, 我备好了 #b湖松酒 , 等排练完了咱们边喝边手谈几局怎么样? NL 唔, 你不想去？",
-      "你这副苦瓜脸, 怕是在黍的梯田里都显得阴暗.  NL NL 整天呆在你那破庙里, 是否稍微失了点当哥的样子 NL NL 陪小孩子们玩玩吧, 下次再见就不知道是几十年后了",
-      "你这副苦瓜脸, 怕是在黍的梯田里都显得阴暗.  NL NL  拗不过你, 我还是去诗会逛逛吧"
+      "You stinky chess pot! What are you scheming now? Xiao Nian has written a new script, and we're going to act out a play called '#bThe Taoist Descends the Mountain'. NL I'll play the #gTaoist# who exorcises demons for a pot of wine, and you, you'll play the #rdemon# that comes out to eat people every sixty years! NL Oh, right, I've prepared #bHusong Wine#. How about we have a few drinks and play a few games of chess after the rehearsal? NL Hmm, you don't want to?",
+      "Your bitter gourd face would look gloomy even in the millet fields. NL NL Staying in your dilapidated temple all day, are you slightly lacking the demeanor of an elder brother NL NL Play with the kids, who knows when we'll meet again, it might be decades later",
+      "You bitter gourd face would look gloomy even in the millet fields. NL NL I can't argue with you, I'll go to the poetry club and take a look"
     ],
     "OPTIONS": [
-      "[放弃] 离开事件",
-      "[坚持] 强制带走二哥",
-      "[继续] 进入一场 #r诡谲 的战斗（不会死亡）",
-      "[离开]"
+      "[Give up] Leave the event",
+      "[Insist] Forcefully take Second Brother away",
+      "[Continue] Enter a #sinister# battle (no death)",
+      "[Leave]"
     ]
   },
   "${ModID}:Shu_HelpEvent": {
-    "NAME": "话桑麻",
+    "NAME": "Talking about Mulberry and Hemp",
     "DESCRIPTIONS": [
-      "望不到头的稻田, 迷离如幻. 天地宽广, 却万籁俱寂.  NL 一丝酒香飘过, 云做旋舞, 飘飘然流入一只酒盏.  NL 仰头饮尽, 瞬间天朗气清.  “ ~嗯......真是一场好梦. ~ ” NL NL #b你怎么有功夫来我这里？ ",
-      "诗人回身, 眺望. 稻田绵延百里、万里,  #g春 #r夏 #y秋 #b冬 于天空中盘旋, 寒来暑往, 春去秋来.  NL 原来这就是她在“心脏”中看见的风景, 可你一抬眼, 撇见了远处那扭曲 的“ #r~种子~ ” NL NL 原来那个胆小又乖巧的 #y绩 去哪里了呢？唉, 这些弟弟妹妹, 还是小时候比较可爱. ",
-      " #g不必了 . 我怕你来了, 这个容器也会变成一个大酒缸, 或者是突然有了自己的想法, 觉得世间不逍遥, 不如长梦不醒.  NL ......我会去见见他.  NL 一碗里盛三大块排骨, 再来一个, 汤就要 ~洒~ 了. ",
-      " #g是啊 . 一碗里盛三大块排骨, 再来一个, 汤就要 ~洒~ 了.   NL NL 你再去拿个碗, 记得 ~轻拿轻放~ "
+      "The boundless rice fields stretch out like a dream. The world is vast, yet all is silent. NL A wisp of wine fragrance drifts by, the clouds dance in a swirl, and it gracefully flows into a wine cup. NL Tilting your head back, you drink it all in one gulp, and in an instant, the sky clears up. “~Mmm... What a wonderful dream.~” NL NL #bWhat brings you to my place?",
+      "The poet turns around and looks into the distance. The rice fields stretch for hundreds, thousands of miles, #gspring #rsummer #yautumn #bwinter swirling in the sky, cold comes and heat goes, spring leaves and autumn arrives. NL This is the scenery she saw in the “heart”, but as you raise your eyes, you catch a glimpse of the twisted “#r~seed~” in the distance. NL Where has that timid and well-behaved #yJi gone? Sigh, these younger siblings were cuter when they were young.",
+      "#gNo need. I'm afraid if you come, this container will also turn into a big wine vat, or suddenly have its own thoughts, feeling that the world is not carefree enough, better to sleep forever in a long dream. NL ......I will go and see him. NL A bowl filled with three large pieces of pork ribs, add one more, and the soup will ~spill~.",
+      "#gYes. A bowl filled with three large pieces of pork ribs, add one more, and the soup will ~spill~. NL NL You go and get another bowl, remember to ~handle it with care~."
     ],
     "OPTIONS": [
-      "[继续] 来看看你答应我的 #r高粱酒 酿好没有. ",
-      "[询问] 需不需要我也来帮你们一把？",
-      "[离开] ",
-      "[战斗] 与 #y绩 战斗"
+      "[Continue] To see if the #rSorghum Wine# you promised me is ready.",
+      "[Inquire] Do you need me to lend a hand as well?",
+      "[Leave]",
+      "[Combat] Battle with #yJi"
     ]
   },
   "${ModID}:AGiftEvent": {
-    "NAME": "“小礼”",
+    "NAME": "“A Small Gift”",
     "DESCRIPTIONS": [
-      "令, 我送你一份小礼, 你还未曾察觉. 等你收下后, 再来找我吧. ",
-      "“同门相残, 兄弟反目, 爱恨情仇皆为棋路. ” NL 与其说是“ #b礼物 ”, 不如说是“ #r嘲讽 ”, 但山下的闹剧仍在继续...... NL NL 你这次, 该不会也打算 #b~袖手旁观~？",
-      "感之既见来业, 福祸纷呈, 倒浊颠清 NL NL 遇之徜徉万仞, 兵斗弭遁, 诗文形渐 NL NL 人重于器, 兽悯于情. 为何不帮？",
-      "长河远上, 埋骸其下, 吾自逍遥. 为何要帮？"
+      "Ling, I have given you a small gift, which you have not yet noticed. Come find me after you have accepted it.",
+      "'Siblings slaying each other, brothers turning against each other, all loves and hates are just chess moves.' NL It is more of a '#rmockery' than a '#bgift', but the drama at the foot of the mountain continues... NL NL This time, are you also planning to #b~stand by and do nothing~?",
+      "Having perceived the coming karma, fortune and misfortune intertwine, muddled clarity and chaos NL NL Encountering wandering amidst the thousand-foot cliffs, warfare ceases, the form of poetry gradually emerges NL NL People value the vessel more, beasts show compassion in emotions. Why not help?",
+      "The long river flows far, burying the remains beneath, I am carefree. Why help?"
     ],
     "OPTIONS": [
-      "[继续]",
-      "[无视] 袖手旁观",
-      "[介入] 进入一场 #b特殊 的战斗"
+      "[Continue]",
+      "[Ignore] Stand by and do nothing",
+      "[Intervene] Enter a #bspecial# battle"
     ]
   },
   "${ModID}:ChineseSuccubusChallenge": {
@@ -253,7 +228,7 @@
       "“十二道金牌”, 看样子那位懦弱国王花了大价钱骗将军回去.  NL “大漠起长烟, 孤城听征鼓” 你欣赏他的豪情, 是否稍加吐息, 吹走那十二金牌呢？ NL NL 再次梦入南阳, 这次你选择 -->ManJiangHongCard"
     ],
     "OPTIONS": [
-      "[悲悯] 获得 #b",
+      "[悲悯] Gain #b",
       "[独幽] 切换回忆",
       "[逍遥] 离开回忆"
     ]
