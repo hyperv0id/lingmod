@@ -1,13 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>UnimportantInfo</groupId>
+    <groupId>lingmod</groupId>
 
     <artifactId>LingMod</artifactId>
     <version>0.1.4</version>
     <name>Ling(明日方舟-令)</name>
     <description>
-        明日方舟-令角色模组。 NL NL 反馈地址：https://shorturl.at/CigAW
+        明日方舟-令角色模组。 NL NL BUG反馈地址：https://shorturl.at/CigAW NL QQ: 210516872 NL
+        设置教程：https://shorturl.at/HzCCO
     </description>
     <!-- Change the above for mod information. -->
 
@@ -17,6 +18,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <SlayTheSpire.version>12-22-2020</SlayTheSpire.version>
         <ModTheSpire.version>3.18.2</ModTheSpire.version>
+        <Java_WebSocket.version>1.5.3</Java_WebSocket.version>
 
         <!-- CHANGE THIS TO MATCH YOUR MODID FIELD IN THE MAIN TodoMod CLASS FILE -->
         <!--        <ModID>todomod</ModID>-->
@@ -106,6 +108,11 @@
             <scope>system</scope>
             <systemPath>${Steam.path}/workshop/content/646570/1609158507/StSLib.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>org.java-websocket</groupId>
+            <artifactId>Java-WebSocket</artifactId>
+            <version>${Java_WebSocket.version}</version>
+        </dependency>
     </dependencies>
 
 
@@ -167,6 +174,30 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>Lingmod-Websocket</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <!--                            <outputFile>target/${project.artifactId}-websocket.jar</outputFile>-->
+                            <artifactSet>
+                                <includes>
+                                    <include>org.java-websocket:*</include>
+                                </includes>
+                            </artifactSet>
+                        </configuration>
+                    </execution>
+                </executions>
+
             </plugin>
         </plugins>
 
