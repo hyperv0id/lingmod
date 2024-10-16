@@ -111,5 +111,12 @@
     "DESCRIPTIONS": [
       "打出三种不同费用的卡牌后，获得1力量"
     ]
+  },
+  "${ModID}:BraceletsRelic": {
+    "NAME": "手链",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "能量上限增加1，回合结束时获得 #r3 #b缠绕"
+    ]
   }
 }

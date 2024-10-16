@@ -112,5 +112,12 @@
     "DESCRIPTIONS": [
       "Gain 1 Strength after playing 3 cards of different cost "
     ]
+  },
+  "${ModID}:BraceletsRelic": {
+    "NAME": "Bracelets",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "Increase your energy limit with 1, at end of your turn, gain #r3 #bconstricted power"
+    ]
   }
 }
