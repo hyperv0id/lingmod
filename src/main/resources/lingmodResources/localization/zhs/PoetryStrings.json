@@ -93,7 +93,7 @@
       "平仄平平平仄平",
       "仄平仄仄平"
     ],
-    "DESCRIPTION": "造成 !D! 点伤害 NL （伤害为此诗词的剩余进度）"
+    "DESCRIPTION": "造成与诗词剩余进度等量的 !D! 点伤害 NL 获得 !M! 虚弱"
   },
   "lingmod:ShiShuoXinYuCard": {
     "NAME": "世说新语·品藻",

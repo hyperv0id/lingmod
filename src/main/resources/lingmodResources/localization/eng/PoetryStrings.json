@@ -93,7 +93,7 @@
       "平仄平平平仄平",
       "仄平仄仄平"
     ],
-    "DESCRIPTION": "deal !D! damage NL （damage based of poetry progression left）"
+    "DESCRIPTION": "deal !D! damage NL （damage based of poetry progression left） NL Gain !M! Weak"
   },
   "lingmod:ShiShuoXinYuCard": {
     "NAME": "Shi Shuo Xin Yu",
