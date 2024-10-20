@@ -1,18 +1,19 @@
 package lingmod.cards.power;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.Credit;
 import lingmod.powers.XiaoYaoPower;
 
+import static lingmod.ModCore.makeID;
+
 /**
- * 逍遥游：回合结束后抽牌数+1,也就是说随回合数增加，抽牌数不断增加
+ * 逍遥游：
+ * 能量上限++
+ * 回合结束后抽牌数+1,也就是说随回合数增加，抽牌数不断增加
  */
 @Credit(username = "生吃全部人", link = "https://weibo.com/7034877092/5007749570365010", platform = "微博")
 public class XiaoYaoYou extends AbstractEasyCard {

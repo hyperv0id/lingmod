@@ -15,7 +15,7 @@
   "${ModID}:XiaoYaoPower": {
     "NAME": " Peripatetic",
     "DESCRIPTIONS": [
-      "After the turn ends, cards drawn/hand size++, next turn draw #b%d extra cards"
+      "When turn ends, cards drawn/hand size increase by #b%d , (draw #b%d extra cards) NL At the start of your turn NL gain #b%d energy"
     ]
   },
   "${ModID}:WangShuiPower": {

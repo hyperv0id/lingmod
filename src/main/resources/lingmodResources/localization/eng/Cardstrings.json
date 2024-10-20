@@ -29,7 +29,7 @@
   },
   "${ModID}:XiaoYaoYou": {
     "NAME": "Peripatetic",
-    "DESCRIPTION": "Your hand size and cards drawn increases by 1 per turn.",
+    "DESCRIPTION": "Your hand size and cards drawn increases by 1 per turn. NL At the start of your turn, gain [E]",
     "EXTENDED_DESCRIPTION": [
       "I roam without boundaries"
     ]

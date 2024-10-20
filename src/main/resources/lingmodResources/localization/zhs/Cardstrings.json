@@ -28,7 +28,7 @@
   },
   "${ModID}:XiaoYaoYou": {
     "NAME": "逍遥游",
-    "DESCRIPTION": "你的抽牌数和手牌上限每回合增加1",
+    "DESCRIPTION": "你的抽牌数和手牌上限每回合增加1 NL 在你的回合开始时获得 [E]",
     "EXTENDED_DESCRIPTION": [
       "长河远上,埋骸其下,吾自逍遥"
     ]
