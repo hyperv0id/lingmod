@@ -4,6 +4,7 @@ import basemod.ReflectionHacks;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
 import lingmod.ModCore;
+import lingmod.util.ModConfig;
 
 /**
  * 此patch用于在程序闪退后自动打开浏览器填写问卷。
@@ -16,17 +17,16 @@ public class CoreDumpPatch {
     @SpirePrefixPatch
     public static void Prefix() {
         try {
-            if (ReflectionHacks.getPrivateStatic(Class.forName(CLS_NAME), "crash") != null) {
-                // open_browser();
+            if (ModConfig.browseWhenCrash && ReflectionHacks.getPrivateStatic(Class.forName(CLS_NAME), "crash") != null) {
+                open_browser(QA_URL);
             }
         } catch (Exception e) {
             ModCore.logger.info(e.getMessage());
         }
     }
 
-    public static void open_browser() {
+    public static void open_browser(String url) {
         try {
-            String url = QA_URL;
             Runtime rt = Runtime.getRuntime();
 
             String os = System.getProperty("os.name").toLowerCase();

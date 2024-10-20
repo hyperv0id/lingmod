@@ -102,5 +102,10 @@
     "TEXT": [
       "诗词"
     ]
+  },
+  "${ModID}:BROWSE_WHEN_CRASH": {
+    "TEXT": [
+      "崩溃时打开浏览器"
+    ]
   }
 }

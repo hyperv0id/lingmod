@@ -25,20 +25,24 @@ public class ModConfig {
     private static final String SKIN_OPT_KEY = makeID("CONF.CHAR_SKIN");
     private static final String SHOW_CREDIT_KEY = makeID("B_SHOW_CREDIT");
     private static final String STATIC_CHAR_KEY = makeID("CONF.STATIC_CHAR");
+    private static final String CRASH_REPORT = makeID("BROWSE_WHEN_CRASH");
+
     public static SpireConfig config = null;
     static Properties defaultSetting = new Properties();
     private static ModPanel settingsPanel;
 
     public static Dialect dialect = Dialect.CN_TOPOLECT;
-    public static SkinInfo skinInfo = SkinInfo.NCG;
+    public static SkinInfo skinInfo = SkinInfo.NIAN;
     public static boolean showCredit = true;
     public static boolean useStaticCharImg = false;
+    public static boolean browseWhenCrash = true;
 
     public static void initModSettings() {
         defaultSetting.setProperty(DIALECT_OPT_KEY, Dialect.CN_TOPOLECT.toString());
-        defaultSetting.setProperty(SKIN_OPT_KEY, SkinInfo.NCG.toString());
+        defaultSetting.setProperty(SKIN_OPT_KEY, SkinInfo.NIAN.toString());
         defaultSetting.setProperty(SHOW_CREDIT_KEY, String.valueOf(true));
         defaultSetting.setProperty(STATIC_CHAR_KEY, String.valueOf(false));
+        defaultSetting.setProperty(CRASH_REPORT, String.valueOf(true));
         try {
             config = new SpireConfig(modID, modID, defaultSetting);
             config.load();
@@ -59,8 +63,10 @@ public class ModConfig {
             showCredit = config.getBool(SHOW_CREDIT_KEY);
             // 4. use static char img
             useStaticCharImg = config.getBool(STATIC_CHAR_KEY);
+            // 5. open browser
+            browseWhenCrash = config.getBool(CRASH_REPORT);
         } catch (Exception e) {
-            logger.error("Init Config Failed" + e.getLocalizedMessage());
+            logger.error("Init Config Failed{}", e.getLocalizedMessage());
         }
     }
 
@@ -70,10 +76,12 @@ public class ModConfig {
         addSkinMenu(); // 选择皮肤
         addCreditMenu(); // 借物表
         addStaticCharMenu(); // 静态图
+        addCrashReportMenu(); // 闪退问卷
         Texture badge = ImageMaster.loadImage(makeImagePath("badge.png"));
         String modConfDesc = CardCrawlGame.languagePack.getUIString(makeID("Option")).TEXT[0];
         BaseMod.registerModBadge(badge, modID, "jcheng", modConfDesc, settingsPanel);
     }
+
 
     private static void addSkinMenu() {
         SkinInfo[] info = SkinInfo.values();
@@ -115,7 +123,7 @@ public class ModConfig {
         try {
             config.save();
         } catch (IOException e) {
-            logger.warn("load config skinInfo failed" + e.getLocalizedMessage());
+            logger.warn("load config skinInfo failed{}", e.getLocalizedMessage());
         }
     }
 
@@ -129,7 +137,23 @@ public class ModConfig {
             try {
                 config.save();
             } catch (IOException e) {
-                logger.warn("save config credit failed" + e.getLocalizedMessage());
+                logger.warn("save config credit failed{}", e.getLocalizedMessage());
+            }
+        });
+        settingsPanel.addUIElement(btn);
+    }
+
+    private static void addCrashReportMenu() {
+        UIStrings uis = CardCrawlGame.languagePack.getUIString(CRASH_REPORT);
+        ModLabeledToggleButton btn = new ModLabeledToggleButton(uis.TEXT[0], 350F, 650, Settings.CREAM_COLOR,
+                FontHelper.charDescFont, browseWhenCrash, settingsPanel, modLabel -> {
+        }, modToggleButton -> {
+            browseWhenCrash = modToggleButton.enabled;
+            config.setString(CRASH_REPORT, String.valueOf(browseWhenCrash));
+            try {
+                config.save();
+            } catch (IOException e) {
+                logger.warn("save config CrashReport failed{}", e.getLocalizedMessage());
             }
         });
         settingsPanel.addUIElement(btn);
@@ -148,7 +172,7 @@ public class ModConfig {
             try {
                 config.save();
             } catch (IOException e) {
-                logger.warn("load config dialect failed" + e.getLocalizedMessage());
+                logger.warn("load config dialect failed{}", e.getLocalizedMessage());
             }
         });
         int idx = 0;
@@ -171,7 +195,7 @@ public class ModConfig {
             try {
                 config.save();
             } catch (IOException e) {
-                logger.warn("load config credit failed" + e.getLocalizedMessage());
+                logger.warn("load config credit failed{}", e.getLocalizedMessage());
             }
         });
         settingsPanel.addUIElement(btn);

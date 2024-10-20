@@ -97,5 +97,10 @@
     "TEXT": [
       "Poetry"
     ]
+  },
+  "${ModID}:BROWSE_WHEN_CRASH": {
+    "TEXT": [
+      "Open Browser When Crash"
+    ]
   }
 }
