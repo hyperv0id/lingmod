@@ -38,7 +38,7 @@ jobs:
     - name: Upload JAR
       uses: actions/upload-artifact@v4
       with:
-        name: LingModTarget
+        name: LingMod.jar
         path: target/LingMod.jar
 
   download:
@@ -48,7 +48,7 @@ jobs:
     - name: Download JAR
       uses: actions/download-artifact@v4
       with:
-        name: LingModTarget
+        name: LingMod.jar
     - name: List files
       run: ls -l
 
