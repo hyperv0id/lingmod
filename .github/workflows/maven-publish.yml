@@ -24,7 +24,7 @@ jobs:
         curl -L -o $HOME/.steam/steam/steamapps/workshop/content/646570/1609158507/StSLib.jar "https://github.com/hyperv0id/lingmod/releases/download/dependency/StSLib.jar"
         curl -L -o $HOME/.steam/steam/steamapps/common/SlayTheSpire/desktop-1.0.jar "https://github.com/hyperv0id/lingmod/releases/download/dependency/desktop-1.0.jar"
     - name: Verify download
-      run: tree $HOME/.steam/steam/steamapps/workshop/content/
+      run: tree $HOME/.steam/steam/steamapps/
     - name: Upload jar files as artifacts
       uses: actions/upload-artifact@v4
       with:
@@ -46,6 +46,12 @@ jobs:
         distribution: 'temurin'
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
+    - name: Download jar files
+      uses: actions/download-artifact@v2
+      with:
+        name: STS-jar-dependency
+    - name: Verify STS Dependency
+      run: tree $HOME/.steam/steam/steamapps/
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Upload JAR
