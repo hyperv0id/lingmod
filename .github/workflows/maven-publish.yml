@@ -7,23 +7,12 @@ on:
   push
 
 jobs:
-  build:
-
+  prepare:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
-
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up JDK 11
-      uses: actions/setup-java@v4
-      with:
-        java-version: '11'
-        distribution: 'temurin'
-        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-        settings-path: ${{ github.workspace }} # location for the settings.xml file
-      
     - name: Create directory for ModTheSpire.jar
       run: mkdir -p $HOME/.steam/steam/steamapps/workshop/content/646570/1605060445/ # ModTheSpire.jar
     - name: Create directory for BaseMod.jar
@@ -32,7 +21,7 @@ jobs:
       run: mkdir -p $HOME/.steam/steam/steamapps/workshop/content/646570/1609158507/ # StSLib.jar
     - name: Create directory for desktop-1.0.jar
       run: mkdir -p  $HOME/.steam/steam/steamapps/common/SlayTheSpire/ # desktop-1.0.jar
-
+    # Download jar files
     - name: Download ModTheSpire.jar
       run: curl -L -o $HOME/.steam/steam/steamapps/workshop/content/646570/1605060445/ModTheSpire.jar "https://github.com/hyperv0id/lingmod/releases/download/dependency/ModTheSpire.jar" 
     - name: Download BaseMod.jar
@@ -42,8 +31,38 @@ jobs:
     - name: Download Desktop-1.0.jar
       run: curl -L -o $HOME/.steam/steam/steamapps/common/SlayTheSpire/desktop-1.0.jar "https://github.com/hyperv0id/lingmod/releases/download/dependency/desktop-1.0.jar"
     
+  build:
+    needs: prepare
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up JDK 11
+      uses: actions/setup-java@v4
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+        settings-path: ${{ github.workspace }} # location for the settings.xml file
     - name: Verify download
       run: tree $HOME/.steam/steam/steamapps/workshop/content/
-    
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: Upload JAR
+      uses: actions/upload-artifact@v2
+      with:
+        name: LingMod.jar
+        path: target/*.jar
+
+  download:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download JAR
+      uses: actions/download-artifact@v2
+      with:
+        name: LingMod.jar
+    - name: List files
+      run: ls -l
