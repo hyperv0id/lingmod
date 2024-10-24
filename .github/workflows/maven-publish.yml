@@ -38,8 +38,8 @@ jobs:
     - name: Upload JAR
       uses: actions/upload-artifact@v4
       with:
-        name: LingMod.jar
-        path: target/*.jar
+        name: LingModTarget
+        path: target/LingMod.jar
 
   download:
     needs: build
@@ -48,6 +48,34 @@ jobs:
     - name: Download JAR
       uses: actions/download-artifact@v4
       with:
-        name: LingMod.jar
+        name: LingModTarget
     - name: List files
       run: ls -l
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download JAR
+      uses: actions/download-artifact@v2
+      with:
+        name: LingMod.jar
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: false
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./LingMod.jar
+        asset_name: LingMod.jar
+        asset_content_type: application/java-archive
