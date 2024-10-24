@@ -4,7 +4,12 @@
 name: Maven Package
 
 on:
-  push
+  push:
+  workflow_call:
+    outputs:
+      jar_path:
+        description: "Built jar file path"
+        value: ${{ jobs.build.outputs.jar_path }}
 
 jobs:
   build:
