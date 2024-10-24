@@ -53,6 +53,8 @@ jobs:
       run: ls -l
 
   release:
+    permissions:
+      contents: write
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -66,8 +68,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
+        tag_name: ${{ github.ref_name.split('/').pop() }}
+        release_name: Release ${{ github.ref_name }}
         draft: false
         prerelease: false
     - name: Upload Release Asset
