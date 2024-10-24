@@ -24,19 +24,23 @@ jobs:
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
       
-    - name: Create directory 1
+    - name: Create directory for ModTheSpire.jar
       run: mkdir -p $HOME/.steam/steam/steamapps/workshop/content/646570/1605060445/ # ModTheSpire.jar
-    - name: Create directory 2
+    - name: Create directory for BaseMod.jar
       run: mkdir -p $HOME/.steam/steam/steamapps/workshop/content/646570/1605833019/ # BaseMod.jar
-    - name: Create directory 3
+    - name: Create directory for StSLib.jar
       run: mkdir -p $HOME/.steam/steam/steamapps/workshop/content/646570/1609158507/ # StSLib.jar
+    - name: Create directory for desktop-1.0.jar
+      run: mkdir -p  $HOME/.steam/steam/steamapps/common/SlayTheSpire/ # desktop-1.0.jar
 
-    - name: Download file 1
+    - name: Download ModTheSpire.jar
       run: curl -L -o $HOME/.steam/steam/steamapps/workshop/content/646570/1605060445/ModTheSpire.jar "https://github.com/hyperv0id/lingmod/releases/download/dependency/ModTheSpire.jar" 
-    - name: Download file 2
+    - name: Download BaseMod.jar
       run: curl -L -o $HOME/.steam/steam/steamapps/workshop/content/646570/1605833019/BaseMod.jar "https://github.com/hyperv0id/lingmod/releases/download/dependency/BaseMod.jar" 
-    - name: Download file 3
+    - name: Download StSLib.jar
       run: curl -L -o $HOME/.steam/steam/steamapps/workshop/content/646570/1609158507/StSLib.jar "https://github.com/hyperv0id/lingmod/releases/download/dependency/StSLib.jar"
+    - name: Download Desktop-1.0.jar
+      run: curl -L -o $HOME/.steam/steam/steamapps/common/SlayTheSpire/desktop-1.0.jar "https://github.com/hyperv0id/lingmod/releases/download/dependency/desktop-1.0.jar"
     
     - name: Verify download
       run: tree $HOME/.steam/steam/steamapps/workshop/content/
