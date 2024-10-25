@@ -83,3 +83,8 @@ $RECYCLE.BIN/
 *.autosave.scml
 /docs/.obsidian/
 /docs/.trash/
+
+# SlayTheSpire Build
+/sendToDevs/
+/upload/content/*
+steam_appid.txt
