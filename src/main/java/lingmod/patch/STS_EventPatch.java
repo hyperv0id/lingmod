@@ -34,15 +34,15 @@ public class STS_EventPatch {
                         .getCharacterString(makeID("Neow Event"));
                 logger.info(neowCS);
                 String[] TEXT = neowCS.TEXT;
-                // for (int i = 0; i < NeowEvent.TEXT.length; i++) {
                 ReflectionHacks.setPrivateStaticFinal(NeowEvent.class, "TEXT", TEXT);
-                // NeowEvent.TEXT[i] = TEXT[i];
-                // }
             }
             return SpireReturn.Continue();
         }
     }
 
+    /**
+     * 大哥：忘记付钱，获得羞耻
+     */
     @SpirePatch(clz = Addict.class, method = SpirePatch.CONSTRUCTOR)
     public static class PleadingVagrantEventPatch {
         @SpirePrefixPatch
@@ -58,6 +58,9 @@ public class STS_EventPatch {
         }
     }
 
+    /**
+     * 图书馆事件，图片修改
+     */
     @SpirePatch(clz = TheLibrary.class, method = SpirePatch.CONSTRUCTOR)
     public static class TheLibraryPatch {
         @SpirePostfixPatch

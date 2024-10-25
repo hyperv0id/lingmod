@@ -114,7 +114,14 @@ public class ModConfig {
                 }
             }
         }
+        // 更新后更改立绘为默认图像
+        if (!config.has("SKIN_SET_241025@0.1.4")) {
+            config.setBool("SKIN_SET_241025@0.1.4", true);
+            skinInfo = SkinInfo.NIAN;
+            saveSkinInfo();
+        }
 
+        // 新年皮肤的错位最少
         if (skinInfo == null) skinInfo = SkinInfo.NIAN;
     }
 
