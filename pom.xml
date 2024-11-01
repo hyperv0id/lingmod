@@ -55,7 +55,7 @@
                 </os>
             </activation>
             <properties>
-                <Steam.path>${HOME}/Library/Application Support/Steam/steamapps/</Steam.path>
+                <Steam.path>${env.HOME}/Library/Application Support/Steam/steamapps/</Steam.path>
                 <STS.path>${Steam.path}/common/SlayTheSpire/</STS.path>
                 <JAVA.path>${Steam.path}/common/SlayTheSpire/jre/bin/java</JAVA.path>
                 <MTS.path>${Steam.path}/workshop/content/646570/1605060445/ModTheSpire.jar</MTS.path>
@@ -71,7 +71,7 @@
                 </os>
             </activation>
             <properties>
-                <Steam.path>${HOME}/.steam/steam/steamapps/</Steam.path>
+                <Steam.path>${env.HOME}/.steam/steam/steamapps/</Steam.path>
                 <STS.path>${Steam.path}/common/SlayTheSpire/</STS.path>
                 <JAVA.path>${STS.path}/jre/bin/java</JAVA.path>
                 <MTS.path>${Steam.path}/workshop/content/646570/1605060445/ModTheSpire.jar</MTS.path>

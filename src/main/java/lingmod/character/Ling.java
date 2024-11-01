@@ -30,6 +30,7 @@ import lingmod.relics.LightRelic;
 import lingmod.ui.PoetryOrb;
 import lingmod.ui.PoetryTopPanel;
 import lingmod.util.*;
+import lingmod.util.audio.MusicUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -213,9 +214,7 @@ public class Ling extends CustomPlayer {
 
     @Override
     public void doCharSelectScreenSelectEffect() {
-        CardCrawlGame.music.silenceBGM(); // 沉默BGM
-        // CardCrawlGame.music.silenceTempBgmInstantly(); // 沉默BGM
-        CardCrawlGame.music.playTempBgmInstantly("寻隐.mp3", true);
+        MusicUtil.changeBGM(makeID("CHAR_SELECT.mp3"));
         VoiceMaster.select();
         CardCrawlGame.sound.playA("UNLOCK_PING", MathUtils.random(-0.2F, 0.2F));
         CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT,
