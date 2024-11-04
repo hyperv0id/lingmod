@@ -24,7 +24,7 @@
   },
   "${ModID}:XiaoMingSeCard": {
     "NAME": "笑鸣瑟",
-    "DESCRIPTION": "每有一个 异常状态，每有一个敌人，获得 !M! 点 ${ModID}:诗兴 NL （可获得 !${ModID}:m2! 点）"
+    "DESCRIPTION": "每有一个 异常状态，每有一个敌人，获得 !M! 点 ${ModID}:诗兴 NL （可获得 !m2! 点）"
   },
   "${ModID}:XiaoYaoYou": {
     "NAME": "逍遥游",
@@ -51,7 +51,7 @@
   },
   "${ModID}:Tranquility_Summon": {
     "NAME": "“清平”",
-    "DESCRIPTION": "召唤一个 ${ModID}:“清平” NL 其生命值为 !M! ，基础攻击力为 !${ModID}:m2!"
+    "DESCRIPTION": "召唤一个 ${ModID}:“清平” NL 其生命值为 !M! ，基础攻击力为 !m2!"
   },
   "${ModID}:Peripateticism": {
     "NAME": "“逍遥”",
@@ -62,7 +62,7 @@
   },
   "${ModID}:Peripateticism_Summon": {
     "NAME": "“逍遥”",
-    "DESCRIPTION": "召唤一个 ${ModID}:“逍遥” NL 其生命值为 !M! ，基础攻击力为 !${ModID}:m2!"
+    "DESCRIPTION": "召唤一个 ${ModID}:“逍遥” NL 其生命值为 !M! ，基础攻击力为 !m2!"
   },
   "${ModID}:Thunderer": {
     "NAME": "“弦惊”",
@@ -70,7 +70,7 @@
   },
   "${ModID}:Thunderer_Summon": {
     "NAME": "“弦惊”",
-    "DESCRIPTION": "召唤一个 ${ModID}:“弦惊” NL 其生命值为 !M! ，基础攻击力为 !${ModID}:m2!"
+    "DESCRIPTION": "召唤一个 ${ModID}:“弦惊” NL 其生命值为 !M! ，基础攻击力为 !m2!"
   },
   "${ModID}:Feature_2_Card": {
     "NAME": "随付笺咏醉屠苏",
@@ -172,7 +172,7 @@
   },
   "${ModID}:AGiftCard": {
     "NAME": "“礼物”",
-    "DESCRIPTION": "给予所有敌人 !M! 层 虚弱 NL 给予自己 !${ModID}:m2! 层 虚弱 "
+    "DESCRIPTION": "给予所有敌人 !M! 层 虚弱 NL 给予自己 !m2! 层 虚弱 "
   },
   "${ModID}:ZuiFeiChen": {
     "NAME": "醉飞尘",
@@ -214,7 +214,7 @@
   },
   "${ModID}:HuSongWineCard": {
     "NAME": "湖松酒",
-    "DESCRIPTION": "如果敌人将攻击多次，那么其多段攻击在本回合次数减少 !M!% NL 否则给予 !${ModID}:m2! 虚弱 "
+    "DESCRIPTION": "如果敌人将攻击多次，那么其多段攻击在本回合次数减少 !M!% NL 否则给予 !m2! 虚弱 "
   },
   "${ModID}:GuiXingWineCard": {
     "NAME": "归行酒",
@@ -328,8 +328,8 @@
   },
   "lingmod:ShuoWangLing": {
     "NAME": "朔望",
-    "DESCRIPTION": "抽1张牌。统计手牌数量 NL ${ModID}:将空 : 造成 !D! 点伤害 !M! 次 NL ${ModID}:已满 : 造成 !${ModID}:sd! 点伤害 !${ModID}:m2! 次",
-    "UPGRADE_DESCRIPTION": "抽1张牌。统计手牌数量 NL ${ModID}:将空 : 造成 !D! 点伤害 !M! 次 NL ${ModID}:已满 : 造成 !${ModID}:sd! 点伤害 !${ModID}:m2! 次 NL 为三: 获得 !B! 格挡 !${ModID}:sb! 次",
+    "DESCRIPTION": "抽1张牌。统计手牌数量 NL ${ModID}:将空 : 造成 !D! 点伤害 !M! 次 NL ${ModID}:已满 : 造成 !sd! 点伤害 !m2! 次",
+    "UPGRADE_DESCRIPTION": "抽1张牌。统计手牌数量 NL ${ModID}:将空 : 造成 !D! 点伤害 !M! 次 NL ${ModID}:已满 : 造成 !sd! 点伤害 !m2! 次 NL 为三: 获得 !B! 格挡 !sb! 次",
     "EXTENDED_DESCRIPTION": [
       "令"
     ]
@@ -365,7 +365,7 @@
   },
   "lingmod:TaoMeiWanNiang": {
     "NAME": "桃梅晚酿",
-    "DESCRIPTION": "每消耗 !M! 张牌，获得 !${ModID}:m2! 多层护甲 "
+    "DESCRIPTION": "每消耗 !M! 张牌，获得 !m2! 多层护甲 "
   },
   "lingmod:TheNumberIs3": {
     "NAME": "其数为3",

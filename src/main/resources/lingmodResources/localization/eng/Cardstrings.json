@@ -25,7 +25,7 @@
   },
   "${ModID}:XiaoMingSeCard": {
     "NAME": "Pleasant Melodies",
-    "DESCRIPTION": "Per debuff, per enemy, gain !M! points of ${ModID}:Poetic_Inspiration NL （can obtain !${ModID}:m2! points.）"
+    "DESCRIPTION": "Per debuff, per enemy, gain !M! points of ${ModID}:Poetic_Inspiration NL （can obtain !m2! points.）"
   },
   "${ModID}:XiaoYaoYou": {
     "NAME": "Peripatetic",
@@ -52,7 +52,7 @@
   },
   "${ModID}:Tranquility_Summon": {
     "NAME": "“Tranquility”",
-    "DESCRIPTION": "summon a ${ModID}:“Tranquility” NL Hp !M! , Atk !${ModID}:m2!"
+    "DESCRIPTION": "summon a ${ModID}:“Tranquility” NL Hp !M! , Atk !m2!"
   },
   "${ModID}:Peripateticism": {
     "NAME": "“Peripateticism”",
@@ -63,7 +63,7 @@
   },
   "${ModID}:Peripateticism_Summon": {
     "NAME": "“Peripateticism”",
-    "DESCRIPTION": "Summon a ${ModID}:“Peripateticism” NL Hp !M! , Atk !${ModID}:m2!"
+    "DESCRIPTION": "Summon a ${ModID}:“Peripateticism” NL Hp !M! , Atk !m2!"
   },
   "${ModID}:Thunderer": {
     "NAME": "“Thunderer”",
@@ -71,7 +71,7 @@
   },
   "${ModID}:Thunderer_Summon": {
     "NAME": "“Thunderer”",
-    "DESCRIPTION": "Summon a ${ModID}:“Thunderer” NL Hp !M! , Atk !${ModID}:m2!"
+    "DESCRIPTION": "Summon a ${ModID}:“Thunderer” NL Hp !M! , Atk !m2!"
   },
   "${ModID}:Feature_2_Card": {
     "NAME": "Poem Written Drunk",
@@ -173,7 +173,7 @@
   },
   "${ModID}:AGiftCard": {
     "NAME": "“Present”",
-    "DESCRIPTION": "Apply !M! Weak to All enemies NL Apply !${ModID}:m2! Weak to self "
+    "DESCRIPTION": "Apply !M! Weak to All enemies NL Apply !m2! Weak to self "
   },
   "${ModID}:ZuiFeiChen": {
     "NAME": "Revel in the Real",
@@ -216,7 +216,7 @@
   },
   "${ModID}:HuSongWineCard": {
     "NAME": "HuSong Wine",
-    "DESCRIPTION": "If the enemy would attack multiple times, they lose !M!% times of attacks NL otherwise apply !${ModID}:m2! Weak "
+    "DESCRIPTION": "If the enemy would attack multiple times, they lose !M!% times of attacks NL otherwise apply !m2! Weak "
   },
   "${ModID}:GuiXingWineCard": {
     "NAME": "Returners Wine",
@@ -329,8 +329,8 @@
   },
   "lingmod:ShuoWangLing": {
     "NAME": "Shuo Wang ",
-    "DESCRIPTION": "Draw 1 card. Gains effect based on cards in hand NL ${ModID}:Last_vCard : deal !D! damage !M! times NL ${ModID}:Full_Hand : deal !${ModID}:sd! damage !${ModID}:m2! times",
-    "UPGRADE_DESCRIPTION": "Draw 1 card. Gains effect based on cards in hand NL ${ModID}:Last_Card : deal !D! damage !M! times NL ${ModID}:Full_Hand : deal !${ModID}:sd! damage !${ModID}:m2! times NL If 3: Gain !B! BLock !${ModID}:sb! times",
+    "DESCRIPTION": "Draw 1 card. Gains effect based on cards in hand NL ${ModID}:Last_vCard : deal !D! damage !M! times NL ${ModID}:Full_Hand : deal !sd! damage !m2! times",
+    "UPGRADE_DESCRIPTION": "Draw 1 card. Gains effect based on cards in hand NL ${ModID}:Last_Card : deal !D! damage !M! times NL ${ModID}:Full_Hand : deal !sd! damage !m2! times NL If 3: Gain !B! BLock !sb! times",
     "EXTENDED_DESCRIPTION": [
       "Ling"
     ]
@@ -366,7 +366,7 @@
   },
   "lingmod:TaoMeiWanNiang": {
     "NAME": "Peach Plum Brew",
-    "DESCRIPTION": "For every !M! cards Exhausted, gain !${ModID}:m2! Plated Armor "
+    "DESCRIPTION": "For every !M! cards Exhausted, gain !m2! Plated Armor "
   },
   "lingmod:TheNumberIs3": {
     "NAME": "She Ranks 3",
