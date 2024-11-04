@@ -33,6 +33,7 @@ public class YuNiaoPower extends AbstractEasyPower {
 
     public YuNiaoPower(AbstractCreature owner, AbstractCreature target) {
         super(ID, powerStrings.NAME, PowerType.BUFF, false, owner, 0);
+        this.priority = 1000; // 最高优先级，最后计算
         this.target = target;
         this.loadTexture(POWER_NAME);
         updateDescription();

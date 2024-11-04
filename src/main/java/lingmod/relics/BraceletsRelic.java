@@ -11,6 +11,7 @@ import static lingmod.ModCore.makeID;
  */
 public class BraceletsRelic extends AbstractEasyRelic {
     public static final String ID = makeID(BraceletsRelic.class.getSimpleName());
+    public boolean valid = false;
 
     public BraceletsRelic() {
         super(ID, RelicTier.BOSS, LandingSound.HEAVY);
@@ -18,8 +19,16 @@ public class BraceletsRelic extends AbstractEasyRelic {
     }
 
     @Override
-    public void onPlayerEndTurn() {
-        super.onPlayerEndTurn();
+    public void atBattleStart() {
+        valid = false;
+    }
+
+    @Override
+    public void atTurnStart() {
+        if (!valid) {
+            valid = true;
+            return;
+        }
         this.flash();
         Wiz.applyToSelf(new ConstrictedPower(Wiz.adp(), Wiz.adp(), counter));
     }

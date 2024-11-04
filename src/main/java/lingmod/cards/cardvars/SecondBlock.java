@@ -3,12 +3,10 @@ package lingmod.cards.cardvars;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import lingmod.cards.AbstractEasyCard;
 
-import static lingmod.ModCore.makeID;
-
 public class SecondBlock extends AbstractEasyDynamicVariable {
     @Override
     public String key() {
-        return makeID("sb");
+        return "sb";
     }
 
     @Override

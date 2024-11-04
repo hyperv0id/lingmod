@@ -3,13 +3,11 @@ package lingmod.cards.cardvars;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import lingmod.cards.AbstractEasyCard;
 
-import static lingmod.ModCore.makeID;
-
 public class SecondDamage extends AbstractEasyDynamicVariable {
 
     @Override
     public String key() {
-        return makeID("sd");
+        return "sd";
     }
 
     @Override
