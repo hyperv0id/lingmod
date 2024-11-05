@@ -57,18 +57,13 @@ public class SummonMonsterPatch {
                 DamageInfo.class})
         public static class ChangeDamageTarget {
             public static void Postfix(AbstractGameAction _inst, AbstractCreature target, DamageInfo info) {
+                // 不影响其他MOD
+                if (!Wiz.isPlayerLing()) return;
                 if (info == null)
                     return;
-                // 取消友伤
-                if (info.owner == AbstractDungeon.player && target instanceof AbsSummonMonster) {
-                    info = null;
-                    logger.info("友伤取消");
-                }
-                if (target != null && info != null && info.type != DamageInfo.DamageType.HP_LOSS
-                        && (info.owner == null || !info.owner.isPlayer) && target == AbstractDungeon.player
-                        && MonsterTakeDamagePatch.gotSummon()) {
+                if (target != null && info.type != DamageInfo.DamageType.HP_LOSS && (info.owner == null || !info.owner.isPlayer) && target == AbstractDungeon.player && MonsterTakeDamagePatch.gotSummon()) {
                     _inst.target = PlayerPatch.getSummon();
-                    logger.info("承伤改变" + PlayerPatch.getSummon());
+                    logger.info("承伤改变: {}", PlayerPatch.getSummon());
                 }
             }
         }
