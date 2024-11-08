@@ -26,7 +26,7 @@ public class ZhuoJiuChengXin extends AbstractEasyCard {
     public float prob = baseProb;
 
     public ZhuoJiuChengXin() {
-        super(ID, 1, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
+        super(ID, 0, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
     }
 
     @Override
@@ -37,9 +37,9 @@ public class ZhuoJiuChengXin extends AbstractEasyCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         WinePower wp = (WinePower) Wiz.adp().getPower(WinePower.POWER_ID);
         if (wp == null) return;
-        // 数量太大直接获得9
-        if (wp.amount >= 300) {
-            addToBot(new FastApplyPower_Action(p, p, new ArtifactPower(p, 9)));
+        // 数量太大直接按期望计算
+        if (wp.amount >= 150) {
+            addToBot(new FastApplyPower_Action(p, p, new ArtifactPower(p, wp.amount / 34)));
             return;
         }
         if (upgraded) {

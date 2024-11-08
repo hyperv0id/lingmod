@@ -4,7 +4,9 @@ import basemod.ReflectionHacks;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
 import lingmod.ModCore;
+import lingmod.util.BrowserHandler;
 import lingmod.util.ModConfig;
+import lingmod.util.Wiz;
 
 /**
  * 此patch用于在程序闪退后自动打开浏览器填写问卷。
@@ -17,21 +19,25 @@ public class CoreDumpPatch {
     @SpirePrefixPatch
     public static void Prefix() {
         try {
-            if (ModConfig.browseWhenCrash && ReflectionHacks.getPrivateStatic(Class.forName(CLS_NAME), "crash") != null) {
-                open_browser(QA_URL);
+            if (Wiz.isPlayerLing() && ModConfig.browseWhenCrash &&
+                    ReflectionHacks.getPrivateStatic(Class.forName(CLS_NAME), "crash") != null) {
+                open_browser(BrowserHandler.buildQALink());
             }
         } catch (Exception e) {
             ModCore.logger.info(e.getMessage());
         }
     }
 
+
     public static void open_browser(String url) {
         try {
             Runtime rt = Runtime.getRuntime();
 
             String os = System.getProperty("os.name").toLowerCase();
+
             if (os.contains("win")) {
                 // Windows
+                // 使用引号包围URL，以正确处理包含空格和特殊字符的URL
                 rt.exec("rundll32 url.dll,FileProtocolHandler " + url);
             } else if (os.contains("mac")) {
                 // macOS
