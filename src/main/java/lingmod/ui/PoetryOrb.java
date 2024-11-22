@@ -77,9 +77,9 @@ public class PoetryOrb extends AbstractOrb {
                         Wiz.att(new ReducePowerAction(AbstractDungeon.player, AbstractDungeon.player, PoeticMoodPower.ID,
                                 1));
                         card.skipOnce();
-                        logger.info("Succeed poetry");
+                        logger.info("Succeed poetry-Ctrl");
                     } else
-                        logger.info("Failed Poetry");
+                        logger.info("Failed Poetry-Ctrl");
                 }
             });
         } else if (hb.hovered && InputHelper.justClickedRight) {
@@ -123,7 +123,6 @@ public class PoetryOrb extends AbstractOrb {
     public void render(SpriteBatch sb) {
         hb.render(sb);
         if (card != null) {
-            AbstractPlayer p = AbstractDungeon.player;
             String text = card.getPoetryTip();
             hb.width = FONT_SIZE * text.length() / 2.8F;
             FontHelper.renderSmartText(sb, PORTEY_FONT, text, cX - 48, cY - FONT_SIZE / 2F, Color.WHITE);
