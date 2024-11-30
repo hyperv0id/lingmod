@@ -60,7 +60,7 @@ public class Beans_Ling extends PhasedEvent {
         transitionKey(Phases.BEGIN);
     }
 
-    enum Phases {
+    private enum Phases {
         BEGIN, CHOOSE_1, CHOOSE_2
     }
 }

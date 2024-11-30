@@ -266,14 +266,18 @@ public class ModCore implements
         Condition falseCondition = () -> false;
         new AutoAdd(modID).packageFilter(Beans_Ling.class).any(AbstractImageEvent.class, (info, event) -> {
             String eid = makeID(event.getClass().getSimpleName());
+            // 检查火堆睡觉事件
             if (event.getClass().getAnnotation(CampfireSleepEvent.class) == null) {
                 BaseMod.addEvent(new AddEventParams.Builder(eid, event.getClass())
                         .eventType(EventType.NORMAL)
+                        .playerClass(Ling.Enums.PLAYER_LING)
                         .create());
             } else {
+                // 火堆睡觉事件
                 BaseMod.addEvent(new AddEventParams.Builder(eid, event.getClass())
                         .eventType(EventType.NORMAL)
-                        .spawnCondition(falseCondition)
+                        .spawnCondition(falseCondition) // 默认无法进入事件
+                        .playerClass(Ling.Enums.PLAYER_LING)
                         .create());
             }
         });

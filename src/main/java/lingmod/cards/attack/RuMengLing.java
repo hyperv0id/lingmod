@@ -1,7 +1,7 @@
 package lingmod.cards.attack;
 
-import static lingmod.ModCore.makeID;
-
+import basemod.cardmods.ExhaustMod;
+import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
@@ -9,11 +9,10 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.cardmods.ExhaustMod;
-import basemod.helpers.CardModifierManager;
 import lingmod.cards.AbstractEasyCard;
 import lingmod.interfaces.Credit;
+
+import static lingmod.ModCore.makeID;
 
 /**
  * 消耗最左边的牌，弃牌堆中加入2张复制

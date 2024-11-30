@@ -51,7 +51,7 @@ public class Beans_Shuo extends PhasedEvent {
         transitionKey(Phases.BEGIN);
     }
 
-    public enum Phases {
+    private enum Phases {
         BEGIN, CHOOSE_1, CHOOSE_2
     }
 }

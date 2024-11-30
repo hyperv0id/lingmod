@@ -52,7 +52,7 @@ public class Shu_HelpEvent extends PhasedEvent {
         transitionKey(Phases.PRE);
     }
 
-    enum Phases {
+    private enum Phases {
         PRE, ASK, HELP, FAILED, PRE_COMBAT, COMBAT
     }
 }

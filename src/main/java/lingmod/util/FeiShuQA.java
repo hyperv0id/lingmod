@@ -5,9 +5,10 @@ import com.evacipated.cardcrawl.modthespire.ModInfo;
 
 import java.util.HashMap;
 
-public class BrowserHandler {
+public class FeiShuQA {
 
     public static HashMap<String, String> feishuMap = new HashMap<>();
+    public HashMap<FeiShuQAItem, String> items = new HashMap<>();
 
     static {
         feishuMap.put(" ", "%20");
@@ -25,29 +26,13 @@ public class BrowserHandler {
         feishuMap.put("}", "%7D");
         feishuMap.put("@", "%40");
         feishuMap.put("#", "%23");
+        feishuMap.put("\n", "%0A");
+        feishuMap.put("\t", "%09");
     }
 
     //        public static final String QA_URL = "https://j5xd30acha.feishu.cn/share/base/form/shrcnDH36Z8MdZWvipiTZwDeqie?prefill_问题描述=描述";
     public static final String QA_URL = "https://j5xd30acha.feishu.cn/share/base/form/shrcnJQpQNq0xvTHyv2jpWixymb";
 
-
-    public static String buildQALink() {
-        StringBuilder sb = new StringBuilder();
-
-        sb.append(QA_URL);
-        sb.append("?");
-        String mods = buildModEnabled();
-        sb.append("prefill_自动采集=1&hide_自动采集=1&");
-        // 自动填充MOD启用表
-        if (!mods.isEmpty()) {
-            sb.append("prefill_反馈类型=BUG（闪退）&");
-            mods = encodeSpecialChars(mods);
-            sb.append("prefill_MOD启用=");
-            sb.append(mods);
-            sb.append("&");
-        }
-        return sb.toString();
-    }
 
     // 处理特殊字符
     static String encodeSpecialChars(String input) {
@@ -60,20 +45,46 @@ public class BrowserHandler {
         return result.toString();
     }
 
+    public FeiShuQA with(FeiShuQAItem item, String value) {
+        items.put(item, value);
+        return this;
+    }
+
+    public String makeLink() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(QA_URL);
+        sb.append("?");
+        items.forEach((item, value) -> {
+            sb.append("prefill_");
+            sb.append(item);
+            sb.append("=");
+            sb.append(encodeSpecialChars(value));
+            sb.append("&");
+        });
+        sb.append("hide_自动采集=1&"); // 隐藏自动采集信息
+        sb.append("hide_报错信息=1&"); // 隐藏报错信息
+        return sb.toString();
+    }
+
+
     /**
-     * 处理MOD启用
+     * 获取启用MOD的序列
      *
      * @return 启用MOD的序列
      */
-    static String buildModEnabled() {
+    public static String getModEnabled() {
         StringBuilder builder = new StringBuilder();
-        if (Loader.MODINFOS == null) return "";
+        builder.append("自动采集：\n");
+        if (Loader.MODINFOS == null) return builder.toString();
         for (ModInfo info : Loader.MODINFOS) {
             builder.append(info.getIDName());
-            builder.append(":");
+            builder.append("@");
+            builder.append(info.ModVersion);
+            builder.append("\t");
             builder.append(info.Name);
-            builder.append(";");
+            builder.append("\n");
         }
         return builder.toString();
     }
+
 }

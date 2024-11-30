@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.potions.PotionSlot;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.AbstractRelic.RelicTier;
+import lingmod.cards.AbstractPoetryCard;
 import lingmod.cards.poetry.ChiBiFuCard;
 import lingmod.cards.poetry.DingFengBoCard;
 import lingmod.cards.poetry.JianKeCard;
@@ -42,12 +43,16 @@ public class DoujinshiPlot extends PhasedEvent {
         NAME = eventStrings.NAME;
         body = DESCRIPTIONS[0];
         __inst = this;
+        initPhases();
     }
 
     @Override
     public void onEnterRoom() {
         super.onEnterRoom();
-        CardGroup cg = PlayerFieldsPatch.poetryCardGroup.get(Wiz.adp());
+        initPhases();
+    }
+
+    private void initPhases() {
         // 售卖药水
         registerPhase(Phases.SALE,
                 new TextPhase(DESCRIPTIONS[0])
@@ -82,17 +87,17 @@ public class DoujinshiPlot extends PhasedEvent {
         registerPhase(Phases.DOUJINSHI, new TextPhase(DESCRIPTIONS[2])
                 // [即兴吟诗] 获得 #g《赤壁赋》
                 .addOption(OPTIONS[3], (i) -> {
-                    cg.addToTop(new ChiBiFuCard());
+                    addPoetryCard(new ChiBiFuCard());
                     transitionKey(Phases.REPLY_1);
                 })
                 // [喝酒壮胆] 获得 #g《定风波》
                 .addOption(OPTIONS[4], (i) -> {
-                    cg.addToTop(new DingFengBoCard());
+                    addPoetryCard(new DingFengBoCard());
                     transitionKey(Phases.REPLY_2);
                 })
                 // [握紧佩剑] 获得 #g《剑客》
                 .addOption(OPTIONS[5], (i) -> {
-                    cg.addToTop(new JianKeCard());
+                    addPoetryCard(new JianKeCard());
                     transitionKey(Phases.REPLY_3);
                 }));
         // 进入战斗的对话
@@ -112,11 +117,21 @@ public class DoujinshiPlot extends PhasedEvent {
         transitionKey(Phases.SALE);
     }
 
-    public void exit() {
-        openMap();
+    public void addPoetryCard(AbstractPoetryCard pc) {
+        CardGroup cg = PlayerFieldsPatch.poetryCardGroup.get(Wiz.adp());
+        cg.addToTop(pc);
     }
 
-    public enum Phases {
+    public void drinkPotion() {
+        transitionKey(Phases.DOUJINSHI);
+    }
+
+    public void exit() {
+        openMap();
+
+    }
+
+    protected enum Phases {
         SALE, DRINK, DOUJINSHI, PRE_BATTLE, BATTLE, REPLY_1, REPLY_2, REPLY_3
     }
 }

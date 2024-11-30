@@ -1,12 +1,11 @@
 package lingmod.util.card;
 
-import java.util.ArrayList;
-
-import com.megacrit.cardcrawl.random.Random;
-
 import basemod.AutoAdd;
+import com.megacrit.cardcrawl.random.Random;
 import lingmod.ModCore;
 import lingmod.cards.AbstractPoetryCard;
+
+import java.util.ArrayList;
 
 public class PoetryCardLib {
     public static ArrayList<AbstractPoetryCard> cardPool = new ArrayList<>();

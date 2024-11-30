@@ -1,7 +1,5 @@
 package lingmod.powers;
 
-import static lingmod.ModCore.makeID;
-
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -10,10 +8,11 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.FlameBarrierPower;
 import com.megacrit.cardcrawl.stances.AbstractStance;
-
 import lingmod.actions.ExhaustAllAction;
 import lingmod.stance.NellaFantasiaStance;
 import lingmod.util.Wiz;
+
+import static lingmod.ModCore.makeID;
 
 public class ZhuYeZhouPower extends AbstractEasyPower {
 

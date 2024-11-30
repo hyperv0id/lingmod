@@ -46,8 +46,8 @@ public class ForgetPotion extends AbstractEasyPotion implements PostUpdateSubscr
                 potionStrings.DESCRIPTIONS[0], false);
         BaseMod.subscribe(this);
 
-        if (DoujinshiPlot.__inst == AbstractDungeon.getCurrRoom().event) {
-            DoujinshiPlot.__inst.transitionKey(DoujinshiPlot.Phases.DOUJINSHI);
+        if (DoujinshiPlot.__inst != null && DoujinshiPlot.__inst == AbstractDungeon.getCurrRoom().event) {
+            DoujinshiPlot.__inst.drinkPotion();
             DoujinshiPlot.__inst.imageEventText.loadImage(makeImagePath("events/DoujinshiPlot_1.png"));
         }
     }
