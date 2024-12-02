@@ -50,6 +50,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 @SpireInitializer
@@ -306,15 +307,30 @@ public class ModCore implements
     }
 
     /**
-     *
+     * 玩家开始游戏时，根据角色 添加/移除 诗词牌库
      */
     @Override
     public void receiveStartGame() {
         ArrayList<TopPanelItem> topPanelItems = ReflectionHacks.getPrivate(TopPanelHelper.topPanelGroup,
                 TopPanelGroup.class, "topPanelItems");
-        long cnt = topPanelItems.stream().filter(i -> i instanceof PoetryTopPanel).count();
-        if (cnt <= 0) {
-            BaseMod.addTopPanelItem(new PoetryTopPanel());
+        if (Wiz.isPlayerLing()) {
+            long cnt = topPanelItems.stream().filter(i -> i instanceof PoetryTopPanel).count();
+            if (cnt <= 0) {
+                BaseMod.addTopPanelItem(new PoetryTopPanel());
+            }
+        } else {
+            // 移除PoetryTopPanel
+            // 这里不能用remove，因为会导致ConcurrentModificationException
+            // topPanelItems.stream().filter(i -> i instanceof PoetryTopPanel).forEach(BaseMod::removeTopPanelItem);
+            List<TopPanelItem> toRemove = new ArrayList<>();
+            for (TopPanelItem i : topPanelItems) {
+                if (i instanceof PoetryTopPanel) {
+                    toRemove.add(i);
+                }
+            }
+            for (TopPanelItem i : toRemove) {
+                BaseMod.removeTopPanelItem(i);
+            }
         }
     }
 
