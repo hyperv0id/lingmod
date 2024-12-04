@@ -1,29 +1,19 @@
 package lingmod.util.card;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.helpers.FontHelper;
 import lingmod.cards.AbstractPoetryCard;
 import lingmod.cards.PoetryStrings;
 
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 
 import static lingmod.ModCore.logger;
-import static lingmod.ModCore.makePath;
 import static lingmod.util.Wiz.addToBotAbstract;
 
 /**
  * 管理诗歌的韵律
  */
 public class ToneManager {
-    public static final String FONT_PATH = makePath("华文行楷.ttf");
-    static final float FONT_SIZE = 22.0F;
-    static BitmapFont font;
     private final AbstractPoetryCard owner;
     public List<String> tokens; // 诗歌内容
     public List<String> toneTokens; // 平仄内容
@@ -38,7 +28,6 @@ public class ToneManager {
         toneTokens = Arrays.asList(vs.TONE_PATTERN);
         idx_1 = 0;
         idx_2 = 0;
-        loadFont();
     }
 
     public ToneManager(AbstractPoetryCard card, String[] content, String[] tone) {
@@ -47,22 +36,6 @@ public class ToneManager {
         toneTokens = Arrays.asList(tone);
         idx_1 = 0;
         idx_2 = 0;
-        loadFont();
-    }
-
-    static void loadFont() {
-        if (font == null) {
-            FileHandle fontFile = Gdx.files.internal(FONT_PATH);
-            FreeTypeFontGenerator g = new FreeTypeFontGenerator(fontFile);
-            try {
-                Method f = FontHelper.class.getDeclaredMethod("prepFont", FreeTypeFontGenerator.class, Float.TYPE,
-                        Boolean.TYPE);
-                f.setAccessible(true);
-                font = (BitmapFont) f.invoke(FontHelper.class.getName(), g, FONT_SIZE, true);
-            } catch (Exception e) {
-                font = FontHelper.tipBodyFont;
-            }
-        }
     }
 
     public String toSmartText() {
@@ -94,7 +67,7 @@ public class ToneManager {
                 sb.append(" ");
             }
             tipStrCache = sb.toString();
-            logger.info("Poetry Changed: " + tipStrCache);
+            logger.info("Poetry Changed: {}", tipStrCache);
         }
         return tipStrCache;
     }

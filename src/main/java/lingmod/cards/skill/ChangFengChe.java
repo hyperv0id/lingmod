@@ -9,10 +9,12 @@ import lingmod.interfaces.CardConfig;
 import lingmod.interfaces.Credit;
 import lingmod.util.CardHelper;
 
+import static lingmod.interfaces.Credit.LOFTER;
+
 /**
  * 长风彻: 0费打6，只有打防：抽3
  */
-@Credit(username = "TODO")
+@Credit(username = "残月BM", platform = LOFTER, link = "https://canyue87560.lofter.com/post/31e31cdc_2ba0325d9")
 @CardConfig(damage = 6, magic = 3)
 public class ChangFengChe extends AbstractEasyCard {
     public static final String ID = ModCore.makeID(ChangFengChe.class.getSimpleName());

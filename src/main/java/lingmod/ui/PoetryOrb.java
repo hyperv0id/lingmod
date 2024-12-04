@@ -10,6 +10,7 @@ import com.evacipated.cardcrawl.modthespire.Loader;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
@@ -30,7 +31,7 @@ public class PoetryOrb extends AbstractOrb {
     public static final String PID = makeID(PoetryOrb.class.getSimpleName());
     public static final UIStrings uis = CardCrawlGame.languagePack.getUIString(PID);
     public static final String FONT_PATH = makePath("华文行楷.ttf");
-    private static final BitmapFont PORTEY_FONT = loadFont(FONT_PATH);
+    private static final BitmapFont POETRY_FONT = loadFont(FONT_PATH);
     private final InputAction ctrlKey;
 
 
@@ -46,6 +47,17 @@ public class PoetryOrb extends AbstractOrb {
         this.card = card;
         this.ctrlKey = new InputAction(129);
     }
+
+    /**
+     * 创建诗词，并移动到目标头上
+     */
+    public PoetryOrb(AbstractPoetryCard card, AbstractCreature target) {
+        this(card);
+        tX = cX = target.drawX;
+        tY = cY = target.drawY + target.hb_h - cY + getRenderGap();
+        hb.move(cX, cY);
+    }
+
 
     @Override
     public void updateDescription() {
@@ -125,7 +137,7 @@ public class PoetryOrb extends AbstractOrb {
         if (card != null) {
             String text = card.getPoetryTip();
             hb.width = FONT_SIZE * text.length() / 2.8F;
-            FontHelper.renderSmartText(sb, PORTEY_FONT, text, cX - 48, cY - FONT_SIZE / 2F, Color.WHITE);
+            FontHelper.renderSmartText(sb, POETRY_FONT, text, cX - 48, cY - FONT_SIZE / 2F, Color.WHITE);
         }
     }
 

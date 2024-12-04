@@ -15,7 +15,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.cutscenes.CutscenePanel;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
@@ -109,12 +108,11 @@ public class Ling extends CustomPlayer {
     @Override
     public void applyStartOfCombatLogic() {
         super.applyStartOfCombatLogic();
-
         CardGroup cg = PlayerFieldsPatch.poetryCardGroup.get(Wiz.adp());
         ArrayList<AbstractCard> stanceChoices = cg.group;
         Wiz.atb(new SelectCardsAction(stanceChoices, PoetryTopPanel.TEXT[2], cards -> {
             AbstractPoetryCard card = (AbstractPoetryCard) cards.get(0).makeCopy();
-            AbstractDungeon.player.channelOrb(new PoetryOrb(card));
+            PlayerFieldsPatch.poetryOrb.set(Wiz.adp(), new PoetryOrb(card, this));
         }));
     }
 
@@ -180,7 +178,7 @@ public class Ling extends CustomPlayer {
     @Override
     public CharSelectInfo getLoadout() {
         return new CharSelectInfo(NAMES[0], TEXT[0],
-                74, 74, 1, 99, 5, this, getStartingRelics(),
+                74, 74, 0, 99, 5, this, getStartingRelics(),
                 getStartingDeck(), false);
     }
 

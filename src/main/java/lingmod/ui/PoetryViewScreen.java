@@ -175,9 +175,9 @@ public class PoetryViewScreen extends CustomScreen {
 
     public static class Enum {
         @SpireEnum
-        public static AbstractDungeon.CurrentScreen POETRY_CARD_VIEW_SCREEN;
+        public static AbstractDungeon.CurrentScreen POETRY_CARD_VIEW_SCREEN; // 查看所有诗词
         @SpireEnum
-        public static AbstractDungeon.CurrentScreen SELECTED_POETRY_CARD_VIEW_SCREEN;
+        public static AbstractDungeon.CurrentScreen SELECTED_POETRY_CARD_VIEW_SCREEN; // 查看选中诗词
 
         public Enum() {
         }
