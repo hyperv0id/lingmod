@@ -1,5 +1,6 @@
 package lingmod.ui;
 
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -29,7 +30,10 @@ public class SelectedPoetryViewScreen extends PoetryViewScreen {
         targetGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
         Ling p = (Ling) AbstractDungeon.player;
         if (p != null) {
-            targetGroup.addToTop(p.getPoetryCard());
+            AbstractCard c = p.getPoetryCard();
+            if (c != null) {
+                targetGroup.addToTop(c);
+            }
         }
 
         if (targetGroup.group.size() <= 6) {

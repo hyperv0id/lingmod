@@ -82,8 +82,8 @@ public class ModCore implements
     private static final String SKILL_ART_L = makeImagePath("1024/skill.png");
     private static final String POWER_ART_L = makeImagePath("1024/power.png");
     private static final String CARD_ENERGY_L = makeImagePath("1024/energy.png");
-    private static final String CHARSELECT_BUTTON = makeImagePath("ui/char_select/button.png");
-    private static final String CHARSELECT_PORTRAIT = makeImagePath("ui/char_select/portrait.png");
+    private static final String CHAR_SELECT_BUTTON = makeImagePath("ui/char_select/button.png");
+    private static final String CHAR_SELECT_PORTRAIT = makeImagePath("ui/char_select/portrait.png");
     public static Color characterColor = new Color(MathUtils.random(), MathUtils.random(), MathUtils.random(), 1); // This
     public static Settings.GameLanguage[] SupportedLanguages = {
             Settings.GameLanguage.ENG,
@@ -171,7 +171,7 @@ public class ModCore implements
     @Override
     public void receiveEditCharacters() {
         BaseMod.addCharacter(new Ling(Ling.characterStrings.NAMES[1], Ling.Enums.PLAYER_LING),
-                CHARSELECT_BUTTON, CHARSELECT_PORTRAIT, Ling.Enums.PLAYER_LING);
+                CHAR_SELECT_BUTTON, CHAR_SELECT_PORTRAIT, Ling.Enums.PLAYER_LING);
 
         new AutoAdd(modID)
                 .packageFilter(AbstractEasyPotion.class)

@@ -100,11 +100,7 @@ public class PoetryTopPanel extends TopPanelItem implements CustomSavable<List<C
             }
 
             if (AbstractDungeon.screen != CurrentScreen.VICTORY) {
-                if (rightClick) {
-                    BaseMod.openCustomScreen(PoetryViewScreen.Enum.SELECTED_POETRY_CARD_VIEW_SCREEN);
-                } else {
-                    BaseMod.openCustomScreen(PoetryViewScreen.Enum.POETRY_CARD_VIEW_SCREEN);
-                }
+                BaseMod.openCustomScreen(PoetryViewScreen.Enum.POETRY_CARD_VIEW_SCREEN);
             }
         }
 

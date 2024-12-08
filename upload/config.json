@@ -3,7 +3,7 @@
   "title": "令-明日方舟",
   "description": "",
   "visibility": "public",
-  "changeNote": "诗词Orb优化，不再套用原版球",
+  "changeNote": "bugfix: 修复召唤物无来源伤害BUG、诗词栏右键闪退修复",
   "tags": [
     "Ling",
     "Arknights",

@@ -62,7 +62,7 @@ public class FeiShuQA {
             sb.append("&");
         });
         sb.append("hide_自动采集=1&"); // 隐藏自动采集信息
-        sb.append("hide_报错信息=1&"); // 隐藏报错信息
+        //sb.append("hide_报错信息=1&"); // 隐藏报错信息
         return sb.toString();
     }
 

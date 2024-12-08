@@ -29,7 +29,7 @@ public class SummonMonsterPatch {
      * "https://steamcommunity.com/sharedfiles/filedetails/?id=2672531653">KaltsitMod</a>
      */
     public static class MonsterTakeDamagePatch {
-//        protected static AbsSummonMonster summonTarget;
+        //        protected static AbsSummonMonster summonTarget;
 
         /**
          * 获得召唤物，在角色被攻击时，角色替代受到伤害
@@ -39,18 +39,6 @@ public class SummonMonsterPatch {
         public static boolean gotSummon() {
             AbsSummonMonster summonTarget = PlayerPatch.Fields.summonedMonster.get(Wiz.adp());
             return summonTarget != null && !summonTarget.isDeadOrEscaped();
-        }
-
-        @SpirePatch(clz = AbstractMonster.class, method = "damage")
-        public static class DamagePatch {
-            @SpirePrefixPatch
-            public static SpireReturn<Void> Prefix(AbstractMonster __inst, DamageInfo info) {
-                if (__inst instanceof AbsSummonMonster && (info == null || info.owner == null)) {
-                    logger.info("取消指向召唤物的无来源伤害");
-                    return SpireReturn.Return(null);
-                }
-                return SpireReturn.Continue();
-            }
         }
 
         @SpirePatch(clz = AbstractGameAction.class, method = "setValues", paramtypez = {AbstractCreature.class,

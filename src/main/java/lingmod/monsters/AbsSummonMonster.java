@@ -107,6 +107,15 @@ public abstract class AbsSummonMonster extends CustomMonster implements PostBatt
     }
 
     @Override
+    public void damage(DamageInfo info) {
+        if (info == null || info.owner == null) {
+            logger.info("取消指向召唤物的无来源伤害");
+            return;
+        }
+        super.damage(info);
+    }
+
+    @Override
     public void die() {
         super.die();
         die_summon();
