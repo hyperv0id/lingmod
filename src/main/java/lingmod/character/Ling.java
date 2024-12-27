@@ -82,7 +82,7 @@ public class Ling extends CustomPlayer {
     public void loadSkin() {
         ModConfig.loadSkinInfo();
         // String charID = "char_2015_dusk";
-        if (ModConfig.useStaticCharImg || ModConfig.skinInfo == SkinInfo.ZUI_SHAN_HE) {
+        if (ModConfig.useStaticCharImg || ModConfig.skinInfo == SkinInfo.ZUI_SHAN_HE || ModConfig.skinInfo == SkinInfo.LAWSON) {
             String prefix = makeCharacterPath("ling/static/");
             String path = prefix + ModConfig.skinInfo.toString().toLowerCase();
             img = ImageMaster.loadImage(path + ".png");

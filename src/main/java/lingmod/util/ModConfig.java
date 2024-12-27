@@ -22,7 +22,7 @@ import static lingmod.ModCore.*;
 
 public class ModConfig {
     private static final String DIALECT_OPT_KEY = makeID("VOICE.DIALECT");
-    private static final String SKIN_OPT_KEY = makeID("CONF.CHAR_SKIN");
+    public static final String SKIN_OPT_KEY = makeID("CONF.CHAR_SKIN");
     private static final String SHOW_CREDIT_KEY = makeID("B_SHOW_CREDIT");
     private static final String STATIC_CHAR_KEY = makeID("CONF.STATIC_CHAR");
     private static final String CRASH_REPORT = makeID("BROWSE_WHEN_CRASH");
