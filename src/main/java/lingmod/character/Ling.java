@@ -28,7 +28,10 @@ import lingmod.patch.PlayerFieldsPatch;
 import lingmod.relics.LightRelic;
 import lingmod.ui.PoetryOrb;
 import lingmod.ui.PoetryTopPanel;
-import lingmod.util.*;
+import lingmod.util.ModConfig;
+import lingmod.util.TODO;
+import lingmod.util.VoiceMaster;
+import lingmod.util.Wiz;
 import lingmod.util.audio.MusicUtil;
 
 import java.util.ArrayList;
@@ -81,15 +84,9 @@ public class Ling extends CustomPlayer {
 
     public void loadSkin() {
         ModConfig.loadSkinInfo();
-        // String charID = "char_2015_dusk";
-        if (ModConfig.useStaticCharImg || ModConfig.skinInfo == SkinInfo.ZUI_SHAN_HE || ModConfig.skinInfo == SkinInfo.LAWSON) {
-            String prefix = makeCharacterPath("ling/static/");
-            String path = prefix + ModConfig.skinInfo.toString().toLowerCase();
-            img = ImageMaster.loadImage(path + ".png");
-            this.hb = new Hitbox(img.getWidth() * Settings.scale, img.getHeight() * Settings.scale);
-            this.hb_h = hb.height;
-            this.hb_w = hb.width;
-        } else {
+        boolean loadDynFailed = false;
+        // 1. 尝试使用动图
+        try {
             String prefix = makeCharacterPath("ling/char_2023_ling_");
             String path = prefix + ModConfig.skinInfo.toString().toLowerCase();
             String atlasUrl = path + ".atlas";
@@ -99,9 +96,19 @@ public class Ling extends CustomPlayer {
             AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
             e.setTime(e.getEndTime() * MathUtils.random());
             e.setTimeScale(0.8F);
+        } catch (Exception ignored) {
+            loadDynFailed = true;
+        }
+        // 2. 动图加载失败或者指定使用静态图，改为加载静态图
+        if (ModConfig.useStaticCharImg || loadDynFailed) {
+            String prefix = makeCharacterPath("ling/static/");
+            String path = prefix + ModConfig.skinInfo.toString().toLowerCase();
+            img = ImageMaster.loadImage(path + ".png");
+            this.hb = new Hitbox(img.getWidth() * Settings.scale, img.getHeight() * Settings.scale);
+            this.hb_h = hb.height;
+            this.hb_w = hb.width;
         }
     }
-
     /**
      * 开局时选择一个诗词赋曲来规定整场战斗的格调
      */

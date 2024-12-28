@@ -32,6 +32,11 @@ public class SkinSelectScreen {
         if (inst != null) return;
         this.leftHb = new Hitbox(70.0F * Settings.scale, 70.0F * Settings.scale);
         this.rightHb = new Hitbox(70.0F * Settings.scale, 70.0F * Settings.scale);
+        for (int i = 0; i < SKINS.length; i++) {
+            if (SKINS[i].toString().equals(ModConfig.config.getString(SKIN_OPT_KEY))) {
+                skinIdx = i;
+            }
+        }
         player = new Ling();
         inst = this;
     }
@@ -95,6 +100,7 @@ public class SkinSelectScreen {
         logger.info("UpdateSkin: {}", SKINS[skinIdx]);
         ModConfig.config.setString(SKIN_OPT_KEY, SKINS[skinIdx].toString());
         player = new Ling();
+        ModConfig.saveSkinInfo();
     }
 
 
