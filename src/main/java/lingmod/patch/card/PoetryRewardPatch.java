@@ -15,12 +15,24 @@ public class PoetryRewardPatch {
     @SpirePatch(clz = AbstractRoom.class, method = "update")
     public static class AddPoetryWithPotion {
 
+        public static float defaultProbability = 0.2f;
+        public static float probability = 0.2f;
+
+        /**
+         * 添加诗歌奖励，概率随着游戏进行而增加
+         *
+         * @param __instance 房间实例
+         */
         @SpireInsertPatch(locator = Locator.class)
         public static void Insert(AbstractRoom __instance) {
-            if (AbstractDungeon.cardRng.random() <= 0.2) {
+            if (AbstractDungeon.cardRng.random() <= probability) {
                 AbstractPoetryCard pc = (AbstractPoetryCard) PoetryCardLib.getCard(AbstractDungeon.cardRng).makeCopy();
                 logger.info("Add Poetry Reward: " + pc.name);
                 __instance.rewards.add(new PoetryReward(pc));
+                probability = defaultProbability;
+            } else {
+                logger.info("No Poetry Reward");
+                probability += 0.1f;
             }
         }
 
