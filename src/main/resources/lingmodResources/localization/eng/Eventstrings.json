@@ -232,5 +232,15 @@
       "[独幽] 切换回忆",
       "[逍遥] 离开回忆"
     ]
+  },
+  "${ModID}:ZuiFeiChenEvent": {
+    "NAME": "Revel in the Real",
+    "DESCRIPTIONS": [
+      "You're the candlestick man, and you're investigating a #rsecret #rcase. After combing through the clues, you finally target the inn, but the #b drunk at the door seems to want to say something to you."
+    ],
+    "OPTIONS": [
+      "[Ignore] Exit this Event",
+      "[Combat] Enter a Music Battle"
+    ]
   }
 }
