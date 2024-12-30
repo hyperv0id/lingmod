@@ -3,7 +3,7 @@
   "title": "令-明日方舟",
   "description": "",
   "visibility": "public",
-  "changeNote": "添加皮肤选择和罗森联动小人",
+  "changeNote": "bugfix：修复遗留的damage相关错误。顺便修改十方吐纳卡牌",
   "tags": [
     "Ling",
     "Arknights",

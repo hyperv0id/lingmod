@@ -1,4 +1,3 @@
-
 {
   "${ModID}:ChongJinJiuCard": {
     "NAME": "Second Cup",
@@ -349,7 +348,7 @@
   },
   "lingmod:ShiFangTuNa": {
     "NAME": "Omni Direction Breath",
-    "DESCRIPTION": "For every enemy or Summon, deal !D! damage.  NL （total !M! times）"
+    "DESCRIPTION": "Calculate living species, deal !D! damage  !M! times"
   },
   "lingmod:BeiChangMeng": {
     "NAME": "Sorrow Dream",

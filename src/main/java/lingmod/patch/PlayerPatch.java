@@ -18,6 +18,16 @@ import lingmod.monsters.AbsSummonMonster;
 import lingmod.util.MonsterHelper;
 import lingmod.util.Wiz;
 
+/**
+ * PlayerPatch 类用于对游戏中的玩家行为进行补丁修改。
+ * 该类通过 SpirePatch 注解对游戏中的多个方法进行拦截和扩展，以实现自定义功能。
+ * 主要功能包括：
+ * - 管理玩家召唤的怪物（AbsSummonMonster）。
+ * - 修改玩家渲染逻辑，支持召唤怪物的渲染和交互。
+ * - 在回合结束时触发召唤怪物的行为。
+ * - 修改玩家伤害目标逻辑，避免友伤。
+ * - 在房间渲染和更新时处理召唤怪物的渲染和状态更新。
+ */
 public class PlayerPatch {
 
     @SpirePatch(

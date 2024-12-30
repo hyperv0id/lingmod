@@ -110,18 +110,6 @@ public class SummonMonsterPatch {
         }
     }
 
-    @SpirePatch(clz = Burn.class, method = "use")
-    public static class BurnPatch {
-        public static SpireReturn<Void> Prefix(Burn _inst, AbstractPlayer p, AbstractMonster m) {
-            if (_inst.dontTriggerOnUseCard) {
-                AbstractDungeon.actionManager.addToBottom(new DamageAction(AbstractDungeon.player,
-                        new DamageInfo(null, _inst.magicNumber, DamageInfo.DamageType.THORNS),
-                        AbstractGameAction.AttackEffect.FIRE));
-            }
-            return SpireReturn.Return(null);
-        }
-    }
-
     @SpirePatch(
             clz = HandDrill.class,
             method = "onBlockBroken"

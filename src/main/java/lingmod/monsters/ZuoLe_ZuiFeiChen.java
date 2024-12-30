@@ -10,8 +10,9 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
-import com.megacrit.cardcrawl.powers.NoDrawPower;
 import lingmod.ModCore;
+import lingmod.powers.NoDrawPlusPower;
+import lingmod.ui.VideoBackground;
 import lingmod.util.Wiz;
 
 import static lingmod.ModCore.makeID;
@@ -26,6 +27,8 @@ public class ZuoLe_ZuiFeiChen extends CustomMonster {
     protected static final MonsterStrings ms = CardCrawlGame.languagePack.getMonsterStrings(ID);
     public static final String NAME = ms.NAME;
     protected static final String IMG_PATH = makeImagePath("ZuoLe_ZuiFeiChen.png", ModCore.ResourceType.MONSTERS);
+    private boolean firstMove = true;
+    public VideoBackground video;
 
     public ZuoLe_ZuiFeiChen() {
         super(NAME, ID, MAX_HP, -10.0F, -30.0F, 476.0F, 410.0F, IMG_PATH,
@@ -53,7 +56,7 @@ public class ZuoLe_ZuiFeiChen extends CustomMonster {
         AbstractPlayer p = Wiz.adp();
         addToBot(new GainBlockAction(this, 999)); // 获得999护甲以免被玩家打死
         // 用于维护房间视觉
-        addToTop(new ApplyPowerAction(p, this, new NoDrawPower(p)));
+        addToTop(new ApplyPowerAction(p, this, new NoDrawPlusPower(p, 99))); // 99 回合内无法抽牌
         addToTop(new RemoveAllPowersAction(p, false)); // 移除所有能力，保证无法房间抽牌、弃牌
         addToTop(new DiscardAction(p, this, 10, false)); // 丢弃所有手牌
     }
@@ -62,13 +65,17 @@ public class ZuoLe_ZuiFeiChen extends CustomMonster {
     @Override
     public void takeTurn() {
         maintainRoom();
+        if (this.firstMove) {
+            firstMove = false;
+            this.video = new VideoBackground(ModCore.makePath("video/Ling_3DPV.webm"));
+            // 第一回合：切换背景
+        }
     }
 
     @Override
     public void update() {
         super.update();
         // 检查视频是否播放完毕
-
     }
 
     @Override
@@ -76,5 +83,4 @@ public class ZuoLe_ZuiFeiChen extends CustomMonster {
         // 不会攻击
         setMove((byte) 1, Intent.DEBUG);
     }
-
 }

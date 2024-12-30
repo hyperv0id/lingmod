@@ -348,7 +348,7 @@
   },
   "lingmod:ShiFangTuNa": {
     "NAME": "十方吐纳",
-    "DESCRIPTION": "每有一名怪物或召唤物，造成 !D! 点伤害。 NL （共 !M! 次）"
+    "DESCRIPTION": "每有一名活物，就对其造成 !D! 点伤害。 NL （共 !M! 次）"
   },
   "lingmod:BeiChangMeng": {
     "NAME": "悲长梦",

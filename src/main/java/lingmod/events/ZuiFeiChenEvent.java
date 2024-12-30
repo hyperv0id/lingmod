@@ -1,5 +1,6 @@
 package lingmod.events;
 
+import basemod.AutoAdd;
 import basemod.ReflectionHacks;
 import basemod.abstracts.events.PhasedEvent;
 import basemod.abstracts.events.phases.CombatPhase;
@@ -25,6 +26,7 @@ import java.util.function.Consumer;
 import static lingmod.ModCore.makeID;
 
 @CampfireSleepEvent
+@AutoAdd.Ignore // 不稳定
 public class ZuiFeiChenEvent extends PhasedEvent {
     public static final String ID = makeID(ZuiFeiChenEvent.class.getSimpleName());
 
