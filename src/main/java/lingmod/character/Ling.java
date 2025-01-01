@@ -3,11 +3,13 @@ package lingmod.character;
 import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsAction;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -17,6 +19,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.cutscenes.CutscenePanel;
 import com.megacrit.cardcrawl.helpers.*;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
+import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import lingmod.cards.AbstractPoetryCard;
 import lingmod.cards.attack.ChongJinJiuCard;
@@ -28,10 +31,7 @@ import lingmod.patch.PlayerFieldsPatch;
 import lingmod.relics.LightRelic;
 import lingmod.ui.PoetryOrb;
 import lingmod.ui.PoetryTopPanel;
-import lingmod.util.ModConfig;
-import lingmod.util.TODO;
-import lingmod.util.VoiceMaster;
-import lingmod.util.Wiz;
+import lingmod.util.*;
 import lingmod.util.audio.MusicUtil;
 
 import java.util.ArrayList;
@@ -109,6 +109,7 @@ public class Ling extends CustomPlayer {
             this.hb_w = hb.width;
         }
     }
+
     /**
      * 开局时选择一个诗词赋曲来规定整场战斗的格调
      */
@@ -179,6 +180,22 @@ public class Ling extends CustomPlayer {
                 this.state.addAnimation(0, "Idle", true, 0.0F);
             } catch (Exception ignore) {
             }
+        }
+    }
+
+    @Override
+    public void render(SpriteBatch sb) {
+        try {
+            super.render(sb);
+        } catch (NullPointerException e) {
+            if (!Morph.currentMorph.isEmpty()) {
+                logger.info("Morph failed, do unmorph");
+                logger.error("Morph to {} failed, please upload this log to the mod author", Morph.currentMorph);
+                Morph.restorePlayerMorph();
+            }
+            String uid = makeID("LingTalks");
+            UIStrings _uis = CardCrawlGame.languagePack.getUIString(uid);
+            Wiz.addToBotAbstract(() -> new TalkAction(Wiz.adp(), _uis.TEXT[0], 2.0F, 2.0F));
         }
     }
 

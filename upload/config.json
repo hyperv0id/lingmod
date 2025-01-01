@@ -3,7 +3,7 @@
   "title": "令-明日方舟",
   "description": "",
   "visibility": "public",
-  "changeNote": "bugfix：修复遗留的damage相关错误。顺便修改十方吐纳卡牌",
+  "changeNote": "bugfix: 完全修复变形错误，变形错误将放弃变形。",
   "tags": [
     "Ling",
     "Arknights",

@@ -145,17 +145,17 @@ public class Morph {
         Ling ling = new Ling(Ling.characterStrings.NAMES[1], Ling.Enums.PLAYER_LING);
         // 1
         if (skeletonBackup == null) {
-            skeletonBackup = ReflectionHacks.getPrivate(ling, AbstractPlayer.class, "skeleton");
+            skeletonBackup = ReflectionHacks.getPrivate(ling, AbstractCreature.class, "skeleton");
         }
         ReflectionHacks.setPrivate(p, AbstractCreature.class, "skeleton", skeletonBackup);
         // 2
         if (atlasBackup == null) {
-            atlasBackup = ReflectionHacks.getPrivate(ling, AbstractPlayer.class, "atlas");
+            atlasBackup = ReflectionHacks.getPrivate(ling, AbstractCreature.class, "atlas");
         }
         ReflectionHacks.setPrivate(p, AbstractCreature.class, "atlas", atlasBackup);
         // 3
         if (stateBackup == null) {
-            stateBackup = ReflectionHacks.getPrivate(ling, AbstractPlayer.class, "stateBackup");
+            stateBackup = ReflectionHacks.getPrivate(ling, AbstractCreature.class, "state");
         }
         p.state = stateBackup;
         // 4
