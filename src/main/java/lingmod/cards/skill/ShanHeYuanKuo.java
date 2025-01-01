@@ -15,7 +15,7 @@ import lingmod.powers.ShanHeYuanKuoPower;
  */
 @AutoAdd.Ignore
 @CardConfig(magic = 1)
-@Credit(username = "下野宏铭", platform = Credit.WEIBO)
+@Credit(username = "下野宏铭", platform = Credit.WEIBO, link = "https://x.com/hohoanime/status/1554347594792718337")
 public class ShanHeYuanKuo extends AbstractEasyCard {
     public static final String ID = ModCore.makeID(ShanHeYuanKuo.class.getSimpleName());
 
