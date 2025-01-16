@@ -142,5 +142,8 @@
     "NAME": "Zuo Le",
     "DIALOG": [
     ]
+  },
+  "${ModID}:Monster_Dusk_Opera": {
+    "NAME": "Recluse Painter"
   }
 }

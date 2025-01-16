@@ -3,7 +3,7 @@
   "title": "令-明日方舟",
   "description": "",
   "visibility": "public",
-  "changeNote": "bugfix: 完全修复变形错误，变形错误将放弃变形。",
+  "changeNote": "feat: 新增罗森联动立绘，部分事件预载",
   "tags": [
     "Ling",
     "Arknights",

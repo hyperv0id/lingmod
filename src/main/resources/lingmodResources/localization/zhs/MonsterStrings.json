@@ -141,5 +141,8 @@
     "NAME": "左乐",
     "DIALOG": [
     ]
+  },
+  "${ModID}:Monster_Dusk_Opera": {
+    "NAME": "孤僻鬼"
   }
 }

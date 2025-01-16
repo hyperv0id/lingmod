@@ -11,7 +11,10 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.graphics.glutils.GLFrameBuffer;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
+import com.esotericsoftware.spine.AnimationState;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
+import lingmod.ModCore;
 
 
 public class WizArt {
@@ -149,5 +152,31 @@ public class WizArt {
             sb.setShader(shader);
             sb.setBlendFunction(srcBlendFunc, dstBlendFunc);
         }
+    }
+
+
+    /**
+     * 播放动画并在之后Idle
+     */
+    public static void animateThenIdle(AbstractCreature cr, String anim, String idle) {
+        if (cr.state != null) {
+            boolean valid = false;
+            for (AnimationState.TrackEntry track : cr.state.getTracks()) {
+                if (track.toString().equals(anim)) {
+                    valid = true;
+                    break;
+                }
+            }
+            if (!valid) {
+                cr.state.setAnimation(0, anim, true);
+                cr.state.setAnimation(1, idle, true);
+            } else {
+                ModCore.logger.warn("Animation not found: {}", anim);
+            }
+        }
+    }
+
+    public static void animateThenIdle(AbstractCreature cr, String anim) {
+        animateThenIdle(cr, anim, "Idle");
     }
 }

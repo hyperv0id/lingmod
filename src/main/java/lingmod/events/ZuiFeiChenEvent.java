@@ -16,7 +16,6 @@ import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import lingmod.interfaces.CampfireSleepEvent;
-import lingmod.monsters.ZuoLe_ZuiFeiChen;
 import lingmod.relics.Beans_DuskRelic;
 import lingmod.util.Wiz;
 
@@ -40,10 +39,10 @@ public class ZuiFeiChenEvent extends PhasedEvent {
         super(ID, eventStrings.NAME, "");
         registerPhase("INTRO", new TextPhase(DESCRIPTIONS[0]).addOption(OPTIONS[1],
                 (i) -> transitionKey("BATTLE")));
-        registerPhase("BATTLE",
-                new MusicPhase(new MonsterGroup(new ZuoLe_ZuiFeiChen()))
-                        .withChangePosition(true)
-        );
+        //registerPhase("BATTLE",
+        //        new MusicPhase(new MonsterGroup(new ZuoLe_ZuiFeiChen()))
+        //                .withChangePosition(true)
+        //);
     }
 
     @Override
