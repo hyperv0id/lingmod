@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
-import com.megacrit.cardcrawl.vfx.FastCardObtainEffect;
 import lingmod.ModCore;
 import lingmod.cards.AbstractPoetryCard;
 import lingmod.patch.PlayerFieldsPatch;
@@ -44,7 +43,6 @@ public class PoetryReward extends CustomReward {
             return true;
         }
         poetryGrp.addToTop(this.card);
-        AbstractDungeon.effectsQueue.add(new FastCardObtainEffect(card, card.current_x, card.current_y));
         UnlockTracker.markCardAsSeen(this.card.cardID);
         return true;
     }

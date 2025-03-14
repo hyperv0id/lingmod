@@ -16,7 +16,7 @@ public class PoetryRewardPatch {
     public static class AddPoetryWithPotion {
 
         public static float defaultProbability = 0.2f;
-        public static float probability = 0.2f;
+        public static float probability = 0.3f;
 
         /**
          * 添加诗歌奖励，概率随着游戏进行而增加

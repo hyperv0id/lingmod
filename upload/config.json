@@ -3,7 +3,7 @@
   "title": "令-明日方舟",
   "description": "",
   "visibility": "public",
-  "changeNote": "feat: 新增罗森联动立绘，部分事件预载",
+  "changeNote": "bugfix: 修复诗词卡牌错误添加到MasterDeck的问题",
   "tags": [
     "Ling",
     "Arknights",
