@@ -19,7 +19,7 @@ import lingmod.cards.poetry.DingFengBoCard;
 import lingmod.cards.poetry.JianKeCard;
 import lingmod.patch.PlayerFieldsPatch;
 import lingmod.potions.ForgetPotion;
-import lingmod.util.PoetryReward;
+import lingmod.util.card.PoemReward;
 import lingmod.util.Wiz;
 
 import static lingmod.ModCore.*;
@@ -109,7 +109,7 @@ public class DoujinshiPlot extends PhasedEvent {
                 new TextPhase(DESCRIPTIONS[6]).addOption(OPTIONS[6], (i) -> transitionKey(Phases.BATTLE)));
         // 进入战斗
         registerPhase(Phases.BATTLE, new CombatPhase(MonsterHelper.TWO_THIEVES_ENC).addRewards(true, (room) -> {
-            room.rewards.add(new PoetryReward());
+            room.rewards.add(new PoemReward());
             room.addRelicToRewards(RelicTier.COMMON);
         }));
 

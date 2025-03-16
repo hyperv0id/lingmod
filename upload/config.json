@@ -3,7 +3,7 @@
   "title": "令-明日方舟",
   "description": "",
   "visibility": "public",
-  "changeNote": "bugfix: 修复诗词卡牌错误添加到MasterDeck的问题",
+  "changeNote": "bugfix: 修复诗词奖励不能保存和加载的问题",
   "tags": [
     "Ling",
     "Arknights",

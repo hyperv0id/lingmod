@@ -1,4 +1,4 @@
-package lingmod.util;
+package lingmod.util.card;
 
 import com.badlogic.gdx.Gdx;
 import com.google.gson.Gson;
@@ -11,7 +11,7 @@ import java.util.Map;
 
 import static lingmod.ModCore.getStringPathI18N;
 
-public class PoetryLoader {
+public class PoemLoader {
     public static Map<String, PoetryStrings> strings = new HashMap<>();
     public static String DEFAULT_PATH = getStringPathI18N() + "/PoetryStrings.json";
 

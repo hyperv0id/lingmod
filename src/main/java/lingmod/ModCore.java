@@ -42,15 +42,18 @@ import lingmod.ui.PoetryTopPanel;
 import lingmod.ui.PoetryViewScreen;
 import lingmod.ui.SelectedPoetryViewScreen;
 import lingmod.util.ModConfig;
-import lingmod.util.PoetryLoader;
 import lingmod.util.Wiz;
 import lingmod.util.audio.ProAudio;
+import lingmod.util.card.PoemLoader;
+import lingmod.util.card.PoemReward;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+
+import static lingmod.patch.ModEnums.POEM_REWARD;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 @SpireInitializer
@@ -221,7 +224,7 @@ public class ModCore implements
         BaseMod.loadCustomStringsFile(RunModStrings.class, getStringPathI18N() + "/Modstrings.json");
         BaseMod.loadCustomStringsFile(MonsterStrings.class, getStringPathI18N() + "/MonsterStrings.json");
         // 诗词赋曲单独放置
-        PoetryLoader.init();
+        PoemLoader.init();
     }
 
     /**
@@ -260,6 +263,7 @@ public class ModCore implements
         // BaseMod.addTopPanelItem(new PoetryTopPanel());
         BaseMod.addSaveField(PoetryTopPanel.ID, new PoetryTopPanel());
         BaseMod.addSaveField(CampfireEventManager.class.getName(), new CampfireEventManager());
+        BaseMod.registerCustomReward(POEM_REWARD, PoemReward.Loader, PoemReward.Saver);
     }
 
 
@@ -351,9 +355,9 @@ public class ModCore implements
         // 和年一起欺夕
         BaseMod.addMonster(NianGuestStar.ID, NianGuestStar.NAME, () -> MonsterGroups.NIAN_GUEST_STAR);
         // 召唤物
-//        BaseMod.addMonster(Thunderer_SummonMonster.ID, Thunderer_SummonMonster::new);
-//        BaseMod.addMonster(Tranquility_SummonMonster.ID, Tranquility_SummonMonster::new);
-//        BaseMod.addMonster(Peripateticism_SummonMonster.ID, Peripateticism_SummonMonster::new);
+        //        BaseMod.addMonster(Thunderer_SummonMonster.ID, Thunderer_SummonMonster::new);
+        //        BaseMod.addMonster(Tranquility_SummonMonster.ID, Tranquility_SummonMonster::new);
+        //        BaseMod.addMonster(Peripateticism_SummonMonster.ID, Peripateticism_SummonMonster::new);
         // 岁家的家庭战争
         BaseMod.addMonster(Sui_9_Nian.ID, Sui_9_Nian::new);
     }

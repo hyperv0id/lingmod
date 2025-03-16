@@ -17,7 +17,7 @@ import lingmod.character.Ling;
 import lingmod.interfaces.CopyField;
 import lingmod.patch.TypeOverridePatch;
 import lingmod.util.CustomTags;
-import lingmod.util.PoetryLoader;
+import lingmod.util.card.PoemLoader;
 import lingmod.util.VoiceMaster;
 import lingmod.util.Wiz;
 import lingmod.util.card.ToneManager;
@@ -45,7 +45,7 @@ public abstract class AbstractPoetryCard extends AbstractEasyCard implements OnC
         realType = cardType;
         tags.add(CustomTags.POEM);
         tags.add(CardTags.HEALING); // 不能被树枝等检索到
-        poetryStrings = PoetryLoader.getStr(id);
+        poetryStrings = PoemLoader.getStr(id);
         this.name = poetryStrings.NAME;
         this.dontTriggerOnUseCard = true; // 使用时不触发XX检查
         // 临时
@@ -103,7 +103,7 @@ public abstract class AbstractPoetryCard extends AbstractEasyCard implements OnC
     @Override
     public void initializeDescription() {
         if (poetryStrings == null) {
-            poetryStrings = PoetryLoader.getStr(cardID);
+            poetryStrings = PoemLoader.getStr(cardID);
         }
         if (poetryStrings != null) {
             this.rawDescription = poetryStrings.DESCRIPTION;

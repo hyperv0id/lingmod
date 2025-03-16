@@ -5,18 +5,18 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import javassist.CtBehavior;
 import lingmod.cards.AbstractPoetryCard;
-import lingmod.util.PoetryReward;
+import lingmod.util.card.PoemReward;
 import lingmod.util.card.PoetryCardLib;
 
 import static lingmod.ModCore.logger;
 
-public class PoetryRewardPatch {
+public class PoemRewardPatch {
 
     @SpirePatch(clz = AbstractRoom.class, method = "update")
     public static class AddPoetryWithPotion {
 
         public static float defaultProbability = 0.2f;
-        public static float probability = 0.3f;
+        public static float probability = 0.25f;
 
         /**
          * 添加诗歌奖励，概率随着游戏进行而增加
@@ -28,7 +28,7 @@ public class PoetryRewardPatch {
             if (AbstractDungeon.cardRng.random() <= probability) {
                 AbstractPoetryCard pc = (AbstractPoetryCard) PoetryCardLib.getCard(AbstractDungeon.cardRng).makeCopy();
                 logger.info("Add Poetry Reward: " + pc.name);
-                __instance.rewards.add(new PoetryReward(pc));
+                __instance.rewards.add(new PoemReward(pc));
                 probability = defaultProbability;
             } else {
                 logger.info("No Poetry Reward");
